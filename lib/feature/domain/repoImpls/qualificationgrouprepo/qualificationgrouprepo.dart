@@ -15,7 +15,6 @@ class QualificationGroupREpo implements IQualificationGroupRepo {
   @override
   Future<Either<MainFailures, List<QualificationGroupModel>>> getGroupItems(
       String iD, String mode) async {
-   
     try {
       final response = await http.post(
           Uri.parse(baseUrl + qualificationgroupurl),

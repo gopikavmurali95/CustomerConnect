@@ -44,7 +44,7 @@ class _QualificationGroupState extends State<QualificationGroup> {
             Navigator.pop(context);
           },
           child: Transform.flip(
-           // flipX: selectedLocale?.languageCode == "en" ? false : true,
+            // flipX: selectedLocale?.languageCode == "en" ? false : true,
             child: const Icon(
               Icons.arrow_back_ios_rounded,
               size: 20,

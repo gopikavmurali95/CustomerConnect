@@ -28,7 +28,10 @@ class PArtialDeliveryDetails extends StatefulWidget {
   final LoginUserModel user;
   final String currentMode;
   const PArtialDeliveryDetails(
-      {super.key, required this.user, required this.header, required this.currentMode});
+      {super.key,
+      required this.user,
+      required this.header,
+      required this.currentMode});
 
   @override
   State<PArtialDeliveryDetails> createState() => _PArtialDeliveryDetails();
@@ -75,8 +78,10 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
         leading: IconButton(
           onPressed: () {
             context.read<PartialDeliveryHeaderBloc>().add(
-              GetPartialDeliveryHeaderEvent(
-                  userID: widget.user.usrId!, mode: widget.currentMode, searchQuery: ''));
+                GetPartialDeliveryHeaderEvent(
+                    userID: widget.user.usrId!,
+                    mode: widget.currentMode,
+                    searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -99,7 +104,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
           // } else {
           context.read<PartialDeliveryHeaderBloc>().add(
               GetPartialDeliveryHeaderEvent(
-                  userID: widget.user.usrId!, mode: widget.currentMode, searchQuery: ''));
+                  userID: widget.user.usrId!,
+                  mode: widget.currentMode,
+                  searchQuery: ''));
           // context.read<NavigatetoBackCubit>().popFromScreen(true);
           // }
         },
@@ -145,24 +152,23 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                           ],
                         ), */
                         RichText(
-                            text: TextSpan(
-                                style:
-                                    DefaultTextStyle.of(context).style.copyWith(
-                                          fontWeight: FontWeight.normal,
-                                          decoration: TextDecoration.none,
-                                        ),
-                                children: [
-                                  TextSpan(
-                                      text:
-                                          '${widget.header.cusCode} - ',
-                                style: blueTextStyle()),
-                                  TextSpan(
-                                      text:  selectedLocale?.languageCode == 'en'
-                                      ? "${widget.header.cusName}"
-                                      : widget.header.arcusName ?? '',
-                                  style: subTitleTextStyle())
-                                ]),
-                          ),
+                          text: TextSpan(
+                              style:
+                                  DefaultTextStyle.of(context).style.copyWith(
+                                        fontWeight: FontWeight.normal,
+                                        decoration: TextDecoration.none,
+                                      ),
+                              children: [
+                                TextSpan(
+                                    text: '${widget.header.cusCode} - ',
+                                    style: blueTextStyle()),
+                                TextSpan(
+                                    text: selectedLocale?.languageCode == 'en'
+                                        ? "${widget.header.cusName}"
+                                        : widget.header.arcusName ?? '',
+                                    style: subTitleTextStyle())
+                              ]),
+                        ),
                         Text(
                           '${widget.header.createdDate} ',
                           style:
@@ -250,9 +256,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                 ),
               ),
             ),
-             SizedBox(
-                            height: 10.h,
-                          ),
+            SizedBox(
+              height: 10.h,
+            ),
             BlocListener<PartialDeliveryApprovalBloc,
                 PartialDeliveryApprovalState>(
               listener: (context, state) {
@@ -267,7 +273,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
-                              "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} "),
+                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -329,7 +335,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                       width: double.infinity,
                       color: const Color(0xfff5f5f5),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 10,right: 10),
+                        padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Row(
                           children: [
                             Flexible(
@@ -351,7 +357,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                 style: boxHeading(),
                               ),
                             ),
-                                                           /*  SizedBox(
+                            /*  SizedBox(
                               width: 60.w,
                             ), */
                             Flexible(
@@ -387,11 +393,10 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                     .header.dahApprovalStatus!.isNotEmpty) {
                                   if (pdet[i].detStatus == 'Approved') {
                                     statuslist[i] = true;
-                                  }
-                                   else if(pdet[i].detStatus == 'Rejected'){
+                                  } else if (pdet[i].detStatus == 'Rejected') {
                                     statuslist[i] = false;
-                                  }else{
-                                    statuslist[i]=null;
+                                  } else {
+                                    statuslist[i] = null;
                                   }
                                 }
                               }
@@ -425,8 +430,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               : ListView.separated(
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) => Padding(
-                                    padding:  EdgeInsets.only(
-                                        left: selectedLocale?.languageCode == 'en'?10:45, right: 10),
+                                    padding: EdgeInsets.only(
+                                        left:
+                                            selectedLocale?.languageCode == 'en'
+                                                ? 10
+                                                : 45,
+                                        right: 10),
                                     child: Column(
                                       children: [
                                         Row(
@@ -441,16 +450,17 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                     style: loadTextStyle(),
                                                   ),
                                                   Text(
-                                                    selectedLocale
-                                                                ?.languageCode ==
-                                                            'en'
-                                                        ? pdet[index].prdName ??
-                                                            ''
-                                                        : pdet[index]
-                                                                .arprdName ??
-                                                            '',
-                                                    style: subTitleTextStyle()
-                                                  ),
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              'en'
+                                                          ? pdet[index]
+                                                                  .prdName ??
+                                                              ''
+                                                          : pdet[index]
+                                                                  .arprdName ??
+                                                              '',
+                                                      style:
+                                                          subTitleTextStyle()),
                                                 ],
                                               ),
                                             ),
@@ -460,112 +470,163 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                             Column(
                                               children: [
                                                 Text(
-                                                  pdet[index].orderedHQty!.isEmpty || pdet[index].orderedHQty==null?"-": pdet[index].orderedHQty ?? '',
+                                                  pdet[index]
+                                                              .orderedHQty!
+                                                              .isEmpty ||
+                                                          pdet[index]
+                                                                  .orderedHQty ==
+                                                              null
+                                                      ? "-"
+                                                      : pdet[index]
+                                                              .orderedHQty ??
+                                                          '',
                                                   style: subTitleTextStyle(),
                                                 ),
-                                                
                                                 Text(
-                                                  pdet[index].orderedLQty!.isEmpty || pdet[index].orderedLQty==null?"-": pdet[index].orderedLQty ??
-                                                      '',
+                                                  pdet[index]
+                                                              .orderedLQty!
+                                                              .isEmpty ||
+                                                          pdet[index]
+                                                                  .orderedLQty ==
+                                                              null
+                                                      ? "-"
+                                                      : pdet[index]
+                                                              .orderedLQty ??
+                                                          '',
                                                   style: subTitleTextStyle(),
                                                 )
                                               ],
                                             ),
                                             SizedBox(
-                                              width: selectedLocale?.languageCode == 'en'?75.w:60.w,
+                                              width: selectedLocale
+                                                          ?.languageCode ==
+                                                      'en'
+                                                  ? 75.w
+                                                  : 60.w,
                                             ),
                                             Column(
                                               children: [
                                                 Text(
-                                                  pdet[index].deliveringHQty=='0' || pdet[index].deliveringHQty==null?"0": pdet[index].deliveringHQty ??
-                                                      '0',
-                                                  style:subTitleTextStyle(),
+                                                  pdet[index].deliveringHQty ==
+                                                              '0' ||
+                                                          pdet[index]
+                                                                  .deliveringHQty ==
+                                                              null
+                                                      ? "0"
+                                                      : pdet[index]
+                                                              .deliveringHQty ??
+                                                          '0',
+                                                  style: subTitleTextStyle(),
                                                 ),
                                                 Text(
-                                                  pdet[index].deliveringLQty=='0'|| pdet[index].deliveringLQty==null?"0": pdet[index].deliveringLQty ??
-                                                      '0',
+                                                  pdet[index].deliveringLQty ==
+                                                              '0' ||
+                                                          pdet[index]
+                                                                  .deliveringLQty ==
+                                                              null
+                                                      ? "0"
+                                                      : pdet[index]
+                                                              .deliveringLQty ??
+                                                          '0',
                                                   style: subTitleTextStyle(),
                                                 )
                                               ],
                                             ),
                                           ],
                                         ),
-                                        widget.header.dahApprovalStatus=='Pending'?
-                                        Transform.scale(
-                                          scale: .9,
+                                        widget.header.dahApprovalStatus ==
+                                                    'Pending' ||
+                                                widget.header
+                                                        .dahApprovalStatus ==
+                                                    ''
+                                            ? Transform.scale(
+                                                scale: .9,
                                                 origin: const Offset(450, 0),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: BlocConsumer<
-                                                    PartialDeliveryReasonBloc,
-                                                    PartialDeliveryReasonState>(
-                                                  listener: (context, state) {
-                                                    state.when(
-                                                      getPArtialDeliveryReasonsState:
-                                                          (resons) {
-                                                        if (resons != null) {
-                                                          selectedresons.clear();
-                                          
-                                                          availableresons.clear();
-                                                          availableresons = [
-                                                            PartialDeliveryReasonModel(
-                                                              rsnId: '-1',
-                                                              rsnName:
-                                                                  selectedLocale?.languageCode ==
-                                                                              'en'
-                                                                          ? 'Select reason'
-                                                                          : AppLocalizations.of(context)!
-                                                                              .selectReason,
-                                                                      rsnArName:
-                                                                          AppLocalizations.of(context)!
-                                                                              .selectReason,
-                                                            )
-                                                          ];
-                                          
-                                                          selectedresons =
-                                                              List.generate(
-                                                                  pdet.length,
-                                                                  (index) =>
-                                                                      '-1');
-                                                          availableresons
-                                                              .addAll(resons);
-                                                        }
-                                                      },
-                                                      partialDeliveryFailedState:
-                                                          () {},
-                                                    );
-                                                  },
-                                                  builder: (context, state) {
-                                                    return state.when(
-                                                      getPArtialDeliveryReasonsState:
-                                                          (resons) => resons ==
-                                                                      null ||
-                                                                  availableresons
-                                                                      .isEmpty
-                                                              ? const ShimmerContainers(
-                                                                  height: 30,
-                                                                  width: 80,
-                                                                )
-                                                              : Transform.scale(
-                                                                scale: 0.8,
-                                                                child: Container(
-                                                                    height: 30.h,
-                                                                    // width: MediaQuery.of(context).size.width / 3,
-                                                                    decoration: BoxDecoration(
-                                                                                color: Colors.white,
-                                                                                border: Border.all(color: Colors.grey.shade200),
-                                                                                borderRadius: BorderRadius.circular(10.0),
-                                                                                boxShadow: const [
-                                                                                  BoxShadow(
-                                                                                      // ignore: use_full_hex_values_for_flutter_colors
-                                                                                      color: Color(0xff00000050),
-                                                                                      blurRadius: 0.4,
-                                                                                      spreadRadius: 0.4)
-                                                                                ]),
-                                                                    child:
-                                                                        DropdownButtonFormField(
-                                                                       elevation:
+                                                child: Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: BlocConsumer<
+                                                          PartialDeliveryReasonBloc,
+                                                          PartialDeliveryReasonState>(
+                                                        listener:
+                                                            (context, state) {
+                                                          state.when(
+                                                            getPArtialDeliveryReasonsState:
+                                                                (resons) {
+                                                              if (resons !=
+                                                                  null) {
+                                                                selectedresons
+                                                                    .clear();
+
+                                                                availableresons
+                                                                    .clear();
+                                                                availableresons =
+                                                                    [
+                                                                  PartialDeliveryReasonModel(
+                                                                    rsnId: '-1',
+                                                                    rsnName: selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? 'Select reason'
+                                                                        : AppLocalizations.of(context)!
+                                                                            .selectReason,
+                                                                    rsnArName: AppLocalizations.of(
+                                                                            context)!
+                                                                        .selectReason,
+                                                                  )
+                                                                ];
+
+                                                                selectedresons =
+                                                                    List.generate(
+                                                                        pdet
+                                                                            .length,
+                                                                        (index) =>
+                                                                            '-1');
+                                                                availableresons
+                                                                    .addAll(
+                                                                        resons);
+                                                              }
+                                                            },
+                                                            partialDeliveryFailedState:
+                                                                () {},
+                                                          );
+                                                        },
+                                                        builder:
+                                                            (context, state) {
+                                                          return state.when(
+                                                            getPArtialDeliveryReasonsState:
+                                                                (resons) => resons ==
+                                                                            null ||
+                                                                        availableresons
+                                                                            .isEmpty
+                                                                    ? const ShimmerContainers(
+                                                                        height:
+                                                                            30,
+                                                                        width:
+                                                                            80,
+                                                                      )
+                                                                    : Transform
+                                                                        .scale(
+                                                                        scale:
+                                                                            0.8,
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              30.h,
+                                                                          // width: MediaQuery.of(context).size.width / 3,
+                                                                          decoration: BoxDecoration(
+                                                                              color: Colors.white,
+                                                                              border: Border.all(color: Colors.grey.shade200),
+                                                                              borderRadius: BorderRadius.circular(10.0),
+                                                                              boxShadow: const [
+                                                                                BoxShadow(
+                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    color: Color(0xff00000050),
+                                                                                    blurRadius: 0.4,
+                                                                                    spreadRadius: 0.4)
+                                                                              ]),
+                                                                          child:
+                                                                              DropdownButtonFormField(
+                                                                            elevation:
                                                                                 0,
                                                                             dropdownColor:
                                                                                 Colors.white,
@@ -593,111 +654,55 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                                 borderSide: const BorderSide(color: Colors.transparent),
                                                                               ),
                                                                             ),
-                                                                      items: availableresons.map(
-                                                                          (PartialDeliveryReasonModel
-                                                                              item) {
-                                                                        return DropdownMenuItem(
-                                                                          value: item
-                                                                              .rsnId,
-                                                                          child:
-                                                                              Text(
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
-                                                                            style: kfontstyle(
-                                                                                fontSize:
-                                                                                    9.sp),
+                                                                            items:
+                                                                                availableresons.map((PartialDeliveryReasonModel item) {
+                                                                              return DropdownMenuItem(
+                                                                                value: item.rsnId,
+                                                                                child: Text(
+                                                                                  overflow: TextOverflow.ellipsis,
+                                                                                  selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
+                                                                                  style: kfontstyle(fontSize: 9.sp),
+                                                                                ),
+                                                                              );
+                                                                            }).toList(),
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              selectedresons[index] = value ?? '';
+                                                                            },
                                                                           ),
-                                                                        );
-                                                                      }).toList(),
-                                                                      onChanged:
-                                                                          (value) {
-                                                                        selectedresons[
-                                                                                index] =
-                                                                            value ??
-                                                                                '';
-                                                                      },
-                                                                    ),
-                                                                  ),
-                                                              ),
-                                                      partialDeliveryFailedState:
-                                                          () => const SizedBox(),
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                              BlocBuilder<
-                                                  AapprovalOrRejectRadioCubit,
-                                                  AapprovalOrRejectRadioState>(
-                                                builder: (context, state) {
-                                                  return AbsorbPointer(
-                                                    absorbing: widget
-                                                            .header
-                                                            .dahApprovalStatus!
-                                                            .isNotEmpty
-                                                        ? true
-                                                        : false,
-                                                    child: Row(
-                                                      children: [
-                                                        Transform.scale(
-                                                          scale: 0.8,
-                                                          origin:
-                                                                  const Offset(
-                                                                      -120, 0),
-                                                          child: InkWell(
-                                                            onTap: (){
-                                                              setState(() {
-                                                                
-                                                                    statuslist[
-                                                                            index] =
-                                                                        true;
-                                                                    loadingCount =
-                                                                        0;
+                                                                        ),
+                                                                      ),
+                                                            partialDeliveryFailedState:
+                                                                () =>
+                                                                    const SizedBox(),
+                                                          );
+                                                        },
+                                                      ),
+                                                    ),
+                                                    BlocBuilder<
+                                                        AapprovalOrRejectRadioCubit,
+                                                        AapprovalOrRejectRadioState>(
+                                                      builder:
+                                                          (context, state) {
+                                                        return AbsorbPointer(
+                                                          absorbing: widget
+                                                                  .header
+                                                                  .dahApprovalStatus!
+                                                                  .isNotEmpty
+                                                              ? true
+                                                              : false,
+                                                          child: Row(
+                                                            children: [
+                                                              Transform.scale(
+                                                                scale: 0.8,
+                                                                origin:
+                                                                    const Offset(
+                                                                        -120,
+                                                                        0),
+                                                                child: InkWell(
+                                                                  onTap: () {
                                                                     setState(
-                                                                        () {});
-                                          
-                                                                    _partialdeliveryapproved[index] = PartialDeliveryProductModel(
-                                                                        dadId: pdet[
-                                                                                index]
-                                                                            .dadId,
-                                                                        reason: selectedresons[
-                                                                            index],
-                                                                        status:
-                                                                            'A');
-                                                                  
-                                                              });
-                                                            },
-                                                            child: Row(
-                                                              children: [
-                                                                Radio(
-                                                                  fillColor: MaterialStateProperty.resolveWith<
-                                                                            Color>((Set<
-                                                                                MaterialState>
-                                                                            states) {
-                                                                          return (statuslist[index] ==
-                                                                                  true)
-                                                                              ? Colors
-                                                                                  .green
-                                                                                  .shade300
-                                                                              : Colors
-                                                                                  .grey;
-                                                                        }),
-                                                                  /* activeColor: isselected == true
-                                                                                                                                                                                                    ? const Color(0xff0075ff)
-                                                                                                                                                                                                    : Colors.grey, */
-                                                                  value: statuslist[
-                                                                              index] ==
-                                                                          null
-                                                                      ? false
-                                                                      : statuslist[
-                                                                                  index] ==
-                                                                              true
-                                                                          ? true
-                                                                          : false,
-                                                                  groupValue: true,
-                                                                  onChanged:
-                                                                      (value) {
-                                                                    
+                                                                        () {
                                                                       statuslist[
                                                                               index] =
                                                                           true;
@@ -705,261 +710,298 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                           0;
                                                                       setState(
                                                                           () {});
-                                                            
+
                                                                       _partialdeliveryapproved[index] = PartialDeliveryProductModel(
-                                                                          dadId: pdet[
-                                                                                  index]
+                                                                          dadId: pdet[index]
                                                                               .dadId,
                                                                           reason: selectedresons[
                                                                               index],
                                                                           status:
                                                                               'A');
-                                                                    
+                                                                    });
                                                                   },
-                                                                ),
-                                                                Text(
-                                                                  AppLocalizations.of(
-                                                                          context)!
-                                                                      .approve,
-                                                                  style:
-                                                                      kfontstyle(),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Transform.scale(
-                                                          scale: 0.8,
-                                                           origin:
-                                                                  const Offset(
-                                                                      -120, 0),
-                                                          child: InkWell(
-                                                            onTap: () {
-                                                              setState(() {
-                                                                
-                                                                    statuslist[
-                                                                            index] =
-                                                                        false;
-                                          
-                                                                    loadingCount =
-                                                                        0;
-                                                                    setState(
-                                                                        () {});
-                                                                    _partialdeliveryapproved[index] = PartialDeliveryProductModel(
-                                                                        dadId: pdet[
-                                                                                index]
-                                                                            .dadId,
-                                                                        reason: selectedresons[
-                                                                            index],
-                                                                        status:
-                                                                            "R");
-                                                                  
-                                                              });
-                                                            },
-                                                            child: Row(
-                                                              children: [
-                                                                Radio(
-                                                                  fillColor: MaterialStateProperty
-                                                                      .resolveWith<
-                                                                          Color>((Set<
-                                                                              MaterialState>
-                                                                          states) {
-                                                                    return (statuslist[index] !=
-                                                                                null &&
-                                                                            !statuslist[
-                                                                                index]!)
-                                                                        ? Colors
-                                                                                    .red
-                                                                                    .shade300
-                                                                        : Colors
-                                                                            .grey;
-                                                                  }),
-                                                                  /*  activeColor: isselected == false
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Radio(
+                                                                        fillColor: MaterialStateProperty.resolveWith<
+                                                                            Color>((Set<
+                                                                                MaterialState>
+                                                                            states) {
+                                                                          return (statuslist[index] == true)
+                                                                              ? Colors.green.shade300
+                                                                              : Colors.grey;
+                                                                        }),
+                                                                        /* activeColor: isselected == true
                                                                                                                                                                                                     ? const Color(0xff0075ff)
                                                                                                                                                                                                     : Colors.grey, */
-                                                                  value: statuslist[
-                                                                              index] ==
-                                                                          null
-                                                                      ? true
-                                                                      : statuslist[
-                                                                                  index] ==
-                                                                              true
-                                                                          ? true
-                                                                          : false,
-                                                                  groupValue: false,
-                                                                  onChanged:
-                                                                      (value) {
-                                                                    
-                                                                    
+                                                                        value: statuslist[index] ==
+                                                                                null
+                                                                            ? false
+                                                                            : statuslist[index] == true
+                                                                                ? true
+                                                                                : false,
+                                                                        groupValue:
+                                                                            true,
+                                                                        onChanged:
+                                                                            (value) {
+                                                                          statuslist[index] =
+                                                                              true;
+                                                                          loadingCount =
+                                                                              0;
+                                                                          setState(
+                                                                              () {});
+
+                                                                          _partialdeliveryapproved[index] = PartialDeliveryProductModel(
+                                                                              dadId: pdet[index].dadId,
+                                                                              reason: selectedresons[index],
+                                                                              status: 'A');
+                                                                        },
+                                                                      ),
+                                                                      Text(
+                                                                        AppLocalizations.of(context)!
+                                                                            .approve,
+                                                                        style:
+                                                                            kfontstyle(),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Transform.scale(
+                                                                scale: 0.8,
+                                                                origin:
+                                                                    const Offset(
+                                                                        -120,
+                                                                        0),
+                                                                child: InkWell(
+                                                                  onTap: () {
+                                                                    setState(
+                                                                        () {
                                                                       statuslist[
                                                                               index] =
                                                                           false;
-                                                            
+
                                                                       loadingCount =
                                                                           0;
                                                                       setState(
                                                                           () {});
                                                                       _partialdeliveryapproved[index] = PartialDeliveryProductModel(
-                                                                          dadId: pdet[
-                                                                                  index]
+                                                                          dadId: pdet[index]
                                                                               .dadId,
                                                                           reason: selectedresons[
                                                                               index],
                                                                           status:
                                                                               "R");
-                                                                    
+                                                                    });
                                                                   },
-                                                                ),
-                                                                Text(
-                                                                  AppLocalizations.of(
-                                                                          context)!
-                                                                      .reject,
-                                                                  style:
-                                                                      kfontstyle(),
-                                                                )
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  );
-                                                },
-                                              )
-                                            ],
-                                          ),
-                                        ):
-                                        Transform.scale(
-                                                      scale: .9,
-                                                      origin:
-                                                          const Offset(450, 0),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Expanded(
-                                                              child: pdet[index]
-                                                                          .detStatus ==
-                                                                      'Rejected'
-                                                                  ? Transform
-                                                                      .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          Container(
-                                                                        height:
-                                                                            30.h,
-                                                                        decoration: BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(color: Colors.grey.shade200),
-                                                                            borderRadius: BorderRadius.circular(10.0),
-                                                                            boxShadow: const [
-                                                                              BoxShadow(
-                                                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                                                  color: Color(0xff00000050),
-                                                                                  blurRadius: 0.4,
-                                                                                  spreadRadius: 0.4)
-                                                                            ]),
-                                                                        child: Padding(
-                                                                          padding: const EdgeInsets.symmetric(vertical: 7,
-                                                                          horizontal: 10),
-                                                                          child: Text(selectedLocale?.languageCode == 'en'?pdet[index].reason ??
-                                                                              '':pdet[index].arReason??''),
-                                                                        ),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Radio(
+                                                                        fillColor: MaterialStateProperty.resolveWith<
+                                                                            Color>((Set<
+                                                                                MaterialState>
+                                                                            states) {
+                                                                          return (statuslist[index] != null && !statuslist[index]!)
+                                                                              ? Colors.red.shade300
+                                                                              : Colors.grey;
+                                                                        }),
+                                                                        /*  activeColor: isselected == false
+                                                                                                                                                                                                    ? const Color(0xff0075ff)
+                                                                                                                                                                                                    : Colors.grey, */
+                                                                        value: statuslist[index] ==
+                                                                                null
+                                                                            ? true
+                                                                            : statuslist[index] == true
+                                                                                ? true
+                                                                                : false,
+                                                                        groupValue:
+                                                                            false,
+                                                                        onChanged:
+                                                                            (value) {
+                                                                          statuslist[index] =
+                                                                              false;
+
+                                                                          loadingCount =
+                                                                              0;
+                                                                          setState(
+                                                                              () {});
+                                                                          _partialdeliveryapproved[index] = PartialDeliveryProductModel(
+                                                                              dadId: pdet[index].dadId,
+                                                                              reason: selectedresons[index],
+                                                                              status: "R");
+                                                                        },
                                                                       ),
-                                                                    )
-                                                                  : const SizedBox()),
-                                                          BlocBuilder<
-                                                              AapprovalOrRejectRadioCubit,
-                                                              AapprovalOrRejectRadioState>(
-                                                            builder: (context,
-                                                                state) {
-                                                              return Row(
-                                                                children: [
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] == true)
-                                                                                ? Colors.green.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          value: statuslist[index] == null
-                                                                              ? false
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              true,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                           
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .approve,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
+                                                                      Text(
+                                                                        AppLocalizations.of(context)!
+                                                                            .reject,
+                                                                        style:
+                                                                            kfontstyle(),
+                                                                      )
+                                                                    ],
                                                                   ),
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] != null && !statuslist[index]!)
-                                                                                ? Colors.red.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          
-                                                                          value: statuslist[index] == null
-                                                                              ? true
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              false,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                           
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .reject,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            : Transform.scale(
+                                                scale: .9,
+                                                origin: const Offset(450, 0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    Expanded(
+                                                        child: pdet[index]
+                                                                    .detStatus ==
+                                                                'Rejected'
+                                                            ? Transform.scale(
+                                                                scale: 0.8,
+                                                                child:
+                                                                    Container(
+                                                                  height: 30.h,
+                                                                  decoration: BoxDecoration(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      border: Border.all(
+                                                                          color: Colors
+                                                                              .grey
+                                                                              .shade200),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10.0),
+                                                                      boxShadow: const [
+                                                                        BoxShadow(
+                                                                            // ignore: use_full_hex_values_for_flutter_colors
+                                                                            color: Color(
+                                                                                0xff00000050),
+                                                                            blurRadius:
+                                                                                0.4,
+                                                                            spreadRadius:
+                                                                                0.4)
+                                                                      ]),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        vertical:
+                                                                            7,
+                                                                        horizontal:
+                                                                            10),
+                                                                    child: Text(selectedLocale?.languageCode ==
+                                                                            'en'
+                                                                        ? pdet[index].reason ??
+                                                                            ''
+                                                                        : pdet[index].arReason ??
+                                                                            ''),
+                                                                  ),
+                                                                ),
+                                                              )
+                                                            : const SizedBox()),
+                                                    BlocBuilder<
+                                                        AapprovalOrRejectRadioCubit,
+                                                        AapprovalOrRejectRadioState>(
+                                                      builder:
+                                                          (context, state) {
+                                                        return Row(
+                                                          children: [
+                                                            Transform.scale(
+                                                              scale: 0.8,
+                                                              origin:
+                                                                  const Offset(
+                                                                      -120, 0),
+                                                              child: Row(
+                                                                children: [
+                                                                  Radio(
+                                                                    fillColor: MaterialStateProperty.resolveWith<
+                                                                        Color>((Set<
+                                                                            MaterialState>
+                                                                        states) {
+                                                                      return (statuslist[index] ==
+                                                                              true)
+                                                                          ? Colors
+                                                                              .green
+                                                                              .shade300
+                                                                          : Colors
+                                                                              .grey;
+                                                                    }),
+                                                                    value: statuslist[index] ==
+                                                                            null
+                                                                        ? false
+                                                                        : statuslist[index] ==
+                                                                                true
+                                                                            ? true
+                                                                            : false,
+                                                                    groupValue:
+                                                                        true,
+                                                                    onChanged:
+                                                                        (value) {},
+                                                                  ),
+                                                                  Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .approve,
+                                                                    style:
+                                                                        kfontstyle(),
                                                                   )
                                                                 ],
-                                                              );
-                                                            },
-                                                          )
-                                                        ],
-                                                      ),
+                                                              ),
+                                                            ),
+                                                            Transform.scale(
+                                                              scale: 0.8,
+                                                              origin:
+                                                                  const Offset(
+                                                                      -120, 0),
+                                                              child: Row(
+                                                                children: [
+                                                                  Radio(
+                                                                    fillColor: MaterialStateProperty.resolveWith<
+                                                                        Color>((Set<
+                                                                            MaterialState>
+                                                                        states) {
+                                                                      return (statuslist[index] != null &&
+                                                                              !statuslist[
+                                                                                  index]!)
+                                                                          ? Colors
+                                                                              .red
+                                                                              .shade300
+                                                                          : Colors
+                                                                              .grey;
+                                                                    }),
+                                                                    value: statuslist[index] ==
+                                                                            null
+                                                                        ? true
+                                                                        : statuslist[index] ==
+                                                                                true
+                                                                            ? true
+                                                                            : false,
+                                                                    groupValue:
+                                                                        false,
+                                                                    onChanged:
+                                                                        (value) {},
+                                                                  ),
+                                                                  Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .reject,
+                                                                    style:
+                                                                        kfontstyle(),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            )
+                                                          ],
+                                                        );
+                                                      },
                                                     )
+                                                  ],
+                                                ),
+                                              )
                                       ],
                                     ),
                                   ),
@@ -999,17 +1041,20 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Visibility(
-                            visible: widget.header.dahApprovalStatus == 'Pending' ||
-                                          widget.header.dahApprovalStatus!.isEmpty?true:false,
+                            visible:
+                                widget.header.dahApprovalStatus == 'Pending' ||
+                                        widget.header.dahApprovalStatus!.isEmpty
+                                    ? true
+                                    : false,
                             child: MaterialButton(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              color:
-                                  widget.header.dahApprovalStatus == 'Pending' ||
-                                          widget.header.dahApprovalStatus!.isEmpty
-                                      ? Colors.green.shade300
-                                      : Colors.grey[300],
+                              color: widget.header.dahApprovalStatus ==
+                                          'Pending' ||
+                                      widget.header.dahApprovalStatus!.isEmpty
+                                  ? Colors.green.shade300
+                                  : Colors.grey[300],
                               onPressed: () {
                                 if (widget.header.dahApprovalStatus ==
                                         'Pending' ||
@@ -1017,9 +1062,11 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                   if (_partialdeliveryapproved.contains(null)) {
                                     showCupertinoDialog(
                                       context: context,
-                                      builder: (context) => CupertinoAlertDialog(
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
                                         title: Text(
-                                            AppLocalizations.of(context)!.alert),
+                                            AppLocalizations.of(context)!
+                                                .alert),
                                         content: Text(AppLocalizations.of(
                                                 context)!
                                             .pleaseMakeSureToApproveAndReject),
@@ -1030,45 +1077,43 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                               // Navigator.pop(context);
                                             },
                                             child: Text(
-                                                AppLocalizations.of(context)!.ok),
+                                                AppLocalizations.of(context)!
+                                                    .ok),
                                           ),
                                         ],
                                       ),
                                     );
-                                  }else 
-                                    if (checkrejectedstatus() == false) {
-                                                                      showCupertinoDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                          title: Text(
-                                                                              AppLocalizations.of(context)!
-                                                                                  .alert),
-                                                                          content: Text(
-                                                                              AppLocalizations.of(context)!
-                                                                                  .selectReason),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed:
-                                                                                  () {
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child:
-                                                                                  Text(AppLocalizations.of(context)!.ok),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      );
-                            
-                                  }
-                                   else {
+                                  } else if (checkrejectedstatus() == false) {
                                     showCupertinoDialog(
                                       context: context,
-                                      builder: (context) => CupertinoAlertDialog(
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
                                         title: Text(
-                                            AppLocalizations.of(context)!.alert),
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .selectReason),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
                                         content: Text(
                                             AppLocalizations.of(context)!
                                                 .doyouWantToProceed),
@@ -1087,13 +1132,13 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                               loadingCount = 0;
                                               setState(() {});
                                               Navigator.pop(context);
-                            
+
                                               context
                                                   .read<
                                                       PartialDeliveryApprovalBloc>()
                                                   .add(
                                                       const PartialDeliveryLoadingEvent());
-                            
+
                                               context
                                                   .read<
                                                       PartialDeliveryApprovalBloc>()
@@ -1102,10 +1147,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                           PartialDeliveryApprovalModel(
                                                               products:
                                                                   _partialdeliveryapproved,
-                                                              returnId: widget
-                                                                  .header.dahId,
+                                                              returnId:
+                                                                  widget.header
+                                                                      .dahId,
                                                               userId: widget
-                                                                  .user.usrId)));
+                                                                  .user
+                                                                  .usrId)));
                                             },
                                             child: Text(
                                                 AppLocalizations.of(context)!
@@ -1138,6 +1185,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
       ),
     );
   }
+
   bool checkrejectedstatus() {
     // log(jsonEncode(_procechangeapproved));
     int index = statuslist.indexWhere((element) => element == false);

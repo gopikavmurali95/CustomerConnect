@@ -147,7 +147,7 @@ class _ScheduledReturnDetailScreenState
                       builder: (context) => CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(
-                            "${AppLocalizations.of(context)!.partial_delivery} ${selectedLocale?.languageCode == 'en' ? status.status : status.arStatus} "),
+                            " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -251,29 +251,32 @@ class _ScheduledReturnDetailScreenState
                                       ],
                                     ), */
                                     RichText(
-                            text: TextSpan(
-                                style:
-                                    DefaultTextStyle.of(context).style.copyWith(
-                                          fontWeight: FontWeight.normal,
-                                          decoration: TextDecoration.none,
-                                        ),
-                                children: [
-                                  TextSpan(
-                                      text:
-                                         '${widget.scheduledreturn.cusCode} - ',
-                                            style: blueTextStyle()),
-                                  TextSpan(
-                                      text:  selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? widget.scheduledreturn
-                                                          .cusName ??
-                                                      ''
-                                                  : widget.scheduledreturn
-                                                          .arcusName ??
-                                                      '',
-                                              style: subTitleTextStyle())
-                                ]),
-                          ),
+                                      text: TextSpan(
+                                          style: DefaultTextStyle.of(context)
+                                              .style
+                                              .copyWith(
+                                                fontWeight: FontWeight.normal,
+                                                decoration: TextDecoration.none,
+                                              ),
+                                          children: [
+                                            TextSpan(
+                                                text:
+                                                    '${widget.scheduledreturn.cusCode} - ',
+                                                style: blueTextStyle()),
+                                            TextSpan(
+                                                text:
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            'en'
+                                                        ? widget.scheduledreturn
+                                                                .cusName ??
+                                                            ''
+                                                        : widget.scheduledreturn
+                                                                .arcusName ??
+                                                            '',
+                                                style: subTitleTextStyle())
+                                          ]),
+                                    ),
                                     Text(
                                       widget.scheduledreturn.createdDate ?? '',
                                       style: kfontstyle(
@@ -464,8 +467,8 @@ class _ScheduledReturnDetailScreenState
                                 if (details[i].status!.isNotEmpty) {
                                   if (details[i].status == 'A') {
                                     statuslist[i] = true;
-                                  }else if(details[i].status=='R'){
-                                    statuslist[i]=false;
+                                  } else if (details[i].status == 'R') {
+                                    statuslist[i] = false;
                                   } else {
                                     statuslist[i] = null;
                                   }
@@ -548,18 +551,30 @@ class _ScheduledReturnDetailScreenState
                                                         Column(
                                                           children: [
                                                             Text(
-                                                                details[index].rrdHuom!.isEmpty || details[index].rrdHuom==null?"-": details[index]
-                                                                        .rrdHuom ??
-                                                                    '',
+                                                                details[index]
+                                                                            .rrdHuom!
+                                                                            .isEmpty ||
+                                                                        details[index].rrdHuom ==
+                                                                            null
+                                                                    ? "-"
+                                                                    : details[index]
+                                                                            .rrdHuom ??
+                                                                        '',
                                                                 style:
                                                                     subTitleTextStyle()),
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
                                                             Text(
-                                                                details[index].rrdLuom!.isEmpty || details[index].rrdLuom==null?"-": details[index]
-                                                                        .rrdLuom ??
-                                                                    '',
+                                                                details[index]
+                                                                            .rrdLuom!
+                                                                            .isEmpty ||
+                                                                        details[index].rrdLuom ==
+                                                                            null
+                                                                    ? "-"
+                                                                    : details[index]
+                                                                            .rrdLuom ??
+                                                                        '',
                                                                 style:
                                                                     subTitleTextStyle()),
                                                           ],
@@ -570,18 +585,28 @@ class _ScheduledReturnDetailScreenState
                                                         Column(
                                                           children: [
                                                             Text(
-                                                               details[index].hQty=='0'|| details[index].hQty==null?"0":  details[index]
-                                                                        .hQty ??
-                                                                    '0',
+                                                                details[index].hQty ==
+                                                                            '0' ||
+                                                                        details[index].hQty ==
+                                                                            null
+                                                                    ? "0"
+                                                                    : details[index]
+                                                                            .hQty ??
+                                                                        '0',
                                                                 style:
                                                                     subTitleTextStyle()),
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
                                                             Text(
-                                                                 details[index].lQty=='0' || details[index].lQty==null?"0":details[index]
-                                                                        .lQty ??
-                                                                    '0',
+                                                                details[index].lQty ==
+                                                                            '0' ||
+                                                                        details[index].lQty ==
+                                                                            null
+                                                                    ? "0"
+                                                                    : details[index]
+                                                                            .lQty ??
+                                                                        '0',
                                                                 style:
                                                                     subTitleTextStyle()),
                                                           ],
@@ -593,214 +618,343 @@ class _ScheduledReturnDetailScreenState
                                                 SizedBox(
                                                   height: 5.h,
                                                 ),
-                                                widget.scheduledreturn.status=='Pending'?
-                                                Transform.scale(
-                                                  scale: .9,
-                                                  origin: const Offset(450, 0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      Expanded(
-                                                        child: BlocConsumer<
-                                                            ApprovalReasonsBloc,
-                                                            ApprovalReasonsState>(
-                                                          listener:
-                                                              (context, state) {
-                                                            state.when(
-                                                              getApprovalResonsState:
-                                                                  (resons) {
-                                                                if (resons !=
-                                                                    null) {
-                                                                  selectedresons
-                                                                      .clear();
-                                                                  availableresons
-                                                                      .clear();
-                                                                  availableresons =
-                                                                      [
-                                                                    ApprovalResonModel(
-                                                                        rsnId:
-                                                                            '-1',
-                                                                        rsnName: selectedLocale?.languageCode ==
-                                                                                'en'
-                                                                            ? 'Select reason'
-                                                                            : AppLocalizations.of(context)!
-                                                                                .selectReason,
-                                                                        rsnArName:
-                                                                            AppLocalizations.of(context)!
-                                                                                .selectReason,
-                                                                        rsnType:
-                                                                            'null')
-                                                                  ];
+                                                widget.scheduledreturn.status ==
+                                                        'Pending'
+                                                    ? Transform.scale(
+                                                        scale: .9,
+                                                        origin: const Offset(
+                                                            450, 0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Expanded(
+                                                              child: BlocConsumer<
+                                                                  ApprovalReasonsBloc,
+                                                                  ApprovalReasonsState>(
+                                                                listener:
+                                                                    (context,
+                                                                        state) {
+                                                                  state.when(
+                                                                    getApprovalResonsState:
+                                                                        (resons) {
+                                                                      if (resons !=
+                                                                          null) {
+                                                                        selectedresons
+                                                                            .clear();
+                                                                        availableresons
+                                                                            .clear();
+                                                                        availableresons =
+                                                                            [
+                                                                          ApprovalResonModel(
+                                                                              rsnId: '-1',
+                                                                              rsnName: selectedLocale?.languageCode == 'en' ? 'Select reason' : AppLocalizations.of(context)!.selectReason,
+                                                                              rsnArName: AppLocalizations.of(context)!.selectReason,
+                                                                              rsnType: 'null')
+                                                                        ];
 
-                                                                  selectedresons = List.generate(
-                                                                      details
-                                                                          .length,
-                                                                      (index) =>
-                                                                          '-1');
+                                                                        selectedresons = List.generate(
+                                                                            details
+                                                                                .length,
+                                                                            (index) =>
+                                                                                '-1');
 
-                                                                  availableresons
-                                                                      .addAll(
-                                                                          resons);
-                                                                }
-                                                              },
-                                                              getReasonsFailedState:
-                                                                  () {},
-                                                            );
-                                                          },
-                                                          builder:
-                                                              (context, state) {
-                                                            return state.when(
-                                                              getApprovalResonsState: (resons) => resons ==
-                                                                          null ||
-                                                                      availableresons
-                                                                          .isEmpty
-                                                                  ? const ShimmerContainers(
-                                                                      height:
-                                                                          30,
-                                                                      width: 80,
-                                                                    )
-                                                                  : Transform
-                                                                      .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          Container(
-                                                                        height:
-                                                                            30.h,
-                                                                        // width: MediaQuery.of(context)
-                                                                        //         .size
-                                                                        //         .width /
-                                                                        //     3,
+                                                                        availableresons
+                                                                            .addAll(resons);
+                                                                      }
+                                                                    },
+                                                                    getReasonsFailedState:
+                                                                        () {},
+                                                                  );
+                                                                },
+                                                                builder:
+                                                                    (context,
+                                                                        state) {
+                                                                  return state
+                                                                      .when(
+                                                                    getApprovalResonsState: (resons) => resons ==
+                                                                                null ||
+                                                                            availableresons
+                                                                                .isEmpty
+                                                                        ? const ShimmerContainers(
+                                                                            height:
+                                                                                30,
+                                                                            width:
+                                                                                80,
+                                                                          )
+                                                                        : Transform
+                                                                            .scale(
+                                                                            scale:
+                                                                                0.8,
+                                                                            child:
+                                                                                Container(
+                                                                              height: 30.h,
+                                                                              // width: MediaQuery.of(context)
+                                                                              //         .size
+                                                                              //         .width /
+                                                                              //     3,
 
-                                                                        decoration: BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(color: Colors.grey.shade200),
-                                                                            borderRadius: BorderRadius.circular(10.0),
-                                                                            boxShadow: const [
-                                                                              BoxShadow(
-                                                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                                                  color: Color(0xff00000050),
-                                                                                  blurRadius: 0.4,
-                                                                                  spreadRadius: 0.4)
-                                                                            ]),
-                                                                        child:
-                                                                            DropdownButtonFormField(
-                                                                          elevation:
-                                                                              0,
-                                                                          // isExpanded:
-                                                                          //     true,
+                                                                              decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
+                                                                                BoxShadow(
+                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    color: Color(0xff00000050),
+                                                                                    blurRadius: 0.4,
+                                                                                    spreadRadius: 0.4)
+                                                                              ]),
+                                                                              child: DropdownButtonFormField(
+                                                                                elevation: 0,
+                                                                                // isExpanded:
+                                                                                //     true,
 
-                                                                          dropdownColor:
-                                                                              Colors.white,
-                                                                          value:
-                                                                              availableresons[0].rsnId ?? '',
-                                                                          style:
-                                                                              kfontstyle(color: Colors.black),
-                                                                          isExpanded:
-                                                                              true,
-                                                                          decoration:
-                                                                              InputDecoration(
-                                                                            filled:
-                                                                                true,
-                                                                            fillColor:
-                                                                                Colors.white,
-                                                                            contentPadding:
-                                                                                const EdgeInsets.symmetric(horizontal: 10),
-                                                                            border:
-                                                                                OutlineInputBorder(
-                                                                              borderRadius: BorderRadius.circular(10),
-                                                                              borderSide: const BorderSide(color: Colors.transparent),
-                                                                            ),
-                                                                            enabledBorder:
-                                                                                OutlineInputBorder(
-                                                                              borderRadius: BorderRadius.circular(10),
-                                                                              borderSide: const BorderSide(color: Colors.transparent),
-                                                                            ),
-                                                                            focusedBorder:
-                                                                                OutlineInputBorder(
-                                                                              borderRadius: BorderRadius.circular(10),
-                                                                              borderSide: const BorderSide(color: Colors.transparent),
+                                                                                dropdownColor: Colors.white,
+                                                                                value: availableresons[0].rsnId ?? '',
+                                                                                style: kfontstyle(color: Colors.black),
+                                                                                isExpanded: true,
+                                                                                decoration: InputDecoration(
+                                                                                  filled: true,
+                                                                                  fillColor: Colors.white,
+                                                                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                                                                                  border: OutlineInputBorder(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderSide: const BorderSide(color: Colors.transparent),
+                                                                                  ),
+                                                                                  enabledBorder: OutlineInputBorder(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderSide: const BorderSide(color: Colors.transparent),
+                                                                                  ),
+                                                                                  focusedBorder: OutlineInputBorder(
+                                                                                    borderRadius: BorderRadius.circular(10),
+                                                                                    borderSide: const BorderSide(color: Colors.transparent),
+                                                                                  ),
+                                                                                ),
+                                                                                items: availableresons.map((ApprovalResonModel item) {
+                                                                                  return DropdownMenuItem(
+                                                                                    value: item.rsnId,
+                                                                                    child: Text(
+                                                                                      overflow: TextOverflow.ellipsis,
+                                                                                      selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
+                                                                                      style: kfontstyle(fontSize: 10.sp),
+                                                                                    ),
+                                                                                  );
+                                                                                }).toList(),
+                                                                                onChanged: (value) {
+                                                                                  selectedresons[index] = value ?? '';
+                                                                                },
+                                                                              ),
                                                                             ),
                                                                           ),
-                                                                          items:
-                                                                              availableresons.map((ApprovalResonModel item) {
-                                                                            return DropdownMenuItem(
-                                                                              value: item.rsnId,
-                                                                              child: Text(
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
-                                                                                style: kfontstyle(fontSize: 10.sp),
-                                                                              ),
-                                                                            );
-                                                                          }).toList(),
-                                                                          onChanged:
-                                                                              (value) {
-                                                                            selectedresons[index] =
-                                                                                value ?? '';
-                                                                          },
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                              getReasonsFailedState:
-                                                                  () =>
-                                                                      const SizedBox(),
-                                                            );
-                                                          },
-                                                        ),
-                                                      ),
-                                                      // SizedBox(
-                                                      //   width: 10.w,
-                                                      // ),
+                                                                    getReasonsFailedState:
+                                                                        () =>
+                                                                            const SizedBox(),
+                                                                  );
+                                                                },
+                                                              ),
+                                                            ),
+                                                            // SizedBox(
+                                                            //   width: 10.w,
+                                                            // ),
 
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          BlocBuilder<
-                                                              AapprovalOrRejectRadioCubit,
-                                                              AapprovalOrRejectRadioState>(
-                                                            builder: (context,
-                                                                state) {
-                                                              return Row(
-                                                                children: [
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        setState(() {
-                                                                          statuslist[index] =
-                                                                                  true;
-                                                                              loadingCount =
-                                                                                  0;
-                                                                              setState(() {});
-                                                                              approvedProducts[index] =
-                                                                                  ScheduledReturnPrdModel(
-                                                                                reason: selectedresons[index],
-                                                                                rrdId: details[index].rrdId,
-                                                                                status: "A",
-                                                                              );
-                                                                        });
-                                                                      },
-                                                                      child: Row(
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
+                                                              children: [
+                                                                BlocBuilder<
+                                                                    AapprovalOrRejectRadioCubit,
+                                                                    AapprovalOrRejectRadioState>(
+                                                                  builder:
+                                                                      (context,
+                                                                          state) {
+                                                                    return Row(
+                                                                      children: [
+                                                                        Transform
+                                                                            .scale(
+                                                                          scale:
+                                                                              0.8,
+                                                                          origin: const Offset(
+                                                                              -120,
+                                                                              0),
+                                                                          child:
+                                                                              InkWell(
+                                                                            onTap:
+                                                                                () {
+                                                                              setState(() {
+                                                                                statuslist[index] = true;
+                                                                                loadingCount = 0;
+                                                                                setState(() {});
+                                                                                approvedProducts[index] = ScheduledReturnPrdModel(
+                                                                                  reason: selectedresons[index],
+                                                                                  rrdId: details[index].rrdId,
+                                                                                  status: "A",
+                                                                                );
+                                                                              });
+                                                                            },
+                                                                            child:
+                                                                                Row(
+                                                                              children: [
+                                                                                Radio(
+                                                                                  fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                    return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                                  }),
+                                                                                  /* activeColor: isselected == true
+                                                                                                                                                                          ? const Color(0xff0075ff)
+                                                                                                                                                                          : Colors.grey, */
+                                                                                  value: statuslist[index] == null
+                                                                                      ? false
+                                                                                      : statuslist[index] == true
+                                                                                          ? true
+                                                                                          : false,
+                                                                                  groupValue: true,
+                                                                                  onChanged: (value) {
+                                                                                    statuslist[index] = true;
+                                                                                    loadingCount = 0;
+                                                                                    setState(() {});
+                                                                                    approvedProducts[index] = ScheduledReturnPrdModel(
+                                                                                      reason: selectedresons[index],
+                                                                                      rrdId: details[index].rrdId,
+                                                                                      status: "A",
+                                                                                    );
+                                                                                  },
+                                                                                ),
+                                                                                Text(
+                                                                                  AppLocalizations.of(context)!.approve,
+                                                                                  style: kfontstyle(),
+                                                                                )
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Transform
+                                                                            .scale(
+                                                                          scale:
+                                                                              0.8,
+                                                                          origin: const Offset(
+                                                                              -120,
+                                                                              0),
+                                                                          child:
+                                                                              InkWell(
+                                                                            onTap:
+                                                                                () {
+                                                                              setState(() {
+                                                                                statuslist[index] = false;
+                                                                                loadingCount = 0;
+                                                                                setState(() {});
+                                                                                approvedProducts[index] = ScheduledReturnPrdModel(
+                                                                                  reason: selectedresons[index],
+                                                                                  rrdId: details[index].rrdId,
+                                                                                  status: "R",
+                                                                                );
+                                                                              });
+                                                                            },
+                                                                            child:
+                                                                                Row(
+                                                                              children: [
+                                                                                Radio(
+                                                                                  fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                    return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                                  }),
+                                                                                  /*  activeColor: isselected == false
+                                                                                                                                                                          ? const Color(0xff0075ff)
+                                                                                                                                                                          : Colors.grey, */
+                                                                                  value: statuslist[index] == null
+                                                                                      ? true
+                                                                                      : statuslist[index] == true
+                                                                                          ? true
+                                                                                          : false,
+                                                                                  groupValue: false,
+                                                                                  onChanged: (value) {
+                                                                                    statuslist[index] = false;
+                                                                                    loadingCount = 0;
+                                                                                    setState(() {});
+                                                                                    approvedProducts[index] = ScheduledReturnPrdModel(
+                                                                                      reason: selectedresons[index],
+                                                                                      rrdId: details[index].rrdId,
+                                                                                      status: "R",
+                                                                                    );
+                                                                                  },
+                                                                                ),
+                                                                                Text(
+                                                                                  AppLocalizations.of(context)!.reject,
+                                                                                  style: kfontstyle(),
+                                                                                )
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        )
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ],
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
+                                                    : Transform.scale(
+                                                        scale: .9,
+                                                        origin: const Offset(
+                                                            450, 0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .end,
+                                                          children: [
+                                                            Expanded(
+                                                                child: details[index]
+                                                                            .status ==
+                                                                        'R'
+                                                                    ? Transform
+                                                                        .scale(
+                                                                        scale:
+                                                                            0.8,
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              30.h,
+                                                                          decoration: BoxDecoration(
+                                                                              color: Colors.white,
+                                                                              border: Border.all(color: Colors.grey.shade200),
+                                                                              borderRadius: BorderRadius.circular(10.0),
+                                                                              boxShadow: const [
+                                                                                BoxShadow(
+                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    color: Color(0xff00000050),
+                                                                                    blurRadius: 0.4,
+                                                                                    spreadRadius: 0.4)
+                                                                              ]),
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                            child:
+                                                                                Text(details[index].rsnName ?? ''),
+                                                                          ),
+                                                                        ),
+                                                                      )
+                                                                    : const SizedBox()),
+                                                            BlocBuilder<
+                                                                AapprovalOrRejectRadioCubit,
+                                                                AapprovalOrRejectRadioState>(
+                                                              builder: (context,
+                                                                  state) {
+                                                                return Row(
+                                                                  children: [
+                                                                    Transform
+                                                                        .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      origin: const Offset(
+                                                                          -120,
+                                                                          0),
+                                                                      child:
+                                                                          Row(
                                                                         children: [
                                                                           Radio(
                                                                             fillColor:
                                                                                 MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                              return (statuslist[index] == true)
-                                                                                  ? Colors.green.shade300
-                                                                                  : Colors.grey;
+                                                                              return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                             }),
-                                                                            /* activeColor: isselected == true
-                                                                                                                                                                          ? const Color(0xff0075ff)
-                                                                                                                                                                          : Colors.grey, */
                                                                             value: statuslist[index] == null
                                                                                 ? false
                                                                                 : statuslist[index] == true
@@ -809,65 +963,31 @@ class _ScheduledReturnDetailScreenState
                                                                             groupValue:
                                                                                 true,
                                                                             onChanged:
-                                                                                (value) {
-                                                                              statuslist[index] =
-                                                                                  true;
-                                                                              loadingCount =
-                                                                                  0;
-                                                                              setState(() {});
-                                                                              approvedProducts[index] =
-                                                                                  ScheduledReturnPrdModel(
-                                                                                reason: selectedresons[index],
-                                                                                rrdId: details[index].rrdId,
-                                                                                status: "A",
-                                                                              );
-                                                                            },
+                                                                                (value) {},
                                                                           ),
                                                                           Text(
-                                                                            AppLocalizations.of(context)!
-                                                                                .approve,
+                                                                            AppLocalizations.of(context)!.approve,
                                                                             style:
                                                                                 kfontstyle(),
                                                                           )
                                                                         ],
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: InkWell(
-                                                                      onTap: () {
-                                                                        setState(() {
-                                                                           statuslist[index] =
-                                                                                  false;
-                                                                              loadingCount =
-                                                                                  0;
-                                                                              setState(() {});
-                                                                              approvedProducts[index] =
-                                                                                  ScheduledReturnPrdModel(
-                                                                                reason: selectedresons[index],
-                                                                                rrdId: details[index].rrdId,
-                                                                                status: "R",
-                                                                              );
-                                                                        });
-                                                                      },
-                                                                      child: Row(
+                                                                    Transform
+                                                                        .scale(
+                                                                      scale:
+                                                                          0.8,
+                                                                      origin: const Offset(
+                                                                          -120,
+                                                                          0),
+                                                                      child:
+                                                                          Row(
                                                                         children: [
                                                                           Radio(
                                                                             fillColor:
                                                                                 MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                              return (statuslist[index] != null && !statuslist[index]!)
-                                                                                  ? Colors.red.shade300
-                                                                                  : Colors.grey;
+                                                                              return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                             }),
-                                                                            /*  activeColor: isselected == false
-                                                                                                                                                                          ? const Color(0xff0075ff)
-                                                                                                                                                                          : Colors.grey, */
                                                                             value: statuslist[index] == null
                                                                                 ? true
                                                                                 : statuslist[index] == true
@@ -876,170 +996,23 @@ class _ScheduledReturnDetailScreenState
                                                                             groupValue:
                                                                                 false,
                                                                             onChanged:
-                                                                                (value) {
-                                                                              statuslist[index] =
-                                                                                  false;
-                                                                              loadingCount =
-                                                                                  0;
-                                                                              setState(() {});
-                                                                              approvedProducts[index] =
-                                                                                  ScheduledReturnPrdModel(
-                                                                                reason: selectedresons[index],
-                                                                                rrdId: details[index].rrdId,
-                                                                                status: "R",
-                                                                              );
-                                                                            },
+                                                                                (value) {},
                                                                           ),
                                                                           Text(
-                                                                            AppLocalizations.of(context)!
-                                                                                .reject,
+                                                                            AppLocalizations.of(context)!.reject,
                                                                             style:
                                                                                 kfontstyle(),
                                                                           )
                                                                         ],
                                                                       ),
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              );
-                                                            },
-                                                          ),
-                                                        ],
-                                                      )
-                                                    ],
-                                                  ),
-                                                ):
-                                                Transform.scale(
-                                                      scale: .9,
-                                                      origin:
-                                                          const Offset(450, 0),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Expanded(
-                                                              child: details[index]
-                                                                          .status ==
-                                                                      'R'
-                                                                  ? Transform
-                                                                      .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          Container(
-                                                                        height:
-                                                                            30.h,
-                                                                        decoration: BoxDecoration(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(color: Colors.grey.shade200),
-                                                                            borderRadius: BorderRadius.circular(10.0),
-                                                                            boxShadow: const [
-                                                                              BoxShadow(
-                                                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                                                  color: Color(0xff00000050),
-                                                                                  blurRadius: 0.4,
-                                                                                  spreadRadius: 0.4)
-                                                                            ]),
-                                                                        child: Padding(
-                                                                          padding: const EdgeInsets.symmetric(vertical: 7,
-                                                                          horizontal: 10),
-                                                                          child: Text(details[index].rsnName ??
-                                                                              ''),
-                                                                        ),
-                                                                      ),
                                                                     )
-                                                                  : const SizedBox()),
-                                                          BlocBuilder<
-                                                              AapprovalOrRejectRadioCubit,
-                                                              AapprovalOrRejectRadioState>(
-                                                            builder: (context,
-                                                                state) {
-                                                              return Row(
-                                                                children: [
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] == true)
-                                                                                ? Colors.green.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          value: statuslist[index] == null
-                                                                              ? false
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              true,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                           
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .approve,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Transform
-                                                                      .scale(
-                                                                    scale: 0.8,
-                                                                    origin:
-                                                                        const Offset(
-                                                                            -120,
-                                                                            0),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Radio(
-                                                                          fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                            return (statuslist[index] != null && !statuslist[index]!)
-                                                                                ? Colors.red.shade300
-                                                                                : Colors.grey;
-                                                                          }),
-                                                                          
-                                                                          value: statuslist[index] == null
-                                                                              ? true
-                                                                              : statuslist[index] == true
-                                                                                  ? true
-                                                                                  : false,
-                                                                          groupValue:
-                                                                              false,
-                                                                          onChanged:
-                                                                              (value) {
-                                                                           
-                                                                          },
-                                                                        ),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .reject,
-                                                                          style:
-                                                                              kfontstyle(),
-                                                                        )
-                                                                      ],
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                              );
-                                                            },
-                                                          )
-                                                        ],
-                                                      ),
-                                                    )
+                                                                  ],
+                                                                );
+                                                              },
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
                                               ],
                                             ),
                                           ),
@@ -1105,7 +1078,9 @@ class _ScheduledReturnDetailScreenState
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Visibility(
-                            visible: widget.scheduledreturn.status == 'Pending'?true:false,
+                            visible: widget.scheduledreturn.status == 'Pending'
+                                ? true
+                                : false,
                             child: Row(
                               children: [
                                 Flexible(
@@ -1117,26 +1092,30 @@ class _ScheduledReturnDetailScreenState
                                       state.when(
                                         getAllRoutesForScReturnState: (routes) {
                                           availableroutes.clear();
-                            
+
                                           availableroutes = [
                                             RouteModel(
                                                 rotId: '-1',
-                                                rotName: selectedLocale?.languageCode == 'en'?'Select a Route':'حدد الطريق')
+                                                rotName: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? 'Select a Route'
+                                                    : 'حدد الطريق')
                                           ];
-                            
+
                                           if (routes != null) {
                                             availableroutes.addAll(routes);
                                           }
                                         },
                                         getRoutesFailedState: () {
                                           availableroutes.clear();
-                            
+
                                           availableroutes = [
                                             RouteModel(
                                                 rotId: '-1',
-                                                rotName:
-                                                    AppLocalizations.of(context)!
-                                                        .noRoutesAvailable)
+                                                rotName: AppLocalizations.of(
+                                                        context)!
+                                                    .noRoutesAvailable)
                                           ];
                                         },
                                       );
@@ -1155,18 +1134,20 @@ class _ScheduledReturnDetailScreenState
                                                         width: double.infinity,
                                                       )
                                                     : Padding(
-                                                        padding: const EdgeInsets
-                                                            .symmetric(
-                                                            horizontal: 0),
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                horizontal: 0),
                                                         child: Container(
                                                           height: 30.h,
                                                           // width: MediaQuery.of(context)
                                                           //         .size
                                                           //         .width /
                                                           //     3,
-                            
+
                                                           decoration: BoxDecoration(
-                                                              color: Colors.white,
+                                                              color:
+                                                                  Colors.white,
                                                               border: Border.all(
                                                                   color: Colors
                                                                       .grey
@@ -1191,10 +1172,10 @@ class _ScheduledReturnDetailScreenState
                                                             elevation: 0,
                                                             // isExpanded:
                                                             //     true,
-                            
+
                                                             dropdownColor:
                                                                 Colors.white,
-                            
+
                                                             decoration:
                                                                 InputDecoration(
                                                               filled: true,
@@ -1211,10 +1192,9 @@ class _ScheduledReturnDetailScreenState
                                                                     BorderRadius
                                                                         .circular(
                                                                             10),
-                                                                borderSide:
-                                                                    const BorderSide(
-                                                                        color: Colors
-                                                                            .transparent),
+                                                                borderSide: const BorderSide(
+                                                                    color: Colors
+                                                                        .transparent),
                                                               ),
                                                               enabledBorder:
                                                                   OutlineInputBorder(
@@ -1222,10 +1202,9 @@ class _ScheduledReturnDetailScreenState
                                                                     BorderRadius
                                                                         .circular(
                                                                             10),
-                                                                borderSide:
-                                                                    const BorderSide(
-                                                                        color: Colors
-                                                                            .transparent),
+                                                                borderSide: const BorderSide(
+                                                                    color: Colors
+                                                                        .transparent),
                                                               ),
                                                               focusedBorder:
                                                                   OutlineInputBorder(
@@ -1233,29 +1212,30 @@ class _ScheduledReturnDetailScreenState
                                                                     BorderRadius
                                                                         .circular(
                                                                             10),
-                                                                borderSide:
-                                                                    const BorderSide(
-                                                                        color: Colors
-                                                                            .transparent),
+                                                                borderSide: const BorderSide(
+                                                                    color: Colors
+                                                                        .transparent),
                                                               ),
                                                             ),
                                                             value:
-                                                                availableroutes[0]
+                                                                availableroutes[
+                                                                        0]
                                                                     .rotId,
                                                             style: kfontstyle(
-                                                                color:
-                                                                    Colors.black),
+                                                                color: Colors
+                                                                    .black),
                                                             menuMaxHeight:
                                                                 MediaQuery.of(
                                                                         context)
                                                                     .size
                                                                     .width,
-                            
+
                                                             items: availableroutes
                                                                 .map((RouteModel
                                                                     item) {
                                                               return DropdownMenuItem(
-                                                                value: item.rotId,
+                                                                value:
+                                                                    item.rotId,
                                                                 child: Text(
                                                                   overflow:
                                                                       TextOverflow
@@ -1291,10 +1271,10 @@ class _ScheduledReturnDetailScreenState
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    color:
-                                        widget.scheduledreturn.status == 'Pending'
-                                            ? Colors.green.shade300
-                                            : Colors.grey[300],
+                                    color: widget.scheduledreturn.status ==
+                                            'Pending'
+                                        ? Colors.green.shade300
+                                        : Colors.grey[300],
                                     onPressed: () {
                                       if (widget.scheduledreturn.status ==
                                           'Pending') {
@@ -1304,11 +1284,11 @@ class _ScheduledReturnDetailScreenState
                                               context: context,
                                               builder: (context) =>
                                                   CupertinoAlertDialog(
-                                                title: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .alert),
-                                                content: Text(AppLocalizations.of(
+                                                title: Text(AppLocalizations.of(
                                                         context)!
+                                                    .alert),
+                                                content: Text(AppLocalizations
+                                                        .of(context)!
                                                     .pleaseMakeSureToApproveAndReject),
                                                 actions: [
                                                   TextButton(
@@ -1330,11 +1310,11 @@ class _ScheduledReturnDetailScreenState
                                               context: context,
                                               builder: (context) =>
                                                   CupertinoAlertDialog(
-                                                title: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .alert),
-                                                content: Text(AppLocalizations.of(
+                                                title: Text(AppLocalizations.of(
                                                         context)!
+                                                    .alert),
+                                                content: Text(AppLocalizations
+                                                        .of(context)!
                                                     .youShouldApproveOrRejectAndSpecifyReason),
                                                 actions: [
                                                   TextButton(
@@ -1355,11 +1335,12 @@ class _ScheduledReturnDetailScreenState
                                               context: context,
                                               builder: (context) =>
                                                   CupertinoAlertDialog(
-                                                title: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .alert),
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
                                                 content: Text(
-                                                    AppLocalizations.of(context)!
+                                                    AppLocalizations.of(
+                                                            context)!
                                                         .doyouWantToProceed),
                                                 actions: [
                                                   TextButton(
@@ -1382,7 +1363,7 @@ class _ScheduledReturnDetailScreenState
                                                               SchduledReturnApprovalBloc>()
                                                           .add(
                                                               const AddScheduledReturnApprovalLoadingEvent());
-                            
+
                                                       context
                                                           .read<
                                                               SchduledReturnApprovalBloc>()
@@ -1430,9 +1411,10 @@ class _ScheduledReturnDetailScreenState
                                                     Navigator.pop(context);
                                                     // Navigator.pop(context);
                                                   },
-                                                  child: Text(AppLocalizations.of(
-                                                          context)!
-                                                      .ok),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
                                                 ),
                                               ],
                                             ),

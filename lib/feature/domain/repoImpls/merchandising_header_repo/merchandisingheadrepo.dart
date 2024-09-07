@@ -24,7 +24,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + merchandisingGetOutofStockCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-       log('outofstockcount: ${response.body}');
+      log('outofstockcount: ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final stockcount = GetOutOfStockCountModel.fromJson(json["result"][0]);
@@ -137,7 +137,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
       //log({"FromDate": fromDate, "ToDate": toDate}.toString());
       if (response.statusCode == 200) {
-       // log('cusServicecount: ${response.body}');
+        // log('cusServicecount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusServicecount =
             MerchCuServiceCountModel.fromJson(json["result"][0]);

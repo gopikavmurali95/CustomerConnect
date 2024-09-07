@@ -38,7 +38,7 @@ class ActivityReviewDetailListModel {
   String? totCollectCs;
   @JsonKey(name: 'TotCollectCR')
   String? totCollectCr;
-  @JsonKey(name:'cus_ArName')
+  @JsonKey(name: 'cus_ArName')
   String? cusArname;
 
   ActivityReviewDetailListModel({

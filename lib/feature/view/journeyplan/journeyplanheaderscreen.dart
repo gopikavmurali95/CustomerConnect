@@ -566,7 +566,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () {
-                                                                                  context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: '', searchQuery: ''));
+                                                                                  
                                                                                   Navigator.pop(context);
                                                                                 },
                                                                                 child: Text(AppLocalizations.of(context)!.ok),
@@ -613,66 +613,106 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                           scale:
                                                                               0.8,
                                                                           child:
-                                                                              Row(
-                                                                            children: [
-                                                                              Radio(
-                                                                                fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                                  return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
-                                                                                }),
-                                                                                /* activeColor: isselected == true
-                                                                                                                                                                                                                          ? const Color(0xff0075ff)
-                                                                                                                                                                                                                          : Colors.grey, */
-                                                                                value: statuslist[index] == null
-                                                                                    ? false
-                                                                                    : statuslist[index] == true
-                                                                                        ? true
-                                                                                        : false,
-                                                                                groupValue: true,
-                                                                                onChanged: (value) {
+                                                                              InkWell(
+                                                                                onTap: (){
                                                                                   showCupertinoDialog(
-                                                                                    context: context,
-                                                                                    builder: (context) => CupertinoAlertDialog(
-                                                                                      title: Text(AppLocalizations.of(context)!.alert),
-                                                                                      content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                      actions: [
-                                                                                        TextButton(
-                                                                                          onPressed: () {
-                                                                                            setState(() {});
-                                                                                            Navigator.pop(context);
-                                                                                          },
-                                                                                          child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                        ),
-                                                                                        TextButton(
-                                                                                          onPressed: () {
-                                                                                            statuslist[index] = true;
-                                                                                            loadingCount = 0;
-                                                                                            setState(() {});
-                                                                                            context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
-
-                                                                                            context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                  ApproveJourneyPlanEvent(
-                                                                                                    approve: JourneyPlanApprovalInModel(
-                                                                                                      jpsId: headers[index].jpsId,
-                                                                                                      userId: headers[index].userID,
+                                                                                      context: context,
+                                                                                      builder: (context) => CupertinoAlertDialog(
+                                                                                        title: Text(AppLocalizations.of(context)!.alert),
+                                                                                        content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                        actions: [
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              setState(() {});
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                          ),
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              statuslist[index] = true;
+                                                                                              loadingCount = 0;
+                                                                                              setState(() {});
+                                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                
+                                                                                              context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                    ApproveJourneyPlanEvent(
+                                                                                                      approve: JourneyPlanApprovalInModel(
+                                                                                                        jpsId: headers[index].jpsId,
+                                                                                                        userId: headers[index].userID,
+                                                                                                      ),
                                                                                                     ),
-                                                                                                  ),
-                                                                                                );
-
-                                                                                            Navigator.pop(context);
-                                                                                          },
-                                                                                          child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  );
+                                                                                                  );
+                                                                                
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
                                                                                 },
+                                                                                child: Row(
+                                                                                                                                                            children: [
+                                                                                Radio(
+                                                                                  fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                    return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                                  }),
+                                                                                  /* activeColor: isselected == true
+                                                                                                                                                                                                                            ? const Color(0xff0075ff)
+                                                                                                                                                                                                                            : Colors.grey, */
+                                                                                  value: statuslist[index] == null
+                                                                                      ? false
+                                                                                      : statuslist[index] == true
+                                                                                          ? true
+                                                                                          : false,
+                                                                                  groupValue: true,
+                                                                                  onChanged: (value) {
+                                                                                    showCupertinoDialog(
+                                                                                      context: context,
+                                                                                      builder: (context) => CupertinoAlertDialog(
+                                                                                        title: Text(AppLocalizations.of(context)!.alert),
+                                                                                        content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                        actions: [
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              setState(() {});
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                          ),
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              statuslist[index] = true;
+                                                                                              loadingCount = 0;
+                                                                                              setState(() {});
+                                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                
+                                                                                              context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                    ApproveJourneyPlanEvent(
+                                                                                                      approve: JourneyPlanApprovalInModel(
+                                                                                                        jpsId: headers[index].jpsId,
+                                                                                                        userId: headers[index].userID,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  );
+                                                                                
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
+                                                                                  },
+                                                                                ),
+                                                                                Text(
+                                                                                  AppLocalizations.of(context)!.approve,
+                                                                                  style: kfontstyle(),
+                                                                                )
+                                                                                                                                                            ],
+                                                                                                                                                          ),
                                                                               ),
-                                                                              Text(
-                                                                                AppLocalizations.of(context)!.approve,
-                                                                                style: kfontstyle(),
-                                                                              )
-                                                                            ],
-                                                                          ),
                                                                         ),
                                                                         Transform
                                                                             .scale(

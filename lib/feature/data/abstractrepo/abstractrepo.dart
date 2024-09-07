@@ -564,7 +564,7 @@ abstract class ILoadRequestHeaderRepo {
 abstract class ILoadRequestApprovalRepo {
   Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadApproval(
       LoadReqInApprovalModel loadapprove);
- /*  Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadReject(
+  /*  Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadReject(
       LoadReqInApprovalModel loadapprove); */
 }
 

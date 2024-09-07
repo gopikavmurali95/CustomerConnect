@@ -41,7 +41,6 @@ class NotStartedHead extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       padding: const EdgeInsets.only(
-                         
                         top: 10,
                         //  bottom: 10
                       ),

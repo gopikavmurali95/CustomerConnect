@@ -50,8 +50,8 @@ class _PdfViewScreenState extends State<PdfViewScreen> {
             size: 20,
           ),
         ),
-        title: Text
-          (AppLocalizations.of(context)!.documents,
+        title: Text(
+          AppLocalizations.of(context)!.documents,
           style: TextStyle(fontSize: 17.sp),
         ),
       ),

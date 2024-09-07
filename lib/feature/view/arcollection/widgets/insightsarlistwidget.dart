@@ -50,18 +50,34 @@ class InsightArListWidget extends StatelessWidget {
                                               headers[index].balanceAmount,
                                           arhCollectedAmount:
                                               headers[index].collectedAmount,
-                                          arhPayMode: selectedLocale?.languageCode == 'en'?headers[index].payMode:headers[index].arPayMode,
+                                          arhPayMode:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].payMode
+                                                  : headers[index].arPayMode,
                                           arhPayType: headers[index].payType,
                                           arpChequeDate:
                                               headers[index].chequeDate,
                                           arpChequeNo: headers[index].chequeNo,
-                                          bankName: selectedLocale?.languageCode == 'en'?headers[index].bankName:headers[index].arBankName,
+                                          bankName:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].bankName
+                                                  : headers[index].arBankName,
                                           cshCode: headers[index].cshCode,
                                           cshId: headers[index].cshId,
-                                          cshName: selectedLocale?.languageCode == 'en'?headers[index].cshName:headers[index].arCshName,
+                                          cshName:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].cshName
+                                                  : headers[index].arCshName,
                                           cusCode: headers[index].cusCode,
                                           cusId: headers[index].cusId,
-                                          cusName: selectedLocale?.languageCode == 'en'?headers[index].cusName:headers[index].cusName,
+                                          cusName:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].cusName
+                                                  : headers[index].cusName,
                                           date: headers[index].date,
                                           image: headers[index].arpImage1,
                                           rotCode: headers[index].rotCode,
@@ -138,7 +154,10 @@ class InsightArListWidget extends StatelessWidget {
                                         child: Center(
                                           child: Text(
                                             textAlign: TextAlign.center,
-                                            selectedLocale?.languageCode == 'en'?headers[index].payMode ?? '':headers[index].arPayMode??'',
+                                            selectedLocale?.languageCode == 'en'
+                                                ? headers[index].payMode ?? ''
+                                                : headers[index].arPayMode ??
+                                                    '',
                                             style: kfontstyle(
                                                 fontSize: 10.sp,
                                                 color: const Color(0xff413434)),

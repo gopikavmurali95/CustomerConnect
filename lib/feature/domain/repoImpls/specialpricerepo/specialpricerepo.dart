@@ -17,7 +17,6 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
   @override
   Future<Either<MainFailures, List<SpecialPriceHeaderOutparas>>>
       getSpecialPrice(SpecialPriceHeaderModel specialPriceIn) async {
-   
     try {
       final response = await http.post(
           Uri.parse(baseUrl + specialpriceheaderurl),
@@ -47,7 +46,6 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
   @override
   Future<Either<MainFailures, List<SpecialPriceDetailsModel>>> getPriceDetail(
       String prdID) async {
-   
     try {
       final response = await http.post(
           Uri.parse(baseUrl + specialPriceDetailsUrl),
@@ -75,13 +73,12 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
   @override
   Future<Either<MainFailures, List<SpecialPriceCustomerModel>>>
       getPriceCustomer(String userID, String fromDate, String toDate) async {
-    
     try {
       final response = await http.post(
           Uri.parse(baseUrl + specialPRiceCustomerurl),
           body: {"prh_ID": userID, "FromDate": fromDate, "ToDate": toDate});
       if (response.statusCode == 200) {
-       // log('special pricing customer response: ${response.body}');
+        // log('special pricing customer response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> specialPriceCustomers = json['result'];
         List<SpecialPriceCustomerModel> customerdetails = specialPriceCustomers

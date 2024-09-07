@@ -8,9 +8,8 @@ String loadReqInApprovalModelToJson(LoadReqInApprovalModel data) =>
     json.encode(data.toJson());
 
 class LoadReqInApprovalModel {
-  LoadReqInApprovalModel(
-      {
-      /* this.lrdPrdID,
+  LoadReqInApprovalModel({
+    /* this.lrdPrdID,
     this.lrdHQty,
     this.lrdLQty,
     this.lrdLUOM,
@@ -19,12 +18,12 @@ class LoadReqInApprovalModel {
     this.txtApvHQty,
     this.txtApvLQty,
     this.lrdID, */
-      this.userId,
-      this.reqID,
-      this.rotID,
-      this.status,
-      this.products,
-      });
+    this.userId,
+    this.reqID,
+    this.rotID,
+    this.status,
+    this.products,
+  });
 
   LoadReqInApprovalModel.fromJson(dynamic json) {
 /*     lrdPrdID = json['lrd_prd_ID'];

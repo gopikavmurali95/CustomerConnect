@@ -16,11 +16,11 @@ class MerchCustomerActivitiesModel {
   String? endDate;
   @JsonKey(name: 'Status')
   String? status;
-   @JsonKey(name: 'Act_ArName')
+  @JsonKey(name: 'Act_ArName')
   String? actArName;
-   @JsonKey(name: 'cus_ArName')
+  @JsonKey(name: 'cus_ArName')
   String? cusrName;
-   @JsonKey(name: 'ArStatus')
+  @JsonKey(name: 'ArStatus')
   String? arstatus;
 
   MerchCustomerActivitiesModel({

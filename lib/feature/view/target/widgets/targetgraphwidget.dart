@@ -132,7 +132,8 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                     Row(
                                       children: [
                                         Text(
-                                         AppLocalizations.of(context)!.targetAmount,
+                                          AppLocalizations.of(context)!
+                                              .targetAmount,
                                           style: countHeading(),
                                         )
                                       ],
@@ -227,7 +228,9 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                   AppLocalizations.of(context)!.targetAmount,
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .targetAmount,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -273,7 +276,9 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                  AppLocalizations.of(context)!.achieved,
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .achieved,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -318,7 +323,9 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    AppLocalizations.of(context)!.gapAmount,
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .gapAmount,
                                                     // 'Gap Amount',
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
@@ -354,7 +361,8 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                     Row(
                                       children: [
                                         Text(
-                                        AppLocalizations.of(context)!.targetQuantity,
+                                          AppLocalizations.of(context)!
+                                              .targetQuantity,
                                           style: countHeading(),
                                         )
                                       ],
@@ -449,7 +457,9 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                  AppLocalizations.of(context)!.targetQuantity,
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .targetQuantity,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -495,7 +505,9 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                   AppLocalizations.of(context)!.achieved,
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .achieved,
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
                                                         fontWeight:
@@ -540,7 +552,9 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                                             FontWeight.w600),
                                                   ),
                                                   Text(
-                                                    AppLocalizations.of(context)!.gapQty,
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .gapQty,
                                                     // 'Gap Qty',
                                                     style: TextStyle(
                                                         fontSize: 10.sp,
@@ -583,7 +597,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                   gradient: containerGradients[0][0]),
                               child: Center(
                                 child: Text(
-                                AppLocalizations.of(context)!.noDataAvailable,
+                                  AppLocalizations.of(context)!.noDataAvailable,
                                   style: kfontstyle(),
                                 ),
                               ),
@@ -600,7 +614,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                   gradient: containerGradients[1][0]),
                               child: Center(
                                 child: Text(
-                                 AppLocalizations.of(context)!.noDataAvailable,
+                                  AppLocalizations.of(context)!.noDataAvailable,
                                   style: kfontstyle(),
                                 ),
                               ),

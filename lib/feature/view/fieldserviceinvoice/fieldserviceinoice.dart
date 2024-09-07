@@ -286,7 +286,14 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                                                         horizontal: 8,
                                                         vertical: 5),
                                                 child: Text(
-                                                 selectedLocale?.languageCode == 'en'? headers[index].status ?? '': headers[index].arStatus??'',
+                                                  selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? headers[index].status ??
+                                                          ''
+                                                      : headers[index]
+                                                              .arStatus ??
+                                                          '',
                                                   style: kfontstyle(
                                                       fontSize: 10.sp,
                                                       fontWeight:

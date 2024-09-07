@@ -218,7 +218,7 @@ class _LoadPendingState extends State<LoadPending> {
                               loadingheaders != null
                                   ? Padding(
                                       padding: const EdgeInsets.only(
-                                          left:10.0, right: 10, top: 10),
+                                          left: 10.0, right: 10, top: 10),
                                       child: Text(
                                         "${loadingheaders.length}",
                                         style: countHeading(),

@@ -213,8 +213,7 @@ class _LoadRejectedState extends State<LoadRejected> {
                       padding:
                           const EdgeInsets.only(left: 10.0, right: 10, top: 10),
                       child: Text(
-                         AppLocalizations.of(context)!.rejected,
-
+                        AppLocalizations.of(context)!.rejected,
                         style: countHeading(),
                       ),
                     ),

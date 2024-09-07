@@ -25,7 +25,7 @@ class LoadReqApprovalBloc
           (r) => LoadReqApprovalSuccessState(response: r)));
     });
 
-   /*  on<RejectLoadRequestEvent>((event, emit) async {
+    /*  on<RejectLoadRequestEvent>((event, emit) async {
       Either<MainFailures, LoadRequestApprovalOutModel> aprove =
           await loadReqApprovalRepo.loadReject(event.approval);
       emit(aprove.fold((l) => const LoadReqApprovalFailedState(),

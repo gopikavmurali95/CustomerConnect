@@ -104,7 +104,14 @@ class CustomersListingWidget extends StatelessWidget {
                                             Expanded(
                                               child: Text(
                                                 overflow: TextOverflow.ellipsis,
-                                                selectedLocale?.languageCode == 'en'?customers[index].cusName ?? '':customers[index].arcusName??'',
+                                                selectedLocale?.languageCode ==
+                                                        'en'
+                                                    ? customers[index]
+                                                            .cusName ??
+                                                        ''
+                                                    : customers[index]
+                                                            .arcusName ??
+                                                        '',
                                                 style: kfontstyle(
                                                     fontSize: 12.sp,
                                                     color: const Color(
@@ -126,8 +133,14 @@ class CustomersListingWidget extends StatelessWidget {
                                             ),
                                             Expanded(
                                               child: Text(
-                                               selectedLocale?.languageCode == 'en'? customers[index].headerName ??
-                                                    '':customers[index].arheaderName??'',
+                                                selectedLocale?.languageCode ==
+                                                        'en'
+                                                    ? customers[index]
+                                                            .headerName ??
+                                                        ''
+                                                    : customers[index]
+                                                            .arheaderName ??
+                                                        '',
                                                 overflow: TextOverflow.ellipsis,
                                                 style:
                                                     kfontstyle(fontSize: 11.sp),
@@ -136,7 +149,7 @@ class CustomersListingWidget extends StatelessWidget {
                                           ],
                                         ),
                                         Text(
-                                          '${customers[index].cusType} | ${selectedLocale?.languageCode == 'en'?customers[index].rotName:customers[index].arrotName} ',
+                                          '${customers[index].cusType} | ${selectedLocale?.languageCode == 'en' ? customers[index].rotName : customers[index].arrotName} ',
                                           style: kfontstyle(
                                               fontSize: 10.sp,
                                               color: Colors.grey),

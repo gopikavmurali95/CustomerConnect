@@ -258,15 +258,13 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                    detail[index].prdCode ??
-                                                        '',
+                                                    detail[index].prdCode ?? '',
                                                     style: loadTextStyle()),
                                                 Text(
                                                   selectedLocale
                                                               ?.languageCode ==
                                                           'en'
-                                                      ? detail[index]
-                                                              .prdName ??
+                                                      ? detail[index].prdName ??
                                                           ""
                                                       : detail[index]
                                                               .arprdname ??
@@ -280,15 +278,35 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             // crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                                Text(detail[index].liHigherUom!.isEmpty || detail[index].liHigherUom == null ? 
-                                                "-": detail[index].liHigherUom ?? "",style:subTitleTextStyle() ,),
-                                            
+                                              Text(
+                                                detail[index]
+                                                            .liHigherUom!
+                                                            .isEmpty ||
+                                                        detail[index]
+                                                                .liHigherUom ==
+                                                            null
+                                                    ? "-"
+                                                    : detail[index]
+                                                            .liHigherUom ??
+                                                        "",
+                                                style: subTitleTextStyle(),
+                                              ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
-                                                Text(detail[index].liLowerUom!.isEmpty || detail[index].liLowerUom == null ? 
-                                                "-": detail[index].liLowerUom ?? "",style:subTitleTextStyle() ,),
-                                             
+                                              Text(
+                                                detail[index]
+                                                            .liLowerUom!
+                                                            .isEmpty ||
+                                                        detail[index]
+                                                                .liLowerUom ==
+                                                            null
+                                                    ? "-"
+                                                    : detail[index]
+                                                            .liLowerUom ??
+                                                        "",
+                                                style: subTitleTextStyle(),
+                                              ),
                                             ],
                                           ),
                                           Column(
@@ -296,17 +314,28 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Text(
-                                                 detail[index].higherQty == "0" || detail[index].higherQty == null ? 
-                                                "0": detail[index].higherQty ?? "",
-                                               // detail[index].higherQty ?? '',
+                                                detail[index].higherQty ==
+                                                            "0" ||
+                                                        detail[index]
+                                                                .higherQty ==
+                                                            null
+                                                    ? "0"
+                                                    : detail[index].higherQty ??
+                                                        "",
+                                                // detail[index].higherQty ?? '',
                                                 style: subTitleTextStyle(),
                                               ),
                                               const SizedBox(
                                                 height: 5,
                                               ),
                                               Text(
-                                                detail[index].lowerQty == "0" || detail[index].lowerQty == null ? 
-                                                "0": detail[index].lowerQty ?? "",
+                                                detail[index].lowerQty == "0" ||
+                                                        detail[index]
+                                                                .lowerQty ==
+                                                            null
+                                                    ? "0"
+                                                    : detail[index].lowerQty ??
+                                                        "",
                                                 // detail[index].lowerQty ?? "",
                                                 style: subTitleTextStyle(),
                                               ),
@@ -314,20 +343,35 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(
-                                              right:
-                                          selectedLocale?.languageCode == "en"
-                                              ? 0
-                                              : 30,
-                                              left: selectedLocale?.languageCode=='en'? 10: 0
-                                            ),
+                                                right: selectedLocale
+                                                            ?.languageCode ==
+                                                        "en"
+                                                    ? 0
+                                                    : 30,
+                                                left: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? 10
+                                                    : 0),
                                             // padding: const EdgeInsets.only(
                                             //     left: 10.0,right: 30),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               // crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                 Text(detail[index].higherUom!.isEmpty || detail[index].higherUom == null ? 
-                                                "-": detail[index].higherUom ?? "",style:subTitleTextStyle() ,),
+                                                Text(
+                                                  detail[index]
+                                                              .higherUom!
+                                                              .isEmpty ||
+                                                          detail[index]
+                                                                  .higherUom ==
+                                                              null
+                                                      ? "-"
+                                                      : detail[index]
+                                                              .higherUom ??
+                                                          "",
+                                                  style: subTitleTextStyle(),
+                                                ),
                                                 // Visibility(
                                                 //   visible:
                                                 //       detail[index].higherUom ==
@@ -346,20 +390,30 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
-                                                Text(detail[index].lowerUom!.isEmpty || detail[index].lowerUom == null ? 
-                                                "-": detail[index].lowerUom ?? "")
-                                             
+                                                Text(detail[index]
+                                                            .lowerUom!
+                                                            .isEmpty ||
+                                                        detail[index]
+                                                                .lowerUom ==
+                                                            null
+                                                    ? "-"
+                                                    : detail[index].lowerUom ??
+                                                        "")
                                               ],
                                             ),
                                           ),
                                           Padding(
-                                             padding: EdgeInsets.only(
-                                      right:
-                                          selectedLocale?.languageCode == "en"
-                                              ? 10
-                                              : 0,
-                                              left: selectedLocale?.languageCode=='en'? 0: 10
-                                    ),
+                                            padding: EdgeInsets.only(
+                                                right: selectedLocale
+                                                            ?.languageCode ==
+                                                        "en"
+                                                    ? 10
+                                                    : 0,
+                                                left: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? 0
+                                                    : 10),
                                             // padding: const EdgeInsets.only(
                                             //     left: 0, right: 10.0),
                                             child: Column(
@@ -367,17 +421,31 @@ class _LoadDetailCompletedState extends State<LoadDetailCompleted> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                   detail[index].higherQty == "0" || detail[index].higherQty == null ? 
-                                                "0": detail[index].higherQty ?? "",
-                                                 // detail[index].higherQty ?? "",
+                                                  detail[index].higherQty ==
+                                                              "0" ||
+                                                          detail[index]
+                                                                  .higherQty ==
+                                                              null
+                                                      ? "0"
+                                                      : detail[index]
+                                                              .higherQty ??
+                                                          "",
+                                                  // detail[index].higherQty ?? "",
                                                   style: subTitleTextStyle(),
                                                 ),
                                                 const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Text(
-                                                   detail[index].lowerQty == "0" || detail[index].lowerQty == null ? 
-                                                "0": detail[index].lowerQty ?? "",
+                                                  detail[index].lowerQty ==
+                                                              "0" ||
+                                                          detail[index]
+                                                                  .lowerQty ==
+                                                              null
+                                                      ? "0"
+                                                      : detail[index]
+                                                              .lowerQty ??
+                                                          "",
                                                   //detail[index].lowerQty ?? "",
                                                   style: subTitleTextStyle(),
                                                 ),

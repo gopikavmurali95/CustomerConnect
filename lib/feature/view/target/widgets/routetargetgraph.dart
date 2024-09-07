@@ -132,7 +132,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                 gradient: containerGradients[0][0]),
                             child: Center(
                               child: Text(
-                               AppLocalizations.of(context)!.noDataAvailable,
+                                AppLocalizations.of(context)!.noDataAvailable,
                                 style: kfontstyle(),
                               ),
                             ),
@@ -170,7 +170,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        AppLocalizations.of(context)!.targetAmount,
+                                        AppLocalizations.of(context)!
+                                            .targetAmount,
                                         style: countHeading(),
                                       ),
                                       Text(
@@ -321,23 +322,27 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                             ArChartItemWidget(
                                               amount: amount.achAmt ?? '',
                                               color: const Color(0xff3DDB7C),
-                                              title:  AppLocalizations.of(context)!.achieved,
+                                              title:
+                                                  AppLocalizations.of(context)!
+                                                      .achieved,
                                             ),
                                             SizedBox(
                                               height: 15.h,
                                             ),
                                             ArChartItemWidget(
-                                              amount: amount.mtdGapAmt ?? '',
-                                              color: const Color(0xffE07744),
-                                              title: "MTD${ AppLocalizations.of(context)!.gap}"
-                                            ),
+                                                amount: amount.mtdGapAmt ?? '',
+                                                color: const Color(0xffE07744),
+                                                title:
+                                                    "MTD${AppLocalizations.of(context)!.gap}"),
                                             SizedBox(
                                               height: 15.h,
                                             ),
                                             ArChartItemWidget(
                                               amount: amount.monthGapAmt ?? '',
                                               color: const Color(0xffEAD846),
-                                              title:  AppLocalizations.of(context)!.monthlyGap,
+                                              title:
+                                                  AppLocalizations.of(context)!
+                                                      .monthlyGap,
                                             ),
                                           ],
                                         ),
@@ -361,7 +366,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                     gradient: containerGradients[0][0]),
                                 child: Center(
                                   child: Text(
-                                     AppLocalizations.of(context)!.noDataAvailable,
+                                    AppLocalizations.of(context)!
+                                        .noDataAvailable,
                                     style: kfontstyle(),
                                   ),
                                 ),
@@ -448,7 +454,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                         AppLocalizations.of(context)!.targetQuantity,
+                                          AppLocalizations.of(context)!
+                                              .targetQuantity,
                                           style: countHeading(),
                                         ),
                                         Text(
@@ -624,24 +631,29 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               ArChartItemWidget(
                                                 amount: qty.achQty ?? '',
                                                 color: const Color(0xff3DDB7C),
-                                                title:  AppLocalizations.of(context)!.achieved,
+                                                title: AppLocalizations.of(
+                                                        context)!
+                                                    .achieved,
                                               ),
                                               SizedBox(
                                                 height: 15.h,
                                               ),
                                               ArChartItemWidget(
-                                                amount: qty.mtdGapQty ?? '',
-                                                color: const Color(0xffE07744),
-                                                title: "MTD${ AppLocalizations.of(context)!.gap}"
-                                              ),
+                                                  amount: qty.mtdGapQty ?? '',
+                                                  color:
+                                                      const Color(0xffE07744),
+                                                  title:
+                                                      "MTD${AppLocalizations.of(context)!.gap}"),
                                               SizedBox(
                                                 height: 15.h,
                                               ),
                                               ArChartItemWidget(
-                                                amount: qty.monthGapQty ?? '',
-                                                color: const Color(0xffEAD846),
-                                                title:  AppLocalizations.of(context)!.monthlyGap
-                                              ),
+                                                  amount: qty.monthGapQty ?? '',
+                                                  color:
+                                                      const Color(0xffEAD846),
+                                                  title: AppLocalizations.of(
+                                                          context)!
+                                                      .monthlyGap),
                                             ],
                                           ),
                                         )
@@ -665,7 +677,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                     gradient: containerGradients[1][0]),
                                 child: Center(
                                   child: Text(
-                                    AppLocalizations.of(context)!.noDataAvailable,
+                                    AppLocalizations.of(context)!
+                                        .noDataAvailable,
                                     style: kfontstyle(),
                                   ),
                                 ),

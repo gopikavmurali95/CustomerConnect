@@ -90,7 +90,8 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                       style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                       decoration: InputDecoration(
                         isDense: true,
-                        hintText: "${ AppLocalizations.of(context)!.searchItems}..",
+                        hintText:
+                            "${AppLocalizations.of(context)!.searchItems}..",
                         suffix: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -210,7 +211,7 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                         Flexible(
                             flex: 4,
                             fit: FlexFit.tight,
-                            child: Text( AppLocalizations.of(context)!.item,
+                            child: Text(AppLocalizations.of(context)!.item,
                                 style: kfontstyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.w500,
@@ -218,7 +219,9 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text( AppLocalizations.of(context)!.achvdAmt,//"Achvd amt"
+                          child: Text(
+                              AppLocalizations.of(context)!
+                                  .achvdAmt, //"Achvd amt"
                               style: kfontstyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
@@ -230,7 +233,9 @@ class _TargetPackageScreenState extends State<TargetPackageScreen> {
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text( AppLocalizations.of(context)!.achvdQty,//'Achvd Qty',
+                          child: Text(
+                              AppLocalizations.of(context)!
+                                  .achvdQty, //'Achvd Qty',
                               style: kfontstyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,

@@ -29,7 +29,7 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
         "UserId": approval.userId,
         "ReqID": approval.reqID,
         "RotID": approval.rotID,
-         "Status": approval.status
+        "Status": approval.status
       }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
@@ -53,7 +53,7 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
     }
   }
 
- /*  @override
+  /*  @override
   Future<Either<MainFailures, LoadRequestApprovalOutModel>> loadReject(
       LoadReqInApprovalModel loadapprove) async {
     try {
@@ -93,4 +93,5 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
       return left(const MainFailures.serverfailure());
     }
   }
- */}
+ */
+}

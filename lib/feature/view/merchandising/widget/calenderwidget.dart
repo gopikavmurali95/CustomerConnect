@@ -150,12 +150,9 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                    padding: EdgeInsets.only(
-                                      right:
-                                          selectedLocale?.languageCode == "en"
-                                              ? 0
-                                              : 10,
-                                    ),
+                      padding: EdgeInsets.only(
+                        right: selectedLocale?.languageCode == "en" ? 0 : 10,
+                      ),
                       child: Text(
                         AppLocalizations.of(context)!.from,
                         style: kfontstyle(
@@ -307,12 +304,9 @@ class _ReturnInvoiceCalenderState extends State<MerchandisingCalender> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                     padding: EdgeInsets.only(
-                                      right:
-                                          selectedLocale?.languageCode == "en"
-                                              ? 0
-                                              : 10,
-                                    ),
+                      padding: EdgeInsets.only(
+                        right: selectedLocale?.languageCode == "en" ? 0 : 10,
+                      ),
                       child: Text(
                         AppLocalizations.of(context)!.to,
                         style: kfontstyle(

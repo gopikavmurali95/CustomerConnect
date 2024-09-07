@@ -74,7 +74,7 @@ TextStyle loadTextStyle() {
 }
 
 Logger logger = Logger();
-TextStyle approvalcountStyle()
-{
-  return GoogleFonts.poppins(fontSize: 12.sp,fontWeight: FontWeight.bold,color: Colors.black87);
+TextStyle approvalcountStyle() {
+  return GoogleFonts.poppins(
+      fontSize: 12.sp, fontWeight: FontWeight.bold, color: Colors.black87);
 }

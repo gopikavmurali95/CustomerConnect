@@ -331,7 +331,8 @@ class _MaterialRequestHeaderScreenState
                                             ? AppLocalizations.of(context)!
                                                 .approvedRequests
                                             : _selectedMaterialReq == "AH"
-                                                ? AppLocalizations.of(context)!.approvedAndHold
+                                                ? AppLocalizations.of(context)!
+                                                    .approvedAndHold
                                                 : AppLocalizations.of(context)!
                                                     .rejectedRequests,
                                 // materialreqheadsuccess: (materialheader) =>,
@@ -526,9 +527,15 @@ class _MaterialRequestHeaderScreenState
                                                                       10,
                                                                   vertical: 3),
                                                           child: Text(
-                                                            selectedLocale?.languageCode == 'en'?headers[index]
-                                                                    .status ??
-                                                                "":headers[index].arStatus??'',
+                                                            selectedLocale
+                                                                        ?.languageCode ==
+                                                                    'en'
+                                                                ? headers[index]
+                                                                        .status ??
+                                                                    ""
+                                                                : headers[index]
+                                                                        .arStatus ??
+                                                                    '',
                                                             style: kfontstyle(
                                                                 fontSize:
                                                                     10.sp),

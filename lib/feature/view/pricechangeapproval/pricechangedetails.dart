@@ -18,7 +18,6 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -47,7 +46,7 @@ int approvedCount = 0;
 int _totalcount = 0;
 TextEditingController _searchctrls = TextEditingController();
 Timer? debounce;
-List<FocusNode> _focusNodes = [];
+List<FocusNode> focusNodes = [];
 List<TextEditingController> _hPricecontrollers = [];
 List<TextEditingController> _lPricecontrollers = [];
 
@@ -260,7 +259,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                             builder: (context) => CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} "),
+                                  " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -401,7 +400,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                             state.when(
                               getPRiceChangeDetails: (pdet) {
                                 if (pdet != null) {
-                                  _focusNodes = List.generate(
+                                  focusNodes = List.generate(
                                       pdet.length, (index) => FocusNode());
                                   _hPricecontrollers = List.generate(
                                     pdet.length,
@@ -526,9 +525,16 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 5.w,
                                                           ),
                                                           Text(
-                                                           pdet[index].pcdHigherUom!.isEmpty || pdet[index].pcdHigherUom==null?"-": pdet[index]
-                                                                    .pcdHigherUom ??
-                                                                '',
+                                                            pdet[index]
+                                                                        .pcdHigherUom!
+                                                                        .isEmpty ||
+                                                                    pdet[index]
+                                                                            .pcdHigherUom ==
+                                                                        null
+                                                                ? "-"
+                                                                : pdet[index]
+                                                                        .pcdHigherUom ??
+                                                                    '',
                                                             style:
                                                                 subTitleTextStyle(),
                                                           ),
@@ -536,9 +542,16 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 15.w,
                                                           ),
                                                           Text(
-                                                            pdet[index].pcdLowerUom!.isEmpty || pdet[index].pcdLowerUom==null?"-": pdet[index]
-                                                                    .pcdLowerUom ??
-                                                                '',
+                                                            pdet[index]
+                                                                        .pcdLowerUom!
+                                                                        .isEmpty ||
+                                                                    pdet[index]
+                                                                            .pcdLowerUom ==
+                                                                        null
+                                                                ? "-"
+                                                                : pdet[index]
+                                                                        .pcdLowerUom ??
+                                                                    '',
                                                             style:
                                                                 subTitleTextStyle(),
                                                           )
@@ -557,9 +570,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 5.w,
                                                           ),
                                                           Text(
-                                                            pdet[index].pcdChangedHPrice=='0' || pdet[index].pcdChangedHPrice==null?"0": pdet[index]
-                                                                    .pcdChangedHPrice ??
-                                                                '0',
+                                                            pdet[index].pcdChangedHPrice ==
+                                                                        '0' ||
+                                                                    pdet[index]
+                                                                            .pcdChangedHPrice ==
+                                                                        null
+                                                                ? "0"
+                                                                : pdet[index]
+                                                                        .pcdChangedHPrice ??
+                                                                    '0',
                                                             style:
                                                                 subTitleTextStyle(),
                                                           ),
@@ -567,10 +586,15 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             height: 15.w,
                                                           ),
                                                           Text(
-                                                            pdet[index].pcdChangedLprice=='0' || pdet[index].pcdChangedLprice==null?"0": pdet[index]
-                                                                    .pcdChangedLprice ??
-                                                                '0',
-                                                            
+                                                            pdet[index].pcdChangedLprice ==
+                                                                        '0' ||
+                                                                    pdet[index]
+                                                                            .pcdChangedLprice ==
+                                                                        null
+                                                                ? "0"
+                                                                : pdet[index]
+                                                                        .pcdChangedLprice ??
+                                                                    '0',
                                                             style:
                                                                 subTitleTextStyle(),
                                                           )
@@ -1288,173 +1312,155 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                   ),
                 ),
               ),
-              
             ],
           ),
         ),
       ),
       bottomNavigationBar: Visibility(
-                visible:
-                    widget.priceChangeApprovel.pchApprovalStatus == 'Pending'
-                        ? true
-                        : false,
-                child: SizedBox(
-                  height: 40.h,
-                  width: double.infinity,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          children: [
-                            const Flexible(
-                                flex: 1, fit: FlexFit.tight, child: SizedBox()),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Flexible(
-                              flex: 1,
-                              fit: FlexFit.tight,
-                              child: Visibility(
-                                visible: widget.priceChangeApprovel
-                                            .pchApprovalStatus ==
-                                        'Pending'
-                                    ? true
-                                    : false,
-                                child: MaterialButton(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+        visible: widget.priceChangeApprovel.pchApprovalStatus == 'Pending'
+            ? true
+            : false,
+        child: SizedBox(
+          height: 40.h,
+          width: double.infinity,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: [
+                    const Flexible(
+                        flex: 1, fit: FlexFit.tight, child: SizedBox()),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: Visibility(
+                        visible: widget.priceChangeApprovel.pchApprovalStatus ==
+                                'Pending'
+                            ? true
+                            : false,
+                        child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          color: Colors.green.shade300,
+                          onPressed: () {
+                            if (widget.priceChangeApprovel.pchApprovalStatus ==
+                                'Pending') {
+                              if (_procechangeapproved.contains(null)) {
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .pleaseMakeSureToApproveAndReject),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          // Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
                                   ),
-                                  color: Colors.green.shade300,
-                                  onPressed: () {
-                                    if (widget.priceChangeApprovel
-                                            .pchApprovalStatus ==
-                                        'Pending') {
-                                      if (_procechangeapproved.contains(null)) {
-                                        showCupertinoDialog(
-                                          context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
-                                            title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(AppLocalizations.of(
-                                                    context)!
-                                                .pleaseMakeSureToApproveAndReject),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  // Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .ok),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      } else if (checkrejectedstatus() ==
-                                          false) {
-                                        showCupertinoDialog(
-                                          context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
-                                            title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(
-                                                AppLocalizations.of(context)!
-                                                    .selectReason),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .ok),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      } else {
-                                        showCupertinoDialog(
-                                          context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
-                                            title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(
-                                                AppLocalizations.of(context)!
-                                                    .doyouWantToProceed),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .cancel),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  loadingCount = 0;
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-
-                                                  context
-                                                      .read<
-                                                          ApprovePriceChangeBloc>()
-                                                      .add(
-                                                          const AddApprovalLoadinEvent());
-
-                                                  context
-                                                      .read<
-                                                          ApprovePriceChangeBloc>()
-                                                      .add(
-                                                        GetPricChangeApprovalEvent(
-                                                          approval: ApprovePriceChangeinModel(
-                                                              priceId: widget
-                                                                  .priceChangeApprovel
-                                                                  .pchId,
-                                                              userId: widget
-                                                                  .priceChangeApprovel
-                                                                  .userID,
-                                                              products:
-                                                                  _procechangeapproved),
-                                                        ),
-                                                      );
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .proceed),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }
-                                    }
-                                  },
-                                  child: Text(
-                                    AppLocalizations.of(context)!.confirm,
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
+                                );
+                              } else if (checkrejectedstatus() == false) {
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .youShouldApproveOrRejectAndSpecifyReason),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ),
-                            )
-                          ],
+                                );
+                              } else {
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          loadingCount = 0;
+                                          setState(() {});
+                                          Navigator.pop(context);
+
+                                          context
+                                              .read<ApprovePriceChangeBloc>()
+                                              .add(
+                                                  const AddApprovalLoadinEvent());
+
+                                          context
+                                              .read<ApprovePriceChangeBloc>()
+                                              .add(
+                                                GetPricChangeApprovalEvent(
+                                                  approval: ApprovePriceChangeinModel(
+                                                      priceId: widget
+                                                          .priceChangeApprovel
+                                                          .pchId,
+                                                      userId: widget
+                                                          .priceChangeApprovel
+                                                          .userID,
+                                                      products:
+                                                          _procechangeapproved),
+                                                ),
+                                              );
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            }
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)!.confirm,
+                            style: kfontstyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
+                          ),
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
-              ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 

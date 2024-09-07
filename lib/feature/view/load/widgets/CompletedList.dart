@@ -42,7 +42,6 @@ class CompletedList extends StatelessWidget {
                     : ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         padding: const EdgeInsets.only(
-                          
                           top: 10,
                           //  bottom: 10
                         ),

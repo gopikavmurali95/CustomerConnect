@@ -67,7 +67,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-           /*  context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
+            /*  context.read<DisputeNoteHeaderBloc>().add(GetDisputeNoteHeadersEvent(
               userID: widget.user.usrId ?? '',
               mode: widget.currentMode,
               searchQuery: '')); */
@@ -148,26 +148,27 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                 ],
                               ), */
                               RichText(
-                            text: TextSpan(
-                                style:
-                                    DefaultTextStyle.of(context).style.copyWith(
+                                text: TextSpan(
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(
                                           fontWeight: FontWeight.normal,
                                           decoration: TextDecoration.none,
                                         ),
-                                children: [
-                                  TextSpan(
-                                      text:
-                                          '${widget.disputenote.cusCode} - ',
-                                      style: blueTextStyle()),
-                                  TextSpan(
-                                      text: selectedLocale?.languageCode == 'en'
-                                          ? "${widget.disputenote.cusName}"
-                                          : widget.disputenote
-                                                  .arcusName ??
-                                              '',
-                                      style: subTitleTextStyle())
-                                ]),
-                          ),
+                                    children: [
+                                      TextSpan(
+                                          text:
+                                              '${widget.disputenote.cusCode} - ',
+                                          style: blueTextStyle()),
+                                      TextSpan(
+                                          text: selectedLocale?.languageCode ==
+                                                  'en'
+                                              ? "${widget.disputenote.cusName}"
+                                              : widget.disputenote.arcusName ??
+                                                  '',
+                                          style: subTitleTextStyle())
+                                    ]),
+                              ),
                               Text(
                                 widget.disputenote.transTime ?? '',
                                 style: kfontstyle(
@@ -413,7 +414,6 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                   getDisputeApprovalStatusLevelState:
                       (statuslevel, isApproval) {
                     if (statuslevel != null) {
-                      
                       FocusScope.of(context).unfocus();
 
                       Navigator.pop(context);
@@ -609,11 +609,10 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                         getDisputeNoteDetailState: (details) => details == null
                             ? const SizedBox.shrink()
                             : Visibility(
-                              visible:  widget.disputenote.status ==
-                                                  'Pending'
-                                              ? true
-                                              : false,
-                              child: SizedBox(
+                                visible: widget.disputenote.status == 'Pending'
+                                    ? true
+                                    : false,
+                                child: SizedBox(
                                   // height: 90.h,
                                   width: double.infinity,
                                   child: Column(
@@ -628,20 +627,19 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                   'Pending'
                                               ? true
                                               : false,
-                                              maxLength:
-                                              200, 
-                                          maxLines:
-                                              null,
+                                          maxLength: 200,
+                                          maxLines: null,
                                           decoration: InputDecoration(
                                             hintText:
                                                 AppLocalizations.of(context)!
                                                     .remarks,
                                             hintStyle: kfontstyle(
                                               fontSize: 12.sp,
-                                              color: widget.disputenote.status ==
-                                                      'Pending'
-                                                  ? Colors.red.shade300
-                                                  : Colors.grey,
+                                              color:
+                                                  widget.disputenote.status ==
+                                                          'Pending'
+                                                      ? Colors.red.shade300
+                                                      : Colors.grey,
                                             ),
                                             border: UnderlineInputBorder(
                                               borderSide: BorderSide(
@@ -677,7 +675,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                         ? Colors.red.shade300
                                                         : Colors.grey[300],
                                                 onPressed: () {
-                                                  if (widget.disputenote.status ==
+                                                  if (widget
+                                                          .disputenote.status ==
                                                       'Pending') {
                                                     context
                                                         .read<
@@ -697,7 +696,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                       .reject,
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       color: Colors.white),
                                                 ),
                                               ),
@@ -719,7 +719,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                         ? Colors.green.shade300
                                                         : Colors.grey[300],
                                                 onPressed: () {
-                                                  if (widget.disputenote.status ==
+                                                  if (widget
+                                                          .disputenote.status ==
                                                       'Pending') {
                                                     context
                                                         .read<
@@ -739,7 +740,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                       .approve,
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       color: Colors.white),
                                                 ),
                                               ),
@@ -750,7 +752,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                     ],
                                   ),
                                 ),
-                            ),
+                              ),
                         getdisputenoteDetailFailedState: () =>
                             const SizedBox.shrink(),
                       );

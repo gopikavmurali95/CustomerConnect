@@ -27,21 +27,18 @@ class PromotionHeaderModel {
   @JsonKey(name: 'ArPrmName')
   String? arPrmName;
 
-  PromotionHeaderModel({
-    this.id,
-    this.pName,
-    this.dateRange,
-    this.pCode,
-    this.qCode,
-    this.aCode,
-    this.qid,
-    this.aid,
-    this.prmName,
-    this.arPname,
-    this.arPrmName
-
-
-  });
+  PromotionHeaderModel(
+      {this.id,
+      this.pName,
+      this.dateRange,
+      this.pCode,
+      this.qCode,
+      this.aCode,
+      this.qid,
+      this.aid,
+      this.prmName,
+      this.arPname,
+      this.arPrmName});
 
   factory PromotionHeaderModel.fromJson(Map<String, dynamic> json) {
     return _$PromotionHeaderModelFromJson(json);

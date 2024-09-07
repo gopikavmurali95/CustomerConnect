@@ -81,7 +81,7 @@ class ApprovalScreen extends StatelessWidget {
                                         )));
                           },
                           child: Container(
-                           // height: 60,
+                            // height: 60,
                             // width: MediaQuery.of(context).size.width / 2,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.white),
@@ -97,7 +97,8 @@ class ApprovalScreen extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 18, vertical: 10),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
@@ -113,28 +114,27 @@ class ApprovalScreen extends StatelessWidget {
                                           ApprovalCountsState>(
                                         builder: (context, state) {
                                           return state.when(
-                                              getApprovalsCount: (count) =>
-                                                  count == null
-                                                      ? Text(
-                                                          '0',
-                                                          style: approvalcountStyle()
-                                                        )
-                                                      : Text(
-                                                          count.pendingPriceChangeApproval ??
-                                                              '',
-                                                          style: approvalcountStyle()
-                                                        ),
-                                              getApprovalCountsFailed: () => Text(
-                                                    '0',
-                                                    style: approvalcountStyle()
-                                                  ));
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.pendingPriceChangeApproval ??
+                                                          '',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
                                         },
                                       )
                                     ],
                                   ),
                                   SizedBox(
-                                        height: 5.w,
-                                      ),
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     AppLocalizations.of(context)!.price_change,
                                     style: headTextStyle(),
@@ -255,7 +255,8 @@ class ApprovalScreen extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 18, vertical: 10),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
@@ -265,43 +266,38 @@ class ApprovalScreen extends StatelessWidget {
                                         height: 17.h,
                                       ),
                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                       BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingPartialDeliveryHeader!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingPartialDeliveryHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                    SizedBox(
+                                  SizedBox(
                                     height: 5.w,
                                   ),
-
-                              
                                   Text(
                                     AppLocalizations.of(context)!
                                         .partial_delivery,
                                     style: headTextStyle(),
                                   ),
-
-                                 
                                 ],
                               ),
                             ),
@@ -336,7 +332,8 @@ class ApprovalScreen extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 18, vertical: 10),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
@@ -345,32 +342,32 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/sr.png",
                                         height: 17.5.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.pendingReturnRequestSc!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingReturnRequestSc!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                   SizedBox(
+                                  SizedBox(
                                     height: 5.w,
                                   ),
                                   Text(
@@ -380,8 +377,6 @@ class ApprovalScreen extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     style: headTextStyle(),
                                   ),
-                                 
-                                  
                                 ],
                               ),
                             ),
@@ -416,7 +411,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -425,39 +421,39 @@ class ApprovalScreen extends StatelessWidget {
                                         height: 17.h,
                                       ),
                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                       BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.pendingReturnHeader!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingReturnHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                  SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     AppLocalizations.of(context)!.ret_urn,
                                     style: headTextStyle(),
                                   ),
-
-                                 
                                 ],
                               ),
                             ),
@@ -491,7 +487,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -499,33 +496,34 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/dr.png",
                                         height: 17.h,
                                       ),
-                                       SizedBox(
-                                    width: 8.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingDisputeNoteReqHeader!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 8.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingDisputeNoteReqHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                 SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     AppLocalizations.of(context)!
@@ -533,7 +531,6 @@ class ApprovalScreen extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     style: headTextStyle(),
                                   ),
-                                 
                                 ],
                               ),
                             ),
@@ -567,7 +564,8 @@ class ApprovalScreen extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 18, vertical: 10),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
@@ -576,41 +574,40 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/cr.png",
                                         height: 17.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingCreditNoteReqHeader!,
-                                                  style:approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
-
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingCreditNoteReqHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                 SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     AppLocalizations.of(context)!.credit_memo,
                                     style: headTextStyle(),
                                   ),
-
-                                                                  ],
+                                ],
                               ),
                             ),
                           ),
@@ -645,7 +642,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -653,39 +651,39 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/aa.png",
                                         height: 17.2.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingAssetAddReqHeader!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingAssetAddReqHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                 SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     AppLocalizations.of(context)!.add_assets,
                                     overflow: TextOverflow.ellipsis,
                                     style: headTextStyle(),
                                   ),
-                                  
                                 ],
                               ),
                             ),
@@ -721,7 +719,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -729,42 +728,40 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/ar2.png",
                                         height: 17.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style:approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingAssetRemovalReqHeader!,
-                                                  style:approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingAssetRemovalReqHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                 SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
-                                    AppLocalizations.of(context)!
-                                        .remove_assets,
+                                    AppLocalizations.of(context)!.remove_assets,
                                     overflow: TextOverflow.ellipsis,
                                     style: headTextStyle(),
                                   ),
-
-                                 
                                 ],
                               ),
                             ),
@@ -804,7 +801,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -813,37 +811,38 @@ class ApprovalScreen extends StatelessWidget {
                                         height: 17.2.h,
                                       ),
                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style:approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.pendingVanToVanHeader!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingVanToVanHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                  SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     AppLocalizations.of(context)!
                                         .truck_to_truck,
                                     style: headTextStyle(),
                                   ),
-                                  
                                 ],
                               ),
                             ),
@@ -879,7 +878,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -887,39 +887,39 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/lt.png",
                                         height: 15.5.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.pendingLodTransRequest!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingLodTransRequest!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                 SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
-                                    AppLocalizations.of(context)!
-                                        .load_transfer,
+                                    AppLocalizations.of(context)!.load_transfer,
                                     style: headTextStyle(),
                                   ),
-                                 
                                 ],
                               ),
                             ),
@@ -954,7 +954,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -962,38 +963,38 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/jp.png",
                                         height: 17.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingJurneyPlanSeqApprvl!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingJurneyPlanSeqApprvl!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                 SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     AppLocalizations.of(context)!.journeyPlan,
                                     style: headTextStyle(),
                                   ),
-                                 
                                 ],
                               ),
                             ),
@@ -1042,34 +1043,35 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/fs.png",
                                         height: 18.3.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingInvoiceApprovalHeader!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingInvoiceApprovalHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                 SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
@@ -1077,8 +1079,6 @@ class ApprovalScreen extends StatelessWidget {
                                         .fieldServiceInvoice,
                                     style: headTextStyle(),
                                   ),
-
-                                 
                                 ],
                               ),
                             ),
@@ -1114,7 +1114,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -1123,38 +1124,38 @@ class ApprovalScreen extends StatelessWidget {
                                         height: 17.h,
                                       ),
                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingMaterialReqApproval!,
-                                                  style:approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingMaterialReqApproval!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                  SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     AppLocalizations.of(context)!
                                         .materialRequest,
                                     style: headTextStyle(),
                                   ),
-                                  
                                 ],
                               ),
                             ),
@@ -1192,7 +1193,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -1201,40 +1203,39 @@ class ApprovalScreen extends StatelessWidget {
                                         height: 18.3.h,
                                       ),
                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count
-                                                      .pendingLoadRequestHeader!,
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count
+                                                          .pendingLoadRequestHeader!,
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                  SizedBox(height: 5.w,),
+                                  SizedBox(
+                                    height: 5.w,
+                                  ),
                                   Text(
                                     overflow: TextOverflow.ellipsis,
                                     AppLocalizations.of(context)!.loadRequest,
                                     style: headTextStyle(),
                                   ),
-
-                                  
                                 ],
                               ),
                             ),
@@ -1278,33 +1279,34 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/incre@2x.png",
                                         height: 17.h,
                                       ),
-                                       SizedBox(
-                                    width: 8.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.inventoryReconfirm ??
-                                                      '0',
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style:approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 8.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.inventoryReconfirm ??
+                                                          '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                 SizedBox(height: 5.h,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     AppLocalizations.of(context)!
@@ -1312,7 +1314,6 @@ class ApprovalScreen extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     style: headTextStyle(),
                                   ),
-                                 
                                 ],
                               ),
                             ),
@@ -1357,32 +1358,33 @@ class ApprovalScreen extends StatelessWidget {
                                         height: 17.h,
                                       ),
                                       SizedBox(
-                                    width: 8.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.voidTransactionHead ??
-                                                      '0',
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                        width: 8.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.voidTransactionHead ??
+                                                          '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                  SizedBox(height: 5.h,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
@@ -1391,7 +1393,6 @@ class ApprovalScreen extends StatelessWidget {
                                     //"Inventory Recon",
                                     style: headTextStyle(),
                                   ),
-                                  
                                 ],
                               ),
                             ),
@@ -1426,7 +1427,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -1434,32 +1436,33 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/msa@2x.png",
                                         height: 17.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.mustSellHead ?? '0',
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.mustSellHead ?? '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
-                                 SizedBox(height: 5.h,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     AppLocalizations.of(context)!
@@ -1467,7 +1470,6 @@ class ApprovalScreen extends StatelessWidget {
                                     overflow: TextOverflow.ellipsis,
                                     style: headTextStyle(),
                                   ),
-                                 
                                 ],
                               ),
                             ),
@@ -1503,7 +1505,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -1511,34 +1514,35 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/sev@2x.png",
                                         height: 18.3.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.settlementApprovalHead ??
-                                                      '0',
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.settlementApprovalHead ??
+                                                          '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                 SizedBox(height: 5.h,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
@@ -1546,8 +1550,6 @@ class ApprovalScreen extends StatelessWidget {
                                         .settlementApproval,
                                     style: headTextStyle(),
                                   ),
-
-                                  
                                 ],
                               ),
                             ),
@@ -1580,7 +1582,8 @@ class ApprovalScreen extends StatelessWidget {
                                   horizontal: 18, vertical: 10),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Row(
                                     children: [
@@ -1588,33 +1591,34 @@ class ApprovalScreen extends StatelessWidget {
                                         "assets/images/sev@2x.png",
                                         height: 18.3.h,
                                       ),
-                                       SizedBox(
-                                    width: 10.w,
-                                  ),
-                                   BlocBuilder<ApprovalCountsBloc,
-                                      ApprovalCountsState>(
-                                    builder: (context, state) {
-                                      return state.when(
-                                          getApprovalsCount: (count) => count ==
-                                                  null
-                                              ? Text(
-                                                  '0',
-                                                  style: approvalcountStyle()
-                                                )
-                                              : Text(
-                                                  count.unschVisit ?? '0',
-                                                  style: approvalcountStyle()
-                                                ),
-                                          getApprovalCountsFailed: () => Text(
-                                                '0',
-                                                style: approvalcountStyle()
-                                              ));
-                                    },
-                                  )
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.unschVisit ?? '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
                                     ],
                                   ),
                                   // fit: BoxFit.scaleDown,),
-                                 SizedBox(height: 5.h,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
                                   Text(
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
@@ -1622,8 +1626,6 @@ class ApprovalScreen extends StatelessWidget {
                                         .unscheduledVisit,
                                     style: headTextStyle(),
                                   ),
-
-                                 
                                 ],
                               ),
                             ),

@@ -100,7 +100,9 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               Expanded(
                                 child: Text(
                                     overflow: TextOverflow.ellipsis,
-                                    selectedLocale?.languageCode == 'en'?widget.customer.cusName ??'':widget.customer.arcusName??'',
+                                    selectedLocale?.languageCode == 'en'
+                                        ? widget.customer.cusName ?? ''
+                                        : widget.customer.arcusName ?? '',
                                     style: subTitleTextStyle()),
                               ),
                             ],
@@ -110,14 +112,17 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               Text('${widget.customer.headerCode} - ',
                                   style: subTitleTextStyle()),
                               Expanded(
-                                child: Text(selectedLocale?.languageCode == 'en'?widget.customer.headerName ?? '':widget.customer.arheaderName??'',
+                                child: Text(
+                                    selectedLocale?.languageCode == 'en'
+                                        ? widget.customer.headerName ?? ''
+                                        : widget.customer.arheaderName ?? '',
                                     overflow: TextOverflow.ellipsis,
                                     style: subTitleTextStyle()),
                               ),
                             ],
                           ),
                           Text(
-                            '${widget.invoice.invoiceType} | ${selectedLocale?.languageCode == 'en'?widget.customer.rotName:widget.customer.arAreaName} | ${widget.invoice.date} | ${widget.invoice.time}',
+                            '${widget.invoice.invoiceType} | ${selectedLocale?.languageCode == 'en' ? widget.customer.rotName : widget.customer.arAreaName} | ${widget.invoice.date} | ${widget.invoice.time}',
                             style:
                                 TextStyle(fontSize: 10.sp, color: Colors.grey),
                           ),
@@ -240,7 +245,9 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
             width: double.infinity,
             color: const Color(0xfff5f5f5),
             child: Padding(
-              padding:  EdgeInsets.only(left: selectedLocale?.languageCode == 'en'?10:0, right: selectedLocale?.languageCode == 'en'?0:10),
+              padding: EdgeInsets.only(
+                  left: selectedLocale?.languageCode == 'en' ? 10 : 0,
+                  right: selectedLocale?.languageCode == 'en' ? 0 : 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

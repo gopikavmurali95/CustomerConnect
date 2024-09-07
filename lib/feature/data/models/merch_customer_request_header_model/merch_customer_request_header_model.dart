@@ -21,9 +21,9 @@ class MerchCustomerRequestHeaderModel {
   @JsonKey(name: 'Date')
   String? date;
   String? status;
-   @JsonKey(name: 'Arcus_Name')
+  @JsonKey(name: 'Arcus_Name')
   String? arcusName;
-   @JsonKey(name: 'Arstatus')
+  @JsonKey(name: 'Arstatus')
   String? arstatus;
 
   MerchCustomerRequestHeaderModel({

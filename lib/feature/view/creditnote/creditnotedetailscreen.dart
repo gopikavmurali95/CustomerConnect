@@ -64,10 +64,11 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            context.read<CreditNoteHeaderBloc>().add(GetAllCreditNoteHeadersEvent(
-              userId: widget.user.usrId ?? '',
-              mode: widget.currentMode,
-              searchQuery: ''));
+            context.read<CreditNoteHeaderBloc>().add(
+                GetAllCreditNoteHeadersEvent(
+                    userId: widget.user.usrId ?? '',
+                    mode: widget.currentMode,
+                    searchQuery: ''));
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -497,8 +498,16 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        details[index].huom!.isEmpty || details[index].huom==null?"-": details[index].huom ??
-                                                            '',
+                                                        details[index]
+                                                                    .huom!
+                                                                    .isEmpty ||
+                                                                details[index]
+                                                                        .huom ==
+                                                                    null
+                                                            ? "-"
+                                                            : details[index]
+                                                                    .huom ??
+                                                                '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             fontWeight:
@@ -510,8 +519,16 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                         height: 10.h,
                                                       ),
                                                       Text(
-                                                         details[index].luom!.isEmpty || details[index].luom==null?"-":details[index].luom ??
-                                                            '',
+                                                        details[index]
+                                                                    .luom!
+                                                                    .isEmpty ||
+                                                                details[index]
+                                                                        .luom ==
+                                                                    null
+                                                            ? "-"
+                                                            : details[index]
+                                                                    .luom ??
+                                                                '',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             fontWeight:
@@ -531,9 +548,15 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                   Column(
                                                     children: [
                                                       Text(
-                                                        details[index].crdHQty=='0' || details[index].crdHQty==null?"0": details[index]
-                                                                .crdHQty ??
-                                                            '0',
+                                                        details[index].crdHQty ==
+                                                                    '0' ||
+                                                                details[index]
+                                                                        .crdHQty ==
+                                                                    null
+                                                            ? "0"
+                                                            : details[index]
+                                                                    .crdHQty ??
+                                                                '0',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             fontWeight:
@@ -545,9 +568,15 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                         height: 10.h,
                                                       ),
                                                       Text(
-                                                         details[index].crdLQty=='0' || details[index].crdLQty==null?"0":details[index]
-                                                                .crdLQty ??
-                                                            '0',
+                                                        details[index].crdLQty ==
+                                                                    '0' ||
+                                                                details[index]
+                                                                        .crdLQty ==
+                                                                    null
+                                                            ? "0"
+                                                            : details[index]
+                                                                    .crdLQty ??
+                                                                '0',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,
                                                             fontWeight:
@@ -703,11 +732,10 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                         getCreditNoteDetailState: (details) => details == null
                             ? const SizedBox.shrink()
                             : Visibility(
-                              visible: widget.creditNote.status ==
-                                                  'Pending'
-                                              ? true
-                                              : false,
-                              child: SizedBox(
+                                visible: widget.creditNote.status == 'Pending'
+                                    ? true
+                                    : false,
+                                child: SizedBox(
                                   //height: 80.h,
                                   width: double.infinity,
                                   child: Column(
@@ -722,15 +750,11 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                   'Pending'
                                               ? true
                                               : false,
-                                              style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              
-                                                  
-                                            ),
-                                          maxLength:
-                                              200, 
-                                          maxLines:
-                                              null, 
+                                          style: kfontstyle(
+                                            fontSize: 11.sp,
+                                          ),
+                                          maxLength: 200,
+                                          maxLines: null,
                                           decoration: InputDecoration(
                                             hintText:
                                                 AppLocalizations.of(context)!
@@ -770,12 +794,14 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                color: widget.creditNote.status ==
-                                                        'Pending'
-                                                    ? Colors.red.shade300
-                                                    : Colors.grey[300],
+                                                color:
+                                                    widget.creditNote.status ==
+                                                            'Pending'
+                                                        ? Colors.red.shade300
+                                                        : Colors.grey[300],
                                                 onPressed: () {
-                                                  if (widget.creditNote.status ==
+                                                  if (widget
+                                                          .creditNote.status ==
                                                       'Pending') {
                                                     context
                                                         .read<
@@ -795,7 +821,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                       .reject,
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       color: Colors.white),
                                                 ),
                                               ),
@@ -811,12 +838,14 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                   borderRadius:
                                                       BorderRadius.circular(10),
                                                 ),
-                                                color: widget.creditNote.status ==
-                                                        'Pending'
-                                                    ? Colors.green.shade300
-                                                    : Colors.grey[300],
+                                                color:
+                                                    widget.creditNote.status ==
+                                                            'Pending'
+                                                        ? Colors.green.shade300
+                                                        : Colors.grey[300],
                                                 onPressed: () {
-                                                  if (widget.creditNote.status ==
+                                                  if (widget
+                                                          .creditNote.status ==
                                                       'Pending') {
                                                     context
                                                         .read<
@@ -836,7 +865,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                                       .approve,
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       color: Colors.white),
                                                 ),
                                               ),
@@ -847,7 +877,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                     ],
                                   ),
                                 ),
-                            ),
+                              ),
                         creditNoteDetailFailedState: () =>
                             const SizedBox.shrink(),
                       );

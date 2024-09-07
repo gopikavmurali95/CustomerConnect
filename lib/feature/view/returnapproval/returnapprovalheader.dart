@@ -344,35 +344,35 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                                 ],
                                                               ), */
                                                               RichText(
-                                                            text: TextSpan(
-                                                              style: DefaultTextStyle
-                                                                      .of(context)
-                                                                  .style,
-                                                              children: [
-                                                                TextSpan(
-                                                                  text:
-                                                                     '${headers[index].cusCode} - ',
-                                                                    style:
-                                                                        kfontstyle(
-                                                                      fontSize:
-                                                                          11.sp,
-                                                                      color: const Color(
-                                                                          0xff2C6B9E),
+                                                                text: TextSpan(
+                                                                  style: DefaultTextStyle.of(
+                                                                          context)
+                                                                      .style,
+                                                                  children: [
+                                                                    TextSpan(
+                                                                      text:
+                                                                          '${headers[index].cusCode} - ',
+                                                                      style:
+                                                                          kfontstyle(
+                                                                        fontSize:
+                                                                            11.sp,
+                                                                        color: const Color(
+                                                                            0xff2C6B9E),
+                                                                      ),
                                                                     ),
-                                                                ),
-                                                                TextSpan(
-                                                                  text: selectedLocale?.languageCode == 'en'
+                                                                    TextSpan(
+                                                                        text: selectedLocale?.languageCode == 'en'
                                                                             ? headers[index].cusName ??
                                                                                 ''
                                                                             : headers[index].arcusName ??
                                                                                 '',
                                                                         style:
                                                                             subTitleTextStyle()
-                                                                  // overflow: TextOverflow.ellipsis,
+                                                                        // overflow: TextOverflow.ellipsis,
+                                                                        ),
+                                                                  ],
                                                                 ),
-                                                              ],
-                                                            ),
-                                                          ),
+                                                              ),
                                                               Text(
                                                                 headers[index]
                                                                         .createdDate ??
@@ -391,11 +391,12 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                           // width: 20.h,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: _selectedeMode == 'P'
+                                                            color: _selectedeMode ==
+                                                                    'P'
                                                                 ? const Color(
-                                                                      0xfff7f4e2)
+                                                                    0xfff7f4e2)
                                                                 : const Color(
-                                                                  0xffe3f7e2),
+                                                                    0xffe3f7e2),
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(

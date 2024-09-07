@@ -92,9 +92,17 @@ class SalesOrderDetailsList extends StatelessWidget {
                                                             ),
                                                           ),
                                                           Text(
-                                                            selectedLocale?.languageCode == 'en'?orderdetails[index]
-                                                                    .cshName ??
-                                                                '':orderdetails[index].arcshName??'',
+                                                            selectedLocale
+                                                                        ?.languageCode ==
+                                                                    'en'
+                                                                ? orderdetails[
+                                                                            index]
+                                                                        .cshName ??
+                                                                    ''
+                                                                : orderdetails[
+                                                                            index]
+                                                                        .arcshName ??
+                                                                    '',
                                                             style: kfontstyle(
                                                               fontSize: 12.sp,
                                                               color:
@@ -248,7 +256,8 @@ class SalesOrderDetailsList extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                             Text(AppLocalizations.of(context)!.vat),
+                                            Text(AppLocalizations.of(context)!
+                                                .vat),
                                             Text(salesorders.vat ?? '')
                                           ],
                                         ),

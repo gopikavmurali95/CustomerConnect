@@ -278,7 +278,8 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                 builder: (context) =>
                                                     PArtialDeliveryDetails(
                                                   user: widget.user,
-                                                  header: header[index], currentMode: _selectedeMode,
+                                                  header: header[index],
+                                                  currentMode: _selectedeMode,
                                                 ),
                                               ),
                                             );
@@ -350,16 +351,16 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                                 TextSpan(
                                                                   text:
                                                                       '${header[index].cusCode} - ',
-                                                                style:
-                                                                    kfontstyle(
-                                                                  fontSize:
-                                                                      11.sp,
-                                                                  color: const Color(
-                                                                      0xff2C6B9E),
-                                                                ),
+                                                                  style:
+                                                                      kfontstyle(
+                                                                    fontSize:
+                                                                        11.sp,
+                                                                    color: const Color(
+                                                                        0xff2C6B9E),
+                                                                  ),
                                                                 ),
                                                                 TextSpan(
-                                                                  text: selectedLocale?.languageCode ==
+                                                                    text: selectedLocale?.languageCode ==
                                                                             'en'
                                                                         ? header[index].cusName ??
                                                                             ''
@@ -367,8 +368,8 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                                                             '',
                                                                     style:
                                                                         subTitleTextStyle()
-                                                                  // overflow: TextOverflow.ellipsis,
-                                                                ),
+                                                                    // overflow: TextOverflow.ellipsis,
+                                                                    ),
                                                               ],
                                                             ),
                                                           ),
