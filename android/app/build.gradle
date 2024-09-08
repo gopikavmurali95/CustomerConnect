@@ -33,7 +33,7 @@ def keystoreProperties = new Properties()
 }
 
 android {
-    namespace = "com.example.customer_connect"
+    namespace = "com.meliha.customer_connect"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
