@@ -1,15 +1,18 @@
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/images/appicon.png
-  branding: assets/svg/Path 838.svg
-  color_dark: "#121212"
-  image_dark: assets/images/appicon.png
-  branding_dark: assets/svg/Path 838.svg
+  image: assets/images/splashlogo.jpg
+  branding: assets/images/logo_digits.png
+  color_dark: "#ffffff"
+  image_dark: assets/images/splashlogo.jpg
+  branding_dark: assets/images/logo_digits.png
+  
 
   android_12:
-    image: assets/images/appicon.png
+    image: assets/images/splashlogo.jpg
     icon_background_color: "#ffffff"
-    image_dark: assets/images/appicon.png
-    icon_background_color_dark: "#121212"
+    image_dark: assets/images/splashlogo.jpg
+    icon_background_color_dark: "#ffffff"
+ 
+  
 
   web: false
