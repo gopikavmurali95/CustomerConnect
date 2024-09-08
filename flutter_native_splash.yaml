@@ -1,15 +1,15 @@
 flutter_native_splash:
   color: "#ffffff"
-  image: assets/images/flutterlog.png
-  branding: assets/images/flutterlog.png
+  image: assets/images/appicon.png
+  branding: assets/svg/Path 838.svg
   color_dark: "#121212"
-  image_dark: assets/images/flutterlog.png
-  branding_dark: assets/images/flutterlog.png
+  image_dark: assets/images/appicon.png
+  branding_dark: assets/svg/Path 838.svg
 
   android_12:
-    image: assets/images/flutterlog.png
+    image: assets/images/appicon.png
     icon_background_color: "#ffffff"
-    image_dark: assets/images/flutterlog.png
+    image_dark: assets/images/appicon.png
     icon_background_color_dark: "#121212"
 
   web: false
