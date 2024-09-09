@@ -298,7 +298,7 @@ class _VoidTranscactioHeaderScreenState
                                     Row(
                                       children: [
                                         Container(
-                                          height: 50,
+                                          height: 70,
                                           width: 10,
                                           decoration: BoxDecoration(
                                               color: const Color(0xfffee8e0),
@@ -332,6 +332,7 @@ class _VoidTranscactioHeaderScreenState
                                                       child: Text(
                                                         overflow: TextOverflow
                                                             .ellipsis,
+                                                            maxLines: 2,
                                                         '${headers[index].rotCode} - ${selectedLocale?.languageCode == "en" ? headers[index].rotName : headers[index].rotArName}',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,

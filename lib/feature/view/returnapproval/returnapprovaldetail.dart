@@ -121,7 +121,7 @@ class _ReturnApprovalDetailScreenState
                 child: Row(
                   children: [
                     Container(
-                      height: 50,
+                      height: 70,
                       width: 10,
                       decoration: BoxDecoration(
                           color: const Color(0xfffee8e0),
@@ -197,10 +197,12 @@ class _ReturnApprovalDetailScreenState
                             // height: 10.h,
                             // width: 20.h,
                             decoration: BoxDecoration(
-                              color: widget
-                                      .returnApprovel.rahApprovalStatus!.isEmpty
-                                  ? Colors.red[100]
-                                  : Colors.green[100],
+                              color: widget.returnApprovel.rahApprovalStatus!
+                                          .isEmpty ||
+                                      widget.returnApprovel.rahApprovalStatus ==
+                                          'Pending'
+                                  ? const Color(0xfff7f4e2)
+                                  : const Color(0xffe3f7e2),
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),

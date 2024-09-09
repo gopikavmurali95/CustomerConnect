@@ -116,10 +116,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                   horizontal: 10,
                 ),
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 50,
+                      height: 70,
                       width: 10,
                       decoration: BoxDecoration(
                           color: const Color(0xfffee8e0),
