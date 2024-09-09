@@ -7,9 +7,13 @@
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 
-//Meliha Diary
-const baseUrl = "http://93.177.125.163:100/WS/";
-const approvalBaseUrl = "http://93.177.125.163:100/WS/";
+//Meliha Diary UAT
+// const baseUrl = "http://93.177.125.163:100/WS/";
+// const approvalBaseUrl = "http://93.177.125.163:100/WS/";
+
+//Meliha Diary LIVE
+const baseUrl = "http://93.177.125.163:90/WS/";
+const approvalBaseUrl = "http://93.177.125.163:90/WS/";
 
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
