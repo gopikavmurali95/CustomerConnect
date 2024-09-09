@@ -113,7 +113,7 @@ class _QualificationGroupState extends State<AssignmentGroup> {
                 Row(
                   children: [
                     Text(
-                      "${AppLocalizations.of(context)!.noDataAvailable}:",
+                      "${AppLocalizations.of(context)!.assignmentgroup}:",
                       style: kfontstyle(fontSize: 12.sp),
                     ),
                     Text(
