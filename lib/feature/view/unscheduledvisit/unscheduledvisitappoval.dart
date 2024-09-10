@@ -320,7 +320,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                           child: Row(
                                             children: [
                                               Container(
-                                                height: 50.h,
+                                                height: 70.h,
                                                 width: 10,
                                                 decoration: BoxDecoration(
                                                     color:

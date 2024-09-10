@@ -87,7 +87,7 @@ class _SettlementApprovalDetailScreenState
                     Row(
                       children: [
                         Container(
-                          height: 65,
+                          height: 70,
                           width: 10,
                           decoration: BoxDecoration(
                               color: const Color(0xfffee8e0),
@@ -105,7 +105,8 @@ class _SettlementApprovalDetailScreenState
                               children: [
                                 Text(
                                   "${widget.header.rotCode} -${selectedLocale?.languageCode == "en" ? widget.header.rotName : widget.header.arrotName}",
-                                  //'Tfsh003 - RTL route 03',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
                                   style: kfontstyle(
                                     fontSize: 12.sp,
                                     color: const Color(0xff2C6B9E),
@@ -118,7 +119,7 @@ class _SettlementApprovalDetailScreenState
                                       child: Text(
                                         "${selectedLocale?.languageCode == "en" ? widget.header.usrName : widget.header.arusrName}",
                                         overflow: TextOverflow.ellipsis,
-                                        //'Tfsh03U03 - Fayis M ',
+                                        maxLines: 2,
                                         style: kfontstyle(
                                             fontSize: 12.sp,
                                             color: const Color(0xff413434)),

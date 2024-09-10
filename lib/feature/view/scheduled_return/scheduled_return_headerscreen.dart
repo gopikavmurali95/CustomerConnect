@@ -296,7 +296,7 @@ class _ScheduledReturnHEaderScreenState
                                                   child: Row(
                                                     children: [
                                                       Container(
-                                                        height: 50,
+                                                        height: 70,
                                                         width: 10,
                                                         decoration: BoxDecoration(
                                                             color: const Color(

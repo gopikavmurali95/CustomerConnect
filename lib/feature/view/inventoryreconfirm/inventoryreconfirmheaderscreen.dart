@@ -338,7 +338,7 @@ class _InventoryReconfirmHeadersScreenState
                                                         child: Row(
                                                           children: [
                                                             Container(
-                                                              height: 50,
+                                                              height: 70,
                                                               width: 10,
                                                               decoration: BoxDecoration(
                                                                   color: const Color(
@@ -370,7 +370,7 @@ class _InventoryReconfirmHeadersScreenState
                                                                               .w600,
                                                                     ),
                                                                   ),
-                                                                  Row(
+                                                                  /*  Row(
                                                                     children: [
                                                                       Text(
                                                                         '${inventory[index].rotName} - ',
@@ -394,6 +394,30 @@ class _InventoryReconfirmHeadersScreenState
                                                                         ),
                                                                       ),
                                                                     ],
+                                                                  ), */
+                                                                  RichText(
+                                                                    text: TextSpan(
+                                                                        style: DefaultTextStyle.of(context).style.copyWith(
+                                                                              fontWeight: FontWeight.normal,
+                                                                              decoration: TextDecoration.none,
+                                                                            ),
+                                                                        children: [
+                                                                          TextSpan(
+                                                                            text:
+                                                                                '${inventory[index].rotName} - ',
+                                                                            style:
+                                                                                kfontstyle(
+                                                                              fontSize: 11.sp,
+                                                                              color: const Color(0xff2C6B9E),
+                                                                            ),
+                                                                          ),
+                                                                          TextSpan(
+                                                                            text:
+                                                                                "${selectedLocale?.languageCode == 'en' ? inventory[index].usrName : inventory[index].arusrName}",
+                                                                            style:
+                                                                                kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
+                                                                          )
+                                                                        ]),
                                                                   ),
                                                                   /*Text(
                                                         overflow: TextOverflow.ellipsis,
