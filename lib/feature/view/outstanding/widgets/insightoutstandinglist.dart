@@ -115,7 +115,7 @@ class InsightsOutstandingList extends StatelessWidget {
                         separatorBuilder: (context, index) => Divider(
                               color: Colors.grey[300],
                             ),
-                        itemCount: 10),
+                        itemCount: headers.length),
             getOutStandingFailedState: () => SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,
               child: Center(

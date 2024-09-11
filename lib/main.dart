@@ -34,6 +34,7 @@ import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_b
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusoutstandingcount/cus_out_standing_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 
@@ -764,6 +765,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<OutStandingPaginationCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusOutStandingCountBloc>(),
         ),
       ],
       child: ScreenUtilInit(

@@ -21,7 +21,7 @@ class CusOutStandingRepo implements ICusOutstandingRepo {
       final response = await http.post(
           Uri.parse(baseUrl + cusInsOutStandingHeaderUrl),
           body: outIn.toJson());
-      log("customer insight${response.body}");
+      // log("customer insight${response.body}");
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 
@@ -50,7 +50,7 @@ class CusOutStandingRepo implements ICusOutstandingRepo {
       final response = await http.post(
           Uri.parse(baseUrl + cusOutsandingCOuntUrl),
           body: outIn.toJson());
-      log(outIn.toJson().toString());
+      log(response.body);
       if (response.statusCode == 200) {
         logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

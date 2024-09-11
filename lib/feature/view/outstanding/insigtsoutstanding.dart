@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusoutstandingcount/cus_out_standing_count_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
@@ -52,6 +53,19 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
     context.read<CusOutStandingBloc>().add(const ClearCusOutStandingEvent());
     context.read<CusOutStandingBloc>().add(GetCusOutstandingEvent(
           searchQuery: '',
+          outIn: CusOutStandingInModel(
+              cusId: widget.customer.cusId,
+              userId: widget.user.usrId,
+              area: '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              route: widget.customer.rotId,
+              subArea: ''),
+        ));
+    context
+        .read<CusOutStandingCountBloc>()
+        .add(const ClearCusOutStandingCountEvent());
+    context.read<CusOutStandingCountBloc>().add(GetCusOutstandingCOuntEvent(
           outIn: CusOutStandingInModel(
               cusId: widget.customer.cusId,
               userId: widget.user.usrId,
@@ -142,7 +156,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                               /*  Row(
+                                /*  Row(
                                   children: [
                                     Text(
                                       '${widget.customer.cusCode} - ',
@@ -187,9 +201,41 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                     ),
                                   ],
                                 ), */
-                                 SizedBox(
-                                width: 300.w,
-                                child: RichText(
+                                SizedBox(
+                                  width: 300.w,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        style: DefaultTextStyle.of(context)
+                                            .style
+                                            .copyWith(
+                                              fontWeight: FontWeight.normal,
+                                              decoration: TextDecoration.none,
+                                            ),
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                '${widget.customer.cusCode} - ',
+                                            style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff2C6B9E),
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: selectedLocale
+                                                        ?.languageCode ==
+                                                    'en'
+                                                ? widget.customer.cusName ?? ""
+                                                : widget.customer.arcusName ??
+                                                    '',
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                color: const Color(0xff413434)),
+                                          )
+                                        ]),
+                                  ),
+                                ),
+                                RichText(
                                   text: TextSpan(
                                       style: DefaultTextStyle.of(context)
                                           .style
@@ -199,52 +245,24 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                           ),
                                       children: [
                                         TextSpan(
-                                          text: '${widget.customer.cusCode} - ',
+                                          text:
+                                              '${widget.customer.headerCode} - ',
                                           style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff2C6B9E),
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                              fontSize: 11.sp,
+                                              color: const Color(0xff413434)),
                                         ),
                                         TextSpan(
                                           text: selectedLocale?.languageCode ==
                                                   'en'
-                                              ? widget.customer.cusName ?? ""
-                                              : widget.customer.arcusName ?? '',
+                                              ? widget.customer.headerName ?? ""
+                                              : widget.customer.arheaderName ??
+                                                  '',
                                           style: kfontstyle(
                                               fontSize: 12.sp,
                                               color: const Color(0xff413434)),
                                         )
                                       ]),
                                 ),
-                              ),
-                             
-                              RichText(
-                                text: TextSpan(
-                                    style: DefaultTextStyle.of(context)
-                                        .style
-                                        .copyWith(
-                                          fontWeight: FontWeight.normal,
-                                          decoration: TextDecoration.none,
-                                        ),
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                             '${widget.customer.headerCode} - ',
-                                    style: kfontstyle(
-                                        fontSize: 11.sp,
-                                        color: const Color(0xff413434)),
-                                      ),
-                                      TextSpan(
-                                        text: selectedLocale?.languageCode == 'en'
-                                          ? widget.customer.headerName ?? ""
-                                          : widget.customer.arheaderName ?? '',
-                                      
-                                      style: kfontstyle(fontSize: 12.sp,
-                                       color: const Color(0xff413434)),
-                                      )
-                                    ]),
-                              ),
                                 Text(
                                   '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en' ? widget.customer.areaName : widget.customer.arAreaName} ',
                                   style: kfontstyle(
@@ -383,12 +401,11 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                             visible: state.isOnTop,
                             child: Column(
                               children: [
-                                BlocConsumer<CusOutStandingBloc,
-                                    CusOutStandingState>(
+                                BlocConsumer<CusOutStandingCountBloc,
+                                    CusOutStandingCountState>(
                                   listener: (context, state) {
                                     state.when(
-                                      getCusOutStandingState:
-                                          (counts, headers) {
+                                      getCusOutStandingCountState: (counts) {
                                         if (counts != null) {
                                           if (int.parse(counts.dueCount ?? '') >
                                               0) {
@@ -403,13 +420,13 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                           }
                                         }
                                       },
-                                      getOutStandingFailedState: () {},
+                                      cusOutStatndingCountFailedState: () {},
                                     );
                                   },
                                   builder: (context, state) {
                                     return state.when(
-                                      getCusOutStandingState:
-                                          (counts, headers) => counts == null
+                                      getCusOutStandingCountState: (counts) =>
+                                          counts == null
                                               ? ShimmerContainers(
                                                   height: 110.h,
                                                   width: double.infinity,
@@ -583,7 +600,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                     )
                                                   ],
                                                 ),
-                                      getOutStandingFailedState: () =>
+                                      cusOutStatndingCountFailedState: () =>
                                           const SizedBox(),
                                     );
                                   },
@@ -667,6 +684,19 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
               fromDate: widget.fromdatectrl.text,
               toDate: widget.todatectrl.text,
               route: '',
+              subArea: ''),
+        ));
+    context
+        .read<CusOutStandingCountBloc>()
+        .add(const ClearCusOutStandingCountEvent());
+    context.read<CusOutStandingCountBloc>().add(GetCusOutstandingCOuntEvent(
+          outIn: CusOutStandingInModel(
+              cusId: widget.customer.cusId,
+              userId: widget.user.usrId,
+              area: '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              route: widget.customer.rotId,
               subArea: ''),
         ));
   }
