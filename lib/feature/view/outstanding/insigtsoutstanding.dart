@@ -6,6 +6,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusoutstandingcount/cus_out_standing_count_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
@@ -52,6 +53,19 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
     context.read<CusOutStandingBloc>().add(const ClearCusOutStandingEvent());
     context.read<CusOutStandingBloc>().add(GetCusOutstandingEvent(
           searchQuery: '',
+          outIn: CusOutStandingInModel(
+              cusId: widget.customer.cusId,
+              userId: widget.user.usrId,
+              area: '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              route: widget.customer.rotId,
+              subArea: ''),
+        ));
+    context
+        .read<CusOutStandingCountBloc>()
+        .add(const ClearCusOutStandingCountEvent());
+    context.read<CusOutStandingCountBloc>().add(GetCusOutstandingCOuntEvent(
           outIn: CusOutStandingInModel(
               cusId: widget.customer.cusId,
               userId: widget.user.usrId,
@@ -389,12 +403,11 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
                                 children: [
-                                  BlocConsumer<CusOutStandingBloc,
-                                      CusOutStandingState>(
+                                  BlocConsumer<CusOutStandingCountBloc,
+                                      CusOutStandingCountState>(
                                     listener: (context, state) {
                                       state.when(
-                                        getCusOutStandingState:
-                                            (counts, headers) {
+                                        getCusOutStandingCountState: (counts) {
                                           if (counts != null) {
                                             pievalues.clear();
                                             if (int.parse(
@@ -411,13 +424,13 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                             }
                                           }
                                         },
-                                        getOutStandingFailedState: () {},
+                                        cusOutStatndingCountFailedState: () {},
                                       );
                                     },
                                     builder: (context, state) {
                                       return state.when(
-                                        getCusOutStandingState:
-                                            (counts, headers) => counts == null
+                                        getCusOutStandingCountState: (counts) =>
+                                            counts == null
                                                 ? ShimmerContainers(
                                                     height: 110.h,
                                                     width: double.infinity,
@@ -474,8 +487,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                     ],
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            )
+                                                              ))
                                                           : pievalues.isEmpty
                                                               ? Center(
                                                                   child: Text(
@@ -598,7 +610,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                       )
                                                     ],
                                                   ),
-                                        getOutStandingFailedState: () =>
+                                        cusOutStatndingCountFailedState: () =>
                                             const SizedBox(),
                                       );
                                     },
@@ -683,6 +695,19 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
               fromDate: widget.fromdatectrl.text,
               toDate: widget.todatectrl.text,
               route: '',
+              subArea: ''),
+        ));
+    context
+        .read<CusOutStandingCountBloc>()
+        .add(const ClearCusOutStandingCountEvent());
+    context.read<CusOutStandingCountBloc>().add(GetCusOutstandingCOuntEvent(
+          outIn: CusOutStandingInModel(
+              cusId: widget.customer.cusId,
+              userId: widget.user.usrId,
+              area: '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              route: widget.customer.rotId,
               subArea: ''),
         ));
   }

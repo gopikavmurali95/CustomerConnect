@@ -246,8 +246,8 @@ class OutstandingListWidget extends StatelessWidget {
                                                 height: 5.h,
                                               ),
                                               Container(
-                                                height: 14.h,
-                                                width: 50.w,
+                                                height: 16.h,
+                                                width: 60.w,
                                                 decoration: BoxDecoration(
                                                     color: headers[index]
                                                                 .status ==
@@ -259,21 +259,26 @@ class OutstandingListWidget extends StatelessWidget {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10)),
-                                                child: Center(
-                                                  child: Text(
-                                                    selectedLocale
-                                                                ?.languageCode ==
-                                                            "en"
-                                                        ? headers[index]
-                                                                .status ??
-                                                            ''
-                                                        : headers[index]
-                                                                .arStatus ??
-                                                            '',
-                                                    // headers[index].status ?? '',
-                                                    style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: Colors.white),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 0,
+                                                      vertical: 0),
+                                                  child: Center(
+                                                    child: Text(
+                                                      selectedLocale?.languageCode ==
+                                                              "en"
+                                                          ? headers[index]
+                                                                  .status ??
+                                                              ''
+                                                          : headers[index]
+                                                                  .arStatus ??
+                                                              '',
+                                                      // headers[index].status ?? '',
+                                                      style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          color: Colors.white),
+                                                    ),
                                                   ),
                                                 ),
                                               )

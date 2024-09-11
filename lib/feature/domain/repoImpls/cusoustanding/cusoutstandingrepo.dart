@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -50,9 +49,8 @@ class CusOutStandingRepo implements ICusOutstandingRepo {
       final response = await http.post(
           Uri.parse(baseUrl + cusOutsandingCOuntUrl),
           body: outIn.toJson());
-      log(response.body);
+
       if (response.statusCode == 200) {
-        logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final outtotal = CusOutstandingCountModel.fromJson(json["result"][0]);
         return right(outtotal);

@@ -91,8 +91,8 @@ class InsightsOutstandingList extends StatelessWidget {
                                       height: 5.h,
                                     ),
                                     Container(
-                                      height: 14.h,
-                                      width: 50.w,
+                                      height: 16.h,
+                                      width: 60.w,
                                       decoration: BoxDecoration(
                                           color: headers[index].status == "Due"
                                               ? outstandingcolorslist[0]
