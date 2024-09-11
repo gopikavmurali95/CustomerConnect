@@ -56,6 +56,8 @@ TextEditingController _materialreqdetailSerachController =
     TextEditingController();
 TextEditingController apprvLQtymqController = TextEditingController();
 TextEditingController apprvHQtymqController = TextEditingController();
+List<TextEditingController> _hQtycontrollers = [];
+List<TextEditingController> _lQtycontrollers = [];
 
 class _MaterialRequestDetailScreenState
     extends State<MaterialRequestDetailScreen> {
@@ -212,7 +214,7 @@ class _MaterialRequestDetailScreenState
                               child: Row(
                                 children: [
                                   Container(
-                                    height: 50,
+                                    height: 70,
                                     width: 10,
                                     decoration: BoxDecoration(
                                         color: const Color(0xfffee8e0),
@@ -241,7 +243,7 @@ class _MaterialRequestDetailScreenState
                                                   fontWeight: FontWeight.w600,
                                                 ),
                                               ),
-                                              Row(
+                                              /* Row(
                                                 children: [
                                                   Text(
                                                     '${widget.materialrequest.strName} - ',
@@ -265,6 +267,40 @@ class _MaterialRequestDetailScreenState
                                                     ),
                                                   ),
                                                 ],
+                                              ), */
+                                              RichText(
+                                                text: TextSpan(
+                                                    style: DefaultTextStyle.of(
+                                                            context)
+                                                        .style
+                                                        .copyWith(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none,
+                                                        ),
+                                                    children: [
+                                                      TextSpan(
+                                                        text:
+                                                            '${widget.materialrequest.strName} - ',
+                                                        style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          color: const Color(
+                                                              0xff2C6B9E),
+                                                        ),
+                                                      ),
+                                                      TextSpan(
+                                                        text: widget
+                                                                .materialrequest
+                                                                .warName ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            color: const Color(
+                                                                0xff413434)),
+                                                      )
+                                                    ]),
                                               ),
                                               Text(
                                                 widget.materialrequest
@@ -498,6 +534,18 @@ class _MaterialRequestDetailScreenState
                                 state.when(
                                   materialreqdetailsuccess: (materialdetail) {
                                     if (materialdetail != null) {
+                                      _hQtycontrollers = List.generate(
+                                        materialdetail.length,
+                                        (index) => TextEditingController(
+                                            text: materialdetail[index]
+                                                .adjustedHQty),
+                                      );
+                                      _lQtycontrollers = List.generate(
+                                          materialdetail.length,
+                                          (index) => TextEditingController(
+                                                text: materialdetail[index]
+                                                    .adjustedLQty,
+                                              ));
                                       _materialreqproducts = List.generate(
                                           materialdetail.length,
                                           (index) => null);
@@ -689,41 +737,36 @@ class _MaterialRequestDetailScreenState
                                                                     Column(
                                                                       children: [
                                                                         Flexible(
-                                                                          flex: 0,
-                                                                          fit: FlexFit.tight,
-                                                                          child: SizedBox(
+                                                                          flex:
+                                                                              0,
+                                                                          fit: FlexFit
+                                                                              .tight,
+                                                                          child:
+                                                                              SizedBox(
                                                                             height:
                                                                                 25.h,
                                                                             width:
                                                                                 80.w,
                                                                             child:
                                                                                 TextFormField(
-                                                                              keyboardType:
-                                                                                  TextInputType.number,
-                                                                              textAlign:
-                                                                                  TextAlign.right,
-                                                                              maxLength:
-                                                                                  8,
-                                                                              cursorHeight:
-                                                                                  12.h,
-                                                                              controller:
-                                                                                  TextEditingController(text: details[index].adjustedHQty),
-                                                                              onChanged:
-                                                                                  (value) {
-                                                                                details[index].adjustedLQty = value;
+                                                                              keyboardType: TextInputType.number,
+                                                                              textAlign: TextAlign.right,
+                                                                              maxLength: 8,
+                                                                              cursorHeight: 12.h,
+                                                                              controller: _hQtycontrollers[index],
+                                                                              onChanged: (value) {
+                                                                                details[index].adjustedHQty = value;
                                                                                 _procechangematerial[index] = MaterialReqDetailModel(
                                                                                   adjustedHQty: details[index].adjustedHQty,
                                                                                   adjustedLQty: details[index].adjustedLQty,
                                                                                   prdID: details[index].prdID,
                                                                                 );
                                                                               },
-                                                                              style:
-                                                                                  
-                                                                                  kfontstyle(fontSize:10.sp),
+                                                                              style: kfontstyle(fontSize: 10.sp),
                                                                               decoration: InputDecoration(
-                                                                                  // enabled: 
-                                                                                  // /* (details[index].requestedHQty != details[index].reqHUOM) && */
-                                                                                    //(widget.materialrequest.mrhIntegrationStatus == "Pending" /* || widget.materialrequest. == 'قيد الانتظار' */) ? true : false,
+                                                                                  enabled:
+                                                                                      /* (details[index].requestedHQty != details[index].reqHUOM) && */
+                                                                                      (widget.materialrequest.mrhIntegrationStatus == "Pending" || widget.materialrequest.mrhIntegrationStatus == 'قيد الانتظار') ? true : false,
                                                                                   enabledBorder: const OutlineInputBorder(
                                                                                     borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                   ),
@@ -733,7 +776,7 @@ class _MaterialRequestDetailScreenState
                                                                                   isDense: true,
                                                                                   fillColor: const Color(0xfff5f5f5),
                                                                                   filled: true,
-                                                                                  contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
+                                                                                  contentPadding: const EdgeInsets.only(top: 10, left: 2, right: 5),
                                                                                   border: OutlineInputBorder(
                                                                                     borderSide: const BorderSide(color: Colors.red, width: 4),
                                                                                     borderRadius: BorderRadius.circular(5),
@@ -746,51 +789,108 @@ class _MaterialRequestDetailScreenState
                                                                           height:
                                                                               5.h,
                                                                         ),
-                                                                        SizedBox(
-                                                                          height:
-                                                                              25,
-                                                                          width:
-                                                                              80,
+                                                                        /* Flexible(
+                                                                          flex: 0,
+                                                                          fit: FlexFit.tight,
+                                                                          child: SizedBox(
+                                                                            height:
+                                                                                25,
+                                                                            width:
+                                                                                80,
+                                                                            child:
+                                                                                TextFormField(
+                                                                                   enabled: 
+                                                                                  /* (details[index].requestedHQty != details[index].reqHUOM) && */
+                                                                                    (widget.materialrequest.mrhIntegrationStatus == "Pending" || widget.materialrequest. mrhIntegrationStatus== 'قيد الانتظار') ? true : false,
+                                                                              keyboardType:
+                                                                                  TextInputType.number,
+                                                                              textAlign:
+                                                                                  TextAlign.right,
+                                                                              maxLength:
+                                                                                  8,
+                                                                              cursorHeight:
+                                                                                  12.h,
+                                                                              controller:
+                                                                                  TextEditingController(text: details[index].adjustedLQty),
+                                                                              onChanged:
+                                                                                  (value) {
+                                                                                details[index].adjustedLQty = value;
+                                                                                _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                  adjustedHQty: details[index].adjustedHQty,
+                                                                                  adjustedLQty: details[index].adjustedLQty,
+                                                                                  prdID: details[index].prdID,
+                                                                                );
+                                                                              },
+                                                                              //controller: _apprvLQtymqController,
+                                                                              style:
+                                                                                  const TextStyle(fontSize: 9),
+                                                                              decoration: InputDecoration(
+                                                                                 // enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending' ? true : false,
+                                                                                  enabledBorder: const OutlineInputBorder(
+                                                                                    borderSide: BorderSide(color: Colors.black12, width: 1),
+                                                                                  ),
+                                                                                  focusedBorder: const OutlineInputBorder(
+                                                                                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                                                                                  ),
+                                                                                  fillColor: const Color(0xfff5f5f5),
+                                                                                  filled: true,
+                                                                                   contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
+                                                                                  border: OutlineInputBorder(
+                                                                                    borderSide: const BorderSide(color: Colors.red, width: 4),
+                                                                                    borderRadius: BorderRadius.circular(5),
+                                                                                  ),
+                                                                                  counterText: ''),
+                                                                            ),
+                                                                          ),
+                                                                        ), */
+
+                                                                        Flexible(
+                                                                          flex:
+                                                                              0,
+                                                                          fit: FlexFit
+                                                                              .tight,
                                                                           child:
-                                                                              TextFormField(
-                                                                            keyboardType:
-                                                                                TextInputType.number,
-                                                                            textAlign:
-                                                                                TextAlign.right,
-                                                                            maxLength:
-                                                                                8,
-                                                                            cursorHeight:
-                                                                                12.h,
-                                                                            controller:
-                                                                                TextEditingController(text: details[index].adjustedLQty),
-                                                                            onChanged:
-                                                                                (value) {
-                                                                              details[index].adjustedLQty = value;
-                                                                              _procechangematerial[index] = MaterialReqDetailModel(
-                                                                                adjustedHQty: details[index].adjustedHQty,
-                                                                                adjustedLQty: details[index].adjustedLQty,
-                                                                                prdID: details[index].prdID,
-                                                                              );
-                                                                            },
-                                                                            //controller: _apprvLQtymqController,
-                                                                            style:
-                                                                                const TextStyle(fontSize: 9),
-                                                                            decoration: InputDecoration(
-                                                                               // enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending' ? true : false,
-                                                                                enabledBorder: const OutlineInputBorder(
-                                                                                  borderSide: BorderSide(color: Colors.black12, width: 1),
-                                                                                ),
-                                                                                focusedBorder: const OutlineInputBorder(
-                                                                                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
-                                                                                ),
-                                                                                fillColor: const Color(0xfff5f5f5),
-                                                                                filled: true,
-                                                                                 contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
-                                                                                border: OutlineInputBorder(
-                                                                                  borderSide: const BorderSide(color: Colors.red, width: 4),
-                                                                                  borderRadius: BorderRadius.circular(5),
-                                                                                ),
-                                                                                counterText: ''),
+                                                                              SizedBox(
+                                                                            height:
+                                                                                25.h,
+                                                                            width:
+                                                                                80.w,
+                                                                            child:
+                                                                                TextFormField(
+                                                                              keyboardType: TextInputType.number,
+                                                                              textAlign: TextAlign.right,
+                                                                              maxLength: 8,
+                                                                              cursorHeight: 12.h,
+                                                                              controller: _lQtycontrollers[index],
+                                                                              onChanged: (value) {
+                                                                                details[index].adjustedLQty = value;
+                                                                                _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                  adjustedHQty: details[index].adjustedHQty,
+                                                                                  adjustedLQty: details[index].adjustedLQty,
+                                                                                  prdID: details[index].prdID,
+                                                                                );
+                                                                              },
+                                                                              style: kfontstyle(fontSize: 10.sp),
+                                                                              decoration: InputDecoration(
+                                                                                  enabled:
+                                                                                      /* (details[index].requestedHQty != details[index].reqHUOM) && */
+                                                                                      (widget.materialrequest.mrhIntegrationStatus == "Pending" || widget.materialrequest.mrhIntegrationStatus == 'قيد الانتظار') ? true : false,
+                                                                                  enabledBorder: const OutlineInputBorder(
+                                                                                    borderSide: BorderSide(color: Colors.black12, width: 1),
+                                                                                  ),
+                                                                                  focusedBorder: const OutlineInputBorder(
+                                                                                    borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                                                                                  ),
+                                                                                  isDense: true,
+                                                                                  fillColor: const Color(0xfff5f5f5),
+                                                                                  filled: true,
+                                                                                  contentPadding: const EdgeInsets.only(top: 10, left: 2, right: 5),
+                                                                                  border: OutlineInputBorder(
+                                                                                    borderSide: const BorderSide(color: Colors.red, width: 4),
+                                                                                    borderRadius: BorderRadius.circular(5),
+                                                                                  ),
+                                                                                  counterText: ''),
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -832,183 +932,161 @@ class _MaterialRequestDetailScreenState
                   ),
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.15,
-                width: double.infinity,
-                child: Column(
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Visibility(
+        visible: widget.materialrequest.mrhIntegrationStatus == 'Pending'
+            ? true
+            : false,
+        child: SizedBox(
+          height: MediaQuery.of(context).size.width * 0.15,
+          width: double.infinity,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Visibility(
-                        //visible: widget.materialrequest.mrhIntegrationStatus == 'Pending'? true:false,
-                        // visible: widget.materialrequest.mrhIntegrationStatus ==
-                        //         'Pending'
-                        //     ? true
-                        //     : false,
-                        child: Row(
-                          children: [
-                            Flexible(
-                              flex: 1,
-                              fit: FlexFit.tight,
-                              child: MaterialButton(
-                                height: 30.h,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                color: /* widget.materialrequest
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: MaterialButton(
+                        height: 30.h,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: /* widget.materialrequest
                                             . ==
                                         'Pending'
                                     ? */
-                                    Colors
-                                        .red.shade300 /* : Colors.grey[300] */,
-                                onPressed: () {
-                                  log(jsonEncode(_materialreqproducts));
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .doYouWantToRejectThisProduct),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {});
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .cancel),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            context
-                                                .read<MaterialReqApprovalBloc>()
-                                                .add(
-                                                    const MaterialReqApprovalLoadingEvent());
-                                            context
-                                                .read<MaterialReqApprovalBloc>()
-                                                .add(
-                                                  MetarialRequestRejectEvent(
-                                                      reject: MaterialReqRejectionInModel(
-                                                          products:
-                                                              _materialreqproducts,
-                                                          userId: widget
-                                                              .materialrequest
+                            Colors.red.shade300 /* : Colors.grey[300] */,
+                        onPressed: () {
+                          log(jsonEncode(_materialreqproducts));
+                          showCupertinoDialog(
+                            context: context,
+                            builder: (context) => CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .doYouWantToRejectThisProduct),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.cancel),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                        const MaterialReqApprovalLoadingEvent());
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                          MetarialRequestRejectEvent(
+                                              reject:
+                                                  MaterialReqRejectionInModel(
+                                                      products:
+                                                          _materialreqproducts,
+                                                      userId:
+                                                          widget.materialrequest
                                                               .userID,
-                                                          reqID: widget
-                                                              .materialrequest
-                                                              .mrhID,
-                                                          remark: '')),
-                                                );
+                                                      reqID: widget
+                                                          .materialrequest
+                                                          .mrhID,
+                                                      remark: '')),
+                                        );
 
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .proceed),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context)!.reject,
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
                                 ),
-                              ),
+                              ],
                             ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Flexible(
-                              flex: 1,
-                              fit: FlexFit.tight,
-                              child: MaterialButton(
-                                height: 30.h,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                color: /* widget.materialrequest
+                          );
+                        },
+                        child: Text(
+                          AppLocalizations.of(context)!.reject,
+                          style: kfontstyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Flexible(
+                      flex: 1,
+                      fit: FlexFit.tight,
+                      child: MaterialButton(
+                        height: 30.h,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        color: /* widget.materialrequest
                                             . ==
                                         'Pending'
                                     ? */
-                                    Colors.green
-                                        .shade300 /* : Colors.grey[300] */,
-                                onPressed: () {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .doYouWantToApproveThisProduct),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {});
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .cancel),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            context
-                                                .read<MaterialReqApprovalBloc>()
-                                                .add(
-                                                    const MaterialReqApprovalLoadingEvent());
-                                            context
-                                                .read<MaterialReqApprovalBloc>()
-                                                .add(
-                                                  MaterialReqApprovalSuccessEvent(
-                                                      approvalInModel:
-                                                          MaterialReqApprovalInModel(
-                                                    products:
-                                                        _materialreqproducts,
-                                                    userId: widget
-                                                        .materialrequest.userID,
-                                                    reqID: widget
-                                                        .materialrequest.mrhID,
-                                                    mode: "A",
-                                                    warehouse: widget
-                                                        .materialrequest
-                                                        .mrhWarID,
-                                                  )),
-                                                );
-
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .proceed),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context)!.approve,
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
+                            Colors.green.shade300 /* : Colors.grey[300] */,
+                        onPressed: () {
+                          showCupertinoDialog(
+                            context: context,
+                            builder: (context) => CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .doYouWantToApproveThisProduct),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.cancel),
                                 ),
-                              ),
-                            )
-                          ],
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                        const MaterialReqApprovalLoadingEvent());
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                          MaterialReqApprovalSuccessEvent(
+                                              approvalInModel:
+                                                  MaterialReqApprovalInModel(
+                                            products: _materialreqproducts,
+                                            userId:
+                                                widget.materialrequest.userID,
+                                            reqID: widget.materialrequest.mrhID,
+                                            mode: "A",
+                                            warehouse:
+                                                widget.materialrequest.mrhWarID,
+                                          )),
+                                        );
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        child: Text(
+                          AppLocalizations.of(context)!.approve,
+                          style: kfontstyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
                         ),
                       ),
                     )
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),

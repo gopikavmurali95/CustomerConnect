@@ -331,7 +331,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                 child: Row(
                                                   children: [
                                                     Container(
-                                                      height: 50,
+                                                      height: 70,
                                                       width: 10,
                                                       decoration: BoxDecoration(
                                                           color: const Color(
@@ -361,7 +361,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                                       .w600,
                                                             ),
                                                           ),
-                                                          Row(
+                                                          /* Row(
                                                             children: [
                                                               Text(
                                                                 '${pChange[index].vvhFromRot} - ',
@@ -387,6 +387,43 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                                 ),
                                                               ),
                                                             ],
+                                                          ), */
+
+                                                          RichText(
+                                                            text: TextSpan(
+                                                                style: DefaultTextStyle.of(
+                                                                        context)
+                                                                    .style
+                                                                    .copyWith(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .none,
+                                                                    ),
+                                                                children: [
+                                                                  TextSpan(
+                                                                    text:
+                                                                        '${pChange[index].vvhFromRot} - ',
+                                                                    style:
+                                                                        kfontstyle(
+                                                                      fontSize:
+                                                                          11.sp,
+                                                                      color: const Color(
+                                                                          0xff2C6B9E),
+                                                                    ),
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text:
+                                                                        "${pChange[index].vvhToRot}",
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                  )
+                                                                ]),
                                                           ),
                                                           /*Text(
                                                         overflow: TextOverflow.ellipsis,

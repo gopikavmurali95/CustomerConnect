@@ -179,7 +179,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                   child: Row(
                     children: [
                       Container(
-                        height: 50,
+                        height: 70,
                         width: 10,
                         decoration: BoxDecoration(
                             color: const Color(0xfffee8e0),

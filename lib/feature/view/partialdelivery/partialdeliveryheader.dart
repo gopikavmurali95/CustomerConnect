@@ -287,7 +287,7 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                           child: Row(
                                             children: [
                                               Container(
-                                                height: 50,
+                                                height: 70,
                                                 width: 10,
                                                 decoration: BoxDecoration(
                                                     color:

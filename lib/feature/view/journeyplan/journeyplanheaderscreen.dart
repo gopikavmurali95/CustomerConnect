@@ -439,7 +439,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Container(
-                                                      height: 50,
+                                                      height: 70,
                                                       width: 10,
                                                       decoration: BoxDecoration(
                                                           color: const Color(
@@ -474,7 +474,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                             .w500,
                                                                   ),
                                                                 ),
-                                                                Row(
+                                                                /* Row(
                                                                   children: [
                                                                     Text(
                                                                       '${headers[index].cusCode} - ',
@@ -502,6 +502,35 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                       ),
                                                                     ),
                                                                   ],
+                                                                ), */
+                                                                RichText(
+                                                                  text: TextSpan(
+                                                                      style: DefaultTextStyle.of(context).style.copyWith(
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                            decoration:
+                                                                                TextDecoration.none,
+                                                                          ),
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text:
+                                                                              '${headers[index].cusCode} - ',
+                                                                          style: kfontstyle(
+                                                                              fontSize: 12.sp,
+                                                                              color: const Color(
+                                                                                0xff2C6B9E,
+                                                                              ),
+                                                                              fontWeight: FontWeight.w500),
+                                                                        ),
+                                                                        TextSpan(
+                                                                          text: selectedLocale?.languageCode == "en"
+                                                                              ? headers[index].cusName ?? ''
+                                                                              : headers[index].arcusName ?? '',
+                                                                          style: kfontstyle(
+                                                                              fontSize: 12.sp,
+                                                                              color: const Color(0xff413434)),
+                                                                        )
+                                                                      ]),
                                                                 ),
                                                                 Text(
                                                                   '${headers[index].rotCode} |${headers[index].createdDate}',
@@ -710,43 +739,43 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                               Transform.scale(
                                                                                 scale: 0.8,
                                                                                 child: InkWell(
-                                                                                  onTap: (){
-                                                                                     showCupertinoDialog(
-                                                                                            context: context,
-                                                                                            builder: (context) => CupertinoAlertDialog(
-                                                                                              title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
-                                                                                              actions: [
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    setState(() {});
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                                ),
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    statuslist[index] = false;
-                                                                                                    loadingCount = 0;
-                                                                                                    setState(() {});
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
-                                                                                  
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                          RejectaJOurneyPlanEvent(
-                                                                                                            reject: JourneyPlanApprovalInModel(
-                                                                                                              jpsId: headers[index].jpsId,
-                                                                                                              userId: headers[index].userID,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        );
-                                                                                  
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                                ),
-                                                                                              ],
-                                                                                            ),
-                                                                                          );
+                                                                                  onTap: () {
+                                                                                    showCupertinoDialog(
+                                                                                      context: context,
+                                                                                      builder: (context) => CupertinoAlertDialog(
+                                                                                        title: Text(AppLocalizations.of(context)!.alert),
+                                                                                        content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                        actions: [
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              setState(() {});
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                          ),
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              statuslist[index] = false;
+                                                                                              loadingCount = 0;
+                                                                                              setState(() {});
+                                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+
+                                                                                              context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                    RejectaJOurneyPlanEvent(
+                                                                                                      reject: JourneyPlanApprovalInModel(
+                                                                                                        jpsId: headers[index].jpsId,
+                                                                                                        userId: headers[index].userID,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  );
+
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
                                                                                   },
                                                                                   child: Row(
                                                                                     children: [
@@ -783,7 +812,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                                     loadingCount = 0;
                                                                                                     setState(() {});
                                                                                                     context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
-                                                                                  
+
                                                                                                     context.read<JoureyPlanApprovalBloc>().add(
                                                                                                           RejectaJOurneyPlanEvent(
                                                                                                             reject: JourneyPlanApprovalInModel(
@@ -792,7 +821,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                                             ),
                                                                                                           ),
                                                                                                         );
-                                                                                  
+
                                                                                                     Navigator.pop(context);
                                                                                                   },
                                                                                                   child: Text(AppLocalizations.of(context)!.proceed),
@@ -800,7 +829,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                               ],
                                                                                             ),
                                                                                           );
-                                                                                  
+
                                                                                           /* context
                                                                                                                                                                                               .read<
                                                                                                                                                                                                   AapprovalOrRejectRadioCubit>()
@@ -834,9 +863,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                               ? true
                                                                                               : false,
                                                                                       groupValue: true,
-                                                                                      onChanged: (value) {
-                                                                                        
-                                                                                      },
+                                                                                      onChanged: (value) {},
                                                                                     ),
                                                                                     Text(
                                                                                       AppLocalizations.of(context)!.approve,
@@ -853,15 +880,13 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                       fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
                                                                                         return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                                       }),
-                                                                                     value: statuslist[index] == null
+                                                                                      value: statuslist[index] == null
                                                                                           ? true
                                                                                           : statuslist[index] == true
                                                                                               ? true
                                                                                               : false,
                                                                                       groupValue: false,
-                                                                                      onChanged: (value) {
-                                                                                        
-                                                                                      },
+                                                                                      onChanged: (value) {},
                                                                                     ),
                                                                                     Text(
                                                                                       AppLocalizations.of(context)!.reject,

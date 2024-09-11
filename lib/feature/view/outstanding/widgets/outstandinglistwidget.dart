@@ -1,5 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_standing_pagination_cubit.dart';
+import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
@@ -248,10 +249,13 @@ class OutstandingListWidget extends StatelessWidget {
                                                 height: 14.h,
                                                 width: 50.w,
                                                 decoration: BoxDecoration(
-                                                    color: /*  index % 2 == 0
-                                                  ? const Color(0xffe3f7e2)
-                                                  : */
-                                                        const Color(0xfff7f4e2),
+                                                    color: headers[index]
+                                                                .status ==
+                                                            "Due"
+                                                        ? outstandingcolorslist[
+                                                            0]
+                                                        : outstandingcolorslist[
+                                                            1],
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10)),
@@ -269,8 +273,7 @@ class OutstandingListWidget extends StatelessWidget {
                                                     // headers[index].status ?? '',
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
-                                                        color: const Color(
-                                                            0xff413434)),
+                                                        color: Colors.white),
                                                   ),
                                                 ),
                                               )

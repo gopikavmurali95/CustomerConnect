@@ -220,7 +220,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                  height: 50,
+                                                  height: 80,
                                                   width: 10,
                                                   decoration: BoxDecoration(
                                                       color: const Color(

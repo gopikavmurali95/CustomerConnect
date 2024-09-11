@@ -112,8 +112,8 @@ class InsightInvoiceListWidget extends StatelessWidget {
                                         height: 5.h,
                                       ),
                                       Container(
-                                        height: 14.h,
-                                        width: 30.w,
+                                        // height: 14.h,
+                                        // width: 30.w,
                                         decoration: BoxDecoration(
                                             color: /* index % 2 == 0
                                             ? */
@@ -121,12 +121,17 @@ class InsightInvoiceListWidget extends StatelessWidget {
                                                     0xffe3f7e2) /* : const Color(0xfff7f4e2)*/,
                                             borderRadius:
                                                 BorderRadius.circular(10)),
-                                        child: Center(
-                                          child: Text(
-                                            headers[index].status ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                color: const Color(0xff413434)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 6, vertical: 3),
+                                          child: Center(
+                                            child: Text(
+                                              headers[index].status ?? '',
+                                              style: kfontstyle(
+                                                  fontSize: 10.sp,
+                                                  color:
+                                                      const Color(0xff413434)),
+                                            ),
                                           ),
                                         ),
                                       )

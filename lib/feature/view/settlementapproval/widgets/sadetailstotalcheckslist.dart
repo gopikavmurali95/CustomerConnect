@@ -18,7 +18,7 @@ class _SettlmtTotalChecksListState extends State<SettlmtTotalChecksList> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: MediaQuery.of(context).size.height,
+        // height: MediaQuery.of(context).size.height,
         child: BlocBuilder<SettlementPaymentDetailBloc,
             SettlementPaymentDetailState>(
           builder: (context, state) {

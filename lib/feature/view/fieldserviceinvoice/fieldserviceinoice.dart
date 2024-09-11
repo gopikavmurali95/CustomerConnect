@@ -189,7 +189,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Container(
-                                        height: 50,
+                                        height: 70,
                                         width: 10,
                                         decoration: BoxDecoration(
                                             color: const Color(0xfffee8e0),
@@ -221,7 +221,7 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                                                   SizedBox(
                                                     height: 5.h,
                                                   ),
-                                                  Row(
+                                                  /* Row(
                                                     children: [
                                                       Text(
                                                         '${headers[index].cusCode} - ',
@@ -251,6 +251,45 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                                                         ),
                                                       ),
                                                     ],
+                                                  ), */
+                                                  RichText(
+                                                    text: TextSpan(
+                                                        style:
+                                                            DefaultTextStyle.of(
+                                                                    context)
+                                                                .style
+                                                                .copyWith(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .none,
+                                                                ),
+                                                        children: [
+                                                          TextSpan(
+                                                              text:
+                                                                   '${headers[index].cusCode} - ',
+                                                        style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          color: const Color(
+                                                              0xff2C6B9E),
+                                                        ),),
+                                                          TextSpan(
+                                                              text: selectedLocale
+                                                                      ?.languageCode ==
+                                                                  "en"
+                                                              ? headers[index]
+                                                                      .cusName ??
+                                                                  ''
+                                                              : headers[index]
+                                                                      .arcusName ??
+                                                                  '',
+                                                          style: kfontstyle(
+                                                              fontSize: 12.sp,
+                                                              color: const Color(
+                                                                  0xff413434)))
+                                                        ]),
                                                   ),
                                                   Text(
                                                     headers[index].transTime ??

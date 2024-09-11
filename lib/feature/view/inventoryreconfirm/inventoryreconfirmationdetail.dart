@@ -100,7 +100,8 @@ class _InventoryReconfirmationDetailScreenState
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text(AppLocalizations.of(context)!.actionedSuccessfully),
+                      content: Text(
+                          AppLocalizations.of(context)!.actionedSuccessfully),
                       // content:  Text(
                       //             " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
                       // content: Text(
@@ -190,7 +191,7 @@ class _InventoryReconfirmationDetailScreenState
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
-                                  Row(
+                                  /* Row(
                                     children: [
                                       Text(
                                         '${widget.header.rotCode} - ',
@@ -211,6 +212,34 @@ class _InventoryReconfirmationDetailScreenState
                                         ),
                                       ),
                                     ],
+                                  ), */
+                                  RichText(
+                                    text: TextSpan(
+                                        style: DefaultTextStyle.of(context)
+                                            .style
+                                            .copyWith(
+                                              fontWeight: FontWeight.normal,
+                                              decoration: TextDecoration.none,
+                                            ),
+                                        children: [
+                                          TextSpan(
+                                            text: '${widget.header.rotCode} - ',
+                                            style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              color: const Color(0xff2C6B9E),
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: selectedLocale
+                                                        ?.languageCode ==
+                                                    'en'
+                                                ? widget.header.usrName ?? ''
+                                                : widget.header.arusrName ?? '',
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                color: const Color(0xff413434)),
+                                          )
+                                        ]),
                                   ),
                                   Text(
                                     widget.header.createdDate ?? '',

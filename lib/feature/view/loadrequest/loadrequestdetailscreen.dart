@@ -53,6 +53,8 @@ List<LoadReqPrdModel?> _loadproducts = [];
 //TextEditingController _apprvHQtyController = TextEditingController();
 //TextEditingController _apprvLQtyController = TextEditingController();
 TextEditingController _loadreqdetailSearchController = TextEditingController();
+List<TextEditingController> _hPricecontrollers = [];
+List<TextEditingController> _lPricecontrollers = [];
 
 class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
   @override
@@ -122,7 +124,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          height: 60,
+                          height: 70,
                           width: 10,
                           decoration: BoxDecoration(
                               color: const Color(0xfffee8e0),
@@ -143,7 +145,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              Row(
+                              /* Row(
                                 children: [
                                   Text(
                                     '${widget.loadrequest.rotCode}- ',
@@ -164,6 +166,33 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                     ),
                                   ),
                                 ],
+                              ), */
+
+                              RichText(
+                                text: TextSpan(
+                                    style: DefaultTextStyle.of(context)
+                                        .style
+                                        .copyWith(
+                                          fontWeight: FontWeight.normal,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                            '${widget.loadrequest.rotCode} - ',
+                                        style: kfontstyle(
+                                          fontSize: 12.sp,
+                                          color: const Color(0xff2C6B9E),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            "${selectedLocale?.languageCode == 'en' ? widget.loadrequest.usrName : widget.loadrequest.usrArabicName}",
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff413434)),
+                                      )
+                                    ]),
                               ),
                               Row(
                                 children: [
@@ -405,6 +434,16 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                       state.when(
                         loadreqDetailSuccessState: (details) {
                           if (details != null) {
+                            _hPricecontrollers = List.generate(
+                              details.length,
+                              (index) => TextEditingController(
+                                  text: details[index].lrdHQty),
+                            );
+                            _lPricecontrollers = List.generate(
+                              details.length,
+                              (index) => TextEditingController(
+                                  text: details[index].lrdLQty),
+                            );
                             _loadproducts =
                                 List.generate(details.length, (index) => null);
                             statuslist.clear();
@@ -474,9 +513,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                       (response) {
                                                     if (response != null) {
                                                       Navigator.pop(context);
-                                                      isLoading = false;
-                                                      if (response.mode ==
-                                                          '1') {
+                                                      /* isLoading = false; */
+                                                      if (response.status != null) {
                                                         showCupertinoDialog(
                                                           context: context,
                                                           builder: (context) =>
@@ -486,7 +524,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                         context)!
                                                                     .alert),
                                                             content: Text(
-                                                                "${AppLocalizations.of(context)!.productStatusUpdate} ${response.status} "),
+                                                                "${AppLocalizations.of(context)!.loadRequest} ${AppLocalizations.of(context)!.approvedSuccessfully} "),
                                                             actions: [
                                                               TextButton(
                                                                 onPressed: () {
@@ -501,7 +539,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                             ],
                                                           ),
                                                         );
-                                                      } else {
+                                                      }/*  else {
                                                         statuslist[index] =
                                                             null;
                                                         setState(() {});
@@ -530,7 +568,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                             ],
                                                           ),
                                                         );
-                                                      }
+                                                      } */
                                                     }
                                                   },
                                                   approveReturnLoadingState:
@@ -675,29 +713,41 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                             children: [
                                                               Column(
                                                                 children: [
-                                                                   Text(details[index].lrdHUOM!.isEmpty ||
-                                                               details[index].lrdHUOM== null ? 
-                                                "-": details[index].lrdHUOM ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                                  Text(
+                                                                    details[index].lrdHUOM!.isEmpty ||
+                                                                            details[index].lrdHUOM ==
+                                                                                null
+                                                                        ? "-"
+                                                                        : details[index].lrdHUOM ??
+                                                                            "",
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
                                                                   SizedBox(
                                                                     height: 5.h,
                                                                   ),
-                                                                 Text(details[index].lrdLUOM!.isEmpty ||
-                                                               details[index].lrdLUOM== null ? 
-                                                "-": details[index].lrdLUOM ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                                  Text(
+                                                                    details[index].lrdLUOM!.isEmpty ||
+                                                                            details[index].lrdLUOM ==
+                                                                                null
+                                                                        ? "-"
+                                                                        : details[index].lrdLUOM ??
+                                                                            "",
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
                                                                 ],
                                                               ),
                                                               SizedBox(
@@ -705,29 +755,41 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                               ),
                                                               Column(
                                                                 children: [
-                                                                 Text(details[index].lrdHQty!.isEmpty ||
-                                                               details[index].lrdHQty== null ? 
-                                                "0": details[index].lrdHQty ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                                  Text(
+                                                                    details[index].lrdHQty!.isEmpty ||
+                                                                            details[index].lrdHQty ==
+                                                                                null
+                                                                        ? "0"
+                                                                        : details[index].lrdHQty ??
+                                                                            "",
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
                                                                   SizedBox(
                                                                     height: 5.h,
                                                                   ),
-                                                                   Text(details[index].lrdLQty!.isEmpty ||
-                                                               details[index].lrdLQty== null ? 
-                                                "0": details[index].lrdLQty ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                                  Text(
+                                                                    details[index].lrdLQty!.isEmpty ||
+                                                                            details[index].lrdLQty ==
+                                                                                null
+                                                                        ? "0"
+                                                                        : details[index].lrdLQty ??
+                                                                            "",
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black54),
+                                                                  ),
                                                                   // Text(
                                                                   //   details[index]
                                                                   //           .lrdLQty ??
@@ -749,8 +811,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                     width: 80,
                                                                     child:
                                                                         TextFormField(
-                                                                          
-                                                                       // focusNode: null,
+                                                                      // focusNode: null,
                                                                       textAlign:
                                                                           TextAlign
                                                                               .right,
@@ -763,8 +824,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                               .number,
 
                                                                       controller:
-                                                                          TextEditingController(
-                                                                              text: details[index].lrdHQty),
+                                                                          _hPricecontrollers[
+                                                                              index],
                                                                       onChanged:
                                                                           (value) {
                                                                         details[index].lrdLQty =
@@ -795,7 +856,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                           ),
                                                                           fillColor: const Color(0xfff5f5f5),
                                                                           filled: true,
-                                                                           contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
+                                                                          contentPadding: const EdgeInsets.only(top: 10, left: 2, right: 5),
                                                                           border: OutlineInputBorder(
                                                                             borderSide:
                                                                                 const BorderSide(color: Colors.red, width: 4),
@@ -822,8 +883,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                           TextAlign
                                                                               .right,
                                                                       controller:
-                                                                          TextEditingController(
-                                                                              text: details[index].lrdLQty),
+                                                                          _lPricecontrollers[
+                                                                              index],
                                                                       onChanged:
                                                                           (value) {
                                                                         details[index].lrdLQty =
@@ -853,7 +914,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                           ),
                                                                           fillColor: const Color(0xfff5f5f5),
                                                                           filled: true,
-                                                                           contentPadding: const EdgeInsets.only(top: 10,left: 2,right: 5),
+                                                                          contentPadding: const EdgeInsets.only(top: 10, left: 2, right: 5),
                                                                           border: OutlineInputBorder(
                                                                             borderSide:
                                                                                 const BorderSide(color: Colors.red, width: 4),
@@ -882,7 +943,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                           ),
                                         ),
                           loadreqDetailFailedState: () => SizedBox(
-                            height: MediaQuery.of(context).size.height / 1.5,
+                            height: MediaQuery.of(context).size.height * 0.6,
                             child: Center(
                               child: Text(
                                 AppLocalizations.of(context)!.noDataAvailable,
@@ -897,7 +958,11 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                 ],
               ),
             ),
-            BlocListener<LoadReqApprovalBloc, LoadReqApprovalState>(
+            
+          ],
+        ),
+      ),
+      bottomNavigationBar: BlocListener<LoadReqApprovalBloc, LoadReqApprovalState>(
               listener: (context, state) {
                 state.when(
                   loadReqApprovalSuccessState: (response) {
@@ -1158,9 +1223,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 

@@ -53,7 +53,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                               Row(
                                 children: [
                                   Container(
-                                    height: 65,
+                                    height: 70,
                                     width: 10,
                                     decoration: BoxDecoration(
                                         color: const Color(0xfffee8e0),
@@ -73,7 +73,8 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                         children: [
                                           Text(
                                             "${headers[index].rotCode ?? ''} - ${selectedLocale?.languageCode == "en" ? headers[index].rotName ?? '' : headers[index].arrotName}",
-                                            //'Tfsh0$index - RTL route $index',
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
                                             style: kfontstyle(
                                               fontSize: 12.sp,
                                               color: const Color(0xff2C6B9E),
@@ -95,7 +96,8 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                                       : headers[index]
                                                               .arusrName ??
                                                           '',
-                                                  //'Tfsh03U03 - Fayis M ',
+                                                 
+                                            maxLines: 2,
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       color: const Color(
