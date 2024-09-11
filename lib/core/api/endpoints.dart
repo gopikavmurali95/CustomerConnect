@@ -1,15 +1,15 @@
 //Development
 
-const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
-const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+// const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+// const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
 //Demo
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 
 //Meliha Diary
-// const baseUrl = "http://93.177.125.163:100/WS/";
-// const approvalBaseUrl = "http://93.177.125.163:100/WS/";
+const baseUrl = "http://93.177.125.163:100/WS/";
+const approvalBaseUrl = "http://93.177.125.163:100/WS/";
 
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
@@ -137,7 +137,7 @@ const voidTransactionApprovalUrl = 'VoidTransApproval/PostVoidTransApproval';
 const voidTransactionRejectUrl = 'VoidTransApproval/PostVoidTransReject';
 const cusSettingUrl = 'CCUserSettings/GetCCUserSettings';
 const targetHeaderCountUrl = 'CusTarget/TargetHeaderCount';
-const targetHeaderListUrl = 'CusTarget/HeaderRouteWiseTargets';
+const targetHeaderListUrl = 'CusTarget/HeaderRouteWiseTargets'; //sdfghjkl
 const targetDetailsCountUrl = 'CusTarget/TargetDaysCount';
 const targetDetailsListUrl = 'CusTarget/RouteWiseTargetDetail';
 const targetDetailsGraphAmtUrl = 'CusTarget/TargetDetailAmtCount';
