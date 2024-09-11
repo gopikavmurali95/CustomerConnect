@@ -93,10 +93,13 @@ class InsightsOutstandingList extends StatelessWidget {
                                       height: 14.h,
                                       width: 50.w,
                                       decoration: BoxDecoration(
-                                          color: /* index % 2 == 0
-                                        ? */
-                                              const Color(
-                                                  0xffe3f7e2) /* : const Color(0xfff7f4e2), */,
+                                          color: headers[index].status == "Due"
+                                              ? /*  outstandingcolorslist[
+                                                            0] */
+                                              const Color(0xffE4F7E2)
+                                              : /* outstandingcolorslist[
+                                                            1] */
+                                              const Color(0xffF7E9E2),
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Center(

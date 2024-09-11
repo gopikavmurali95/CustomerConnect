@@ -461,7 +461,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                               transparentCircleRadius:
                                                                   27,
                                                               entryLabelColor:
-                                                                  Colors.white,
+                                                                  Colors.black,
                                                               data: PieData(
                                                                 List.of(
                                                                   [
@@ -528,7 +528,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                         '${pievalues[0]}',
                                                                         style: kfontstyle(
                                                                             color:
-                                                                                Colors.white),
+                                                                                Colors.black),
                                                                       ))
                                                                 ],
                                                               ),

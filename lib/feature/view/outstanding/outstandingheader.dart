@@ -349,7 +349,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                                 holeRadius: 20,
                                                 entryLabelTextSize: 10,
                                                 transparentCircleRadius: 27,
-                                                entryLabelColor: Colors.white,
+                                                entryLabelColor: Colors.black,
                                                 data: PieData(
                                                   List.of(
                                                     [
@@ -417,7 +417,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                                           '${_pievalues[0]}',
                                                           style: kfontstyle(
                                                               color:
-                                                                  Colors.white),
+                                                                  Colors.black),
                                                         ))
                                                   ],
                                                 ),
