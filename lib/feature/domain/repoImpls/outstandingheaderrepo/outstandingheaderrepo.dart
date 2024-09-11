@@ -47,6 +47,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + outStandingCountUrl),
           body: outin.toJson());
+      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final outstandtotal = OutstandingCountModel.fromJson(json["result"][0]);

@@ -1,5 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
+import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +82,7 @@ class InsightsOutstandingList extends StatelessWidget {
                                 Column(
                                   children: [
                                     Text(
-                                      headers[index].amountPaid ?? "",
+                                      headers[index].invoiceBalance ?? "",
                                       style: kfontstyle(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w500),
@@ -93,10 +94,9 @@ class InsightsOutstandingList extends StatelessWidget {
                                       height: 14.h,
                                       width: 50.w,
                                       decoration: BoxDecoration(
-                                          color: /* index % 2 == 0
-                                        ? */
-                                              const Color(
-                                                  0xffe3f7e2) /* : const Color(0xfff7f4e2), */,
+                                          color: headers[index].status == "Due"
+                                              ? outstandingcolorslist[0]
+                                              : outstandingcolorslist[1],
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Center(
@@ -104,7 +104,7 @@ class InsightsOutstandingList extends StatelessWidget {
                                           headers[index].status ?? '',
                                           style: kfontstyle(
                                               fontSize: 10.sp,
-                                              color: const Color(0xff413434)),
+                                              color: Colors.white),
                                         ),
                                       ),
                                     )
@@ -115,7 +115,7 @@ class InsightsOutstandingList extends StatelessWidget {
                         separatorBuilder: (context, index) => Divider(
                               color: Colors.grey[300],
                             ),
-                        itemCount: 10),
+                        itemCount: headers.length),
             getOutStandingFailedState: () => SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,
               child: Center(
