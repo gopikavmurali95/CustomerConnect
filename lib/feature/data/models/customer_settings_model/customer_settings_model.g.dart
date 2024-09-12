@@ -39,6 +39,8 @@ CustomerSettingsModel _$CustomerSettingsModelFromJson(
       voidTransAppr: json['VoidTransAppr'] as String?,
       mustSellAppr: json['MustSellAppr'] as String?,
       settleAppr: json['SettleAppr'] as String?,
+      picking: json['Picking'] as String?,
+      loadin: json['Loadin'] as String?,
     );
 
 Map<String, dynamic> _$CustomerSettingsModelToJson(
@@ -74,4 +76,6 @@ Map<String, dynamic> _$CustomerSettingsModelToJson(
       'VoidTransAppr': instance.voidTransAppr,
       'MustSellAppr': instance.mustSellAppr,
       'SettleAppr': instance.settleAppr,
+      'Loadin': instance.loadin,
+      'Picking': instance.picking,
     };
