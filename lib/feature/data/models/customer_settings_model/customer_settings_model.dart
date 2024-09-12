@@ -64,6 +64,10 @@ class CustomerSettingsModel {
   String? mustSellAppr;
   @JsonKey(name: 'SettleAppr')
   String? settleAppr;
+  @JsonKey(name: 'Loadin')
+  String? loadin;
+  @JsonKey(name: 'Picking')
+  String? picking;
 
   CustomerSettingsModel({
     this.invTrans,
@@ -96,6 +100,8 @@ class CustomerSettingsModel {
     this.voidTransAppr,
     this.mustSellAppr,
     this.settleAppr,
+    this.picking,
+    this.loadin,
   });
 
   factory CustomerSettingsModel.fromJson(Map<String, dynamic> json) {

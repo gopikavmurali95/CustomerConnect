@@ -39,15 +39,14 @@ class PickingWidget extends StatelessWidget {
                       BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
                         builder: (context, state) {
                           return Visibility(
-                            visible: /* state.when(
+                            visible: state.when(
                               getCustomerSettingsState: (settings) =>
-                                  settings?.invTrans == null ||
-                                          settings?.invTrans != 'Y'
+                                  settings?.picking == null ||
+                                          settings?.picking != 'Y'
                                       ? false
                                       : true,
                               customerSettingsFailedState: () => true,
-                            ) */
-                                true,
+                            ),
                             child: Column(
                               children: [
                                 Padding(
@@ -333,15 +332,14 @@ class PickingWidget extends StatelessWidget {
                       BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
                         builder: (context, state) {
                           return Visibility(
-                            visible: /*  state.when(
+                            visible: state.when(
                               getCustomerSettingsState: (settings) =>
-                                  settings?.invTrans == null ||
-                                          settings?.invTrans != 'Y'
+                                  settings?.loadin == null ||
+                                          settings?.loadin != 'Y'
                                       ? false
                                       : true,
                               customerSettingsFailedState: () => true,
-                            ) */
-                                true,
+                            ),
                             child: Column(
                               children: [
                                 Padding(
@@ -636,8 +634,8 @@ class PickingWidget extends StatelessWidget {
                       return Visibility(
                         visible: state.when(
                           getCustomerSettingsState: (settings) =>
-                              settings?.invTrans == null ||
-                                      settings?.invTrans != 'Y'
+                              settings?.picking == null ||
+                                      settings?.picking != 'Y'
                                   ? false
                                   : true,
                           customerSettingsFailedState: () => true,
@@ -896,8 +894,8 @@ class PickingWidget extends StatelessWidget {
                       return Visibility(
                         visible: state.when(
                           getCustomerSettingsState: (settings) =>
-                              settings?.invTrans == null ||
-                                      settings?.invTrans != 'Y'
+                              settings?.loadin == null ||
+                                      settings?.loadin != 'Y'
                                   ? false
                                   : true,
                           customerSettingsFailedState: () => true,
