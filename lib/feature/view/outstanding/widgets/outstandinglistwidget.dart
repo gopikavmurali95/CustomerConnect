@@ -1,6 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_standing_pagination_cubit.dart';
-import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
@@ -252,33 +251,30 @@ class OutstandingListWidget extends StatelessWidget {
                                                     color: headers[index]
                                                                 .status ==
                                                             "Due"
-                                                        ? outstandingcolorslist[
-                                                            0]
-                                                        : outstandingcolorslist[
-                                                            1],
+                                                        ? /*  outstandingcolorslist[
+                                                            0] */
+                                                        const Color(0xffE4F7E2)
+                                                        : /* outstandingcolorslist[
+                                                            1] */
+                                                        const Color(0xffF7E9E2),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10)),
-                                                child: Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 0,
-                                                      vertical: 0),
-                                                  child: Center(
-                                                    child: Text(
-                                                      selectedLocale?.languageCode ==
-                                                              "en"
-                                                          ? headers[index]
-                                                                  .status ??
-                                                              ''
-                                                          : headers[index]
-                                                                  .arStatus ??
-                                                              '',
-                                                      // headers[index].status ?? '',
-                                                      style: kfontstyle(
-                                                          fontSize: 10.sp,
-                                                          color: Colors.white),
-                                                    ),
+                                                child: Center(
+                                                  child: Text(
+                                                    selectedLocale
+                                                                ?.languageCode ==
+                                                            "en"
+                                                        ? headers[index]
+                                                                .status ??
+                                                            ''
+                                                        : headers[index]
+                                                                .arStatus ??
+                                                            '',
+                                                    // headers[index].status ?? '',
+                                                    style: kfontstyle(
+                                                        fontSize: 10.sp,
+                                                        color: Colors.black),
                                                   ),
                                                 ),
                                               )

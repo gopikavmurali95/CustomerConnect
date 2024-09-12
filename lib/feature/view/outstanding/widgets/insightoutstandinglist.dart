@@ -1,6 +1,5 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
-import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -95,8 +94,12 @@ class InsightsOutstandingList extends StatelessWidget {
                                       width: 60.w,
                                       decoration: BoxDecoration(
                                           color: headers[index].status == "Due"
-                                              ? outstandingcolorslist[0]
-                                              : outstandingcolorslist[1],
+                                              ? /*  outstandingcolorslist[
+                                                            0] */
+                                              const Color(0xffE4F7E2)
+                                              : /* outstandingcolorslist[
+                                                            1] */
+                                              const Color(0xffF7E9E2),
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Center(
@@ -104,7 +107,7 @@ class InsightsOutstandingList extends StatelessWidget {
                                           headers[index].status ?? '',
                                           style: kfontstyle(
                                               fontSize: 10.sp,
-                                              color: Colors.white),
+                                              color: Colors.black),
                                         ),
                                       ),
                                     )

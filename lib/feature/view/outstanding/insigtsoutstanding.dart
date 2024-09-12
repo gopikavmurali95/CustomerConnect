@@ -467,7 +467,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                     27,
                                                                 entryLabelColor:
                                                                     Colors
-                                                                        .white,
+                                                                        .black,
                                                                 data: PieData(
                                                                   List.of(
                                                                     [
@@ -538,7 +538,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                             Text(
                                                                           '${pievalues[0]}',
                                                                           style:
-                                                                              kfontstyle(color: Colors.white),
+                                                                              kfontstyle(color: Colors.black),
                                                                         ))
                                                                   ],
                                                                 ),
