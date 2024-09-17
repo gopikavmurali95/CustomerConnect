@@ -129,16 +129,16 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                           ),
                                           RichText(
                                             text: TextSpan(
-                                              text: invheader[index].cusOutCode ??
+                                              text:
+                                                  invheader[index].cusOutCode ??
                                                       '',
-                                              style:
-                                                  subTitleTextStyle(),
+                                              style: subTitleTextStyle(),
                                               children: <TextSpan>[
                                                 TextSpan(
                                                     text: '-',
-                                                    style:subTitleTextStyle()),
-
-                                                    TextSpan(text: selectedLocale
+                                                    style: subTitleTextStyle()),
+                                                TextSpan(
+                                                  text: selectedLocale
                                                               ?.languageCode ==
                                                           "en"
                                                       ? invheader[index]
@@ -146,12 +146,11 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                                           ''
                                                       : invheader[index]
                                                               .arcusOutName ??
-                                                          '',),
-                                                
+                                                          '',
+                                                ),
                                               ],
                                             ),
                                           ),
-                                          
                                           Text(
                                             '${invheader[index].payType} | ${invheader[index].rotName} | ${invheader[index].date} | ${invheader[index].time}',
                                             style: kfontstyle(

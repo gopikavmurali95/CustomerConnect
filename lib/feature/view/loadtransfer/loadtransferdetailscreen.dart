@@ -556,16 +556,24 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                 children: [
                                                   Column(
                                                     children: [
-                                                       Text(details[index].ldrOffloadHuom!.isEmpty ||
-                                                               details[index].ldrOffloadHuom== null ? 
-                                                "-": details[index].ldrOffloadHuom ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                      Text(
+                                                        details[index]
+                                                                    .ldrOffloadHuom!
+                                                                    .isEmpty ||
+                                                                details[index]
+                                                                        .ldrOffloadHuom ==
+                                                                    null
+                                                            ? "-"
+                                                            : details[index]
+                                                                    .ldrOffloadHuom ??
+                                                                "",
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
                                                       // Text(
                                                       //   details[index]
                                                       //           .ldrOffloadHuom ??
@@ -580,16 +588,24 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                       SizedBox(
                                                         height: 10.h,
                                                       ),
-                                                      Text(details[index].ldrOffloadLuom!.isEmpty ||
-                                                               details[index].ldrOffloadLuom== null ? 
-                                                "-": details[index].ldrOffloadLuom ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                      Text(
+                                                        details[index]
+                                                                    .ldrOffloadLuom!
+                                                                    .isEmpty ||
+                                                                details[index]
+                                                                        .ldrOffloadLuom ==
+                                                                    null
+                                                            ? "-"
+                                                            : details[index]
+                                                                    .ldrOffloadLuom ??
+                                                                "",
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
                                                     ],
                                                   ),
                                                   SizedBox(
@@ -601,29 +617,45 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                   ),
                                                   Column(
                                                     children: [
-                                                      Text(details[index].ldrOffloadHQty!.isEmpty ||
-                                                               details[index].ldrOffloadHQty== null ? 
-                                                "0": details[index].ldrOffloadHQty ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                      Text(
+                                                        details[index]
+                                                                    .ldrOffloadHQty!
+                                                                    .isEmpty ||
+                                                                details[index]
+                                                                        .ldrOffloadHQty ==
+                                                                    null
+                                                            ? "0"
+                                                            : details[index]
+                                                                    .ldrOffloadHQty ??
+                                                                "",
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
                                                       SizedBox(
                                                         height: 10.h,
                                                       ),
-                                                      Text(details[index].ldrOffloadLQty!.isEmpty ||
-                                                               details[index].ldrOffloadLQty== null ? 
-                                                "0": details[index].ldrOffloadLQty ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                      Text(
+                                                        details[index]
+                                                                    .ldrOffloadLQty!
+                                                                    .isEmpty ||
+                                                                details[index]
+                                                                        .ldrOffloadLQty ==
+                                                                    null
+                                                            ? "0"
+                                                            : details[index]
+                                                                    .ldrOffloadLQty ??
+                                                                "",
+                                                        style: kfontstyle(
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color:
+                                                                Colors.black54),
+                                                      ),
                                                     ],
                                                   ),
                                                 ],

@@ -166,7 +166,6 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                         )
                                       ]),
                                 ),
-                               
                                 RichText(
                                   text: TextSpan(
                                       style: DefaultTextStyle.of(context)
@@ -177,17 +176,21 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                                           ),
                                       children: [
                                         TextSpan(
-                                          text: '${widget.customer.headerCode} - ',
-                                         style: kfontstyle(
-                                          fontSize: 11.sp,
-                                          color: const Color(0xff413434)),
+                                          text:
+                                              '${widget.customer.headerCode} - ',
+                                          style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              color: const Color(0xff413434)),
                                         ),
                                         TextSpan(
-                                          text: selectedLocale?.languageCode == 'en'
-                                            ? widget.customer.headerName ?? ""
-                                            : widget.customer.arheaderName ??
-                                                '',
-                                          style:  kfontstyle(fontSize: 12.sp,color: const Color(0xff413434)),
+                                          text: selectedLocale?.languageCode ==
+                                                  'en'
+                                              ? widget.customer.headerName ?? ""
+                                              : widget.customer.arheaderName ??
+                                                  '',
+                                          style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff413434)),
                                         )
                                       ]),
                                 ),

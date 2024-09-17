@@ -114,29 +114,19 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                             ],
                           ),
                           RichText(
-                                            text: TextSpan(
-                                              text: widget.invoiceheader.cusOutCode ??
-                                                      '',
-                                              style:
-                                                  subTitleTextStyle(),
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                    text: '-',
-                                                    style:subTitleTextStyle()),
-
-                                                    TextSpan(text: selectedLocale
-                                                              ?.languageCode ==
-                                                          "en"
-                                                      ? widget.invoiceheader
-                                                              .cusOutName ??
-                                                          ''
-                                                      : widget.invoiceheader
-                                                              .arcusOutName ??
-                                                          '',),
-                                                
-                                              ],
-                                            ),
-                                          ),
+                            text: TextSpan(
+                              text: widget.invoiceheader.cusOutCode ?? '',
+                              style: subTitleTextStyle(),
+                              children: <TextSpan>[
+                                TextSpan(text: '-', style: subTitleTextStyle()),
+                                TextSpan(
+                                  text: selectedLocale?.languageCode == "en"
+                                      ? widget.invoiceheader.cusOutName ?? ''
+                                      : widget.invoiceheader.arcusOutName ?? '',
+                                ),
+                              ],
+                            ),
+                          ),
                           // Row(
                           //   children: [
                           //     Text('${widget.invoiceheader.cusOutCode} - ',

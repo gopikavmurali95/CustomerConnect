@@ -332,7 +332,7 @@ class _VoidTranscactioHeaderScreenState
                                                       child: Text(
                                                         overflow: TextOverflow
                                                             .ellipsis,
-                                                            maxLines: 2,
+                                                        maxLines: 2,
                                                         '${headers[index].rotCode} - ${selectedLocale?.languageCode == "en" ? headers[index].rotName : headers[index].rotArName}',
                                                         style: kfontstyle(
                                                             fontSize: 12.sp,

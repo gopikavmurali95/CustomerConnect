@@ -152,7 +152,6 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           width: 10.w,
                         ),
                         Expanded(
-                          
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -215,7 +214,6 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                       ]),
                                 ),
                               ),
-                             
                               RichText(
                                 text: TextSpan(
                                     style: DefaultTextStyle.of(context)
@@ -227,18 +225,20 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                                     children: [
                                       TextSpan(
                                         text:
-                                             '${widget.customer.headerCode} - ',
-                                    style: kfontstyle(
-                                        fontSize: 11.sp,
-                                        color: const Color(0xff413434)),
+                                            '${widget.customer.headerCode} - ',
+                                        style: kfontstyle(
+                                            fontSize: 11.sp,
+                                            color: const Color(0xff413434)),
                                       ),
                                       TextSpan(
-                                        text: selectedLocale?.languageCode == 'en'
-                                          ? widget.customer.headerName ?? ""
-                                          : widget.customer.arheaderName ?? '',
-                                      
-                                      style: kfontstyle(fontSize: 12.sp,
-                                       color: const Color(0xff413434)),
+                                        text: selectedLocale?.languageCode ==
+                                                'en'
+                                            ? widget.customer.headerName ?? ""
+                                            : widget.customer.arheaderName ??
+                                                '',
+                                        style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            color: const Color(0xff413434)),
                                       )
                                     ]),
                               ),

@@ -96,8 +96,7 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                                                       : headers[index]
                                                               .arusrName ??
                                                           '',
-                                                 
-                                            maxLines: 2,
+                                                  maxLines: 2,
                                                   style: kfontstyle(
                                                       fontSize: 12.sp,
                                                       color: const Color(

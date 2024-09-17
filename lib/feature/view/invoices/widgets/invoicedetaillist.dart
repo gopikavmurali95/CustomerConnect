@@ -125,24 +125,22 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                               child: Column(
                                                 children: [
                                                   Text(
-                                                              invdetails[index].higherUom ==
-                                                                          null ||
-                                                                      invdetails[index]
-                                                                          .higherUom!
-                                                                          .isEmpty
-                                                                  ? "-"
-                                                                  : invdetails[index]
-                                                                          .higherUom ??
-                                                                      "",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Colors
-                                                                      .black54),
-                                                            ),
+                                                    invdetails[index]
+                                                                    .higherUom ==
+                                                                null ||
+                                                            invdetails[index]
+                                                                .higherUom!
+                                                                .isEmpty
+                                                        ? "-"
+                                                        : invdetails[index]
+                                                                .higherUom ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                   // Visibility(
                                                   //   visible: invdetails[index]
                                                   //                   .higherUom ==
@@ -163,25 +161,23 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                                   SizedBox(
                                                     height: 5.h,
                                                   ),
-                                                   Text(
-                                                              invdetails[index].lowerUom ==
-                                                                          null ||
-                                                                      invdetails[index]
-                                                                          .lowerUom!
-                                                                          .isEmpty
-                                                                  ? "-"
-                                                                  : invdetails[index]
-                                                                          .lowerUom ??
-                                                                      "",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Colors
-                                                                      .black54),
-                                                            ),
+                                                  Text(
+                                                    invdetails[index]
+                                                                    .lowerUom ==
+                                                                null ||
+                                                            invdetails[index]
+                                                                .lowerUom!
+                                                                .isEmpty
+                                                        ? "-"
+                                                        : invdetails[index]
+                                                                .lowerUom ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                   // Visibility(
                                                   //   visible: invdetails[index]
                                                   //                   .lowerUom ==
@@ -209,25 +205,23 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                               fit: FlexFit.tight,
                                               child: Column(
                                                 children: [
-                                                   Text(
-                                                              invdetails[index].higherQty ==
-                                                                          null ||
-                                                                      invdetails[index]
-                                                                          .higherQty!
-                                                                          .isEmpty
-                                                                  ? "0"
-                                                                  : invdetails[index]
-                                                                          .higherQty ??
-                                                                      "",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Colors
-                                                                      .black54),
-                                                            ),
+                                                  Text(
+                                                    invdetails[index]
+                                                                    .higherQty ==
+                                                                null ||
+                                                            invdetails[index]
+                                                                .higherQty!
+                                                                .isEmpty
+                                                        ? "0"
+                                                        : invdetails[index]
+                                                                .higherQty ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                   // Text(
                                                   //   invdetails[index]
                                                   //           .higherQty ??
@@ -238,24 +232,22 @@ class InvoiceDetailListWidget extends StatelessWidget {
                                                     height: 5.h,
                                                   ),
                                                   Text(
-                                                              invdetails[index].lowerQty ==
-                                                                          null ||
-                                                                      invdetails[index]
-                                                                          .lowerQty!
-                                                                          .isEmpty
-                                                                  ? "0"
-                                                                  : invdetails[index]
-                                                                          .lowerQty??
-                                                                      "",
-                                                              style: kfontstyle(
-                                                                  fontSize:
-                                                                      12.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: Colors
-                                                                      .black54),
-                                                            ),
+                                                    invdetails[index]
+                                                                    .lowerQty ==
+                                                                null ||
+                                                            invdetails[index]
+                                                                .lowerQty!
+                                                                .isEmpty
+                                                        ? "0"
+                                                        : invdetails[index]
+                                                                .lowerQty ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                 ],
                                               ),
                                             ),

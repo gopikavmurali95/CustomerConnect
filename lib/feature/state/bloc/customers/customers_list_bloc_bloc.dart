@@ -19,9 +19,10 @@ class CustomersListBlocBloc
     on<GetCustomersEvent>((event, emit) async {
       // List<CusInsCustomersModel> searcheditems = [];
       Either<MainFailures, List<CusInsCustomersModel>> customers =
-          await cusInsightsCustomersRepo.getCustomers(
-              event.userId, event.area, event.subarea, event.route, event.searchQuery);
-              emit(customers.fold((l) => const GetcustomersFailedState(), (r) => GetCustomersSstate(customers: r)));
+          await cusInsightsCustomersRepo.getCustomers(event.userId, event.area,
+              event.subarea, event.route, event.searchQuery);
+      emit(customers.fold((l) => const GetcustomersFailedState(),
+          (r) => GetCustomersSstate(customers: r)));
 
       /* emit(customers.fold((l) => const GetcustomersFailedState(), (r) {
         searcheditems = r

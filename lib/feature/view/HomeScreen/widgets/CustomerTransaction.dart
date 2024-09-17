@@ -72,12 +72,11 @@ class CustomerTransaction extends StatelessWidget {
                                       Visibility(
                                         visible: settings.when(
                                           getCustomerSettingsState:
-                                              (settings) =>
-                                                  settings?.invTrans == null ||
-                                                          settings?.invTrans !=
-                                                              'Y'
-                                                      ? false
-                                                      : true,
+                                              (settings) => settings?.invoice ==
+                                                          null ||
+                                                      settings?.invoice != 'Y'
+                                                  ? false
+                                                  : true,
                                           customerSettingsFailedState: () =>
                                               true,
                                         ),
@@ -171,14 +170,14 @@ class CustomerTransaction extends StatelessWidget {
                                       Visibility(
                                         visible: settings.when(
                                           getCustomerSettingsState:
-                                              (settings) => settings
-                                                              ?.invTrans ==
+                                              (settings) => settings?.invoice ==
                                                           null ||
-                                                      settings?.invTrans !=
+                                                      settings?.invoice !=
                                                               'Y' &&
-                                                          settings?.invTrans ==
+                                                          settings?.arcollection ==
                                                               null ||
-                                                      settings?.invTrans != 'Y'
+                                                      settings?.arcollection !=
+                                                          'Y'
                                                   ? false
                                                   : true,
                                           customerSettingsFailedState: () =>
@@ -191,12 +190,13 @@ class CustomerTransaction extends StatelessWidget {
                                       Visibility(
                                         visible: settings.when(
                                           getCustomerSettingsState:
-                                              (settings) =>
-                                                  settings?.invTrans == null ||
-                                                          settings?.invTrans !=
-                                                              'Y'
-                                                      ? false
-                                                      : true,
+                                              (settings) => settings
+                                                              ?.arcollection ==
+                                                          null ||
+                                                      settings?.arcollection !=
+                                                          'Y'
+                                                  ? false
+                                                  : true,
                                           customerSettingsFailedState: () =>
                                               true,
                                         ),

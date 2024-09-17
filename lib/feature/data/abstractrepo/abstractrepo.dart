@@ -245,7 +245,11 @@ abstract class IArCollectionRepo {
 
 abstract class ICusInsightsCustomersRepo {
   Future<Either<MainFailures, List<CusInsCustomersModel>>> getCustomers(
-      String userId, String area, String subarea, String route, String searchString);
+      String userId,
+      String area,
+      String subarea,
+      String route,
+      String searchString);
 }
 
 abstract class IcusInsCountsRepo {

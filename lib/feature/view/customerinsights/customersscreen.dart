@@ -101,7 +101,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                     showCupertinoDialog(
                         context: context,
                         builder: (context) => const PopScope(
-                              canPop: false,
+                              canPop: true,
                               child: CupertinoActivityIndicator(
                                 animating: true,
                                 color: Colors.red,
@@ -314,7 +314,21 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                         .read<
                                                             CustomersListBlocBloc>()
                                                         .add(
-                                                            const RestCustomersEvent());
+                                                            const ClearCustomersEvent());
+                                                    context
+                                                        .read<
+                                                            CustomersListBlocBloc>()
+                                                        .add(
+                                                            GetCustomersEvent(
+                                                                userId: widget
+                                                                        .user
+                                                                        .usrId ??
+                                                                    '',
+                                                                area: '',
+                                                                subarea: '',
+                                                                route: '',
+                                                                searchQuery:
+                                                                    ''));
                                                   }
                                                 },
                                               ),
@@ -375,17 +389,17 @@ class _CustomersScrenState extends State<CustomersScren> {
                                           route: _routeIDCtrl.text,
                                           searchQuery: value.trim()));
                                 } */
-                               isSearchLoading = true;
+                                isSearchLoading = true;
                                 context
-                                      .read<CustomerSearchLoadingCubit>()
-                                      .addSearchLoadingEvent();
-                                  context.read<CustomersListBlocBloc>().add(
-                                      GetCustomersEvent(
-                                          userId: widget.user.usrId ?? '',
-                                          area: '',
-                                          subarea: '',
-                                          route: _routeIDCtrl.text,
-                                          searchQuery: value.trim()));
+                                    .read<CustomerSearchLoadingCubit>()
+                                    .addSearchLoadingEvent();
+                                context.read<CustomersListBlocBloc>().add(
+                                    GetCustomersEvent(
+                                        userId: widget.user.usrId ?? '',
+                                        area: '',
+                                        subarea: '',
+                                        route: _routeIDCtrl.text,
+                                        searchQuery: value.trim()));
                               },
                             );
                           },
@@ -401,23 +415,21 @@ class _CustomersScrenState extends State<CustomersScren> {
                                   Expanded(
                                     child: IconButton(
                                       onPressed: () {
-                                        if (_routeIDCtrl.text != '-1') {
-                                          _customerSearchCtrl.clear();
-                                          isSearchLoading = true;
-                                          context
-                                              .read<
-                                                  CustomerSearchLoadingCubit>()
-                                              .addSearchLoadingEvent();
-                                          context
-                                              .read<CustomersListBlocBloc>()
-                                              .add(GetCustomersEvent(
-                                                  userId:
-                                                      widget.user.usrId ?? '',
-                                                  area: '',
-                                                  subarea: '',
-                                                  route: _routeIDCtrl.text,
-                                                  searchQuery: ''));
-                                        }
+                                        // if (_routeIDCtrl.text != '-1') {
+                                        _customerSearchCtrl.clear();
+                                        isSearchLoading = true;
+                                        context
+                                            .read<CustomerSearchLoadingCubit>()
+                                            .addSearchLoadingEvent();
+                                        context
+                                            .read<CustomersListBlocBloc>()
+                                            .add(GetCustomersEvent(
+                                                userId: widget.user.usrId ?? '',
+                                                area: '',
+                                                subarea: '',
+                                                route: _routeIDCtrl.text,
+                                                searchQuery: ''));
+                                        // }
                                       },
                                       icon: Icon(
                                         Icons.close,

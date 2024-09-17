@@ -72,8 +72,8 @@ class SalesOrders extends StatelessWidget {
                                     Visibility(
                                       visible: settings.when(
                                         getCustomerSettingsState: (settings) =>
-                                            settings?.invTrans == null ||
-                                                    settings?.invTrans != 'Y'
+                                            settings?.totalorders == null ||
+                                                    settings?.totalorders != 'Y'
                                                 ? false
                                                 : true,
                                         customerSettingsFailedState: () => true,
@@ -164,11 +164,13 @@ class SalesOrders extends StatelessWidget {
                                     Visibility(
                                       visible: settings.when(
                                         getCustomerSettingsState: (settings) =>
-                                            settings?.invTrans == null ||
-                                                    settings?.invTrans != 'Y' ||
-                                                    settings?.invTrans ==
+                                            settings?.totalorders == null ||
+                                                    settings?.totalorders !=
+                                                        'Y' ||
+                                                    settings?.todaysdelivery ==
                                                         null ||
-                                                    settings?.invTrans != 'Y'
+                                                    settings?.todaysdelivery !=
+                                                        'Y'
                                                 ? false
                                                 : true,
                                         customerSettingsFailedState: () => true,
@@ -180,8 +182,9 @@ class SalesOrders extends StatelessWidget {
                                     Visibility(
                                       visible: settings.when(
                                         getCustomerSettingsState: (settings) =>
-                                            settings?.invTrans == null ||
-                                                    settings?.invTrans != 'Y'
+                                            settings?.todaysdelivery == null ||
+                                                    settings?.todaysdelivery !=
+                                                        'Y'
                                                 ? false
                                                 : true,
                                         customerSettingsFailedState: () => true,

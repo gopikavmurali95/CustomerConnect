@@ -18,21 +18,30 @@ class InsightsCusTransDynamicGrid extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          double itemWidth = (constraints.maxWidth - 10) / 2;
-          return Wrap(
-            spacing: 10,
-            runSpacing: 10,
-            children: visibleItems.map((item) {
-              return SizedBox(
-                width: itemWidth,
-                child: item,
-              );
-            }).toList(),
-          );
-        },
-      ),
+      child: visibleItems.length == 1
+          ? Row(
+              children: [
+                Expanded(
+                  flex: 2, // Make the single item span across two columns
+                  child: visibleItems[0],
+                ),
+              ],
+            )
+          : LayoutBuilder(
+              builder: (context, constraints) {
+                double itemWidth = (constraints.maxWidth - 10) / 2;
+                return Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: visibleItems.map((item) {
+                    return SizedBox(
+                      width: itemWidth,
+                      child: item,
+                    );
+                  }).toList(),
+                );
+              },
+            ),
     );
   }
 }

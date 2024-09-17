@@ -15,7 +15,11 @@ import 'package:injectable/injectable.dart';
 class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
   @override
   Future<Either<MainFailures, List<CusInsCustomersModel>>> getCustomers(
-      String userId, String area, String subarea, String route, String searchString) async {
+      String userId,
+      String area,
+      String subarea,
+      String route,
+      String searchString) async {
     Completer<Either<MainFailures, List<CusInsCustomersModel>>> completer =
         Completer();
 
@@ -26,7 +30,7 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
       'area': area,
       'subarea': subarea,
       'route': route,
-      'searchString' : searchString,
+      'searchString': searchString,
       'receivePort': receivePort.sendPort,
     });
 
@@ -51,7 +55,7 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
           'Area': message['area'],
           'SubArea': message['subarea'],
           'Route': message['route'],
-          'SearchString' : message['searchString'],
+          'SearchString': message['searchString'],
         },
       );
       // log(response.body);

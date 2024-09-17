@@ -2,6 +2,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/insightsarcollection.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/insightscustransdynamicwidget.dart';
 import 'package:customer_connect/feature/view/invoices/insightsinvoicescree.dart';
@@ -49,292 +50,410 @@ class _CustomerTraansactionWidgetState
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: BlocBuilder<CusInsTrnCountBloc, CusInsTrnCountState>(
         builder: (context, state) {
-          return Container(
-            // height: MediaQuery.of(context).size.height / 3.8,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xffdeecfb),
-                  Color(0xfff0e0fc),
-                ],
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.customerTransaction,
-                        style: kfontstyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black87,
-                        ),
-                      )
+          return BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
+            builder: (context, settings) {
+              return Container(
+                // height: MediaQuery.of(context).size.height / 3.8,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color(0xffdeecfb),
+                      Color(0xfff0e0fc),
                     ],
                   ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Row(
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Column(
                     children: [
-                      Flexible(
-                        flex: 2,
-                        fit: FlexFit.tight,
-                        child: Container(
-                          height: 25.h,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: InkWell(
-                              onTap: () {
-                                showCupertinoModalPopup(
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      color: Colors.white,
-                                      height: 250,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .done,
-                                                  style: const TextStyle(
-                                                    color: Colors.black87,
-                                                  ),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          Expanded(
-                                            child: CupertinoDatePicker(
-                                              initialDateTime: DateTime(
-                                                DateTime.now().year,
-                                                DateTime.now().month,
-                                                1,
-                                              ),
-                                              maximumDate: DateTime.now(),
-                                              onDateTimeChanged: (value) {
-                                                widget.fromdatectrl.text =
-                                                    "${value.day}-${value.month}-${value.year}";
-
-                                                context
-                                                    .read<CusInsTrnCountBloc>()
-                                                    .add(GettrnCountsEvent(
-                                                        userId:
-                                                            widget.user.usrId ??
-                                                                '',
-                                                        cusId: widget.customer
-                                                                .cusId ??
-                                                            '',
-                                                        fDate: widget
-                                                            .fromdatectrl.text,
-                                                        toDate: widget
-                                                            .todatectrl.text));
-                                                setState(() {});
-                                              },
-                                              use24hFormat: true,
-                                              mode:
-                                                  CupertinoDatePickerMode.date,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      right:
-                                          selectedLocale?.languageCode == "en"
-                                              ? 0
-                                              : 10,
-                                    ),
-                                    child: Text(
-                                      '${AppLocalizations.of(context)!.from} ',
-                                      style: kfontstyle(
-                                        fontSize: 10.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    '| ',
-                                    style: kfontstyle(
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey[300],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.fromdatectrl.text,
-                                      style: kfontstyle(
-                                        fontSize: 8.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                  IconButton(
-                                    onPressed: null,
-                                    icon: SvgPicture.asset(
-                                      'assets/svg/calendar.svg',
-                                      height: 15.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      Row(
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.customerTransaction,
+                            style: kfontstyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black87,
                             ),
-                          ),
-                        ),
+                          )
+                        ],
                       ),
                       SizedBox(
-                        width: 10.w,
+                        height: 10.h,
                       ),
-                      Flexible(
-                        flex: 2,
-                        fit: FlexFit.tight,
-                        child: Container(
-                          height: 25.h,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: InkWell(
-                              onTap: () {
-                                showCupertinoModalPopup(
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      color: Colors.white,
-                                      height: 250,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
+                      Row(
+                        children: [
+                          Flexible(
+                            flex: 2,
+                            fit: FlexFit.tight,
+                            child: Container(
+                              height: 25.h,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: InkWell(
+                                  onTap: () {
+                                    showCupertinoModalPopup(
+                                      context: context,
+                                      builder: (context) {
+                                        return Container(
+                                          color: Colors.white,
+                                          height: 250,
+                                          child: Column(
                                             children: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .done,
-                                                  style: const TextStyle(
-                                                    color: Colors.black87,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .done,
+                                                      style: const TextStyle(
+                                                        color: Colors.black87,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Expanded(
+                                                child: CupertinoDatePicker(
+                                                  initialDateTime: DateTime(
+                                                    DateTime.now().year,
+                                                    DateTime.now().month,
+                                                    1,
                                                   ),
+                                                  maximumDate: DateTime.now(),
+                                                  onDateTimeChanged: (value) {
+                                                    widget.fromdatectrl.text =
+                                                        "${value.day}-${value.month}-${value.year}";
+
+                                                    context
+                                                        .read<
+                                                            CusInsTrnCountBloc>()
+                                                        .add(
+                                                            GettrnCountsEvent(
+                                                                userId: widget.user
+                                                                        .usrId ??
+                                                                    '',
+                                                                cusId: widget
+                                                                        .customer
+                                                                        .cusId ??
+                                                                    '',
+                                                                fDate: widget
+                                                                    .fromdatectrl
+                                                                    .text,
+                                                                toDate: widget
+                                                                    .todatectrl
+                                                                    .text));
+                                                    setState(() {});
+                                                  },
+                                                  use24hFormat: true,
+                                                  mode: CupertinoDatePickerMode
+                                                      .date,
                                                 ),
-                                              )
+                                              ),
                                             ],
                                           ),
-                                          Expanded(
-                                            child: CupertinoDatePicker(
-                                              initialDateTime: DateTime.now(),
-                                              maximumDate: DateTime.now(),
-                                              onDateTimeChanged: (value) {
-                                                widget.todatectrl.text =
-                                                    "${value.day}-${value.month}-${value.year}";
-                                                setState(() {});
-                                              },
-                                              use24hFormat: true,
-                                              mode:
-                                                  CupertinoDatePickerMode.date,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        );
+                                      },
                                     );
                                   },
-                                );
-                              },
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                      right:
-                                          selectedLocale?.languageCode == "en"
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          right: selectedLocale?.languageCode ==
+                                                  "en"
                                               ? 0
                                               : 10,
-                                    ),
-                                    child: Text(
-                                      '${AppLocalizations.of(context)!.to}  ',
-                                      style: kfontstyle(
-                                        fontSize: 10.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.grey,
+                                        ),
+                                        child: Text(
+                                          '${AppLocalizations.of(context)!.from} ',
+                                          style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                  Text(
-                                    '| ',
-                                    style: kfontstyle(
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey[300],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      widget.todatectrl.text,
-                                      style: kfontstyle(
-                                        fontSize: 8.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black,
+                                      Text(
+                                        '| ',
+                                        style: kfontstyle(
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.grey[300],
+                                        ),
                                       ),
-                                    ),
+                                      Expanded(
+                                        child: Text(
+                                          widget.fromdatectrl.text,
+                                          style: kfontstyle(
+                                            fontSize: 8.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: null,
+                                        icon: SvgPicture.asset(
+                                          'assets/svg/calendar.svg',
+                                          height: 15.sp,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  IconButton(
-                                    onPressed: null,
-                                    icon: SvgPicture.asset(
-                                      'assets/svg/calendar.svg',
-                                      height: 15.sp,
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Flexible(
+                            flex: 2,
+                            fit: FlexFit.tight,
+                            child: Container(
+                              height: 25.h,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: InkWell(
+                                  onTap: () {
+                                    showCupertinoModalPopup(
+                                      context: context,
+                                      builder: (context) {
+                                        return Container(
+                                          color: Colors.white,
+                                          height: 250,
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .done,
+                                                      style: const TextStyle(
+                                                        color: Colors.black87,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              Expanded(
+                                                child: CupertinoDatePicker(
+                                                  initialDateTime:
+                                                      DateTime.now(),
+                                                  maximumDate: DateTime.now(),
+                                                  onDateTimeChanged: (value) {
+                                                    widget.todatectrl.text =
+                                                        "${value.day}-${value.month}-${value.year}";
+                                                    setState(() {});
+                                                  },
+                                                  use24hFormat: true,
+                                                  mode: CupertinoDatePickerMode
+                                                      .date,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          right: selectedLocale?.languageCode ==
+                                                  "en"
+                                              ? 0
+                                              : 10,
+                                        ),
+                                        child: Text(
+                                          '${AppLocalizations.of(context)!.to}  ',
+                                          style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        '| ',
+                                        style: kfontstyle(
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.grey[300],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          widget.todatectrl.text,
+                                          style: kfontstyle(
+                                            fontSize: 8.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: null,
+                                        icon: SvgPicture.asset(
+                                          'assets/svg/calendar.svg',
+                                          height: 15.sp,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  ///////////////////////////////////////////////////////////////////////////////////////
-                  /*  Row(
-                    children: [
-                      Flexible(
-                        flex: 2,
-                        fit: FlexFit.tight,
-                        child: InkWell(
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ///////////////////////////////////////////////////////////////////////////////////////
+                      /*  Row(
+                              children: [
+                                Flexible(
+                                  flex: 2,
+                                  fit: FlexFit.tight,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => InsightsInvoiceScreen(
+                                            customer: widget.customer,
+                                            user: widget.user,
+                                            fromdatectrl: widget.fromdatectrl,
+                                            todatectrl: widget.todatectrl,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: CusTransNavWIdget(
+                                      title: AppLocalizations.of(context)!.invoices,
+                                      imagepath: 'assets/images/invoice.png',
+                                      count: state.when(
+                                        getTransactionCountState: (counts) =>
+                                            counts == null ? '0' : counts.invoice ?? "",
+                                        getcountFailedState: () => '0',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Flexible(
+                                  flex: 2,
+                                  fit: FlexFit.tight,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => InsightsArCollection(
+                                              customer: widget.customer,
+                                              user: widget.user,
+                                              fromdatectrl: widget.fromdatectrl,
+                                              todatectrl: widget.todatectrl,
+                                            ),
+                                          ));
+                                    },
+                                    child: CusTransNavWIdget(
+                                      title: AppLocalizations.of(context)!.ar_collection,
+                                      imagepath: 'assets/images/ar.png',
+                                      count: state.when(
+                                        getTransactionCountState: (counts) =>
+                                            counts == null ? '0' : counts.ar ?? "",
+                                        getcountFailedState: () => '0',
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Row(
+                              children: [
+                                Flexible(
+                                  flex: 2,
+                                  fit: FlexFit.tight,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => SalesrdersScreen(
+                                              customer: widget.customer,
+                                              fromdatecontroller: widget.fromdatectrl,
+                                              todatecontroller: widget.todatectrl,
+                                              user: widget.user,
+                                            ),
+                                          ));
+                                    },
+                                    child: CusTransNavWIdget(
+                                      title: AppLocalizations.of(context)!.sales_orders,
+                                      imagepath: 'assets/images/order.png',
+                                      count: state.when(
+                                        getTransactionCountState: (counts) =>
+                                            counts == null ? '0' : counts.saleOrder ?? "",
+                                        getcountFailedState: () => '0',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Flexible(
+                                  flex: 2,
+                                  fit: FlexFit.tight,
+                                  child: Visibility(
+                                    visible: false,
+                                    child: CusTransNavWIdget(
+                                      title: AppLocalizations.of(context)!.serviceJobs,
+                                      imagepath: 'assets/images/sj.png',
+                                      count: '6',
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ) */
+                      InsightsCusTransDynamicGrid(items: [
+                        InkWell(
                           onTap: () {
                             Navigator.push(
                               context,
@@ -358,14 +477,7 @@ class _CustomerTraansactionWidgetState
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Flexible(
-                        flex: 2,
-                        fit: FlexFit.tight,
-                        child: InkWell(
+                        InkWell(
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -388,18 +500,7 @@ class _CustomerTraansactionWidgetState
                             ),
                           ),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Row(
-                    children: [
-                      Flexible(
-                        flex: 2,
-                        fit: FlexFit.tight,
-                        child: InkWell(
+                        InkWell(
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -422,109 +523,50 @@ class _CustomerTraansactionWidgetState
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Flexible(
-                        flex: 2,
-                        fit: FlexFit.tight,
-                        child: Visibility(
-                          visible: false,
-                          child: CusTransNavWIdget(
-                            title: AppLocalizations.of(context)!.serviceJobs,
-                            imagepath: 'assets/images/sj.png',
-                            count: '6',
-                          ),
+                        CusTransNavWIdget(
+                          title: AppLocalizations.of(context)!.serviceJobs,
+                          imagepath: 'assets/images/sj.png',
+                          count: '6',
                         ),
-                      )
+                      ], visibility: [
+                        settings.when(
+                          getCustomerSettingsState: (settings) =>
+                              settings?.cusInvoice == null ||
+                                      settings?.cusInvoice != 'Y'
+                                  ? false
+                                  : true,
+                          customerSettingsFailedState: () => true,
+                        ),
+                        settings.when(
+                          getCustomerSettingsState: (settings) =>
+                              settings?.cusArcollection == null ||
+                                      settings?.cusArcollection != 'Y'
+                                  ? false
+                                  : true,
+                          customerSettingsFailedState: () => true,
+                        ),
+                        settings.when(
+                          getCustomerSettingsState: (settings) =>
+                              settings?.cusSalesOrders == null ||
+                                      settings?.cusSalesOrders != 'Y'
+                                  ? false
+                                  : true,
+                          customerSettingsFailedState: () => true,
+                        ),
+                        settings.when(
+                          getCustomerSettingsState: (settings) =>
+                              settings?.cusServiceJobs == null ||
+                                      settings?.cusServiceJobs != 'Y'
+                                  ? false
+                                  : true,
+                          customerSettingsFailedState: () => true,
+                        ),
+                      ])
                     ],
-                  ) */
-                  InsightsCusTransDynamicGrid(items: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => InsightsInvoiceScreen(
-                              customer: widget.customer,
-                              user: widget.user,
-                              fromdatectrl: widget.fromdatectrl,
-                              todatectrl: widget.todatectrl,
-                            ),
-                          ),
-                        );
-                      },
-                      child: CusTransNavWIdget(
-                        title: AppLocalizations.of(context)!.invoices,
-                        imagepath: 'assets/images/invoice.png',
-                        count: state.when(
-                          getTransactionCountState: (counts) =>
-                              counts == null ? '0' : counts.invoice ?? "",
-                          getcountFailedState: () => '0',
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => InsightsArCollection(
-                                customer: widget.customer,
-                                user: widget.user,
-                                fromdatectrl: widget.fromdatectrl,
-                                todatectrl: widget.todatectrl,
-                              ),
-                            ));
-                      },
-                      child: CusTransNavWIdget(
-                        title: AppLocalizations.of(context)!.ar_collection,
-                        imagepath: 'assets/images/ar.png',
-                        count: state.when(
-                          getTransactionCountState: (counts) =>
-                              counts == null ? '0' : counts.ar ?? "",
-                          getcountFailedState: () => '0',
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SalesrdersScreen(
-                                customer: widget.customer,
-                                fromdatecontroller: widget.fromdatectrl,
-                                todatecontroller: widget.todatectrl,
-                                user: widget.user,
-                              ),
-                            ));
-                      },
-                      child: CusTransNavWIdget(
-                        title: AppLocalizations.of(context)!.sales_orders,
-                        imagepath: 'assets/images/order.png',
-                        count: state.when(
-                          getTransactionCountState: (counts) =>
-                              counts == null ? '0' : counts.saleOrder ?? "",
-                          getcountFailedState: () => '0',
-                        ),
-                      ),
-                    ),
-                    CusTransNavWIdget(
-                      title: AppLocalizations.of(context)!.serviceJobs,
-                      imagepath: 'assets/images/sj.png',
-                      count: '6',
-                    ),
-                  ], visibility: const [
-                    true,
-                    true,
-                    true,
-                    true
-                  ])
-                ],
-              ),
-            ),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
