@@ -38,6 +38,12 @@ class _CustomersScrenState extends State<CustomersScren> {
     context.read<GetAllRouteBloc>().add(const ClearAllRouteEvent());
     context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
     context.read<CustomersListBlocBloc>().add(const RestCustomersEvent());
+    context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
+        userId: widget.user.usrId ?? '',
+        area: '',
+        subarea: '',
+        route: '',
+        searchQuery: ''));
 
     super.initState();
   }
@@ -110,7 +116,7 @@ class _CustomersScrenState extends State<CustomersScren> {
               },
               child: Column(
                 children: [
-                  Row(
+                  /* Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -121,7 +127,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                         ),
                       )
                     ],
-                  ),
+                  ), */
                   Row(
                     children: [
                       Expanded(
@@ -356,7 +362,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                                 milliseconds: 1500,
                               ),
                               () async {
-                                if (_routeIDCtrl.text != '-1') {
+                                /* if (_routeIDCtrl.text != '-1') {
                                   isSearchLoading = true;
                                   context
                                       .read<CustomerSearchLoadingCubit>()
@@ -368,7 +374,18 @@ class _CustomersScrenState extends State<CustomersScren> {
                                           subarea: '',
                                           route: _routeIDCtrl.text,
                                           searchQuery: value.trim()));
-                                }
+                                } */
+                               isSearchLoading = true;
+                                context
+                                      .read<CustomerSearchLoadingCubit>()
+                                      .addSearchLoadingEvent();
+                                  context.read<CustomersListBlocBloc>().add(
+                                      GetCustomersEvent(
+                                          userId: widget.user.usrId ?? '',
+                                          area: '',
+                                          subarea: '',
+                                          route: _routeIDCtrl.text,
+                                          searchQuery: value.trim()));
                               },
                             );
                           },
