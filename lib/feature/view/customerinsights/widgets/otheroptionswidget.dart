@@ -1,6 +1,7 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/view/customerinsights/widgets/insightsotheroptiongrid.dart';
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/customerinsightspecialpricing.dart';
 import 'package:customer_connect/feature/view/customeritemlist/customeritemlist.dart';
 import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
@@ -27,7 +28,7 @@ class OtherOptionsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
+        /*  Row(
           children: [
             Flexible(
               flex: 2,
@@ -172,7 +173,127 @@ class OtherOptionsWidget extends StatelessWidget {
               ),
             )
           ],
-        )
+        ) */
+
+        InsightsCusOtherOptionsDynamicGrid(items: [
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => InsghtsOutStandingScreen(
+                    customer: customer,
+                    fromdatectrl: fromdatectrl,
+                    todatectrl: todatectrl,
+                    user: user,
+                  ),
+                ),
+              );
+            },
+            child: OtherOptionsTilesWideget(
+              imgpath: 'assets/images/outs.png',
+              title: AppLocalizations.of(context)!.outstanding,
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CustomerInsightSpecialPricing(
+                    customer: customer,
+                    user: user,
+                    fromdatectrl: fromdatectrl,
+                    todatectrl: todatectrl,
+                  ),
+                ),
+              );
+            },
+            child: OtherOptionsTilesWideget(
+              imgpath: 'assets/images/spec.png',
+              title: AppLocalizations.of(context)!.specialpricing,
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CustomerInsightPromotion(
+                    customer: customer,
+                    user: user,
+                    fromdatectrl: fromdatectrl,
+                    todatectrl: todatectrl,
+                  ),
+                ),
+              );
+            },
+            child: OtherOptionsTilesWideget(
+              imgpath: 'assets/images/promo.png',
+              title: AppLocalizations.of(context)!.promotions,
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CustomerItemList(
+                    customer: customer,
+                    user: user,
+                  ),
+                ),
+              );
+            },
+            child: OtherOptionsTilesWideget(
+              imgpath: 'assets/images/itemlist.png',
+              title: AppLocalizations.of(context)!.customerItemList,
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CustomerDocumentScreen(
+                    customer: customer,
+                    user: user,
+                  ),
+                ),
+              );
+            },
+            child: OtherOptionsTilesWideget(
+              imgpath: 'assets/images/document.png',
+              title: AppLocalizations.of(context)!.documents,
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GeoLocationScreen(
+                    customer: customer,
+                    user: user,
+                    fromdatectrl: fromdatectrl,
+                    todatectrl: todatectrl,
+                  ),
+                ),
+              );
+            },
+            child: OtherOptionsTilesWideget(
+              imgpath: 'assets/images/location.png',
+              title: AppLocalizations.of(context)!.geolocation,
+            ),
+          ),
+        ], visibility: const [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ])
       ],
     );
   }
