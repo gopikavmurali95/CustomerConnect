@@ -3,6 +3,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_count_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/insightsarcollection.dart';
+import 'package:customer_connect/feature/view/customerinsights/widgets/insightscustransdynamicwidget.dart';
 import 'package:customer_connect/feature/view/invoices/insightsinvoicescree.dart';
 import 'package:customer_connect/feature/view/salesorders/salesordersscreen.dart';
 import 'package:customer_connect/main.dart';
@@ -327,7 +328,8 @@ class _CustomerTraansactionWidgetState
                   SizedBox(
                     height: 10.h,
                   ),
-                  Row(
+                  ///////////////////////////////////////////////////////////////////////////////////////
+                  /*  Row(
                     children: [
                       Flexible(
                         flex: 2,
@@ -437,7 +439,89 @@ class _CustomerTraansactionWidgetState
                         ),
                       )
                     ],
-                  )
+                  ) */
+                  InsightsCusTransDynamicGrid(items: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => InsightsInvoiceScreen(
+                              customer: widget.customer,
+                              user: widget.user,
+                              fromdatectrl: widget.fromdatectrl,
+                              todatectrl: widget.todatectrl,
+                            ),
+                          ),
+                        );
+                      },
+                      child: CusTransNavWIdget(
+                        title: AppLocalizations.of(context)!.invoices,
+                        imagepath: 'assets/images/invoice.png',
+                        count: state.when(
+                          getTransactionCountState: (counts) =>
+                              counts == null ? '0' : counts.invoice ?? "",
+                          getcountFailedState: () => '0',
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => InsightsArCollection(
+                                customer: widget.customer,
+                                user: widget.user,
+                                fromdatectrl: widget.fromdatectrl,
+                                todatectrl: widget.todatectrl,
+                              ),
+                            ));
+                      },
+                      child: CusTransNavWIdget(
+                        title: AppLocalizations.of(context)!.ar_collection,
+                        imagepath: 'assets/images/ar.png',
+                        count: state.when(
+                          getTransactionCountState: (counts) =>
+                              counts == null ? '0' : counts.ar ?? "",
+                          getcountFailedState: () => '0',
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SalesrdersScreen(
+                                customer: widget.customer,
+                                fromdatecontroller: widget.fromdatectrl,
+                                todatecontroller: widget.todatectrl,
+                                user: widget.user,
+                              ),
+                            ));
+                      },
+                      child: CusTransNavWIdget(
+                        title: AppLocalizations.of(context)!.sales_orders,
+                        imagepath: 'assets/images/order.png',
+                        count: state.when(
+                          getTransactionCountState: (counts) =>
+                              counts == null ? '0' : counts.saleOrder ?? "",
+                          getcountFailedState: () => '0',
+                        ),
+                      ),
+                    ),
+                    CusTransNavWIdget(
+                      title: AppLocalizations.of(context)!.serviceJobs,
+                      imagepath: 'assets/images/sj.png',
+                      count: '6',
+                    ),
+                  ], visibility: const [
+                    true,
+                    true,
+                    true,
+                    true
+                  ])
                 ],
               ),
             ),

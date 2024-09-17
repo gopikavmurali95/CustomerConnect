@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context.read<HomeAppBarCubit>().isScrolled(_isScrolled);
     });
     getnotipermission();
-    _startAutoScroll();
+    // _startAutoScroll();
     super.initState();
     context.read<SelectLanguageLocaleCubit>().changeLanguage(selectedLocale);
     context
@@ -208,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _startAutoScroll() {
+  /* void _startAutoScroll() {
     _autoScrollTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
       if (!_isManualTap) {
         _currentIndex = (_currentIndex + 1) % homegraphList.length;
@@ -222,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
         _isManualTap = false;
       }
     });
-  }
+  } */
 
   void _performTapAction(int index) {
     context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
