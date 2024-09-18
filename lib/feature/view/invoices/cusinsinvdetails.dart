@@ -193,7 +193,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                               borderRadius: BorderRadius.circular(10)),
                           child: Center(
                             child: Text(
-                              widget.invoice.status ?? '',
+                              widget.invoice.invoiceType ?? '',
                               style: TextStyle(
                                   fontSize: 10.sp,
                                   color: const Color(0xff413434)),

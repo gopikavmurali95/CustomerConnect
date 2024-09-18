@@ -147,6 +147,7 @@ import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/cusinvdetailstotal/cus_inv_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/dailyactivityexpansion/daily_activity_expansion_cubit.dart';
@@ -768,6 +769,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CusOutStandingCountBloc>(),
+        ),
+        BlocProvider<CusInvDetailsTotalCubit>(
+          create: (context) => CusInvDetailsTotalCubit(),
         ),
       ],
       child: ScreenUtilInit(
