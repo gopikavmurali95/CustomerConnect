@@ -251,7 +251,7 @@ class OutstandingListWidget extends StatelessWidget {
                                                     color: /*  index % 2 == 0
                                                   ? const Color(0xffe3f7e2)
                                                   : */
-                                                        const Color(0xfff7f4e2),
+                                                       Color.fromARGB(255, 224, 241, 223),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10)),
