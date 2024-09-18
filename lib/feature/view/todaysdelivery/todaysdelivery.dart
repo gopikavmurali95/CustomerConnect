@@ -34,12 +34,12 @@ class _TodaysDeliveryState extends State<TodaysDelivery> {
                 customer: '',
                 customerOutlet: '',
                 fromDate:
-                    /* '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}' */ "01-01-2024",
+                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 mode: '',
                 route: '',
                 subArea: '',
                 toDate:
-                    /*  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}' */ "13-08-2024",
+                    '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 userId: widget.user.usrId),
             searchQuery: '',
           ),
