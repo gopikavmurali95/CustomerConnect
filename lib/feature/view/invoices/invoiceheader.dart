@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 
 class InvoiceHeaderScreen extends StatefulWidget {
   final bool isfromUser;
@@ -286,8 +287,9 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
               // )
               BlocBuilder<InvoiceTotalCubit, InvoiceTotalState>(
                 builder: (context, state) {
+                  double amount = double.tryParse(state.amount) ?? 0.0;
                   return Text(
-                    state.amount,
+                    formatAmount(amount),
                     // "0",
                     style: kfontstyle(
                         fontSize: 11.sp, fontWeight: FontWeight.w600),
@@ -321,5 +323,9 @@ class _InvoiceHeaderScreenState extends State<InvoiceHeaderScreen> {
             userId: widget.user.usrId),
         searchQuery: ''));
     await Future.delayed(const Duration(seconds: 2));
+  }
+
+  String formatAmount(double amount) {
+    return NumberFormat('#,##0.00', 'en_US').format(amount);
   }
 }

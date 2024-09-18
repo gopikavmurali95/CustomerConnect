@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 
 class InsightsInvoiceScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -461,8 +462,9 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           BlocBuilder<CusInvTotalCounterCubit,
                               CusInvTotalCounterState>(
                             builder: (context, state) {
+                              double amount = double.tryParse(state.amount) ?? 0.0;
                               return Text(
-                                state.amount,
+                                formatAmount(amount),
                                 style: TextStyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w600),
@@ -478,5 +480,8 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
         },
       ),
     );
+  }
+  String formatAmount(double amount) {
+    return NumberFormat('#,##0.00', 'en_US').format(amount);
   }
 }
