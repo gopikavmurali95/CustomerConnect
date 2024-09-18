@@ -49,7 +49,7 @@ class CusOutStandingRepo implements ICusOutstandingRepo {
       final response = await http.post(
           Uri.parse(baseUrl + cusOutsandingCOuntUrl),
           body: outIn.toJson());
-
+      log("cusoutcountresp ${response.body}");
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final outtotal = CusOutstandingCountModel.fromJson(json["result"][0]);
