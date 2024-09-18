@@ -258,8 +258,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                             context: context,
                             builder: (context) => CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(
-                                 selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'),
+                              content: Text(selectedLocale?.languageCode == 'en'
+                                  ? 'Your request has been successfully actioned'
+                                  : 'لقد تم تنفيذ طلبك بنجاح'),
                               actions: [
                                 TextButton(
                                   onPressed: () {

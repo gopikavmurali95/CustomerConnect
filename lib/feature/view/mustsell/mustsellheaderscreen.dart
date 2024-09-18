@@ -232,58 +232,54 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
             height: 10.h,
           ),
           Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child:
-                        BlocBuilder<MustSellHeaderBloc, MustSellHeaderState>(
-                      builder: (context, state) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              state.when(
-                                getMustsellHeadersState: (materialheader) =>
-                                    selectedMustSellMode == "P"
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: BlocBuilder<MustSellHeaderBloc, MustSellHeaderState>(
+              builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      state.when(
+                        getMustsellHeadersState: (materialheader) =>
+                            selectedMustSellMode == "P"
+                                ? AppLocalizations.of(context)!.pendingApprovals
+                                : selectedMustSellMode == "A"
+                                    ? AppLocalizations.of(context)!
+                                        .approvedRequests
+                                    : selectedMustSellMode == "AT"
                                         ? AppLocalizations.of(context)!
-                                            .pendingApprovals
-                                        :selectedMustSellMode == "A"
-                                            ? AppLocalizations.of(context)!
-                                                .approvedRequests
-                                            : selectedMustSellMode == "AT"
-                                                ? AppLocalizations.of(context)!
-                                                    .actionTakenRequests
-                                                : AppLocalizations.of(context)!
-                                                    .rejectedRequests,
-                                mustSellHeadersFailedState: () =>
-                                    selectedMustSellMode == "P"
+                                            .actionTakenRequests
+                                        : AppLocalizations.of(context)!
+                                            .rejectedRequests,
+                        mustSellHeadersFailedState: () =>
+                            selectedMustSellMode == "P"
+                                ? AppLocalizations.of(context)!.pendingApprovals
+                                : selectedMustSellMode == "A"
+                                    ? AppLocalizations.of(context)!
+                                        .approvedRequests
+                                    : selectedMustSellMode == "AT"
                                         ? AppLocalizations.of(context)!
-                                            .pendingApprovals
-                                        : selectedMustSellMode == "A"
-                                            ? AppLocalizations.of(context)!
-                                                .approvedRequests
-                                            : selectedMustSellMode == "AT"
-                                                ? AppLocalizations.of(context)!.actionTakenRequests
-                                                : AppLocalizations.of(context)!
-                                                    .rejectedRequests,
-                                // materialreqheadsuccess: (materialheader) =>,
-                                // materialreqheadFailed: () =>,
-                              ),
-                              style: countHeading(),
-                            ),
-                            Text(
-                              state.when(
-                                getMustsellHeadersState: (headers) =>
-                                    headers == null
-                                        ? "0"
-                                        : headers.length.toString(),
-                                mustSellHeadersFailedState: () => "0",
-                              ),
-                              style: countHeading(),
-                            )
-                          ],
-                        );
-                      },
+                                            .actionTakenRequests
+                                        : AppLocalizations.of(context)!
+                                            .rejectedRequests,
+                        // materialreqheadsuccess: (materialheader) =>,
+                        // materialreqheadFailed: () =>,
+                      ),
+                      style: countHeading(),
                     ),
-                  ),
+                    Text(
+                      state.when(
+                        getMustsellHeadersState: (headers) =>
+                            headers == null ? "0" : headers.length.toString(),
+                        mustSellHeadersFailedState: () => "0",
+                      ),
+                      style: countHeading(),
+                    )
+                  ],
+                );
+              },
+            ),
+          ),
           // Padding(
           //   padding: const EdgeInsets.symmetric(horizontal: 10),
           //   child: Row(

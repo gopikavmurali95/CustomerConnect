@@ -19,7 +19,7 @@ class PickingAndLoadinCountRepo implements IPickingAndLoadinCountRepo {
       final response =
           await http.post(Uri.parse(baseUrl + totalpickingandloadincountsurl));
       if (response.statusCode == 200) {
-        log('Response: ${response.body}');
+        // log('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final pickingandloadincount =
             PickingAndLoadinCountsModel.fromJson(json["result"][0]);

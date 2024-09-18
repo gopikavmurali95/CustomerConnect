@@ -19,7 +19,7 @@ class QualificationGroupREpo implements IQualificationGroupRepo {
       final response = await http.post(
           Uri.parse(baseUrl + qualificationgroupurl),
           body: {"ID": iD, "Mode": mode});
-          log("ID: $iD, mode: $mode");
+      log("ID: $iD, mode: $mode");
       if (response.statusCode == 200) {
         //log('qualification response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

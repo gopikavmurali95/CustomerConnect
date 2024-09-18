@@ -245,13 +245,18 @@ class OutstandingListWidget extends StatelessWidget {
                                                 height: 5.h,
                                               ),
                                               Container(
-                                                height: 14.h,
-                                                width: 50.w,
+                                                height: 16.h,
+                                                width: 60.w,
                                                 decoration: BoxDecoration(
-                                                    color: /*  index % 2 == 0
-                                                  ? const Color(0xffe3f7e2)
-                                                  : */
-                                                       Color.fromARGB(255, 224, 241, 223),
+                                                    color: headers[index]
+                                                                .status ==
+                                                            "Due"
+                                                        ? /*  outstandingcolorslist[
+                                                            0] */
+                                                        const Color(0xffE4F7E2)
+                                                        : /* outstandingcolorslist[
+                                                            1] */
+                                                        const Color(0xffF7E9E2),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10)),
@@ -269,8 +274,7 @@ class OutstandingListWidget extends StatelessWidget {
                                                     // headers[index].status ?? '',
                                                     style: kfontstyle(
                                                         fontSize: 10.sp,
-                                                        color: const Color(
-                                                            0xff413434)),
+                                                        color: Colors.black),
                                                   ),
                                                 ),
                                               )

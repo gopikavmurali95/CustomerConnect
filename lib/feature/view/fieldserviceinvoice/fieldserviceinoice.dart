@@ -268,27 +268,29 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                                                                 ),
                                                         children: [
                                                           TextSpan(
-                                                              text:
-                                                                   '${headers[index].cusCode} - ',
-                                                        style: kfontstyle(
-                                                          fontSize: 11.sp,
-                                                          color: const Color(
-                                                              0xff2C6B9E),
-                                                        ),),
+                                                            text:
+                                                                '${headers[index].cusCode} - ',
+                                                            style: kfontstyle(
+                                                              fontSize: 11.sp,
+                                                              color: const Color(
+                                                                  0xff2C6B9E),
+                                                            ),
+                                                          ),
                                                           TextSpan(
                                                               text: selectedLocale
-                                                                      ?.languageCode ==
-                                                                  "en"
-                                                              ? headers[index]
-                                                                      .cusName ??
-                                                                  ''
-                                                              : headers[index]
-                                                                      .arcusName ??
-                                                                  '',
-                                                          style: kfontstyle(
-                                                              fontSize: 12.sp,
-                                                              color: const Color(
-                                                                  0xff413434)))
+                                                                          ?.languageCode ==
+                                                                      "en"
+                                                                  ? headers[index]
+                                                                          .cusName ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .arcusName ??
+                                                                      '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: const Color(
+                                                                      0xff413434)))
                                                         ]),
                                                   ),
                                                   Text(

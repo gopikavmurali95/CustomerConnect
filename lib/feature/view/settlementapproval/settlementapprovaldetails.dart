@@ -469,7 +469,7 @@ class _SettlementApprovalDetailScreenState
                                     context
                                         .read<PostSettlementApprovalBloc>()
                                         .add(const PostLoadingApprovalEvent());
-                                        
+
                                     context
                                         .read<PostSettlementApprovalBloc>()
                                         .add(

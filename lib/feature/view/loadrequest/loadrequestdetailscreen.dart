@@ -514,7 +514,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                     if (response != null) {
                                                       Navigator.pop(context);
                                                       /* isLoading = false; */
-                                                      if (response.status != null) {
+                                                      if (response.status !=
+                                                          null) {
                                                         showCupertinoDialog(
                                                           context: context,
                                                           builder: (context) =>
@@ -539,7 +540,7 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                             ],
                                                           ),
                                                         );
-                                                      }/*  else {
+                                                      } /*  else {
                                                         statuslist[index] =
                                                             null;
                                                         setState(() {});
@@ -958,271 +959,246 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                 ],
               ),
             ),
-            
           ],
         ),
       ),
-      bottomNavigationBar: BlocListener<LoadReqApprovalBloc, LoadReqApprovalState>(
-              listener: (context, state) {
-                state.when(
-                  loadReqApprovalSuccessState: (response) {
-                    if (response != null) {
-                      Navigator.pop(context);
-                      // if (isApproval) {
-                      showCupertinoDialog(
-                        context: context,
-                        builder: (context) => CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(selectedLocale?.languageCode == "en"
-                              ? response.status ?? ''
-                              : response.arstatus ?? ''),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                              },
-                              child:
-                                  Text(AppLocalizations.of(context)!.proceed),
-                            ),
-                          ],
-                        ),
-                      );
-                      // }
-                    }
-                  },
-                  loadReqApprovalFailedState: () {
-                    Navigator.pop(context);
-                    showCupertinoDialog(
-                      context: context,
-                      builder: (context) => CupertinoAlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              context.read<LoadReqDetailBloc>().add(
-                                  GetloadreqdetailEvent(
-                                      reqId: widget.loadrequest.lrhID ?? "",
-                                      searchQuery: ''));
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
+      bottomNavigationBar:
+          BlocListener<LoadReqApprovalBloc, LoadReqApprovalState>(
+        listener: (context, state) {
+          state.when(
+            loadReqApprovalSuccessState: (response) {
+              if (response != null) {
+                Navigator.pop(context);
+                // if (isApproval) {
+                showCupertinoDialog(
+                  context: context,
+                  builder: (context) => CupertinoAlertDialog(
+                    title: Text(AppLocalizations.of(context)!.alert),
+                    content: Text(selectedLocale?.languageCode == "en"
+                        ? response.status ?? ''
+                        : response.arstatus ?? ''),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: Text(AppLocalizations.of(context)!.proceed),
                       ),
-                    );
-                  },
-                  loadReqApprovalLoadingState: () {
-                    showCupertinoModalPopup(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (context) => SizedBox(
-                              height: MediaQuery.of(context).size.height,
-                              width: MediaQuery.of(context).size.width,
-                              child: const PopScope(
-                                canPop: true,
-                                child: CupertinoActivityIndicator(
-                                  animating: true,
-                                  color: Colors.red,
-                                  radius: 30,
-                                ),
-                              ),
-                            ));
-                  },
+                    ],
+                  ),
                 );
-              },
-              child: SizedBox(
-                height: 50.h,
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Visibility(
-                        visible: widget.loadrequest.status == 'Pending'
-                            ? true
-                            : false,
-                        child: Row(
-                          children: [
-                            Flexible(
-                              flex: 1,
-                              fit: FlexFit.tight,
-                              child: MaterialButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                color: widget.loadrequest.status == 'Pending'
-                                    ? Colors.red.shade300
-                                    : Colors.grey[300],
-                                onPressed: () {
-                                  log(jsonEncode(LoadReqInApprovalModel(
-                                      products: _loadproducts,
-                                      reqID: widget.loadrequest.lrhID,
-                                      rotID: widget.loadrequest.rotID,
-                                      userId: widget.user.usrId)));
-                                  if (widget.loadrequest.status == 'Pending') {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
-
-                                              Navigator.pop(context);
-
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(
-                                                      const ApprovLoadingReqEvent());
-
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(
-                                                    ApprovloadReqEvent(
-                                                      approval:
-                                                          LoadReqInApprovalModel(
-                                                              products:
-                                                                  _loadproducts,
-                                                              reqID: widget
-                                                                  .loadrequest
-                                                                  .lrhID,
-                                                              rotID: widget
-                                                                  .loadrequest
-                                                                  .rotID,
-                                                              userId: widget
-                                                                  .loadrequest
-                                                                  .userID,
-                                                              status: "R"),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context)!.reject,
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Flexible(
-                              flex: 1,
-                              fit: FlexFit.tight,
-                              child: MaterialButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                color: widget.loadrequest.status == 'Pending'
-                                    ? Colors.green.shade300
-                                    : Colors.grey[300],
-                                onPressed: () {
-                                  if (widget.loadrequest.status == 'Pending') {
-                                    showCupertinoDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
-
-                                              Navigator.pop(context);
-
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(
-                                                      const ApprovLoadingReqEvent());
-
-                                              context
-                                                  .read<LoadReqApprovalBloc>()
-                                                  .add(ApprovloadReqEvent(
-                                                      approval:
-                                                          LoadReqInApprovalModel(
-                                                              products:
-                                                                  _loadproducts,
-                                                              reqID: widget
-                                                                  .loadrequest
-                                                                  .lrhID,
-                                                              rotID: widget
-                                                                  .loadrequest
-                                                                  .rotID,
-                                                              userId: widget
-                                                                  .loadrequest
-                                                                  .userID,
-                                                              status: "A")));
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  }
-                                },
-                                child: Text(
-                                  AppLocalizations.of(context)!.approve,
-                                  style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
+                // }
+              }
+            },
+            loadReqApprovalFailedState: () {
+              Navigator.pop(context);
+              showCupertinoDialog(
+                context: context,
+                builder: (context) => CupertinoAlertDialog(
+                  title: Text(AppLocalizations.of(context)!.alert),
+                  content:
+                      Text(AppLocalizations.of(context)!.somethingWentWrong),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        context.read<LoadReqDetailBloc>().add(
+                            GetloadreqdetailEvent(
+                                reqId: widget.loadrequest.lrhID ?? "",
+                                searchQuery: ''));
+                        Navigator.pop(context);
+                      },
+                      child: Text(AppLocalizations.of(context)!.ok),
+                    ),
                   ],
                 ),
-              ),
-            ),
+              );
+            },
+            loadReqApprovalLoadingState: () {
+              showCupertinoModalPopup(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        child: const PopScope(
+                          canPop: true,
+                          child: CupertinoActivityIndicator(
+                            animating: true,
+                            color: Colors.red,
+                            radius: 30,
+                          ),
+                        ),
+                      ));
+            },
+          );
+        },
+        child: SizedBox(
+          height: 50.h,
+          width: double.infinity,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Visibility(
+                  visible:
+                      widget.loadrequest.status == 'Pending' ? true : false,
+                  child: Row(
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          color: widget.loadrequest.status == 'Pending'
+                              ? Colors.red.shade300
+                              : Colors.grey[300],
+                          onPressed: () {
+                            log(jsonEncode(LoadReqInApprovalModel(
+                                products: _loadproducts,
+                                reqID: widget.loadrequest.lrhID,
+                                rotID: widget.loadrequest.rotID,
+                                userId: widget.user.usrId)));
+                            if (widget.loadrequest.status == 'Pending') {
+                              showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                  title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .doyouWantToProceed),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {});
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.cancel),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        loadingCount = 0;
+
+                                        Navigator.pop(context);
+
+                                        context
+                                            .read<LoadReqApprovalBloc>()
+                                            .add(const ApprovLoadingReqEvent());
+
+                                        context.read<LoadReqApprovalBloc>().add(
+                                              ApprovloadReqEvent(
+                                                approval:
+                                                    LoadReqInApprovalModel(
+                                                        products: _loadproducts,
+                                                        reqID: widget
+                                                            .loadrequest.lrhID,
+                                                        rotID: widget
+                                                            .loadrequest.rotID,
+                                                        userId: widget
+                                                            .loadrequest.userID,
+                                                        status: "R"),
+                                              ),
+                                            );
+                                      },
+                                      child: Text(AppLocalizations.of(context)!
+                                          .proceed),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)!.reject,
+                            style: kfontstyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          color: widget.loadrequest.status == 'Pending'
+                              ? Colors.green.shade300
+                              : Colors.grey[300],
+                          onPressed: () {
+                            if (widget.loadrequest.status == 'Pending') {
+                              showCupertinoDialog(
+                                context: context,
+                                builder: (context) => CupertinoAlertDialog(
+                                  title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .doyouWantToProceed),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {});
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.cancel),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        loadingCount = 0;
+
+                                        Navigator.pop(context);
+
+                                        context
+                                            .read<LoadReqApprovalBloc>()
+                                            .add(const ApprovLoadingReqEvent());
+
+                                        context.read<LoadReqApprovalBloc>().add(
+                                            ApprovloadReqEvent(
+                                                approval:
+                                                    LoadReqInApprovalModel(
+                                                        products: _loadproducts,
+                                                        reqID: widget
+                                                            .loadrequest.lrhID,
+                                                        rotID: widget
+                                                            .loadrequest.rotID,
+                                                        userId: widget
+                                                            .loadrequest.userID,
+                                                        status: "A")));
+                                      },
+                                      child: Text(AppLocalizations.of(context)!
+                                          .proceed),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                          child: Text(
+                            AppLocalizations.of(context)!.approve,
+                            style: kfontstyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 

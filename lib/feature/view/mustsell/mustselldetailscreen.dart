@@ -365,29 +365,41 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                             children: [
                                               Column(
                                                 children: [
-                                                  Text(details[index].huom!.isEmpty ||
-                                                               details[index].huom== null ? 
-                                                "-": details[index].huom ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                  Text(
+                                                    details[index]
+                                                                .huom!
+                                                                .isEmpty ||
+                                                            details[index]
+                                                                    .huom ==
+                                                                null
+                                                        ? "-"
+                                                        : details[index].huom ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                   SizedBox(
                                                     height: 10.h,
                                                   ),
-                                                 Text(details[index].luom!.isEmpty ||
-                                                               details[index].luom== null ? 
-                                                "-": details[index].luom ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                  Text(
+                                                    details[index]
+                                                                .luom!
+                                                                .isEmpty ||
+                                                            details[index]
+                                                                    .luom ==
+                                                                null
+                                                        ? "-"
+                                                        : details[index].luom ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                 ],
                                               ),
                                               SizedBox(
@@ -399,30 +411,43 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                               ),
                                               Column(
                                                 children: [
-                                                   Text(details[index].msdHQty!.isEmpty ||
-                                                               details[index].msdHQty== null ? 
-                                                "0": details[index].msdHQty ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
+                                                  Text(
+                                                    details[index]
+                                                                .msdHQty!
+                                                                .isEmpty ||
+                                                            details[index]
+                                                                    .msdHQty ==
+                                                                null
+                                                        ? "0"
+                                                        : details[index]
+                                                                .msdHQty ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                   SizedBox(
                                                     height: 10.h,
                                                   ),
-                                                   Text(details[index].msdLQty!.isEmpty ||
-                                                               details[index].msdLQty== null ? 
-                                                "0": details[index].msdLQty ?? "",style: kfontstyle(
-                                                                    fontSize:
-                                                                        12.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black54) ,),
-                                                
+                                                  Text(
+                                                    details[index]
+                                                                .msdLQty!
+                                                                .isEmpty ||
+                                                            details[index]
+                                                                    .msdLQty ==
+                                                                null
+                                                        ? "0"
+                                                        : details[index]
+                                                                .msdLQty ??
+                                                            "",
+                                                    style: kfontstyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.black54),
+                                                  ),
                                                 ],
                                               ),
                                             ],

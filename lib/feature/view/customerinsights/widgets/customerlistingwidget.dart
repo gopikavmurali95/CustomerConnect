@@ -20,13 +20,23 @@ class CustomersListingWidget extends StatelessWidget {
       child: BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
         builder: (context, state) {
           return state.when(
-            customersResetState: () => Padding(
+            customersResetState:
+                () => /* Padding(
               padding: const EdgeInsets.only(top: 250),
               child: Text(
                 AppLocalizations.of(context)!.selectRoute,
                 style: kfontstyle(),
               ),
-            ),
+            ), */
+                    ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => ShimmerContainers(
+                            height: 60.h, width: double.infinity),
+                        separatorBuilder: (context, index) => Divider(
+                              color: Colors.grey[300],
+                            ),
+                        itemCount: 10),
             getCustomersSstate: (customers) => customers == null
                 ? ListView.separated(
                     physics: const NeverScrollableScrollPhysics(),
@@ -201,24 +211,24 @@ class CustomersListingWidget extends StatelessWidget {
                                               children: [
                                                 TextSpan(
                                                   text:
-                                                       '${customers[index].headerCode} - ',
-                                              style: kfontstyle(
-                                                  fontSize: 11.sp,
-                                                  color:
-                                                      const Color(0xff413434)),
+                                                      '${customers[index].headerCode} - ',
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      color: const Color(
+                                                          0xff413434)),
                                                 ),
                                                 TextSpan(
-                                                  text:selectedLocale?.languageCode ==
-                                                        'en'
-                                                    ? customers[index]
-                                                            .headerName ??
-                                                        ''
-                                                    : customers[index]
-                                                            .arheaderName ??
-                                                        '',
-                                               
-                                                style:
-                                                    kfontstyle(fontSize: 11.sp),
+                                                  text: selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? customers[index]
+                                                              .headerName ??
+                                                          ''
+                                                      : customers[index]
+                                                              .arheaderName ??
+                                                          '',
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp),
                                                 )
                                               ]),
                                         ),
