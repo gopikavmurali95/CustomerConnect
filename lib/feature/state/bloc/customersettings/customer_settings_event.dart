@@ -4,4 +4,6 @@ part of 'customer_settings_bloc.dart';
 class CustomerSettingsEvent with _$CustomerSettingsEvent {
   const factory CustomerSettingsEvent.getCustomerSettingsEvent(
       {required String usrID}) = GetCustomerSettingsEvent;
+
+  const factory CustomerSettingsEvent.clearSettingsEvent() = ClearSettingsEvent;
 }

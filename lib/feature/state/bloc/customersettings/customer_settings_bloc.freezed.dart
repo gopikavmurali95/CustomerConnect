@@ -16,20 +16,22 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CustomerSettingsEvent {
-  String get usrID => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String usrID) getCustomerSettingsEvent,
+    required TResult Function() clearSettingsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String usrID)? getCustomerSettingsEvent,
+    TResult? Function()? clearSettingsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String usrID)? getCustomerSettingsEvent,
+    TResult Function()? clearSettingsEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -37,22 +39,21 @@ mixin _$CustomerSettingsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetCustomerSettingsEvent value)
         getCustomerSettingsEvent,
+    required TResult Function(ClearSettingsEvent value) clearSettingsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetCustomerSettingsEvent value)? getCustomerSettingsEvent,
+    TResult? Function(ClearSettingsEvent value)? clearSettingsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetCustomerSettingsEvent value)? getCustomerSettingsEvent,
+    TResult Function(ClearSettingsEvent value)? clearSettingsEvent,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CustomerSettingsEventCopyWith<CustomerSettingsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,8 +62,6 @@ abstract class $CustomerSettingsEventCopyWith<$Res> {
   factory $CustomerSettingsEventCopyWith(CustomerSettingsEvent value,
           $Res Function(CustomerSettingsEvent) then) =
       _$CustomerSettingsEventCopyWithImpl<$Res, CustomerSettingsEvent>;
-  @useResult
-  $Res call({String usrID});
 }
 
 /// @nodoc
@@ -75,29 +74,14 @@ class _$CustomerSettingsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? usrID = null,
-  }) {
-    return _then(_value.copyWith(
-      usrID: null == usrID
-          ? _value.usrID
-          : usrID // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetCustomerSettingsEventImplCopyWith<$Res>
-    implements $CustomerSettingsEventCopyWith<$Res> {
+abstract class _$$GetCustomerSettingsEventImplCopyWith<$Res> {
   factory _$$GetCustomerSettingsEventImplCopyWith(
           _$GetCustomerSettingsEventImpl value,
           $Res Function(_$GetCustomerSettingsEventImpl) then) =
       __$$GetCustomerSettingsEventImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String usrID});
 }
@@ -161,6 +145,7 @@ class _$GetCustomerSettingsEventImpl implements GetCustomerSettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String usrID) getCustomerSettingsEvent,
+    required TResult Function() clearSettingsEvent,
   }) {
     return getCustomerSettingsEvent(usrID);
   }
@@ -169,6 +154,7 @@ class _$GetCustomerSettingsEventImpl implements GetCustomerSettingsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String usrID)? getCustomerSettingsEvent,
+    TResult? Function()? clearSettingsEvent,
   }) {
     return getCustomerSettingsEvent?.call(usrID);
   }
@@ -177,6 +163,7 @@ class _$GetCustomerSettingsEventImpl implements GetCustomerSettingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String usrID)? getCustomerSettingsEvent,
+    TResult Function()? clearSettingsEvent,
     required TResult orElse(),
   }) {
     if (getCustomerSettingsEvent != null) {
@@ -190,6 +177,7 @@ class _$GetCustomerSettingsEventImpl implements GetCustomerSettingsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetCustomerSettingsEvent value)
         getCustomerSettingsEvent,
+    required TResult Function(ClearSettingsEvent value) clearSettingsEvent,
   }) {
     return getCustomerSettingsEvent(this);
   }
@@ -198,6 +186,7 @@ class _$GetCustomerSettingsEventImpl implements GetCustomerSettingsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetCustomerSettingsEvent value)? getCustomerSettingsEvent,
+    TResult? Function(ClearSettingsEvent value)? clearSettingsEvent,
   }) {
     return getCustomerSettingsEvent?.call(this);
   }
@@ -206,6 +195,7 @@ class _$GetCustomerSettingsEventImpl implements GetCustomerSettingsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetCustomerSettingsEvent value)? getCustomerSettingsEvent,
+    TResult Function(ClearSettingsEvent value)? clearSettingsEvent,
     required TResult orElse(),
   }) {
     if (getCustomerSettingsEvent != null) {
@@ -219,12 +209,113 @@ abstract class GetCustomerSettingsEvent implements CustomerSettingsEvent {
   const factory GetCustomerSettingsEvent({required final String usrID}) =
       _$GetCustomerSettingsEventImpl;
 
-  @override
   String get usrID;
-  @override
   @JsonKey(ignore: true)
   _$$GetCustomerSettingsEventImplCopyWith<_$GetCustomerSettingsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearSettingsEventImplCopyWith<$Res> {
+  factory _$$ClearSettingsEventImplCopyWith(_$ClearSettingsEventImpl value,
+          $Res Function(_$ClearSettingsEventImpl) then) =
+      __$$ClearSettingsEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSettingsEventImplCopyWithImpl<$Res>
+    extends _$CustomerSettingsEventCopyWithImpl<$Res, _$ClearSettingsEventImpl>
+    implements _$$ClearSettingsEventImplCopyWith<$Res> {
+  __$$ClearSettingsEventImplCopyWithImpl(_$ClearSettingsEventImpl _value,
+      $Res Function(_$ClearSettingsEventImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearSettingsEventImpl implements ClearSettingsEvent {
+  const _$ClearSettingsEventImpl();
+
+  @override
+  String toString() {
+    return 'CustomerSettingsEvent.clearSettingsEvent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearSettingsEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String usrID) getCustomerSettingsEvent,
+    required TResult Function() clearSettingsEvent,
+  }) {
+    return clearSettingsEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String usrID)? getCustomerSettingsEvent,
+    TResult? Function()? clearSettingsEvent,
+  }) {
+    return clearSettingsEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String usrID)? getCustomerSettingsEvent,
+    TResult Function()? clearSettingsEvent,
+    required TResult orElse(),
+  }) {
+    if (clearSettingsEvent != null) {
+      return clearSettingsEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCustomerSettingsEvent value)
+        getCustomerSettingsEvent,
+    required TResult Function(ClearSettingsEvent value) clearSettingsEvent,
+  }) {
+    return clearSettingsEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetCustomerSettingsEvent value)? getCustomerSettingsEvent,
+    TResult? Function(ClearSettingsEvent value)? clearSettingsEvent,
+  }) {
+    return clearSettingsEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCustomerSettingsEvent value)? getCustomerSettingsEvent,
+    TResult Function(ClearSettingsEvent value)? clearSettingsEvent,
+    required TResult orElse(),
+  }) {
+    if (clearSettingsEvent != null) {
+      return clearSettingsEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearSettingsEvent implements CustomerSettingsEvent {
+  const factory ClearSettingsEvent() = _$ClearSettingsEventImpl;
 }
 
 /// @nodoc

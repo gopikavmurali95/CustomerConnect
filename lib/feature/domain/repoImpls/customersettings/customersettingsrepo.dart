@@ -6,39 +6,46 @@ import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
+import 'package:dio/dio.dart';
 
 @LazySingleton(as: ICustomerSettingsRepo)
 class CustomerSettingsRepo implements ICustomerSettingsRepo {
+  final dio = Dio();
   @override
   Future<Either<MainFailures, CustomerSettingsModel>> getCustomerSettings(
       String userID) async {
+    log('Settings repo called');
     try {
-      final response = await http
-          .post(Uri.parse(baseUrl + cusSettingUrl), body: {"usrID": userID});
+      log("${baseUrl + cusSettingUrl} $userID");
 
-      // log('Response: ${response.body}');
+      // Define the Dio options with a timeout
+      final options = Options(
+        contentType: Headers.formUrlEncodedContentType,
+        sendTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10),
+      );
+
+      final response = await dio.post(
+        baseUrl + cusSettingUrl,
+        data: {"usrID": userID},
+        options: options,
+      );
+
+      log('Response: ${response.data}');
+
+      // Check if the response data is a string, then decode it
       if (response.statusCode == 200) {
-        Map<String, dynamic> json = jsonDecode(response.body);
-        /*   final List<dynamic> headerdata = json['result'];
-        List<SettingsOutModel> userModel = headerdata
-            .map<SettingsOutModel>((json) => SettingsOutModel.fromJson(json))
-            .toList();
-        List l1 = []; */
-/* 
-        for (var i = 0; i < l1.length; i++) {
-          customerSettings.loadin =
-              userModel[i].childNode == 'LAODIN' ? 'Y' : 'N';
+        dynamic responseData = response.data;
 
+        // If the response is a string, decode it as JSON
+        if (responseData is String) {
+          responseData = jsonDecode(responseData);
+        }
 
-        } */
-        /*  CustomerSettingsModel settingsModel = CustomerSettingsModel();
-        settingsModel.updateFromApiResponse(json);
-        // final node = updateFromChildNode(userModel.childNode ?? '');
-        return right(settingsModel); */
-
-        List<dynamic> resultList = json['result'];
+        // Now that the responseData is a Map, we can process it
+        List<dynamic> resultList = responseData['result'];
 
         List<Map<String, String>> formattedList = resultList.map((item) {
           return {
@@ -47,21 +54,16 @@ class CustomerSettingsRepo implements ICustomerSettingsRepo {
           };
         }).toList();
 
-        // CustomerSettingsModel settingsModel = CustomerSettingsModel();
-
         customerSettings.updateFromApiResponse(formattedList);
-        log(jsonEncode(customerSettings));
         return right(customerSettings);
       } else {
-        return left(
-          const MainFailures.networkerror(error: 'Something went Wrong'),
-        );
+        log('settings failure');
+        return right(customerSettings); // Adjust this based on your needs
       }
     } catch (e) {
-      log('settings error : $e');
-      return left(const MainFailures.serverfailure());
+      log('Unknown error: $e');
+      return right(customerSettings);
     }
-    // return right(customerSettings);
   }
 
   CustomerSettingsModel updateFromChildNode(String childNode) {

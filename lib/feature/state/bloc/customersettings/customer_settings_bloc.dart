@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -17,6 +19,7 @@ class CustomerSettingsBloc
   CustomerSettingsBloc(this.customerSettingsRepo)
       : super(CustomerSettingsState.initial()) {
     on<GetCustomerSettingsEvent>((event, emit) async {
+      log('settigs Bloc Called');
       Either<MainFailures, CustomerSettingsModel> settings =
           await customerSettingsRepo.getCustomerSettings(event.usrID);
 
@@ -26,6 +29,57 @@ class CustomerSettingsBloc
           (r) => GetCustomerSettingsState(settings: r),
         ),
       );
+    });
+    on<ClearSettingsEvent>((event, emit) {
+      emit(GetCustomerSettingsState(
+          settings: CustomerSettingsModel(
+        invTrans: "N",
+        custTrans: "N",
+        salesOrd: "N",
+        approvals: "N",
+        custInsight: "N",
+        tracking: "N",
+        promo: "N",
+        spclPrice: "N",
+        outstand: "N",
+        target: "N",
+        actReview: "N",
+        merch: "N",
+        priceChangeAppr: "N",
+        partDelAppr: "N",
+        schReturnAppr: "N",
+        retAppr: "N",
+        dispNoteAppr: "N",
+        credNoteAppr: "N",
+        assAddAppr: "N",
+        assRemAppr: "N",
+        vantoVanAppr: "N",
+        loadTransAppr: "N",
+        jourPlanAppr: "N",
+        fieldServAppr: "N",
+        matReqAppr: "N",
+        loadReqAppr: "N",
+        invReconfAppr: "N",
+        voidTransAppr: "N",
+        mustSellAppr: "N",
+        settleAppr: "N",
+        picking: "N",
+        loadin: "N",
+        invoice: "N",
+        arcollection: "N",
+        cusArcollection: "N",
+        cusDocuments: "N",
+        cusGeoLocation: "N",
+        cusInvoice: "N",
+        cusItemList: "N",
+        cusOutstanding: "N",
+        cusPromotion: "N",
+        cusSalesOrders: "N",
+        cusServiceJobs: "N",
+        cusSpPrice: "N",
+        todaysdelivery: "N",
+        totalorders: "N",
+      )));
     });
   }
 }

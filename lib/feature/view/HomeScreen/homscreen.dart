@@ -79,6 +79,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     _scrollController = ScrollController();
     _centerscrollController = ScrollController();
+    context.read<CustomerSettingsBloc>().add(const ClearSettingsEvent());
+    context
+        .read<CustomerSettingsBloc>()
+        .add(GetCustomerSettingsEvent(usrID: widget.user.usrId ?? '0'));
     tileKeys = List.generate(homegraphList.length, (index) => GlobalKey());
     _scrollController.addListener(() {
       _isScrolled = _scrollController.offset > 0;
@@ -87,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     getnotipermission();
     // _startAutoScroll();
-    super.initState();
+
     context.read<SelectLanguageLocaleCubit>().changeLanguage(selectedLocale);
     context
         .read<PickingAndLoadingCountBloc>()
@@ -105,10 +109,6 @@ class _HomeScreenState extends State<HomeScreen> {
     context
         .read<SalesOrderCountBloc>()
         .add(SalesOrderCountSuccessEvent(userID: widget.user.usrId!));
-
-    context
-        .read<CustomerSettingsBloc>()
-        .add(GetCustomerSettingsEvent(usrID: widget.user.usrId ?? '0'));
 
     context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
         date:
@@ -133,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
         toDate:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+    super.initState();
   }
 
   getnoti() async {
@@ -985,6 +986,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _onRefreshHome() async {
+    context.read<CustomerSettingsBloc>().add(const ClearSettingsEvent());
+    context
+        .read<CustomerSettingsBloc>()
+        .add(GetCustomerSettingsEvent(usrID: widget.user.usrId ?? '0'));
     context
         .read<PickingAndLoadingCountBloc>()
         .add(const ClearPichingAndLoadingCount());
@@ -1001,9 +1006,7 @@ class _HomeScreenState extends State<HomeScreen> {
     context
         .read<SalesOrderCountBloc>()
         .add(SalesOrderCountSuccessEvent(userID: widget.user.usrId!));
-    context
-        .read<CustomerSettingsBloc>()
-        .add(GetCustomerSettingsEvent(usrID: widget.user.usrId ?? '0'));
+
     context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
         date:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
