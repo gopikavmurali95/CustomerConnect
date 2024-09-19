@@ -20,7 +20,7 @@ class InsightsCusOtherOptionsDynamicGrid extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          double itemWidth = (constraints.maxWidth - 10) / 2;
+          double itemWidth = (constraints.maxWidth - 0) / 2;
           return Wrap(
             spacing: 0,
             runSpacing: 0,

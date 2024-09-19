@@ -312,7 +312,7 @@
   "updateGeocode": "تحديث الرمز الجغرافي",
   "updateGeocodeFailed":"فشل تحديث الرمز الجغرافي",
   "viewOnMap": "عرض على الخريطة",
-  "doYouWantToConfirmThisGeocode": "هل تريد تأكيد هذا الرمز الجغرافي",
+  "doYouWantToConfirmThisGeocode": "سيتم اعتبار هذا الرمز الجغرافي بمثابة الموقع النهائي للعميل، وسيتم تجاهل الرموز الجغرافية الأخرى بعد تأكيد الرمز الجغرافي. هل تريد تأكيد هذا الرمز الجغرافي؟",
   "no": "لا",
   "confirmGeocode": "تأكيد الرمز الجغرافي",
   "yourProfileHasbeenUpdated": "تم تحديث ملفك الشخصي",
