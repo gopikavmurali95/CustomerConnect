@@ -11,7 +11,7 @@ class InvoiceTotalCubit extends Cubit<InvoiceTotalState> {
   getInvTotal(List<InvoiceHeaderModel> invoiceList) {
     double total = 0;
     for (var element in invoiceList) {
-      total += double.parse(element.grandTotal ?? '0.00');
+      total += double.parse((element.grandTotal ?? '0.00').replaceAll(',', ''));
     }
     emit(GetInvoiceTotal(amount: total.toStringAsFixed(2)));
   }
