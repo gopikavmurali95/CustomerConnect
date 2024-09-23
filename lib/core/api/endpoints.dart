@@ -11,8 +11,8 @@
 //const baseUrl = "http://93.177.125.163:100/WS/";
 //const approvalBaseUrl = "http://93.177.125.163:100/WS/";
 //Meliha Diary UAT
-// const baseUrl = "http://93.177.125.163:100/WS/";
-// const approvalBaseUrl = "http://93.177.125.163:100/WS/";
+//const baseUrl = "http://93.177.125.163:100/WS/";
+//const approvalBaseUrl = "http://93.177.125.163:100/WS/";
 
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";

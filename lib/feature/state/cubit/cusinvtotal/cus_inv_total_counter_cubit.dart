@@ -11,7 +11,7 @@ class CusInvTotalCounterCubit extends Cubit<CusInvTotalCounterState> {
   getTotal(List<CusInsInvoiceModel> invoicelist) {
     double total = 0;
     for (var element in invoicelist) {
-      total += double.parse(element.grandTotal ?? '0.00');
+      total += double.parse((element.grandTotal ?? '0.00').replaceAll(',', ''));
     }
 
     emit(TotalInvoiceAmountState(amount: total.toStringAsFixed(2)));
