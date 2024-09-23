@@ -325,26 +325,46 @@ class _CreditNoteHeaderScreenState
                                                                               FontWeight.w600,
                                                                         ),
                                                                       ),
-                                                                      Row(
-                                                                        children: [
-                                                                          Text(
-                                                                            "${dispute[index].cusCode}-",
+                                                                       RichText(
+                                                                          text:
+                                                                              TextSpan(
                                                                             style:
-                                                                                kfontstyle(
-                                                                              fontSize: 11.sp,
-                                                                              color: const Color(0xff2C6B9E),
-                                                                            ),
+                                                                                DefaultTextStyle.of(context).style,
+                                                                            children: [
+                                                                              TextSpan(
+                                                                                text: '${dispute[index].cusCode} - ',
+                                                                                style: kfontstyle(
+                                                                                  fontSize: 11.sp,
+                                                                                  color: const Color(0xff2C6B9E),
+                                                                                ),
+                                                                              ),
+                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? dispute[index].cusName ?? '' : dispute[index].arcusName ?? '', style: subTitleTextStyle()
+                                                                                  // overflow: TextOverflow.ellipsis,
+                                                                                  ),
+                                                                            ],
                                                                           ),
-                                                                          Expanded(
-                                                                            child:
-                                                                                Text(
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              selectedLocale?.languageCode == 'en' ? dispute[index].cusName ?? '' : dispute[index].arcusName ?? '',
-                                                                              style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
+                                                                        ),
+                                                                      // Row(
+                                                                      //   children: [
+                                                                      //     Text(
+                                                                      //       "${dispute[index].cusCode}-",
+                                                                      //       style:
+                                                                      //           kfontstyle(
+                                                                      //         fontSize: 11.sp,
+                                                                      //         color: const Color(0xff2C6B9E),
+                                                                      //       ),
+                                                                      //     ),
+                                                                      //     Expanded(
+                                                                      //       child:
+                                                                      //           Text(
+                                                                      //             maxLines: 2,
+                                                                      //         overflow: TextOverflow.ellipsis,
+                                                                      //         selectedLocale?.languageCode == 'en' ? dispute[index].cusName ?? '' : dispute[index].arcusName ?? '',
+                                                                      //         style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
+                                                                      //       ),
+                                                                      //     ),
+                                                                      //   ],
+                                                                      // ),
                                                                       Text(
                                                                         dispute[index].date ??
                                                                             '',

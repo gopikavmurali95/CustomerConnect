@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:intl/intl.dart';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
@@ -81,6 +81,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
         );
     await Future.delayed(const Duration(seconds: 2));
   }
+    var formatter = NumberFormat("#,##,##,###.##", "en_US");
 
   @override
   Widget build(BuildContext context) {

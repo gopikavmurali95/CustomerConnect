@@ -313,36 +313,25 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                             "${survey[index].cusCode} - ${selectedLocale?.languageCode == "en" ? survey[index].surveyName ?? '' : survey[index].surveyArName ?? ''}",
                                                             style:
                                                                 blueTextStyle()),
-                                                        Row(
-                                                          children: [
-                                                            Text(
-                                                              "${survey[index].cusCode}-",
-                                                              style: kfontstyle(
-                                                                fontSize: 11.sp,
-                                                                color: const Color(
-                                                                    0xff2C6B9E),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              child: Text(
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  selectedLocale
-                                                                              ?.languageCode ==
-                                                                          "en"
-                                                                      ? survey[index]
-                                                                              .cusName ??
-                                                                          ''
-                                                                      : survey[index]
-                                                                              .cusArName ??
-                                                                          '',
-                                                                  //"${survey[index].cusName}",
-                                                                  style:
-                                                                      subTitleTextStyle()),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                        RichText(
+                                                                          text:
+                                                                              TextSpan(
+                                                                            style:
+                                                                                DefaultTextStyle.of(context).style,
+                                                                            children: [
+                                                                              TextSpan(
+                                                                                text: '${survey[index].cusCode} - ',
+                                                                                style: kfontstyle(
+                                                                                  fontSize: 11.sp,
+                                                                                  color: const Color(0xff2C6B9E),
+                                                                                ),
+                                                                              ),
+                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? survey[index].cusName ?? '' : survey[index].cusArName ?? '', style: subTitleTextStyle()
+                                                                                  // overflow: TextOverflow.ellipsis,
+                                                                                  ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
                                                         Text(
                                                           "${AppLocalizations.of(context)!.dueon}: ${survey[index].dueOn} ",
                                                           style: kfontstyle(

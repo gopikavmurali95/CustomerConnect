@@ -334,25 +334,34 @@ class _CreditNoteHeaderScreenState
                                                                                 FontWeight.w600,
                                                                           ),
                                                                         ),
-                                                                        Row(
-                                                                          children: [
-                                                                            Text(
-                                                                              "${returnData[index].cusCode}-",
-                                                                              style: kfontstyle(
-                                                                                fontSize: 11.sp,
-                                                                                color: const Color(0xff2C6B9E),
-                                                                              ),
-                                                                            ),
-                                                                            Expanded(
-                                                                              child: Text(
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                selectedLocale?.languageCode == "en" ? returnData[index].cusName ?? '' : returnData[index].arcusName ?? '',
-                                                                                // returnData[index].cusName ?? '',
-                                                                                style: kfontstyle(fontSize: 12.sp, color: const Color(0xff413434)),
-                                                                              ),
-                                                                            ),
-                                                                          ],
-                                                                        ),
+                                                                        RichText(
+                                                                                                                                            text:
+                                                                                                                                                TextSpan(
+                                                                                                                                              style: DefaultTextStyle.of(
+                                                                         context)
+                                                                                                                                                  .style,
+                                                                                                                                              children: [
+                                                                                                                                                TextSpan(
+                                                                                                                                                  text:
+                                                                         '${returnData[index].cusCode} - ',
+                                                                                                                                                  style:
+                                                                         kfontstyle(
+                                                                                                                                                    fontSize:
+                                                                           11.sp,
+                                                                                                                                                    color:
+                                                                           const Color(0xff2C6B9E),
+                                                                                                                                                  ),
+                                                                                                                                                ),
+                                                                                                                                                TextSpan(
+                                                                                                                                                    text: selectedLocale?.languageCode == 'en'
+                                                                           ? returnData[index].cusName ?? ''
+                                                                           : returnData[index].arcusName ?? '',
+                                                                                                                                                    style: subTitleTextStyle()
+                                                                                                                                                    // overflow: TextOverflow.ellipsis,
+                                                                                                                                                    ),
+                                                                                                                                              ],
+                                                                                                                                            ),
+                                                                                                                                          ),
                                                                         Text(
                                                                           returnData[index].date ??
                                                                               '',
@@ -409,7 +418,9 @@ class _CreditNoteHeaderScreenState
                                                             ),
                                                           ],
                                                         ),
+
                                                       ),
+                                                      
                                               separatorBuilder:
                                                   (context, index) => Divider(
                                                         color: Colors.grey[300],

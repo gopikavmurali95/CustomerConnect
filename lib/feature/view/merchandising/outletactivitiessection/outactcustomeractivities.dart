@@ -333,27 +333,25 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
                                                                     // "${activityData[index].cusCode}-${activityData[index].actName}",
                                                                     style:
                                                                         blueTextStyle()),
-                                                                Row(
-                                                                  children: [
-                                                                    Text(
-                                                                      "${activityData[index].cusCode}-",
-                                                                      style:
-                                                                          kfontstyle(
-                                                                        fontSize:
-                                                                            11.sp,
-                                                                        color: const Color(
-                                                                            0xff2C6B9E),
-                                                                      ),
-                                                                    ),
-                                                                    Expanded(
-                                                                      child: Text(
-                                                                          overflow: TextOverflow.ellipsis,
-                                                                          selectedLocale?.languageCode == "en" ? activityData[index].cusName ?? '' : activityData[index].cusrName ?? '',
-                                                                          // "${activityData[index].cusName}",
-                                                                          style: subTitleTextStyle()),
-                                                                    ),
-                                                                  ],
-                                                                ),
+                                                                 RichText(
+                                                                          text:
+                                                                              TextSpan(
+                                                                            style:
+                                                                                DefaultTextStyle.of(context).style,
+                                                                            children: [
+                                                                              TextSpan(
+                                                                                text: '${activityData[index].cusCode} - ',
+                                                                                style: kfontstyle(
+                                                                                  fontSize: 11.sp,
+                                                                                  color: const Color(0xff2C6B9E),
+                                                                                ),
+                                                                              ),
+                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? activityData[index].cusName ?? '' : activityData[index].cusrName ?? '', style: subTitleTextStyle()
+                                                                                  // overflow: TextOverflow.ellipsis,
+                                                                                  ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
                                                                 Text(
                                                                   "${AppLocalizations.of(context)!.dueon}: ${activityData[index].startDate} | ${AppLocalizations.of(context)!.completedon}: ${activityData[index].endDate}4",
                                                                   style: kfontstyle(

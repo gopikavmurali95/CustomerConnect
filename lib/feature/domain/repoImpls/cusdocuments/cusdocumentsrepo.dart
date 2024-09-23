@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
+
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -20,6 +22,7 @@ class CusDocumentsRepo implements IcusDocumentsModel {
       );
 
       if (response.statusCode == 200) {
+        log("documnets:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> docdata = json['result'];
