@@ -11,6 +11,10 @@
 const baseUrl = "http://93.177.125.163:100/WS/";
 const approvalBaseUrl = "http://93.177.125.163:100/WS/";
 
+// Meliha Diary LIVE
+// const baseUrl = "http://93.177.125.163:90/WS/";
+// const approvalBaseUrl = "http://93.177.125.163:90/WS/";
+
 const loginUrl = "Home/AppLogin";
 const totalpickingandloadincountsurl = "Home/SelectTotalPickingAndLoadInCounts";
 const customertransactioncountsurl = "Home/SelectCustomerTransactionCounts";
