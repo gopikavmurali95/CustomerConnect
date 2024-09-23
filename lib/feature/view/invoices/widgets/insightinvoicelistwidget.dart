@@ -103,6 +103,7 @@ class InsightInvoiceListWidget extends StatelessWidget {
                                     ),
                                   ),
                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
                                         headers[index].grandTotal ?? '',

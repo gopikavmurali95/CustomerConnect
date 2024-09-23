@@ -312,7 +312,7 @@
   "updateGeocode": "Update Geocode",
   "updateGeocodeFailed": "Update Geocode Failed",
   "viewOnMap": "View On Map",
-  "doYouWantToConfirmThisGeocode": "Do you want to confirm this Geocode",
+  "doYouWantToConfirmThisGeocode": "This geocode will be considered as the customer's final location, and other geocodes will be ignored after confirming the geocode. Do you want to confirm this geocode?",
   "no": "No",
   "confirmGeocode": "Confirm Geocode",
   "yourProfileHasbeenUpdated": "Your profile has been updated",

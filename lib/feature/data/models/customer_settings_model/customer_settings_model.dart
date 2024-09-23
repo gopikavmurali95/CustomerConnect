@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:customer_connect/feature/domain/repoImpls/customersettings/customersettingsrepo.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -261,7 +259,7 @@ class CustomerSettingsModel {
         String parent = item['ParentNode'] ?? '';
         // if(mapping.containsKey(key))
         setFieldValue(field, "Y");
-        log('parent ${parent}');
+        // log('parent ${parent}');
 
         setFieldValue(parent, "Y");
       }

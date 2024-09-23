@@ -164,11 +164,13 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                       width: 12.w,
                                     ),
                                     Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         Text(
                                           invheader[index].grandTotal ?? '',
                                           style: kfontstyle(fontSize: 11.sp),
                                         ),
+                                        SizedBox(height: 5.h,),
                                         Container(
                                           height: 14.h,
                                           width: 30.w,
