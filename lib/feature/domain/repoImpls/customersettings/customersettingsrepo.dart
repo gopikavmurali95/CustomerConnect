@@ -16,15 +16,15 @@ class CustomerSettingsRepo implements ICustomerSettingsRepo {
   @override
   Future<Either<MainFailures, CustomerSettingsModel>> getCustomerSettings(
       String userID) async {
-    log('Settings repo called');
+    // log('Settings repo called');
     try {
-      log("${baseUrl + cusSettingUrl} $userID");
+      // log("${baseUrl + cusSettingUrl} $userID");
 
       // Define the Dio options with a timeout
       final options = Options(
         contentType: Headers.formUrlEncodedContentType,
-        sendTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
+        /*   sendTimeout: const Duration(seconds: 10),
+        receiveTimeout: const Duration(seconds: 10), */
       );
 
       final response = await dio.post(
@@ -33,7 +33,7 @@ class CustomerSettingsRepo implements ICustomerSettingsRepo {
         options: options,
       );
 
-      log('Response: ${response.data}');
+      // log('Response: ${response.data}');
 
       // Check if the response data is a string, then decode it
       if (response.statusCode == 200) {

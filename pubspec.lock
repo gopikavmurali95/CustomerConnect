@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  app_installer:
+    dependency: transitive
+    description:
+      name: app_installer
+      sha256: e2ed08b1f762d6eb78c46c2b4d779a63fe4554a8e68328c6ab14e774a1a0d5c9
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   archive:
     dependency: transitive
     description:
@@ -277,18 +285,10 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: "5598aa796bbf4699afd5c67c0f5f6e2ed542afc956884b9cd58c306966efc260"
+      sha256: "7d328c4d898a61efc3cd93655a0955858e29a0aa647f0f9e02d59b3bb275e2e8"
       url: "https://pub.dev"
     source: hosted
-    version: "5.7.0"
-  dio_web_adapter:
-    dependency: transitive
-    description:
-      name: dio_web_adapter
-      sha256: "33259a9276d6cea88774a0000cfae0d861003497755969c92faa223108620dc8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
+    version: "4.0.6"
   dotted_line:
     dependency: "direct main"
     description:
@@ -414,6 +414,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_autoupdate:
+    dependency: "direct main"
+    description:
+      name: flutter_autoupdate
+      sha256: afefa1f30d10ed1dacd1e0d558e7ce214b02be515f0d0127a7320946dfc689ac
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   flutter_bloc:
     dependency: "direct main"
     description:
@@ -1394,6 +1402,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  version:
+    dependency: "direct main"
+    description:
+      name: version
+      sha256: b8d9fc75327de5da108942502043f0b7d6500fbded3137560ec2254dc4b9f8ba
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
   vm_service:
     dependency: transitive
     description:
