@@ -1,4 +1,4 @@
-package com.meliha.customer_connect
+package com.product.customer_connect
 
 import io.flutter.embedding.android.FlutterActivity
 
