@@ -109,6 +109,7 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                 SizedBox(
                                   width: 210.w,
                                   child: Text(
+                                      maxLines: 2,
                                     widget.spPrice.prhName!,
                                     overflow: TextOverflow.ellipsis,
                                     style: blueTextStyle(),

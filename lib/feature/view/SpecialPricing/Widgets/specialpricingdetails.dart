@@ -61,7 +61,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: SizedBox(
                   //color: Colors.red,
-                  height: 60,
+                  height: 75,
                   width: double.infinity,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,8 +73,10 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
+                                  
                                   widget.spPrice.prhName!.split('').toList()[0],
                                   style: TextStyle(
+                                    
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white),
@@ -102,6 +104,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                   SizedBox(
                                     width: 190.w,
                                     child: Text(
+                                       maxLines: 2,
                                       widget.spPrice.prhName ?? '',
                                       overflow: TextOverflow.ellipsis,
                                       style: blueTextStyle(),

@@ -343,29 +343,25 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                       "${tasksheader[index].taskCode}-${selectedLocale?.languageCode == "en" ? tasksheader[index].taskName ?? '' : tasksheader[index].taskArName ?? ''}",
                                                                       style:
                                                                           blueTextStyle()),
-                                                                  Row(
-                                                                    children: [
-                                                                      Text(
-                                                                        "${tasksheader[index].cusCode}-",
-                                                                        //"201232-",
-                                                                        style:
-                                                                            kfontstyle(
-                                                                          fontSize:
-                                                                              11.sp,
-                                                                          color:
-                                                                              const Color(0xff2C6B9E),
+                                                                  RichText(
+                                                                          text:
+                                                                              TextSpan(
+                                                                            style:
+                                                                                DefaultTextStyle.of(context).style,
+                                                                            children: [
+                                                                              TextSpan(
+                                                                                text: '${tasksheader[index].cusCode} - ',
+                                                                                style: kfontstyle(
+                                                                                  fontSize: 11.sp,
+                                                                                  color: const Color(0xff2C6B9E),
+                                                                                ),
+                                                                              ),
+                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? tasksheader[index].cusName ?? '' : tasksheader[index].cusArName ?? '', style: subTitleTextStyle()
+                                                                                  // overflow: TextOverflow.ellipsis,
+                                                                                  ),
+                                                                            ],
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      Expanded(
-                                                                        child: Text(
-                                                                            overflow: TextOverflow.ellipsis,
-                                                                            " ${selectedLocale?.languageCode == "en" ? tasksheader[index].cusName ?? '' : tasksheader[index].cusArName ?? ''}",
-                                                                            // "${tasksheader[index].cusName}",
-                                                                            // "Emmerch International Hotel",
-                                                                            style: subTitleTextStyle()),
-                                                                      ),
-                                                                    ],
-                                                                  ),
                                                                   Row(
                                                                     children: [
                                                                       Text(

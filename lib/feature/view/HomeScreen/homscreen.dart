@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
@@ -31,10 +32,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:flutter_autoupdate/flutter_autoupdate.dart';
+import 'package:version/version.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart'
+    as notifications;
 
 class HomeScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -77,6 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    // initPlatformState();
     _scrollController = ScrollController();
     _centerscrollController = ScrollController();
     context.read<CustomerSettingsBloc>().add(const ClearSettingsEvent());
@@ -1031,5 +1039,121 @@ class _HomeScreenState extends State<HomeScreen> {
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
     context.read<SelectLanguageLocaleCubit>().changeLanguage(selectedLocale);
     await Future.delayed(const Duration(seconds: 2));
+  }
+
+  autoUpdateCheck() async {}
+
+  var _startTime = DateTime.now().millisecondsSinceEpoch;
+  var _bytesPerSec = 0;
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    // ignore: unused_local_variable
+    UpdateResult? result0;
+    // ignore: unused_local_variable
+    DownloadProgress? download;
+    UpdateResult? result;
+
+    if (!mounted) return;
+
+    if (Platform.isAndroid || Platform.isIOS) {
+      var status = await Permission.storage.status;
+      if (status.isDenied) {
+        await Permission.storage.request();
+      }
+    }
+
+    var versionUrl;
+    if (Platform.isAndroid) {
+      versionUrl =
+          'https://storage.googleapis.com/download-dev.feedmepos.com/version_android_sample.json';
+    } else if (Platform.isWindows) {
+      versionUrl =
+          'https://storage.googleapis.com/download-dev.feedmepos.com/version_windows_sample.json';
+    }
+
+    var manager = UpdateManager(versionUrl: versionUrl);
+
+    try {
+      result = await manager.fetchUpdates();
+      setState(() {
+        result0 = result;
+      });
+
+      if (Version.parse('1.0.0') < result?.latestVersion) {
+        var controller = await result?.initializeUpdate();
+
+        // Show initial notification with 0% progress
+        showDownloadNotification(0);
+
+        controller?.stream.listen((event) async {
+          setState(() {
+            if (DateTime.now().millisecondsSinceEpoch - _startTime >= 1000) {
+              _startTime = DateTime.now().millisecondsSinceEpoch;
+              _bytesPerSec = event.receivedBytes - _bytesPerSec;
+            }
+            download = event;
+          });
+
+          // Update notification with progress
+          showDownloadNotification(
+              (event.receivedBytes / event.totalBytes * 100).toInt());
+
+          if (event.completed) {
+            log("Downloaded completed");
+            await controller.close();
+            await result?.runUpdate(event.path, autoExit: true);
+
+            // Show download completed notification
+            showCompletedNotification();
+          }
+        });
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> showDownloadNotification(int progress) async {
+    AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'Customer Connect',
+      'Update Download',
+      channelDescription: 'Downloading update',
+      importance: Importance.max,
+      priority: notifications.Priority.high,
+      showProgress: true,
+      maxProgress: 100,
+      progress: progress,
+    );
+    NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'Downloading Update',
+      'Progress: $progress%',
+      platformChannelSpecifics,
+      payload: 'update',
+    );
+  }
+
+  Future<void> showCompletedNotification() async {
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'Customer Connect',
+      'Update Completed',
+      channelDescription: 'Update downloaded successfully',
+      importance: Importance.max,
+      priority: notifications.Priority.high,
+    );
+    const NotificationDetails platformChannelSpecifics =
+        NotificationDetails(android: androidPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'Download Complete',
+      'The update has been downloaded successfully.',
+      platformChannelSpecifics,
+      payload: 'update_completed',
+    );
   }
 }
