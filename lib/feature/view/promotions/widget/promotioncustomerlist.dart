@@ -63,21 +63,37 @@ class PromotionCustomerList extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
+                                    Column(
                                       children: [
-                                        Text(
-                                          promocustomer[index].cusCode ?? '',
-                                          style: blueTextStyle(),
-                                        ),
-                                        Flexible(
-                                          flex: 1,
-                                          fit: FlexFit.tight,
-                                          child: Text(
-                                            ' - ${selectedLocale?.languageCode == "en" ? promocustomer[index].cusName ?? '' : promocustomer[index].arCusName ?? ''}',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: subTitleTextStyle(),
-                                          ),
-                                        ),
+                                        // Text(
+                                        //   promocustomer[index].cusCode ?? '',
+                                        //   style: blueTextStyle(),
+                                        // ),
+                                         RichText(
+                                                                          text:
+                                                                              TextSpan(
+                                                                            style:
+                                                                                DefaultTextStyle.of(context).style,
+                                                                            children: [
+                                                                              TextSpan(
+                                                                                text: '${promocustomer[index].cusCode} - ',
+                                                                                style: blueTextStyle()
+                                                                              ),
+                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? promocustomer[index].cusName ?? '' : promocustomer[index].arCusName ?? '', style: subTitleTextStyle()
+                                                                                  // overflow: TextOverflow.ellipsis,
+                                                                                  ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                        // Flexible(
+                                        //   flex: 1,
+                                        //   fit: FlexFit.tight,
+                                        //   child: Text(
+                                        //     ' - ${selectedLocale?.languageCode == "en" ? promocustomer[index].cusName ?? '' : promocustomer[index].arCusName ?? ''}',
+                                        //     overflow: TextOverflow.ellipsis,
+                                        //     style: subTitleTextStyle(),
+                                        //   ),
+                                        // ),
                                       ],
                                     ),
                                     Row(
