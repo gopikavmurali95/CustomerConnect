@@ -769,6 +769,9 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
+                            context
+                                .read<VanToVanHeaderBloc>()
+                                .add(const ClearVanToVanHeaderEvent());
                             context.read<VanToVanHeaderBloc>().add(
                                 getVanToVanHeaderEvent(
                                     userID: user.usrId ?? '',

@@ -406,12 +406,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                   _hPricecontrollers = List.generate(
                                     pdet.length,
                                     (index) => TextEditingController(
-                                        text: pdet[index].pcdApprovedHPrice),
+                                        text: pdet[index].pcdChangedHPrice),
                                   );
                                   _lPricecontrollers = List.generate(
                                       pdet.length,
                                       (index) => TextEditingController(
-                                            text: pdet[index].pcdApprovedLPrice,
+                                            text: pdet[index].pcdChangedLprice,
                                           ));
                                   selectedresons =
                                       List.generate(pdet.length, (index) => '');
@@ -900,6 +900,13 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             subTitleTextStyle(),
                                                       ),
                                                     ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
                                                     Expanded(
                                                       child: Text(
                                                         '${AppLocalizations.of(context)!.stdPrice} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
