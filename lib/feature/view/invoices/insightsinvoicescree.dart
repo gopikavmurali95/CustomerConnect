@@ -13,7 +13,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:intl/intl.dart';
 
 class InsightsInvoiceScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -81,7 +80,8 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
         );
     await Future.delayed(const Duration(seconds: 2));
   }
-    var formatter = NumberFormat("#,##,##,###.##", "en_US");
+
+  var formatter = NumberFormat("#,##,##,###.##", "en_US");
 
   @override
   Widget build(BuildContext context) {
@@ -463,7 +463,8 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           BlocBuilder<CusInvTotalCounterCubit,
                               CusInvTotalCounterState>(
                             builder: (context, state) {
-                              double amount = double.tryParse(state.amount) ?? 0.0;
+                              double amount =
+                                  double.tryParse(state.amount) ?? 0.0;
                               return Text(
                                 formatAmount(amount),
                                 style: TextStyle(
@@ -482,6 +483,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
       ),
     );
   }
+
   String formatAmount(double amount) {
     return NumberFormat('#,##0.00', 'en_US').format(amount);
   }
