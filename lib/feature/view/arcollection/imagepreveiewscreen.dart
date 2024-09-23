@@ -1,6 +1,7 @@
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class ArImagePreviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("imagesss ${arheader.image!.split(',').toList()[0]}");
+    // log("imagesss ${/* arheader.image! */ baseUrl.replaceAll('WS/', '') + arheader.image!.split(',').toList()[1]}");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -41,7 +42,10 @@ class ArImagePreviewScreen extends StatelessWidget {
                 : PageView.builder(
                     itemCount: arheader.image?.split(',').toList().length,
                     itemBuilder: (context, index) => Image.network(
-                      arheader.image!.split(',').toList()[index],
+                      index == 0
+                          ? arheader.image!.split(',').toList()[index]
+                          : baseUrl.replaceAll('WS/', '') +
+                              arheader.image!.split(',').toList()[index],
                       fit: BoxFit.cover,
                       width: double.infinity,
                       loadingBuilder: (context, child, loadingProgress) {

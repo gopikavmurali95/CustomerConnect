@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -352,12 +353,14 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                           approvedCount++;
                           if (details[i].status == 'Approved') {
                             statuslist[i] = true;
-                          } else if (details[i].status == 'Rejected') {
+                          } else if (details[i].status != null &&
+                              details[i].status!.contains('Reject')) {
                             statuslist[i] = false;
                           } else {
                             statuslist[i] = null;
                           }
                         }
+                        log(details[i].status ?? '');
                       }
                     }
                   }),
@@ -1043,6 +1046,17 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                               reqID: widget
                                                                   .vanToVanHeader
                                                                   .vvhId)));
+
+                                              /*     log(jsonEncode(
+                                                  VanToVanApprovalInParas(
+                                                      products:
+                                                          approvedProducts,
+                                                      userID: widget
+                                                          .vanToVanHeader
+                                                          .userID,
+                                                      reqID: widget
+                                                          .vanToVanHeader
+                                                          .vvhId))); */
                                             },
                                             child: Text(
                                                 AppLocalizations.of(context)!
