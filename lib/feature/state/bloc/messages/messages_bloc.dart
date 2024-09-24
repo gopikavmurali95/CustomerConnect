@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/domain/chat/models/message_model/message_model.dart';
-import 'package:customer_connect/feature/domain/chat/msgabstractrepos.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -13,9 +10,9 @@ part 'messages_bloc.freezed.dart';
 
 @injectable
 class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
-  final IMessageRepo messageRepo;
-  MessagesBloc(this.messageRepo) : super(const MessagesState.initial()) {
-    on<_sendmessageevent>((event, emit) async {
+  // final IMessageRepo messageRepo;
+  MessagesBloc() : super(const MessagesState.initial()) {
+    /*   on<_sendmessageevent>((event, emit) async {
       Either<MainFailures, String> sendmessage = await messageRepo.sendmessage(
           event.message, event.uniqueid, event.fromusername, event.toUserName);
 
@@ -35,6 +32,6 @@ class MessagesBloc extends Bloc<MessagesEvent, MessagesState> {
           (r) => _getmessagestate(messagelist: r),
         ),
       );
-    });
+    }); */
   }
 }

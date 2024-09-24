@@ -8,7 +8,6 @@ import 'package:customer_connect/feature/view/activityreview/activityreviewheade
 import 'package:customer_connect/feature/view/approvals/approvalscreen.dart';
 import 'package:customer_connect/feature/view/customerinsights/customersscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
-import 'package:customer_connect/feature/view/messages/chathomescreen.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/target/targetheaderscreen.dart';
@@ -616,7 +615,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(
+              /*   GestureDetector(
                 onTap: () {
                   Navigator.push(
                       context,
@@ -679,7 +678,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
+              ), */
             ], visibility: [
               state.when(
                 getCustomerSettingsState: (settings) =>
@@ -745,7 +744,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         : true,
                 customerSettingsFailedState: () => true,
               ),
-              false
+              // false
             ]),
           ),
         );

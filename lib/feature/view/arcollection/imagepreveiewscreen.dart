@@ -1,5 +1,7 @@
 // import 'dart:developer';
 
+import 'dart:developer';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
@@ -11,7 +13,7 @@ class ArImagePreviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // log("imagesss ${/* arheader.image! */ baseUrl.replaceAll('WS/', '') + arheader.image!.split(',').toList()[1]}");
+    log("imagesss ${arheader.image! /*  baseUrl.replaceAll('WS/', '') + arheader.image!.split(',').toList()[1] */}");
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

@@ -1,4 +1,4 @@
-import 'package:customer_connect/constants/fonts.dart';
+/* import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/domain/chat/messagesrepo.dart';
 import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart';
@@ -145,3 +145,4 @@ class _ChatUsersListingScreenState extends State<ChatUsersListingScreen> {
     );
   }
 }
+ */
