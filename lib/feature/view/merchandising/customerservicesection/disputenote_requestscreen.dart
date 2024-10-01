@@ -325,25 +325,27 @@ class _CreditNoteHeaderScreenState
                                                                               FontWeight.w600,
                                                                         ),
                                                                       ),
-                                                                       RichText(
-                                                                          text:
-                                                                              TextSpan(
-                                                                            style:
-                                                                                DefaultTextStyle.of(context).style,
-                                                                            children: [
-                                                                              TextSpan(
-                                                                                text: '${dispute[index].cusCode} - ',
-                                                                                style: kfontstyle(
-                                                                                  fontSize: 11.sp,
-                                                                                  color: const Color(0xff2C6B9E),
-                                                                                ),
+                                                                      RichText(
+                                                                        text:
+                                                                            TextSpan(
+                                                                          style:
+                                                                              DefaultTextStyle.of(context).style,
+                                                                          children: [
+                                                                            TextSpan(
+                                                                              text: '${dispute[index].cusCode} - ',
+                                                                              style: kfontstyle(
+                                                                                fontSize: 11.sp,
+                                                                                color: const Color(0xff2C6B9E),
                                                                               ),
-                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? dispute[index].cusName ?? '' : dispute[index].arcusName ?? '', style: subTitleTextStyle()
-                                                                                  // overflow: TextOverflow.ellipsis,
-                                                                                  ),
-                                                                            ],
-                                                                          ),
+                                                                            ),
+                                                                            TextSpan(
+                                                                                text: selectedLocale?.languageCode == 'en' ? dispute[index].cusName ?? '' : dispute[index].arcusName ?? '',
+                                                                                style: subTitleTextStyle()
+                                                                                // overflow: TextOverflow.ellipsis,
+                                                                                ),
+                                                                          ],
                                                                         ),
+                                                                      ),
                                                                       // Row(
                                                                       //   children: [
                                                                       //     Text(

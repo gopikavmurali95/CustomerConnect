@@ -42,7 +42,7 @@ class _CustomersScrenState extends State<CustomersScren> {
         userId: widget.user.usrId ?? '',
         area: '',
         subarea: '',
-        route: '',
+        route: '-1',
         searchQuery: ''));
 
     super.initState();

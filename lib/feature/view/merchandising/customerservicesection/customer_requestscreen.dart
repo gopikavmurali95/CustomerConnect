@@ -352,25 +352,34 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                       "${headers[index].reqCode}",
                                                                       style:
                                                                           blueTextStyle()),
-                                                                           RichText(
+                                                                  RichText(
+                                                                    text:
+                                                                        TextSpan(
+                                                                      style: DefaultTextStyle.of(
+                                                                              context)
+                                                                          .style,
+                                                                      children: [
+                                                                        TextSpan(
                                                                           text:
-                                                                              TextSpan(
-                                                                            style:
-                                                                                DefaultTextStyle.of(context).style,
-                                                                            children: [
-                                                                              TextSpan(
-                                                                                text: '${headers[index].cusCode} - ',
-                                                                                style: kfontstyle(
-                                                                                  fontSize: 11.sp,
-                                                                                  color: const Color(0xff2C6B9E),
-                                                                                ),
-                                                                              ),
-                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? headers[index].cusName ?? '' : headers[index].arcusName ?? '', style: subTitleTextStyle()
-                                                                                  // overflow: TextOverflow.ellipsis,
-                                                                                  ),
-                                                                            ],
+                                                                              '${headers[index].cusCode} - ',
+                                                                          style:
+                                                                              kfontstyle(
+                                                                            fontSize:
+                                                                                11.sp,
+                                                                            color:
+                                                                                const Color(0xff2C6B9E),
                                                                           ),
                                                                         ),
+                                                                        TextSpan(
+                                                                            text: selectedLocale?.languageCode == 'en'
+                                                                                ? headers[index].cusName ?? ''
+                                                                                : headers[index].arcusName ?? '',
+                                                                            style: subTitleTextStyle()
+                                                                            // overflow: TextOverflow.ellipsis,
+                                                                            ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
                                                                   // Row(
                                                                   //   children: [
                                                                   //     Text(

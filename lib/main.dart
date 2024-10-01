@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
+import 'package:customer_connect/feature/state/bloc/autoupdate/auto_update_bloc.dart';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -26,7 +26,6 @@ import 'package:customer_connect/feature/state/bloc/chartactualvisits/chart_actu
 import 'package:customer_connect/feature/state/bloc/chartroutes/chart_routs_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartnonproductive/chart_non_productive_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartproductivevisit/chart_productive_visit_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/chatusers/all_users_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
@@ -83,7 +82,6 @@ import 'package:customer_connect/feature/state/bloc/merchcustomeractivities/merc
 import 'package:customer_connect/feature/state/bloc/merchcustomerrequest/merch_customer_request_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchdisplayagreement/merch_display_agreement_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchreturnrequest/merch_return_request_bloc.dart';
-import 'package:customer_connect/feature/state/bloc/messages/messages_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellapprove/must_sell_approve_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustselldetail/must_sell_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/mustsellheader/must_sell_header_bloc.dart';
@@ -167,6 +165,7 @@ import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cub
 import 'package:customer_connect/feature/state/cubit/selectlanguage/select_language_locale_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/unscheduledvisit/un_scheduled_visit_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/updatepercentage/update_download_percentage_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/voidtransactionselection/void_transaction_selection_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
@@ -221,6 +220,7 @@ void main() async {
         await FirebaseMessaging.instance.setAutoInitEnabled(true);
       }
     }
+
     final sharedprefs = await SharedPreferences.getInstance();
 
     String? selectedlocaleString = sharedprefs.getString('SelectedLocale');
@@ -599,12 +599,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<InventoryReconfirmDetailBloc>(),
         ),
-        BlocProvider(
+        /*  BlocProvider(
           create: (context) => getit<AllUsersBloc>(),
         ),
         BlocProvider(
           create: (context) => getit<MessagesBloc>(),
-        ),
+        ), */
         BlocProvider(
           create: (context) => getit<MustSellHeaderBloc>(),
         ),
@@ -772,6 +772,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<CusInvDetailsTotalCubit>(
           create: (context) => CusInvDetailsTotalCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<AutoUpdateBloc>(),
+        ),
+        BlocProvider<UpdateDownloadPercentageCubit>(
+          create: (context) => UpdateDownloadPercentageCubit(),
         ),
       ],
       child: ScreenUtilInit(

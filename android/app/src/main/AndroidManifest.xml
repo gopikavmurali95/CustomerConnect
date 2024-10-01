@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
     package="com.product.customer_connect">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,9 +8,15 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Required for external storage access -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <application
         android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
         android:label="Customer Connect"
         android:name="${applicationName}"
         android:allowBackup="false"
@@ -43,6 +50,11 @@
                 <action android:name="FLUTTER_NOTIFICATION_CLICK" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action
+                    android:name="com.android_package_installer.content.SESSION_API_PACKAGE_INSTALLED"
+                    android:exported="false"/>
+              </intent-filter>
         </activity>
 
         <meta-data
@@ -71,14 +83,26 @@
         <!-- Your <provider> element should be here -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileProvider"
+            android:authorities="com.product.customer_connect.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-        
+        <provider
+          android:name="androidx.startup.InitializationProvider"
+          android:authorities="com.product.customer_connect.androidx-startup"
+          android:exported="false"
+          tools:node="merge">
+    <meta-data
+        android:name="androidx.work.WorkManagerInitializer"
+        android:value="androidx.startup"
+        tools:node="remove" />
+</provider>
+ 
+<!-- declare customized Initializer -->
+
     </application>
 
     <!-- Required to query activities that can process text -->

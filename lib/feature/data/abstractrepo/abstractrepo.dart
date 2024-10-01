@@ -17,6 +17,7 @@ import 'package:customer_connect/feature/data/models/asset_add_resp_out_model/as
 import 'package:customer_connect/feature/data/models/asset_removal_approval_in_model/asset_removal_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_approve_out_model/asset_removal_approve_out_model.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_request_header_model/asset_removal_request_header_model.dart';
+import 'package:customer_connect/feature/data/models/auto_update_resp_model/auto_update_resp_model.dart';
 import 'package:customer_connect/feature/data/models/chart_actual_visit_model/chart_actual_visit_model.dart';
 import 'package:customer_connect/feature/data/models/chart_non_productive_model/chart_non_productive_model.dart';
 import 'package:customer_connect/feature/data/models/chart_planned_visits_model/chart_planned_visits_model.dart';
@@ -775,4 +776,10 @@ abstract class IUnScheduledVisitApprovalRepo {
 
   Future<Either<MainFailures, UnScheduledApprovalRespModel>>
       rejectUnscheduledVisit(List<UnScheduledVisitApproveInModel> reject);
+}
+
+abstract class IAutoUpdateRepo {
+  Future<Either<MainFailures, AutoUpdateRespModel>> getUpdateStatus(
+    String type,
+  );
 }

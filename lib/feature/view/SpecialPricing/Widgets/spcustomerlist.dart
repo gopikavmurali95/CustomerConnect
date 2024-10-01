@@ -59,36 +59,49 @@ class SPCustomerList extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                 Expanded(child: Row(
-                                  children: [Expanded(child: Column(
-                                    children: [
-                               
-                                 RichText(
-                                  text: TextSpan(
-                                    style: DefaultTextStyle.of(context).style,
-                                    children: [
-                                      TextSpan(
-                                        text: '${customer[index].cusCode} - ',
-                                        style: kfontstyle(
-                                          fontSize: 11.sp,
-                                          color: const Color(0xff2C6B9E),
-                                        ),
-                                      ),
-                                      TextSpan(
-                                          text: selectedLocale?.languageCode ==
-                                                  'en'
-                                              ? customer[index].cusName ?? ''
-                                              : customer[index].arcusName ?? '',
-                                          style: subTitleTextStyle()
-                                          // overflow: TextOverflow.ellipsis,
+                                Expanded(
+                                    child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                        child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        RichText(
+                                          text: TextSpan(
+                                            style: DefaultTextStyle.of(context)
+                                                .style,
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    '${customer[index].cusCode} - ',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  color:
+                                                      const Color(0xff2C6B9E),
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                  text: selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? customer[index]
+                                                              .cusName ??
+                                                          ''
+                                                      : customer[index]
+                                                              .arcusName ??
+                                                          '',
+                                                  style: subTitleTextStyle()
+                                                  // overflow: TextOverflow.ellipsis,
+                                                  ),
+                                            ],
                                           ),
-                                    ],
-                                  ),
-                                ),
-                                    ],
-                                  ))],
-                                 )),
-                               
+                                        ),
+                                      ],
+                                    ))
+                                  ],
+                                )),
                               ],
                             ),
                             const Divider()
