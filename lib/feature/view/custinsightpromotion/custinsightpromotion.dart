@@ -160,50 +160,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            /* Row(
-                              children: [
-                                Text(
-                                  '${widget.customer.cusCode} - ',
-                                  style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff2C6B9E),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 200.w,
-                                  child: Text(
-                                    overflow: TextOverflow.ellipsis,
-                                    selectedLocale?.languageCode == 'en'
-                                        ? widget.customer.cusName ?? ""
-                                        : widget.customer.arcusName ?? '',
-                                    style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        color: const Color(0xff413434)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  '${widget.customer.headerCode} - ',
-                                  style: kfontstyle(
-                                      fontSize: 11.sp,
-                                      color: const Color(0xff413434)),
-                                ),
-                                SizedBox(
-                                  width: 150.w,
-                                  child: Text(
-                                    selectedLocale?.languageCode == 'en'
-                                        ? widget.customer.headerName ?? ""
-                                        : widget.customer.arheaderName ?? '',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: kfontstyle(fontSize: 12.sp),
-                                  ),
-                                ),
-                              ],
-                            ), */
+                           
                             SizedBox(
                               width: 300.w,
                               child: RichText(
