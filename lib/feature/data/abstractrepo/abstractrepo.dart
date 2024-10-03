@@ -250,7 +250,8 @@ abstract class ICusInsightsCustomersRepo {
       String area,
       String subarea,
       String route,
-      String searchString);
+      String searchString,
+      String pagenum);
 }
 
 abstract class IcusInsCountsRepo {

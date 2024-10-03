@@ -9,5 +9,5 @@ class OutstandingState with _$OutstandingState {
       OutstandingFailedState;
 
   factory OutstandingState.initial() =>
-      OutstandingState.getOutstandingDataState(counts: null);
+    const  OutstandingState.getOutstandingDataState(counts: null);
 }

@@ -19,7 +19,9 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
       String area,
       String subarea,
       String route,
-      String searchString) async {
+      String searchString,
+      String pagenum) async {
+
     Completer<Either<MainFailures, List<CusInsCustomersModel>>> completer =
         Completer();
 
@@ -31,6 +33,7 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
       'subarea': subarea,
       'route': route,
       'searchString': searchString,
+      'pagenum' : pagenum,
       'receivePort': receivePort.sendPort,
     });
 
@@ -56,9 +59,10 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
           'SubArea': message['subarea'],
           'Route': message['route'],
           'SearchString': message['searchString'],
+          'Pagenum' : message['pagenum'],
         },
       );
-      // log(response.body);
+      log(response.body);
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         final List<dynamic> cusdetaildata = json['result'];

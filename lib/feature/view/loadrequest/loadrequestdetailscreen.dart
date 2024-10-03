@@ -835,12 +835,30 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                             value;
                                                                         _loadproducts[index] =
                                                                             LoadReqPrdModel(
-                                                                          lrdLQty:
+                                                                          /* lrdLQty:
                                                                               details[index].lrdLQty,
                                                                           lrdHQty:
                                                                               details[index].lrdHQty,
                                                                           lrdId:
+                                                                              details[index].lrdID, */
+                                                                          lrdHQty:
+                                                                              details[index].lrdHQty,
+                                                                          lrdHuom:
+                                                                              details[index].lrdHUOM,
+                                                                          lrdId:
                                                                               details[index].lrdID,
+                                                                          lrdLQty:
+                                                                              details[index].lrdLQty,
+                                                                          lrdLuom:
+                                                                              details[index].lrdLUOM,
+                                                                          lrdPrdId:
+                                                                              details[index].lrdPrdID,
+                                                                          lrdTotalQty:
+                                                                              details[index].lrdTotalQty,
+                                                                          txtApvHQty:
+                                                                              details[index].lrdApvHQty,
+                                                                          txtApvLQty:
+                                                                              details[index].lrdApvLQty,
                                                                         );
                                                                       },
                                                                       //controller: _apprvHQtyController,
@@ -894,12 +912,30 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                             value;
                                                                         _loadproducts[index] =
                                                                             LoadReqPrdModel(
-                                                                          lrdLQty:
+                                                                          /*  lrdLQty:
                                                                               details[index].lrdLQty,
                                                                           lrdHQty:
                                                                               details[index].lrdHQty,
                                                                           lrdId:
+                                                                              details[index].lrdID, */
+                                                                          lrdHQty:
+                                                                              details[index].lrdHQty,
+                                                                          lrdHuom:
+                                                                              details[index].lrdHUOM,
+                                                                          lrdId:
                                                                               details[index].lrdID,
+                                                                          lrdLQty:
+                                                                              details[index].lrdLQty,
+                                                                          lrdLuom:
+                                                                              details[index].lrdLUOM,
+                                                                          lrdPrdId:
+                                                                              details[index].lrdPrdID,
+                                                                          lrdTotalQty:
+                                                                              details[index].lrdTotalQty,
+                                                                          txtApvHQty:
+                                                                              details[index].lrdApvHQty,
+                                                                          txtApvLQty:
+                                                                              details[index].lrdApvLQty,
                                                                         );
                                                                       },
                                                                       style: const TextStyle(

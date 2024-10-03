@@ -28,27 +28,74 @@ final _routeIDCtrl = TextEditingController();
 
 Timer? debounce;
 bool isSearchLoading = false;
+int pagecounter = 1;
+ScrollController customersscrollController = ScrollController();
+bool isfirstfetch = true;
 
 class _CustomersScrenState extends State<CustomersScren> {
   @override
   void initState() {
+    pagecounter = 1;
+    customersscrollController = ScrollController();
     _customerSearchCtrl.clear();
     _routeIDCtrl.clear();
 
-    context.read<GetAllRouteBloc>().add(const ClearAllRouteEvent());
     context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
-    context.read<CustomersListBlocBloc>().add(const RestCustomersEvent());
+    context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
     context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
         userId: widget.user.usrId ?? '',
         area: '',
         subarea: '',
-        route: '-1',
-        searchQuery: ''));
+        route: '',
+        searchQuery: '',
+        pagenum: '1'));
+
+    setUpScrollController(
+        userId: widget.user.usrId ?? '',
+        area: '',
+        subArea: '',
+        route: '',
+        searchQuery: '',
+        pageNum: pagecounter.toString());
 
     super.initState();
   }
 
-  Future<void> _onRefreshLoadin(BuildContext context) async {
+  setUpScrollController(
+      {required String userId,
+      required String area,
+      required String subArea,
+      required String route,
+      required String searchQuery,
+      required String pageNum}) {
+    if (isfirstfetch == true) {
+      isfirstfetch = false;
+      pagecounter++;
+      context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
+          userId: widget.user.usrId ?? '',
+          area: '',
+          subarea: '',
+          route: '',
+          searchQuery: _customerSearchCtrl.text,
+          pagenum: '1'));
+    }
+    customersscrollController.addListener(() {
+      if (customersscrollController.position.atEdge) {
+        if (customersscrollController.position.pixels != 0) {
+          context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
+              userId: widget.user.usrId ?? '',
+              area: '',
+              subarea: '',
+              route: '',
+              searchQuery: '',
+              pagenum: pagecounter.toString()));
+          pagecounter++;
+        }
+      }
+    });
+  }
+
+  Future<void> _onRefreshCustomers(BuildContext context) async {
     _customerSearchCtrl.clear();
 
     context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
@@ -57,8 +104,9 @@ class _CustomersScrenState extends State<CustomersScren> {
         userId: widget.user.usrId ?? '',
         area: '',
         subarea: '',
-        route: _routeIDCtrl.text,
-        searchQuery: ''));
+        route: '',
+        searchQuery: '',
+        pagenum: '1'));
     await Future.delayed(const Duration(seconds: 2));
   }
 
@@ -88,11 +136,12 @@ class _CustomersScrenState extends State<CustomersScren> {
         triggerMode: RefreshIndicatorTriggerMode.anywhere,
         color: const Color.fromARGB(255, 181, 218, 245),
         displacement: BorderSide.strokeAlignCenter,
-        onRefresh: () => _onRefreshLoadin(context),
+        onRefresh: () => _onRefreshCustomers(context),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
+            controller: customersscrollController,
             child: BlocListener<CustomerSearchLoadingCubit,
                 CustomerSearchLoadingState>(
               listener: (context, state) {
@@ -116,18 +165,6 @@ class _CustomersScrenState extends State<CustomersScren> {
               },
               child: Column(
                 children: [
-                  /* Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          AppLocalizations.of(context)!
-                              .kindlySelectRouteToViewTheCustomers,
-                          style: kfontstyle(fontSize: 11.sp),
-                        ),
-                      )
-                    ],
-                  ), */
                   Row(
                     children: [
                       Expanded(
@@ -160,60 +197,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                     blurRadius: 0.4,
                                                     spreadRadius: 0.4)
                                               ]),
-                                          child: /* DropdownButtonFormField(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          dropdownColor: Colors.white,
-                                          value: routes[0].rotId ?? '',
-                                          style:
-                                              kfontstyle(color: Colors.black),
-                                          decoration: const InputDecoration(
-                                            border: InputBorder.none,
-                                          ),
-                                          items:
-                                              routes.map((CuSInsRotList item) {
-                                            return DropdownMenuItem(
-                                              value: item.rotId,
-                                              child: Text(
-                                                overflow: TextOverflow.ellipsis,
-                                                item.rotName ?? '',
-                                                style:
-                                                    kfontstyle(fontSize: 11.sp),
-                                              ),
-                                            );
-                                          }).toList(),
-                                          onChanged: (value) {
-                                            _routeIDCtrl.text = value!;
-                                            log(value);
-
-                                            if (value != '-1' ||
-                                                value.isNotEmpty) {
-                                              context
-                                                  .read<CustomersListBlocBloc>()
-                                                  .add(
-                                                      const ClearCustomersEvent());
-                                              context
-                                                  .read<CustomersListBlocBloc>()
-                                                  .add(GetCustomersEvent(
-                                                      userId:
-                                                          widget.user.usrId ??
-                                                              '',
-                                                      area: '',
-                                                      subarea: '',
-                                                      route: value,
-                                                      searchQuery: ''));
-                                            } else if (value == '-1' ||
-                                                value.isEmpty) {
-                                              // _routeIDCtrl.clear();
-
-                                              context
-                                                  .read<CustomersListBlocBloc>()
-                                                  .add(
-                                                      const RestCustomersEvent());
-                                            }
-                                          },
-                                        ), */
-                                              Padding(
+                                          child: Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 10),
                                             child: Theme(
@@ -271,8 +255,6 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                               InputBorder.none),
                                                 ),
                                                 items: routes,
-                                                // asyncItems: (String filter) =>
-                                                //     getData(filter),
                                                 selectedItem: routes[0],
                                                 itemAsString:
                                                     (CuSInsRotList u) =>
@@ -281,7 +263,6 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                     (CuSInsRotList? data) {
                                                   _routeIDCtrl.text =
                                                       data!.rotId!;
-                                                  // log/(value);
 
                                                   if (data.rotId! != '-1' ||
                                                       data.rotId!.isNotEmpty) {
@@ -303,13 +284,12 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                                 subarea: '',
                                                                 route:
                                                                     data.rotId!,
-                                                                searchQuery:
-                                                                    ''));
+                                                                searchQuery: '',
+                                                                pagenum: pagecounter
+                                                                    .toString()));
                                                   } else if (data.rotId! ==
                                                           '-1' ||
                                                       data.rotId!.isEmpty) {
-                                                    // _routeIDCtrl.clear();
-
                                                     context
                                                         .read<
                                                             CustomersListBlocBloc>()
@@ -327,8 +307,9 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                                 area: '',
                                                                 subarea: '',
                                                                 route: '',
-                                                                searchQuery:
-                                                                    ''));
+                                                                searchQuery: '',
+                                                                pagenum: pagecounter
+                                                                    .toString()));
                                                   }
                                                 },
                                               ),
@@ -393,13 +374,15 @@ class _CustomersScrenState extends State<CustomersScren> {
                                 context
                                     .read<CustomerSearchLoadingCubit>()
                                     .addSearchLoadingEvent();
+
                                 context.read<CustomersListBlocBloc>().add(
                                     GetCustomersEvent(
                                         userId: widget.user.usrId ?? '',
                                         area: '',
                                         subarea: '',
                                         route: _routeIDCtrl.text,
-                                        searchQuery: value.trim()));
+                                        searchQuery: value.trim(),
+                                        pagenum: pagecounter.toString()));
                               },
                             );
                           },
@@ -421,6 +404,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                                         context
                                             .read<CustomerSearchLoadingCubit>()
                                             .addSearchLoadingEvent();
+
                                         context
                                             .read<CustomersListBlocBloc>()
                                             .add(GetCustomersEvent(
@@ -428,8 +412,9 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                 area: '',
                                                 subarea: '',
                                                 route: _routeIDCtrl.text,
-                                                searchQuery: ''));
-                                        // }
+                                                searchQuery: '',
+                                                pagenum:
+                                                    pagecounter.toString()));
                                       },
                                       icon: Icon(
                                         Icons.close,
@@ -475,31 +460,20 @@ class _CustomersScrenState extends State<CustomersScren> {
                           CustomersListBlocState>(
                         listener: (context, state) {
                           state.when(
-                            customersResetState: () {},
-                            getCustomersSstate: (customers) {
-                              if (isSearchLoading == true) {
-                                isSearchLoading = false;
-                                context
-                                    .read<CustomerSearchLoadingCubit>()
-                                    .removeLoadingEvent();
-                              }
-                            },
-                            getcustomersFailedState: () {},
-                          );
+                              getCustomersSstate: (customers, isLoading) {
+                            if (isSearchLoading == true) {
+                              isSearchLoading = false;
+                              context
+                                  .read<CustomerSearchLoadingCubit>()
+                                  .removeLoadingEvent();
+                            }
+                          });
                         },
                         child: BlocBuilder<CustomersListBlocBloc,
                             CustomersListBlocState>(
                           builder: (context, state) {
                             return state.when(
-                              customersResetState: () => Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 5),
-                                child: Text(
-                                  "0",
-                                  style: countHeading(),
-                                ),
-                              ),
-                              getCustomersSstate: (customers) =>
+                              getCustomersSstate: (customers, isloading) =>
                                   customers == null
                                       ? Padding(
                                           padding: const EdgeInsets.only(
@@ -517,19 +491,10 @@ class _CustomersScrenState extends State<CustomersScren> {
                                             style: countHeading(),
                                           ),
                                         ),
-                              getcustomersFailedState: () => Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 20.0, right: 20, top: 10),
-                                child: Text(
-                                  "0",
-                                  style: countHeading(),
-                                ),
-                              ),
                             );
                           },
                         ),
                       ),
-                      // SizedBox(width: ,),
                     ],
                   ),
                   SizedBox(
@@ -543,6 +508,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                           // height: MediaQuery.of(context).size.height,
                           child: CustomersListingWidget(
                         user: widget.user,
+                        scrollctrl: customersscrollController,
                       ));
                     },
                   )

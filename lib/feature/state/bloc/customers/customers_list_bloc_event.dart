@@ -7,7 +7,8 @@ class CustomersListBlocEvent with _$CustomersListBlocEvent {
       required String area,
       required String subarea,
       required String route,
-      required String searchQuery}) = GetCustomersEvent;
+      required String searchQuery,
+      required String pagenum}) = GetCustomersEvent;
   const factory CustomersListBlocEvent.clearCustomersEvent() =
       ClearCustomersEvent;
 
