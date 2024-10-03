@@ -1,1 +1,3 @@
 lib/core/api/endpoints.dart merge=ours
+android/app/src/main/AndroidManifest.xml merge=ours
+android/app/build.gradle merge=ours

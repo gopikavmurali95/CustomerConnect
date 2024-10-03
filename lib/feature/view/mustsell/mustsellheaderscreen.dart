@@ -166,6 +166,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                       const Duration(
                         milliseconds: 500,
                       ), () async {
+                        
                     context.read<MustSellHeaderBloc>().add(
                         GetMustSellHeadersEvent(
                             mode: selectedMustSellMode,

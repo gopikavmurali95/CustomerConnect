@@ -326,25 +326,24 @@ class _CreditNoteHeaderScreenState
                                                                               fontWeight: FontWeight.w600,
                                                                             ),
                                                                           ),
-                                                                           RichText(
-                                                                          text:
-                                                                              TextSpan(
-                                                                            style:
-                                                                                DefaultTextStyle.of(context).style,
-                                                                            children: [
-                                                                              TextSpan(
-                                                                                text: '${creditNote[index].cusCode} - ',
-                                                                                style: kfontstyle(
-                                                                                  fontSize: 11.sp,
-                                                                                  color: const Color(0xff2C6B9E),
-                                                                                ),
-                                                                              ),
-                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? creditNote[index].cusName ?? '' : creditNote[index].arCusName ?? '', style: subTitleTextStyle()
-                                                                                  // overflow: TextOverflow.ellipsis,
+                                                                          RichText(
+                                                                            text:
+                                                                                TextSpan(
+                                                                              style: DefaultTextStyle.of(context).style,
+                                                                              children: [
+                                                                                TextSpan(
+                                                                                  text: '${creditNote[index].cusCode} - ',
+                                                                                  style: kfontstyle(
+                                                                                    fontSize: 11.sp,
+                                                                                    color: const Color(0xff2C6B9E),
                                                                                   ),
-                                                                            ],
+                                                                                ),
+                                                                                TextSpan(text: selectedLocale?.languageCode == 'en' ? creditNote[index].cusName ?? '' : creditNote[index].arCusName ?? '', style: subTitleTextStyle()
+                                                                                    // overflow: TextOverflow.ellipsis,
+                                                                                    ),
+                                                                              ],
+                                                                            ),
                                                                           ),
-                                                                        ),
                                                                           // Row(
                                                                           //   children: [
                                                                           //     Text(

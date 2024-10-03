@@ -13,6 +13,7 @@ import 'package:customer_connect/feature/state/bloc/inventoryreconfirmdetail/inv
 import 'package:customer_connect/feature/state/bloc/inventoryreconfirmheader/inventory_reconfirm_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart';
+import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmheaderscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -85,6 +86,7 @@ class _InventoryReconfirmationDetailScreenState
         canPop:
             /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
         onPopInvoked: (didPop) {
+          inventoryReConfirmHSearchCtrl.clear();
           context.read<InventoryReconfirmHeaderBloc>().add(
               GetInventoryReconfirmHeadersEvent(
                   mode: widget.currentMode, searchQuery: ''));

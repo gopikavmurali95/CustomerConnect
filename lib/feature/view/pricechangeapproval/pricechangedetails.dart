@@ -14,6 +14,7 @@ import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_chan
 import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -104,6 +105,8 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
+            _searchctrls.clear();
+            priceChangeHeaderSearchCtrl.clear();
             context.read<PriceChangeHeaderBloc>().add(GetPriceChangeHeaderEvent(
                 rotID: widget.priceChangeApprovel.pchRotId!,
                 mode: widget.currentMode,
@@ -406,12 +409,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                   _hPricecontrollers = List.generate(
                                     pdet.length,
                                     (index) => TextEditingController(
-                                        text: pdet[index].pcdApprovedHPrice),
+                                        text: pdet[index].pcdChangedHPrice),
                                   );
                                   _lPricecontrollers = List.generate(
                                       pdet.length,
                                       (index) => TextEditingController(
-                                            text: pdet[index].pcdApprovedLPrice,
+                                            text: pdet[index].pcdChangedLprice,
                                           ));
                                   selectedresons =
                                       List.generate(pdet.length, (index) => '');
@@ -900,6 +903,13 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             subTitleTextStyle(),
                                                       ),
                                                     ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
                                                     Expanded(
                                                       child: Text(
                                                         '${AppLocalizations.of(context)!.stdPrice} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',

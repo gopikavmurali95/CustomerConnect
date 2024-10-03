@@ -101,35 +101,26 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           RichText(
-                                            text: TextSpan(
-                                              text: widget.customer.cusCode ??
-                                                      '',
-                                              style:
-                                                  kfontstyle(
-                                  fontSize: 12.sp,
-                                  color: const Color(0xff2C6B9E),
-                                  fontWeight: FontWeight.w500,
-                                ),
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                    text: '-',
-                                                    style:subTitleTextStyle()),
-
-                                                    TextSpan(text: selectedLocale
-                                                              ?.languageCode ==
-                                                          "en"
-                                                      ? widget.customer.cusName??
-                                                          ''
-                                                      :widget.customer.arcusName??
-                                                          '',
-                                                          style:  kfontstyle(
+                            text: TextSpan(
+                              text: widget.customer.cusCode ?? '',
+                              style: kfontstyle(
+                                fontSize: 12.sp,
+                                color: const Color(0xff2C6B9E),
+                                fontWeight: FontWeight.w500,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(text: '-', style: subTitleTextStyle()),
+                                TextSpan(
+                                  text: selectedLocale?.languageCode == "en"
+                                      ? widget.customer.cusName ?? ''
+                                      : widget.customer.arcusName ?? '',
+                                  style: kfontstyle(
                                       fontSize: 12.sp,
-                                      color: const Color(0xff413434)),),
-                                                
-                                              ],
-                                            ),
-                                          ),
-                          
+                                      color: const Color(0xff413434)),
+                                ),
+                              ],
+                            ),
+                          ),
                           Row(
                             children: [
                               Text(

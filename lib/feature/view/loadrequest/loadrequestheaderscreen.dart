@@ -30,12 +30,12 @@ List<ApprovalStatusFilterModel> ddfilterLoadRequest = [
 ];
 
 String _selectedloadrequest = 'P';
-TextEditingController _loadqSearchController = TextEditingController();
+TextEditingController loadqSearchController = TextEditingController();
 
 class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   @override
   void initState() {
-    _loadqSearchController.clear();
+    loadqSearchController.clear();
     _selectedloadrequest = 'P';
     ddfilterLoadRequest = [
       ApprovalStatusFilterModel(
@@ -121,7 +121,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                         child: TextFormField(
                           style: kfontstyle(
                               fontSize: 13.sp, color: Colors.black87),
-                          controller: _loadqSearchController,
+                          controller: loadqSearchController,
                           onChanged: (value) {
                             debounce = Timer(
                                 const Duration(
@@ -130,7 +130,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                               context.read<LoadReqHeaderBloc>().add(
                                   LoadreqSuccessEvent(
                                       mode: _selectedloadrequest,
-                                      searchQuery: _loadqSearchController.text,
+                                      searchQuery: loadqSearchController.text,
                                       userId: ''));
                             });
                           },
@@ -146,9 +146,9 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                   Expanded(
                                     child: IconButton(
                                       onPressed: () {
-                                        if (_loadqSearchController
+                                        if (loadqSearchController
                                             .text.isNotEmpty) {
-                                          _loadqSearchController.clear();
+                                          loadqSearchController.clear();
 
                                           context.read<LoadReqHeaderBloc>().add(
                                               LoadreqSuccessEvent(

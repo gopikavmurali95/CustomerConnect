@@ -30,15 +30,12 @@ environment:
 dependencies:
   advance_pdf_viewer_fork: ^2.0.0
   bloc: ^8.1.3
-  cloud_firestore: ^5.0.2
   crypto: ^3.0.3
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
-  dio: ^5.7.0
+  dio: ^4.0.6
   dotted_line: ^3.2.2
   dropdown_search: ^5.0.6
-  firebase_auth: ^5.1.1
-  firebase_core: ^3.1.1
   firebase_messaging: ^15.0.2
   flutter:
     sdk: flutter
@@ -64,6 +61,7 @@ dependencies:
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
   logger: ^2.0.2+1
+  path: ^1.9.0
   path_provider: ^2.1.2
   permission_handler: ^11.3.1
   rename: ^3.0.2
@@ -71,6 +69,7 @@ dependencies:
   shimmer: ^3.0.0
   ssun_chart: ^0.0.10
   url_launcher: ^6.2.6
+  version: 2.0.3
 
 dev_dependencies:
   build_runner: ^2.4.8
@@ -126,3 +125,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+

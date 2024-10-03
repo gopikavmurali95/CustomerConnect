@@ -20,7 +20,7 @@ class GeoLocationRepo implements ICusGeoLocationRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + cusGeoLocationUrl),
           body: cusIN.toJson());
-          log(jsonEncode(cusIN));
+      log(jsonEncode(cusIN));
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> geoheaderdatea = json['result'];
@@ -47,7 +47,7 @@ class GeoLocationRepo implements ICusGeoLocationRepo {
       final response = await http.post(
           Uri.parse(baseUrl + updateGeoLocationUrl),
           body: confirmmodel.toJson());
-          log(jsonEncode(confirmmodel));
+      log(jsonEncode(confirmmodel));
       if (response.statusCode == 200) {
         // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

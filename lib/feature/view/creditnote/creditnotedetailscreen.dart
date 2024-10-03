@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/creditnoteapproval/credit_no
 import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
+import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,6 +84,8 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
+          _creditDetailtrls .clear();
+          creditNoteHSearch.clear();
           context.read<CreditNoteHeaderBloc>().add(GetAllCreditNoteHeadersEvent(
               userId: widget.user.usrId ?? '',
               mode: widget.currentMode,

@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_re
 import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadreqdetail/load_req_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_header_bloc.dart';
+import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
@@ -100,11 +101,12 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
+          _loadreqdetailSearchController.clear();
+          loadqSearchController.clear();
           context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
               userId: widget.loadrequest.userID ?? '',
               mode: widget.currentMode,
               searchQuery: ''));
-
           // context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(
           //     reqId: widget.loadrequest.rotID??'',
           //     mode: widget.currentMode,

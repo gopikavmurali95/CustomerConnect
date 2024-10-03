@@ -34,12 +34,12 @@ List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
 String _selectedPriceChangeMode = 'P';
 
 Timer? debounce;
-TextEditingController _priceChangeHeaderSearchCtrl = TextEditingController();
+TextEditingController priceChangeHeaderSearchCtrl = TextEditingController();
 
 class _PriceChangeHeaderState extends State<PriceChangeHeader> {
   @override
   void initState() {
-    _priceChangeHeaderSearchCtrl.clear();
+    priceChangeHeaderSearchCtrl.clear();
     filterFieldsPriceChange = [
       ApprovalStatusFilterModel(
           statusName:
@@ -96,7 +96,7 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _priceChangeHeaderSearchCtrl,
+                  controller: priceChangeHeaderSearchCtrl,
                   style: kfontstyle(
                       fontSize: 12.sp, color: const Color(0xff413434)),
                   decoration: InputDecoration(
@@ -108,9 +108,9 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_priceChangeHeaderSearchCtrl
+                                if (priceChangeHeaderSearchCtrl
                                     .text.isNotEmpty) {
-                                  _priceChangeHeaderSearchCtrl.clear();
+                                  priceChangeHeaderSearchCtrl.clear();
 
                                   context.read<PriceChangeHeaderBloc>().add(
                                       GetPriceChangeHeaderEvent(

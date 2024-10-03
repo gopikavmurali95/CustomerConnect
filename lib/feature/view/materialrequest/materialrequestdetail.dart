@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/state/bloc/materialreqapproval/material
 import 'package:customer_connect/feature/state/bloc/materialreqdetail/material_req_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/materialreqhead/material_req_head_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/view/materialrequest/materialrequestdetailheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -117,6 +118,9 @@ class _MaterialRequestDetailScreenState
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
+            _materialreqdetailSerachController.clear();
+             materialReqSearchController.clear();
+
             context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
                 userId: widget.user.usrId ?? '',
                 mode: widget.currentMode,

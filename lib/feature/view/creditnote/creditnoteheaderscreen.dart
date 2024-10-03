@@ -27,14 +27,14 @@ List<ApprovalStatusFilterModel> ddfilterFieldscreditNote = [
   ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
   ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
 ];
-TextEditingController _creditNoteHSearch = TextEditingController();
+TextEditingController creditNoteHSearch = TextEditingController();
 Timer? debounce;
 String _selectedMode = 'P';
 
 class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
   @override
   void initState() {
-    _creditNoteHSearch.clear();
+    creditNoteHSearch.clear();
     ddfilterFieldscreditNote = [
       ApprovalStatusFilterModel(
           statusName: selectedLocale?.languageCode == 'en'
@@ -89,6 +89,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
+          
           context
               .read<ApprovalCountsBloc>()
               .add(GetApprovalsCountEvent(userID: widget.user.usrId ?? ''));
@@ -100,7 +101,7 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
               child: SizedBox(
                 height: 30.h,
                 child: TextFormField(
-                  controller: _creditNoteHSearch,
+                  controller: creditNoteHSearch,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -111,8 +112,8 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_creditNoteHSearch.text.isNotEmpty) {
-                                  _creditNoteHSearch.clear();
+                                if (creditNoteHSearch.text.isNotEmpty) {
+                                  creditNoteHSearch.clear();
 
                                   context.read<CreditNoteHeaderBloc>().add(
                                       GetAllCreditNoteHeadersEvent(

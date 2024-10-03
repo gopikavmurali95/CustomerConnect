@@ -32,14 +32,14 @@ List<ApprovalStatusFilterModel> ddfilterFieldsDisputeNote = [
 ];
 
 String _selectedDisputeMode = 'P';
-TextEditingController _disputeHeaderSearchCtrl = TextEditingController();
+TextEditingController disputeHeaderSearchCtrl = TextEditingController();
 Timer? debounce;
 
 class _DisputeNoteApprovalHEaderScreenState
     extends State<DisputeNoteApprovalHEaderScreen> {
   @override
   void initState() {
-    _disputeHeaderSearchCtrl.clear();
+    disputeHeaderSearchCtrl.clear();
     ddfilterFieldsDisputeNote = [
       ApprovalStatusFilterModel(
           statusName: selectedLocale?.languageCode == 'en'
@@ -103,7 +103,7 @@ class _DisputeNoteApprovalHEaderScreenState
               child: SizedBox(
                 height: 30.h,
                 child: TextFormField(
-                  controller: _disputeHeaderSearchCtrl,
+                  controller: disputeHeaderSearchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -114,8 +114,8 @@ class _DisputeNoteApprovalHEaderScreenState
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_disputeHeaderSearchCtrl.text.isNotEmpty) {
-                                  _disputeHeaderSearchCtrl.clear();
+                                if (disputeHeaderSearchCtrl.text.isNotEmpty) {
+                                  disputeHeaderSearchCtrl.clear();
 
                                   context.read<DisputeNoteHeaderBloc>().add(
                                       GetDisputeNoteHeadersEvent(

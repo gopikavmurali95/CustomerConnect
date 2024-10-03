@@ -23,12 +23,12 @@ class VanToVanApprovalHeader extends StatefulWidget {
 }
 
 Timer? debounce;
-TextEditingController _vanToVanHSearchCtrl = TextEditingController();
+TextEditingController vanToVanHSearchCtrl = TextEditingController();
 String _selectedMode = 'P';
 List<ApprovalStatusFilterModel> ddfilterFieldsVanToVan = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
-  ApprovalStatusFilterModel(statusName: "Approved", mode: 'AT'),
-  ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
+  ApprovalStatusFilterModel(statusName: "Action Taken", mode: 'AT'),
+  // ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
 ];
 
 class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
@@ -42,18 +42,18 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
           mode: 'P'),
       ApprovalStatusFilterModel(
           statusName: selectedLocale?.languageCode == 'en'
-              ? "Approved Requests"
-              : "الطلبات الموافق عليها",
+              ? "Action Taken Requests"
+              : "طلبات الإجراءات المتخذة",
           mode: 'AT'),
-      ApprovalStatusFilterModel(
+      /* ApprovalStatusFilterModel(
           statusName: selectedLocale?.languageCode == 'en'
               ? "Rejected Requests"
               : "تم رفض الطلبات",
-          mode: 'R'),
+          mode: 'R'), */
     ];
 
-    _vanToVanHSearchCtrl.clear();
-    ddfilterFieldsVanToVan = [
+    vanToVanHSearchCtrl.clear();
+    /*  ddfilterFieldsVanToVan = [
       ApprovalStatusFilterModel(
           statusName:
               selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
@@ -66,7 +66,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
           statusName:
               selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
           mode: 'R'),
-    ];
+    ]; */
     super.initState();
   }
 
@@ -106,7 +106,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _vanToVanHSearchCtrl,
+                  controller: vanToVanHSearchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -117,8 +117,8 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_vanToVanHSearchCtrl.text.isNotEmpty) {
-                                  _vanToVanHSearchCtrl.clear();
+                                if (vanToVanHSearchCtrl.text.isNotEmpty) {
+                                  vanToVanHSearchCtrl.clear();
 
                                   context.read<VanToVanHeaderBloc>().add(
                                       getVanToVanHeaderEvent(
@@ -445,21 +445,22 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                     ),
                                                     Container(
                                                       decoration: BoxDecoration(
-                                                        color: pChange[index]
+                                                        color: /*  pChange[index]
                                                                     .approvalStatus!
                                                                     .isEmpty ||
                                                                 pChange[index]
                                                                         .approvalStatus !=
                                                                     'Approved'
-                                                            ? pChange[index]
+                                                            ?  */
+                                                            pChange[index]
                                                                         .approvalStatus ==
-                                                                    'Rejected'
-                                                                ? Colors
-                                                                    .red[300]
-                                                                : const Color(
+                                                                    'Pending'
+                                                                ? /* Colors
+                                                                    .red[300] */
+                                                                const Color(
                                                                     0xfff7f4e2)
-                                                            : const Color(
-                                                                0xffe3f7e2),
+                                                                : const Color(
+                                                                    0xffe3f7e2),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(

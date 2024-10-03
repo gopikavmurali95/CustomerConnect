@@ -18,7 +18,7 @@ class MerchDisplayAgreementRepo implements IMerchDisplayAgreement {
       final response = await http.post(
           Uri.parse(baseUrl + merchDisplayAgreementUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "Status": status});
-      // log("FromDate: $fromDate, ToDate: $toDate, Status: $status");
+       log("FromDate: $fromDate, ToDate: $toDate, Status: $status");
       if (response.statusCode == 200) {
         log("disp agrmnt:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);

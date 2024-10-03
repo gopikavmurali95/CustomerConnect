@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -8,6 +9,7 @@ import 'package:customer_connect/feature/data/models/van_to_van_product_model/va
 import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
+import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -82,6 +84,8 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
       body: PopScope(
         // canPop: false,
         onPopInvoked: (didPop) {
+            vanToVanHSearchCtrl.clear();
+            _vantovanDetailCtrl.clear();
           context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
               userID: widget.vanToVanHeader.userID ?? '',
               mode: widget.currentMode,
@@ -352,12 +356,14 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                           approvedCount++;
                           if (details[i].status == 'Approved') {
                             statuslist[i] = true;
-                          } else if (details[i].status == 'Rejected') {
+                          } else if (details[i].status != null &&
+                              details[i].status!.contains('Reject')) {
                             statuslist[i] = false;
                           } else {
                             statuslist[i] = null;
                           }
                         }
+                        log(details[i].status ?? '');
                       }
                     }
                   }),
@@ -1043,6 +1049,17 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                               reqID: widget
                                                                   .vanToVanHeader
                                                                   .vvhId)));
+
+                                              /*     log(jsonEncode(
+                                                  VanToVanApprovalInParas(
+                                                      products:
+                                                          approvedProducts,
+                                                      userID: widget
+                                                          .vanToVanHeader
+                                                          .userID,
+                                                      reqID: widget
+                                                          .vanToVanHeader
+                                                          .vvhId))); */
                                             },
                                             child: Text(
                                                 AppLocalizations.of(context)!

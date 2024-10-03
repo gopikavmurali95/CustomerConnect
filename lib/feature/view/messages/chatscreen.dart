@@ -1,4 +1,4 @@
-import 'dart:async';
+/* import 'dart:async';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -164,3 +164,4 @@ class _ChatScreenState extends State<ChatScreen> {
 
 final primarycolor = Color(int.parse('2CB9B0', radix: 16) + 0xFF000000);
 final secondarycolor = Color(int.parse('7B9A98', radix: 16) + 0xFF000000);
+ */
