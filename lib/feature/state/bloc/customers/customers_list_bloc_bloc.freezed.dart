@@ -19,7 +19,7 @@ mixin _$CustomersListBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId, String area, String subarea,
-            String route, String searchQuery)
+            String route, String searchQuery, String pagenum)
         getCustomersEvent,
     required TResult Function() clearCustomersEvent,
     required TResult Function() restCustomersEvent,
@@ -28,7 +28,7 @@ mixin _$CustomersListBlocEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult? Function()? clearCustomersEvent,
     TResult? Function()? restCustomersEvent,
@@ -37,7 +37,7 @@ mixin _$CustomersListBlocEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult Function()? clearCustomersEvent,
     TResult Function()? restCustomersEvent,
@@ -98,7 +98,8 @@ abstract class _$$GetCustomersEventImplCopyWith<$Res> {
       String area,
       String subarea,
       String route,
-      String searchQuery});
+      String searchQuery,
+      String pagenum});
 }
 
 /// @nodoc
@@ -117,6 +118,7 @@ class __$$GetCustomersEventImplCopyWithImpl<$Res>
     Object? subarea = null,
     Object? route = null,
     Object? searchQuery = null,
+    Object? pagenum = null,
   }) {
     return _then(_$GetCustomersEventImpl(
       userId: null == userId
@@ -139,6 +141,10 @@ class __$$GetCustomersEventImplCopyWithImpl<$Res>
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
               as String,
+      pagenum: null == pagenum
+          ? _value.pagenum
+          : pagenum // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -151,7 +157,8 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
       required this.area,
       required this.subarea,
       required this.route,
-      required this.searchQuery});
+      required this.searchQuery,
+      required this.pagenum});
 
   @override
   final String userId;
@@ -163,10 +170,12 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
   final String route;
   @override
   final String searchQuery;
+  @override
+  final String pagenum;
 
   @override
   String toString() {
-    return 'CustomersListBlocEvent.getCustomersEvent(userId: $userId, area: $area, subarea: $subarea, route: $route, searchQuery: $searchQuery)';
+    return 'CustomersListBlocEvent.getCustomersEvent(userId: $userId, area: $area, subarea: $subarea, route: $route, searchQuery: $searchQuery, pagenum: $pagenum)';
   }
 
   @override
@@ -179,12 +188,13 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
             (identical(other.subarea, subarea) || other.subarea == subarea) &&
             (identical(other.route, route) || other.route == route) &&
             (identical(other.searchQuery, searchQuery) ||
-                other.searchQuery == searchQuery));
+                other.searchQuery == searchQuery) &&
+            (identical(other.pagenum, pagenum) || other.pagenum == pagenum));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, area, subarea, route, searchQuery);
+  int get hashCode => Object.hash(
+      runtimeType, userId, area, subarea, route, searchQuery, pagenum);
 
   @JsonKey(ignore: true)
   @override
@@ -197,38 +207,41 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId, String area, String subarea,
-            String route, String searchQuery)
+            String route, String searchQuery, String pagenum)
         getCustomersEvent,
     required TResult Function() clearCustomersEvent,
     required TResult Function() restCustomersEvent,
   }) {
-    return getCustomersEvent(userId, area, subarea, route, searchQuery);
+    return getCustomersEvent(
+        userId, area, subarea, route, searchQuery, pagenum);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult? Function()? clearCustomersEvent,
     TResult? Function()? restCustomersEvent,
   }) {
-    return getCustomersEvent?.call(userId, area, subarea, route, searchQuery);
+    return getCustomersEvent?.call(
+        userId, area, subarea, route, searchQuery, pagenum);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult Function()? clearCustomersEvent,
     TResult Function()? restCustomersEvent,
     required TResult orElse(),
   }) {
     if (getCustomersEvent != null) {
-      return getCustomersEvent(userId, area, subarea, route, searchQuery);
+      return getCustomersEvent(
+          userId, area, subarea, route, searchQuery, pagenum);
     }
     return orElse();
   }
@@ -274,13 +287,15 @@ abstract class GetCustomersEvent implements CustomersListBlocEvent {
       required final String area,
       required final String subarea,
       required final String route,
-      required final String searchQuery}) = _$GetCustomersEventImpl;
+      required final String searchQuery,
+      required final String pagenum}) = _$GetCustomersEventImpl;
 
   String get userId;
   String get area;
   String get subarea;
   String get route;
   String get searchQuery;
+  String get pagenum;
   @JsonKey(ignore: true)
   _$$GetCustomersEventImplCopyWith<_$GetCustomersEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -327,7 +342,7 @@ class _$ClearCustomersEventImpl implements ClearCustomersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId, String area, String subarea,
-            String route, String searchQuery)
+            String route, String searchQuery, String pagenum)
         getCustomersEvent,
     required TResult Function() clearCustomersEvent,
     required TResult Function() restCustomersEvent,
@@ -339,7 +354,7 @@ class _$ClearCustomersEventImpl implements ClearCustomersEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult? Function()? clearCustomersEvent,
     TResult? Function()? restCustomersEvent,
@@ -351,7 +366,7 @@ class _$ClearCustomersEventImpl implements ClearCustomersEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult Function()? clearCustomersEvent,
     TResult Function()? restCustomersEvent,
@@ -441,7 +456,7 @@ class _$RestCustomersEventImpl implements RestCustomersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId, String area, String subarea,
-            String route, String searchQuery)
+            String route, String searchQuery, String pagenum)
         getCustomersEvent,
     required TResult Function() clearCustomersEvent,
     required TResult Function() restCustomersEvent,
@@ -453,7 +468,7 @@ class _$RestCustomersEventImpl implements RestCustomersEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult? Function()? clearCustomersEvent,
     TResult? Function()? restCustomersEvent,
@@ -465,7 +480,7 @@ class _$RestCustomersEventImpl implements RestCustomersEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId, String area, String subarea, String route,
-            String searchQuery)?
+            String searchQuery, String pagenum)?
         getCustomersEvent,
     TResult Function()? clearCustomersEvent,
     TResult Function()? restCustomersEvent,
@@ -518,52 +533,48 @@ abstract class RestCustomersEvent implements CustomersListBlocEvent {
 
 /// @nodoc
 mixin _$CustomersListBlocState {
+  List<CusInsCustomersModel>? get customers =>
+      throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusInsCustomersModel>? customers)
+    required TResult Function(
+            List<CusInsCustomersModel>? customers, bool isLoading)
         getCustomersSstate,
-    required TResult Function() getcustomersFailedState,
-    required TResult Function() customersResetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusInsCustomersModel>? customers)?
+    TResult? Function(List<CusInsCustomersModel>? customers, bool isLoading)?
         getCustomersSstate,
-    TResult? Function()? getcustomersFailedState,
-    TResult? Function()? customersResetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusInsCustomersModel>? customers)? getCustomersSstate,
-    TResult Function()? getcustomersFailedState,
-    TResult Function()? customersResetState,
+    TResult Function(List<CusInsCustomersModel>? customers, bool isLoading)?
+        getCustomersSstate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetCustomersSstate value) getCustomersSstate,
-    required TResult Function(GetcustomersFailedState value)
-        getcustomersFailedState,
-    required TResult Function(CustomersResetState value) customersResetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult? Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult? Function(CustomersResetState value)? customersResetState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult Function(CustomersResetState value)? customersResetState,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CustomersListBlocStateCopyWith<CustomersListBlocState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -572,6 +583,8 @@ abstract class $CustomersListBlocStateCopyWith<$Res> {
   factory $CustomersListBlocStateCopyWith(CustomersListBlocState value,
           $Res Function(CustomersListBlocState) then) =
       _$CustomersListBlocStateCopyWithImpl<$Res, CustomersListBlocState>;
+  @useResult
+  $Res call({List<CusInsCustomersModel>? customers, bool isLoading});
 }
 
 /// @nodoc
@@ -584,15 +597,35 @@ class _$CustomersListBlocStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customers = freezed,
+    Object? isLoading = null,
+  }) {
+    return _then(_value.copyWith(
+      customers: freezed == customers
+          ? _value.customers
+          : customers // ignore: cast_nullable_to_non_nullable
+              as List<CusInsCustomersModel>?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetCustomersSstateImplCopyWith<$Res> {
+abstract class _$$GetCustomersSstateImplCopyWith<$Res>
+    implements $CustomersListBlocStateCopyWith<$Res> {
   factory _$$GetCustomersSstateImplCopyWith(_$GetCustomersSstateImpl value,
           $Res Function(_$GetCustomersSstateImpl) then) =
       __$$GetCustomersSstateImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({List<CusInsCustomersModel>? customers});
+  $Res call({List<CusInsCustomersModel>? customers, bool isLoading});
 }
 
 /// @nodoc
@@ -607,12 +640,17 @@ class __$$GetCustomersSstateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? customers = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_$GetCustomersSstateImpl(
       customers: freezed == customers
           ? _value._customers
           : customers // ignore: cast_nullable_to_non_nullable
               as List<CusInsCustomersModel>?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -621,7 +659,8 @@ class __$$GetCustomersSstateImplCopyWithImpl<$Res>
 
 class _$GetCustomersSstateImpl implements GetCustomersSstate {
   const _$GetCustomersSstateImpl(
-      {required final List<CusInsCustomersModel>? customers})
+      {required final List<CusInsCustomersModel>? customers,
+      required this.isLoading})
       : _customers = customers;
 
   final List<CusInsCustomersModel>? _customers;
@@ -635,8 +674,11 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
   }
 
   @override
+  final bool isLoading;
+
+  @override
   String toString() {
-    return 'CustomersListBlocState.getCustomersSstate(customers: $customers)';
+    return 'CustomersListBlocState.getCustomersSstate(customers: $customers, isLoading: $isLoading)';
   }
 
   @override
@@ -645,12 +687,14 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
         (other.runtimeType == runtimeType &&
             other is _$GetCustomersSstateImpl &&
             const DeepCollectionEquality()
-                .equals(other._customers, _customers));
+                .equals(other._customers, _customers) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_customers));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_customers), isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -662,35 +706,31 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusInsCustomersModel>? customers)
+    required TResult Function(
+            List<CusInsCustomersModel>? customers, bool isLoading)
         getCustomersSstate,
-    required TResult Function() getcustomersFailedState,
-    required TResult Function() customersResetState,
   }) {
-    return getCustomersSstate(customers);
+    return getCustomersSstate(customers, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusInsCustomersModel>? customers)?
+    TResult? Function(List<CusInsCustomersModel>? customers, bool isLoading)?
         getCustomersSstate,
-    TResult? Function()? getcustomersFailedState,
-    TResult? Function()? customersResetState,
   }) {
-    return getCustomersSstate?.call(customers);
+    return getCustomersSstate?.call(customers, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusInsCustomersModel>? customers)? getCustomersSstate,
-    TResult Function()? getcustomersFailedState,
-    TResult Function()? customersResetState,
+    TResult Function(List<CusInsCustomersModel>? customers, bool isLoading)?
+        getCustomersSstate,
     required TResult orElse(),
   }) {
     if (getCustomersSstate != null) {
-      return getCustomersSstate(customers);
+      return getCustomersSstate(customers, isLoading);
     }
     return orElse();
   }
@@ -699,9 +739,6 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetCustomersSstate value) getCustomersSstate,
-    required TResult Function(GetcustomersFailedState value)
-        getcustomersFailedState,
-    required TResult Function(CustomersResetState value) customersResetState,
   }) {
     return getCustomersSstate(this);
   }
@@ -710,8 +747,6 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult? Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult? Function(CustomersResetState value)? customersResetState,
   }) {
     return getCustomersSstate?.call(this);
   }
@@ -720,8 +755,6 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult Function(CustomersResetState value)? customersResetState,
     required TResult orElse(),
   }) {
     if (getCustomersSstate != null) {
@@ -733,239 +766,15 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
 
 abstract class GetCustomersSstate implements CustomersListBlocState {
   const factory GetCustomersSstate(
-          {required final List<CusInsCustomersModel>? customers}) =
-      _$GetCustomersSstateImpl;
+      {required final List<CusInsCustomersModel>? customers,
+      required final bool isLoading}) = _$GetCustomersSstateImpl;
 
+  @override
   List<CusInsCustomersModel>? get customers;
+  @override
+  bool get isLoading;
+  @override
   @JsonKey(ignore: true)
   _$$GetCustomersSstateImplCopyWith<_$GetCustomersSstateImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetcustomersFailedStateImplCopyWith<$Res> {
-  factory _$$GetcustomersFailedStateImplCopyWith(
-          _$GetcustomersFailedStateImpl value,
-          $Res Function(_$GetcustomersFailedStateImpl) then) =
-      __$$GetcustomersFailedStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetcustomersFailedStateImplCopyWithImpl<$Res>
-    extends _$CustomersListBlocStateCopyWithImpl<$Res,
-        _$GetcustomersFailedStateImpl>
-    implements _$$GetcustomersFailedStateImplCopyWith<$Res> {
-  __$$GetcustomersFailedStateImplCopyWithImpl(
-      _$GetcustomersFailedStateImpl _value,
-      $Res Function(_$GetcustomersFailedStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetcustomersFailedStateImpl implements GetcustomersFailedState {
-  const _$GetcustomersFailedStateImpl();
-
-  @override
-  String toString() {
-    return 'CustomersListBlocState.getcustomersFailedState()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetcustomersFailedStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<CusInsCustomersModel>? customers)
-        getCustomersSstate,
-    required TResult Function() getcustomersFailedState,
-    required TResult Function() customersResetState,
-  }) {
-    return getcustomersFailedState();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusInsCustomersModel>? customers)?
-        getCustomersSstate,
-    TResult? Function()? getcustomersFailedState,
-    TResult? Function()? customersResetState,
-  }) {
-    return getcustomersFailedState?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusInsCustomersModel>? customers)? getCustomersSstate,
-    TResult Function()? getcustomersFailedState,
-    TResult Function()? customersResetState,
-    required TResult orElse(),
-  }) {
-    if (getcustomersFailedState != null) {
-      return getcustomersFailedState();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetCustomersSstate value) getCustomersSstate,
-    required TResult Function(GetcustomersFailedState value)
-        getcustomersFailedState,
-    required TResult Function(CustomersResetState value) customersResetState,
-  }) {
-    return getcustomersFailedState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult? Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult? Function(CustomersResetState value)? customersResetState,
-  }) {
-    return getcustomersFailedState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult Function(CustomersResetState value)? customersResetState,
-    required TResult orElse(),
-  }) {
-    if (getcustomersFailedState != null) {
-      return getcustomersFailedState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class GetcustomersFailedState implements CustomersListBlocState {
-  const factory GetcustomersFailedState() = _$GetcustomersFailedStateImpl;
-}
-
-/// @nodoc
-abstract class _$$CustomersResetStateImplCopyWith<$Res> {
-  factory _$$CustomersResetStateImplCopyWith(_$CustomersResetStateImpl value,
-          $Res Function(_$CustomersResetStateImpl) then) =
-      __$$CustomersResetStateImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$CustomersResetStateImplCopyWithImpl<$Res>
-    extends _$CustomersListBlocStateCopyWithImpl<$Res,
-        _$CustomersResetStateImpl>
-    implements _$$CustomersResetStateImplCopyWith<$Res> {
-  __$$CustomersResetStateImplCopyWithImpl(_$CustomersResetStateImpl _value,
-      $Res Function(_$CustomersResetStateImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$CustomersResetStateImpl implements CustomersResetState {
-  const _$CustomersResetStateImpl();
-
-  @override
-  String toString() {
-    return 'CustomersListBlocState.customersResetState()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CustomersResetStateImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<CusInsCustomersModel>? customers)
-        getCustomersSstate,
-    required TResult Function() getcustomersFailedState,
-    required TResult Function() customersResetState,
-  }) {
-    return customersResetState();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusInsCustomersModel>? customers)?
-        getCustomersSstate,
-    TResult? Function()? getcustomersFailedState,
-    TResult? Function()? customersResetState,
-  }) {
-    return customersResetState?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusInsCustomersModel>? customers)? getCustomersSstate,
-    TResult Function()? getcustomersFailedState,
-    TResult Function()? customersResetState,
-    required TResult orElse(),
-  }) {
-    if (customersResetState != null) {
-      return customersResetState();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetCustomersSstate value) getCustomersSstate,
-    required TResult Function(GetcustomersFailedState value)
-        getcustomersFailedState,
-    required TResult Function(CustomersResetState value) customersResetState,
-  }) {
-    return customersResetState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult? Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult? Function(CustomersResetState value)? customersResetState,
-  }) {
-    return customersResetState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetCustomersSstate value)? getCustomersSstate,
-    TResult Function(GetcustomersFailedState value)? getcustomersFailedState,
-    TResult Function(CustomersResetState value)? customersResetState,
-    required TResult orElse(),
-  }) {
-    if (customersResetState != null) {
-      return customersResetState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CustomersResetState implements CustomersListBlocState {
-  const factory CustomersResetState() = _$CustomersResetStateImpl;
 }

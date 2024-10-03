@@ -7,7 +7,6 @@ import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
 import 'package:customer_connect/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

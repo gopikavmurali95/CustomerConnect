@@ -91,8 +91,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(widget.salesorders.orderId ?? '',
-                              style: blueTextStyle()),
+                          /* Text(widget.salesorders.orderId ?? '',
+                              style: blueTextStyle()), */
                           /* Row(
                             children: [
                               Text(
@@ -145,7 +145,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                               ],
                             ),
                           ),
-                          Row(
+                          /* Row(
                             children: [
                               Text(
                                 widget.salesorders.cshCode ?? '',
@@ -169,8 +169,8 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
+                          ), */
+                          /* SizedBox(
                             width: 300.w,
                             child: RichText(
                               text: TextSpan(
@@ -197,7 +197,7 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
                                         style: subTitleTextStyle())
                                   ]),
                             ),
-                          ),
+                          ), */
                           RichText(
                             text: TextSpan(
                                 style:

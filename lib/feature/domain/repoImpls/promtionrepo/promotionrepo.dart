@@ -20,6 +20,7 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + promotionheaderurl),
           body: inpromtionIn.toJson());
+         
       if (response.statusCode == 200) {
         //log('promotion header response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -46,6 +47,7 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
     try {
       final response = await http
           .post(Uri.parse(baseUrl + promotioncustomerurl), body: {"ID": iD});
+          
       if (response.statusCode == 200) {
         // log('promotion customer response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -72,6 +74,8 @@ class PromotionHeaderRepo implements IPromotionHeaderRepo {
     try {
       final response = await http
           .post(Uri.parse(baseUrl + promotiondetailsurl), body: {"ID": iD});
+          
+          
       if (response.statusCode == 200) {
         // log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

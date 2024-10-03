@@ -18,7 +18,7 @@ class GetAllRoutesRepo implements IGetAllAvailableRoutesRepo {
         Uri.parse(baseUrl + allRoutesUrl),
       );
 
-      log(response.body);
+      // log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> routedata = json['result'];

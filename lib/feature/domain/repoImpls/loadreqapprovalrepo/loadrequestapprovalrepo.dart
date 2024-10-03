@@ -48,7 +48,7 @@ class LoadRequestApprovalRepo implements ILoadRequestApprovalRepo {
         );
       }
     } catch (e) {
-      log("Asset Adding error resp $e");
+      log("Load request error resp $e");
       return left(const MainFailures.serverfailure());
     }
   }
