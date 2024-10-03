@@ -11,7 +11,8 @@ class CusInvDetailsTotalCubit extends Cubit<CusInvDetailsTotalState> {
   getTotal(List<CusInsInvTypeModel> invoicelist) {
     double total = 0;
     for (var element in invoicelist) {
-      total += double.parse((element.vat ?? '0.00').replaceAll(',', ''))+double.parse((element.subTotal ?? '0.00').replaceAll(',', ''));
+      total += double.parse((element.vat ?? '0.00').replaceAll(',', '')) +
+          double.parse((element.subTotal ?? '0.00').replaceAll(',', ''));
     }
 
     emit(CusInvoiceDetailsTotalState(amount: total.toStringAsFixed(2)));

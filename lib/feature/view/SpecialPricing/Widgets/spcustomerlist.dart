@@ -59,17 +59,49 @@ class SPCustomerList extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  customer[index].cusCode!,
-                                  style: blueTextStyle(),
-                                ),
                                 Expanded(
-                                  child: Text(
-                                      //' -${customer[index].cusName}',
-                                      " - ${selectedLocale?.languageCode == "en" ? customer[index].cusName ?? '' : customer[index].arcusName ?? ''}",
-                                      overflow: TextOverflow.ellipsis,
-                                      style: subTitleTextStyle()),
-                                )
+                                    child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                        child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        RichText(
+                                          text: TextSpan(
+                                            style: DefaultTextStyle.of(context)
+                                                .style,
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    '${customer[index].cusCode} - ',
+                                                style: kfontstyle(
+                                                  fontSize: 11.sp,
+                                                  color:
+                                                      const Color(0xff2C6B9E),
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                  text: selectedLocale
+                                                              ?.languageCode ==
+                                                          'en'
+                                                      ? customer[index]
+                                                              .cusName ??
+                                                          ''
+                                                      : customer[index]
+                                                              .arcusName ??
+                                                          '',
+                                                  style: subTitleTextStyle()
+                                                  // overflow: TextOverflow.ellipsis,
+                                                  ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ))
+                                  ],
+                                )),
                               ],
                             ),
                             const Divider()

@@ -352,27 +352,55 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                       "${headers[index].reqCode}",
                                                                       style:
                                                                           blueTextStyle()),
-                                                                  Row(
-                                                                    children: [
-                                                                      Text(
-                                                                        "${headers[index].cusCode} -",
-                                                                        style:
-                                                                            kfontstyle(
-                                                                          fontSize:
-                                                                              11.sp,
-                                                                          color:
-                                                                              const Color(0xff2C6B9E),
+                                                                  RichText(
+                                                                    text:
+                                                                        TextSpan(
+                                                                      style: DefaultTextStyle.of(
+                                                                              context)
+                                                                          .style,
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text:
+                                                                              '${headers[index].cusCode} - ',
+                                                                          style:
+                                                                              kfontstyle(
+                                                                            fontSize:
+                                                                                11.sp,
+                                                                            color:
+                                                                                const Color(0xff2C6B9E),
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      Expanded(
-                                                                        child: Text(
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            ' ${selectedLocale?.languageCode == 'en' ? headers[index].cusName : headers[index].arcusName}',
-                                                                            style: subTitleTextStyle()),
-                                                                      ),
-                                                                    ],
+                                                                        TextSpan(
+                                                                            text: selectedLocale?.languageCode == 'en'
+                                                                                ? headers[index].cusName ?? ''
+                                                                                : headers[index].arcusName ?? '',
+                                                                            style: subTitleTextStyle()
+                                                                            // overflow: TextOverflow.ellipsis,
+                                                                            ),
+                                                                      ],
+                                                                    ),
                                                                   ),
+                                                                  // Row(
+                                                                  //   children: [
+                                                                  //     Text(
+                                                                  //       "${headers[index].cusCode} -",
+                                                                  //       style:
+                                                                  //           kfontstyle(
+                                                                  //         fontSize:
+                                                                  //             11.sp,
+                                                                  //         color:
+                                                                  //             const Color(0xff2C6B9E),
+                                                                  //       ),
+                                                                  //     ),
+                                                                  //     Expanded(
+                                                                  //       child: Text(
+                                                                  //           overflow:
+                                                                  //               TextOverflow.ellipsis,
+                                                                  //           ' ${selectedLocale?.languageCode == 'en' ? headers[index].cusName : headers[index].arcusName}',
+                                                                  //           style: subTitleTextStyle()),
+                                                                  //     ),
+                                                                  //   ],
+                                                                  // ),
                                                                   // Text(
                                                                   //   overflow:
                                                                   //       TextOverflow

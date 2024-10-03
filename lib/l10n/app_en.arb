@@ -342,6 +342,11 @@
   "about": "About",
   "doYouWantToLogout": "Do you want to logout",
   "logout": "Logout",
-  "actionedSuccessfully":"Your request has been successfully actioned"
+  "actionedSuccessfully":"Your request has been successfully actioned",
+  "dontgoback":"Please do not attempt to go back from this screen",
+  "updatefailed":"Version update failed",
+  "retry":"Retry",
+  "appupdate":"App Update",
+  "version":"Version"
 }
   

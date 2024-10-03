@@ -769,6 +769,9 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
+                            context
+                                .read<VanToVanHeaderBloc>()
+                                .add(const ClearVanToVanHeaderEvent());
                             context.read<VanToVanHeaderBloc>().add(
                                 getVanToVanHeaderEvent(
                                     userID: user.usrId ?? '',
@@ -1588,7 +1591,7 @@ class ApprovalScreen extends StatelessWidget {
                                   Row(
                                     children: [
                                       Image.asset(
-                                        "assets/images/sev@2x.png",
+                                        "assets/images/project.png",
                                         height: 18.3.h,
                                       ),
                                       SizedBox(

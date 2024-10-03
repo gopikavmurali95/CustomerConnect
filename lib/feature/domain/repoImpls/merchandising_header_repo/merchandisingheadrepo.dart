@@ -47,7 +47,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        //log('taskcount: ${response.body}');
+        log('taskcount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final taskcount = GetTaskCountModel.fromJson(json["result"][0]);
         return right(taskcount);
@@ -93,7 +93,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-        // log('displaycount: ${response.body}');
+        log('displayagreement count: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final displaycount = GetDisplayCountModel.fromJson(json["result"][0]);
         return right(displaycount);

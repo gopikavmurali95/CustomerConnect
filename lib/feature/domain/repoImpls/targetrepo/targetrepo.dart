@@ -47,7 +47,7 @@ class TargetHeaderCountRepo implements ITargetRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + targetHeaderListUrl),
           body: {"FromDate": fromDate});
-      log('fromdate: $fromDate');
+      log('target response: ${response.body}');
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);

@@ -3,7 +3,7 @@
 const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
 const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
-//Demo
+// Demo
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 
@@ -190,3 +190,4 @@ const unScheduledVisitApproveUrl =
     'UnshceduledCusVisitApproval/ApproveUnSchCusVisit';
 const unScheduledVisitRejectUrl =
     'UnshceduledCusVisitApproval/RejectUnSchCusVisit';
+const autoUpdateUrl = 'AppService/SelVersionDetails';

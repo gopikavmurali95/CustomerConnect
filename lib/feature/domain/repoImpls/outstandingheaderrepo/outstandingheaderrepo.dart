@@ -21,6 +21,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
       final response = await http.post(
           Uri.parse(baseUrl + outStandingHeaderUrl),
           body: outStandIn.toJson());
+      // log(jsonEncode(outStandIn));
       if (response.statusCode == 200) {
         //log("outstanding response: ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
