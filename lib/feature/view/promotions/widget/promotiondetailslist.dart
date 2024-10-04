@@ -57,7 +57,7 @@ class PromotionDetailsList extends StatelessWidget {
                           ),
                         ),
                         Divider(
-                          color: Colors.grey.shade300,
+                          color: Colors.grey.shade100,
                         )
                       ],
                     );

@@ -84,7 +84,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
           ),
         ],
         bottom: PreferredSize(
-          preferredSize: const Size(100, 50),
+          preferredSize: const Size(100, 30),
           child: Padding(
             padding: const EdgeInsets.only(left: 10.0, right: 10),
             child: Container(
@@ -190,7 +190,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
         child: Column(
           children: [
             SizedBox(
-              height: 25.h,
+              height: 10.h,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -34,6 +34,10 @@ class OutOfStockItemsBloc
                   (element.prdName ?? '')
                       .toLowerCase()
                       .toUpperCase()
+                      .contains(event.searchQuery.toUpperCase())||
+                      (element.prdArName ?? '')
+                      .toLowerCase()
+                      .toUpperCase()
                       .contains(event.searchQuery.toUpperCase()))
               .toList();
           return GetOutOfSockItemsState(
