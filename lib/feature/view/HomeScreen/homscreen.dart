@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // initPlatformState();
 
     _scrollController = ScrollController();
-    context.read<AutoUpdateBloc>().add(const CheckForUpdatesEvent(type: 'C'));
+    // context.read<AutoUpdateBloc>().add(const CheckForUpdatesEvent(type: 'C'));
     _centerscrollController = ScrollController();
     context.read<CustomerSettingsBloc>().add(const ClearSettingsEvent());
     context

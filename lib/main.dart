@@ -830,7 +830,7 @@ class MyApp extends StatelessWidget {
               locale: state.locale ?? const Locale('en'),
               routes: {
                 "homePage": (context) => user == null
-                    ? const LoginScreen()
+                    ? const MessageHandler(child: LoginScreen())
                     : MessageHandler(child: HomeScreen(user: user!)),
                 "Login": (context) => const LoginScreen(),
               },

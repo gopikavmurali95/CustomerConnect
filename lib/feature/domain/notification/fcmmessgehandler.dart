@@ -30,29 +30,22 @@ class MessageHandlerState extends State<MessageHandler> {
 
     // Handle messages when the app is in the foreground
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      log('Happenign');
+      log('Message received in foreground');
       handleMessage(message);
     });
 
-    // Handle messages when the app is in the background and opened from the terminated state
+    // Handle messages when the app is opened from the background
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      log('Happening  open');
+      log('Message opened from background');
       handleMessage(message);
     });
 
     FirebaseMessaging.onBackgroundMessage((message) async {
-      // FlutterLocalNotificationsPlugin flp = FlutterLocalNotificationsPlugin();
-
-      // groupNotifications(flp);
+      log('Handling background message');
       handleMessage(message);
     });
-    // checkForInitialMessage();
-    // Handle messages when the app is opened from a terminated state
-    // _firebaseMessaging.getInitialMessage().then((RemoteMessage? message) {
-    //   if (message != null) {
-    //     _handleMessage(message);
-    //   }
-    // });
+
+    checkForInitialMessage();
   }
 
   Future<void> checkForInitialMessage() async {
@@ -73,23 +66,25 @@ class MessageHandlerState extends State<MessageHandler> {
     var ios = const DarwinInitializationSettings();
 
     var inisettings = InitializationSettings(android: androidi, iOS: ios);
-    // LoginUserModel? user = await getuserdata();
+
     await flp.initialize(
       inisettings,
       onDidReceiveNotificationResponse: (details) {
-/*         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => NotificationScreen(user: user!),
-        )); */
+        handleNotificationTap(details.payload);
       },
       onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
     );
   }
 
   void handleMessage(RemoteMessage message) async {
+    // Extracting click_action and screen from data
     final screen = message.data['Key'];
-    if (screen != null) {
+    final clickAction = message.data['click_action'];
+
+    if (screen != null || clickAction != null) {
       LoginUserModel? user = await getuserdata();
       WidgetsBinding.instance.addPostFrameCallback((_) {
+        // Handling screen navigation based on the key
         if (screen == "val1") {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => NotificationScreen(user: user!),
@@ -99,24 +94,32 @@ class MessageHandlerState extends State<MessageHandler> {
             builder: (context) => ApprovalScreen(user: user!),
           ));
         }
+
+        // Handling navigation based on click_action
+        if (clickAction == "com.example.app.OPEN_NOTIFICATION_ACTIVITY") {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => NotificationScreen(user: user!),
+          ));
+        }
       });
+    }
+  }
+
+  void handleNotificationTap(String? payload) async {
+    // Handle navigation based on notification tap
+    LoginUserModel? user = await getuserdata();
+    if (payload != null && payload == "val1") {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => NotificationScreen(user: user!),
+      ));
     }
   }
 
   @pragma('vm:entry-point')
   void notificationTapBackground(
       NotificationResponse notificationResponse) async {
-    /* final String? payload = notificationResponse.payload;
-    if (notificationResponse.payload != null) {
-      debugPrint('notification payload: $payload');
-    }
-    await Navigator.push(
-      context,
-      MaterialPageRoute<void>(
-          builder: (context) => NotificationScreen(
-                user: LoginUserModel(),
-              )),
-    ); */
+    log('Notification tapped in background');
+    // Handle background notification taps if needed
   }
 
   @override

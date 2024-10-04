@@ -192,7 +192,7 @@ import '../models/load_req_header_model/LoadReqHeaderModel.dart';
 
 abstract class ILoginRepo {
   Future<Either<MainFailures, LoginUserModel>> userLogin(
-      String username, String password);
+      String username, String password, String token);
 }
 
 abstract class IPickingAndLoadinCountRepo {
