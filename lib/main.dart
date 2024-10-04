@@ -31,12 +31,12 @@ import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusinscustomerscount/cus_ins_customers_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstandingcount/cus_out_standing_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
-
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
@@ -95,7 +95,6 @@ import 'package:customer_connect/feature/state/bloc/outofstockitemcustomers/out_
 import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart';
-
 import 'package:customer_connect/feature/state/bloc/partialdeliverydetailsbloc/partial_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/partial_delivery_reason_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
@@ -145,6 +144,7 @@ import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_
 import 'package:customer_connect/feature/state/cubit/arscrol/ar_scroll_ctrl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/credit_note_approval_level_status_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/cusinscustomerspagination/cus_insight_customers_pagination_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvdetailstotal/cus_inv_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
@@ -749,6 +749,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MerchReturnRequestBloc>(),
         ),
+         BlocProvider(
+          create: (context) => getit<CusInsCustomersCountBloc>(),
+        ),
         BlocProvider(
           create: (context) => getit<MerchDisputeNoteReqBloc>(),
         ),
@@ -772,6 +775,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<CusInvDetailsTotalCubit>(
           create: (context) => CusInvDetailsTotalCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusInsightCustomersPaginationCubit>(),
         ),
         BlocProvider(
           create: (context) => getit<AutoUpdateBloc>(),

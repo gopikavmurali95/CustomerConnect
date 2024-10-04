@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/state/bloc/loadtransferdetail/load_tran
 import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_transfer_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/view/loadtransfer/loadtransferheaderscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -51,6 +52,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
   @override
   void initState() {
     _loadtransDetailCtrl.clear();
+
     approvedCount = 0;
     _responsecount = 1;
     context
@@ -93,21 +95,13 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
         canPop:
             /* _approvedCount == 0 || _approvedCount == _totalCount ? true : */ true,
         onPopInvoked: (didPop) {
-          // if (_approvedCount != 0 && _approvedCount != _totalCount) {
+          _loadtransDetailCtrl.clear();
+          vanLoadTransSearchCtrl.clear();
           context.read<LoadTransferHeaderBloc>().add(
               GetAllLoadTransferHeadersEvent(
                   userID: widget.header.userID ?? '',
                   mode: widget.currentMode,
                   searchQuery: ""));
-
-          //   Future.delayed(const Duration(microseconds: 100), () {
-          //     showPopAlert(context);
-          //   });
-          // } else {
-          //   log("$_approvedCount / $_totalCount");
-          //   context.read<NavigatetoBackCubit>().popFromScreen(true);
-          //   return;
-          // }
         },
         child: BlocListener<NavigatetoBackCubit, NavigatetoBackState>(
           listener: (context, state) {
@@ -378,510 +372,667 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                       },
                       builder: (context, state) {
                         return state.when(
-                          getLoadTransferDetailState: (details) => details ==
-                                  null
-                              ? Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: ListView.separated(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      shrinkWrap: true,
-                                      itemBuilder: (context, index) =>
-                                          ShimmerContainers(
-                                              height: 60.h,
-                                              width: double.infinity),
-                                      separatorBuilder: (context, index) =>
-                                          Divider(
-                                            color: Colors.grey[300],
-                                          ),
-                                      itemCount: 10),
-                                )
-                              : ListView.separated(
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) => BlocListener<
-                                      LoadTransferApprovalBloc,
-                                      LoadTransferApprovalState>(
-                                    listener: (context, state) {
-                                      state.when(
-                                        approveLoadTransferState: (response) {
-                                          if (response != null) {
-                                            if (_responsecount == 0) {
-                                              approvedCount += 1;
-                                              _responsecount = 1;
-                                            }
-                                            Navigator.pop(context);
-                                            isLoading = false;
-
-                                            showCupertinoDialog(
-                                              context: context,
-                                              builder: (context) =>
-                                                  CupertinoAlertDialog(
-                                                title: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .alert),
-                                                content: Text(
-                                                    " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                      Navigator.pop(context);
-                                                    },
-                                                    child: Text(
-                                                        AppLocalizations.of(
-                                                                context)!
-                                                            .ok),
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          }
-                                        },
-                                        loadTransferApprovalLoadingState: () {
-                                          if (loadingCount == 0) {
-                                            loadingCount = 1;
-                                            _responsecount = 0;
-
-                                            showCupertinoModalPopup(
-                                                context: context,
-                                                barrierDismissible: false,
-                                                builder: (context) => SizedBox(
-                                                      height:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .height,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      child: const PopScope(
-                                                        canPop: true,
-                                                        child:
-                                                            CupertinoActivityIndicator(
-                                                          animating: true,
-                                                          color: Colors.red,
-                                                          radius: 30,
-                                                        ),
-                                                      ),
-                                                    ));
-                                          }
-                                        },
-                                        loadTransferApprovalFailedState: () {
-                                          log(loadingCount.toString());
-                                          if (_responsecount == 0) {
-                                            // _approvedCount = 5;
-                                            // _approvedCount++;
-                                            statuslist[index] = null;
-                                            _responsecount = 1;
-                                          }
-
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                          showCupertinoDialog(
-                                            context: context,
-                                            builder: (context) =>
-                                                CupertinoAlertDialog(
-                                              title: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .alert),
-                                              content: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .somethingWentWrong),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .ok),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                    child: Padding(
+                          getLoadTransferDetailState: (details) =>
+                              details == null
+                                  ? Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Expanded(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      details[index].prdCode ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        color: const Color(
-                                                            0xff7b70ac),
-                                                        fontWeight:
-                                                            FontWeight.w500,
+                                      child: ListView.separated(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) =>
+                                              ShimmerContainers(
+                                                  height: 60.h,
+                                                  width: double.infinity),
+                                          separatorBuilder: (context, index) =>
+                                              Divider(
+                                                color: Colors.grey[300],
+                                              ),
+                                          itemCount: 10),
+                                    )
+                                  : ListView.separated(
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) =>
+                                          BlocListener<LoadTransferApprovalBloc,
+                                              LoadTransferApprovalState>(
+                                        listener: (context, state) {
+                                          state.when(
+                                            approveLoadTransferState:
+                                                (response) {
+                                              if (response != null) {
+                                                if (_responsecount == 0) {
+                                                  approvedCount += 1;
+                                                  _responsecount = 1;
+                                                }
+                                                Navigator.pop(context);
+                                                isLoading = false;
+
+                                                showCupertinoDialog(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      CupertinoAlertDialog(
+                                                    title: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .alert),
+                                                    content: Text(
+                                                        " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .ok),
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      selectedLocale
-                                                                  ?.languageCode ==
-                                                              "en"
-                                                          ? details[index]
-                                                                  .prdName ??
-                                                              ''
-                                                          : details[index]
-                                                                  .prdArName ??
-                                                              '',
-                                                      style: kfontstyle(
-                                                          fontSize: 12.sp,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color:
-                                                              Colors.black54),
+                                                    ],
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                            loadTransferApprovalLoadingState:
+                                                () {
+                                              if (loadingCount == 0) {
+                                                loadingCount = 1;
+                                                _responsecount = 0;
+
+                                                showCupertinoModalPopup(
+                                                    context: context,
+                                                    barrierDismissible: false,
+                                                    builder: (context) =>
+                                                        SizedBox(
+                                                          height: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .height,
+                                                          width: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .width,
+                                                          child: const PopScope(
+                                                            canPop: true,
+                                                            child:
+                                                                CupertinoActivityIndicator(
+                                                              animating: true,
+                                                              color: Colors.red,
+                                                              radius: 30,
+                                                            ),
+                                                          ),
+                                                        ));
+                                              }
+                                            },
+                                            loadTransferApprovalFailedState:
+                                                () {
+                                              log(loadingCount.toString());
+                                              if (_responsecount == 0) {
+                                                // _approvedCount = 5;
+                                                // _approvedCount++;
+                                                statuslist[index] = null;
+                                                _responsecount = 1;
+                                              }
+
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                              showCupertinoDialog(
+                                                context: context,
+                                                builder: (context) =>
+                                                    CupertinoAlertDialog(
+                                                  title: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .alert),
+                                                  content: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .somethingWentWrong),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .ok),
                                                     ),
                                                   ],
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                width: 10.w,
-                                              ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: Column(
+                                            children: [
                                               Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    children: [
-                                                      Text(
-                                                        details[index]
-                                                                    .ldrOffloadHuom!
-                                                                    .isEmpty ||
-                                                                details[index]
-                                                                        .ldrOffloadHuom ==
-                                                                    null
-                                                            ? "-"
-                                                            : details[index]
-                                                                    .ldrOffloadHuom ??
-                                                                "",
-                                                        style: kfontstyle(
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          details[index]
+                                                                  .prdCode ??
+                                                              '',
+                                                          style: kfontstyle(
                                                             fontSize: 12.sp,
+                                                            color: const Color(
+                                                                0xff7b70ac),
                                                             fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                Colors.black54),
-                                                      ),
-                                                      // Text(
-                                                      //   details[index]
-                                                      //           .ldrOffloadHuom ??
-                                                      //       '',
-                                                      //   style: kfontstyle(
-                                                      //       fontSize: 12.sp,
-                                                      //       fontWeight:
-                                                      //           FontWeight.w400,
-                                                      //       color:
-                                                      //           Colors.black54),
-                                                      // ),
-                                                      SizedBox(
-                                                        height: 10.h,
-                                                      ),
-                                                      Text(
-                                                        details[index]
-                                                                    .ldrOffloadLuom!
-                                                                    .isEmpty ||
-                                                                details[index]
-                                                                        .ldrOffloadLuom ==
-                                                                    null
-                                                            ? "-"
-                                                            : details[index]
-                                                                    .ldrOffloadLuom ??
-                                                                "",
-                                                        style: kfontstyle(
-                                                            fontSize: 12.sp,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                Colors.black54),
-                                                      ),
-                                                    ],
+                                                                FontWeight.w500,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          selectedLocale
+                                                                      ?.languageCode ==
+                                                                  "en"
+                                                              ? details[index]
+                                                                      .prdName ??
+                                                                  ''
+                                                              : details[index]
+                                                                      .prdArName ??
+                                                                  '',
+                                                          style: kfontstyle(
+                                                              fontSize: 12.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: Colors
+                                                                  .black54),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                   SizedBox(
-                                                    width: selectedLocale
-                                                                ?.languageCode ==
-                                                            'en'
-                                                        ? 50.w
-                                                        : 70.w,
+                                                    width: 10.w,
                                                   ),
-                                                  Column(
+                                                  Row(
                                                     children: [
-                                                      Text(
-                                                        details[index]
-                                                                    .ldrOffloadHQty!
-                                                                    .isEmpty ||
-                                                                details[index]
-                                                                        .ldrOffloadHQty ==
-                                                                    null
-                                                            ? "0"
-                                                            : details[index]
-                                                                    .ldrOffloadHQty ??
-                                                                "",
-                                                        style: kfontstyle(
-                                                            fontSize: 12.sp,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                Colors.black54),
+                                                      Column(
+                                                        children: [
+                                                          Text(
+                                                            details[index]
+                                                                        .ldrOffloadHuom!
+                                                                        .isEmpty ||
+                                                                    details[index]
+                                                                            .ldrOffloadHuom ==
+                                                                        null
+                                                                ? "-"
+                                                                : details[index]
+                                                                        .ldrOffloadHuom ??
+                                                                    "",
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                          // Text(
+                                                          //   details[index]
+                                                          //           .ldrOffloadHuom ??
+                                                          //       '',
+                                                          //   style: kfontstyle(
+                                                          //       fontSize: 12.sp,
+                                                          //       fontWeight:
+                                                          //           FontWeight.w400,
+                                                          //       color:
+                                                          //           Colors.black54),
+                                                          // ),
+                                                          SizedBox(
+                                                            height: 10.h,
+                                                          ),
+                                                          Text(
+                                                            details[index]
+                                                                        .ldrOffloadLuom!
+                                                                        .isEmpty ||
+                                                                    details[index]
+                                                                            .ldrOffloadLuom ==
+                                                                        null
+                                                                ? "-"
+                                                                : details[index]
+                                                                        .ldrOffloadLuom ??
+                                                                    "",
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                        ],
                                                       ),
                                                       SizedBox(
-                                                        height: 10.h,
+                                                        width: selectedLocale
+                                                                    ?.languageCode ==
+                                                                'en'
+                                                            ? 50.w
+                                                            : 70.w,
                                                       ),
-                                                      Text(
-                                                        details[index]
-                                                                    .ldrOffloadLQty!
-                                                                    .isEmpty ||
-                                                                details[index]
-                                                                        .ldrOffloadLQty ==
-                                                                    null
-                                                            ? "0"
-                                                            : details[index]
-                                                                    .ldrOffloadLQty ??
-                                                                "",
-                                                        style: kfontstyle(
-                                                            fontSize: 12.sp,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                Colors.black54),
+                                                      Column(
+                                                        children: [
+                                                          Text(
+                                                            details[index]
+                                                                        .ldrOffloadHQty!
+                                                                        .isEmpty ||
+                                                                    details[index]
+                                                                            .ldrOffloadHQty ==
+                                                                        null
+                                                                ? "0"
+                                                                : details[index]
+                                                                        .ldrOffloadHQty ??
+                                                                    "",
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 10.h,
+                                                          ),
+                                                          Text(
+                                                            details[index]
+                                                                        .ldrOffloadLQty!
+                                                                        .isEmpty ||
+                                                                    details[index]
+                                                                            .ldrOffloadLQty ==
+                                                                        null
+                                                                ? "0"
+                                                                : details[index]
+                                                                        .ldrOffloadLQty ??
+                                                                    "",
+                                                            style: kfontstyle(
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .black54),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ],
-                                                  ),
+                                                  )
                                                 ],
-                                              )
+                                              ),
+                                              widget.header.ltrApprovalStatus ==
+                                                      'Pending'
+                                                  ? Transform.scale(
+                                                      scale: .9,
+                                                      origin:
+                                                          const Offset(450, 0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          BlocBuilder<
+                                                              AapprovalOrRejectRadioCubit,
+                                                              AapprovalOrRejectRadioState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return Row(
+                                                                children: [
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child:
+                                                                        InkWell(
+                                                                      onTap:
+                                                                          () {
+                                                                        setState(
+                                                                            () {
+                                                                          statuslist[index] =
+                                                                              true;
+                                                                          loadingCount =
+                                                                              0;
+                                                                          setState(
+                                                                              () {});
+
+                                                                          _loadprducts[index] = LoadTransferPrdModel(
+                                                                              ldrId: details[index].ldrId,
+                                                                              status: "A");
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            fillColor:
+                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                            }),
+                                                                            /* activeColor: isselected == true
+                                                                                                                                                                        ? const Color(0xff0075ff)
+                                                                                                                                                                        : Colors.grey, */
+                                                                            value: statuslist[index] == null
+                                                                                ? false
+                                                                                : statuslist[index] == true
+                                                                                    ? true
+                                                                                    : false,
+                                                                            groupValue:
+                                                                                true,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              /*  showCupertinoDialog(
+                                                                      context: context,
+                                                                      builder: (context) =>
+                                                                          CupertinoAlertDialog(
+                                                                        title: const Text(
+                                                                            'Alert'),
+                                                                        content: const Text(
+                                                                            "Do you Want to Approve this product"),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                              setState(
+                                                                                  () {});
+                                                                              Navigator.pop(
+                                                                                  context);
+                                                                            },
+                                                                            child: const Text(
+                                                                                'Cancel'),
+                                                                          ),
+                                                                          TextButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                             
+                                                                            },
+                                                                            child: const Text(
+                                                                                'Proceed'),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ); */
+                                                                              statuslist[index] = true;
+                                                                              loadingCount = 0;
+                                                                              setState(() {});
+
+                                                                              _loadprducts[index] = LoadTransferPrdModel(ldrId: details[index].ldrId, status: "A");
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!.approve,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child:
+                                                                        InkWell(
+                                                                      onTap:
+                                                                          () {
+                                                                        setState(
+                                                                            () {
+                                                                          statuslist[index] =
+                                                                              false;
+
+                                                                          loadingCount =
+                                                                              0;
+                                                                          setState(
+                                                                              () {});
+
+                                                                          _loadprducts[index] = LoadTransferPrdModel(
+                                                                              ldrId: details[index].ldrId,
+                                                                              status: "R");
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            fillColor:
+                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                            }),
+                                                                            /*  activeColor: isselected == false
+                                                                                                                                                                        ? const Color(0xff0075ff)
+                                                                                                                                                                        : Colors.grey, */
+                                                                            value: statuslist[index] == null
+                                                                                ? true
+                                                                                : statuslist[index] == true
+                                                                                    ? true
+                                                                                    : false,
+                                                                            groupValue:
+                                                                                false,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              statuslist[index] = false;
+
+                                                                              loadingCount = 0;
+                                                                              setState(() {});
+
+                                                                              _loadprducts[index] = LoadTransferPrdModel(ldrId: details[index].ldrId, status: "R");
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!.reject,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              );
+                                                            },
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
+                                                  : Transform.scale(
+                                                      scale: .9,
+                                                      origin:
+                                                          const Offset(450, 0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          BlocBuilder<
+                                                              AapprovalOrRejectRadioCubit,
+                                                              AapprovalOrRejectRadioState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return Row(
+                                                                children: [
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child:
+                                                                        InkWell(
+                                                                      onTap:
+                                                                          () {
+                                                                        setState(
+                                                                            () {
+                                                                          statuslist[index] =
+                                                                              true;
+                                                                          loadingCount =
+                                                                              0;
+                                                                          setState(
+                                                                              () {});
+
+                                                                          _loadprducts[index] = LoadTransferPrdModel(
+                                                                              ldrId: details[index].ldrId,
+                                                                              status: "A");
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                            fillColor:
+                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                            }),
+                                                                            /* activeColor: isselected == true
+                                                                                                                                                                        ? const Color(0xff0075ff)
+                                                                                                                                                                        : Colors.grey, */
+                                                                            value: statuslist[index] == null
+                                                                                ? false
+                                                                                : statuslist[index] == true
+                                                                                    ? true
+                                                                                    : false,
+                                                                            groupValue:
+                                                                                true,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              /*  showCupertinoDialog(
+                                                                      context: context,
+                                                                      builder: (context) =>
+                                                                          CupertinoAlertDialog(
+                                                                        title: const Text(
+                                                                            'Alert'),
+                                                                        content: const Text(
+                                                                            "Do you Want to Approve this product"),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                              setState(
+                                                                                  () {});
+                                                                              Navigator.pop(
+                                                                                  context);
+                                                                            },
+                                                                            child: const Text(
+                                                                                'Cancel'),
+                                                                          ),
+                                                                          TextButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                             
+                                                                            },
+                                                                            child: const Text(
+                                                                                'Proceed'),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ); */
+                                                                              statuslist[index] = true;
+                                                                              loadingCount = 0;
+                                                                              setState(() {});
+
+                                                                              _loadprducts[index] = LoadTransferPrdModel(ldrId: details[index].ldrId, status: "A");
+                                                                            },
+                                                                          ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!.approve,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Transform
+                                                                      .scale(
+                                                                    scale: 0.8,
+                                                                    child:
+                                                                        InkWell(
+                                                                      onTap:
+                                                                          () {
+                                                                        setState(
+                                                                            () {
+                                                                          statuslist[index] =
+                                                                              false;
+
+                                                                          loadingCount =
+                                                                              0;
+                                                                          setState(
+                                                                              () {});
+
+                                                                          _loadprducts[index] = LoadTransferPrdModel(
+                                                                              ldrId: details[index].ldrId,
+                                                                              status: "R");
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          Row(
+                                                                        children: [
+                                                                          Radio(
+                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                              }),
+                                                                              /*  activeColor: isselected == false
+                                                                                                                                                                        ? const Color(0xff0075ff)
+                                                                                                                                                                        : Colors.grey, */
+                                                                              value: statuslist[index] == null
+                                                                                  ? true
+                                                                                  : statuslist[index] == true
+                                                                                      ? true
+                                                                                      : false,
+                                                                              groupValue: false,
+                                                                              onChanged: (value) {}
+                                                                              //   (value) {
+                                                                              // statuslist[
+                                                                              //         index] =
+                                                                              //     false;
+
+                                                                              // loadingCount =
+                                                                              //     0;
+                                                                              // setState(
+                                                                              //     () {});
+
+                                                                              // _loadprducts[
+                                                                              //         index] =
+                                                                              //     LoadTransferPrdModel(
+                                                                              //         ldrId: details[index]
+                                                                              //             .ldrId,
+                                                                              //         status:
+                                                                              //             "R");
+                                                                              //},
+                                                                              ),
+                                                                          Text(
+                                                                            AppLocalizations.of(context)!.reject,
+                                                                            style:
+                                                                                kfontstyle(),
+                                                                          )
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                ],
+                                                              );
+                                                            },
+                                                          )
+                                                        ],
+                                                      ),
+                                                    )
                                             ],
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              BlocBuilder<
-                                                  AapprovalOrRejectRadioCubit,
-                                                  AapprovalOrRejectRadioState>(
-                                                builder: (context, state) {
-                                                  return Row(
-                                                    children: [
-                                                      Transform.scale(
-                                                        scale: 0.8,
-                                                        child: InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              statuslist[
-                                                                  index] = true;
-                                                              loadingCount = 0;
-                                                              setState(() {});
-
-                                                              _loadprducts[
-                                                                      index] =
-                                                                  LoadTransferPrdModel(
-                                                                      ldrId: details[
-                                                                              index]
-                                                                          .ldrId,
-                                                                      status:
-                                                                          "A");
-                                                            });
-                                                          },
-                                                          child: Row(
-                                                            children: [
-                                                              Radio(
-                                                                fillColor: MaterialStateProperty
-                                                                    .resolveWith<
-                                                                        Color>((Set<
-                                                                            MaterialState>
-                                                                        states) {
-                                                                  return (statuslist[
-                                                                              index] ==
-                                                                          true)
-                                                                      ? Colors
-                                                                          .green
-                                                                          .shade300
-                                                                      : Colors
-                                                                          .grey;
-                                                                }),
-                                                                /* activeColor: isselected == true
-                                                                                                                                                                      ? const Color(0xff0075ff)
-                                                                                                                                                                      : Colors.grey, */
-                                                                value: statuslist[
-                                                                            index] ==
-                                                                        null
-                                                                    ? false
-                                                                    : statuslist[index] ==
-                                                                            true
-                                                                        ? true
-                                                                        : false,
-                                                                groupValue:
-                                                                    true,
-                                                                onChanged:
-                                                                    (value) {
-                                                                  /*  showCupertinoDialog(
-                                                                    context: context,
-                                                                    builder: (context) =>
-                                                                        CupertinoAlertDialog(
-                                                                      title: const Text(
-                                                                          'Alert'),
-                                                                      content: const Text(
-                                                                          "Do you Want to Approve this product"),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed:
-                                                                              () {
-                                                                            setState(
-                                                                                () {});
-                                                                            Navigator.pop(
-                                                                                context);
-                                                                          },
-                                                                          child: const Text(
-                                                                              'Cancel'),
-                                                                        ),
-                                                                        TextButton(
-                                                                          onPressed:
-                                                                              () {
-                                                                           
-                                                                          },
-                                                                          child: const Text(
-                                                                              'Proceed'),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ); */
-                                                                  statuslist[
-                                                                          index] =
-                                                                      true;
-                                                                  loadingCount =
-                                                                      0;
-                                                                  setState(
-                                                                      () {});
-
-                                                                  _loadprducts[
-                                                                          index] =
-                                                                      LoadTransferPrdModel(
-                                                                          ldrId: details[index]
-                                                                              .ldrId,
-                                                                          status:
-                                                                              "A");
-                                                                },
-                                                              ),
-                                                              Text(
-                                                                AppLocalizations.of(
-                                                                        context)!
-                                                                    .approve,
-                                                                style:
-                                                                    kfontstyle(),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Transform.scale(
-                                                        scale: 0.8,
-                                                        child: InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              statuslist[
-                                                                      index] =
-                                                                  false;
-
-                                                              loadingCount = 0;
-                                                              setState(() {});
-
-                                                              _loadprducts[
-                                                                      index] =
-                                                                  LoadTransferPrdModel(
-                                                                      ldrId: details[
-                                                                              index]
-                                                                          .ldrId,
-                                                                      status:
-                                                                          "R");
-                                                            });
-                                                          },
-                                                          child: Row(
-                                                            children: [
-                                                              Radio(
-                                                                fillColor: MaterialStateProperty
-                                                                    .resolveWith<
-                                                                        Color>((Set<
-                                                                            MaterialState>
-                                                                        states) {
-                                                                  return (statuslist[index] !=
-                                                                              null &&
-                                                                          !statuslist[
-                                                                              index]!)
-                                                                      ? Colors
-                                                                          .red
-                                                                          .shade300
-                                                                      : Colors
-                                                                          .grey;
-                                                                }),
-                                                                /*  activeColor: isselected == false
-                                                                                                                                                                      ? const Color(0xff0075ff)
-                                                                                                                                                                      : Colors.grey, */
-                                                                value: statuslist[
-                                                                            index] ==
-                                                                        null
-                                                                    ? true
-                                                                    : statuslist[index] ==
-                                                                            true
-                                                                        ? true
-                                                                        : false,
-                                                                groupValue:
-                                                                    false,
-                                                                onChanged:
-                                                                    (value) {
-                                                                  statuslist[
-                                                                          index] =
-                                                                      false;
-
-                                                                  loadingCount =
-                                                                      0;
-                                                                  setState(
-                                                                      () {});
-
-                                                                  _loadprducts[
-                                                                          index] =
-                                                                      LoadTransferPrdModel(
-                                                                          ldrId: details[index]
-                                                                              .ldrId,
-                                                                          status:
-                                                                              "R");
-                                                                },
-                                                              ),
-                                                              Text(
-                                                                AppLocalizations.of(
-                                                                        context)!
-                                                                    .reject,
-                                                                style:
-                                                                    kfontstyle(),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  );
-                                                },
-                                              )
-                                            ],
-                                          )
-                                        ],
+                                        ),
                                       ),
+                                      separatorBuilder: (context, index) =>
+                                          Divider(
+                                        color: Colors.grey[300],
+                                      ),
+                                      itemCount: details.length,
                                     ),
-                                  ),
-                                  separatorBuilder: (context, index) => Divider(
-                                    color: Colors.grey[300],
-                                  ),
-                                  itemCount: details.length,
-                                ),
                           loadTransferDetailFailedState: () => Center(
                             child: Text(
                               AppLocalizations.of(context)!.noDataAvailable,

@@ -19,7 +19,7 @@ class MerchandiseTaskRepo implements IMerchandiseTaskHeaderRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + merchandiseTaskHeaderUrl),
           body: taskdetails.toJson());
-      //log("FromDate: ${taskdetails.fromDate}, ToDate: ${taskdetails.toDate}, Status: ${taskdetails.status}");
+      log("FromDate: ${taskdetails.fromDate}, ToDate: ${taskdetails.toDate}, Status: ${taskdetails.status}");
       log(' Task Header  Response: ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);

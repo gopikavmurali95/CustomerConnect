@@ -12,6 +12,7 @@ import 'package:customer_connect/feature/state/bloc/approvereturnprod/approve_re
 import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadreqdetail/load_req_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadreqheader/load_req_header_bloc.dart';
+import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
@@ -22,11 +23,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-// import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
-
 class LoadReqDetailscreen extends StatefulWidget {
-  //final ReturnApprovalHeaderModel returnApprovel;
-
   final LoadReqHeaderModel loadrequest;
   final LoginUserModel user;
   final String currentMode;
@@ -43,11 +40,9 @@ class LoadReqDetailscreen extends StatefulWidget {
 List<String> selectedresons = [];
 List<bool?> statuslist = [];
 bool isLoading = false;
-
 int loadingCount = 0;
 List<ApprovalResonModel> availableresons = [];
 int approvedCount = 0;
-
 List<LoadReqPrdModel?> _loadproducts = [];
 //String _selectedloadrequestdetail = 'P';
 //TextEditingController _apprvHQtyController = TextEditingController();
@@ -55,6 +50,7 @@ List<LoadReqPrdModel?> _loadproducts = [];
 TextEditingController _loadreqdetailSearchController = TextEditingController();
 List<TextEditingController> _hPricecontrollers = [];
 List<TextEditingController> _lPricecontrollers = [];
+List<FocusNode> focusNodes = [];
 
 class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
   @override
@@ -100,16 +96,12 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
+          _loadreqdetailSearchController.clear();
+          loadqSearchController.clear();
           context.read<LoadReqHeaderBloc>().add(LoadreqSuccessEvent(
               userId: widget.loadrequest.userID ?? '',
               mode: widget.currentMode,
               searchQuery: ''));
-
-          // context.read<LoadReqDetailBloc>().add(GetloadreqdetailEvent(
-          //     reqId: widget.loadrequest.rotID??'',
-          //     mode: widget.currentMode,
-          //     searchQuery: '',
-          // ));
         },
         child: Column(
           children: [
@@ -145,29 +137,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              /* Row(
-                                children: [
-                                  Text(
-                                    '${widget.loadrequest.rotCode}- ',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff2C6B9E),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    flex: 1,
-                                    fit: FlexFit.tight,
-                                    child: Text(
-                                      overflow: TextOverflow.ellipsis,
-                                      "${selectedLocale?.languageCode == 'en' ? widget.loadrequest.usrName : widget.loadrequest.usrArabicName}",
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          color: const Color(0xff413434)),
-                                    ),
-                                  ),
-                                ],
-                              ), */
-
                               RichText(
                                 text: TextSpan(
                                     style: DefaultTextStyle.of(context)
@@ -285,21 +254,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                     reqId: '',
                                   ));
                             });
-                            // if (debounce?.isActive ?? false) debounce!.cancel();
-                            // debounce = Timer(
-                            //   const Duration(
-                            //     milliseconds: 200,
-                            //   ),
-                            //       () async {
-                            //     context
-                            //         .read<LoadingDetailBloc>()
-                            //         .add(const ClearLoadingDetailEvent());
-                            //     context.read<LoadingDetailBloc>().add(
-                            //         GetloadingDetailEvent(
-                            //             iD: widget.loadingheader.id ?? '',
-                            //             searchQuery: value));
-                            //   },
-                            // );
                           },
                           decoration: InputDecoration(
                               prefixIcon: const Icon(
@@ -325,15 +279,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                   searchQuery: "",
                                                   reqId: ''));
                                         }
-                                        // _loadPendingSearchCtrl.clear();
-                                        // context
-                                        //     .read<LoadingDetailBloc>()
-                                        //     .add(const ClearLoadingDetailEvent());
-                                        // context.read<LoadingDetailBloc>().add(
-                                        //   GetloadingDetailEvent(
-                                        //       iD: widget.loadingheader.id ?? '',
-                                        //       searchQuery: ''),
-                                        // );
                                       },
                                       icon: Icon(
                                         Icons.close,
@@ -354,26 +299,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                               contentPadding: const EdgeInsets.all(15.0),
                               filled: true,
                               fillColor: Colors.white,
-                              // suffix: InkWell(
-                              //   onTap: () {
-                              //     _loadPendingdetailsSearchCtrl.clear();
-                              //     context.read<LoadingHeaderBloc>().add(
-                              //         GetLoadingHeaderEvent(
-                              //             searchQuery: '',
-                              //             loadingin: LoadingHeaderInModel(
-                              //                 userId: widget.user.usrId,
-                              //                 fromDate: '01-01-2023',
-                              //                 toDate: '23-03-2024',
-                              //                 mode: 'DD',
-                              //                 area: '',
-                              //                 route: '',
-                              //                 subArea: '')));
-                              //   },
-                              //   child: const Icon(
-                              //     Icons.close,
-                              //     size: 14,
-                              //   ),
-                              // ),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                   borderSide: BorderSide.none)),
@@ -434,6 +359,8 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                       state.when(
                         loadreqDetailSuccessState: (details) {
                           if (details != null) {
+                            focusNodes = List.generate(
+                                details.length, (index) => FocusNode());
                             _hPricecontrollers = List.generate(
                               details.length,
                               (index) => TextEditingController(
@@ -791,18 +718,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                         color: Colors
                                                                             .black54),
                                                                   ),
-                                                                  // Text(
-                                                                  //   details[index]
-                                                                  //           .lrdLQty ??
-                                                                  //       '',
-                                                                  //   style: kfontstyle(
-                                                                  //       fontSize: 12
-                                                                  //           .sp,
-                                                                  //       fontWeight:
-                                                                  //           FontWeight
-                                                                  //               .w400,
-                                                                  //       color: const Color.fromARGB(137, 235, 48, 48)),
-                                                                  // ),
                                                                 ],
                                                               ),
                                                               Column(
@@ -812,7 +727,6 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                     width: 80,
                                                                     child:
                                                                         TextFormField(
-                                                                      // focusNode: null,
                                                                       textAlign:
                                                                           TextAlign
                                                                               .right,
@@ -833,12 +747,30 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                             value;
                                                                         _loadproducts[index] =
                                                                             LoadReqPrdModel(
-                                                                          lrdLQty:
+                                                                          /* lrdLQty:
                                                                               details[index].lrdLQty,
                                                                           lrdHQty:
                                                                               details[index].lrdHQty,
                                                                           lrdId:
+                                                                              details[index].lrdID, */
+                                                                          lrdHQty:
+                                                                              details[index].lrdHQty,
+                                                                          lrdHuom:
+                                                                              details[index].lrdHUOM,
+                                                                          lrdId:
                                                                               details[index].lrdID,
+                                                                          lrdLQty:
+                                                                              details[index].lrdLQty,
+                                                                          lrdLuom:
+                                                                              details[index].lrdLUOM,
+                                                                          lrdPrdId:
+                                                                              details[index].lrdPrdID,
+                                                                          lrdTotalQty:
+                                                                              details[index].lrdTotalQty,
+                                                                          txtApvHQty:
+                                                                              details[index].lrdApvHQty,
+                                                                          txtApvLQty:
+                                                                              details[index].lrdApvLQty,
                                                                         );
                                                                       },
                                                                       //controller: _apprvHQtyController,
@@ -892,12 +824,30 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                             value;
                                                                         _loadproducts[index] =
                                                                             LoadReqPrdModel(
-                                                                          lrdLQty:
+                                                                          /*  lrdLQty:
                                                                               details[index].lrdLQty,
                                                                           lrdHQty:
                                                                               details[index].lrdHQty,
                                                                           lrdId:
+                                                                              details[index].lrdID, */
+                                                                          lrdHQty:
+                                                                              details[index].lrdHQty,
+                                                                          lrdHuom:
+                                                                              details[index].lrdHUOM,
+                                                                          lrdId:
                                                                               details[index].lrdID,
+                                                                          lrdLQty:
+                                                                              details[index].lrdLQty,
+                                                                          lrdLuom:
+                                                                              details[index].lrdLUOM,
+                                                                          lrdPrdId:
+                                                                              details[index].lrdPrdID,
+                                                                          lrdTotalQty:
+                                                                              details[index].lrdTotalQty,
+                                                                          txtApvHQty:
+                                                                              details[index].lrdApvHQty,
+                                                                          txtApvLQty:
+                                                                              details[index].lrdApvLQty,
                                                                         );
                                                                       },
                                                                       style: const TextStyle(
@@ -962,240 +912,259 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
           ],
         ),
       ),
-      bottomNavigationBar:
-          BlocListener<LoadReqApprovalBloc, LoadReqApprovalState>(
-        listener: (context, state) {
-          state.when(
-            loadReqApprovalSuccessState: (response) {
-              if (response != null) {
+      bottomNavigationBar: Visibility(
+        visible: widget.loadrequest.status == 'Pending' ? true : false,
+        child: BlocListener<LoadReqApprovalBloc, LoadReqApprovalState>(
+          listener: (context, state) {
+            state.when(
+              loadReqApprovalSuccessState: (response) {
+                if (response != null) {
+                  Navigator.pop(context);
+                  // if (isApproval) {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) => CupertinoAlertDialog(
+                      title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(selectedLocale?.languageCode == "en"
+                          ? response.status ?? ''
+                          : response.arstatus ?? ''),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                          child: Text(AppLocalizations.of(context)!.proceed),
+                        ),
+                      ],
+                    ),
+                  );
+                  // }
+                }
+              },
+              loadReqApprovalFailedState: () {
                 Navigator.pop(context);
-                // if (isApproval) {
                 showCupertinoDialog(
                   context: context,
                   builder: (context) => CupertinoAlertDialog(
                     title: Text(AppLocalizations.of(context)!.alert),
-                    content: Text(selectedLocale?.languageCode == "en"
-                        ? response.status ?? ''
-                        : response.arstatus ?? ''),
+                    content:
+                        Text(AppLocalizations.of(context)!.somethingWentWrong),
                     actions: [
                       TextButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          context.read<LoadReqDetailBloc>().add(
+                              GetloadreqdetailEvent(
+                                  reqId: widget.loadrequest.lrhID ?? "",
+                                  searchQuery: ''));
                           Navigator.pop(context);
                         },
-                        child: Text(AppLocalizations.of(context)!.proceed),
+                        child: Text(AppLocalizations.of(context)!.ok),
                       ),
                     ],
                   ),
                 );
-                // }
-              }
-            },
-            loadReqApprovalFailedState: () {
-              Navigator.pop(context);
-              showCupertinoDialog(
-                context: context,
-                builder: (context) => CupertinoAlertDialog(
-                  title: Text(AppLocalizations.of(context)!.alert),
-                  content:
-                      Text(AppLocalizations.of(context)!.somethingWentWrong),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        context.read<LoadReqDetailBloc>().add(
-                            GetloadreqdetailEvent(
-                                reqId: widget.loadrequest.lrhID ?? "",
-                                searchQuery: ''));
-                        Navigator.pop(context);
-                      },
-                      child: Text(AppLocalizations.of(context)!.ok),
+              },
+              loadReqApprovalLoadingState: () {
+                showCupertinoModalPopup(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) => SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          child: const PopScope(
+                            canPop: true,
+                            child: CupertinoActivityIndicator(
+                              animating: true,
+                              color: Colors.red,
+                              radius: 30,
+                            ),
+                          ),
+                        ));
+              },
+            );
+          },
+          child: SizedBox(
+            height: 50.h,
+            width: double.infinity,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Visibility(
+                    visible:
+                        widget.loadrequest.status == 'Pending' ? true : false,
+                    child: Row(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            color: widget.loadrequest.status == 'Pending'
+                                ? Colors.red.shade300
+                                : Colors.grey[300],
+                            onPressed: () {
+                              log(jsonEncode(LoadReqInApprovalModel(
+                                  products: _loadproducts,
+                                  reqID: widget.loadrequest.lrhID,
+                                  rotID: widget.loadrequest.rotID,
+                                  userId: widget.user.usrId)));
+                              if (widget.loadrequest.status == 'Pending') {
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          loadingCount = 0;
+
+                                          Navigator.pop(context);
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(
+                                                  const ApprovLoadingReqEvent());
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(
+                                                ApprovloadReqEvent(
+                                                  approval:
+                                                      LoadReqInApprovalModel(
+                                                          products:
+                                                              _loadproducts,
+                                                          reqID: widget
+                                                              .loadrequest
+                                                              .lrhID,
+                                                          rotID: widget
+                                                              .loadrequest
+                                                              .rotID,
+                                                          userId: widget
+                                                              .loadrequest
+                                                              .userID,
+                                                          status: "R"),
+                                                ),
+                                              );
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.reject,
+                              style: kfontstyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            color: widget.loadrequest.status == 'Pending'
+                                ? Colors.green.shade300
+                                : Colors.grey[300],
+                            onPressed: () {
+                              if (widget.loadrequest.status == 'Pending') {
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          loadingCount = 0;
+
+                                          Navigator.pop(context);
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(
+                                                  const ApprovLoadingReqEvent());
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(ApprovloadReqEvent(
+                                                  approval:
+                                                      LoadReqInApprovalModel(
+                                                          products:
+                                                              _loadproducts,
+                                                          reqID: widget
+                                                              .loadrequest
+                                                              .lrhID,
+                                                          rotID: widget
+                                                              .loadrequest
+                                                              .rotID,
+                                                          userId: widget
+                                                              .loadrequest
+                                                              .userID,
+                                                          status: "A")));
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.approve,
+                              style: kfontstyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
-              );
-            },
-            loadReqApprovalLoadingState: () {
-              showCupertinoModalPopup(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (context) => SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
-                        child: const PopScope(
-                          canPop: true,
-                          child: CupertinoActivityIndicator(
-                            animating: true,
-                            color: Colors.red,
-                            radius: 30,
-                          ),
-                        ),
-                      ));
-            },
-          );
-        },
-        child: SizedBox(
-          height: 50.h,
-          width: double.infinity,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Visibility(
-                  visible:
-                      widget.loadrequest.status == 'Pending' ? true : false,
-                  child: Row(
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        fit: FlexFit.tight,
-                        child: MaterialButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          color: widget.loadrequest.status == 'Pending'
-                              ? Colors.red.shade300
-                              : Colors.grey[300],
-                          onPressed: () {
-                            log(jsonEncode(LoadReqInApprovalModel(
-                                products: _loadproducts,
-                                reqID: widget.loadrequest.lrhID,
-                                rotID: widget.loadrequest.rotID,
-                                userId: widget.user.usrId)));
-                            if (widget.loadrequest.status == 'Pending') {
-                              showCupertinoDialog(
-                                context: context,
-                                builder: (context) => CupertinoAlertDialog(
-                                  title:
-                                      Text(AppLocalizations.of(context)!.alert),
-                                  content: Text(AppLocalizations.of(context)!
-                                      .doyouWantToProceed),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {});
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                          AppLocalizations.of(context)!.cancel),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        loadingCount = 0;
-
-                                        Navigator.pop(context);
-
-                                        context
-                                            .read<LoadReqApprovalBloc>()
-                                            .add(const ApprovLoadingReqEvent());
-
-                                        context.read<LoadReqApprovalBloc>().add(
-                                              ApprovloadReqEvent(
-                                                approval:
-                                                    LoadReqInApprovalModel(
-                                                        products: _loadproducts,
-                                                        reqID: widget
-                                                            .loadrequest.lrhID,
-                                                        rotID: widget
-                                                            .loadrequest.rotID,
-                                                        userId: widget
-                                                            .loadrequest.userID,
-                                                        status: "R"),
-                                              ),
-                                            );
-                                      },
-                                      child: Text(AppLocalizations.of(context)!
-                                          .proceed),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                          },
-                          child: Text(
-                            AppLocalizations.of(context)!.reject,
-                            style: kfontstyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Flexible(
-                        flex: 1,
-                        fit: FlexFit.tight,
-                        child: MaterialButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          color: widget.loadrequest.status == 'Pending'
-                              ? Colors.green.shade300
-                              : Colors.grey[300],
-                          onPressed: () {
-                            if (widget.loadrequest.status == 'Pending') {
-                              showCupertinoDialog(
-                                context: context,
-                                builder: (context) => CupertinoAlertDialog(
-                                  title:
-                                      Text(AppLocalizations.of(context)!.alert),
-                                  content: Text(AppLocalizations.of(context)!
-                                      .doyouWantToProceed),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {});
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                          AppLocalizations.of(context)!.cancel),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        loadingCount = 0;
-
-                                        Navigator.pop(context);
-
-                                        context
-                                            .read<LoadReqApprovalBloc>()
-                                            .add(const ApprovLoadingReqEvent());
-
-                                        context.read<LoadReqApprovalBloc>().add(
-                                            ApprovloadReqEvent(
-                                                approval:
-                                                    LoadReqInApprovalModel(
-                                                        products: _loadproducts,
-                                                        reqID: widget
-                                                            .loadrequest.lrhID,
-                                                        rotID: widget
-                                                            .loadrequest.rotID,
-                                                        userId: widget
-                                                            .loadrequest.userID,
-                                                        status: "A")));
-                                      },
-                                      child: Text(AppLocalizations.of(context)!
-                                          .proceed),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                          },
-                          child: Text(
-                            AppLocalizations.of(context)!.approve,
-                            style: kfontstyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                        ),
-                      )
-                    ],
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

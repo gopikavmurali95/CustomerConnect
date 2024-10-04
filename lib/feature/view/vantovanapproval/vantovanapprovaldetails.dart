@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/data/models/van_to_van_product_model/va
 import 'package:customer_connect/feature/state/bloc/vantovanapproval/van_to_van_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovandetails/van_to_van_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
+import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,6 +84,8 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
       body: PopScope(
         // canPop: false,
         onPopInvoked: (didPop) {
+          vanToVanHSearchCtrl.clear();
+          _vantovanDetailCtrl.clear();
           context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
               userID: widget.vanToVanHeader.userID ?? '',
               mode: widget.currentMode,

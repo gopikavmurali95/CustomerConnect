@@ -106,7 +106,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Container(
                   height: 30.h,
                   decoration: BoxDecoration(
@@ -207,87 +207,60 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                     // controller: _locationNameTextController,
                   )),
             ),
+            SizedBox(
+              height: 3.h,
+            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Card(
-                child: Container(
-                  height: 30.h,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade200),
-                      borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: const [
-                        BoxShadow(
-                            // ignore: use_full_hex_values_for_flutter_colors
-                            color: Color(0xff00000050),
-                            // blurRadius: 0.2,
-                            spreadRadius: 0.2)
-                      ]),
-                  // decoration: BoxDecoration(
-                  //   boxShadow: [
-                  //     BoxShadow(
-                  //       color: Colors.grey.withOpacity(0.2),
-                  //       spreadRadius: .5,
-                  //       blurRadius: 1,
-                  //       offset: const Offset(0, 2),
-                  //     ),
-                  //   ],
-                  //   borderRadius: BorderRadius.circular(10),
-                  // ),
-                  child: DropdownButtonFormField(
-                    //menuMaxHeight: 100,
-                    //padding: EdgeInsets.all(100),
-
-                    elevation: 0,
-                    value: ddfilterJourneyPlan[0].mode,
-                    // value: ddfilterFieldsDisputeNote[0].mode,
-                    dropdownColor: Colors.white,
-                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      border: /* InputBorder
-                                .none  */
-                          OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: const BorderSide(color: Colors.transparent),
-                      ),
-                    ),
-                    items: ddfilterJourneyPlan
-                        .map(
-                          (e) => DropdownMenuItem(
-                            value: e.mode,
-                            child: Text(e.statusName),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: (value) {
-                      _selectedJourneyPlan = value!;
-                      context
-                          .read<JourneyPlanHeaderBloc>()
-                          .add(const ClearJourneyPlanHeadersEvent());
-
-                      context.read<JourneyPlanHeaderBloc>().add(
-                            GetAllJourneyPlanHeadersEvent(
-                              searchQuery: '',
-                              userID: widget.user.usrId ?? '',
-                              mode: value,
-                            ),
-                          );
-                    },
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SizedBox(
+                height: 30.h,
+                width: MediaQuery.of(context).size.width,
+                child: DropdownButtonFormField(
+                   elevation: 0,
+                value: ddfilterJourneyPlan[0].mode,
+                dropdownColor: Colors.white,
+                style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                  border: /* InputBorder
+                            .none  */
+                      OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.grey.shade200),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.grey.shade200),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.grey.shade200),
+                  ),
+                ),
+                  items: ddfilterJourneyPlan
+                      .map(
+                        (e) => DropdownMenuItem(
+                          value: e.mode,
+                          child: Text(e.statusName),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    _selectedJourneyPlan = value!;
+                    context
+                        .read<JourneyPlanHeaderBloc>()
+                        .add(const ClearJourneyPlanHeadersEvent());
+                
+                    context.read<JourneyPlanHeaderBloc>().add(
+                          GetAllJourneyPlanHeadersEvent(
+                            searchQuery: '',
+                            userID: widget.user.usrId ?? '',
+                            mode: value,
+                          ),
+                        );
+                  },
                 ),
               ),
             ),

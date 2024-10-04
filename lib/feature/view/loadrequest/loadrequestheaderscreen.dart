@@ -30,12 +30,12 @@ List<ApprovalStatusFilterModel> ddfilterLoadRequest = [
 ];
 
 String _selectedloadrequest = 'P';
-TextEditingController _loadqSearchController = TextEditingController();
+TextEditingController loadqSearchController = TextEditingController();
 
 class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
   @override
   void initState() {
-    _loadqSearchController.clear();
+    loadqSearchController.clear();
     _selectedloadrequest = 'P';
     ddfilterLoadRequest = [
       ApprovalStatusFilterModel(
@@ -121,7 +121,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                         child: TextFormField(
                           style: kfontstyle(
                               fontSize: 13.sp, color: Colors.black87),
-                          controller: _loadqSearchController,
+                          controller: loadqSearchController,
                           onChanged: (value) {
                             debounce = Timer(
                                 const Duration(
@@ -130,7 +130,7 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                               context.read<LoadReqHeaderBloc>().add(
                                   LoadreqSuccessEvent(
                                       mode: _selectedloadrequest,
-                                      searchQuery: _loadqSearchController.text,
+                                      searchQuery: loadqSearchController.text,
                                       userId: ''));
                             });
                           },
@@ -146,9 +146,9 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                   Expanded(
                                     child: IconButton(
                                       onPressed: () {
-                                        if (_loadqSearchController
+                                        if (loadqSearchController
                                             .text.isNotEmpty) {
-                                          _loadqSearchController.clear();
+                                          loadqSearchController.clear();
 
                                           context.read<LoadReqHeaderBloc>().add(
                                               LoadreqSuccessEvent(
@@ -185,76 +185,63 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                           // controller: _locationNameTextController,
                         )),
                   ),
+                  SizedBox(
+                    height: 3.h,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Card(
-                      child: Container(
-                        height: 30.h,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey.shade200),
-                            borderRadius: BorderRadius.circular(10.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                  // ignore: use_full_hex_values_for_flutter_colors
-                                  color: Color(0xff00000050),
-                                  // blurRadius: 0.2,
-                                  spreadRadius: 0.2)
-                            ]),
-                        child: DropdownButtonFormField(
-                          elevation: 0,
-                          value: ddfilterLoadRequest[0].mode,
-                          // value: ddfilterFieldsDisputeNote[0].mode,
-                          dropdownColor: Colors.white,
-                          style: kfontstyle(
-                              fontSize: 10.sp, color: Colors.black87),
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                            ),
-                            border: /* InputBorder
-                                .none  */
-                                OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  const BorderSide(color: Colors.transparent),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  const BorderSide(color: Colors.transparent),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  const BorderSide(color: Colors.transparent),
-                            ),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: SizedBox(
+                      height: 30.h,
+                      width: MediaQuery.of(context).size.width,
+                      child: DropdownButtonFormField(
+                        elevation: 0,
+                        value: ddfilterLoadRequest[0].mode,
+                        // value: ddfilterFieldsDisputeNote[0].mode,
+                        dropdownColor: Colors.white,
+                        style:
+                            kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20,
                           ),
-                          items: ddfilterLoadRequest
-                              .map(
-                                (e) => DropdownMenuItem(
-                                  value: e.mode,
-                                  child: Text(e.statusName),
-                                ),
-                              )
-                              .toList(),
-                          onChanged: (value) {
-                            _selectedloadrequest = value!;
-                            context
-                                .read<LoadReqHeaderBloc>()
-                                .add(const LoadreqClearEvent());
-
-                            context.read<LoadReqHeaderBloc>().add(
-                                  LoadreqSuccessEvent(
-                                      searchQuery: '',
-                                      userId: widget.user.usrId ?? '',
-                                      mode: value),
-                                );
-                          },
+                          border: /* InputBorder
+                              .none  */
+                              OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.grey.shade200),
+                          ),
                         ),
+                        items: ddfilterLoadRequest
+                            .map(
+                              (e) => DropdownMenuItem(
+                                value: e.mode,
+                                child: Text(e.statusName),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          _selectedloadrequest = value!;
+                          context
+                              .read<LoadReqHeaderBloc>()
+                              .add(const LoadreqClearEvent());
+
+                          context.read<LoadReqHeaderBloc>().add(
+                                LoadreqSuccessEvent(
+                                    searchQuery: '',
+                                    userId: widget.user.usrId ?? '',
+                                    mode: value),
+                              );
+                        },
                       ),
                     ),
                   ),

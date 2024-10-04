@@ -214,7 +214,7 @@ class _CreditNoteHeaderScreenState
                           fromDate: fromdateController.text,
                           toDate: todateController.text,
                           status: value,
-                          searchQuery: _merchDisputeNoteSearch.text));
+                          searchQuery: ''));
                 },
               ),
             ),

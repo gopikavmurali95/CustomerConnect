@@ -20,12 +20,13 @@ class OutOfCustomerScreen extends StatefulWidget {
   State<OutOfCustomerScreen> createState() => _OutOfCustomerScreenState();
 }
 
-TextEditingController _oosCusCtrl = TextEditingController();
+TextEditingController oosCusCtrl = TextEditingController();
 Timer? debounce;
 
 class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
   @override
   void initState() {
+    oosCusCtrl.clear();
     context.read<OosCustomersBloc>().add(const ClearOosCustomersEvent());
     context.read<OosCustomersBloc>().add(GetOosCustomersEvent(
         searchQuery: '',
@@ -82,7 +83,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                     ],
                   ),
                   child: TextFormField(
-                    controller: _oosCusCtrl,
+                    controller: oosCusCtrl,
                     style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                     onChanged: (value) {
                       debounce = Timer(
@@ -108,7 +109,7 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                           Expanded(
                             child: IconButton(
                               onPressed: () {
-                                _oosCusCtrl.clear();
+                                oosCusCtrl.clear();
                                 context
                                     .read<OosCustomersBloc>()
                                     .add(const ClearOosCustomersEvent());

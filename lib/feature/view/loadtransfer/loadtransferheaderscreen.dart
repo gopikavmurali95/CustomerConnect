@@ -23,7 +23,7 @@ class LoadTransferApprovalHeaderScreen extends StatefulWidget {
 }
 
 Timer? debounce;
-TextEditingController _vanLoadTransSearchCtrl = TextEditingController();
+TextEditingController vanLoadTransSearchCtrl = TextEditingController();
 String _selectedMode = 'N';
 List<ApprovalStatusFilterModel> ddfilterLoadTransfer = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'N'),
@@ -34,7 +34,7 @@ class _LoadTransferApprovalHeaderScreenState
     extends State<LoadTransferApprovalHeaderScreen> {
   @override
   void initState() {
-    _vanLoadTransSearchCtrl.clear();
+    vanLoadTransSearchCtrl.clear();
     ddfilterLoadTransfer = [
       ApprovalStatusFilterModel(
           statusName: selectedLocale?.languageCode == 'en'
@@ -53,6 +53,7 @@ class _LoadTransferApprovalHeaderScreenState
         .add(const ClearLoadtransferHeaderEvent());
     context.read<LoadTransferHeaderBloc>().add(GetAllLoadTransferHeadersEvent(
         userID: widget.user.usrId ?? '', mode: "N", searchQuery: ""));
+
     super.initState();
   }
 
@@ -92,7 +93,7 @@ class _LoadTransferApprovalHeaderScreenState
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _vanLoadTransSearchCtrl,
+                  controller: vanLoadTransSearchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -103,9 +104,10 @@ class _LoadTransferApprovalHeaderScreenState
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_vanLoadTransSearchCtrl.text.isNotEmpty) {
-                                  _vanLoadTransSearchCtrl.clear();
-
+                                if (vanLoadTransSearchCtrl.text.isNotEmpty) {
+                                  vanLoadTransSearchCtrl.clear();
+                                  context.read<LoadTransferHeaderBloc>().add(
+                                      const ClearLoadtransferHeaderEvent());
                                   context.read<LoadTransferHeaderBloc>().add(
                                       GetAllLoadTransferHeadersEvent(
                                           userID: widget.user.usrId ?? '',

@@ -157,34 +157,7 @@ class _InsightsInvoiceScreenState extends State<InsightsInvoiceScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              /* Row(
-                                children: [
-                                  Text(
-                                    '${widget.customer.cusCode} - ',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff2C6B9E),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                              children: <TextSpan>[
-                                                TextSpan(
-                                                    text: '-',
-                                                    style:subTitleTextStyle()),
-                          
-                                                    TextSpan(text: selectedLocale
-                                                              ?.languageCode ==
-                                                          "en"
-                                                      ? widget.customer.cusName ??
-                                                          ''
-                                                      : widget.customer.arcusName ??
-                                                          '',
-                                                          style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          color: const Color(0xff413434)),
-                                    ),
-                                  ),
-                                ],
-                              ), */
+                              
                               SizedBox(
                                 width: 300.w,
                                 child: RichText(

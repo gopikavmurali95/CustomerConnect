@@ -3,6 +3,9 @@
 const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
 const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
+//Demo
+//const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
+//const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // Demo
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
@@ -150,7 +153,6 @@ const settlementApprovalPayModeDetailUrl =
 const settlementApprovalPaymentDetailUrl =
     "SettlementApproval/SettlementApprovalPaymentDetail";
 const settlementApprovalPostUrl = "SettlementApproval/PostSettlementApproval";
-
 const settlementApprovalRejectUrl = "SettlementApproval/PostSettlementReject";
 const activtyReviewHeaderUrl = 'CusActReview/ActReviewHeaderList';
 const activityTargetsUrl = 'CusActReview/ActReviewDetailChartData';
@@ -191,3 +193,4 @@ const unScheduledVisitApproveUrl =
 const unScheduledVisitRejectUrl =
     'UnshceduledCusVisitApproval/RejectUnSchCusVisit';
 const autoUpdateUrl = 'AppService/SelVersionDetails';
+const cusInsightCustomersCount = 'CusInsightshome/SelectCustomerInsightCount';

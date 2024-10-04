@@ -23,7 +23,7 @@ class VanToVanApprovalHeader extends StatefulWidget {
 }
 
 Timer? debounce;
-TextEditingController _vanToVanHSearchCtrl = TextEditingController();
+TextEditingController vanToVanHSearchCtrl = TextEditingController();
 String _selectedMode = 'P';
 List<ApprovalStatusFilterModel> ddfilterFieldsVanToVan = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
@@ -52,7 +52,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
           mode: 'R'), */
     ];
 
-    _vanToVanHSearchCtrl.clear();
+    vanToVanHSearchCtrl.clear();
     /*  ddfilterFieldsVanToVan = [
       ApprovalStatusFilterModel(
           statusName:
@@ -106,7 +106,7 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: TextFormField(
-                  controller: _vanToVanHSearchCtrl,
+                  controller: vanToVanHSearchCtrl,
                   style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                   decoration: InputDecoration(
                     isDense: true,
@@ -117,8 +117,8 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                         Expanded(
                           child: IconButton(
                               onPressed: () {
-                                if (_vanToVanHSearchCtrl.text.isNotEmpty) {
-                                  _vanToVanHSearchCtrl.clear();
+                                if (vanToVanHSearchCtrl.text.isNotEmpty) {
+                                  vanToVanHSearchCtrl.clear();
 
                                   context.read<VanToVanHeaderBloc>().add(
                                       getVanToVanHeaderEvent(

@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/state/bloc/settlementapprovalreject/set
 import 'package:customer_connect/feature/state/bloc/settlementpaymentdetail/settlement_payment_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlementpaymodedetail/settlement_pay_mode_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlement_cash_details_bloc.dart';
+import 'package:customer_connect/feature/view/settlementapproval/settlementapprovalheader.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/sacashdetails.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/sacashmodecontainers.dart';
 import 'package:customer_connect/feature/view/settlementapproval/widgets/sadetailstotalcheckslist.dart';
@@ -73,183 +74,188 @@ class _SettlementApprovalDetailScreenState
           style: appHeading(),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: SizedBox(
-          height: double.infinity,
-          child: SingleChildScrollView(
-            //physics: const NeverScrollableScrollPhysics(),
-            //physics: const AlwaysScrollableScrollPhysics(),
-            child: Column(
-              children: [
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 70,
-                          width: 10,
-                          decoration: BoxDecoration(
-                              color: const Color(0xfffee8e0),
-                              borderRadius: BorderRadius.circular(20)),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Expanded(
-                            child: Row(
-                          children: [
-                            Expanded(
-                                child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "${widget.header.rotCode} -${selectedLocale?.languageCode == "en" ? widget.header.rotName : widget.header.arrotName}",
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    color: const Color(0xff2C6B9E),
-                                    fontWeight: FontWeight.w600,
+      body: PopScope(
+        onPopInvoked: (didpop) {
+          settlementApprovalHeaderSearchCtrl.clear();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: SizedBox(
+            height: double.infinity,
+            child: SingleChildScrollView(
+              //physics: const NeverScrollableScrollPhysics(),
+              //physics: const AlwaysScrollableScrollPhysics(),
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 70,
+                            width: 10,
+                            decoration: BoxDecoration(
+                                color: const Color(0xfffee8e0),
+                                borderRadius: BorderRadius.circular(20)),
+                          ),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Expanded(
+                              child: Row(
+                            children: [
+                              Expanded(
+                                  child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${widget.header.rotCode} -${selectedLocale?.languageCode == "en" ? widget.header.rotName : widget.header.arrotName}",
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      color: const Color(0xff2C6B9E),
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        "${selectedLocale?.languageCode == "en" ? widget.header.usrName : widget.header.arusrName}",
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                        style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff413434)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        "${widget.header.createdDate}",
-                                        overflow: TextOverflow.ellipsis,
-                                        // '31 May 2024 | 10:35',
-                                        style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff413434)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  "${selectedLocale?.languageCode == "en" ? widget.header.rotType : widget.header.arrotType}",
-                                  // 'Sales Route',
-                                  style: kfontstyle(
-                                      fontSize: 10.sp, color: Colors.grey),
-                                ),
-                              ],
-                            ))
-                          ],
-                        )),
-                      ],
-                    ),
-                    Divider(
-                      color: Colors.grey[300],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                const SettlmntCashDetailsScreen(),
-                const PaymentModeWidgets(),
-
-                BlocBuilder<SettlementPayModeDetailBloc,
-                    SettlementPayModeDetailState>(
-                  builder: (context, state) {
-                    return state.when(
-                        getSettlementPayModeDetailState: (paymode) =>
-                            paymode == null
-                                ? ShimmerContainers(
-                                    height: 60.h, width: double.infinity)
-                                : Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                  Row(
                                     children: [
-                                      Text(
-                                          AppLocalizations.of(context)!
-                                              .varianceLimit,
-                                          style: TextStyle(
-                                            color: const Color.fromARGB(
-                                                255, 137, 10, 3),
-                                            fontSize: 11.sp,
-                                            fontWeight: FontWeight.w600,
-                                          )),
                                       Expanded(
-                                          child: Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 7.h,
-                                          ),
-                                          DottedLine(
-                                            dashColor: Colors.grey.shade300,
-                                          )
-                                        ],
-                                      )),
-                                      Text("${paymode[0].varianceLimit}",
-                                          //'200.00',
-                                          style: TextStyle(
-                                            color: const Color.fromARGB(
-                                                255, 137, 10, 3),
-                                            fontSize: 11.sp,
-                                            fontWeight: FontWeight.w600,
-                                          ))
+                                        child: Text(
+                                          "${selectedLocale?.languageCode == "en" ? widget.header.usrName : widget.header.arusrName}",
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff413434)),
+                                        ),
+                                      ),
                                     ],
                                   ),
-                        paymodeDetailFailedState: () => Center(
-                              child: Text(
-                                AppLocalizations.of(context)!
-                                    .noDataAvailableInVariance,
-                                style: kfontstyle(),
-                              ),
-                            ));
-                  },
-                ),
-                const Divider(
-                  color: Color.fromARGB(255, 227, 225, 225),
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //SizedBox(width: 05,),
-                      Text(
-                        AppLocalizations.of(context)!.totalChecks,
-                        style: countHeading(),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          "${widget.header.createdDate}",
+                                          overflow: TextOverflow.ellipsis,
+                                          // '31 May 2024 | 10:35',
+                                          style: kfontstyle(
+                                              fontSize: 12.sp,
+                                              color: const Color(0xff413434)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    "${selectedLocale?.languageCode == "en" ? widget.header.rotType : widget.header.arrotType}",
+                                    // 'Sales Route',
+                                    style: kfontstyle(
+                                        fontSize: 10.sp, color: Colors.grey),
+                                  ),
+                                ],
+                              ))
+                            ],
+                          )),
+                        ],
                       ),
-                      BlocBuilder<SettlementPaymentDetailBloc,
-                          SettlementPaymentDetailState>(
-                        builder: (context, state) {
-                          return Text(
-                            state.when(
-                              getPaymentDetailState: (payment) => payment ==
-                                      null
-                                  ? "0"
-                                  : payment.length
-                                      .toString(), //payment[index].amount.toString(),
-                              paymentDetailFailedState: () => "0",
-                            ),
-                            style: countHeading(),
-                          );
-                        },
+                      Divider(
+                        color: Colors.grey[300],
                       ),
-                    ]),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  const SettlmntCashDetailsScreen(),
+                  const PaymentModeWidgets(),
 
-                const SizedBox(
-                  height: 5,
-                ),
-                const SettlmtTotalChecksList()
-                // SizedBox(width: ,),
-              ],
+                  BlocBuilder<SettlementPayModeDetailBloc,
+                      SettlementPayModeDetailState>(
+                    builder: (context, state) {
+                      return state.when(
+                          getSettlementPayModeDetailState: (paymode) =>
+                              paymode == null
+                                  ? ShimmerContainers(
+                                      height: 60.h, width: double.infinity)
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                            AppLocalizations.of(context)!
+                                                .varianceLimit,
+                                            style: TextStyle(
+                                              color: const Color.fromARGB(
+                                                  255, 137, 10, 3),
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w600,
+                                            )),
+                                        Expanded(
+                                            child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 7.h,
+                                            ),
+                                            DottedLine(
+                                              dashColor: Colors.grey.shade300,
+                                            )
+                                          ],
+                                        )),
+                                        Text("${paymode[0].varianceLimit}",
+                                            //'200.00',
+                                            style: TextStyle(
+                                              color: const Color.fromARGB(
+                                                  255, 137, 10, 3),
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w600,
+                                            ))
+                                      ],
+                                    ),
+                          paymodeDetailFailedState: () => Center(
+                                child: Text(
+                                  AppLocalizations.of(context)!
+                                      .noDataAvailableInVariance,
+                                  style: kfontstyle(),
+                                ),
+                              ));
+                    },
+                  ),
+                  const Divider(
+                    color: Color.fromARGB(255, 227, 225, 225),
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //SizedBox(width: 05,),
+                        Text(
+                          AppLocalizations.of(context)!.totalChecks,
+                          style: countHeading(),
+                        ),
+                        BlocBuilder<SettlementPaymentDetailBloc,
+                            SettlementPaymentDetailState>(
+                          builder: (context, state) {
+                            return Text(
+                              state.when(
+                                getPaymentDetailState: (payment) => payment ==
+                                        null
+                                    ? "0"
+                                    : payment.length
+                                        .toString(), //payment[index].amount.toString(),
+                                paymentDetailFailedState: () => "0",
+                              ),
+                              style: countHeading(),
+                            );
+                          },
+                        ),
+                      ]),
+
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const SettlmtTotalChecksList()
+                  // SizedBox(width: ,),
+                ],
+              ),
             ),
           ),
         ),
