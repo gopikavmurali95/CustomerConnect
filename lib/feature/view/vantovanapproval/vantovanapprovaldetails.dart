@@ -84,8 +84,8 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
       body: PopScope(
         // canPop: false,
         onPopInvoked: (didPop) {
-            vanToVanHSearchCtrl.clear();
-            _vantovanDetailCtrl.clear();
+          vanToVanHSearchCtrl.clear();
+          _vantovanDetailCtrl.clear();
           context.read<VanToVanHeaderBloc>().add(getVanToVanHeaderEvent(
               userID: widget.vanToVanHeader.userID ?? '',
               mode: widget.currentMode,

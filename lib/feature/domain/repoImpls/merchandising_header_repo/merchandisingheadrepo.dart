@@ -24,9 +24,9 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + merchandisingGetOutofStockCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-     
+
       if (response.statusCode == 200) {
-         log('outofstockcount: ${response.body}');
+        log('outofstockcount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final stockcount = GetOutOfStockCountModel.fromJson(json["result"][0]);
         return right(stockcount);
@@ -69,7 +69,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + getSurveyCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-          //  log("survey count FromDate: ${fromDate} ToDate: ${toDate}");
+      //  log("survey count FromDate: ${fromDate} ToDate: ${toDate}");
       if (response.statusCode == 200) {
         log('surveycount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -116,7 +116,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
 
       if (response.statusCode == 200) {
-         log('get cust act: ${response.body}');
+        log('get cust act: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusactcount = GetCusActcountModel.fromJson(json["result"][0]);
         return right(cusactcount);
@@ -139,7 +139,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
       //log({"FromDate": fromDate, "ToDate": toDate}.toString());
       if (response.statusCode == 200) {
-         log('cusServicecount: ${response.body}');
+        log('cusServicecount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final cusServicecount =
             MerchCuServiceCountModel.fromJson(json["result"][0]);

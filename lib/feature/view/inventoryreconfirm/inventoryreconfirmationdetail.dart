@@ -611,36 +611,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            // Visibility(
-                                                            //   /*  visible: details[index]
-                                                            //                   .iadDescHuom ==
-                                                            //               null ||
-                                                            //           details[index]
-                                                            //               .iadDescHuom!
-                                                            //               .isEmpty
-                                                            //       ? false
-                                                            //       : true, */
-                                                            //   child: Text(
-                                                            //     details[index].iadPhysicalHuom ==
-                                                            //                 null ||
-                                                            //             details[index]
-                                                            //                 .iadPhysicalHuom!
-                                                            //                 .isEmpty
-                                                            //         ? '-'
-                                                            //         : details[index]
-                                                            //                 .iadPhysicalHuom ??
-                                                            //             //.iadHigherUom ??
-                                                            //             '',
-                                                            //     style: kfontstyle(
-                                                            //         fontSize:
-                                                            //             12.sp,
-                                                            //         fontWeight:
-                                                            //             FontWeight
-                                                            //                 .w400,
-                                                            //         color: Colors
-                                                            //             .black54),
-                                                            //   ),
-                                                            // ),
+                                                            
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
@@ -663,35 +634,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            // Visibility(
-                                                            //   // visible: details[index]
-                                                            //   //                 .iadLowerUom ==
-                                                            //   //             null ||
-                                                            //   //         details[index]
-                                                            //   //             .iadLowerUom!
-                                                            //   //             .isEmpty
-                                                            //   //     ? false
-                                                            //   //     : true,
-                                                            //   child: Text(
-                                                            //     details[index].iadLowerUom ==
-                                                            //                 null ||
-                                                            //             details[index]
-                                                            //                 .iadLowerUom!
-                                                            //                 .isEmpty
-                                                            //         ? '-'
-                                                            //         : details[index]
-                                                            //                 .iadLowerUom ??
-                                                            //             '-',
-                                                            //     style: kfontstyle(
-                                                            //         fontSize:
-                                                            //             12.sp,
-                                                            //         fontWeight:
-                                                            //             FontWeight
-                                                            //                 .w400,
-                                                            //         color: Colors
-                                                            //             .black54),
-                                                            //   ),
-                                                            // ),
+                                                            
                                                           ],
                                                         ),
                                                         /*  SizedBox(
@@ -1094,7 +1037,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                             ]),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                              padding: const EdgeInsets.symmetric(vertical: 7, ),
                                                                               child: Text(details[index].reason ?? ''),
                                                                             ),
                                                                           ),

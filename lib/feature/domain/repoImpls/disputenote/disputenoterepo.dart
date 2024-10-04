@@ -51,7 +51,7 @@ class DisputeNoteApprovalRepo implements IDisputeNoteApprovalRepo {
           body: {"ReqID": reqID});
 
       if (response.statusCode == 200) {
-       // log("disputenote req detail r:${response.body}");
+        // log("disputenote req detail r:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> detaildata = json['result'];
         List<DisputeNoteDetailModel> details = detaildata

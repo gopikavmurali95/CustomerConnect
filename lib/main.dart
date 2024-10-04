@@ -31,6 +31,7 @@ import 'package:customer_connect/feature/state/bloc/creditnotedetail/credit_note
 import 'package:customer_connect/feature/state/bloc/creditnoteheader/credit_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusdocuments/cus_documents_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusgeolocation/cus_geo_location_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusinscustomerscount/cus_ins_customers_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstandingcount/cus_out_standing_count_bloc.dart';
@@ -748,6 +749,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MerchReturnRequestBloc>(),
         ),
+         BlocProvider(
+          create: (context) => getit<CusInsCustomersCountBloc>(),
+        ),
         BlocProvider(
           create: (context) => getit<MerchDisputeNoteReqBloc>(),
         ),
@@ -773,8 +777,9 @@ class MyApp extends StatelessWidget {
           create: (context) => CusInvDetailsTotalCubit(),
         ),
         BlocProvider(
-          create: (context) => getit<CusInsightCustomersPaginationCubit>(),),
-          BlocProvider(
+          create: (context) => getit<CusInsightCustomersPaginationCubit>(),
+        ),
+        BlocProvider(
           create: (context) => getit<AutoUpdateBloc>(),
         ),
         BlocProvider<UpdateDownloadPercentageCubit>(

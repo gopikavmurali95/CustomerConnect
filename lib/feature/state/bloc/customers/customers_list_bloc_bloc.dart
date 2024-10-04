@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -23,24 +22,21 @@ class CustomersListBlocBloc
       Either<MainFailures, List<CusInsCustomersModel>> customers =
           await cusInsightsCustomersRepo.getCustomers(event.userId, event.area,
               event.subarea, event.route, event.searchQuery, event.pagenum);
-              List<CusInsCustomersModel> oldcustomerlist = [];
-              final currentState = state as GetCustomersSstate;
-              oldcustomerlist.addAll(currentState.customers??[]);
-      emit(customers.fold((l) => const GetCustomersSstate(customers: [], isLoading: false),
-          (r) /* => GetCustomersSstate(customers: r) */{
-            if (event.searchQuery.isNotEmpty) {
-              oldcustomerlist.clear();
-            }
-            oldcustomerlist.addAll(r);
-            return GetCustomersSstate(customers: oldcustomerlist, isLoading: false);
-          }));
-
-      
+      List<CusInsCustomersModel> oldcustomerlist = [];
+      final currentState = state as GetCustomersSstate;
+      oldcustomerlist.addAll(currentState.customers ?? []);
+      emit(customers.fold(
+          (l) => const GetCustomersSstate(customers: [], isLoading: false),
+          (r) /* => GetCustomersSstate(customers: r) */ {
+        if (event.searchQuery.isNotEmpty) {
+          oldcustomerlist.clear();
+        }
+        oldcustomerlist.addAll(r);
+        return GetCustomersSstate(customers: oldcustomerlist, isLoading: false);
+      }));
     });
     on<ClearCustomersEvent>((event, emit) {
       emit(const GetCustomersSstate(customers: null, isLoading: false));
     });
-
-    
   }
 }

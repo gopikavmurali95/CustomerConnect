@@ -218,7 +218,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                       )
                       .toList(),
                   onChanged: (value) {
-                     _selectedCustomerReqMode = value!;
+                    _selectedCustomerReqMode = value!;
                     ApprovalStatusFilterModel data = filterFieldsPriceChange
                         .where((element) => element.mode == value)
                         .first;
@@ -231,7 +231,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                         GetMerchCustomerRequestEvent(
                             fromDate: fromdateController.text,
                             toDate: todateController.text,
-                            status: value ?? '',
+                            status: value,
                             searchQuery: ''));
                   },
                 ),
@@ -252,20 +252,15 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                                              _selectedCustomerReqMode == 'AL'
-                                                  ? AppLocalizations.of(
-                                                          context)!
-                                                      .allRequests
-                                                  : _selectedCustomerReqMode ==
-                                                          'RS'
-                                                      ? AppLocalizations.of(
-                                                              context)!
-                                                          .respondedRequests
-                                                      : AppLocalizations.of(
-                                                              context)!
-                                                          .newRequests,
-                                              style: countHeading(),
-                                            ),
+                              _selectedCustomerReqMode == 'AL'
+                                  ? AppLocalizations.of(context)!.allRequests
+                                  : _selectedCustomerReqMode == 'RS'
+                                      ? AppLocalizations.of(context)!
+                                          .respondedRequests
+                                      : AppLocalizations.of(context)!
+                                          .newRequests,
+                              style: countHeading(),
+                            ),
                             // Text(
                             //   state.when(
                             //     getMerchCustomerRequestHeadersState:

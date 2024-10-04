@@ -250,7 +250,7 @@ class _CustInsightPromotionDetailsState
                         .add(const CustomerInsightGroupEvent.clearGroupData());
                     context.read<CustomerInsightGroupBloc>().add(
                         CustomerInsightGroupEvent.getGroupWiseDataEvent(
-                            id: widget.header.qid??'',
+                            id: widget.header.qid ?? '',
                             mode: '',
                             searchQuery: ''));
                     Navigator.push(

@@ -34,6 +34,7 @@ import 'package:customer_connect/feature/data/models/cus_geo_loc_in_model/cus_ge
 import 'package:customer_connect/feature/data/models/cus_geo_location_model/cus_geo_location_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customer_count_model/cus_ins_customer_count_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_inv_type_model/cus_ins_inv_type_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
@@ -252,6 +253,15 @@ abstract class ICusInsightsCustomersRepo {
       String route,
       String searchString,
       String pagenum);
+
+      Future<Either<MainFailures, CusInsCustomerCountModel>> getCustomerscount(
+      String userId,
+      String area,
+      String subarea,
+      String route,
+      String searchString,
+      String pagenum);
+
 }
 
 abstract class IcusInsCountsRepo {

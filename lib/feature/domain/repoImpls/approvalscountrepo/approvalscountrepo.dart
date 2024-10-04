@@ -17,7 +17,7 @@ class ApprovalsCountRepo implements IApprovalCountsRepo {
     try {
       final response =
           await http.post(Uri.parse(approvalBaseUrl + approvalCountUrl));
-      
+
       if (response.statusCode == 200) {
         log("approval count:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);

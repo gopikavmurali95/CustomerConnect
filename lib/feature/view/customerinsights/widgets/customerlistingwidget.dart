@@ -89,7 +89,6 @@ class CustomersListingWidget extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                             
                                               RichText(
                                                 text: TextSpan(
                                                     style: DefaultTextStyle.of(
@@ -131,7 +130,6 @@ class CustomersListingWidget extends StatelessWidget {
                                                       )
                                                     ]),
                                               ),
-                                              
                                               RichText(
                                                 text: TextSpan(
                                                     style: DefaultTextStyle.of(

@@ -89,7 +89,6 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
-          
           context
               .read<ApprovalCountsBloc>()
               .add(GetApprovalsCountEvent(userID: widget.user.usrId ?? ''));
