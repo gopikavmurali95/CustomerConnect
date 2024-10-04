@@ -119,7 +119,7 @@ class _MaterialRequestDetailScreenState
           canPop: true,
           onPopInvoked: (didPop) {
             _materialreqdetailSerachController.clear();
-             materialReqSearchController.clear();
+            materialReqSearchController.clear();
 
             context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
                 userId: widget.user.usrId ?? '',

@@ -7,5 +7,6 @@ class CustomersListBlocState with _$CustomersListBlocState {
       required bool isLoading}) = GetCustomersSstate;
 
   factory CustomersListBlocState.initial() =>
-      const CustomersListBlocState.getCustomersSstate(customers: null, isLoading: false);
+      const CustomersListBlocState.getCustomersSstate(
+          customers: null, isLoading: false);
 }

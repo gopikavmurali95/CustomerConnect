@@ -211,7 +211,7 @@ class _SalesrdersScreenState extends State<SalesrdersScreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
-                      height: 35.h,
+                      height: 30.h,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(color: Colors.grey.shade200),

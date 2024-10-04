@@ -75,8 +75,8 @@ class _SettlementApprovalDetailScreenState
         ),
       ),
       body: PopScope(
-        onPopInvoked: (didpop){
-           settlementApprovalHeaderSearchCtrl.clear();
+        onPopInvoked: (didpop) {
+          settlementApprovalHeaderSearchCtrl.clear();
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -168,7 +168,7 @@ class _SettlementApprovalDetailScreenState
                   ),
                   const SettlmntCashDetailsScreen(),
                   const PaymentModeWidgets(),
-        
+
                   BlocBuilder<SettlementPayModeDetailBloc,
                       SettlementPayModeDetailState>(
                     builder: (context, state) {
@@ -248,7 +248,7 @@ class _SettlementApprovalDetailScreenState
                           },
                         ),
                       ]),
-        
+
                   const SizedBox(
                     height: 5,
                   ),

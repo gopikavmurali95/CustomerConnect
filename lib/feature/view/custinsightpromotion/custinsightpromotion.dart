@@ -160,7 +160,6 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                           
                             SizedBox(
                               width: 300.w,
                               child: RichText(

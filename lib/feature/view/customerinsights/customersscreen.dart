@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cu_s_ins_rot_list/cu_s_ins_rot_list.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/cusinscustomerscount/cus_ins_customers_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
@@ -42,12 +43,20 @@ class _CustomersScrenState extends State<CustomersScren> {
 
     context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
     context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
+
     context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
         userId: widget.user.usrId ?? '',
         area: '',
         subarea: '',
         route: '',
         searchQuery: '',
+        pagenum: '1'));
+    context.read<CusInsCustomersCountBloc>().add(GetCustomersCountEvent(
+        userId: widget.user.usrId ?? '',
+        area: '',
+        subarea: '',
+        route: '',
+        searchString: '',
         pagenum: '1'));
 
     setUpScrollController(
@@ -71,6 +80,13 @@ class _CustomersScrenState extends State<CustomersScren> {
     if (isfirstfetch == true) {
       isfirstfetch = false;
       pagecounter++;
+      context.read<CusInsCustomersCountBloc>().add(GetCustomersCountEvent(
+          userId: widget.user.usrId ?? '',
+          area: '',
+          subarea: '',
+          route: '',
+          searchString: '',
+          pagenum: '1'));
       context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
           userId: widget.user.usrId ?? '',
           area: '',
@@ -287,6 +303,19 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                                 searchQuery: '',
                                                                 pagenum: pagecounter
                                                                     .toString()));
+                                                    context
+                                                        .read<
+                                                            CusInsCustomersCountBloc>()
+                                                        .add(GetCustomersCountEvent(
+                                                            userId: widget.user
+                                                                    .usrId ??
+                                                                '',
+                                                            area: '',
+                                                            subarea: '',
+                                                            route: data.rotId!,
+                                                            searchString: '',
+                                                            pagenum: pagecounter
+                                                                .toString()));
                                                   } else if (data.rotId! ==
                                                           '-1' ||
                                                       data.rotId!.isEmpty) {
@@ -310,6 +339,19 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                                 searchQuery: '',
                                                                 pagenum: pagecounter
                                                                     .toString()));
+                                                    context
+                                                        .read<
+                                                            CusInsCustomersCountBloc>()
+                                                        .add(GetCustomersCountEvent(
+                                                            userId: widget.user
+                                                                    .usrId ??
+                                                                '',
+                                                            area: '',
+                                                            subarea: '',
+                                                            route: '',
+                                                            searchString: '',
+                                                            pagenum: pagecounter
+                                                                .toString()));
                                                   }
                                                 },
                                               ),
@@ -383,6 +425,14 @@ class _CustomersScrenState extends State<CustomersScren> {
                                         route: _routeIDCtrl.text,
                                         searchQuery: value.trim(),
                                         pagenum: pagecounter.toString()));
+                                context.read<CusInsCustomersCountBloc>().add(
+                                    GetCustomersCountEvent(
+                                        userId: widget.user.usrId ?? '',
+                                        area: '',
+                                        subarea: '',
+                                        route: _routeIDCtrl.text,
+                                        searchString: value.trim(),
+                                        pagenum: pagecounter.toString()));
                               },
                             );
                           },
@@ -413,6 +463,16 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                 subarea: '',
                                                 route: _routeIDCtrl.text,
                                                 searchQuery: '',
+                                                pagenum:
+                                                    pagecounter.toString()));
+                                        context
+                                            .read<CusInsCustomersCountBloc>()
+                                            .add(GetCustomersCountEvent(
+                                                userId: widget.user.usrId ?? '',
+                                                area: '',
+                                                subarea: '',
+                                                route: _routeIDCtrl.text,
+                                                searchString: '',
                                                 pagenum:
                                                     pagecounter.toString()));
                                       },
@@ -469,28 +529,31 @@ class _CustomersScrenState extends State<CustomersScren> {
                             }
                           });
                         },
-                        child: BlocBuilder<CustomersListBlocBloc,
-                            CustomersListBlocState>(
+                        child: BlocBuilder<CusInsCustomersCountBloc,
+                            CusInsCustomersCountState>(
                           builder: (context, state) {
                             return state.when(
-                              getCustomersSstate: (customers, isloading) =>
-                                  customers == null
-                                      ? Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 20.0, right: 20, top: 5),
-                                          child: Text(
-                                            "0",
-                                            style: countHeading(),
-                                          ),
-                                        )
-                                      : Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 20.0, right: 20, top: 10),
-                                          child: Text(
-                                            "${customers.length}",
-                                            style: countHeading(),
-                                          ),
-                                        ),
+                              getCustomersCountState: (counts) => counts == null
+                                  ? Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20.0, right: 20, top: 5),
+                                      child: Text(
+                                        "0",
+                                        style: countHeading(),
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20.0, right: 20, top: 10),
+                                      child: Text(
+                                        counts.totalCount ?? '',
+                                        style: countHeading(),
+                                      ),
+                                    ),
+                              getCustomersCountFailedState: () => Text(
+                                '0',
+                                style: countHeading(),
+                              ),
                             );
                           },
                         ),

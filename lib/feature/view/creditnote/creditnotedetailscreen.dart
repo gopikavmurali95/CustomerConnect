@@ -84,7 +84,7 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
-          _creditDetailtrls .clear();
+          _creditDetailtrls.clear();
           creditNoteHSearch.clear();
           context.read<CreditNoteHeaderBloc>().add(GetAllCreditNoteHeadersEvent(
               userId: widget.user.usrId ?? '',

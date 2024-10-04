@@ -152,7 +152,6 @@ class _LoadTransferApprovalHeaderScreenState
                         const Duration(
                           milliseconds: 500,
                         ), () async {
-                          
                       context.read<LoadTransferHeaderBloc>().add(
                           GetAllLoadTransferHeadersEvent(
                               userID: widget.user.usrId ?? '',

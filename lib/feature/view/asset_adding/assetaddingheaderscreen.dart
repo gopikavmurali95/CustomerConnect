@@ -678,8 +678,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               context: context,
                                                                               builder: (context) => CupertinoAlertDialog(
                                                                                 title: Text(AppLocalizations.of(context)!.alert),
-                                                                                content: Text(AppLocalizations.of(context)!.
-                                                                                doYouWantToRejectThisProduct),
+                                                                                content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {

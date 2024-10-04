@@ -349,11 +349,13 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                                       TextOverflow
                                                                           .ellipsis,
                                                                   '${headers[index].rotCode} - ${headers[index].rotName} ${AppLocalizations.of(context)!.route}',
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          12.sp,
-                                                                      color: const Color(
-                                                                          0xff413434)),
+                                                                  style:  kfontstyle(
+                                                          fontSize: 12.sp,
+                                                          color: const Color(
+                                                              0xff2C6B9E),
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                                 ),
                                                               ),
                                                             ],
