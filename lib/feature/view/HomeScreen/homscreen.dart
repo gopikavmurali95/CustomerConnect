@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // initPlatformState();
 
     _scrollController = ScrollController();
-    // context.read<AutoUpdateBloc>().add(const CheckForUpdatesEvent(type: 'C'));
+    context.read<AutoUpdateBloc>().add(const CheckForUpdatesEvent(type: 'C'));
     _centerscrollController = ScrollController();
     context.read<CustomerSettingsBloc>().add(const ClearSettingsEvent());
     context
@@ -1003,27 +1003,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         actions: [
                           IconButton(
                             onPressed: () async {
-                              /*   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            NotificationScreen(user: widget.user),
-                                      )); */
-                              /* downloadAndInstallApk(
-                                      // 'https://drive.google.com/file/d/1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
-                                      // 'https://drive.google.com/uc?id=1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
-                                      'https://github.com/gopikavmurali95/CustomerConnect/releases/download/Demo/Customer.Connect.Flutter.Demo.24-9-24.apk',
-                                      context); */
-                              /*  await installApk(
-                                      '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk',
-                                      context); */
-                              if (!await Permission
-                                  .requestInstallPackages.isGranted) {
-                                await Permission.requestInstallPackages
-                                    .request();
-                              }
-                              ApkInstaller.installApk(
-                                  '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        NotificationScreen(user: widget.user),
+                                  ));
+                              // /* downloadAndInstallApk(
+                              //         // 'https://drive.google.com/file/d/1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
+                              //         // 'https://drive.google.com/uc?id=1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
+                              //         'https://github.com/gopikavmurali95/CustomerConnect/releases/download/Demo/Customer.Connect.Flutter.Demo.24-9-24.apk',
+                              //         context); */
+                              // /*  await installApk(
+                              //         '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk',
+                              //         context); */
+                              // if (!await Permission
+                              //     .requestInstallPackages.isGranted) {
+                              //   await Permission.requestInstallPackages
+                              //       .request();
+                              // }
+                              // ApkInstaller.installApk(
+                              //     '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk');
                             },
                             icon:
                                 SvgPicture.asset("assets/svg/notification.svg"),
