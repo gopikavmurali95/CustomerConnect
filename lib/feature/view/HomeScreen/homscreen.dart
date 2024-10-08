@@ -298,13 +298,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 log("$versionCode ${status.verCode ?? ''}");
                 if (versionCode != 0 &&
                     versionCode < int.parse(status.verCode ?? '0')) {
+                  String msg = status.msg!.replaceAll(
+                      'Latest Version Number', status.verName ?? '');
+                  msg = msg.replaceAll('(Version Number)', '');
                   Future.delayed(const Duration(microseconds: 100), () {
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(status.msg ?? ''),
+                        content: Text(msg),
                         actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text("Ignore"),
+                          ),
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -316,7 +325,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ));
                             },
-                            child: Text(AppLocalizations.of(context)!.ok),
+                            child: Text(AppLocalizations.of(context)!.update),
                           ),
                         ],
                       ),

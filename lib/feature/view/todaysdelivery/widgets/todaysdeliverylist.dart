@@ -124,16 +124,20 @@ class TodaysDeliveryList extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                height: 14.h,
-                                width: 30.w,
+                                // height: 14.h,
+                                // width: 30.w,
                                 decoration: BoxDecoration(
                                     color: delivery[index].status == 'C'
                                         ? const Color(0xfff7f4e2)
                                         : const Color(0xffe3f7e2),
                                     borderRadius: BorderRadius.circular(10)),
-                                child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 4),
                                   child: Text(
-                                    delivery[index].status ?? '',
+                                    selectedLocale?.languageCode == "en"
+                                        ? delivery[index].status ?? ''
+                                        : delivery[index].arStatus ?? '',
                                     style: kfontstyle(
                                         fontSize: 10.sp,
                                         color: const Color(0xff413434)),
