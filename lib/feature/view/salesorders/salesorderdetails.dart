@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -39,6 +40,12 @@ class _SalesOrderDetailsState extends State<SalesOrderDetails> {
             route: widget.salesorders.rotId,
             cusId: widget.salesorders.cusId),
         searchQuery: ''));
+    log(jsonEncode(SalesOrderDetailsInparasModel(
+      userId: widget.user.usrId,
+      orderID: widget.salesorders.ordId,
+      route: widget.salesorders.rotId,
+      cusId: widget.salesorders.cusId,
+    )));
     super.initState();
   }
 

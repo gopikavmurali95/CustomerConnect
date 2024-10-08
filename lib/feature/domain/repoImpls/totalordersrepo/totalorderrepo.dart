@@ -22,7 +22,6 @@ class TotalOrderRepo implements ITotalOrdersRepo {
       final response = await http.post(Uri.parse(baseUrl + totalordersurl),
           body: ordersIn.toJson());
 
-      log(jsonEncode(ordersIn));
       if (response.statusCode == 200) {
         log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -49,8 +48,11 @@ class TotalOrderRepo implements ITotalOrdersRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + totalorderdetailurl),
           body: {"ord_ID": ordID});
+
+      log('in ordddddddd $ordID');
       if (response.statusCode == 200) {
-        // logger.w('response: ${response.body}');
+        // log(response.body);
+
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> orderdetailsdata = json['result'];
         List<TotalOrdersDetailsModel> ordersdet = orderdetailsdata

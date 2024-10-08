@@ -294,8 +294,10 @@ class _HomeScreenState extends State<HomeScreen> {
               if (status != null) {
                 VersionHelper versionHelper = VersionHelper();
                 int? versionCode = await versionHelper.getAppVersionCode() ?? 0;
-                log(status.verCode ?? '');
-                if (versionCode < int.parse(status.verCode ?? '0')) {
+
+                log("$versionCode ${status.verCode ?? ''}");
+                if (versionCode != 0 &&
+                    versionCode < int.parse(status.verCode ?? '0')) {
                   Future.delayed(const Duration(microseconds: 100), () {
                     showCupertinoDialog(
                       context: context,

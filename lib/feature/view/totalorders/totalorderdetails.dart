@@ -170,7 +170,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                           () async {
                             context.read<TotalOrdersDetailsBloc>().add(
                                 GetTotalOrdersDetailsEvent(
-                                    userID: widget.user.usrId!,
+                                    userID: widget.totalorders.ordId ?? '',
                                     searchQuery: value.trim()));
                           },
                         );
@@ -195,7 +195,7 @@ class _TotalOrderDetailsState extends State<TotalOrderDetails> {
                               _totalOrderDetailSearchCtrl.clear();
                               context.read<TotalOrdersDetailsBloc>().add(
                                   GetTotalOrdersDetailsEvent(
-                                      userID: widget.user.usrId!,
+                                      userID: widget.totalorders.ordId ?? '',
                                       searchQuery: ''));
                             },
                             child: const Icon(
