@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  getnoti() async {
+/*   getnoti() async {
     var initialMessage = await FirebaseMessaging.instance.getInitialMessage();
     if (initialMessage != null) {
       final screen = initialMessage.data['Key'];
@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
     }
-  }
+  } */
 
 /* 
   void _centerItem(int index) {

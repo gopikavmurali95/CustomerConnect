@@ -50,11 +50,11 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD1inF64x3kxAHWodGHutsB1lO789APTaI',
-    appId: '1:932640027414:android:323e324826eb1ee069d637',
-    messagingSenderId: '932640027414',
-    projectId: 'sfa-customerconnect',
-    storageBucket: 'sfa-customerconnect.appspot.com',
+    apiKey: 'AIzaSyCtSJq6UrxktrBHN6nfndff7WKQjHB2Cjg',
+    appId: '1:293039146285:android:a20805620092433a07bfa4',
+    messagingSenderId: '293039146285',
+    projectId: 'meliha-customer-connect',
+    storageBucket: 'meliha-customer-connect.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
