@@ -617,13 +617,13 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               ),
               /*   GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  /*   Navigator.push(
                       context,
                       CupertinoPageRoute(
                         builder: (context) => ChatHomeScreen(
                           user: user,
                         ),
-                      ));
+                      )); */
                 },
                 child: Container(
                   height: 65.h,

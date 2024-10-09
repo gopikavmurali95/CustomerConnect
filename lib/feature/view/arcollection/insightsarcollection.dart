@@ -678,7 +678,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                             //SizedBox(width: 05,),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 10.0, right: 10, top: 10),
+                                  left: 10.0, right: 10, top: 0),
                               child: Text(
                                 AppLocalizations.of(context)!.all,
                                 style: countHeading(),
@@ -712,7 +712,7 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                             ),
                                   getArHeadersFailedState: () => Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 10.0, right: 10, top: 10),
+                                        left: 10.0, right: 10, top: 0),
                                     child: Text(
                                       "0",
                                       style: countHeading(),
@@ -723,6 +723,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                             ),
                             // SizedBox(width: ,),
                           ],
+                        ),
+                        SizedBox(
+                          height: 10.h,
                         ),
                         const InsightArListWidget(),
                         SizedBox(

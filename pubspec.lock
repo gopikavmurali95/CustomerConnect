@@ -41,14 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
-  app_installer:
-    dependency: transitive
-    description:
-      name: app_installer
-      sha256: e2ed08b1f762d6eb78c46c2b4d779a63fe4554a8e68328c6ab14e774a1a0d5c9
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.0"
   archive:
     dependency: transitive
     description:
@@ -366,14 +358,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_autoupdate:
-    dependency: "direct main"
-    description:
-      name: flutter_autoupdate
-      sha256: afefa1f30d10ed1dacd1e0d558e7ce214b02be515f0d0127a7320946dfc689ac
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   flutter_bloc:
     dependency: "direct main"
     description:
@@ -814,7 +798,7 @@ packages:
     source: hosted
     version: "2.1.0"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       sha256: "087ce49c3f0dc39180befefc60fdb4acd8f8620e5682fe2476afd0b3688bb4af"

@@ -17,6 +17,7 @@ import 'package:customer_connect/feature/data/models/asset_add_resp_out_model/as
 import 'package:customer_connect/feature/data/models/asset_removal_approval_in_model/asset_removal_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_approve_out_model/asset_removal_approve_out_model.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_request_header_model/asset_removal_request_header_model.dart';
+import 'package:customer_connect/feature/data/models/auto_update_resp_model/auto_update_resp_model.dart';
 import 'package:customer_connect/feature/data/models/chart_actual_visit_model/chart_actual_visit_model.dart';
 import 'package:customer_connect/feature/data/models/chart_non_productive_model/chart_non_productive_model.dart';
 import 'package:customer_connect/feature/data/models/chart_planned_visits_model/chart_planned_visits_model.dart';
@@ -33,6 +34,7 @@ import 'package:customer_connect/feature/data/models/cus_geo_loc_in_model/cus_ge
 import 'package:customer_connect/feature/data/models/cus_geo_location_model/cus_geo_location_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_h_eader_model/cus_ins_ar_h_eader_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_ar_header_in_model/cus_ins_ar_header_in_model.dart';
+import 'package:customer_connect/feature/data/models/cus_ins_customer_count_model/cus_ins_customer_count_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_inv_type_model/cus_ins_inv_type_model.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_invoice_header_in_model/cus_ins_invoice_header_in_model.dart';
@@ -191,7 +193,7 @@ import '../models/load_req_header_model/LoadReqHeaderModel.dart';
 
 abstract class ILoginRepo {
   Future<Either<MainFailures, LoginUserModel>> userLogin(
-      String username, String password);
+      String username, String password, String token);
 }
 
 abstract class IPickingAndLoadinCountRepo {
@@ -249,7 +251,17 @@ abstract class ICusInsightsCustomersRepo {
       String area,
       String subarea,
       String route,
-      String searchString);
+      String searchString,
+      String pagenum);
+
+      Future<Either<MainFailures, CusInsCustomerCountModel>> getCustomerscount(
+      String userId,
+      String area,
+      String subarea,
+      String route,
+      String searchString,
+      String pagenum);
+
 }
 
 abstract class IcusInsCountsRepo {
@@ -775,4 +787,10 @@ abstract class IUnScheduledVisitApprovalRepo {
 
   Future<Either<MainFailures, UnScheduledApprovalRespModel>>
       rejectUnscheduledVisit(List<UnScheduledVisitApproveInModel> reject);
+}
+
+abstract class IAutoUpdateRepo {
+  Future<Either<MainFailures, AutoUpdateRespModel>> getUpdateStatus(
+    String type,
+  );
 }

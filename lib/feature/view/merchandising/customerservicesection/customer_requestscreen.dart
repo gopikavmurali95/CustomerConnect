@@ -28,10 +28,12 @@ List<ApprovalStatusFilterModel> filterFieldsPriceChange = [
 Timer? debounce;
 TextEditingController _customerReqSearchCtrl = TextEditingController();
 TextEditingController _customerReqFilter = TextEditingController();
+String _selectedCustomerReqMode = 'AL';
 
 class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
   @override
   void initState() {
+    _selectedCustomerReqMode = 'AL';
     filterFieldsPriceChange = [
       ApprovalStatusFilterModel(
           statusName: selectedLocale?.languageCode == 'en'
@@ -216,6 +218,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                       )
                       .toList(),
                   onChanged: (value) {
+                    _selectedCustomerReqMode = value!;
                     ApprovalStatusFilterModel data = filterFieldsPriceChange
                         .where((element) => element.mode == value)
                         .first;
@@ -228,7 +231,7 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                         GetMerchCustomerRequestEvent(
                             fromDate: fromdateController.text,
                             toDate: todateController.text,
-                            status: value ?? '',
+                            status: value,
                             searchQuery: ''));
                   },
                 ),
@@ -249,20 +252,30 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              state.when(
-                                getMerchCustomerRequestHeadersState:
-                                    (headers) => headers == null
-                                        ? AppLocalizations.of(context)!
-                                            .allRequests
-                                        : _customerReqFilter.text,
-                                merchCustomerRequestsFailedState: () =>
-                                    AppLocalizations.of(context)!.allRequests,
-                              ),
-                              // _selectedPriceChangeMode == 'P'
-                              //     ? 'Pending Approvals'
-                              //     : 'Approved Requests',
+                              _selectedCustomerReqMode == 'AL'
+                                  ? AppLocalizations.of(context)!.allRequests
+                                  : _selectedCustomerReqMode == 'RS'
+                                      ? AppLocalizations.of(context)!
+                                          .respondedRequests
+                                      : AppLocalizations.of(context)!
+                                          .newRequests,
                               style: countHeading(),
                             ),
+                            // Text(
+                            //   state.when(
+                            //     getMerchCustomerRequestHeadersState:
+                            //         (headers) => headers == null
+                            //             ? AppLocalizations.of(context)!
+                            //                 .allRequests
+                            //             : _customerReqFilter.text,
+                            //     merchCustomerRequestsFailedState: () =>
+                            //         AppLocalizations.of(context)!.allRequests,
+                            //   ),
+                            //   // _selectedPriceChangeMode == 'P'
+                            //   //     ? 'Pending Approvals'
+                            //   //     : 'Approved Requests',
+                            //   style: countHeading(),
+                            // ),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 5.0),
@@ -352,25 +365,34 @@ class _PriceChangeHeaderState extends State<CustomerRequestScreen> {
                                                                       "${headers[index].reqCode}",
                                                                       style:
                                                                           blueTextStyle()),
-                                                                           RichText(
+                                                                  RichText(
+                                                                    text:
+                                                                        TextSpan(
+                                                                      style: DefaultTextStyle.of(
+                                                                              context)
+                                                                          .style,
+                                                                      children: [
+                                                                        TextSpan(
                                                                           text:
-                                                                              TextSpan(
-                                                                            style:
-                                                                                DefaultTextStyle.of(context).style,
-                                                                            children: [
-                                                                              TextSpan(
-                                                                                text: '${headers[index].cusCode} - ',
-                                                                                style: kfontstyle(
-                                                                                  fontSize: 11.sp,
-                                                                                  color: const Color(0xff2C6B9E),
-                                                                                ),
-                                                                              ),
-                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? headers[index].cusName ?? '' : headers[index].arcusName ?? '', style: subTitleTextStyle()
-                                                                                  // overflow: TextOverflow.ellipsis,
-                                                                                  ),
-                                                                            ],
+                                                                              '${headers[index].cusCode} - ',
+                                                                          style:
+                                                                              kfontstyle(
+                                                                            fontSize:
+                                                                                11.sp,
+                                                                            color:
+                                                                                const Color(0xff2C6B9E),
                                                                           ),
                                                                         ),
+                                                                        TextSpan(
+                                                                            text: selectedLocale?.languageCode == 'en'
+                                                                                ? headers[index].cusName ?? ''
+                                                                                : headers[index].arcusName ?? '',
+                                                                            style: subTitleTextStyle()
+                                                                            // overflow: TextOverflow.ellipsis,
+                                                                            ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
                                                                   // Row(
                                                                   //   children: [
                                                                   //     Text(

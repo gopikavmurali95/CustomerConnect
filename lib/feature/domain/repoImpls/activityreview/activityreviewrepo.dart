@@ -21,7 +21,7 @@ class ActivityReviewRepo implements IActivityReviewRepo {
           Uri.parse(baseUrl + activtyReviewHeaderUrl),
           body: {"rotType": routeType});
       if (response.statusCode == 200) {
-        //log("activity review response:${response.body}");
+        log("activity review response:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> headerdata = json['result'];

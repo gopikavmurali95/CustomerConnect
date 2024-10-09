@@ -215,7 +215,7 @@ class OutstandingListWidget extends StatelessWidget {
                                                       ]),
                                                 ),
                                                 Text(
-                                                  '${headers[index].invPayType} | ${headers[index].rotName} |  ${headers[index].createdDate}',
+                                                  '${headers[index].invPayType} | ${headers[index].rotName} |  ${headers[index].invoicedOn}',
                                                   style: kfontstyle(
                                                       fontSize: 10.sp,
                                                       color: Colors.grey),

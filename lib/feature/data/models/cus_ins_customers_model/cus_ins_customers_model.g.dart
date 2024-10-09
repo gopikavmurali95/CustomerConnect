@@ -24,7 +24,7 @@ CusInsCustomersModel _$CusInsCustomersModelFromJson(
       arheaderName: json['ArHeader_Name'] as String?,
       arrotName: json['Arrot_Name'] as String?,
       arAreaName: json['ArArea_Name'] as String?,
-    );
+    )..totalCount = json['Total_Count'] as String?;
 
 Map<String, dynamic> _$CusInsCustomersModelToJson(
         CusInsCustomersModel instance) =>
@@ -44,4 +44,5 @@ Map<String, dynamic> _$CusInsCustomersModelToJson(
       'ArHeader_Name': instance.arheaderName,
       'Arrot_Name': instance.arrotName,
       'ArArea_Name': instance.arAreaName,
+      'Total_Count': instance.totalCount,
     };

@@ -17,35 +17,26 @@ class CustomersListBlocBloc
   CustomersListBlocBloc(this.cusInsightsCustomersRepo)
       : super(CustomersListBlocState.initial()) {
     on<GetCustomersEvent>((event, emit) async {
+      emit(state.copyWith(isLoading: true));
       // List<CusInsCustomersModel> searcheditems = [];
       Either<MainFailures, List<CusInsCustomersModel>> customers =
           await cusInsightsCustomersRepo.getCustomers(event.userId, event.area,
-              event.subarea, event.route, event.searchQuery);
-      emit(customers.fold((l) => const GetcustomersFailedState(),
-          (r) => GetCustomersSstate(customers: r)));
-
-      /* emit(customers.fold((l) => const GetcustomersFailedState(), (r) {
-        searcheditems = r
-            .where((element) =>
-                element.cusCode!
-                    .toLowerCase()
-                    .toUpperCase()
-                    .contains(event.searchQuery.toUpperCase()) ||
-                element.cusName!
-                    .toLowerCase()
-                    .toUpperCase()
-                    .contains(event.searchQuery.toUpperCase()))
-            .toList();
-        return GetCustomersSstate(
-            customers: event.searchQuery.isEmpty ? r : searcheditems);
-      })); */
+              event.subarea, event.route, event.searchQuery, event.pagenum);
+      List<CusInsCustomersModel> oldcustomerlist = [];
+      final currentState = state as GetCustomersSstate;
+      oldcustomerlist.addAll(currentState.customers ?? []);
+      emit(customers.fold(
+          (l) => const GetCustomersSstate(customers: [], isLoading: false),
+          (r) /* => GetCustomersSstate(customers: r) */ {
+        if (event.searchQuery.isNotEmpty) {
+          oldcustomerlist.clear();
+        }
+        oldcustomerlist.addAll(r);
+        return GetCustomersSstate(customers: oldcustomerlist, isLoading: false);
+      }));
     });
     on<ClearCustomersEvent>((event, emit) {
-      emit(const GetCustomersSstate(customers: null));
-    });
-
-    on<RestCustomersEvent>((event, emit) {
-      emit(const CustomersResetState());
+      emit(const GetCustomersSstate(customers: null, isLoading: false));
     });
   }
 }

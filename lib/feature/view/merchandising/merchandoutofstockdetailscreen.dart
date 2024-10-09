@@ -29,6 +29,7 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
   void initState() {
     log(widget.fromDateCtrl.text);
     log(widget.toDateCtrl.text);
+    outofStockItemsHeaderSearchCtrl.clear();
     context.read<OutOfStockItemsBloc>().add(const ClearOutOfStockItems());
     context.read<OutOfStockItemsBloc>().add(GetOutOfStockItemsEvent(
         searchQuery: '',
@@ -88,6 +89,7 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                 fontSize: 13.sp, color: Colors.black87),
                             controller: outofStockItemsHeaderSearchCtrl,
                             onChanged: (value) {
+                              //outofStockItemsHeaderSearchCtrl.clear();
                               debounce = Timer(
                                   const Duration(
                                     milliseconds: 300,

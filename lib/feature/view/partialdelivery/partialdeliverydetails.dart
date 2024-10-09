@@ -14,6 +14,7 @@ import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partia
 import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/partial_delivery_reason_bloc.dart';
 
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
+import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
@@ -97,6 +98,8 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
       body: PopScope(
         canPop: true,
         onPopInvoked: (didPop) {
+          searchCtrl.clear();
+          _searchctrls.clear();
           // if (_approvedCount != 0 && _approvedCount != _totalcount) {
           //   Future.delayed(const Duration(microseconds: 100), () {
           //     showPopAlert(context);
@@ -689,7 +692,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                   .header
                                                                   .dahApprovalStatus!
                                                                   .isNotEmpty
-                                                              ? true
+                                                              ? false
                                                               : false,
                                                           child: Row(
                                                             children: [

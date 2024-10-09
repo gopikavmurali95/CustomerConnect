@@ -16,7 +16,7 @@ class InsightArListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: BlocBuilder<CusInsArHeaderBloc, CusInsArHeaderState>(
         builder: (context, state) {
           return state.when(
@@ -132,9 +132,10 @@ class InsightArListWidget extends StatelessWidget {
                                     ),
                                   ),
                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        headers[index].collectedAmount ?? '',
+                                        headers[index].balanceAmount ?? '',
                                         style: kfontstyle(
                                             fontSize: 12.sp,
                                             fontWeight: FontWeight.w500),

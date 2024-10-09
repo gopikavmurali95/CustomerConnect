@@ -1591,7 +1591,7 @@ class ApprovalScreen extends StatelessWidget {
                                   Row(
                                     children: [
                                       Image.asset(
-                                        "assets/images/sev@2x.png",
+                                        "assets/images/project.png",
                                         height: 18.3.h,
                                       ),
                                       SizedBox(

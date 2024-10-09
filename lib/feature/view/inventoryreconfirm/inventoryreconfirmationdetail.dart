@@ -13,6 +13,7 @@ import 'package:customer_connect/feature/state/bloc/inventoryreconfirmdetail/inv
 import 'package:customer_connect/feature/state/bloc/inventoryreconfirmheader/inventory_reconfirm_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/inventoryreconfirmreasons/inventory_reconfirm_reasons_cubit.dart';
+import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmheaderscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -85,6 +86,7 @@ class _InventoryReconfirmationDetailScreenState
         canPop:
             /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
         onPopInvoked: (didPop) {
+          inventoryReConfirmHSearchCtrl.clear();
           context.read<InventoryReconfirmHeaderBloc>().add(
               GetInventoryReconfirmHeadersEvent(
                   mode: widget.currentMode, searchQuery: ''));
@@ -609,36 +611,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            // Visibility(
-                                                            //   /*  visible: details[index]
-                                                            //                   .iadDescHuom ==
-                                                            //               null ||
-                                                            //           details[index]
-                                                            //               .iadDescHuom!
-                                                            //               .isEmpty
-                                                            //       ? false
-                                                            //       : true, */
-                                                            //   child: Text(
-                                                            //     details[index].iadPhysicalHuom ==
-                                                            //                 null ||
-                                                            //             details[index]
-                                                            //                 .iadPhysicalHuom!
-                                                            //                 .isEmpty
-                                                            //         ? '-'
-                                                            //         : details[index]
-                                                            //                 .iadPhysicalHuom ??
-                                                            //             //.iadHigherUom ??
-                                                            //             '',
-                                                            //     style: kfontstyle(
-                                                            //         fontSize:
-                                                            //             12.sp,
-                                                            //         fontWeight:
-                                                            //             FontWeight
-                                                            //                 .w400,
-                                                            //         color: Colors
-                                                            //             .black54),
-                                                            //   ),
-                                                            // ),
+                                                            
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
@@ -661,35 +634,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            // Visibility(
-                                                            //   // visible: details[index]
-                                                            //   //                 .iadLowerUom ==
-                                                            //   //             null ||
-                                                            //   //         details[index]
-                                                            //   //             .iadLowerUom!
-                                                            //   //             .isEmpty
-                                                            //   //     ? false
-                                                            //   //     : true,
-                                                            //   child: Text(
-                                                            //     details[index].iadLowerUom ==
-                                                            //                 null ||
-                                                            //             details[index]
-                                                            //                 .iadLowerUom!
-                                                            //                 .isEmpty
-                                                            //         ? '-'
-                                                            //         : details[index]
-                                                            //                 .iadLowerUom ??
-                                                            //             '-',
-                                                            //     style: kfontstyle(
-                                                            //         fontSize:
-                                                            //             12.sp,
-                                                            //         fontWeight:
-                                                            //             FontWeight
-                                                            //                 .w400,
-                                                            //         color: Colors
-                                                            //             .black54),
-                                                            //   ),
-                                                            // ),
+                                                            
                                                           ],
                                                         ),
                                                         /*  SizedBox(
@@ -1092,7 +1037,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                             ]),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                              padding: const EdgeInsets.symmetric(vertical: 7, ),
                                                                               child: Text(details[index].reason ?? ''),
                                                                             ),
                                                                           ),

@@ -141,7 +141,7 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                         ),
                                         Container(
                                           height: 14.h,
-                                          width: 30.w,
+                                          // width: 30.w,
                                           decoration: BoxDecoration(
                                               color: /* index % 2 == 0
                                           ? */

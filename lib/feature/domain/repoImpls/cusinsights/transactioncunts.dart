@@ -22,6 +22,12 @@ class CusTrnCOuntsRepo implements IcusInsCountsRepo {
         "FromDate": fDate,
         "ToDate": toDate,
       });
+      /* log({
+        "UserID": userId,
+        "cus_ID": cusId,
+        "FromDate": fDate,
+        "ToDate": toDate,
+      }.toString()); */
       if (response.statusCode == 200) {
         // logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

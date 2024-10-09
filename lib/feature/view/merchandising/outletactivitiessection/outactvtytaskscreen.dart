@@ -344,24 +344,33 @@ class _PriceChangeHeaderState extends State<OutletActivityTaskHeaderScreen> {
                                                                       style:
                                                                           blueTextStyle()),
                                                                   RichText(
+                                                                    text:
+                                                                        TextSpan(
+                                                                      style: DefaultTextStyle.of(
+                                                                              context)
+                                                                          .style,
+                                                                      children: [
+                                                                        TextSpan(
                                                                           text:
-                                                                              TextSpan(
-                                                                            style:
-                                                                                DefaultTextStyle.of(context).style,
-                                                                            children: [
-                                                                              TextSpan(
-                                                                                text: '${tasksheader[index].cusCode} - ',
-                                                                                style: kfontstyle(
-                                                                                  fontSize: 11.sp,
-                                                                                  color: const Color(0xff2C6B9E),
-                                                                                ),
-                                                                              ),
-                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? tasksheader[index].cusName ?? '' : tasksheader[index].cusArName ?? '', style: subTitleTextStyle()
-                                                                                  // overflow: TextOverflow.ellipsis,
-                                                                                  ),
-                                                                            ],
+                                                                              '${tasksheader[index].cusCode} - ',
+                                                                          style:
+                                                                              kfontstyle(
+                                                                            fontSize:
+                                                                                11.sp,
+                                                                            color:
+                                                                                const Color(0xff2C6B9E),
                                                                           ),
                                                                         ),
+                                                                        TextSpan(
+                                                                            text: selectedLocale?.languageCode == 'en'
+                                                                                ? tasksheader[index].cusName ?? ''
+                                                                                : tasksheader[index].cusArName ?? '',
+                                                                            style: subTitleTextStyle()
+                                                                            // overflow: TextOverflow.ellipsis,
+                                                                            ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
                                                                   Row(
                                                                     children: [
                                                                       Text(

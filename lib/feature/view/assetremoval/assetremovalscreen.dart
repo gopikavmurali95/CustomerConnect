@@ -440,7 +440,7 @@ class _AssetRemovalApprovalScreenState
                                                                                 context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
                                                                                 Navigator.pop(context);
                                                                               },
-                                                                              child: Text(AppLocalizations.of(context)!.alert),
+                                                                              child: Text(AppLocalizations.of(context)!.ok),
                                                                             ),
                                                                           ],
                                                                         ),

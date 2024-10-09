@@ -14,6 +14,7 @@ import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_chan
 import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -104,6 +105,8 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
+            _searchctrls.clear();
+            priceChangeHeaderSearchCtrl.clear();
             context.read<PriceChangeHeaderBloc>().add(GetPriceChangeHeaderEvent(
                 rotID: widget.priceChangeApprovel.pchRotId!,
                 mode: widget.currentMode,
@@ -1211,8 +1214,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                               Padding(
                                                                             padding:
                                                                                 const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
-                                                                            child:
-                                                                                Text(pdet[index].reason ?? ''),
+                                                                            child: Text(pdet[index].reason == null || pdet[index].reason!.isEmpty
+                                                                                ? "No reason found"
+                                                                                : pdet[index].reason ?? ''),
                                                                           ),
                                                                         ),
                                                                       )

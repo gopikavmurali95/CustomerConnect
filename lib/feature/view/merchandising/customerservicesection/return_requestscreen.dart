@@ -335,33 +335,24 @@ class _CreditNoteHeaderScreenState
                                                                           ),
                                                                         ),
                                                                         RichText(
-                                                                                                                                            text:
-                                                                                                                                                TextSpan(
-                                                                                                                                              style: DefaultTextStyle.of(
-                                                                         context)
-                                                                                                                                                  .style,
-                                                                                                                                              children: [
-                                                                                                                                                TextSpan(
-                                                                                                                                                  text:
-                                                                         '${returnData[index].cusCode} - ',
-                                                                                                                                                  style:
-                                                                         kfontstyle(
-                                                                                                                                                    fontSize:
-                                                                           11.sp,
-                                                                                                                                                    color:
-                                                                           const Color(0xff2C6B9E),
-                                                                                                                                                  ),
-                                                                                                                                                ),
-                                                                                                                                                TextSpan(
-                                                                                                                                                    text: selectedLocale?.languageCode == 'en'
-                                                                           ? returnData[index].cusName ?? ''
-                                                                           : returnData[index].arcusName ?? '',
-                                                                                                                                                    style: subTitleTextStyle()
-                                                                                                                                                    // overflow: TextOverflow.ellipsis,
-                                                                                                                                                    ),
-                                                                                                                                              ],
-                                                                                                                                            ),
-                                                                                                                                          ),
+                                                                          text:
+                                                                              TextSpan(
+                                                                            style:
+                                                                                DefaultTextStyle.of(context).style,
+                                                                            children: [
+                                                                              TextSpan(
+                                                                                text: '${returnData[index].cusCode} - ',
+                                                                                style: kfontstyle(
+                                                                                  fontSize: 11.sp,
+                                                                                  color: const Color(0xff2C6B9E),
+                                                                                ),
+                                                                              ),
+                                                                              TextSpan(text: selectedLocale?.languageCode == 'en' ? returnData[index].cusName ?? '' : returnData[index].arcusName ?? '', style: subTitleTextStyle()
+                                                                                  // overflow: TextOverflow.ellipsis,
+                                                                                  ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
                                                                         Text(
                                                                           returnData[index].date ??
                                                                               '',
@@ -418,9 +409,7 @@ class _CreditNoteHeaderScreenState
                                                             ),
                                                           ],
                                                         ),
-
                                                       ),
-                                                      
                                               separatorBuilder:
                                                   (context, index) => Divider(
                                                         color: Colors.grey[300],

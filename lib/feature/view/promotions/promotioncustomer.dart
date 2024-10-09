@@ -7,7 +7,6 @@ import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/view/promotions/widget/promotioncustomerlist.dart';
 import 'package:customer_connect/main.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -67,9 +66,9 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                     context
                         .read<PromotionDetailsBloc>()
                         .add(const ClearPromotionDetails());
-                    context
-                        .read<PromotionDetailsBloc>()
-                        .add(const GetPromotionDetailsEvent(id: "1"));
+                    context.read<PromotionDetailsBloc>().add(
+                        GetPromotionDetailsEvent(
+                            id: widget.promotion.qid ?? ''));
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
@@ -181,7 +180,8 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                 .add(const ClearOromotionCustomer());
                             context.read<PromotionCustomerBloc>().add(
                                 GetPromotionCustomerEvent(
-                                    id: '1', searchQuery: value.trim()));
+                                    id: widget.promotion.qid ?? '',
+                                    searchQuery: value.trim()));
                           },
                         );
                       },
@@ -197,8 +197,9 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                   .read<PromotionCustomerBloc>()
                                   .add(const ClearOromotionCustomer());
                               context.read<PromotionCustomerBloc>().add(
-                                  const GetPromotionCustomerEvent(
-                                      id: "1", searchQuery: ''));
+                                  GetPromotionCustomerEvent(
+                                      id: widget.promotion.qid ?? '',
+                                      searchQuery: ''));
                             },
                             child: const Icon(
                               Icons.close,
@@ -288,7 +289,7 @@ Future<void> _onRefreshPromotionCustomerScreen(
   context.read<PromotionDetailsBloc>().add(const ClearPromotionDetails());
   context
       .read<PromotionDetailsBloc>()
-      .add(const GetPromotionDetailsEvent(id: ''));
+      .add(GetPromotionDetailsEvent(id: model.qid ?? ''));
 
   context.read<PromotionCustomerBloc>().add(const ClearOromotionCustomer());
   context

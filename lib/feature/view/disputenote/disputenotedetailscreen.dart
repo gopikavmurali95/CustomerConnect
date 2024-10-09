@@ -9,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
+import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -85,6 +86,8 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
+          _disputedetailCtrl.clear();
+          disputeHeaderSearchCtrl.clear();
           /*   context
               .read<DisputeNoteHeaderBloc>()
               .add(const ClearDisputeNoteHEaderEvent()); */

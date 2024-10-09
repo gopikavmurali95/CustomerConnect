@@ -34,6 +34,8 @@ class CusInsCustomersModel {
   String? arrotName;
   @JsonKey(name: 'ArArea_Name')
   String? arAreaName;
+  @JsonKey(name: 'Total_Count')
+  String? totalCount;
 
   CusInsCustomersModel({
     this.cusId,

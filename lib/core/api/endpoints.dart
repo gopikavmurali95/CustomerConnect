@@ -194,3 +194,5 @@ const unScheduledVisitApproveUrl =
     'UnshceduledCusVisitApproval/ApproveUnSchCusVisit';
 const unScheduledVisitRejectUrl =
     'UnshceduledCusVisitApproval/RejectUnSchCusVisit';
+const cusInsightCustomersCount = 'CusInsightshome/SelectCustomerInsightCount';
+const autoUpdateUrl = 'AppService/SelVersionDetails';

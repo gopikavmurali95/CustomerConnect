@@ -11,6 +11,7 @@ import 'package:customer_connect/feature/state/bloc/returnapproval/return_approv
 import 'package:customer_connect/feature/state/bloc/returnapprovaldetail/return_approval_detail_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
+import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -108,6 +109,8 @@ class _ReturnApprovalDetailScreenState
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
+            searchCtrl.clear();
+            _searchctrls.clear();
             context.read<ReturnApprovalHeaderBloc>().add(
                 GetReturnApprovalHeaders(
                     rotID: widget.user.usrId ?? '',

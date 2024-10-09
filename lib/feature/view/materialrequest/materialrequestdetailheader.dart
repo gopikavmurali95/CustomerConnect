@@ -32,13 +32,13 @@ List<ApprovalStatusFilterModel> ddfilterMaterialReq = [
 ];
 
 String _selectedMaterialReq = 'P';
-TextEditingController _materialReqSearchController = TextEditingController();
+TextEditingController materialReqSearchController = TextEditingController();
 
 class _MaterialRequestHeaderScreenState
     extends State<MaterialRequestHeaderScreen> {
   @override
   void initState() {
-    _materialReqSearchController.clear();
+    materialReqSearchController.clear();
     ddfilterMaterialReq = [
       ApprovalStatusFilterModel(
           statusName:
@@ -58,6 +58,7 @@ class _MaterialRequestHeaderScreenState
               selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
           mode: 'R'),
     ];
+    _selectedMaterialReq = 'P';
     context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
     context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
           userId: widget.user.usrId ?? '',
@@ -127,7 +128,7 @@ class _MaterialRequestHeaderScreenState
                         child: TextFormField(
                           style: kfontstyle(
                               fontSize: 13.sp, color: Colors.black87),
-                          controller: _materialReqSearchController,
+                          controller: materialReqSearchController,
                           onChanged: (value) {
                             debounce = Timer(
                                 const Duration(
@@ -139,10 +140,10 @@ class _MaterialRequestHeaderScreenState
                                     userId: widget.user.usrId ?? '',
                                     mode: _selectedMaterialReq,
                                     searchQuery:
-                                        _materialReqSearchController.text,
+                                        materialReqSearchController.text,
                                   ));
                             });
-                            log(_materialReqSearchController.text);
+                            log(materialReqSearchController.text);
                             log(_selectedMaterialReq);
                           },
                           decoration: InputDecoration(
@@ -157,9 +158,9 @@ class _MaterialRequestHeaderScreenState
                                   Expanded(
                                     child: IconButton(
                                       onPressed: () {
-                                        if (_materialReqSearchController
+                                        if (materialReqSearchController
                                             .text.isNotEmpty) {
-                                          _materialReqSearchController.clear();
+                                          materialReqSearchController.clear();
 
                                           context
                                               .read<MaterialReqHeadBloc>()
@@ -540,7 +541,7 @@ class _MaterialRequestHeaderScreenState
                                                                           'Approved'
                                                                   ? headers[index]
                                                                               .status !=
-                                                                          'AH'
+                                                                          'Pending'
                                                                       ? Colors.red[
                                                                           300]
                                                                       : const Color(

@@ -121,6 +121,8 @@ class _ScheduledReturnDetailScreenState
           canPop:
               /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
           onPopInvoked: (didPop) {
+            _searchctrls.clear();
+            searchCtrl.clear();
             context.read<SchduledReturnHeaderBloc>().add(
                 GetAllScheduledReturnHeadersEvent(
                     userID: widget.user.usrId ?? '',
