@@ -30,7 +30,7 @@ class PushNotificationService {
   Future initialize() async {
     // FirebaseAnalytics.instance.app.setAutomaticDataCollectionEnabled(true);
     // FirebaseAnalytics.instance.logEvent(name: 'pusshnotification');
-/* 
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       log('Got a message whilst in the foreground!');
       log('Message data: ${message.data}');
@@ -40,7 +40,7 @@ class PushNotificationService {
 
         await shownotification(message);
       }
-    }); */
+    });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       // _navigateToNotificationScreen(message);
