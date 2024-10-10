@@ -18,7 +18,7 @@ class CusSpPriceRepo implements ICusSpPriceRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + cusSpPriceHeaderUrl),
           body: cusIN.toJson());
-
+log(jsonEncode(cusIN));
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 

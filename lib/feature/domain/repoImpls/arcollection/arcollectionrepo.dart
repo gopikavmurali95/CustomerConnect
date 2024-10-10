@@ -24,7 +24,7 @@ class ArCollectionRepo implements IArCollectionRepo {
       final response = await http
           .post(Uri.parse(baseUrl + arDeatilUrl), body: {"arh_ID": arhID});
           log("arhid : $arhID");
-      // log(response.body);
+      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 

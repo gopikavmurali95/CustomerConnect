@@ -294,15 +294,26 @@ class _HomeScreenState extends State<HomeScreen> {
               if (status != null) {
                 VersionHelper versionHelper = VersionHelper();
                 int? versionCode = await versionHelper.getAppVersionCode() ?? 0;
-                log(status.verCode ?? '');
-                if (versionCode < int.parse(status.verCode ?? '0')) {
+
+                log("$versionCode ${status.verCode ?? ''}");
+                if (versionCode != 0 &&
+                    versionCode < int.parse(status.verCode ?? '0')) {
+                  String msg = status.msg!.replaceAll(
+                      'Latest Version Number', status.verName ?? '');
+                  msg = msg.replaceAll('(Version Number)', '');
                   Future.delayed(const Duration(microseconds: 100), () {
                     showCupertinoDialog(
                       context: context,
                       builder: (context) => CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(status.msg ?? ''),
+                        content: Text(msg),
                         actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text("Ignore"),
+                          ),
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -314,7 +325,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ));
                             },
-                            child: Text(AppLocalizations.of(context)!.ok),
+                            child: Text(AppLocalizations.of(context)!.update),
                           ),
                         ],
                       ),
@@ -1003,27 +1014,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         actions: [
                           IconButton(
                             onPressed: () async {
-                              /*   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            NotificationScreen(user: widget.user),
-                                      )); */
-                              /* downloadAndInstallApk(
-                                      // 'https://drive.google.com/file/d/1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
-                                      // 'https://drive.google.com/uc?id=1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
-                                      'https://github.com/gopikavmurali95/CustomerConnect/releases/download/Demo/Customer.Connect.Flutter.Demo.24-9-24.apk',
-                                      context); */
-                              /*  await installApk(
-                                      '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk',
-                                      context); */
-                              if (!await Permission
-                                  .requestInstallPackages.isGranted) {
-                                await Permission.requestInstallPackages
-                                    .request();
-                              }
-                              ApkInstaller.installApk(
-                                  '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        NotificationScreen(user: widget.user),
+                                  ));
+                              // /* downloadAndInstallApk(
+                              //         // 'https://drive.google.com/file/d/1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
+                              //         // 'https://drive.google.com/uc?id=1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
+                              //         'https://github.com/gopikavmurali95/CustomerConnect/releases/download/Demo/Customer.Connect.Flutter.Demo.24-9-24.apk',
+                              //         context); */
+                              // /*  await installApk(
+                              //         '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk',
+                              //         context); */
+                              // if (!await Permission
+                              //     .requestInstallPackages.isGranted) {
+                              //   await Permission.requestInstallPackages
+                              //       .request();
+                              // }
+                              // ApkInstaller.installApk(
+                              //     '/storage/emulated/0/Customer-Connect/Updates/Update1727281927949.apk');
                             },
                             icon:
                                 SvgPicture.asset("assets/svg/notification.svg"),

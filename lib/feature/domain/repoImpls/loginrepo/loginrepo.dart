@@ -8,22 +8,20 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:logger/logger.dart';
 
 @LazySingleton(as: ILoginRepo)
 class UserLoginRepo implements ILoginRepo {
   @override
   Future<Either<MainFailures, LoginUserModel>> userLogin(
-      String username, String password) async {
-    var logger = Logger();
+      String username, String password, String token) async {
     try {
       final response = await http.post(Uri.parse(baseUrl + loginUrl),
-          body: {"Username": username, "Password": password});
+          body: {"Username": username, "Password": password, "Token": token});
 
-      log("${baseUrl + loginUrl} ,{Username: $username, Password: $password}");
+      // log("${baseUrl + loginUrl} ,{Username: $username, Password: $password, Token: $token}");
       log('Response: ${response.body}');
       if (response.statusCode == 200) {
-        logger.w('Response: ${response.body}');
+        // logger.w('Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final userModel = LoginUserModel.fromJson(json["result"][0]);
         return right(userModel);

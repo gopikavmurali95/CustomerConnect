@@ -328,7 +328,7 @@ class _MaterialRequestDetailScreenState
                                                         'Approved'
                                                 ? widget.materialrequest
                                                             .status !=
-                                                        'Rejected'
+                                                        'Pending'
                                                     ? Colors.red.shade300
                                                     : const Color(0xfff7f4e2)
                                                 : const Color(0xffe3f7e2),
@@ -541,14 +541,28 @@ class _MaterialRequestDetailScreenState
                                       _hQtycontrollers = List.generate(
                                         materialdetail.length,
                                         (index) => TextEditingController(
-                                            text: materialdetail[index]
-                                                .adjustedHQty),
+                                            text: widget.materialrequest.status!
+                                                        .isEmpty ||
+                                                    widget.materialrequest
+                                                            .status ==
+                                                        "Pending"
+                                                ? materialdetail[index]
+                                                    .requestedHQty
+                                                : materialdetail[index]
+                                                    .adjustedHQty),
                                       );
                                       _lQtycontrollers = List.generate(
                                           materialdetail.length,
                                           (index) => TextEditingController(
-                                                text: materialdetail[index]
-                                                    .adjustedLQty,
+                                                text: widget.materialrequest
+                                                            .status!.isEmpty ||
+                                                        widget.materialrequest
+                                                                .status ==
+                                                            "Pending"
+                                                    ? materialdetail[index]
+                                                        .requestedLQty
+                                                    : materialdetail[index]
+                                                        .adjustedLQty,
                                               ));
                                       _materialreqproducts = List.generate(
                                           materialdetail.length,
@@ -760,17 +774,28 @@ class _MaterialRequestDetailScreenState
                                                                               controller: _hQtycontrollers[index],
                                                                               onChanged: (value) {
                                                                                 details[index].adjustedHQty = value;
-                                                                                _procechangematerial[index] = MaterialReqDetailModel(
-                                                                                  adjustedHQty: details[index].adjustedHQty,
-                                                                                  adjustedLQty: details[index].adjustedLQty,
+                                                                                /*     _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                  adjustedHQty: value.trim(),
+                                                                                  adjustedLQty: _lQtycontrollers[index].text,
                                                                                   prdID: details[index].prdID,
+                                                                                ); */
+
+                                                                                _materialreqproducts[index] = MatrialAprReqPrdModel(
+                                                                                  hqty: value.trim(),
+                                                                                  lqty: _lQtycontrollers[index].text,
+                                                                                  prdId: details[index].prdID,
+                                                                                  mrdId: details[index].mrdID,
+                                                                                  reqHuom: details[index].reqHUOM,
+                                                                                  reqLuom: details[index].reqLUOM,
+                                                                                  requestedHQty: details[index].requestedLQty,
+                                                                                  requestedLQty: details[index].requestedLQty,
                                                                                 );
                                                                               },
                                                                               style: kfontstyle(fontSize: 10.sp),
                                                                               decoration: InputDecoration(
                                                                                   enabled:
                                                                                       /* (details[index].requestedHQty != details[index].reqHUOM) && */
-                                                                                      (widget.materialrequest.mrhIntegrationStatus == "Pending" || widget.materialrequest.mrhIntegrationStatus == 'قيد الانتظار') ? true : false,
+                                                                                      (widget.materialrequest.status == "Pending" || widget.materialrequest.status == 'قيد الانتظار') ? true : false,
                                                                                   enabledBorder: const OutlineInputBorder(
                                                                                     borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                   ),
@@ -805,7 +830,7 @@ class _MaterialRequestDetailScreenState
                                                                                 TextFormField(
                                                                                    enabled: 
                                                                                   /* (details[index].requestedHQty != details[index].reqHUOM) && */
-                                                                                    (widget.materialrequest.mrhIntegrationStatus == "Pending" || widget.materialrequest. mrhIntegrationStatus== 'قيد الانتظار') ? true : false,
+                                                                                    (widget.materialrequest.status == "Pending" || widget.materialrequest. status== 'قيد الانتظار') ? true : false,
                                                                               keyboardType:
                                                                                   TextInputType.number,
                                                                               textAlign:
@@ -829,7 +854,7 @@ class _MaterialRequestDetailScreenState
                                                                               style:
                                                                                   const TextStyle(fontSize: 9),
                                                                               decoration: InputDecoration(
-                                                                                 // enabled: widget.materialrequest.mrhIntegrationStatus == 'Pending' ? true : false,
+                                                                                 // enabled: widget.materialrequest.status == 'Pending' ? true : false,
                                                                                   enabledBorder: const OutlineInputBorder(
                                                                                     borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                   ),
@@ -868,17 +893,31 @@ class _MaterialRequestDetailScreenState
                                                                               controller: _lQtycontrollers[index],
                                                                               onChanged: (value) {
                                                                                 details[index].adjustedLQty = value;
-                                                                                _procechangematerial[index] = MaterialReqDetailModel(
-                                                                                  adjustedHQty: details[index].adjustedHQty,
-                                                                                  adjustedLQty: details[index].adjustedLQty,
+                                                                                /*  _procechangematerial[index] = MaterialReqDetailModel(
+                                                                                  adjustedHQty: _hQtycontrollers[index].text,
+                                                                                  adjustedLQty: value.trim(),
                                                                                   prdID: details[index].prdID,
+                                                                                ); */
+                                                                                _materialreqproducts[index] = MatrialAprReqPrdModel(
+                                                                                  hqty: _hQtycontrollers[index].text,
+                                                                                  lqty: _lQtycontrollers[index].text.trim(),
+                                                                                  prdId: details[index].prdID,
+                                                                                  mrdId: details[index].mrdID,
+                                                                                  reqHuom: details[index].reqHUOM,
+                                                                                  reqLuom: details[index].reqLUOM,
+                                                                                  requestedHQty: details[index].requestedLQty,
+                                                                                  requestedLQty: details[index].requestedLQty,
                                                                                 );
                                                                               },
                                                                               style: kfontstyle(fontSize: 10.sp),
                                                                               decoration: InputDecoration(
                                                                                   enabled:
                                                                                       /* (details[index].requestedHQty != details[index].reqHUOM) && */
-                                                                                      (widget.materialrequest.mrhIntegrationStatus == "Pending" || widget.materialrequest.mrhIntegrationStatus == 'قيد الانتظار') ? true : false,
+                                                                                      widget.materialrequest.status == "Pending"
+                                                                                          ? (details[index].reqLUOM != null && details[index].reqLUOM!.isNotEmpty)
+                                                                                              ? true
+                                                                                              : false
+                                                                                          : false,
                                                                                   enabledBorder: const OutlineInputBorder(
                                                                                     borderSide: BorderSide(color: Colors.black12, width: 1),
                                                                                   ),
@@ -941,9 +980,7 @@ class _MaterialRequestDetailScreenState
         ),
       ),
       bottomNavigationBar: Visibility(
-        visible: widget.materialrequest.mrhIntegrationStatus == 'Pending'
-            ? true
-            : false,
+        visible: widget.materialrequest.status == 'Pending' ? true : false,
         child: SizedBox(
           height: MediaQuery.of(context).size.width * 0.15,
           width: double.infinity,
@@ -1078,6 +1115,14 @@ class _MaterialRequestDetailScreenState
                               ],
                             ),
                           );
+                          // log("jngjirnj ${jsonEncode(_materialreqproducts)}");
+                          /*  log(jsonEncode(MaterialReqApprovalInModel(
+                            products: _materialreqproducts,
+                            userId: widget.materialrequest.userID,
+                            reqID: widget.materialrequest.mrhID,
+                            mode: "A",
+                            warehouse: widget.materialrequest.mrhWarID,
+                          ))); */
                         },
                         child: Text(
                           AppLocalizations.of(context)!.approve,

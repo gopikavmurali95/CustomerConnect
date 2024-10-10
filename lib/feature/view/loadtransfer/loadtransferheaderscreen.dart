@@ -27,7 +27,7 @@ TextEditingController vanLoadTransSearchCtrl = TextEditingController();
 String _selectedMode = 'N';
 List<ApprovalStatusFilterModel> ddfilterLoadTransfer = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'N'),
-  ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
+  ApprovalStatusFilterModel(statusName: "Action Taken", mode: 'A'),
 ];
 
 class _LoadTransferApprovalHeaderScreenState
@@ -379,7 +379,7 @@ class _LoadTransferApprovalHeaderScreenState
                                                                 .isEmpty ||
                                                             headers[index]
                                                                     .ltrApprovalStatus !=
-                                                                'Approved'
+                                                                'Action Taken'
                                                         ? headers[index]
                                                                     .ltrApprovalStatus ==
                                                                 'Rejected'

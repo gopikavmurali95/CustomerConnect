@@ -49,6 +49,8 @@ class CusPromotionsRepo implements ICusProtionRepo {
           Uri.parse(baseUrl + cusPromotionHeaderUrl),
           body: cusIN.toJson());
 
+          log(jsonEncode(cusIN));
+
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

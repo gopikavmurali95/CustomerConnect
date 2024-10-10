@@ -18,6 +18,8 @@ class CusItemsRepo implements ICusItemsRepo {
       final response = await http.post(Uri.parse(baseUrl + cusItemsUrl),
           body: {"CusID": cusId, "Route": route});
 
+          log("cusid: $cusId, route: $route");
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 
