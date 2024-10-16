@@ -15,8 +15,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CustomerItemList extends StatefulWidget {
   final CusInsCustomersModel customer;
   final LoginUserModel user;
+  final TextEditingController fromdatectrl;
+  final TextEditingController todatectrl;
   const CustomerItemList(
-      {super.key, required this.customer, required this.user});
+      {super.key,
+      required this.customer,
+      required this.user,
+      required this.fromdatectrl,
+      required this.todatectrl});
 
   @override
   State<CustomerItemList> createState() => _CustomerItemListState();
@@ -33,6 +39,8 @@ class _CustomerItemListState extends State<CustomerItemList> {
     context.read<CusItemsBloc>().add(GetItemsEvent(
         cusID: widget.customer.cusId ?? '',
         route: widget.customer.rotId ?? '',
+        fromDate: widget.fromdatectrl.text,
+        toDate: widget.todatectrl.text,
         searchQuery: ''));
     super.initState();
   }
@@ -43,6 +51,8 @@ class _CustomerItemListState extends State<CustomerItemList> {
     context.read<CusItemsBloc>().add(GetItemsEvent(
         cusID: widget.customer.cusId ?? '',
         route: widget.customer.rotId ?? '',
+        fromDate: widget.fromdatectrl.text,
+        toDate: widget.todatectrl.text,
         searchQuery: ''));
     await Future.delayed(const Duration(seconds: 2));
   }
@@ -192,6 +202,8 @@ class _CustomerItemListState extends State<CustomerItemList> {
                               context.read<CusItemsBloc>().add(GetItemsEvent(
                                   cusID: widget.customer.cusId ?? '',
                                   route: widget.customer.rotId ?? '',
+                                  fromDate: widget.fromdatectrl.text,
+                                  toDate: widget.todatectrl.text,
                                   searchQuery: value.trim()));
                             },
                           );
@@ -218,6 +230,9 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                                     widget.customer.cusId ?? '',
                                                 route:
                                                     widget.customer.rotId ?? '',
+                                                fromDate:
+                                                    widget.fromdatectrl.text,
+                                                toDate: widget.todatectrl.text,
                                                 searchQuery: ''),
                                           );
                                     },

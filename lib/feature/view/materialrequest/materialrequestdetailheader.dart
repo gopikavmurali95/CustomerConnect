@@ -58,6 +58,7 @@ class _MaterialRequestHeaderScreenState
               selectedLocale?.languageCode == "en" ? "Rejected" : "مرفوض",
           mode: 'R'),
     ];
+    _selectedMaterialReq = 'P';
     context.read<MaterialReqHeadBloc>().add(const MaterialReqHeadClearEvent());
     context.read<MaterialReqHeadBloc>().add(MaterialHeadSuccessEvent(
           userId: widget.user.usrId ?? '',
@@ -540,7 +541,7 @@ class _MaterialRequestHeaderScreenState
                                                                           'Approved'
                                                                   ? headers[index]
                                                                               .status !=
-                                                                          'AH'
+                                                                          'Pending'
                                                                       ? Colors.red[
                                                                           300]
                                                                       : const Color(

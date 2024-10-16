@@ -22,6 +22,7 @@ class TodaysDelivery implements ITodaysDeliveryRepo {
       final response = await http.post(
           Uri.parse(baseUrl + todaysdeliveryheaderurl),
           body: deliveryIn.toJson());
+          log(jsonEncode(deliveryIn));
       if (response.statusCode == 200) {
         logger.w('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

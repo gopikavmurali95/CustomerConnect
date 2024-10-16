@@ -23,7 +23,8 @@ class ArCollectionRepo implements IArCollectionRepo {
     try {
       final response = await http
           .post(Uri.parse(baseUrl + arDeatilUrl), body: {"arh_ID": arhID});
-      // log(response.body);
+          log("arhid : $arhID");
+      log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 
@@ -49,6 +50,7 @@ class ArCollectionRepo implements IArCollectionRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + arHeaderUrl),
           body: arin.toJson());
+          log(jsonEncode(arin));
       if (response.statusCode == 200) {
         // log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

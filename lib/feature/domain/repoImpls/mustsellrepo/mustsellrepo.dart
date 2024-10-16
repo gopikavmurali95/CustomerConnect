@@ -21,7 +21,7 @@ class MustSellRepo implements IMustSellRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + mustSellHeaderurl),
           body: {"Status_Value": mode});
-
+      log("Mustsell ${response.body}");
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];

@@ -358,7 +358,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                 if (details[i].status!.isNotEmpty) {
                                   if (details[i].status == 'Approved') {
                                     statuslist[i] = true;
-                                  } else if (details[i].status == 'Rejeced') {
+                                  } else if (details[i].status == 'Rejected') {
                                     statuslist[i] = false;
                                   } else {
                                     statuslist[i] = null;
@@ -674,11 +674,18 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                 ],
                                               ),
                                               widget.header.ltrApprovalStatus ==
-                                                      'Pending'
+                                                          null ||
+                                                      widget
+                                                          .header
+                                                          .ltrApprovalStatus!
+                                                          .isEmpty ||
+                                                      widget.header
+                                                              .ltrApprovalStatus ==
+                                                          'Pending'
                                                   ? Transform.scale(
                                                       scale: .9,
                                                       origin:
-                                                          const Offset(450, 0),
+                                                          const Offset(100, 0),
                                                       child: Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -848,7 +855,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                   : Transform.scale(
                                                       scale: .9,
                                                       origin:
-                                                          const Offset(450, 0),
+                                                          const Offset(100, 0),
                                                       child: Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -868,7 +875,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                         InkWell(
                                                                       onTap:
                                                                           () {
-                                                                        setState(
+                                                                        /*  setState(
                                                                             () {
                                                                           statuslist[index] =
                                                                               true;
@@ -880,7 +887,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                           _loadprducts[index] = LoadTransferPrdModel(
                                                                               ldrId: details[index].ldrId,
                                                                               status: "A");
-                                                                        });
+                                                                        }); */
                                                                       },
                                                                       child:
                                                                           Row(
@@ -933,11 +940,11 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                         ],
                                                                       ),
                                                                     ); */
-                                                                              statuslist[index] = true;
-                                                                              loadingCount = 0;
-                                                                              setState(() {});
+                                                                              // statuslist[index] = true;
+                                                                              // loadingCount = 0;
+                                                                              // setState(() {});
 
-                                                                              _loadprducts[index] = LoadTransferPrdModel(ldrId: details[index].ldrId, status: "A");
+                                                                              // _loadprducts[index] = LoadTransferPrdModel(ldrId: details[index].ldrId, status: "A");
                                                                             },
                                                                           ),
                                                                           Text(
@@ -956,7 +963,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                         InkWell(
                                                                       onTap:
                                                                           () {
-                                                                        setState(
+                                                                        /*  setState(
                                                                             () {
                                                                           statuslist[index] =
                                                                               false;
@@ -969,7 +976,7 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                                           _loadprducts[index] = LoadTransferPrdModel(
                                                                               ldrId: details[index].ldrId,
                                                                               status: "R");
-                                                                        });
+                                                                        }); */
                                                                       },
                                                                       child:
                                                                           Row(

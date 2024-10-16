@@ -51,7 +51,7 @@ class MaterialReqRepo implements IMaterialReqHeaderRepo {
           Uri.parse(approvalBaseUrl + materialReqDetailUrl),
           body: {"reqID": reqId});
       if (response.statusCode == 200) {
-        // logger.w('response: ${response.body}');
+        log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> materialReqdetail = json['result'];
         List<MaterialReqDetailModel> materialreqdetaillist = materialReqdetail

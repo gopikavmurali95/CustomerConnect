@@ -143,6 +143,13 @@ class CustomerSettingsModel {
   @JsonKey(name: 'CUIN-CUSGEOLOC')
   String? cusGeoLocation;
 
+  @JsonKey(name: 'APPR-CUSFOC')
+  String? cusfoc;
+  @JsonKey(name: 'APPR-CUSFRSMPLE')
+  String? freesample;
+  @JsonKey(name: 'APPR-CUSOVRDE')
+  String? cusovrride;
+
   CustomerSettingsModel({
     this.invTrans,
     this.custTrans,
@@ -190,6 +197,9 @@ class CustomerSettingsModel {
     this.cusItemList,
     this.cusDocuments,
     this.cusGeoLocation,
+    this.cusfoc,
+    this.cusovrride,
+    this.freesample,
   });
 
   factory CustomerSettingsModel.fromJson(Map<String, dynamic> json) {
@@ -248,7 +258,10 @@ class CustomerSettingsModel {
       'APPR-INVRECON': 'invReconfAppr',
       'APPR-VOIDTRN': 'voidTransAppr',
       'APPR-MUSTSEL': 'mustSellAppr',
-      'APPR-SETLMNT': 'settleAppr'
+      'APPR-SETLMNT': 'settleAppr',
+      'APPR-CUSFOC': 'cusfoc',
+      'APPR-CUSFRSMPLE': 'freesample',
+      'APPR-CUSOVRDE': 'cusovrride'
     };
 
     for (var item in response) {
@@ -409,6 +422,16 @@ class CustomerSettingsModel {
         break;
       case 'cusGeoLocation':
         customerSettings.cusGeoLocation = value;
+        break;
+
+      case 'cusfoc':
+        customerSettings.cusfoc = value;
+        break;
+      case 'freesample':
+        customerSettings.freesample = value;
+        break;
+      case 'cusovrride':
+        customerSettings.cusovrride = value;
         break;
     }
   }

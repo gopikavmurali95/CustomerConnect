@@ -22,6 +22,7 @@ class CreditNoteApprovalRepo implements ICreditNoteApprovalRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + creditNoteApprovalHeaderUrl),
           body: {"UserID": userID, "Status_Value": mode});
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
@@ -82,7 +83,6 @@ class CreditNoteApprovalRepo implements ICreditNoteApprovalRepo {
         final status = DisputeApprovalRespModel.fromJson(json["result"][0]);
         return right(status);
       } else {
-        log(response.body);
         return left(
           const MainFailures.networkerror(error: 'Something went Wrong'),
         );
@@ -127,8 +127,9 @@ class CreditNoteApprovalRepo implements ICreditNoteApprovalRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + creditNoteApprovalLevelStatusUrl),
           body: {"UserId": userID});
-
+      log(jsonEncode(userID));
       if (response.statusCode == 200) {
+        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final status = DisputeApprovalStatusModel.fromJson(json["result"][0]);
         return right(status);

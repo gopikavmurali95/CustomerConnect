@@ -193,7 +193,7 @@ import '../models/load_req_header_model/LoadReqHeaderModel.dart';
 
 abstract class ILoginRepo {
   Future<Either<MainFailures, LoginUserModel>> userLogin(
-      String username, String password);
+      String username, String password, String token);
 }
 
 abstract class IPickingAndLoadinCountRepo {
@@ -334,7 +334,7 @@ abstract class ICusOutstandingRepo {
 
 abstract class ICusItemsRepo {
   Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(
-      String cusId, String route);
+      String cusId, String route,String froDate,String toDate);
 }
 
 abstract class IPickingHeaderRepo {

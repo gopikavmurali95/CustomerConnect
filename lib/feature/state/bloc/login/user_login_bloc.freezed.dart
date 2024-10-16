@@ -18,19 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserLoginEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String username, String password) loginEvent,
+    required TResult Function(String username, String password, String token)
+        loginEvent,
     required TResult Function() loginLoadingEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String username, String password)? loginEvent,
+    TResult? Function(String username, String password, String token)?
+        loginEvent,
     TResult? Function()? loginLoadingEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String username, String password)? loginEvent,
+    TResult Function(String username, String password, String token)?
+        loginEvent,
     TResult Function()? loginLoadingEvent,
     required TResult orElse(),
   }) =>
@@ -80,7 +83,7 @@ abstract class _$$LoginEventImplCopyWith<$Res> {
           _$LoginEventImpl value, $Res Function(_$LoginEventImpl) then) =
       __$$LoginEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username, String password});
+  $Res call({String username, String password, String token});
 }
 
 /// @nodoc
@@ -96,6 +99,7 @@ class __$$LoginEventImplCopyWithImpl<$Res>
   $Res call({
     Object? username = null,
     Object? password = null,
+    Object? token = null,
   }) {
     return _then(_$LoginEventImpl(
       username: null == username
@@ -106,6 +110,10 @@ class __$$LoginEventImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      token: null == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -113,16 +121,19 @@ class __$$LoginEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginEventImpl implements LoginEvent {
-  const _$LoginEventImpl({required this.username, required this.password});
+  const _$LoginEventImpl(
+      {required this.username, required this.password, required this.token});
 
   @override
   final String username;
   @override
   final String password;
+  @override
+  final String token;
 
   @override
   String toString() {
-    return 'UserLoginEvent.loginEvent(username: $username, password: $password)';
+    return 'UserLoginEvent.loginEvent(username: $username, password: $password, token: $token)';
   }
 
   @override
@@ -133,11 +144,12 @@ class _$LoginEventImpl implements LoginEvent {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, password);
+  int get hashCode => Object.hash(runtimeType, username, password, token);
 
   @JsonKey(ignore: true)
   @override
@@ -148,30 +160,33 @@ class _$LoginEventImpl implements LoginEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String username, String password) loginEvent,
+    required TResult Function(String username, String password, String token)
+        loginEvent,
     required TResult Function() loginLoadingEvent,
   }) {
-    return loginEvent(username, password);
+    return loginEvent(username, password, token);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String username, String password)? loginEvent,
+    TResult? Function(String username, String password, String token)?
+        loginEvent,
     TResult? Function()? loginLoadingEvent,
   }) {
-    return loginEvent?.call(username, password);
+    return loginEvent?.call(username, password, token);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String username, String password)? loginEvent,
+    TResult Function(String username, String password, String token)?
+        loginEvent,
     TResult Function()? loginLoadingEvent,
     required TResult orElse(),
   }) {
     if (loginEvent != null) {
-      return loginEvent(username, password);
+      return loginEvent(username, password, token);
     }
     return orElse();
   }
@@ -211,10 +226,12 @@ class _$LoginEventImpl implements LoginEvent {
 abstract class LoginEvent implements UserLoginEvent {
   const factory LoginEvent(
       {required final String username,
-      required final String password}) = _$LoginEventImpl;
+      required final String password,
+      required final String token}) = _$LoginEventImpl;
 
   String get username;
   String get password;
+  String get token;
   @JsonKey(ignore: true)
   _$$LoginEventImplCopyWith<_$LoginEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -258,7 +275,8 @@ class _$loginLoadingEventImpl implements _loginLoadingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String username, String password) loginEvent,
+    required TResult Function(String username, String password, String token)
+        loginEvent,
     required TResult Function() loginLoadingEvent,
   }) {
     return loginLoadingEvent();
@@ -267,7 +285,8 @@ class _$loginLoadingEventImpl implements _loginLoadingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String username, String password)? loginEvent,
+    TResult? Function(String username, String password, String token)?
+        loginEvent,
     TResult? Function()? loginLoadingEvent,
   }) {
     return loginLoadingEvent?.call();
@@ -276,7 +295,8 @@ class _$loginLoadingEventImpl implements _loginLoadingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String username, String password)? loginEvent,
+    TResult Function(String username, String password, String token)?
+        loginEvent,
     TResult Function()? loginLoadingEvent,
     required TResult orElse(),
   }) {

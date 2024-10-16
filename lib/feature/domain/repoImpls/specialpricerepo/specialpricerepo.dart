@@ -50,6 +50,7 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
       final response = await http.post(
           Uri.parse(baseUrl + specialPriceDetailsUrl),
           body: {"prh_id": prdID});
+
       if (response.statusCode == 200) {
         //log('response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -77,6 +78,8 @@ class SpecialPriceRepo implements ISpecialPriceRepo {
       final response = await http.post(
           Uri.parse(baseUrl + specialPRiceCustomerurl),
           body: {"prh_ID": userID, "FromDate": fromDate, "ToDate": toDate});
+      // log({"prh_ID": userID, "FromDate": fromDate, "ToDate": toDate}
+      //     .toString());
       if (response.statusCode == 200) {
         // log('special pricing customer response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

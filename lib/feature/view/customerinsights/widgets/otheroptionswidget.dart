@@ -245,6 +245,8 @@ class OtherOptionsWidget extends StatelessWidget {
                       builder: (context) => CustomerItemList(
                         customer: customer,
                         user: user,
+                        fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl,
                       ),
                     ),
                   );

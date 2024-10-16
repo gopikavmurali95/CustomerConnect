@@ -171,7 +171,7 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                                 .add(const ClearTodasDeliveryDetails());
                             context.read<TodaysDeliveryDetailsBloc>().add(
                                 GetTodaysDeliveryDetailsEvent(
-                                    id: widget.user.usrId!,
+                                    id: widget.todaysdelivery.id ?? '',
                                     searchQuery: value.trim()));
                           },
                         );
@@ -199,7 +199,8 @@ class _TodaysDeliveryDetailsState extends State<TodaysDeliveryDetails> {
                                   .add(const ClearTodasDeliveryDetails());
                               context.read<TodaysDeliveryDetailsBloc>().add(
                                   GetTodaysDeliveryDetailsEvent(
-                                      id: widget.user.usrId!, searchQuery: ''));
+                                      id: widget.todaysdelivery.id ?? '',
+                                      searchQuery: ''));
                             },
                             child: const Icon(
                               Icons.close,

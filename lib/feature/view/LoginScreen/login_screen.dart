@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 // import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,8 +23,27 @@ final _usernamectrl = TextEditingController();
 final _passwordctrl = TextEditingController();
 final _formkey = GlobalKey<FormState>();
 bool _passwordVisible = false;
+getnotipermission() async {
+  PermissionStatus status = await Permission.notification.request();
+
+  if (status.isGranted) {
+    await PushNotificationService().getToken();
+  } else if (status.isDenied) {
+    await Permission.notification.request();
+  } else if (status.isPermanentlyDenied) {
+    await Permission.notification.request();
+  }
+}
 
 class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    getnotipermission();
+    _usernamectrl.clear();
+    _passwordctrl.clear();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -274,13 +295,23 @@ class _LoginScreenState extends State<LoginScreen> {
                               height: 10.h,
                             ),
                             GestureDetector(
-                              onTap: () {
+                              onTap: () async {
                                 if (_formkey.currentState!.validate()) {
-                                  context.read<UserLoginBloc>().add(
-                                      const UserLoginEvent.loginLoadingEvent());
-                                  context.read<UserLoginBloc>().add(LoginEvent(
-                                      username: _usernamectrl.text,
-                                      password: _passwordctrl.text));
+                                  getnotipermission();
+                                  String token = await PushNotificationService()
+                                          .getToken() ??
+                                      '';
+                                  Future.delayed(
+                                      const Duration(microseconds: 100), () {
+                                    context.read<UserLoginBloc>().add(
+                                        const UserLoginEvent
+                                            .loginLoadingEvent());
+                                    context.read<UserLoginBloc>().add(
+                                        LoginEvent(
+                                            username: _usernamectrl.text,
+                                            password: _passwordctrl.text,
+                                            token: token));
+                                  });
                                 }
                               },
                               child: Container(

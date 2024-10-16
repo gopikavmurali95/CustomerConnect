@@ -18,8 +18,9 @@ class MerchandisingSurveyRepo implements IMerchandinsingSurveyRepo {
       final response = await http.post(
           Uri.parse(baseUrl + merchandisingSurveyUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "Status": status});
-          
-       //log("FromDate: $fromDate, ToDate: $toDate, Status: $status");
+
+      log("FromDate: $fromDate, ToDate: $toDate, Status: $status");
+      log(response.body);
       if (response.statusCode == 200) {
         //log("merch survey:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);

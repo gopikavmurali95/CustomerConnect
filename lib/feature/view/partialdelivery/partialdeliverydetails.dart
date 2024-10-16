@@ -692,7 +692,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                   .header
                                                                   .dahApprovalStatus!
                                                                   .isNotEmpty
-                                                              ? true
+                                                              ? false
                                                               : false,
                                                           child: Row(
                                                             children: [

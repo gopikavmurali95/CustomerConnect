@@ -140,8 +140,8 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                           ),
                                         ),
                                         Container(
-                                          height: 14.h,
-                                          width: 30.w,
+                                          // height: 14.h,
+                                          // width: 30.w,
                                           decoration: BoxDecoration(
                                               color: /* index % 2 == 0
                                           ? */
@@ -149,7 +149,9 @@ class SalesOrdersListingWidget extends StatelessWidget {
                                                       0xffe3f7e2) /* : const Color(0xfff7f4e2) */,
                                               borderRadius:
                                                   BorderRadius.circular(10)),
-                                          child: Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 6),
                                             child: Text(
                                               orders[index].status ?? '',
                                               style: kfontstyle(

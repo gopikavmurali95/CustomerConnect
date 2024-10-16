@@ -21,9 +21,9 @@ class SalesOrderDetailsBloc
       Either<MainFailures, List<SalesOrderDetailsModel>> details =
           await salesdetails.getSalesOrderdetails(event.salesin);
 
-      List<SalesOrderDetailsModel> searcheditems = [];
+      List<SalesOrderDetailsModel> searchedlistitems = [];
       emit(details.fold((l) => const SalesOrderDetailsFailed(), (r) {
-        searcheditems = r
+        searchedlistitems = r
             .where((element) =>
                 element.prdCode!
                     .toLowerCase()
@@ -35,7 +35,8 @@ class SalesOrderDetailsBloc
                     .contains(event.searchQuery.toUpperCase()))
             .toList();
         return GetSalesOrderDetails(
-            salesOrderDetails: event.searchQuery.isEmpty ? r : searcheditems);
+            salesOrderDetails:
+                event.searchQuery.isEmpty ? r : searchedlistitems);
       }));
     });
 

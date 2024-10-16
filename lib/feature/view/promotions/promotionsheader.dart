@@ -249,7 +249,7 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                           .add(const ClearOromotionCustomer());
                                       context.read<PromotionCustomerBloc>().add(
                                           GetPromotionCustomerEvent(
-                                              id: promoheader[index].qid ?? '',
+                                              id: promoheader[index].id ?? '',
                                               searchQuery: ''));
                                       Navigator.push(
                                           context,
