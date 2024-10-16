@@ -378,14 +378,10 @@ class _LoadTransferApprovalHeaderScreenState
                                                                 .ltrApprovalStatus!
                                                                 .isEmpty ||
                                                             headers[index]
-                                                                    .ltrApprovalStatus !=
-                                                                'Action Taken'
-                                                        ? headers[index]
                                                                     .ltrApprovalStatus ==
-                                                                'Rejected'
-                                                            ? Colors.red[300]
-                                                            : const Color(
-                                                                0xfff7f4e2)
+                                                                'Pending'
+                                                        ? const Color(
+                                                            0xfff7f4e2)
                                                         : const Color(
                                                             0xffe3f7e2),
                                                     borderRadius:
