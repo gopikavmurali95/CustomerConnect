@@ -334,7 +334,7 @@ abstract class ICusOutstandingRepo {
 
 abstract class ICusItemsRepo {
   Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(
-      String cusId, String route);
+      String cusId, String route,String froDate,String toDate);
 }
 
 abstract class IPickingHeaderRepo {

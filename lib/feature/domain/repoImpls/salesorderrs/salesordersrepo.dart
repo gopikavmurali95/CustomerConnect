@@ -46,7 +46,8 @@ class SalesOrdersRepo implements ISalesOrdersRepo {
       final response = await http.post(
           Uri.parse(baseUrl + salesOrderDetailsUrl),
           body: salesInparas.toJson());
-      // log('salesorder ${response.body}');
+      log('salesorder ${response.body}');
+      // log('salesorder ${jsonEncode(salesInparas)}');
 
       
       if (response.statusCode == 200) {

@@ -1634,6 +1634,231 @@ class ApprovalScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        InkWell(
+                          onTap: () {
+                           /*  Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const UnScheduledVisitScreen()),
+                            ); */
+                          },
+                          child: Container(
+                            //height: 50,
+                            // width: MediaQuery.of(context).size.width / 2,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade300,
+                                      spreadRadius: 1,
+                                      blurRadius: 1)
+                                ]),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/project.png",
+                                        height: 18.3.h,
+                                      ),
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.unschVisit ?? '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    'Customer FOC Approval',
+                                    style: headTextStyle(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                           /*  Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const UnScheduledVisitScreen()),
+                            ); */
+                          },
+                          child: Container(
+                            //height: 50,
+                            // width: MediaQuery.of(context).size.width / 2,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade300,
+                                      spreadRadius: 1,
+                                      blurRadius: 1)
+                                ]),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/project.png",
+                                        height: 18.3.h,
+                                      ),
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.unschVisit ?? '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    'Customer Override Approval',
+                                    style: headTextStyle(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const UnScheduledVisitScreen()),
+                            );
+                          },
+                          child: Container(
+                            //height: 50,
+                            // width: MediaQuery.of(context).size.width / 2,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.shade300,
+                                      spreadRadius: 1,
+                                      blurRadius: 1)
+                                ]),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 18, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/project.png",
+                                        height: 18.3.h,
+                                      ),
+                                      SizedBox(
+                                        width: 10.w,
+                                      ),
+                                      BlocBuilder<ApprovalCountsBloc,
+                                          ApprovalCountsState>(
+                                        builder: (context, state) {
+                                          return state.when(
+                                              getApprovalsCount: (count) => count ==
+                                                      null
+                                                  ? Text('0',
+                                                      style:
+                                                          approvalcountStyle())
+                                                  : Text(
+                                                      count.unschVisit ?? '0',
+                                                      style:
+                                                          approvalcountStyle()),
+                                              getApprovalCountsFailed: () =>
+                                                  Text('0',
+                                                      style:
+                                                          approvalcountStyle()));
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                  // fit: BoxFit.scaleDown,),
+                                  SizedBox(
+                                    height: 5.h,
+                                  ),
+                                  Text(
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                   'Free Sample Approval',
+                                    style: headTextStyle(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ], visibility: [
                         state.when(
                           getCustomerSettingsState: (settings) =>
@@ -1786,7 +2011,7 @@ class ApprovalScreen extends StatelessWidget {
                                   ? false
                                   : true,
                           customerSettingsFailedState: () => true,
-                        ),
+                        ),true, true, true
                       ]);
                     },
                   )),

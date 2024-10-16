@@ -55,6 +55,9 @@ CustomerSettingsModel _$CustomerSettingsModelFromJson(
       cusItemList: json['CUIN-CUSITMLST'] as String?,
       cusDocuments: json['CUIN-CUSDOCS'] as String?,
       cusGeoLocation: json['CUIN-CUSGEOLOC'] as String?,
+      cusfoc: json['APPR-CUSFOC'] as String?,
+      cusovrride: json['APPR-CUSOVRDE'] as String?,
+      freesample: json['APPR-CUSFRSMPLE'] as String?,
     );
 
 Map<String, dynamic> _$CustomerSettingsModelToJson(
@@ -106,4 +109,7 @@ Map<String, dynamic> _$CustomerSettingsModelToJson(
       'CUIN-CUSITMLST': instance.cusItemList,
       'CUIN-CUSDOCS': instance.cusDocuments,
       'CUIN-CUSGEOLOC': instance.cusGeoLocation,
+      'APPR-CUSFOC': instance.cusfoc,
+      'APPR-CUSFRSMPLE': instance.freesample,
+      'APPR-CUSOVRDE': instance.cusovrride,
     };
