@@ -18,21 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CusItemsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String cusID, String route, String searchQuery)
+    required TResult Function(String cusID, String route, String fromDate,
+            String toDate, String searchQuery)
         getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String cusID, String route, String searchQuery)?
+    TResult? Function(String cusID, String route, String fromDate,
+            String toDate, String searchQuery)?
         getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String cusID, String route, String searchQuery)?
+    TResult Function(String cusID, String route, String fromDate, String toDate,
+            String searchQuery)?
         getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
@@ -83,7 +86,12 @@ abstract class _$$GetItemsEventImplCopyWith<$Res> {
           _$GetItemsEventImpl value, $Res Function(_$GetItemsEventImpl) then) =
       __$$GetItemsEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String cusID, String route, String searchQuery});
+  $Res call(
+      {String cusID,
+      String route,
+      String fromDate,
+      String toDate,
+      String searchQuery});
 }
 
 /// @nodoc
@@ -99,6 +107,8 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
   $Res call({
     Object? cusID = null,
     Object? route = null,
+    Object? fromDate = null,
+    Object? toDate = null,
     Object? searchQuery = null,
   }) {
     return _then(_$GetItemsEventImpl(
@@ -109,6 +119,14 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
       route: null == route
           ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
+              as String,
+      fromDate: null == fromDate
+          ? _value.fromDate
+          : fromDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      toDate: null == toDate
+          ? _value.toDate
+          : toDate // ignore: cast_nullable_to_non_nullable
               as String,
       searchQuery: null == searchQuery
           ? _value.searchQuery
@@ -122,18 +140,26 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
 
 class _$GetItemsEventImpl implements GetItemsEvent {
   const _$GetItemsEventImpl(
-      {required this.cusID, required this.route, required this.searchQuery});
+      {required this.cusID,
+      required this.route,
+      required this.fromDate,
+      required this.toDate,
+      required this.searchQuery});
 
   @override
   final String cusID;
   @override
   final String route;
   @override
+  final String fromDate;
+  @override
+  final String toDate;
+  @override
   final String searchQuery;
 
   @override
   String toString() {
-    return 'CusItemsEvent.getItemsEvent(cusID: $cusID, route: $route, searchQuery: $searchQuery)';
+    return 'CusItemsEvent.getItemsEvent(cusID: $cusID, route: $route, fromDate: $fromDate, toDate: $toDate, searchQuery: $searchQuery)';
   }
 
   @override
@@ -143,12 +169,16 @@ class _$GetItemsEventImpl implements GetItemsEvent {
             other is _$GetItemsEventImpl &&
             (identical(other.cusID, cusID) || other.cusID == cusID) &&
             (identical(other.route, route) || other.route == route) &&
+            (identical(other.fromDate, fromDate) ||
+                other.fromDate == fromDate) &&
+            (identical(other.toDate, toDate) || other.toDate == toDate) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, cusID, route, searchQuery);
+  int get hashCode =>
+      Object.hash(runtimeType, cusID, route, fromDate, toDate, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -159,33 +189,36 @@ class _$GetItemsEventImpl implements GetItemsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String cusID, String route, String searchQuery)
+    required TResult Function(String cusID, String route, String fromDate,
+            String toDate, String searchQuery)
         getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) {
-    return getItemsEvent(cusID, route, searchQuery);
+    return getItemsEvent(cusID, route, fromDate, toDate, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String cusID, String route, String searchQuery)?
+    TResult? Function(String cusID, String route, String fromDate,
+            String toDate, String searchQuery)?
         getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) {
-    return getItemsEvent?.call(cusID, route, searchQuery);
+    return getItemsEvent?.call(cusID, route, fromDate, toDate, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String cusID, String route, String searchQuery)?
+    TResult Function(String cusID, String route, String fromDate, String toDate,
+            String searchQuery)?
         getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
   }) {
     if (getItemsEvent != null) {
-      return getItemsEvent(cusID, route, searchQuery);
+      return getItemsEvent(cusID, route, fromDate, toDate, searchQuery);
     }
     return orElse();
   }
@@ -226,10 +259,14 @@ abstract class GetItemsEvent implements CusItemsEvent {
   const factory GetItemsEvent(
       {required final String cusID,
       required final String route,
+      required final String fromDate,
+      required final String toDate,
       required final String searchQuery}) = _$GetItemsEventImpl;
 
   String get cusID;
   String get route;
+  String get fromDate;
+  String get toDate;
   String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetItemsEventImplCopyWith<_$GetItemsEventImpl> get copyWith =>
@@ -274,7 +311,8 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String cusID, String route, String searchQuery)
+    required TResult Function(String cusID, String route, String fromDate,
+            String toDate, String searchQuery)
         getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) {
@@ -284,7 +322,8 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String cusID, String route, String searchQuery)?
+    TResult? Function(String cusID, String route, String fromDate,
+            String toDate, String searchQuery)?
         getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) {
@@ -294,7 +333,8 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String cusID, String route, String searchQuery)?
+    TResult Function(String cusID, String route, String fromDate, String toDate,
+            String searchQuery)?
         getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),

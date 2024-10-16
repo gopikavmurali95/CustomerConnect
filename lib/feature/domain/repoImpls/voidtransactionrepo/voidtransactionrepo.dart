@@ -22,7 +22,6 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
           body: {"Status_Value": statusValue});
 
       if (response.statusCode == 200) {
-        log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
         List<VoidTransactionHeaderModel> headers = headerdata

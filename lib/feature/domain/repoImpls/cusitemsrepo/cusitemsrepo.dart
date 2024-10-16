@@ -13,11 +13,20 @@ import 'package:injectable/injectable.dart';
 class CusItemsRepo implements ICusItemsRepo {
   @override
   Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(
-      String cusId, String route) async {
+      String cusId, String route, String fromDate, String toDate) async {
     try {
-      final response = await http.post(Uri.parse(baseUrl + cusItemsUrl),
-          body: {"CusID": cusId, "Route": route});
-
+      final response = await http.post(Uri.parse(baseUrl + cusItemsUrl), body: {
+        "CusID": cusId,
+        "Route": route,
+        "FromDate": fromDate,
+        "ToDate": toDate
+      });
+      log({
+        "CusID": cusId,
+        "Route": route,
+        "FromDate": fromDate,
+        "ToDate": toDate
+      }.toString());
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
 
