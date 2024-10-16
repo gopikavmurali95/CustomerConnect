@@ -1214,10 +1214,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
                                                                             child: Text(pdet[index].reason == null || pdet[index].reason!.isEmpty
                                                                                 ? "No reason found"
-                                                                                : pdet[index].reason ?? ''),
+                                                                                : pdet[index].reason ?? '',style: TextStyle(fontSize: 11),),
                                                                           ),
                                                                         ),
                                                                       )
