@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/view/approvals/widgets/approvaldynamicw
 import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscreen.dart';
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
+import 'package:customer_connect/feature/view/customerfoc/customerfocheader.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
 import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmheaderscreen.dart';
@@ -1636,12 +1637,12 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                           /*  Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const UnScheduledVisitScreen()),
-                            ); */
+                                      const CustomerFocHeaderScreen()),
+                            );
                           },
                           child: Container(
                             //height: 50,
@@ -1711,7 +1712,7 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                           /*  Navigator.push(
+                            /*  Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
@@ -1851,7 +1852,7 @@ class ApprovalScreen extends StatelessWidget {
                                   Text(
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
-                                   'Free Sample Approval',
+                                    'Free Sample Approval',
                                     style: headTextStyle(),
                                   ),
                                 ],
@@ -2011,7 +2012,10 @@ class ApprovalScreen extends StatelessWidget {
                                   ? false
                                   : true,
                           customerSettingsFailedState: () => true,
-                        ),true, true, true
+                        ),
+                        true,
+                        true,
+                        true
                       ]);
                     },
                   )),

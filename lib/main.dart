@@ -40,6 +40,7 @@ import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_prom
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customerfocheaderbloc/customer_foc_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
@@ -749,7 +750,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MerchReturnRequestBloc>(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => getit<CusInsCustomersCountBloc>(),
         ),
         BlocProvider(
@@ -784,6 +785,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<UpdateDownloadPercentageCubit>(
           create: (context) => UpdateDownloadPercentageCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CustomerFocHeaderBloc>(),
         ),
       ],
       child: ScreenUtilInit(

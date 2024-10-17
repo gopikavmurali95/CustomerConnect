@@ -17,8 +17,11 @@ class CusInsCustomersCountBloc
   CusInsCustomersCountBloc(this.cusCount)
       : super(CusInsCustomersCountState.initial()) {
     on<GetCustomersCountEvent>((event, emit) async {
-      Either<MainFailures, CusInsCustomerCountModel> count = await cusCount.getCustomerscount(event.userId, event.area, event.subarea, event.route, event.searchString, event.pagenum);
-      emit(count.fold((l) => const GetCustomersCountFailedState(), (r) => GetCustomersCountState(count: r)));
+      Either<MainFailures, CusInsCustomerCountModel> count =
+          await cusCount.getCustomerscount(event.userId, event.area,
+              event.subarea, event.route, event.searchString, event.pagenum);
+      emit(count.fold((l) => const GetCustomersCountFailedState(),
+          (r) => GetCustomersCountState(count: r)));
     });
     on<ClearCustomerCount>((event, emit) {
       emit(const GetCustomersCountState(count: null));

@@ -27,7 +27,7 @@ class MerchandTaskHeaderBloc
       emit(taskhead.fold((l) => const TaskHeaderFailedState(), (r) {
         searchitems = r
             .where((element) =>
-            element.taskCode!
+                element.taskCode!
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
                 element.taskName!

@@ -50,6 +50,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_detail_model/
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
+import 'package:customer_connect/feature/data/models/customer_foc_header_model/customer_foc_header_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
 import 'package:customer_connect/feature/data/models/customer_live_location_model/customer_live_location_model.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
@@ -254,14 +255,13 @@ abstract class ICusInsightsCustomersRepo {
       String searchString,
       String pagenum);
 
-      Future<Either<MainFailures, CusInsCustomerCountModel>> getCustomerscount(
+  Future<Either<MainFailures, CusInsCustomerCountModel>> getCustomerscount(
       String userId,
       String area,
       String subarea,
       String route,
       String searchString,
       String pagenum);
-
 }
 
 abstract class IcusInsCountsRepo {
@@ -334,7 +334,7 @@ abstract class ICusOutstandingRepo {
 
 abstract class ICusItemsRepo {
   Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(
-      String cusId, String route,String froDate,String toDate);
+      String cusId, String route, String froDate, String toDate);
 }
 
 abstract class IPickingHeaderRepo {
@@ -792,5 +792,11 @@ abstract class IUnScheduledVisitApprovalRepo {
 abstract class IAutoUpdateRepo {
   Future<Either<MainFailures, AutoUpdateRespModel>> getUpdateStatus(
     String type,
+  );
+}
+
+abstract class ICustomerFocRepo {
+  Future<Either<MainFailures, List<CustomerFocHeaderModel>>> getHeaderList(
+    String statusValue,
   );
 }
