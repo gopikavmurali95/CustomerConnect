@@ -991,7 +991,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         : Transform
                                                                             .scale(
                                                                             scale:
-                                                                                0.8,
+                                                                                0.9,
                                                                             child:
                                                                                 Container(
                                                                               height: 30.h,
@@ -1194,11 +1194,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                     ? Transform
                                                                         .scale(
                                                                         scale:
-                                                                            0.8,
+                                                                            0.9,
                                                                         child:
                                                                             Container(
                                                                           height:
-                                                                              30.h,
+                                                                              32.h,
+                                                                             // width: 100,
                                                                           decoration: BoxDecoration(
                                                                               color: Colors.white,
                                                                               border: Border.all(color: Colors.grey.shade200),
@@ -1213,10 +1214,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
                                                                             child: Text(pdet[index].reason == null || pdet[index].reason!.isEmpty
                                                                                 ? "No reason found"
-                                                                                : pdet[index].reason ?? ''),
+                                                                                : pdet[index].reason ?? '',style: TextStyle(fontSize: 11),),
                                                                           ),
                                                                         ),
                                                                       )
