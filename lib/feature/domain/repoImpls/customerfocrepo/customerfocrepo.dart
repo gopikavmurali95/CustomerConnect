@@ -120,8 +120,8 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: ICustomerFocRepo)
 class CustomerFocHeaderRepo implements ICustomerFocRepo {
   @override
-  Future<Either<MainFailures, List<CustomerFocHeaderModel>>>
-      getHeaderList(String mode) async {
+  Future<Either<MainFailures, List<CustomerFocHeaderModel>>> getHeaderList(
+      String mode) async {
     try {
       Dio dio = Dio();
 

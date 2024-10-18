@@ -67,6 +67,11 @@ import 'package:customer_connect/feature/data/models/edit_profile_resp_model/edi
 import 'package:customer_connect/feature/data/models/field_service_detail_model/field_service_detail_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_approval_model/field_service_invoice_approval_model.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/free_sample_approval_detail_model/free_sample_approval_detail_model.dart';
+import 'package:customer_connect/feature/data/models/free_sample_approval_resp_model/free_sample_approval_resp_model.dart';
+import 'package:customer_connect/feature/data/models/free_sample_approve_in_model/free_sample_approve_in_model.dart';
+import 'package:customer_connect/feature/data/models/free_sample_header_model/free_sample_header_model.dart';
+import 'package:customer_connect/feature/data/models/free_sample_reson_model/free_sample_reson_model.dart';
 import 'package:customer_connect/feature/data/models/get_cus_actcount_model/get_cus_actcount_model.dart';
 import 'package:customer_connect/feature/data/models/get_display_count_model/get_display_count_model.dart';
 import 'package:customer_connect/feature/data/models/get_out_of_stock_count_model/get_out_of_stock_count_model.dart';
@@ -804,6 +809,19 @@ abstract class ICustomerOverrideApprovalRepo {
 
   Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject(
       String ooaId, String userId, String status);}
+abstract class IFreeSampleApprovalRepo {
+  Future<Either<MainFailures, List<FreeSampleHeaderModel>>>
+      getFreeSampleHeaders(String mode);
+
+  Future<Either<MainFailures, List<FreeSampleApprovalDetailModel>>>
+      getFreeSampleDetails(String headerID);
+  Future<Either<MainFailures, FreeSampleApprovalRespModel>> approvefreeSample(
+      FreeSampleApproveInModel approve);
+
+  Future<Either<MainFailures, List<FreeSampleResonModel>>> getFreeSamplereasons(
+      String userID, String rsnType);
+}
+
 abstract class ICustomerFocRepo {
   Future<Either<MainFailures, List<CustomerFocHeaderModel>>> getHeaderList(
     String statusValue,

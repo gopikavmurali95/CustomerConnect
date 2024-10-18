@@ -424,7 +424,8 @@ class _AssetAddingApprovalHeaderScreenState
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () {
-                                                                                context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: ''));
+                                                                                context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(
+                                                                                  userId: widget.user.usrId ?? '64', searchQuery: ''));
                                                                                 Navigator.pop(context);
                                                                               },
                                                                               child: Text(AppLocalizations.of(context)!.proceed),

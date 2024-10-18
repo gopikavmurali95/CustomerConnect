@@ -8,8 +8,12 @@ import 'package:customer_connect/feature/view/approvals/widgets/approvaldynamicw
 import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscreen.dart';
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
+import 'package:customer_connect/feature/view/customerfoc/customerfocheader.dart';
+import 'package:customer_connect/feature/view/customeroverrideapproval/cusoverideheader.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
+import 'package:customer_connect/feature/view/freesample/freesampleheaderscreen.dart';
+// import 'package:customer_connect/feature/view/freesample/freesampleheaderscreen.dart';
 import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmheaderscreen.dart';
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
@@ -1636,7 +1640,7 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                           /*  Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
@@ -1711,14 +1715,12 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                           /*  Navigator.push(
+                              Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      CustomerOverrideApprovalHeaderScreen(
-                                        user: user,
-                                      )),
-                            );
+                                       CustomerOverrideApprovalHeaderScreen(user: user,)),
+                            ); 
                           },
                           child: Container(
                             //height: 50,
@@ -1792,7 +1794,9 @@ class ApprovalScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const UnScheduledVisitScreen()),
+                                      FreeSampleApprovalHeader(
+                                        user: user,
+                                      )),
                             );
                           },
                           child: Container(

@@ -43,11 +43,16 @@ import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_pric
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerfocheaderbloc/customer_foc_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customeroverrideapprovreject/override_approve_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/editcusprofile/edit_cus_profile_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/freesampleapprove/free_sample_approve_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/freesampledetail/free_sample_detail_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/freesampleheader/free_sample_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/freesamplereason/free_sample_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/getallroutes/get_all_route_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/inventoryreconfirmapproval/inventory_reconfirm_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/inventoryreconfirmdetail/inventory_reconfirm_detail_bloc.dart';
@@ -790,7 +795,22 @@ class MyApp extends StatelessWidget {
           create: (context) => UpdateDownloadPercentageCubit(),
         ),
         BlocProvider(
+          create: (context) => getit<FreeSampleHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FreeSampleDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FreeSampleApproveBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<FreeSampleReasonsBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<CustomerFocHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OverrideApproveRejectBloc>(),
         ),
       ],
       child: ScreenUtilInit(

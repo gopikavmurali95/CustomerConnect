@@ -51,7 +51,7 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
           data:{"ooaID":ooaId,"UserID":userId,"status":status });
 
       if (response.statusCode == 200) {
-      // log("override approve:${response.data}");
+       log("override approve:${response.data}");
         Map<String, dynamic> json = jsonDecode(response.data);
         final status = OverideApprovRejectModel.fromJson(json["result"][0]);
         return right(status);
@@ -62,7 +62,7 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
         );
       }
     } catch (e) {
-     // log('Approve error $e');
+     log('Approve error $e');
       return left(const MainFailures.serverfailure());
     }
   }
