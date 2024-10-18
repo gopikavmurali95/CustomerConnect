@@ -11,6 +11,7 @@ import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.
 import 'package:customer_connect/feature/view/customerfoc/customerfocheader.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
+import 'package:customer_connect/feature/view/freesample/freesampleheaderscreen.dart';
 import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmheaderscreen.dart';
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
@@ -1791,7 +1792,9 @@ class ApprovalScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const UnScheduledVisitScreen()),
+                                      FreeSampleApprovalHeader(
+                                        user: user,
+                                      )),
                             );
                           },
                           child: Container(

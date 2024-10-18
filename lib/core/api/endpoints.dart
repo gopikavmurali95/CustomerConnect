@@ -198,3 +198,8 @@ const customerFocHeaderUrl = 'CusFreeSampleApproval/getFOCHeaderList';
 const customerFocDetailUrl = 'CusFreeSampleApproval/getFOCDetailList';
 const customerFocApprovalUrl = 'CusFreeSampleApproval/PostFOCApproval';
 const customerFocRejectUrl = 'CusFreeSampleApproval/PostFOCRejection';
+const freesampleApprovalHeaderUrl =
+    'CusFreeSampleApproval/GetFreeSampleApprovalHeader';
+const freesampleDetailUrl = 'CusFreeSampleApproval/getFreeSampleDetailList';
+const submitfreesampleurl = 'CusFreeSampleApproval/PostFreeSamplApproval';
+const freesampleReasonUrl = 'CusFreeSampleApproval/GetFreeSampleReason';
