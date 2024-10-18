@@ -814,10 +814,11 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<CustomerFocHeaderBloc>(),
         ),
         BlocProvider(
-<<<<<<< HEAD
-          create: (context) => getit<OverrideApproveRejectBloc>(),
-=======
           create: (context) => getit<CustomerFocDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OverrideApproveRejectBloc>(),
+         
         ),
         BlocProvider(
           create: (context) => getit<CustomerFocApprovalBloc>(),
@@ -827,7 +828,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CusromerFocRejectionBloc>(),
->>>>>>> c292ae188012e56d3c4e8afb6b2a7ef2a882931a
         ),
       ],
       child: ScreenUtilInit(
