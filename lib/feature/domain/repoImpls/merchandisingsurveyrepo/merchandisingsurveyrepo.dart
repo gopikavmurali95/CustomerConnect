@@ -22,6 +22,7 @@ class MerchandisingSurveyRepo implements IMerchandinsingSurveyRepo {
       log("FromDate: $fromDate, ToDate: $toDate, Status: $status");
       log(response.body);
       if (response.statusCode == 200) {
+        //log("merch survey:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> surveydata = json['result'];
         List<MerchandingSurveyModel> data = surveydata

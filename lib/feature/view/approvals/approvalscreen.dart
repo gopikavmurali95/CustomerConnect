@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/view/approvals/widgets/approvaldynamicw
 import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscreen.dart';
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
+import 'package:customer_connect/feature/view/customerfoc/customerfocheader.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
 import 'package:customer_connect/feature/view/freesample/freesampleheaderscreen.dart';
@@ -1637,12 +1638,12 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            /*  Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const UnScheduledVisitScreen()),
-                            ); */
+                                      const CustomerFocHeaderScreen()),
+                            );
                           },
                           child: Container(
                             //height: 50,

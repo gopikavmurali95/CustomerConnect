@@ -199,3 +199,4 @@ const freesampleApprovalHeaderUrl =
 const freesampleDetailUrl = 'CusFreeSampleApproval/getFreeSampleDetailList';
 const submitfreesampleurl = 'CusFreeSampleApproval/PostFreeSamplApproval';
 const freesampleReasonUrl = 'CusFreeSampleApproval/GetFreeSampleReason';
+const customerFocHeaderUrl = 'customerFocHeaderUrl';

@@ -9,6 +9,7 @@ part of 'free_sample_approval_detail_model.dart';
 FreeSampleApprovalDetailModel _$FreeSampleApprovalDetailModelFromJson(
         Map<String, dynamic> json) =>
     FreeSampleApprovalDetailModel(
+      fsaId: json['fsa_ID'] as String?,
       fsaPrdId: json['fsa_prd_ID'] as String?,
       prdCode: json['prd_Code'] as String?,
       prdName: json['prd_Name'] as String?,
@@ -21,7 +22,7 @@ FreeSampleApprovalDetailModel _$FreeSampleApprovalDetailModelFromJson(
       createdDate: json['CreatedDate'] as String?,
       modifiedBy: json['ModifiedBy'] as String?,
       modifiedDate: json['ModifiedDate'] as String?,
-    )..fsaId = json['fsa_ID'] as String?;
+    );
 
 Map<String, dynamic> _$FreeSampleApprovalDetailModelToJson(
         FreeSampleApprovalDetailModel instance) =>

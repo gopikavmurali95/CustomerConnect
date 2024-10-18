@@ -50,6 +50,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_detail_model/
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
+import 'package:customer_connect/feature/data/models/customer_foc_header_model/customer_foc_header_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
 import 'package:customer_connect/feature/data/models/customer_live_location_model/customer_live_location_model.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
@@ -810,4 +811,10 @@ abstract class IFreeSampleApprovalRepo {
 
   Future<Either<MainFailures, List<FreeSampleResonModel>>> getFreeSamplereasons(
       String userID, String rsnType);
+}
+
+abstract class ICustomerFocRepo {
+  Future<Either<MainFailures, List<CustomerFocHeaderModel>>> getHeaderList(
+    String statusValue,
+  );
 }
