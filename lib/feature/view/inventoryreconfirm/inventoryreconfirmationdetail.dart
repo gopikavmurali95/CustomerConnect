@@ -50,6 +50,7 @@ class _InventoryReconfirmationDetailScreenState
   @override
   void initState() {
     loadingCount = 0;
+    approvedProducts.clear();
     context
         .read<InventoryReconfirmDetailBloc>()
         .add(const ClearInventoryReconfirmDetailEvent());
@@ -195,28 +196,6 @@ class _InventoryReconfirmationDetailScreenState
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
-                                  /* Row(
-                                    children: [
-                                      Text(
-                                        '${widget.header.rotCode} - ',
-                                        style: kfontstyle(
-                                          fontSize: 11.sp,
-                                          color: const Color(0xff2C6B9E),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          overflow: TextOverflow.ellipsis,
-                                          selectedLocale?.languageCode == 'en'
-                                              ? widget.header.usrName ?? ''
-                                              : widget.header.arusrName ?? '',
-                                          style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff413434)),
-                                        ),
-                                      ),
-                                    ],
-                                  ), */
                                   RichText(
                                     text: TextSpan(
                                         style: DefaultTextStyle.of(context)
@@ -419,9 +398,7 @@ class _InventoryReconfirmationDetailScreenState
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
-                              /* SizedBox(
-                                width: 20.w,
-                              ), */
+                             
                               Text(
                                 '${AppLocalizations.of(context)!.short}/\n${AppLocalizations.of(context)!.excess}',
                                 style: kfontstyle(
@@ -429,26 +406,7 @@ class _InventoryReconfirmationDetailScreenState
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
-                              /* SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                'S.UOM',
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Text(
-                                'S.Qty',
-                                style: kfontstyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black54),
-                              ) */
+                              
                             ],
                           ),
                         ),
