@@ -396,7 +396,6 @@ class _InventoryReconfirmationDetailScreenState
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
-                             
                               Text(
                                 '${AppLocalizations.of(context)!.short}/\n${AppLocalizations.of(context)!.excess}',
                                 style: kfontstyle(
@@ -404,7 +403,6 @@ class _InventoryReconfirmationDetailScreenState
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
-                              
                             ],
                           ),
                         ),
@@ -984,9 +982,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                             height:
                                                                                 30.h,
                                                                             decoration:
-                                                                                BoxDecoration(color: Colors.white, border: Border.all(
-                                                                                  color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), 
-                                                                                  boxShadow: const [
+                                                                                BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                               BoxShadow(
                                                                                   // ignore: use_full_hex_values_for_flutter_colors
                                                                                   color: Color(0xff00000050),
@@ -1164,7 +1160,7 @@ class _InventoryReconfirmationDetailScreenState
                                       ? Colors.green.shade300
                                       : Colors.grey[300],
                                   onPressed: () {
-                                    if (widget.header.iahStatus == 'Pending' ) {
+                                    if (widget.header.iahStatus == 'Pending') {
                                       if (approvedProducts.contains(null)) {
                                         showCupertinoDialog(
                                           context: context,

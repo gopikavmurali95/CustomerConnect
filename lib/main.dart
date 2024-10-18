@@ -40,7 +40,10 @@ import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_prom
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_price_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customer_transaction/customer_transaction_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customerfocapprovalbloc/customer_foc_approval_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customerfocdetailbloc/customer_foc_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerfocheaderbloc/customer_foc_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customerfocrejection/cusromer_foc_rejection_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
@@ -148,6 +151,7 @@ import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/cre
 import 'package:customer_connect/feature/state/cubit/cusinscustomerspagination/cus_insight_customers_pagination_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvdetailstotal/cus_inv_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/customerfocapprovalselection/customer_foc_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/dailyactivityexpansion/daily_activity_expansion_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/disputeapprovalsatuslevel/dispute_approval_status_level_cubit_cubit.dart';
@@ -788,6 +792,18 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CustomerFocHeaderBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CustomerFocDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CustomerFocApprovalBloc>(),
+        ),
+        BlocProvider<CustomerFocApprovalSelectionCubit>(
+          create: (context) => CustomerFocApprovalSelectionCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CusromerFocRejectionBloc>(),
         ),
       ],
       child: ScreenUtilInit(
