@@ -139,8 +139,8 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                   spreadRadius: 0.4)
                             ]),
                         child: TextFormField(
-                          style:
-                              kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                          style: kfontstyle(
+                              fontSize: 13.sp, color: Colors.black87),
                           controller: _oosCusDetailCtrl,
                           onChanged: (value) {
                             debounce = Timer(
@@ -168,8 +168,9 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                         _oosCusDetailCtrl.clear();
                                         context.read<OosCustomerDetailBloc>().add(
                                             const ClearOosCustomerDetilEvent());
-                                        context.read<OosCustomerDetailBloc>().add(
-                                            GetOosCustomerDetailEvent(
+                                        context
+                                            .read<OosCustomerDetailBloc>()
+                                            .add(GetOosCustomerDetailEvent(
                                                 searchQuery: '',
                                                 cusID:
                                                     widget.header.cusId ?? ""));
@@ -182,7 +183,8 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                   ),
                                 ],
                               ),
-                              hintText: AppLocalizations.of(context)!.searchHere,
+                              hintText:
+                                  AppLocalizations.of(context)!.searchHere,
                               hintStyle: TextStyle(
                                   fontSize: 12.sp,
                                   color: Colors.grey,
@@ -246,8 +248,8 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                             getOosCustomerDetailsState: (details) => details ==
                                     null
                                 ? Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 0),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 0),
                                     child: ListView.separated(
                                         physics:
                                             const NeverScrollableScrollPhysics(),
@@ -310,8 +312,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                                                         color: const Color(
                                                                             0xff2C6B9E),
                                                                         fontWeight:
-                                                                            FontWeight
-                                                                                .w600,
+                                                                            FontWeight.w600,
                                                                       ),
                                                                     ),
                                                                     Row(
@@ -320,18 +321,11 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
                                                                           overflow:
                                                                               TextOverflow.ellipsis,
                                                                           selectedLocale?.languageCode == 'en'
-                                                                              ? details[index].prdName ??
-                                                                                  ''
-                                                                              : details[index].prdArName ??
-                                                                                  '',
+                                                                              ? details[index].prdName ?? ''
+                                                                              : details[index].prdArName ?? '',
                                                                           style: kfontstyle(
-                                                                              fontSize: 10
-                                                                                  .sp,
-                                                                              color: const Color.fromARGB(
-                                                                                  255,
-                                                                                  64,
-                                                                                  65,
-                                                                                  67)),
+                                                                              fontSize: 10.sp,
+                                                                              color: const Color.fromARGB(255, 64, 65, 67)),
                                                                         ),
                                                                       ],
                                                                     ),

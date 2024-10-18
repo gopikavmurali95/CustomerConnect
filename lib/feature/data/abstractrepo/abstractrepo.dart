@@ -52,6 +52,8 @@ import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_s
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
 import 'package:customer_connect/feature/data/models/customer_live_location_model/customer_live_location_model.dart';
+
+import 'package:customer_connect/feature/data/models/customer_override_approval_model/customer_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
@@ -120,6 +122,7 @@ import 'package:customer_connect/feature/data/models/out_of_stock_items_model/ou
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandOutModel.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
 import 'package:customer_connect/feature/data/models/outstanding_count_model/outstanding_count_model.dart';
+import 'package:customer_connect/feature/data/models/overide_approv_reject_model/overide_approv_reject_model.dart';
 import 'package:customer_connect/feature/data/models/partial_delivery_approval_model/partial_delivery_approval_model.dart';
 import 'package:customer_connect/feature/data/models/partial_delivery_approval_outparas_model/partial_delivery_approval_outparas_model.dart';
 import 'package:customer_connect/feature/data/models/partial_delivery_details_model/partial_delivery_details_model.dart';
@@ -254,14 +257,13 @@ abstract class ICusInsightsCustomersRepo {
       String searchString,
       String pagenum);
 
-      Future<Either<MainFailures, CusInsCustomerCountModel>> getCustomerscount(
+  Future<Either<MainFailures, CusInsCustomerCountModel>> getCustomerscount(
       String userId,
       String area,
       String subarea,
       String route,
       String searchString,
       String pagenum);
-
 }
 
 abstract class IcusInsCountsRepo {
@@ -334,7 +336,7 @@ abstract class ICusOutstandingRepo {
 
 abstract class ICusItemsRepo {
   Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(
-      String cusId, String route,String froDate,String toDate);
+      String cusId, String route, String froDate, String toDate);
 }
 
 abstract class IPickingHeaderRepo {
@@ -793,4 +795,12 @@ abstract class IAutoUpdateRepo {
   Future<Either<MainFailures, AutoUpdateRespModel>> getUpdateStatus(
     String type,
   );
+}
+
+abstract class ICustomerOverrideApprovalRepo {
+  Future<Either<MainFailures, List<CustomerOverrideApprovalModel>>>
+      approveOverrideCustomer(String statusValue);
+
+  Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject(
+      String ooaId, String userId, String status);
 }

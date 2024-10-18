@@ -60,9 +60,9 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
         ),
       ),
       body: PopScope(
-        onPopInvoked: (didPop){
-           outofStockItemsDetailSearchCtrl.clear();
-           outofStockItemsHeaderSearchCtrl.clear();
+        onPopInvoked: (didPop) {
+          outofStockItemsDetailSearchCtrl.clear();
+          outofStockItemsHeaderSearchCtrl.clear();
         },
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -71,8 +71,8 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        left: 10.0, right: 10, bottom: 10),
                     child: Row(
                       children: [
                         Container(
@@ -140,11 +140,11 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                   spreadRadius: 0.4)
                             ]),
                         child: TextFormField(
-                          style:
-                              kfontstyle(fontSize: 13.sp, color: Colors.black87),
+                          style: kfontstyle(
+                              fontSize: 13.sp, color: Colors.black87),
                           controller: outofStockItemsDetailSearchCtrl,
                           onChanged: (value) {
-                           // outofStockItemsDetailSearchCtrl.clear();
+                            // outofStockItemsDetailSearchCtrl.clear();
                             debounce = Timer(
                               const Duration(
                                 milliseconds: 300,
@@ -175,10 +175,12 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                         outofStockItemsDetailSearchCtrl.clear();
                                         context
                                             .read<OutOfStockItemCustomersBloc>()
-                                            .add(GetOutOfStockItemCustomersEvent(
-                                                searchQuery: '',
-                                                osiID:
-                                                    widget.header.osiId ?? ''));
+                                            .add(
+                                                GetOutOfStockItemCustomersEvent(
+                                                    searchQuery: '',
+                                                    osiID:
+                                                        widget.header.osiId ??
+                                                            ''));
                                       },
                                       icon: Icon(
                                         Icons.close,
@@ -188,7 +190,8 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                                   ),
                                 ],
                               ),
-                              hintText: AppLocalizations.of(context)!.searchHere,
+                              hintText:
+                                  AppLocalizations.of(context)!.searchHere,
                               hintStyle: TextStyle(
                                   fontSize: 12.sp,
                                   color: Colors.grey,
@@ -248,105 +251,95 @@ class _OutOfStockScreenState extends State<OutOfStockItemsDetailsScreen> {
                           OutOfStockItemCustomersState>(
                         builder: (context, state) {
                           return state.when(
-                            getOutOfStockItemCustomersState: (details) => details ==
-                                    null
-                                ? Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 0),
-                                    child: ListView.separated(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        shrinkWrap: true,
-                                        itemBuilder: (context, index) =>
-                                            ShimmerContainers(
-                                                height: 40.h,
-                                                width: double.infinity),
-                                        separatorBuilder: (context, index) =>
-                                            Divider(
-                                              color: Colors.grey[300],
-                                            ),
-                                        itemCount: 10),
-                                  )
-                                : details.isEmpty
-                                    ? Center(
-                                        child: Text(
-                                          AppLocalizations.of(context)!
-                                              .noDataAvailable,
-                                          style: kfontstyle(),
-                                        ),
+                            getOutOfStockItemCustomersState: (details) =>
+                                details == null
+                                    ? Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 0),
+                                        child: ListView.separated(
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            itemBuilder: (context, index) =>
+                                                ShimmerContainers(
+                                                    height: 40.h,
+                                                    width: double.infinity),
+                                            separatorBuilder:
+                                                (context, index) => Divider(
+                                                      color: Colors.grey[300],
+                                                    ),
+                                            itemCount: 10),
                                       )
-                                    : ListView.separated(
-                                        shrinkWrap: true,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        itemBuilder:
-                                            (context, index) => GestureDetector(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 0.0),
-                                                    child: Row(
-                                                      children: [
-                                                        Expanded(
-                                                          child: Row(
-                                                            children: [
-                                                              Expanded(
-                                                                child: Column(
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      details[index]
-                                                                              .cusCode ??
-                                                                          '',
-                                                                      style:
-                                                                          kfontstyle(
-                                                                        fontSize:
-                                                                            12.sp,
-                                                                        color: const Color(
-                                                                            0xff2C6B9E),
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w600,
-                                                                      ),
-                                                                    ),
-                                                                    Row(
+                                    : details.isEmpty
+                                        ? Center(
+                                            child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .noDataAvailable,
+                                              style: kfontstyle(),
+                                            ),
+                                          )
+                                        : ListView.separated(
+                                            shrinkWrap: true,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            itemBuilder:
+                                                (context, index) =>
+                                                    GestureDetector(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                                horizontal:
+                                                                    0.0),
+                                                        child: Row(
+                                                          children: [
+                                                            Expanded(
+                                                              child: Row(
+                                                                children: [
+                                                                  Expanded(
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Text(
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          selectedLocale?.languageCode == 'en'
-                                                                              ? details[index].cusName ??
-                                                                                  ''
-                                                                              : details[index].cusArName ??
-                                                                                  '',
-                                                                          style: kfontstyle(
-                                                                              fontSize: 10
-                                                                                  .sp,
-                                                                              color: const Color.fromARGB(
-                                                                                  255,
-                                                                                  64,
-                                                                                  65,
-                                                                                  67)),
+                                                                          details[index].cusCode ??
+                                                                              '',
+                                                                          style:
+                                                                              kfontstyle(
+                                                                            fontSize:
+                                                                                12.sp,
+                                                                            color:
+                                                                                const Color(0xff2C6B9E),
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                        ),
+                                                                        Row(
+                                                                          children: [
+                                                                            Text(
+                                                                              overflow: TextOverflow.ellipsis,
+                                                                              selectedLocale?.languageCode == 'en' ? details[index].cusName ?? '' : details[index].cusArName ?? '',
+                                                                              style: kfontstyle(fontSize: 10.sp, color: const Color.fromARGB(255, 64, 65, 67)),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                        separatorBuilder: (context, index) =>
-                                            Divider(
-                                              color: Colors.grey[300],
-                                            ),
-                                        itemCount: details.length),
+                                            separatorBuilder:
+                                                (context, index) => Divider(
+                                                      color: Colors.grey[300],
+                                                    ),
+                                            itemCount: details.length),
                             outofStateItemCustomersFailedState: () => SizedBox(
                               height: MediaQuery.of(context).size.height - 200,
                               child: Center(

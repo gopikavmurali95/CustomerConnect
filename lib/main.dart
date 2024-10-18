@@ -35,6 +35,7 @@ import 'package:customer_connect/feature/state/bloc/cusinscustomerscount/cus_ins
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstandingcount/cus_out_standing_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusoverrideapproval/customer_override_approval_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
@@ -749,7 +750,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<MerchReturnRequestBloc>(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => getit<CusInsCustomersCountBloc>(),
         ),
         BlocProvider(
@@ -782,6 +783,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<AutoUpdateBloc>(),
         ),
+        BlocProvider(
+            create: (context) => getit<CustomerOverrideApprovalBlocBloc>()),
         BlocProvider<UpdateDownloadPercentageCubit>(
           create: (context) => UpdateDownloadPercentageCubit(),
         ),

@@ -43,11 +43,13 @@ List<InventoryReconfirmPrdModel?> approvedProducts = [];
 List<bool?> statuslist = [];
 Timer? debounce;
 TextEditingController _inventoryDetailCtrl = TextEditingController();
+int loadingCount = 0;
 
 class _InventoryReconfirmationDetailScreenState
     extends State<InventoryReconfirmationDetailScreen> {
   @override
   void initState() {
+    loadingCount = 0;
     context
         .read<InventoryReconfirmDetailBloc>()
         .add(const ClearInventoryReconfirmDetailEvent());
@@ -611,7 +613,6 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
@@ -634,7 +635,6 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            
                                                           ],
                                                         ),
                                                         /*  SizedBox(
@@ -1028,9 +1028,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                             height:
                                                                                 30.h,
                                                                             decoration:
-                                                                                BoxDecoration(color: Colors.white, border: Border.all(
-                                                                                  color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), 
-                                                                                  boxShadow: const [
+                                                                                BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                               BoxShadow(
                                                                                   // ignore: use_full_hex_values_for_flutter_colors
                                                                                   color: Color(0xff00000050),
@@ -1039,7 +1037,9 @@ class _InventoryReconfirmationDetailScreenState
                                                                             ]),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsets.symmetric(vertical: 7, ),
+                                                                              padding: const EdgeInsets.symmetric(
+                                                                                vertical: 7,
+                                                                              ),
                                                                               child: Text(details[index].reason ?? ''),
                                                                             ),
                                                                           ),
@@ -1102,7 +1102,9 @@ class _InventoryReconfirmationDetailScreenState
                                                                                       ? true
                                                                                       : false,
                                                                               groupValue: false,
-                                                                              onChanged: (value) {},
+                                                                              onChanged: (value) {
+                                                                                // statuslist[index] = true;
+                                                                              },
                                                                             ),
                                                                             Text(
                                                                               AppLocalizations.of(context)!.reject,
@@ -1206,7 +1208,7 @@ class _InventoryReconfirmationDetailScreenState
                                       ? Colors.green.shade300
                                       : Colors.grey[300],
                                   onPressed: () {
-                                    if (widget.header.iahStatus == 'Pending' ) {
+                                    if (widget.header.iahStatus == 'Pending') {
                                       if (approvedProducts.contains(null)) {
                                         showCupertinoDialog(
                                           context: context,
@@ -1279,6 +1281,7 @@ class _InventoryReconfirmationDetailScreenState
                                               ),
                                               TextButton(
                                                 onPressed: () {
+                                                  loadingCount = 0;
                                                   setState(() {});
                                                   Navigator.pop(context);
                                                   // log(jsonEncode(

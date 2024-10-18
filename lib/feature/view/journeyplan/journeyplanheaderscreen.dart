@@ -216,29 +216,29 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                 height: 30.h,
                 width: MediaQuery.of(context).size.width,
                 child: DropdownButtonFormField(
-                   elevation: 0,
-                value: ddfilterJourneyPlan[0].mode,
-                dropdownColor: Colors.white,
-                style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                  border: /* InputBorder
+                  elevation: 0,
+                  value: ddfilterJourneyPlan[0].mode,
+                  dropdownColor: Colors.white,
+                  style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: /* InputBorder
                             .none  */
-                      OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey.shade200),
+                        OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey.shade200),
+                    ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey.shade200),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey.shade200),
-                  ),
-                ),
                   items: ddfilterJourneyPlan
                       .map(
                         (e) => DropdownMenuItem(
@@ -252,7 +252,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                     context
                         .read<JourneyPlanHeaderBloc>()
                         .add(const ClearJourneyPlanHeadersEvent());
-                
+
                     context.read<JourneyPlanHeaderBloc>().add(
                           GetAllJourneyPlanHeadersEvent(
                             searchQuery: '',

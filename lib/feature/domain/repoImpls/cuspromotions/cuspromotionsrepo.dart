@@ -49,7 +49,7 @@ class CusPromotionsRepo implements ICusProtionRepo {
           Uri.parse(baseUrl + cusPromotionHeaderUrl),
           body: cusIN.toJson());
 
-          log(jsonEncode(cusIN));
+      log(jsonEncode(cusIN));
 
       if (response.statusCode == 200) {
         log(response.body);
