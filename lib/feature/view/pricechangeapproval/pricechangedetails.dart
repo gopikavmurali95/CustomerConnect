@@ -14,7 +14,6 @@ import 'package:customer_connect/feature/state/bloc/pricechangeheader/price_chan
 import 'package:customer_connect/feature/state/bloc/pricechangereasons/price_change_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
-import 'package:customer_connect/feature/view/pricechangeapproval/pricechangeheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
@@ -105,8 +104,6 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
         child: PopScope(
           canPop: true,
           onPopInvoked: (didPop) {
-            _searchctrls.clear();
-            priceChangeHeaderSearchCtrl.clear();
             context.read<PriceChangeHeaderBloc>().add(GetPriceChangeHeaderEvent(
                 rotID: widget.priceChangeApprovel.pchRotId!,
                 mode: widget.currentMode,
@@ -409,12 +406,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                   _hPricecontrollers = List.generate(
                                     pdet.length,
                                     (index) => TextEditingController(
-                                        text: pdet[index].pcdChangedHPrice),
+                                        text: pdet[index].pcdApprovedHPrice),
                                   );
                                   _lPricecontrollers = List.generate(
                                       pdet.length,
                                       (index) => TextEditingController(
-                                            text: pdet[index].pcdChangedLprice,
+                                            text: pdet[index].pcdApprovedLPrice,
                                           ));
                                   selectedresons =
                                       List.generate(pdet.length, (index) => '');
@@ -903,13 +900,6 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                             subTitleTextStyle(),
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
                                                     Expanded(
                                                       child: Text(
                                                         '${AppLocalizations.of(context)!.stdPrice} : ${pdet[index].pcdHigherUom} - ${pdet[index].pcdStdHPrice} | ${pdet[index].pcdLowerUom} - ${pdet[index].pcdStdLPrice}',
@@ -991,7 +981,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         : Transform
                                                                             .scale(
                                                                             scale:
-                                                                                0.9,
+                                                                                0.8,
                                                                             child:
                                                                                 Container(
                                                                               height: 30.h,
@@ -1194,12 +1184,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                     ? Transform
                                                                         .scale(
                                                                         scale:
-                                                                            0.9,
+                                                                            0.8,
                                                                         child:
                                                                             Container(
                                                                           height:
                                                                               32.h,
-                                                                          // width: 100,
+                                                                             // width: 100,
                                                                           decoration: BoxDecoration(
                                                                               color: Colors.white,
                                                                               border: Border.all(color: Colors.grey.shade200),
@@ -1215,11 +1205,9 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                               Padding(
                                                                             padding:
                                                                                 const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
-                                                                            child:
-                                                                                Text(
-                                                                              pdet[index].reason == null || pdet[index].reason!.isEmpty ? "No reason found" : pdet[index].reason ?? '',
-                                                                              style: const TextStyle(fontSize: 11),
-                                                                            ),
+                                                                            child: Text(pdet[index].reason == null || pdet[index].reason!.isEmpty
+                                                                                ? "No reason found"
+                                                                                : pdet[index].reason ?? '',style: TextStyle(fontSize: 11),),
                                                                           ),
                                                                         ),
                                                                       )
@@ -1492,18 +1480,3 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
     }
   }
 }
-
-const ddvalues = [
-  DropdownMenuItem(
-    value: '0',
-    child: Text('Select Reason'),
-  ),
-  DropdownMenuItem(
-    value: '1',
-    child: Text('reason1'),
-  ),
-  DropdownMenuItem(
-    value: '2',
-    child: Text('reason2'),
-  )
-];

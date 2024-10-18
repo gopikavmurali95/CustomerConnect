@@ -1,17 +1,28 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
+import 'package:customer_connect/feature/data/models/customer_foc_approval_in_model/customer_foc_approval_in_model.dart';
+import 'package:customer_connect/feature/data/models/customer_foc_approval_json_model/customer_foc_approval_json_model.dart';
+import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/customerfocapprovalbloc/customer_foc_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerfocheaderbloc/customer_foc_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customerfocrejection/cusromer_foc_rejection_bloc.dart';
+import 'package:customer_connect/feature/state/cubit/customerfocapprovalselection/customer_foc_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/view/customerfoc/customerfocdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerFocHeaderScreen extends StatefulWidget {
-  const CustomerFocHeaderScreen({super.key});
+  final LoginUserModel user;
+  const CustomerFocHeaderScreen({super.key, required this.user});
 
   @override
   State<CustomerFocHeaderScreen> createState() =>
@@ -26,14 +37,32 @@ List<ApprovalStatusFilterModel> ddfilterCustomerFoc = [
 String selectedCustomerFocMode = 'A';
 TextEditingController customerFocHeaderSearchCtrl = TextEditingController();
 Timer? debounce;
-bool isChecked = false;
+List<CustomerFocApprovalJsonModel> focJsonstriongList = [];
+TextEditingController remarkCtrl = TextEditingController();
 
 class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
   @override
   void initState() {
+    selectedCustomerFocMode = 'A';
+
+    ddfilterCustomerFoc = [
+      ApprovalStatusFilterModel(
+          statusName:
+              selectedLocale?.languageCode == 'en' ? "Pending" : "قيد الانتظار",
+          mode: 'A'),
+      ApprovalStatusFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "طلبات الإجراءات المتخذة",
+          mode: 'AT'),
+    ];
+
+    remarkCtrl.clear();
     context.read<CustomerFocHeaderBloc>().add(const ClearCustomerFocHeader());
     context.read<CustomerFocHeaderBloc>().add(
         const GetCustomerFocHeaderEvent(statusValue: 'A', searchQuery: ''));
+    focJsonstriongList.clear();
+    context.read<CustomerFocApprovalSelectionCubit>().selectedHeadersList([]);
     super.initState();
   }
 
@@ -248,7 +277,10 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const CustomerFocDetailScreen()),
+                                              CustomerFocDetailScreen(
+                                                header: headerdata[index],
+                                                user: widget.user,
+                                              )),
                                     );
                                   },
                                   child: Row(
@@ -341,27 +373,75 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                           ],
                                         ),
                                       ),
-                                      selectedCustomerFocMode=='AT'?const SizedBox.shrink(): IntrinsicHeight(
-                                        child: Row(
-                                          children: [
-                                            VerticalDivider(
-                                              color: Colors.grey[300],
-                                              thickness: 1,
-                                            ),
-                                            Checkbox(
-                                                side: BorderSide(
-                                                    color: Colors.grey[500]!),
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            4)),
-                                                activeColor:
-                                                    Colors.green.shade300,
-                                                value: isChecked,
-                                                onChanged: (value) {})
-                                          ],
-                                        ),
-                                      )
+                                      selectedCustomerFocMode == 'AT'
+                                          ? const SizedBox.shrink()
+                                          : IntrinsicHeight(
+                                              child: Row(
+                                                children: [
+                                                  VerticalDivider(
+                                                    color: Colors.grey[300],
+                                                    thickness: 1,
+                                                  ),
+                                                  BlocBuilder<
+                                                      CustomerFocApprovalSelectionCubit,
+                                                      CustomerFocApprovalSelectionState>(
+                                                    builder: (context, state) {
+                                                      return state.when(
+                                                        focApprovalSelectionState:
+                                                            (selected) =>
+                                                                Checkbox(
+                                                          side: BorderSide(
+                                                              color: Colors
+                                                                  .grey[500]!),
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          4)),
+                                                          activeColor: Colors
+                                                              .green.shade300,
+                                                          value: focJsonstriongList
+                                                              .where((element) =>
+                                                                  element
+                                                                      .cfhId ==
+                                                                  headerdata[
+                                                                          index]
+                                                                      .cfhId)
+                                                              .isNotEmpty,
+                                                          onChanged: (value) {
+                                                            if (focJsonstriongList
+                                                                .where((element) =>
+                                                                    element
+                                                                        .cfhId ==
+                                                                    headerdata[
+                                                                            index]
+                                                                        .cfhId)
+                                                                .isEmpty) {
+                                                              focJsonstriongList.add(
+                                                                  CustomerFocApprovalJsonModel(
+                                                                      cfhId: headerdata[
+                                                                              index]
+                                                                          .cfhId));
+                                                            } else {
+                                                              focJsonstriongList
+                                                                  .removeWhere((element) =>
+                                                                      element
+                                                                          .cfhId ==
+                                                                      headerdata[
+                                                                              index]
+                                                                          .cfhId);
+                                                            }
+                                                            setState(() {});
+                                                            log(jsonEncode(
+                                                                focJsonstriongList));
+                                                          },
+                                                        ),
+                                                      );
+                                                    },
+                                                  )
+                                                ],
+                                              ),
+                                            )
                                     ],
                                   ),
                                 ),
@@ -376,59 +456,385 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
           ))
         ],
       ),
-      bottomNavigationBar: SizedBox(
-        height: 42.h,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
+      bottomNavigationBar: focJsonstriongList.isEmpty ||selectedCustomerFocMode == 'AT'
+          ? null
+          : SizedBox(
+              height: 42.h,
+              child: Column(
                 children: [
-                  Flexible(
-                    flex: 1,
-                    fit: FlexFit.tight,
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      color: Colors.red.shade300,
-                      onPressed: () {},
-                      child: Text(
-                        AppLocalizations.of(context)!.rejectSelected,
-                        style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: BlocConsumer<CusromerFocRejectionBloc,
+                              CusromerFocRejectionState>(
+                            listener: (context, state) {
+                              state.when(focRejectionState: (rejectionResp) {
+                                if (rejectionResp != null) {
+                                  customerFocHeaderSearchCtrl.clear();
+                                  context
+                                      .read<CustomerFocHeaderBloc>()
+                                      .add(const ClearCustomerFocHeader());
+                                  context.read<CustomerFocHeaderBloc>().add(
+                                      GetCustomerFocHeaderEvent(
+                                          statusValue: selectedCustomerFocMode,
+                                          searchQuery: ''));
+                                  focJsonstriongList.clear();
+                                  context
+                                      .read<CustomerFocApprovalSelectionCubit>()
+                                      .selectedHeadersList([]);
+                                  Navigator.pop(context);
+                                  showCupertinoDialog(
+                                    context: context,
+                                    builder: (context) => CupertinoAlertDialog(
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content:
+                                          const Text("Rejected successfully"),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }
+                              }, focFailedState: () {
+                                Navigator.pop(context);
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: const Text(
+                                        'Customer Foc Rejection Failed'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              });
+                            },
+                            builder: (context, state) {
+                              return MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: Colors.red.shade300,
+                                onPressed: () {
+                                  if (focJsonstriongList.isEmpty) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: const Text(
+                                            'Please Select atleast one item'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: const Text(
+                                            'Do you want to reject?'),
+                                        content: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text(
+                                                'Response Remark (if any)'),
+                                            CupertinoTextField(
+                                              controller: remarkCtrl,
+                                              // placeholder: 'Enter your remark here',
+                                              padding: const EdgeInsets.all(12),
+                                              decoration: const BoxDecoration(
+                                                border: Border(
+                                                  bottom: BorderSide(
+                                                    color: Colors.grey,
+                                                    width: 1.0,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              context
+                                                  .read<
+                                                      CustomerFocApprovalBloc>()
+                                                  .add(
+                                                      const CustomerFocLoadingEvent());
+                                              context
+                                                  .read<
+                                                      CusromerFocRejectionBloc>()
+                                                  .add(FocRejectionEvent(
+                                                      rejectionIn: CustomerFocApprovalInModel(
+                                                          remarks:
+                                                              remarkCtrl.text,
+                                                          userId:
+                                                              widget.user.usrId,
+                                                          headerId: '',
+                                                          jsonString:
+                                                              focJsonstriongList)));
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.rejectSelected,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: BlocConsumer<CustomerFocApprovalBloc,
+                              CustomerFocApprovalState>(
+                            listener: (context, state) {
+                              state.when(
+                                customerFocApproval: (approvalresp) {
+                                  if (approvalresp != null) {
+                                    customerFocHeaderSearchCtrl.clear();
+                                    context
+                                        .read<CustomerFocHeaderBloc>()
+                                        .add(const ClearCustomerFocHeader());
+                                    context.read<CustomerFocHeaderBloc>().add(
+                                        GetCustomerFocHeaderEvent(
+                                            statusValue:
+                                                selectedCustomerFocMode,
+                                            searchQuery: ''));
+                                    focJsonstriongList.clear();
+                                    context
+                                        .read<
+                                            CustomerFocApprovalSelectionCubit>()
+                                        .selectedHeadersList([]);
+                                    Navigator.pop(context);
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content:
+                                            const Text("Approved successfully"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                customerFocApprovalFailed: () {
+                                  Navigator.pop(context);
+                                  showCupertinoDialog(
+                                    context: context,
+                                    builder: (context) => CupertinoAlertDialog(
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: const Text(
+                                          'Customer Foc Approval Failed'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                customerFocApprovalLoadingState: () {
+                                  showCupertinoModalPopup(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => SizedBox(
+                                            height: MediaQuery.of(context)
+                                                .size
+                                                .height,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            child: const PopScope(
+                                              canPop: true,
+                                              child: CupertinoActivityIndicator(
+                                                animating: true,
+                                                color: Colors.red,
+                                                radius: 30,
+                                              ),
+                                            ),
+                                          ));
+                                },
+                              );
+                            },
+                            builder: (context, state) {
+                              return MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: Colors.green.shade300,
+                                onPressed: () {
+                                  if (focJsonstriongList.isEmpty) {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: const Text(
+                                            'Please Select atleast one item'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    if (selectedCustomerFocMode == 'A') {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                context
+                                                    .read<
+                                                        CustomerFocApprovalBloc>()
+                                                    .add(const CustomerFocApprovalEvent
+                                                        .customerFocLoadingEvent());
+                                                context
+                                                    .read<
+                                                        CustomerFocApprovalBloc>()
+                                                    .add(CustomerFocApprovalEvent
+                                                        .customerFocApprovalEvent(
+                                                            approveInpara:
+                                                                CustomerFocApprovalInModel(
+                                                                    remarks: '',
+                                                                    userId: widget
+                                                                        .user
+                                                                        .usrId,
+                                                                    headerId:
+                                                                        '',
+                                                                    jsonString:
+                                                                        focJsonstriongList)));
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  }
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.approveSelected,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Flexible(
-                    flex: 1,
-                    fit: FlexFit.tight,
-                    child: MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      color: Colors.green.shade300,
-                      onPressed: () {},
-                      child: Text(
-                        AppLocalizations.of(context)!.approveSelected,
-                        style: kfontstyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
+                  )
                 ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
     );
   }
 }

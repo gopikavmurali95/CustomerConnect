@@ -1644,7 +1644,7 @@ class ApprovalScreen extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const CustomerFocHeaderScreen()),
+                                       CustomerFocHeaderScreen(user: user,)),
                             );
                           },
                           child: Container(

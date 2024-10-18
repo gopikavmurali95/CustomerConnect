@@ -398,7 +398,6 @@ class _InventoryReconfirmationDetailScreenState
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
-                             
                               Text(
                                 '${AppLocalizations.of(context)!.short}/\n${AppLocalizations.of(context)!.excess}',
                                 style: kfontstyle(
@@ -406,7 +405,6 @@ class _InventoryReconfirmationDetailScreenState
                                     fontWeight: FontWeight.w400,
                                     color: Colors.black54),
                               ),
-                              
                             ],
                           ),
                         ),
