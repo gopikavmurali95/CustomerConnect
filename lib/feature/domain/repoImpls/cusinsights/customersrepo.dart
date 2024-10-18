@@ -89,13 +89,15 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
       String searchString,
       String pagenum) async {
     try {
-      final response = await http.post(Uri.parse(baseUrl + cusInsightCustomersCount),
-          body: {'UserID': userId,
-          'Area': area,
-          'SubArea': subarea,
-          'Route': route,
-          'SearchString': searchString,
-          'Pagenum': pagenum,});
+      final response =
+          await http.post(Uri.parse(baseUrl + cusInsightCustomersCount), body: {
+        'UserID': userId,
+        'Area': area,
+        'SubArea': subarea,
+        'Route': route,
+        'SearchString': searchString,
+        'Pagenum': pagenum,
+      });
 
       if (response.statusCode == 200) {
         log(response.body);

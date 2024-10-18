@@ -256,7 +256,6 @@ class _ActivityReviewHeaderScreenState
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                     
                     Text(
                       AppLocalizations.of(context)!.pendingReview,
                       style: countHeading(),

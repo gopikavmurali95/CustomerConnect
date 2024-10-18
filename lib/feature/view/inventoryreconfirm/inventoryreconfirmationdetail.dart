@@ -611,7 +611,6 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            
                                                             SizedBox(
                                                               height: 10.h,
                                                             ),
@@ -634,7 +633,6 @@ class _InventoryReconfirmationDetailScreenState
                                                                   color: Colors
                                                                       .black54),
                                                             ),
-                                                            
                                                           ],
                                                         ),
                                                         /*  SizedBox(
@@ -1037,7 +1035,9 @@ class _InventoryReconfirmationDetailScreenState
                                                                             ]),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsets.symmetric(vertical: 7, ),
+                                                                              padding: const EdgeInsets.symmetric(
+                                                                                vertical: 7,
+                                                                              ),
                                                                               child: Text(details[index].reason ?? ''),
                                                                             ),
                                                                           ),

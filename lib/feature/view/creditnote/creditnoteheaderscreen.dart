@@ -23,7 +23,7 @@ class CreditNoteHeaderScreen extends StatefulWidget {
 
 List<ApprovalStatusFilterModel> ddfilterFieldscreditNote = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
-   ApprovalStatusFilterModel(statusName: "Action taken", mode: 'AT'),
+  ApprovalStatusFilterModel(statusName: "Action taken", mode: 'AT'),
   ApprovalStatusFilterModel(statusName: "Approved", mode: 'A'),
   ApprovalStatusFilterModel(statusName: "Rejected", mode: 'R'),
 ];

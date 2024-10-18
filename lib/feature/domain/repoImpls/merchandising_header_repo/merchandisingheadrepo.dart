@@ -46,7 +46,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + getTaskCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-          log('FromDate: $fromDate, ToDate: $toDate');
+      log('FromDate: $fromDate, ToDate: $toDate');
 
       if (response.statusCode == 200) {
         // log('taskcount: ${response.body}');
@@ -70,7 +70,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + getSurveyCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-       log("survey count FromDate: $fromDate ToDate: $toDate");
+      log("survey count FromDate: $fromDate ToDate: $toDate");
       if (response.statusCode == 200) {
         // log('surveycount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
