@@ -5,7 +5,6 @@ part 'customer_foc_approval_in_model.g.dart';
 
 @JsonSerializable()
 class CustomerFocApprovalInModel {
-
   @JsonKey(name: 'remarks')
   String? remarks;
   @JsonKey(name: 'userId')
@@ -15,7 +14,8 @@ class CustomerFocApprovalInModel {
   @JsonKey(name: 'JSONString')
   List<CustomerFocApprovalJsonModel>? jsonString;
 
-  CustomerFocApprovalInModel({this.remarks, this.userId, this.headerId,this.jsonString});
+  CustomerFocApprovalInModel(
+      {this.remarks, this.userId, this.headerId, this.jsonString});
 
   factory CustomerFocApprovalInModel.fromJson(Map<String, dynamic> json) {
     return _$CustomerFocApprovalInModelFromJson(json);

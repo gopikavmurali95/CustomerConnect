@@ -5,8 +5,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'customer_foc_approval_selection_state.dart';
 part 'customer_foc_approval_selection_cubit.freezed.dart';
 
-class CustomerFocApprovalSelectionCubit extends Cubit<CustomerFocApprovalSelectionState> {
-  CustomerFocApprovalSelectionCubit() : super(CustomerFocApprovalSelectionState.initial());
+class CustomerFocApprovalSelectionCubit
+    extends Cubit<CustomerFocApprovalSelectionState> {
+  CustomerFocApprovalSelectionCubit()
+      : super(CustomerFocApprovalSelectionState.initial());
 
   void selectedHeadersList(List<CustomerFocApprovalJsonModel> selected) {
     emit(FocApprovalSelectionState(selection: selected));

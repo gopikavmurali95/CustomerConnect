@@ -51,6 +51,7 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_approval_in_model/customer_foc_approval_in_model.dart';
+//import 'package:customer_connect/feature/data/models/customer_foc_approval_in_model/customer_foc_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_approve_and_reject_model/customer_foc_approve_and_reject_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_detail_model/customer_foc_detail_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_header_model/customer_foc_header_model.dart';
@@ -811,7 +812,9 @@ abstract class ICustomerOverrideApprovalRepo {
       approveOverrideCustomer(String statusValue);
 
   Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject(
-      String ooaId, String userId, String status);}
+      String ooaId, String userId, String status);
+}
+
 abstract class IFreeSampleApprovalRepo {
   Future<Either<MainFailures, List<FreeSampleHeaderModel>>>
       getFreeSampleHeaders(String mode);
