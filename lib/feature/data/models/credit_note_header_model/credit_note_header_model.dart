@@ -42,6 +42,8 @@ class CreditNoteHeaderModel {
   String? arcnhCreditType;
   @JsonKey(name: 'ArStatus')
   String? arStatus;
+  @JsonKey(name: 'Remarks')
+  String? remarks;
 
   CreditNoteHeaderModel({
     this.cnhId,
@@ -63,6 +65,7 @@ class CreditNoteHeaderModel {
     this.arcnhCreditType,
     this.arcusName,
     this.arusrName,
+    this.remarks,
   });
 
   factory CreditNoteHeaderModel.fromJson(Map<String, dynamic> json) {
