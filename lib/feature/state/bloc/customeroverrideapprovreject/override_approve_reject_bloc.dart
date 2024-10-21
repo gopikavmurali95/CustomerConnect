@@ -12,19 +12,22 @@ part 'override_approve_reject_state.dart';
 part 'override_approve_reject_bloc.freezed.dart';
 
 @injectable
-class OverrideApproveRejectBloc extends Bloc<OverrideApproveRejectEvent, OverrideApproveRejectState> {
+class OverrideApproveRejectBloc
+    extends Bloc<OverrideApproveRejectEvent, OverrideApproveRejectState> {
   final ICustomerOverrideApprovalRepo approveRejectRepo;
-  OverrideApproveRejectBloc(this.approveRejectRepo) : super(OverrideApproveRejectState.initial()) {
+  OverrideApproveRejectBloc(this.approveRejectRepo)
+      : super(OverrideApproveRejectState.initial()) {
     on<GetOverrideApproveRejectEvent>((event, emit) async {
       Either<MainFailures, OverideApprovRejectModel> resp =
-          await approveRejectRepo.overrideApproveReject(event.ooaID, event.userId, event.status);
+          await approveRejectRepo.overrideApproveReject(
+              event.ooaID, event.userId, event.status);
 
       emit(resp.fold((l) => const OverrideCusFailedState(),
           (r) => GetOverrideApprovalState(approve: r)));
     });
 
     on<LoadingOverideApproveRejectEvent>((event, emit) {
-      emit(const  OverrideCusLoadingState());
+      emit(const OverrideCusLoadingState());
     });
   }
 }

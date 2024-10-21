@@ -456,7 +456,8 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
           ))
         ],
       ),
-      bottomNavigationBar: focJsonstriongList.isEmpty ||selectedCustomerFocMode == 'AT'
+      bottomNavigationBar: focJsonstriongList.isEmpty ||
+              selectedCustomerFocMode == 'AT'
           ? null
           : SizedBox(
               height: 42.h,

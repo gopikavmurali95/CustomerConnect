@@ -89,7 +89,7 @@ class CustomerFocHeaderRepo implements ICustomerFocRepo {
           "JSONString": jsonEncode(approve.jsonString)
         },
       );
-      
+
       log(jsonEncode(approve));
 
       if (response.statusCode == 200) {

@@ -1643,8 +1643,9 @@ class ApprovalScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                       CustomerFocHeaderScreen(user: user,)),
+                                  builder: (context) => CustomerFocHeaderScreen(
+                                        user: user,
+                                      )),
                             );
                           },
                           child: Container(
@@ -1715,12 +1716,14 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                              Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                       CustomerOverrideApprovalHeaderScreen(user: user,)),
-                            ); 
+                                      CustomerOverrideApprovalHeaderScreen(
+                                        user: user,
+                                      )),
+                            );
                           },
                           child: Container(
                             //height: 50,

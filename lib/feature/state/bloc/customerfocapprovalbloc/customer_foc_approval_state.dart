@@ -6,8 +6,8 @@ class CustomerFocApprovalState with _$CustomerFocApprovalState {
           {required CustomerFocApproveAndRejectModel? approve}) =
       CustomerFocApproval;
 
-      const factory CustomerFocApprovalState.customerFocApprovalFailed() = CustomerFocApprovalFailed;
-      
+  const factory CustomerFocApprovalState.customerFocApprovalFailed() =
+      CustomerFocApprovalFailed;
 
   const factory CustomerFocApprovalState.customerFocApprovalLoadingState() =
       CustomerFocApprovalLoadingState;

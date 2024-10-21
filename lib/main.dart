@@ -818,7 +818,6 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<OverrideApproveRejectBloc>(),
-         
         ),
         BlocProvider(
           create: (context) => getit<CustomerFocApprovalBloc>(),

@@ -22,9 +22,9 @@ class CustomerOverrideApprovalHeaderScreen extends StatefulWidget {
   const CustomerOverrideApprovalHeaderScreen({super.key, required this.user});
 
   @override
-  State<CustomerOverrideApprovalHeaderScreen> createState() => _CustomerOverrideApprovalHeaderScreenState();
+  State<CustomerOverrideApprovalHeaderScreen> createState() =>
+      _CustomerOverrideApprovalHeaderScreenState();
 }
-
 
 List<ApprovalStatusFilterModel> ddfilterCustomerOverride = [
   ApprovalStatusFilterModel(statusName: "Pending", mode: 'P'),
@@ -40,12 +40,13 @@ List<TextEditingController> _slNoCtrls = [];
 TextEditingController cusOverAddCtrl = TextEditingController();
 Timer? debounce;
 
-class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideApprovalHeaderScreen> {
-   @override
-     void initState() {
+class _CustomerOverrideApprovalHeaderScreenState
+    extends State<CustomerOverrideApprovalHeaderScreen> {
+  @override
+  void initState() {
     cusOverAddCtrl.clear();
     loadingCount = 0;
-     ddfilterCustomerOverride = [
+    ddfilterCustomerOverride = [
       ApprovalStatusFilterModel(
           statusName: selectedLocale?.languageCode == 'en'
               ? "Pending Requests"
@@ -66,10 +67,9 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
         .read<CustomerOverrideApprovalBlocBloc>()
         .add(const ClearCusOverrideEvent());
 
-    context.read<CustomerOverrideApprovalBlocBloc>().add(
-        const GetCusOverrideEvent(
-          statusvalue: 'P',
-           searchQuery: ''
+    context
+        .read<CustomerOverrideApprovalBlocBloc>()
+        .add(const GetCusOverrideEvent(statusvalue: 'P', searchQuery: ''
             //userId: widget.user.usrId ?? '', searchQuery: ''
             ));
 
@@ -82,7 +82,6 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
     super.dispose();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,14 +131,14 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                           child: IconButton(
                               onPressed: () {
                                 if (cusOverAddCtrl.text.isNotEmpty) {
-                                 cusOverAddCtrl.clear();
+                                  cusOverAddCtrl.clear();
 
                                   context
                                       .read<CustomerOverrideApprovalBlocBloc>()
                                       .add(const GetCusOverrideEvent(
                                           searchQuery: '',
-                                         // userId: widget.user.usrId ?? ''
-                                           statusvalue: ''));
+                                          // userId: widget.user.usrId ?? ''
+                                          statusvalue: ''));
                                 }
                               },
                               icon: Icon(
@@ -179,17 +178,18 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                         const Duration(
                           milliseconds: 500,
                         ), () async {
-                      context.read<CustomerOverrideApprovalBlocBloc>().add(
-                          GetCusOverrideEvent(
-                              searchQuery: value.trim(), statusvalue: '',
-                             // userId: widget.user.usrId ?? ''
-                              ));
+                      context
+                          .read<CustomerOverrideApprovalBlocBloc>()
+                          .add(GetCusOverrideEvent(
+                            searchQuery: value.trim(), statusvalue: '',
+                            // userId: widget.user.usrId ?? ''
+                          ));
                     });
                   },
                 ),
               ),
             ),
-             SizedBox(
+            SizedBox(
               height: 3.h,
             ),
             Padding(
@@ -221,7 +221,7 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                       borderSide: BorderSide(color: Colors.grey.shade200),
                     ),
                   ),
-                  items:ddfilterCustomerOverride
+                  items: ddfilterCustomerOverride
                       .map(
                         (e) => DropdownMenuItem(
                           value: e.mode,
@@ -236,39 +236,39 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                         .add(const ClearCusOverrideEvent());
 
                     context.read<CustomerOverrideApprovalBlocBloc>().add(
-                           GetCusOverrideEvent(
+                          GetCusOverrideEvent(
                               // userID: widget.user.usrId ?? '',
                               // mode: value,
-                              searchQuery: '', 
+                              searchQuery: '',
                               statusvalue: value),
                         );
                   },
                 ),
               ),
             ),
-            
             SizedBox(
               height: 10.h,
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: BlocBuilder<CustomerOverrideApprovalBlocBloc, CustomerOverrideApprovalBlocState>(
+              child: BlocBuilder<CustomerOverrideApprovalBlocBloc,
+                  CustomerOverrideApprovalBlocState>(
                 builder: (context, state) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         state.when(
-                           getCusOverrideApprovalState: (headers) =>
+                          getCusOverrideApprovalState: (headers) =>
                               _selectedCustomerOverride == "P"
                                   ? AppLocalizations.of(context)!
                                       .pendingApprovals
-                                  :_selectedCustomerOverride == "A"
+                                  : _selectedCustomerOverride == "A"
                                       ? AppLocalizations.of(context)!
                                           .approvedRequests
                                       : AppLocalizations.of(context)!
                                           .rejectedRequests,
-                         cusOverrideApprovalFailedState: () =>
+                          cusOverrideApprovalFailedState: () =>
                               _selectedCustomerOverride == "P"
                                   ? AppLocalizations.of(context)!
                                       .pendingApprovals
@@ -298,15 +298,15 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                     CustomerOverrideApprovalBlocState>(
               listener: (context, state) {
                 state.when(
-                
-               cusOverrideApprovalFailedState: () {  }, 
-               getCusOverrideApprovalState: (cusoverride) { if (cusoverride != null) {
+                  cusOverrideApprovalFailedState: () {},
+                  getCusOverrideApprovalState: (cusoverride) {
+                    if (cusoverride != null) {
                       statuslist =
                           List.generate(cusoverride.length, (index) => null);
-                      _slNoCtrls = List.generate(
-                         cusoverride.length, (index) => TextEditingController());
-                    }  }, 
-                   
+                      _slNoCtrls = List.generate(cusoverride.length,
+                          (index) => TextEditingController());
+                    }
+                  },
                 );
               },
               child: Padding(
@@ -315,8 +315,6 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                     CustomerOverrideApprovalBlocState>(
                   builder: (context, state) {
                     return state.when(
-                       
-                     
                       getCusOverrideApprovalState: (cusoverride) =>
                           cusoverride == null
                               ? Padding(
@@ -378,9 +376,9 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              // "Invoice Id",
-                                                               '${cusoverride[index].ooaType}  ',
-                                                              
+                                                              "Customer Code - Customer Name",
+                                                              //'${cusoverride[index].ooaType}  ',
+
                                                               // selectedLocale
                                                               //             ?.languageCode ==
                                                               //         "en"
@@ -438,8 +436,8 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                 children: [
                                                                   TextSpan(
                                                                     text:
-                                                                      //  "Cus Id",
-                                                                   '${cusoverride[index].ooaCusId} - ',
+                                                                        "Total Inv Amt : ",
+                                                                    //'${cusoverride[index].ooaCusId} - ',
                                                                     style: kfontstyle(
                                                                         fontSize: 12.sp,
                                                                         color: const Color(
@@ -449,8 +447,41 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                   ),
                                                                   TextSpan(
                                                                     text:
-                                                                    '${cusoverride[index].flexiField1}  ',
-                                                                       // "- Cus Name",
+                                                                        '${cusoverride[index].flexiField1}  ',
+                                                                    // "- Cus Name",
+                                                                    // text: selectedLocale?.languageCode ==
+                                                                    //         'en'
+                                                                    //     ? "${headers[index].astName}"
+                                                                    //     : headers[index].astArName ??
+                                                                    //         '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                    // overflow: TextOverflow.ellipsis,
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text:
+                                                                        'Avl Credit Limit : ',
+                                                                    // "- Cus Name",
+                                                                    // text: selectedLocale?.languageCode ==
+                                                                    //         'en'
+                                                                    //     ? "${headers[index].astName}"
+                                                                    //     : headers[index].astArName ??
+                                                                    //         '',
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12.sp,
+                                                                        color: const Color(
+                                                                          0xff2C6B9E,
+                                                                        ),
+                                                                        fontWeight: FontWeight.w500),
+                                                                    // overflow: TextOverflow.ellipsis,
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text:
+                                                                        '${cusoverride[index].flexiField1}  ',
+                                                                    // "- Cus Name",
                                                                     // text: selectedLocale?.languageCode ==
                                                                     //         'en'
                                                                     //     ? "${headers[index].astName}"
@@ -506,19 +537,24 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                 children: [
                                                                   TextSpan(
                                                                     text:
-                                                                    '${cusoverride[index].flexiField2}  ',
-                                                                      //  "Cred Lmt Amt:",
+                                                                        "Total Credit Lmt : ",
+                                                                    // '${cusoverride[index].flexiField2}  ',
+                                                                    //  "Cred Lmt Amt:",
                                                                     // '${headers[index].cusCode} - ',
                                                                     style: kfontstyle(
                                                                         fontSize: 10
                                                                             .sp,
-                                                                        color: Colors
-                                                                            .grey),
+                                                                        color: const Color
+                                                                            .fromARGB(
+                                                                            255,
+                                                                            89,
+                                                                            89,
+                                                                            89)),
                                                                   ),
                                                                   TextSpan(
                                                                     text:
-                                                                    '${cusoverride[index].ooaCurrentLevel}  ',
-                                                                       // " 1234.6787",
+                                                                        '${cusoverride[index].ooaCurrentLevel}  ',
+                                                                    // " 1234.6787",
                                                                     // '${headers[index].cusCode} - ',
                                                                     style:
                                                                         kfontstyle(
@@ -529,25 +565,29 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                     ),
                                                                   ),
                                                                   TextSpan(
-                                                                    text:
-                                                                    ' | ${cusoverride[index].ooaType}  ',
-                                                                       // " | Availabla Amt:",
-                                                                    // text: selectedLocale?.languageCode ==
-                                                                    //         'en'
-                                                                    //     ? "${headers[index].cusName}"
-                                                                    //     : headers[index].cusArName ??
-                                                                    //         '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 10
-                                                                            .sp,
-                                                                        color: Colors
-                                                                            .grey),
-                                                                    // overflow: TextOverflow.ellipsis,
-                                                                  ),
+                                                                      text:
+                                                                          ' | Total Outstanding :  ',
+                                                                      // " | Availabla Amt:",
+                                                                      // text: selectedLocale?.languageCode ==
+                                                                      //         'en'
+                                                                      //     ? "${headers[index].cusName}"
+                                                                      //     : headers[index].cusArName ??
+                                                                      //         '',
+                                                                      style: kfontstyle(
+                                                                          fontSize: 10
+                                                                              .sp,
+                                                                          color: const Color
+                                                                              .fromARGB(
+                                                                              255,
+                                                                              89,
+                                                                              89,
+                                                                              89))
+                                                                      // overflow: TextOverflow.ellipsis,
+                                                                      ),
                                                                   TextSpan(
                                                                     text:
-                                                                    '${cusoverride[index].status}  ',
-                                                                     //   " 0000.00",
+                                                                        '${cusoverride[index].flexiField2}  ',
+                                                                    //   " 0000.00",
                                                                     // text: selectedLocale?.languageCode ==
                                                                     //         'en'
                                                                     //     ? "${headers[index].cusName}"
@@ -573,18 +613,21 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                 children: [
                                                                   TextSpan(
                                                                     text:
-                                                                        "Total Amt:",
+                                                                        "Total Credit Days:",
                                                                     // '${headers[index].cusCode} - ',
                                                                     style: kfontstyle(
                                                                         fontSize: 10
                                                                             .sp,
-                                                                        color: Colors
-                                                                            .grey),
+                                                                        color: Color.fromARGB(
+                                                                            255,
+                                                                            89,
+                                                                            89,
+                                                                            89)),
                                                                   ),
                                                                   TextSpan(
                                                                     text:
-                                                                    '${cusoverride[index].flexiField4}  ',
-                                                                       // " 98765.90 ",
+                                                                        ' ${cusoverride[index].ooaRotId}  ',
+                                                                    // " 98765.90 ",
                                                                     // '${headers[index].cusCode} - ',
                                                                     style:
                                                                         kfontstyle(
@@ -594,45 +637,49 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                           0xff413434),
                                                                     ),
                                                                   ),
-                                                                  TextSpan(
-                                                                    text:
-                                                                        "| Credit Days:",
-                                                                    // text: selectedLocale?.languageCode ==
-                                                                    //         'en'
-                                                                    //     ? "${headers[index].cusName}"
-                                                                    //     : headers[index].cusArName ??
-                                                                    //         '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 10
-                                                                            .sp,
-                                                                        color: Colors
-                                                                            .grey),
+                                                                  // TextSpan(
+                                                                  //   text:
+                                                                  //       "| Credit Days:",
+                                                                  //   // text: selectedLocale?.languageCode ==
+                                                                  //   //         'en'
+                                                                  //   //     ? "${headers[index].cusName}"
+                                                                  //   //     : headers[index].cusArName ??
+                                                                  //   //         '',
+                                                                  //   style: kfontstyle(
+                                                                  //       fontSize: 10
+                                                                  //           .sp,
+                                                                  //       color: Colors
+                                                                  //           .grey),
 
-                                                                    // overflow: TextOverflow.ellipsis,
-                                                                  ),
-                                                                  TextSpan(
-                                                                    text:'${cusoverride[index].ooaWfmId}  ',
-                                                                    // " 10",
-                                                                    // '${headers[index].cusCode} - ',
-                                                                    style:
-                                                                        kfontstyle(
-                                                                      fontSize:
-                                                                          10.sp,
-                                                                      color: const Color(
-                                                                          0xff413434),
-                                                                    ),
-                                                                  ),
+                                                                  //   // overflow: TextOverflow.ellipsis,
+                                                                  // ),
+                                                                  // TextSpan(
+                                                                  //   text:'${cusoverride[index].ooaWfmId}  ',
+                                                                  //   // " 10",
+                                                                  //   // '${headers[index].cusCode} - ',
+                                                                  //   style:
+                                                                  //       kfontstyle(
+                                                                  //     fontSize:
+                                                                  //         10.sp,
+                                                                  //     color: const Color(
+                                                                  //         0xff413434),
+                                                                  //   ),
+                                                                  // ),
                                                                 ],
                                                               ),
                                                             ),
                                                             Text(
-                                                             // "Route | Date | Time",
-                                                              '${cusoverride[index].ooaRotId} |${cusoverride[index].createdDate}',
+                                                              "RouteCode-Name  | Date&Time",
+                                                              //'${cusoverride[index].ooaRotId} |${cusoverride[index].createdDate}',
                                                               style: kfontstyle(
                                                                   fontSize:
                                                                       10.sp,
-                                                                  color: Colors
-                                                                      .grey),
+                                                                  color: const Color
+                                                                      .fromARGB(
+                                                                      255,
+                                                                      89,
+                                                                      89,
+                                                                      89)),
                                                             ),
                                                             BlocConsumer<
                                                                 OverrideApproveRejectBloc,
@@ -641,12 +688,8 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                   (context,
                                                                       state) {
                                                                 state.when(
-                                                                  
-                                                                 
-                                                                      
-                                                                 
-                                                                     
-                                                                   getOverrideApprovalState: (approve) {
+                                                                  getOverrideApprovalState:
+                                                                      (approve) {
                                                                     if (approve !=
                                                                         null) {
                                                                       Navigator.pop(
@@ -676,7 +719,8 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                       // }
                                                                     }
                                                                   },
-                                                                   overrideCusFailedState: () {
+                                                                  overrideCusFailedState:
+                                                                      () {
                                                                     Navigator.pop(
                                                                         context);
                                                                     showCupertinoDialog(
@@ -705,7 +749,8 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                       ),
                                                                     );
                                                                   },
-                                                                   overrideCusLoadingState:  () {
+                                                                  overrideCusLoadingState:
+                                                                      () {
                                                                     if (loadingCount ==
                                                                         0) {
                                                                       loadingCount =
@@ -766,8 +811,8 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                             //       ],
                                                                             //     ),
                                                                             //   );
-                                                                            // } 
-                                                                           {
+                                                                            // }
+                                                                            {
                                                                               showCupertinoDialog(
                                                                                 context: context,
                                                                                 builder: (context) => CupertinoAlertDialog(
@@ -783,25 +828,22 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                                     ),
                                                                                     TextButton(
                                                                                       onPressed: () {
-                                                                                                    statuslist[index] = true;
-                                                                                            loadingCount = 0;
-                                                                                            setState(() {});
-                                                                                            context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
-                                                                                            context.read<OverrideApproveRejectBloc>().add(
-                                                                                                 GetOverrideApproveRejectEvent(
-                                                                                                  ooaID: '${cusoverride[index].ooaId}',
-                                                                                                   userId: '${widget.user.usrId}', 
-                                                                                                   status: '${cusoverride[index].ooaApprovalStatus}'
-                                                                                                    // approve: AssetAddApprovalInModel
-                                                                                                    // (reqId: headers[index].aahId, 
-                                                                                                    // serialNum: _slNoCtrls[index].text,
-                                                                                                    //  userId: widget.user.usrId),
+                                                                                        statuslist[index] = true;
+                                                                                        loadingCount = 0;
+                                                                                        setState(() {});
+                                                                                        context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
+                                                                                        context.read<OverrideApproveRejectBloc>().add(
+                                                                                              GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: '${cusoverride[index].ooaApprovalStatus}'
+                                                                                                  // approve: AssetAddApprovalInModel
+                                                                                                  // (reqId: headers[index].aahId,
+                                                                                                  // serialNum: _slNoCtrls[index].text,
+                                                                                                  //  userId: widget.user.usrId),
                                                                                                   ),
-                                                                                                );
+                                                                                            );
 
-                                                                                            Navigator.pop(context);
-                                                                                          },
-                                                                                       /* statuslist[index] = true;
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      /* statuslist[index] = true;
                                                                                         loadingCount = 0;
                                                                                         setState(() {});
                                                                                         context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
@@ -813,7 +855,7 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
 
                                                                                         Navigator.pop(context);
                                                                                       },*/
-                                                                                      
+
                                                                                       child: Text(AppLocalizations.of(context)!.proceed),
                                                                                     ),
                                                                                   ],
@@ -856,7 +898,7 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                                 //       ],
                                                                                 //     ),
                                                                                 //   );
-                                                                                // } 
+                                                                                // }
                                                                                 {
                                                                                   showCupertinoDialog(
                                                                                     context: context,
@@ -878,15 +920,12 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                                             setState(() {});
                                                                                             context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
                                                                                             context.read<OverrideApproveRejectBloc>().add(
-                                                                                                 GetOverrideApproveRejectEvent(
-                                                                                                  ooaID: '${cusoverride[index].ooaId}',
-                                                                                                   userId: '${widget.user.usrId}', 
-                                                                                                   status: '${cusoverride[index].ooaApprovalStatus}'
-                                                                                                    // approve: AssetAddApprovalInModel
-                                                                                                    // (reqId: headers[index].aahId, 
-                                                                                                    // serialNum: _slNoCtrls[index].text,
-                                                                                                    //  userId: widget.user.usrId),
-                                                                                                  ),
+                                                                                                  GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: '${cusoverride[index].ooaApprovalStatus}'
+                                                                                                      // approve: AssetAddApprovalInModel
+                                                                                                      // (reqId: headers[index].aahId,
+                                                                                                      // serialNum: _slNoCtrls[index].text,
+                                                                                                      //  userId: widget.user.usrId),
+                                                                                                      ),
                                                                                                 );
 
                                                                                             Navigator.pop(context);
@@ -932,23 +971,20 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                                   ),
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                     statuslist[index] = true;
-                                                                                            loadingCount = 0;
-                                                                                            setState(() {});
-                                                                                            context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
-                                                                                            context.read<OverrideApproveRejectBloc>().add(
-                                                                                                 GetOverrideApproveRejectEvent(
-                                                                                                  ooaID: '${cusoverride[index].ooaId}',
-                                                                                                   userId: '${widget.user.usrId}', 
-                                                                                                   status: '${cusoverride[index].ooaApprovalStatus}'
-                                                                                                    // approve: AssetAddApprovalInModel
-                                                                                                    // (reqId: headers[index].aahId, 
-                                                                                                    // serialNum: _slNoCtrls[index].text,
-                                                                                                    //  userId: widget.user.usrId),
-                                                                                                  ),
-                                                                                                );
+                                                                                      statuslist[index] = true;
+                                                                                      loadingCount = 0;
+                                                                                      setState(() {});
+                                                                                      context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
+                                                                                      context.read<OverrideApproveRejectBloc>().add(
+                                                                                            GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: '${cusoverride[index].ooaApprovalStatus}'
+                                                                                                // approve: AssetAddApprovalInModel
+                                                                                                // (reqId: headers[index].aahId,
+                                                                                                // serialNum: _slNoCtrls[index].text,
+                                                                                                //  userId: widget.user.usrId),
+                                                                                                ),
+                                                                                          );
 
-                                                                                            Navigator.pop(context);
+                                                                                      Navigator.pop(context);
                                                                                     },
                                                                                     child: Text(AppLocalizations.of(context)!.proceed),
                                                                                   ),
@@ -989,24 +1025,21 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                                                                                       ),
                                                                                       TextButton(
                                                                                         onPressed: () {
-                                                                                           statuslist[index] = true;
-                                                                                            loadingCount = 0;
-                                                                                            setState(() {});
-                                                                                            context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
-                                                                                            context.read<OverrideApproveRejectBloc>().add(
-                                                                                                 GetOverrideApproveRejectEvent(
-                                                                                                  ooaID: '${cusoverride[index].ooaId}',
-                                                                                                   userId: '${widget.user.usrId}', 
-                                                                                                   status: '${cusoverride[index].ooaApprovalStatus}'
+                                                                                          statuslist[index] = true;
+                                                                                          loadingCount = 0;
+                                                                                          setState(() {});
+                                                                                          context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
+                                                                                          context.read<OverrideApproveRejectBloc>().add(
+                                                                                                GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: '${cusoverride[index].ooaApprovalStatus}'
                                                                                                     // approve: AssetAddApprovalInModel
-                                                                                                    // (reqId: headers[index].aahId, 
+                                                                                                    // (reqId: headers[index].aahId,
                                                                                                     // serialNum: _slNoCtrls[index].text,
                                                                                                     //  userId: widget.user.usrId),
-                                                                                                  ),
-                                                                                                );
+                                                                                                    ),
+                                                                                              );
 
-                                                                                            Navigator.pop(context);
-                                                                                         /* statuslist[index] = false;
+                                                                                          Navigator.pop(context);
+                                                                                          /* statuslist[index] = false;
                                                                                           loadingCount = 0;
                                                                                           setState(() {});
                                                                                           context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
@@ -1064,7 +1097,7 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
                           AppLocalizations.of(context)!.noDataAvailable,
                           style: kfontstyle(),
                         ),
-                      ), 
+                      ),
                     );
                   },
                 ),
@@ -1076,6 +1109,3 @@ class _CustomerOverrideApprovalHeaderScreenState extends State<CustomerOverrideA
     );
   }
 }
-
-
-

@@ -811,7 +811,9 @@ abstract class ICustomerOverrideApprovalRepo {
       approveOverrideCustomer(String statusValue);
 
   Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject(
-      String ooaId, String userId, String status);}
+      String ooaId, String userId, String status);
+}
+
 abstract class IFreeSampleApprovalRepo {
   Future<Either<MainFailures, List<FreeSampleHeaderModel>>>
       getFreeSampleHeaders(String mode);

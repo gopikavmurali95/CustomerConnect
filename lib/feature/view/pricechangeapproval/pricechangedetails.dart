@@ -1189,7 +1189,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             Container(
                                                                           height:
                                                                               32.h,
-                                                                             // width: 100,
+                                                                          // width: 100,
                                                                           decoration: BoxDecoration(
                                                                               color: Colors.white,
                                                                               border: Border.all(color: Colors.grey.shade200),
@@ -1205,9 +1205,11 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                               Padding(
                                                                             padding:
                                                                                 const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
-                                                                            child: Text(pdet[index].reason == null || pdet[index].reason!.isEmpty
-                                                                                ? "No reason found"
-                                                                                : pdet[index].reason ?? '',style: TextStyle(fontSize: 11),),
+                                                                            child:
+                                                                                Text(
+                                                                              pdet[index].reason == null || pdet[index].reason!.isEmpty ? "No reason found" : pdet[index].reason ?? '',
+                                                                              style: TextStyle(fontSize: 11),
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       )

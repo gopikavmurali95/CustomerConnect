@@ -10,7 +10,6 @@ import 'package:injectable/injectable.dart';
 //import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 
-
 @LazySingleton(as: ICustomerOverrideApprovalRepo)
 class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
   @override
@@ -18,8 +17,7 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
       approveOverrideCustomer(String statusValue) async {
     try {
       Dio dio = Dio();
-      final response = await dio.post(
-          approvalBaseUrl + cusOverrideApprovalUrl,
+      final response = await dio.post(approvalBaseUrl + cusOverrideApprovalUrl,
           data: {"Status_Value": statusValue});
       if (response.statusCode == 200) {
         log("customer override: ${response.data}");
@@ -42,16 +40,15 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
   }
 
   @override
-  Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject
-  (String ooaId, String userId, String status) async{
+  Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject(
+      String ooaId, String userId, String status) async {
     try {
       Dio dio = Dio();
-      final response = await dio.post(
-          approvalBaseUrl + cusOverApprovRejectUrl,
-          data:{"ooaID":ooaId,"UserID":userId,"status":status });
+      final response = await dio.post(approvalBaseUrl + cusOverApprovRejectUrl,
+          data: {"ooaID": ooaId, "UserID": userId, "status": status});
 
       if (response.statusCode == 200) {
-       log("override approve:${response.data}");
+        log("override approve:${response.data}");
         Map<String, dynamic> json = jsonDecode(response.data);
         final status = OverideApprovRejectModel.fromJson(json["result"][0]);
         return right(status);
@@ -62,7 +59,7 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
         );
       }
     } catch (e) {
-     log('Approve error $e');
+      log('Approve error $e');
       return left(const MainFailures.serverfailure());
     }
   }
