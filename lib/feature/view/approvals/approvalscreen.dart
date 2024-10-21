@@ -1688,7 +1688,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingCustomerFOCApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>
@@ -1765,7 +1766,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingOverRideApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>
@@ -1842,7 +1844,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingSampleApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>

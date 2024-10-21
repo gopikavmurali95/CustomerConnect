@@ -42,6 +42,12 @@ class ApprovalCountModel {
   String? voidTransactionHead;
   @JsonKey(name: 'UnschVisit')
   String? unschVisit;
+  @JsonKey(name: 'PendingSampleApprovalHeader')
+  String? pendingSampleApprovalHeader;
+  @JsonKey(name: 'PendingCustomerFOCApprovalHeader')
+  String? pendingCustomerFOCApprovalHeader;
+  @JsonKey(name: 'PendingOverRideApprovalHeader')
+  String? pendingOverRideApprovalHeader;
 
   ApprovalCountModel(
       {this.pendingReturnHeader,
@@ -58,7 +64,10 @@ class ApprovalCountModel {
       this.pendingCreditNoteReqHeader,
       this.pendingPartialDeliveryHeader,
       this.pendingReturnRequestSc,
-      this.inventoryReconfirm});
+      this.inventoryReconfirm,
+      this.pendingSampleApprovalHeader,
+      this.pendingCustomerFOCApprovalHeader,
+      this.pendingOverRideApprovalHeader});
 
   factory ApprovalCountModel.fromJson(Map<String, dynamic> json) {
     return _$ApprovalCountModelFromJson(json);

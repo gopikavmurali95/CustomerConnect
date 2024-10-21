@@ -447,35 +447,6 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                             .w500,
                                                                   ),
                                                                 ),
-                                                                /* Row(
-                                                                  children: [
-                                                                    Text(
-                                                                      '${headers[index].cusCode} - ',
-                                                                      style: kfontstyle(
-                                                                          fontSize: 12.sp,
-                                                                          color: const Color(
-                                                                            0xff2C6B9E,
-                                                                          ),
-                                                                          fontWeight: FontWeight.w500),
-                                                                    ),
-                                                                    Expanded(
-                                                                      child:
-                                                                          Text(
-                                                                        overflow:
-                                                                            TextOverflow.ellipsis,
-                                                                        selectedLocale?.languageCode == "en"
-                                                                            ? headers[index].cusName ??
-                                                                                ''
-                                                                            : headers[index].arcusName ??
-                                                                                '',
-                                                                        style: kfontstyle(
-                                                                            fontSize:
-                                                                                12.sp,
-                                                                            color: const Color(0xff413434)),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ), */
                                                                 RichText(
                                                                   text: TextSpan(
                                                                       style: DefaultTextStyle.of(context).style.copyWith(
@@ -717,7 +688,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                       context: context,
                                                                                       builder: (context) => CupertinoAlertDialog(
                                                                                         title: Text(AppLocalizations.of(context)!.alert),
-                                                                                        content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                        content:const Text('Do you want to reject this journey plan'),
                                                                                         actions: [
                                                                                           TextButton(
                                                                                             onPressed: () {

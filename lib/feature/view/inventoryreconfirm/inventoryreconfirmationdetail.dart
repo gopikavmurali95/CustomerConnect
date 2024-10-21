@@ -1164,7 +1164,7 @@ class _InventoryReconfirmationDetailScreenState
                                       ? Colors.green.shade300
                                       : Colors.grey[300],
                                   onPressed: () {
-                                    if (widget.header.iahStatus == 'Pending') {
+                                    if (widget.header.iahStatus == 'Pending' || widget.header.iahStatus!.isEmpty) {
                                       if (approvedProducts.contains(null)) {
                                         showCupertinoDialog(
                                           context: context,

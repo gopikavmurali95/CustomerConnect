@@ -135,7 +135,7 @@ class InsightArListWidget extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        headers[index].balanceAmount ?? '',
+                                        headers[index].collectedAmount ?? '',
                                         style: kfontstyle(
                                             fontSize: 12.sp,
                                             fontWeight: FontWeight.w500),
