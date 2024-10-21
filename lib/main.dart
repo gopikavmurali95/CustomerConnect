@@ -35,6 +35,7 @@ import 'package:customer_connect/feature/state/bloc/cusinscustomerscount/cus_ins
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstanding/cus_out_standing_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusoutstandingcount/cus_out_standing_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/cusoverrideapproval/customer_override_approval_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromodetail/cus_promo_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
@@ -45,6 +46,7 @@ import 'package:customer_connect/feature/state/bloc/customerfocdetailbloc/custom
 import 'package:customer_connect/feature/state/bloc/customerfocheaderbloc/customer_foc_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerfocrejection/cusromer_foc_rejection_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customeroverrideapprovreject/override_approve_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
@@ -791,6 +793,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<AutoUpdateBloc>(),
         ),
+        BlocProvider(
+            create: (context) => getit<CustomerOverrideApprovalBlocBloc>()),
         BlocProvider<UpdateDownloadPercentageCubit>(
           create: (context) => UpdateDownloadPercentageCubit(),
         ),
@@ -811,6 +815,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CustomerFocDetailBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<OverrideApproveRejectBloc>(),
+         
         ),
         BlocProvider(
           create: (context) => getit<CustomerFocApprovalBloc>(),

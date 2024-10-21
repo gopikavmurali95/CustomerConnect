@@ -9,9 +9,11 @@ import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscre
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
 import 'package:customer_connect/feature/view/customerfoc/customerfocheader.dart';
+import 'package:customer_connect/feature/view/customeroverrideapproval/cusoverideheader.dart';
 import 'package:customer_connect/feature/view/disputenote/disputenoteapprovalheader.dart';
 import 'package:customer_connect/feature/view/fieldserviceinvoice/fieldserviceinoice.dart';
 import 'package:customer_connect/feature/view/freesample/freesampleheaderscreen.dart';
+// import 'package:customer_connect/feature/view/freesample/freesampleheaderscreen.dart';
 import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmheaderscreen.dart';
 import 'package:customer_connect/feature/view/journeyplan/journeyplanheaderscreen.dart';
 import 'package:customer_connect/feature/view/loadrequest/loadrequestheaderscreen.dart';
@@ -1641,8 +1643,9 @@ class ApprovalScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                       CustomerFocHeaderScreen(user: user,)),
+                                  builder: (context) => CustomerFocHeaderScreen(
+                                        user: user,
+                                      )),
                             );
                           },
                           child: Container(
@@ -1685,7 +1688,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingCustomerFOCApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>
@@ -1713,12 +1717,14 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            /*  Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const UnScheduledVisitScreen()),
-                            ); */
+                                      CustomerOverrideApprovalHeaderScreen(
+                                        user: user,
+                                      )),
+                            );
                           },
                           child: Container(
                             //height: 50,
@@ -1760,7 +1766,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingOverRideApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>
@@ -1837,7 +1844,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingSampleApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>

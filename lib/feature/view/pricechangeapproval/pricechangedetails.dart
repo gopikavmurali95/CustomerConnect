@@ -1188,7 +1188,8 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         child:
                                                                             Container(
                                                                           height:
-                                                                              30.h,
+                                                                              32.h,
+                                                                             // width: 100,
                                                                           decoration: BoxDecoration(
                                                                               color: Colors.white,
                                                                               border: Border.all(color: Colors.grey.shade200),
@@ -1203,9 +1204,10 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
-                                                                            child:
-                                                                                Text(pdet[index].reason ?? ''),
+                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
+                                                                            child: Text(pdet[index].reason == null || pdet[index].reason!.isEmpty
+                                                                                ? "No reason found"
+                                                                                : pdet[index].reason ?? '',style: const TextStyle(fontSize: 11),),
                                                                           ),
                                                                         ),
                                                                       )

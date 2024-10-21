@@ -43,11 +43,13 @@ List<InventoryReconfirmPrdModel?> approvedProducts = [];
 List<bool?> statuslist = [];
 Timer? debounce;
 TextEditingController _inventoryDetailCtrl = TextEditingController();
+int loadingCount = 0;
 
 class _InventoryReconfirmationDetailScreenState
     extends State<InventoryReconfirmationDetailScreen> {
   @override
   void initState() {
+    loadingCount = 0;
     approvedProducts.clear();
     context
         .read<InventoryReconfirmDetailBloc>()
@@ -1056,7 +1058,9 @@ class _InventoryReconfirmationDetailScreenState
                                                                                       ? true
                                                                                       : false,
                                                                               groupValue: false,
-                                                                              onChanged: (value) {},
+                                                                              onChanged: (value) {
+                                                                                // statuslist[index] = true;
+                                                                              },
                                                                             ),
                                                                             Text(
                                                                               AppLocalizations.of(context)!.reject,
@@ -1160,7 +1164,7 @@ class _InventoryReconfirmationDetailScreenState
                                       ? Colors.green.shade300
                                       : Colors.grey[300],
                                   onPressed: () {
-                                    if (widget.header.iahStatus == 'Pending') {
+                                    if (widget.header.iahStatus == 'Pending' || widget.header.iahStatus!.isEmpty) {
                                       if (approvedProducts.contains(null)) {
                                         showCupertinoDialog(
                                           context: context,
@@ -1233,6 +1237,7 @@ class _InventoryReconfirmationDetailScreenState
                                               ),
                                               TextButton(
                                                 onPressed: () {
+                                                  loadingCount = 0;
                                                   setState(() {});
                                                   Navigator.pop(context);
                                                   // log(jsonEncode(

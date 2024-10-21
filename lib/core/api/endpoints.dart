@@ -203,3 +203,5 @@ const freesampleApprovalHeaderUrl =
 const freesampleDetailUrl = 'CusFreeSampleApproval/getFreeSampleDetailList';
 const submitfreesampleurl = 'CusFreeSampleApproval/PostFreeSamplApproval';
 const freesampleReasonUrl = 'CusFreeSampleApproval/GetFreeSampleReason';
+const cusOverrideApprovalUrl = 'CusFreeSampleApproval/GetOverRideDetails';
+const cusOverApprovRejectUrl = 'CusFreeSampleApproval/PostOverRideApproveReject';
