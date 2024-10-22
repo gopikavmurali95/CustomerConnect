@@ -14,6 +14,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -611,25 +612,39 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                       return state.when(
                         getDisputeNoteDetailState: (details) => details == null
                             ? const SizedBox.shrink()
-                            : Visibility(
-                                visible: widget.disputenote.status == 'Pending'
-                                    ? true
-                                    : false,
-                                child: SizedBox(
-                                  // height: 90.h,
-                                  width: double.infinity,
-                                  child: Column(
-                                    children: [
-                                      Padding(
+                            : SizedBox(
+                                // height: 90.h,
+                                width: double.infinity,
+                                child: Column(
+                                  children: [
+                                    Visibility(
+                                      visible: ((widget.disputenote.status !=
+                                                  'Pending') &&
+                                              (widget.disputenote.drhRemarks ==
+                                                  ''))
+                                          ? false
+                                          : true,
+                                      child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 20,
+                                          vertical: 5
                                         ),
                                         child: TextFormField(
-                                          controller: _remarksctrls,
+                                          controller:
+                                              widget.disputenote.status ==
+                                                      'Pending'
+                                                  ? _remarksctrls
+                                                  : TextEditingController(
+                                                      text: widget.disputenote
+                                                          .drhRemarks),
                                           enabled: widget.disputenote.status ==
                                                   'Pending'
                                               ? true
                                               : false,
+                                              style: kfontstyle(
+                                        fontSize: 11.sp,
+                                        color: Colors.black
+                                      ),
                                           maxLength: 200,
                                           maxLines: null,
                                           decoration: InputDecoration(
@@ -638,11 +653,11 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                     .remarks,
                                             hintStyle: kfontstyle(
                                               fontSize: 12.sp,
-                                              color:
-                                                  widget.disputenote.status ==
-                                                          'Pending'
-                                                      ? Colors.red.shade300
-                                                      : Colors.grey,
+                                              color: Colors.red.shade300,
+                                              /* widget.disputenote.status ==
+                                                        'Pending'
+                                                    ? Colors.red.shade300
+                                                    : Colors.grey, */
                                             ),
                                             border: UnderlineInputBorder(
                                               borderSide: BorderSide(
@@ -659,7 +674,13 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                           ),
                                         ),
                                       ),
-                                      Padding(
+                                    ),
+                                    Visibility(
+                                      visible:
+                                          widget.disputenote.status == 'Pending'
+                                              ? true
+                                              : false,
+                                      child: Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 20),
                                         child: Row(
@@ -751,9 +772,9 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                             )
                                           ],
                                         ),
-                                      )
-                                    ],
-                                  ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
                         getdisputenoteDetailFailedState: () =>

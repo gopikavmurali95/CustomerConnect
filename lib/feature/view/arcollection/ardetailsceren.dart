@@ -72,41 +72,6 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                     children: [
                       Text(widget.arheader.arhArNumber ?? '',
                           style: blueTextStyle()),
-                      /* Row(
-                        children: [
-                          Text(
-                            '${widget.arheader.cshCode} - ',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              color: const Color(0xff2C6B9E),
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              overflow: TextOverflow.ellipsis,
-                              widget.arheader.cshName ?? '',
-                              style: subTitleTextStyle(),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '${widget.arheader.cusCode} - ',
-                            style: subTitleTextStyle(),
-                          ),
-                          Expanded(
-                            child: Text(
-                              selectedLocale?.languageCode == "en"
-                                  ? widget.arheader.cusName ?? ''
-                                  : widget.arheader.arcusName ?? '',
-                              overflow: TextOverflow.ellipsis,
-                              style: subTitleTextStyle(),
-                            ),
-                          ),
-                        ],
-                      ), */
                       RichText(
                         text: TextSpan(
                             style: DefaultTextStyle.of(context).style.copyWith(
