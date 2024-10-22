@@ -5,11 +5,11 @@ part 'cus_override_approval_model.g.dart';
 @JsonSerializable()
 class CusOverrideApprovalModel {
   @JsonKey(name: 'ooa_ID')
-  int? ooaId;
+  String? ooaId;
   @JsonKey(name: 'ooa_cse_ID')
-  int? ooaCseId;
+  String? ooaCseId;
   @JsonKey(name: 'ooa_udp_ID')
-  int? ooaUdpId;
+  String? ooaUdpId;
   @JsonKey(name: 'rot_Code')
   String? rotCode;
   @JsonKey(name: 'rot_Name')
@@ -19,19 +19,19 @@ class CusOverrideApprovalModel {
   @JsonKey(name: 'cus_Name')
   String? cusName;
   @JsonKey(name: 'ooa_TransID')
-  int? ooaTransId;
+  String? ooaTransId;
   @JsonKey(name: 'ooa_Type')
   String? ooaType;
   @JsonKey(name: 'TotalInvAmt')
-  int? totalInvAmt;
+  String? totalInvAmt;
   @JsonKey(name: 'AvailableCreditLimit')
-  int? availableCreditLimit;
+  String? availableCreditLimit;
   @JsonKey(name: 'TotalCreditLimit')
-  int? totalCreditLimit;
+  String? totalCreditLimit;
   @JsonKey(name: 'TotalOutstanding')
-  int? totalOutstanding;
+  String? totalOutstanding;
   @JsonKey(name: 'TotalCreditDays')
-  int? totalCreditDays;
+  String? totalCreditDays;
   @JsonKey(name: 'ooa_ApprovalStatus')
   String? ooaApprovalStatus;
   @JsonKey(name: 'CreatedBy')
@@ -45,9 +45,9 @@ class CusOverrideApprovalModel {
   @JsonKey(name: 'Status')
   String? status;
   @JsonKey(name: 'ooa_CurrentLevel')
-  int? ooaCurrentLevel;
+  String? ooaCurrentLevel;
   @JsonKey(name: 'ooa_wfm_ID')
-  int? ooaWfmId;
+  String? ooaWfmId;
 
   CusOverrideApprovalModel({
     this.ooaId,

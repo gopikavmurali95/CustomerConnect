@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
+import 'package:customer_connect/feature/data/models/cus_override_approval_model/cus_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/customer_override_approval_model/customer_override_approval_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,9 +18,9 @@ class CustomerOverrideApprovalBlocBloc extends Bloc<
   CustomerOverrideApprovalBlocBloc(this.overrideRepo)
       : super(CustomerOverrideApprovalBlocState.initial()) {
     on<GetCusOverrideEvent>((event, emit) async {
-      List<CustomerOverrideApprovalModel> searchItems = [];
+      List<CusOverrideApprovalModel> searchItems = [];
 
-      Either<MainFailures, List<CustomerOverrideApprovalModel>> overridecus =
+      Either<MainFailures, List<CusOverrideApprovalModel>> overridecus =
           await overrideRepo.approveOverrideCustomer(event.statusvalue);
 
       emit(overridecus.fold((l) => const CusOverrideApprovalFailedState(), (r) {
@@ -29,15 +30,15 @@ class CustomerOverrideApprovalBlocBloc extends Bloc<
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                element.flexiField1!
+                element.cusCode!
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                element.flexiField2!
+                element.cusName!
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()) ||
-                element.flexiField3!
+                element.ooaType!
                     .toLowerCase()
                     .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()))

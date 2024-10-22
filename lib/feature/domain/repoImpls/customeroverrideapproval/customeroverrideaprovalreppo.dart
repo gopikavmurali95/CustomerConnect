@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
+import 'package:customer_connect/feature/data/models/cus_override_approval_model/cus_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/customer_override_approval_model/customer_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/overide_approv_reject_model/overide_approv_reject_model.dart';
 import 'package:dartz/dartz.dart';
@@ -13,19 +14,20 @@ import 'package:dio/dio.dart';
 @LazySingleton(as: ICustomerOverrideApprovalRepo)
 class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
   @override
-  Future<Either<MainFailures, List<CustomerOverrideApprovalModel>>>
+  Future<Either<MainFailures, List<CusOverrideApprovalModel>>>
       approveOverrideCustomer(String statusValue) async {
     try {
       Dio dio = Dio();
       final response = await dio.post(approvalBaseUrl + cusOverrideApprovalUrl,
           data: {"Status_Value": statusValue});
+          log("status value over: $statusValue");
       if (response.statusCode == 200) {
         log("customer override: ${response.data}");
         Map<String, dynamic> json = jsonDecode(response.data);
         final List<dynamic> overrideData = json['result'];
-        List<CustomerOverrideApprovalModel> override = overrideData
-            .map<CustomerOverrideApprovalModel>(
-                (json) => CustomerOverrideApprovalModel.fromJson(json))
+        List<CusOverrideApprovalModel> override = overrideData
+            .map<CusOverrideApprovalModel>(
+                (json) => CusOverrideApprovalModel.fromJson(json))
             .toList();
         return right(override);
       } else {
@@ -45,8 +47,8 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
     try {
       Dio dio = Dio();
       final response = await dio.post(approvalBaseUrl + cusOverApprovRejectUrl,
-          data: {"ooaID": ooaId, "UserID": userId, "status": status});
-
+          data: {"ooa_ID": ooaId, "UserID": userId, "status": status});
+       log("override ooaID: $ooaId, UserID: $userId, status: $status");
       if (response.statusCode == 200) {
         log("override approve:${response.data}");
         Map<String, dynamic> json = jsonDecode(response.data);

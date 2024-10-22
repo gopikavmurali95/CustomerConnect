@@ -45,6 +45,7 @@ import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins
 import 'package:customer_connect/feature/data/models/cus_items_model/cus_items_model.dart';
 import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_outstanding_count_model/cus_outstanding_count_model.dart';
+import 'package:customer_connect/feature/data/models/cus_override_approval_model/cus_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promo_in_model/cus_promo_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promotion_detail_model/cus_promotion_detail_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
@@ -808,7 +809,7 @@ abstract class IAutoUpdateRepo {
 }
 
 abstract class ICustomerOverrideApprovalRepo {
-  Future<Either<MainFailures, List<CustomerOverrideApprovalModel>>>
+  Future<Either<MainFailures, List<CusOverrideApprovalModel>>>
       approveOverrideCustomer(String statusValue);
 
   Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject(
@@ -827,6 +828,8 @@ abstract class IFreeSampleApprovalRepo {
   Future<Either<MainFailures, List<FreeSampleResonModel>>> getFreeSamplereasons(
       String userID, String rsnType);
 }
+
+
 
 abstract class ICustomerFocRepo {
   Future<Either<MainFailures, List<CustomerFocHeaderModel>>> getHeaderList(

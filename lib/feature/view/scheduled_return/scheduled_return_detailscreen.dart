@@ -105,20 +105,8 @@ class _ScheduledReturnDetailScreenState
           style: appHeading(),
         ),
       ),
-      body: BlocListener<NavigatetoBackCubit, NavigatetoBackState>(
-        listener: (context, state) {
-          state.when(
-            navigateToBackScreen: (popfromscreen) {
-              log(popfromscreen.toString());
-              if (popfromscreen == true) {
-                Navigator.pop(context);
-                // context.read<NavigatetoBackCubit>().cancelPop(false);
-              }
-            },
-          );
-        },
-        child: PopScope(
-          canPop:
+      body: PopScope(
+         canPop:
               /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
           onPopInvoked: (didPop) {
             _searchctrls.clear();
@@ -135,6 +123,18 @@ class _ScheduledReturnDetailScreenState
             } else {
               context.read<NavigatetoBackCubit>().popFromScreen(true);
             } */
+          },
+        child: BlocListener<NavigatetoBackCubit, NavigatetoBackState>(
+          listener: (context, state) {
+            state.when(
+              navigateToBackScreen: (popfromscreen) {
+                log(popfromscreen.toString());
+                if (popfromscreen == true) {
+                  Navigator.pop(context);
+                  // context.read<NavigatetoBackCubit>().cancelPop(false);
+                }
+              },
+            );
           },
           child: BlocConsumer<SchduledReturnApprovalBloc,
               SchduledReturnApprovalState>(
@@ -348,7 +348,7 @@ class _ScheduledReturnDetailScreenState
                                     onPressed: () {
                                       if (_searchctrls.text.isNotEmpty) {
                                         _searchctrls.clear();
-
+          
                                         context
                                             .read<ScheduledReturnDetailsBloc>()
                                             .add(
@@ -447,16 +447,16 @@ class _ScheduledReturnDetailScreenState
                           getScheduledReturnDetailState: (details) {
                             if (details != null) {
                               // Navigator.pop(context);
-
+          
                               // _totalcount = details.length;
-
+          
                               approvedProducts = List.generate(
                                   details.length, (index) => null);
                               statuslist.clear();
                               context
                                   .read<RouteForScCubit>()
                                   .getavailableroutes();
-
+          
                               statuslist /* length = details.length; */
                                   = List.generate(
                                       details.length, (index) => null);
@@ -464,7 +464,7 @@ class _ScheduledReturnDetailScreenState
                                   const GetApprovalReasonsEvent(
                                       rsnType: 'rsnType'));
                               selectedRoute = '-1';
-
+          
                               for (int i = 0; i < details.length; i++) {
                                 if (details[i].status!.isNotEmpty) {
                                   if (details[i].status == 'Approved') {
@@ -655,13 +655,13 @@ class _ScheduledReturnDetailScreenState
                                                                               rsnArName: AppLocalizations.of(context)!.selectReason,
                                                                               rsnType: 'null')
                                                                         ];
-
+          
                                                                         selectedresons = List.generate(
                                                                             details
                                                                                 .length,
                                                                             (index) =>
                                                                                 '-1');
-
+          
                                                                         availableresons
                                                                             .addAll(resons);
                                                                       }
@@ -696,7 +696,7 @@ class _ScheduledReturnDetailScreenState
                                                                               //         .size
                                                                               //         .width /
                                                                               //     3,
-
+          
                                                                               decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                                 BoxShadow(
                                                                                     // ignore: use_full_hex_values_for_flutter_colors
@@ -708,7 +708,7 @@ class _ScheduledReturnDetailScreenState
                                                                                 elevation: 0,
                                                                                 // isExpanded:
                                                                                 //     true,
-
+          
                                                                                 dropdownColor: Colors.white,
                                                                                 value: availableresons[0].rsnId ?? '',
                                                                                 style: kfontstyle(color: Colors.black),
@@ -756,7 +756,7 @@ class _ScheduledReturnDetailScreenState
                                                             // SizedBox(
                                                             //   width: 10.w,
                                                             // ),
-
+          
                                                             Row(
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
@@ -1088,7 +1088,7 @@ class _ScheduledReturnDetailScreenState
                             ),
                           ),
                         ), */
-
+          
                         /* widget.scheduledreturn.status == "Pending"
                             ? Expanded(
                                 child: 
@@ -1111,7 +1111,7 @@ class _ScheduledReturnDetailScreenState
                                       state.when(
                                         getAllRoutesForScReturnState: (routes) {
                                           availableroutes.clear();
-
+          
                                           availableroutes = [
                                             RouteModel(
                                                 rotId: '-1',
@@ -1121,14 +1121,14 @@ class _ScheduledReturnDetailScreenState
                                                     ? 'Select a Route'
                                                     : 'حدد الطريق')
                                           ];
-
+          
                                           if (routes != null) {
                                             availableroutes.addAll(routes);
                                           }
                                         },
                                         getRoutesFailedState: () {
                                           availableroutes.clear();
-
+          
                                           availableroutes = [
                                             RouteModel(
                                                 rotId: '-1',
@@ -1163,7 +1163,7 @@ class _ScheduledReturnDetailScreenState
                                                           //         .size
                                                           //         .width /
                                                           //     3,
-
+          
                                                           decoration: BoxDecoration(
                                                               color:
                                                                   Colors.white,
@@ -1191,10 +1191,10 @@ class _ScheduledReturnDetailScreenState
                                                             elevation: 0,
                                                             // isExpanded:
                                                             //     true,
-
+          
                                                             dropdownColor:
                                                                 Colors.white,
-
+          
                                                             decoration:
                                                                 InputDecoration(
                                                               filled: true,
@@ -1248,7 +1248,7 @@ class _ScheduledReturnDetailScreenState
                                                                         context)
                                                                     .size
                                                                     .width,
-
+          
                                                             items: availableroutes
                                                                 .map((RouteModel
                                                                     item) {
@@ -1382,7 +1382,7 @@ class _ScheduledReturnDetailScreenState
                                                               SchduledReturnApprovalBloc>()
                                                           .add(
                                                               const AddScheduledReturnApprovalLoadingEvent());
-
+          
                                                       context
                                                           .read<
                                                               SchduledReturnApprovalBloc>()
