@@ -641,6 +641,10 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                   'Pending'
                                               ? true
                                               : false,
+                                              style: kfontstyle(
+                                        fontSize: 11.sp,
+                                        color: Colors.black
+                                      ),
                                           maxLength: 200,
                                           maxLines: null,
                                           decoration: InputDecoration(

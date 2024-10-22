@@ -203,7 +203,7 @@ class _CustInsightPromotionDetailsState
                               backgroundColor: const Color(0xffB3DAF7),
                               child: Center(
                                 child: Text(
-                                  widget.header.pName!.split('').toList()[0],
+                                  widget.header.prmName!.split('').toList()[0],
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
@@ -220,7 +220,7 @@ class _CustInsightPromotionDetailsState
                               children: [
                                 Text(
                                   selectedLocale?.languageCode == "en"
-                                      ? widget.header.pName ?? ''
+                                      ? widget.header.prmName ?? ''
                                       : widget.header.arPName ?? '',
                                   style: blueTextStyle(),
                                 ),
