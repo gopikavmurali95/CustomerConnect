@@ -114,29 +114,30 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
               searchQuery: _outstandingHeaderSearchCtrl.text,
               pageNum: '1'),
           '');
-    }
-    outStandingscrollController.addListener(() {
-      if (outStandingscrollController.position.atEdge) {
-        if (outStandingscrollController.position.pixels != 0) {
-          context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
-              OutStandingHeaderModel(
-                  area: '',
-                  customer: '',
-                  fromDate:
-                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                  outlet: '',
-                  route: '',
-                  subArea: '',
-                  toDate:
-                      '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                  userID: widget.user.usrId,
-                  searchQuery: _outstandingHeaderSearchCtrl.text,
-                  pageNum: pagecounter.toString()),
-              '');
-          pagecounter++;
+    } else {
+      outStandingscrollController.addListener(() {
+        if (outStandingscrollController.position.atEdge) {
+          if (outStandingscrollController.position.pixels != 0) {
+            context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
+                OutStandingHeaderModel(
+                    area: '',
+                    customer: '',
+                    fromDate:
+                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                    outlet: '',
+                    route: '',
+                    subArea: '',
+                    toDate:
+                        '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                    userID: widget.user.usrId,
+                    searchQuery: _outstandingHeaderSearchCtrl.text,
+                    pageNum: pagecounter.toString()),
+                '');
+            pagecounter++;
+          }
         }
-      }
-    });
+      });
+    }
   }
 
   @override

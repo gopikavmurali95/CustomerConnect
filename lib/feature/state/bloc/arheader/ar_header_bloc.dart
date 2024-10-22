@@ -35,6 +35,10 @@ class ArHeaderBloc extends Bloc<ArHeaderEvent, ArHeaderState> {
                 element.cshCode!
                     .toLowerCase()
                     .toUpperCase()
+                    .contains(event.searchQuery.toUpperCase()) ||
+                element.cusCode!
+                    .toLowerCase()
+                    .toUpperCase()
                     .contains(event.searchQuery.toUpperCase()))
             .toList();
         return ArHeaderSuccessState(

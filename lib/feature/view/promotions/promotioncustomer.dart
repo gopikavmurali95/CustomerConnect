@@ -108,7 +108,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                 children: [
                                   Text(
                                     selectedLocale?.languageCode == "en"
-                                        ? widget.promotion.pName ?? ''
+                                        ? widget.promotion.prmName ?? ''
                                         : widget.promotion.arPname ?? '',
                                     //widget.promotion.pName!,
                                     style: blueTextStyle(),

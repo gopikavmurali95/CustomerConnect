@@ -95,7 +95,7 @@ class PromotionDetails extends StatelessWidget {
                                     children: [
                                       Text(
                                         selectedLocale?.languageCode == "en"
-                                            ? promotion.pName ?? ''
+                                            ? promotion.prmName ?? ''
                                             : promotion.arPname ?? '',
                                         // promotion.pName ?? '',
                                         style: blueTextStyle(),

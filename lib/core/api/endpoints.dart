@@ -1,7 +1,7 @@
 //Development
 
-//const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
-//const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+// const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+// const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
 //Demo
 const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
@@ -9,9 +9,6 @@ const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // Demo
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
-// Demo
-//const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
-//const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 
 //Meliha Diary UAT
 // const baseUrl = "http://93.177.125.163:100/WS/";
@@ -197,3 +194,15 @@ const unScheduledVisitRejectUrl =
     'UnshceduledCusVisitApproval/RejectUnSchCusVisit';
 const autoUpdateUrl = 'AppService/SelVersionDetails';
 const cusInsightCustomersCount = 'CusInsightshome/SelectCustomerInsightCount';
+const customerFocHeaderUrl = 'CusFreeSampleApproval/getFOCHeaderList';
+const customerFocDetailUrl = 'CusFreeSampleApproval/getFOCDetailList';
+const customerFocApprovalUrl = 'CusFreeSampleApproval/PostFOCApproval';
+const customerFocRejectUrl = 'CusFreeSampleApproval/PostFOCRejection';
+const freesampleApprovalHeaderUrl =
+    'CusFreeSampleApproval/GetFreeSampleApprovalHeader';
+const freesampleDetailUrl = 'CusFreeSampleApproval/getFreeSampleDetailList';
+const submitfreesampleurl = 'CusFreeSampleApproval/PostFreeSamplApproval';
+const freesampleReasonUrl = 'CusFreeSampleApproval/GetFreeSampleReason';
+const cusOverrideApprovalUrl = 'CusFreeSampleApproval/GetOverRideDetails';
+const cusOverApprovRejectUrl =
+    'CusFreeSampleApproval/PostOverRideApproveReject';

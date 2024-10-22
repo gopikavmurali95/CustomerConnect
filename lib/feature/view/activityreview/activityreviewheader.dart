@@ -140,6 +140,7 @@ class _ActivityReviewHeaderScreenState
                           spreadRadius: 0.4)
                     ]),
                 child: TextFormField(
+                  controller: activityreviewHeaderctrl,
                   onChanged: (value) {
                     debounce = Timer(
                         const Duration(
@@ -164,8 +165,9 @@ class _ActivityReviewHeaderScreenState
                               .add(const ClearActivityReviewHeaderEvent());
 
                           context.read<ActivityReviewHeaderBloc>().add(
-                              const GetActivityReviewHeadersEvent(
-                                  rotTyp: 'AL ', searchQuery: ''));
+                              GetActivityReviewHeadersEvent(
+                                  rotTyp: selectedActivityFilter,
+                                  searchQuery: ''));
                         },
                         child: const Icon(
                           Icons.close,
