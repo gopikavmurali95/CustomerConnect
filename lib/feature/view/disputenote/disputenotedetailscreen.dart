@@ -626,9 +626,7 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                           : true,
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                          horizontal: 20,
-                                          vertical: 5
-                                        ),
+                                            horizontal: 20, vertical: 5),
                                         child: TextFormField(
                                           controller:
                                               widget.disputenote.status ==
@@ -641,10 +639,9 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                                                   'Pending'
                                               ? true
                                               : false,
-                                              style: kfontstyle(
-                                        fontSize: 11.sp,
-                                        color: Colors.black
-                                      ),
+                                          style: kfontstyle(
+                                              fontSize: 11.sp,
+                                              color: Colors.black),
                                           maxLength: 200,
                                           maxLines: null,
                                           decoration: InputDecoration(

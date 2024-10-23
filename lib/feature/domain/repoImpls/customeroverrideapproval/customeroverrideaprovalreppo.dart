@@ -20,7 +20,7 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
       Dio dio = Dio();
       final response = await dio.post(approvalBaseUrl + cusOverrideApprovalUrl,
           data: {"Status_Value": statusValue});
-          log("status value over: $statusValue");
+      log("status value over: $statusValue");
       if (response.statusCode == 200) {
         log("customer override: ${response.data}");
         Map<String, dynamic> json = jsonDecode(response.data);
@@ -48,7 +48,7 @@ class CustomerOverideAppproval implements ICustomerOverrideApprovalRepo {
       Dio dio = Dio();
       final response = await dio.post(approvalBaseUrl + cusOverApprovRejectUrl,
           data: {"ooa_ID": ooaId, "UserID": userId, "status": status});
-       log("override ooaID: $ooaId, UserID: $userId, status: $status");
+      log("override ooaID: $ooaId, UserID: $userId, status: $status");
       if (response.statusCode == 200) {
         log("override approve:${response.data}");
         Map<String, dynamic> json = jsonDecode(response.data);

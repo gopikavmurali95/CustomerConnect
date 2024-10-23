@@ -95,11 +95,12 @@ class _DailyActivityReviewDetailScreenState
         onPopInvoked: (didPop) {
           activityreviewHeaderctrl.clear();
           context
-        .read<ActivityReviewHeaderBloc>()
-        .add(const ClearActivityReviewHeaderEvent());
+              .read<ActivityReviewHeaderBloc>()
+              .add(const ClearActivityReviewHeaderEvent());
 
-    context.read<ActivityReviewHeaderBloc>().add(
-        const GetActivityReviewHeadersEvent(rotTyp: 'AL ', searchQuery: ''));
+          context.read<ActivityReviewHeaderBloc>().add(
+              const GetActivityReviewHeadersEvent(
+                  rotTyp: 'AL ', searchQuery: ''));
         },
         child: RefreshIndicator.adaptive(
           triggerMode: RefreshIndicatorTriggerMode.anywhere,
@@ -273,12 +274,12 @@ class _DailyActivityReviewDetailScreenState
                                           onTap: () {
                                             bool isAlreadyExpanded =
                                                 state.expandedList[index];
-        
+
                                             context
                                                 .read<
                                                     DailyActivityExpansionCubit>()
-                                                .expandTile(details.length, index,
-                                                    isAlreadyExpanded);
+                                                .expandTile(details.length,
+                                                    index, isAlreadyExpanded);
                                           },
                                           child: Column(
                                             mainAxisAlignment:
@@ -296,18 +297,20 @@ class _DailyActivityReviewDetailScreenState
                                                         const Duration(
                                                             milliseconds: 300),
                                                     child: Container(
-                                                      height: state.expandedList[
-                                                                  index] ==
-                                                              true
-                                                          ? 125.h
-                                                          : 40.h,
+                                                      height:
+                                                          state.expandedList[
+                                                                      index] ==
+                                                                  true
+                                                              ? 125.h
+                                                              : 40.h,
                                                       width: 10,
                                                       decoration: BoxDecoration(
                                                           color: const Color(
                                                               0xfffee8e0),
                                                           borderRadius:
                                                               BorderRadius
-                                                                  .circular(20)),
+                                                                  .circular(
+                                                                      20)),
                                                     ),
                                                   ),
                                                   SizedBox(
@@ -325,7 +328,8 @@ class _DailyActivityReviewDetailScreenState
                                                                       .start,
                                                               children: [
                                                                 Text(
-                                                                  selectedLocale?.languageCode ==
+                                                                  selectedLocale
+                                                                              ?.languageCode ==
                                                                           "en"
                                                                       ? details[index]
                                                                               .cusName ??
@@ -350,17 +354,16 @@ class _DailyActivityReviewDetailScreenState
                                                                 Row(
                                                                   children: [
                                                                     Expanded(
-                                                                      child: Text(
+                                                                      child:
+                                                                          Text(
                                                                         overflow:
-                                                                            TextOverflow
-                                                                                .ellipsis,
+                                                                            TextOverflow.ellipsis,
                                                                         "${AppLocalizations.of(context)!.start}:${details[index].startTime}|${AppLocalizations.of(context)!.end}:${details[index].endTime}",
                                                                         // 'Start: ${details[index].startTime} | End ${details[index].endTime}',
                                                                         style: kfontstyle(
-                                                                            fontSize: 10
-                                                                                .sp,
-                                                                            color:
-                                                                                const Color(0xff413434)),
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                            color: const Color(0xff413434)),
                                                                       ),
                                                                     ),
                                                                   ],
@@ -368,26 +371,24 @@ class _DailyActivityReviewDetailScreenState
                                                                 Row(
                                                                   children: [
                                                                     Expanded(
-                                                                      child: Text(
+                                                                      child:
+                                                                          Text(
                                                                         overflow:
-                                                                            TextOverflow
-                                                                                .ellipsis,
+                                                                            TextOverflow.ellipsis,
                                                                         "${AppLocalizations.of(context)!.duration}: ${details[index].duration}",
                                                                         //'Duration : ${details[index].duration}',
                                                                         style: kfontstyle(
-                                                                            fontSize: 10
-                                                                                .sp,
-                                                                            color:
-                                                                                const Color(0xff413434)),
+                                                                            fontSize:
+                                                                                10.sp,
+                                                                            color: const Color(0xff413434)),
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
                                                                 AnimatedSize(
-                                                                  duration:
-                                                                      const Duration(
-                                                                          milliseconds:
-                                                                              300),
+                                                                  duration: const Duration(
+                                                                      milliseconds:
+                                                                          300),
                                                                   curve: Curves
                                                                       .easeInOut,
                                                                   reverseDuration:
@@ -399,7 +400,8 @@ class _DailyActivityReviewDetailScreenState
                                                                     visible: state
                                                                             .expandedList[
                                                                         index],
-                                                                    child: Column(
+                                                                    child:
+                                                                        Column(
                                                                       children: [
                                                                         SizedBox(
                                                                           height:
@@ -408,12 +410,9 @@ class _DailyActivityReviewDetailScreenState
                                                                         Row(
                                                                           children: [
                                                                             Flexible(
-                                                                              flex:
-                                                                                  3,
-                                                                              fit:
-                                                                                  FlexFit.tight,
-                                                                              child:
-                                                                                  Container(
+                                                                              flex: 3,
+                                                                              fit: FlexFit.tight,
+                                                                              child: Container(
                                                                                 decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)), color: Color.fromARGB(255, 219, 242, 222)),
                                                                                 child: Padding(
                                                                                   padding: const EdgeInsets.all(8.0),
@@ -452,16 +451,12 @@ class _DailyActivityReviewDetailScreenState
                                                                               ),
                                                                             ),
                                                                             SizedBox(
-                                                                              width:
-                                                                                  6.w,
+                                                                              width: 6.w,
                                                                             ),
                                                                             Flexible(
-                                                                              flex:
-                                                                                  3,
-                                                                              fit:
-                                                                                  FlexFit.tight,
-                                                                              child:
-                                                                                  Container(
+                                                                              flex: 3,
+                                                                              fit: FlexFit.tight,
+                                                                              child: Container(
                                                                                 decoration: const BoxDecoration(
                                                                                   borderRadius: BorderRadius.all(Radius.circular(8)),
                                                                                   color: Color(0xfffbf4f4),
@@ -503,16 +498,12 @@ class _DailyActivityReviewDetailScreenState
                                                                               ),
                                                                             ),
                                                                             SizedBox(
-                                                                              width:
-                                                                                  6.w,
+                                                                              width: 6.w,
                                                                             ),
                                                                             Flexible(
-                                                                              flex:
-                                                                                  3,
-                                                                              fit:
-                                                                                  FlexFit.tight,
-                                                                              child:
-                                                                                  Container(
+                                                                              flex: 3,
+                                                                              fit: FlexFit.tight,
+                                                                              child: Container(
                                                                                 decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)), color: Color(0xfff4f8fb)),
                                                                                 child: Padding(
                                                                                   padding: const EdgeInsets.all(8.0),
@@ -539,7 +530,7 @@ class _DailyActivityReviewDetailScreenState
                                                                                       ),
                                                                                       Text(
                                                                                         "${AppLocalizations.of(context)!.cheque} & ${AppLocalizations.of(context)!.online}",
-        
+
                                                                                         // 'Cheque & online',
                                                                                         style: TextStyle(fontSize: 9.sp, color: Colors.black54),
                                                                                       ),

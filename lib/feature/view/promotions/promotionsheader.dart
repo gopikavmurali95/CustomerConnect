@@ -275,7 +275,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                     const Color(0xffB3DAF7),
                                                 child: Center(
                                                   child: Text(
-                                                    promoheader[index].prmName ==
+                                                    promoheader[index]
+                                                                .prmName ==
                                                             null
                                                         ? 'D'
                                                         : promoheader[index]

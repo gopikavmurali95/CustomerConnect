@@ -688,7 +688,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                       context: context,
                                                                                       builder: (context) => CupertinoAlertDialog(
                                                                                         title: Text(AppLocalizations.of(context)!.alert),
-                                                                                        content:const Text('Do you want to reject this journey plan'),
+                                                                                        content: const Text('Do you want to reject this journey plan'),
                                                                                         actions: [
                                                                                           TextButton(
                                                                                             onPressed: () {

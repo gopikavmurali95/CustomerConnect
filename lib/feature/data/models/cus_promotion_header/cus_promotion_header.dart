@@ -25,18 +25,17 @@ class CusPromotionHeader {
   @JsonKey(name: 'PrmName')
   String? prmName;
 
-  CusPromotionHeader({
-    this.id,
-    this.pName,
-    this.dateRange,
-    this.pCode,
-    this.qCode,
-    this.aCode,
-    this.qid,
-    this.aid,
-    this.arPName,
-    this.prmName
-  });
+  CusPromotionHeader(
+      {this.id,
+      this.pName,
+      this.dateRange,
+      this.pCode,
+      this.qCode,
+      this.aCode,
+      this.qid,
+      this.aid,
+      this.arPName,
+      this.prmName});
 
   factory CusPromotionHeader.fromJson(Map<String, dynamic> json) {
     return _$CusPromotionHeaderFromJson(json);

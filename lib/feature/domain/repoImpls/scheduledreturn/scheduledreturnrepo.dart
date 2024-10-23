@@ -5,6 +5,7 @@ import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/route_model/route_model.dart';
+import 'package:customer_connect/feature/data/models/schedule_return_approval_reason_model/schedule_return_approval_reason_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_detail_model/sheduled_return_detail_model.dart';
@@ -51,7 +52,7 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
       log("ReqID: $reqID");
 
       if (response.statusCode == 200) {
-        log(response.body);
+        log("sr details ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> detaildata = json['result'];
         List<SheduledReturnDetailModel> details = detaildata
@@ -79,6 +80,7 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
       );
 
       if (response.statusCode == 200) {
+        //log(" sr reason: ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> routedata = json['result'];
         List<RouteModel> routes = routedata
@@ -110,9 +112,9 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
         "ReturnID": approve.returnId,
         "RouteId": approve.routeId
       });
-
+      log("UserId: ${approve.userId}, ReturnID:${approve.returnId} RouteId:${approve.returnId}");
       if (response.statusCode == 200) {
-        log('Approve Response: ${response.body}');
+        log('sr Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final approve =
             ScheduledReturnApprovalOutModel.fromJson(json["result"][0]);
@@ -126,5 +128,32 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
       log('Approve error : $e');
       return left(const MainFailures.serverfailure());
     }
+  }
+
+  @override
+  Future<Either<MainFailures, List<ScheduleReturnApprovalReasonModel>>> 
+  getScheduleReturnReasons(String rsnType) async{
+    try {
+      final response =
+          await http.post(Uri.parse(approvalBaseUrl + scheduleReturnApprovalReasonUrl), );
+      if (response.statusCode == 200) {
+       log('sr reasonse response: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final List<dynamic> scheeduleReturnReason = json['result'];
+        List<ScheduleReturnApprovalReasonModel> scheduleReason =  scheeduleReturnReason
+            .map<ScheduleReturnApprovalReasonModel>(
+                (json) => ScheduleReturnApprovalReasonModel.fromJson(json))
+            .toList();
+        return right(scheduleReason);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: 'Something went Wrong'),
+        );
+      }
+    } catch (e) {
+      return left(const MainFailures.serverfailure());
+    }
+    
+   
   }
 }

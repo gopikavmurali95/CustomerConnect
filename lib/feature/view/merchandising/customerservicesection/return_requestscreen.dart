@@ -43,8 +43,9 @@ class _CreditNoteHeaderScreenState
               selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
           mode: 'AL'),
       MerchandisingStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Action Taken" : "تم اتخاذ الإجراء",
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "تم اتخاذ الإجراء",
           mode: 'AP'),
       MerchandisingStatusFilterModel(
           statusName:

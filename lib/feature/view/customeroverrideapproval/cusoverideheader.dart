@@ -66,21 +66,19 @@ class _CustomerOverrideApprovalHeaderScreenState
         .read<CustomerOverrideApprovalBlocBloc>()
         .add(const ClearCusOverrideEvent());
 
-    context
-        .read<CustomerOverrideApprovalBlocBloc>()
-        .add( GetCusOverrideEvent(statusvalue: 'P',
-         searchQuery: '', 
-         ooaID:'' , 
-         userID: '${widget.user.usrId}'
-            //userId: widget.user.usrId ?? '', searchQuery: ''
-            ));
+    context.read<CustomerOverrideApprovalBlocBloc>().add(GetCusOverrideEvent(
+        statusvalue: 'P',
+        searchQuery: '',
+        ooaID: '',
+        userID: '${widget.user.usrId}'
+        //userId: widget.user.usrId ?? '', searchQuery: ''
+        ));
 
     super.initState();
   }
 
   @override
   void dispose() {
-   
     super.dispose();
   }
 
@@ -109,9 +107,12 @@ class _CustomerOverrideApprovalHeaderScreenState
       ),
       body: PopScope(
         onPopInvoked: (didPop) {
-          context
-              .read<CustomerOverrideApprovalBlocBloc>()
-              .add(GetCusOverrideEvent(userID: widget.user.usrId ?? '', statusvalue: '', ooaID: '', searchQuery: ''));
+          context.read<CustomerOverrideApprovalBlocBloc>().add(
+              GetCusOverrideEvent(
+                  userID: widget.user.usrId ?? '',
+                  statusvalue: '',
+                  ooaID: '',
+                  searchQuery: ''));
         },
         child: Column(
           children: [
@@ -140,7 +141,9 @@ class _CustomerOverrideApprovalHeaderScreenState
                                       .add(const GetCusOverrideEvent(
                                           searchQuery: '',
                                           // userId: widget.user.usrId ?? ''
-                                          statusvalue: '', ooaID: '', userID: ''));
+                                          statusvalue: '',
+                                          ooaID: '',
+                                          userID: ''));
                                 }
                               },
                               icon: Icon(
@@ -183,7 +186,8 @@ class _CustomerOverrideApprovalHeaderScreenState
                       context
                           .read<CustomerOverrideApprovalBlocBloc>()
                           .add(GetCusOverrideEvent(
-                            searchQuery: value.trim(), statusvalue: '', ooaID: '', userID: '',
+                            searchQuery: value.trim(), statusvalue: '',
+                            ooaID: '', userID: '',
                             // userId: widget.user.usrId ?? ''
                           ));
                     });
@@ -242,7 +246,9 @@ class _CustomerOverrideApprovalHeaderScreenState
                               // userID: widget.user.usrId ?? '',
                               // mode: value,
                               searchQuery: '',
-                              statusvalue: value, ooaID: '', userID: ''),
+                              statusvalue: value,
+                              ooaID: '',
+                              userID: ''),
                         );
                   },
                 ),
@@ -295,7 +301,9 @@ class _CustomerOverrideApprovalHeaderScreenState
                 },
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Expanded(
                 child: BlocListener<CustomerOverrideApprovalBlocBloc,
                     CustomerOverrideApprovalBlocState>(
@@ -621,7 +629,8 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                     style: kfontstyle(
                                                                         fontSize: 10
                                                                             .sp,
-                                                                        color: const Color.fromARGB(
+                                                                        color: const Color
+                                                                            .fromARGB(
                                                                             255,
                                                                             89,
                                                                             89,
@@ -684,208 +693,237 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                       89,
                                                                       89)),
                                                             ),
-                                                             cusoverride[index].ooaApprovalStatus !='Pending'?
-                                                             const SizedBox.shrink():
-                                                            BlocConsumer<
-                                                                OverrideApproveRejectBloc,
-                                                                OverrideApproveRejectState>(
-                                                              listener:
-                                                                  (context,
-                                                                      state) {
-                                                                state.when(
-                                                                  getOverrideApprovalState:
-                                                                      (approve) {
-                                                                    if (approve !=
-                                                                        null) {
-                                                                      Navigator.pop(
-                                                                          context);
-                                                                      // if (isApproval) {
-                                                                      showCupertinoDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
-                                                                          title:
-                                                                              Text(AppLocalizations.of(context)!.alert),
-                                                                          content:
-                                                                              Text(approve.status ?? ''),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () {
-                                                                                context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(
-                                                                                  userId: widget.user.usrId ?? '', searchQuery: ''));
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: Text(AppLocalizations.of(context)!.proceed),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      );
-                                                                      // }
-                                                                    }
-                                                                  },
-                                                                  overrideCusFailedState:
-                                                                      () {
-                                                                    Navigator.pop(
-                                                                        context);
-                                                                    showCupertinoDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) =>
-                                                                              CupertinoAlertDialog(
-                                                                        title: Text(
-                                                                            AppLocalizations.of(context)!.alert),
-                                                                        content:
-                                                                            Text(AppLocalizations.of(context)!.somethingWentWrong),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed:
-                                                                                () {
-                                                                              context.read<AssetAddInApprovalHeaderBloc>().add(
-                                                                                    GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: ''),
-                                                                                  );
-                                                                              Navigator.pop(context);
-                                                                            },
-                                                                            child:
-                                                                                Text(AppLocalizations.of(context)!.ok),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                  overrideCusLoadingState:
-                                                                      () {
-                                                                    if (loadingCount ==
-                                                                        0) {
-                                                                      loadingCount =
-                                                                          1;
-                                                                      showCupertinoModalPopup(
-                                                                          context:
-                                                                              context,
-                                                                          barrierDismissible:
-                                                                              false,
-                                                                          builder: (context) =>
-                                                                              SizedBox(
-                                                                                height: MediaQuery.of(context).size.height,
-                                                                                width: MediaQuery.of(context).size.width,
-                                                                                child: const PopScope(
-                                                                                  canPop: true,
-                                                                                  child: CupertinoActivityIndicator(
-                                                                                    animating: true,
-                                                                                    color: Colors.red,
-                                                                                    radius: 30,
+                                                            cusoverride[index]
+                                                                        .ooaApprovalStatus !=
+                                                                    'Pending'
+                                                                ? const SizedBox
+                                                                    .shrink()
+                                                                : BlocConsumer<
+                                                                    OverrideApproveRejectBloc,
+                                                                    OverrideApproveRejectState>(
+                                                                    listener:
+                                                                        (context,
+                                                                            state) {
+                                                                      state
+                                                                          .when(
+                                                                        getOverrideApprovalState:
+                                                                            (approve) {
+                                                                          if (approve !=
+                                                                              null) {
+                                                                            Navigator.pop(context);
+                                                                            // if (isApproval) {
+                                                                            showCupertinoDialog(
+                                                                              context: context,
+                                                                              builder: (context) => CupertinoAlertDialog(
+                                                                                title: Text(AppLocalizations.of(context)!.alert),
+                                                                                content: Text(approve.status ?? ''),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '', searchQuery: ''));
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Text(AppLocalizations.of(context)!.proceed),
                                                                                   ),
-                                                                                ),
-                                                                              ));
-                                                                    }
-                                                                  },
-                                                                );
-                                                              },
-                                                              builder: (context,
-                                                                  state) {
-                                                                return Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    Transform
-                                                                        .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap:
-                                                                            () {
-                                                                          setState(
-                                                                              () {
-                                                                         
-                                                                            {
-                                                                              showCupertinoDialog(
-                                                                                context: context,
-                                                                                builder: (context) => CupertinoAlertDialog(
-                                                                                  title: Text(AppLocalizations.of(context)!.alert),
-                                                                                  content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        setState(() {});
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                      child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                    ),
-                                                                                    TextButton(
-                                                                                      onPressed: () {
-                                                                                        statuslist[index] = true;
-                                                                                        loadingCount = 0;
-                                                                                        setState(() {});
-                                                                                        context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
-                                                                                        context.read<OverrideApproveRejectBloc>().add(
-                                                                                              GetOverrideApproveRejectEvent(
-                                                                                                ooaID: '${cusoverride[index].ooaId}',
-                                                                                                 userId: '${widget.user.usrId}', 
-                                                                                                 status: 'A'
-                                                                                                  // approve: AssetAddApprovalInModel
-                                                                                                  // (reqId: headers[index].aahId,
-                                                                                                  // serialNum: _slNoCtrls[index].text,
-                                                                                                  //  userId: widget.user.usrId),
-                                                                                                  ),
-                                                                                            );
-
-                                                                                        Navigator.pop(context);
-                                                                                      },
-                                                                                    
-
-                                                                                      child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                            }
-                                                                          });
+                                                                                ],
+                                                                              ),
+                                                                            );
+                                                                            // }
+                                                                          }
                                                                         },
-                                                                        child:
-                                                                            Row(
-                                                                          children: [
-                                                                            Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                                return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
-                                                                              }),
-                                                                              /* activeColor: isselected == true
+                                                                        overrideCusFailedState:
+                                                                            () {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                          showCupertinoDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder: (context) =>
+                                                                                CupertinoAlertDialog(
+                                                                              title: Text(AppLocalizations.of(context)!.alert),
+                                                                              content: Text(AppLocalizations.of(context)!.somethingWentWrong),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () {
+                                                                                    context.read<AssetAddInApprovalHeaderBloc>().add(
+                                                                                          GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: ''),
+                                                                                        );
+                                                                                    Navigator.pop(context);
+                                                                                  },
+                                                                                  child: Text(AppLocalizations.of(context)!.ok),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                        overrideCusLoadingState:
+                                                                            () {
+                                                                          if (loadingCount ==
+                                                                              0) {
+                                                                            loadingCount =
+                                                                                1;
+                                                                            showCupertinoModalPopup(
+                                                                                context: context,
+                                                                                barrierDismissible: false,
+                                                                                builder: (context) => SizedBox(
+                                                                                      height: MediaQuery.of(context).size.height,
+                                                                                      width: MediaQuery.of(context).size.width,
+                                                                                      child: const PopScope(
+                                                                                        canPop: true,
+                                                                                        child: CupertinoActivityIndicator(
+                                                                                          animating: true,
+                                                                                          color: Colors.red,
+                                                                                          radius: 30,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ));
+                                                                          }
+                                                                        },
+                                                                      );
+                                                                    },
+                                                                    builder:
+                                                                        (context,
+                                                                            state) {
+                                                                      return Row(
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.end,
+                                                                        children: [
+                                                                          Transform
+                                                                              .scale(
+                                                                            scale:
+                                                                                0.8,
+                                                                            child:
+                                                                                InkWell(
+                                                                              onTap: () {
+                                                                                setState(() {
+                                                                                  {
+                                                                                    showCupertinoDialog(
+                                                                                      context: context,
+                                                                                      builder: (context) => CupertinoAlertDialog(
+                                                                                        title: Text(AppLocalizations.of(context)!.alert),
+                                                                                        content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                        actions: [
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              setState(() {});
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                          ),
+                                                                                          TextButton(
+                                                                                            onPressed: () {
+                                                                                              statuslist[index] = true;
+                                                                                              loadingCount = 0;
+                                                                                              setState(() {});
+                                                                                              context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
+                                                                                              context.read<OverrideApproveRejectBloc>().add(
+                                                                                                    GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: 'A'
+                                                                                                        // approve: AssetAddApprovalInModel
+                                                                                                        // (reqId: headers[index].aahId,
+                                                                                                        // serialNum: _slNoCtrls[index].text,
+                                                                                                        //  userId: widget.user.usrId),
+                                                                                                        ),
+                                                                                                  );
+
+                                                                                              Navigator.pop(context);
+                                                                                            },
+                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
+                                                                                  }
+                                                                                });
+                                                                              },
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  Radio(
+                                                                                    fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                      return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
+                                                                                    }),
+                                                                                    /* activeColor: isselected == true
                                                                                                                                                                                                                             ? const Color(0xff0075ff)
                                                                                                                                                                                                                             : Colors.grey, */
-                                                                              value: statuslist[index] == null
-                                                                                  ? false
-                                                                                  : statuslist[index] == true
-                                                                                      ? true
-                                                                                      : false,
-                                                                              groupValue: true,
-                                                                              onChanged: (value) {
-                                                                                // if (_slNoCtrls[index].text.isEmpty) {
-                                                                                //   showCupertinoDialog(
-                                                                                //     context: context,
-                                                                                //     builder: (context) => CupertinoAlertDialog(
-                                                                                //       title: Text(AppLocalizations.of(context)!.alert),
-                                                                                //       content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
-                                                                                //       actions: [
-                                                                                //         TextButton(
-                                                                                //           onPressed: () {
-                                                                                //             // setState(() {});
-                                                                                //             Navigator.pop(context);
-                                                                                //           },
-                                                                                //           child: Text(AppLocalizations.of(context)!.ok),
-                                                                                //         ),
-                                                                                //       ],
-                                                                                //     ),
-                                                                                //   );
-                                                                                // }
-                                                                                {
+                                                                                    value: statuslist[index] == null
+                                                                                        ? false
+                                                                                        : statuslist[index] == true
+                                                                                            ? true
+                                                                                            : false,
+                                                                                    groupValue: true,
+                                                                                    onChanged: (value) {
+                                                                                      // if (_slNoCtrls[index].text.isEmpty) {
+                                                                                      //   showCupertinoDialog(
+                                                                                      //     context: context,
+                                                                                      //     builder: (context) => CupertinoAlertDialog(
+                                                                                      //       title: Text(AppLocalizations.of(context)!.alert),
+                                                                                      //       content: Text(AppLocalizations.of(context)!.pleaseEnterSlNo),
+                                                                                      //       actions: [
+                                                                                      //         TextButton(
+                                                                                      //           onPressed: () {
+                                                                                      //             // setState(() {});
+                                                                                      //             Navigator.pop(context);
+                                                                                      //           },
+                                                                                      //           child: Text(AppLocalizations.of(context)!.ok),
+                                                                                      //         ),
+                                                                                      //       ],
+                                                                                      //     ),
+                                                                                      //   );
+                                                                                      // }
+                                                                                      {
+                                                                                        showCupertinoDialog(
+                                                                                          context: context,
+                                                                                          builder: (context) => CupertinoAlertDialog(
+                                                                                            title: Text(AppLocalizations.of(context)!.alert),
+                                                                                            content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                            actions: [
+                                                                                              TextButton(
+                                                                                                onPressed: () {
+                                                                                                  setState(() {});
+                                                                                                  Navigator.pop(context);
+                                                                                                },
+                                                                                                child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                              ),
+                                                                                              TextButton(
+                                                                                                onPressed: () {
+                                                                                                  statuslist[index] = true;
+                                                                                                  loadingCount = 0;
+                                                                                                  setState(() {});
+                                                                                                  context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
+                                                                                                  context.read<OverrideApproveRejectBloc>().add(
+                                                                                                        GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: 'A'),
+                                                                                                      );
+
+                                                                                                  Navigator.pop(context);
+                                                                                                },
+                                                                                                child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                              ),
+                                                                                            ],
+                                                                                          ),
+                                                                                        );
+                                                                                      }
+                                                                                    },
+                                                                                  ),
+                                                                                  Text(
+                                                                                    AppLocalizations.of(context)!.approve,
+                                                                                    style: kfontstyle(),
+                                                                                  )
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Transform
+                                                                              .scale(
+                                                                            scale:
+                                                                                0.8,
+                                                                            child:
+                                                                                InkWell(
+                                                                              onTap: () {
+                                                                                setState(() {
                                                                                   showCupertinoDialog(
                                                                                     context: context,
                                                                                     builder: (context) => CupertinoAlertDialog(
                                                                                       title: Text(AppLocalizations.of(context)!.alert),
-                                                                                      content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                      content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
                                                                                       actions: [
                                                                                         TextButton(
                                                                                           onPressed: () {
@@ -896,16 +934,16 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                                         ),
                                                                                         TextButton(
                                                                                           onPressed: () {
-                                                                                            statuslist[index] = true;
+                                                                                            statuslist[index] = false;
                                                                                             loadingCount = 0;
                                                                                             setState(() {});
                                                                                             context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
                                                                                             context.read<OverrideApproveRejectBloc>().add(
-                                                                                                  GetOverrideApproveRejectEvent(
-                                                                                                    ooaID: '${cusoverride[index].ooaId}', 
-                                                                                                    userId: '${widget.user.usrId}', 
-                                                                                                    status: 'A'
-                                                                                                      
+                                                                                                  GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: 'R'
+                                                                                                      // approve: AssetAddApprovalInModel
+                                                                                                      // (reqId: headers[index].aahId,
+                                                                                                      // serialNum: _slNoCtrls[index].text,
+                                                                                                      //  userId: widget.user.usrId),
                                                                                                       ),
                                                                                                 );
 
@@ -916,144 +954,80 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                                       ],
                                                                                     ),
                                                                                   );
-                                                                                }
+                                                                                });
                                                                               },
-                                                                            ),
-                                                                            Text(
-                                                                              AppLocalizations.of(context)!.approve,
-                                                                              style: kfontstyle(),
-                                                                            )
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    Transform
-                                                                        .scale(
-                                                                      scale:
-                                                                          0.8,
-                                                                      child:
-                                                                          InkWell(
-                                                                        onTap:
-                                                                            () {
-                                                                          setState(
-                                                                              () {
-                                                                            showCupertinoDialog(
-                                                                              context: context,
-                                                                              builder: (context) => CupertinoAlertDialog(
-                                                                                title: Text(AppLocalizations.of(context)!.alert),
-                                                                                content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
-                                                                                actions: [
-                                                                                  TextButton(
-                                                                                    onPressed: () {
-                                                                                      setState(() {});
-                                                                                      Navigator.pop(context);
-                                                                                    },
-                                                                                    child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                  ),
-                                                                                  TextButton(
-                                                                                    onPressed: () {
-                                                                                      statuslist[index] = false;
-                                                                                      loadingCount = 0;
-                                                                                      setState(() {});
-                                                                                      context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
-                                                                                      context.read<OverrideApproveRejectBloc>().add(
-                                                                                            GetOverrideApproveRejectEvent(
-                                                                                              ooaID: '${cusoverride[index].ooaId}', 
-                                                                                              userId: '${widget.user.usrId}', 
-                                                                                              status: 'R'
-                                                                                                // approve: AssetAddApprovalInModel
-                                                                                                // (reqId: headers[index].aahId,
-                                                                                                // serialNum: _slNoCtrls[index].text,
-                                                                                                //  userId: widget.user.usrId),
-                                                                                                ),
-                                                                                          );
-
-                                                                                      Navigator.pop(context);
-                                                                                    },
-                                                                                    child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                  ),
-                                                                                ],
-                                                                              ),
-                                                                            );
-                                                                          });
-                                                                        },
-                                                                        child:
-                                                                            Row(
-                                                                          children: [
-                                                                            Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-                                                                                return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
-                                                                              }),
-                                                                              /*  activeColor: isselected == false
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  Radio(
+                                                                                    fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                      return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
+                                                                                    }),
+                                                                                    /*  activeColor: isselected == false
                                                                                                                                                                                                                             ? const Color(0xff0075ff)
                                                                                                                                                                                                                             : Colors.grey, */
-                                                                              value: statuslist[index] == null
-                                                                                  ? true
-                                                                                  : statuslist[index] == true
-                                                                                      ? true
-                                                                                      : false,
-                                                                              groupValue: false,
-                                                                              onChanged: (value) {
-                                                                                showCupertinoDialog(
-                                                                                  context: context,
-                                                                                  builder: (context) => CupertinoAlertDialog(
-                                                                                    title: Text(AppLocalizations.of(context)!.alert),
-                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
-                                                                                    actions: [
-                                                                                      TextButton(
-                                                                                        onPressed: () {
-                                                                                          setState(() {});
-                                                                                          Navigator.pop(context);
-                                                                                        },
-                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                      ),
-                                                                                      TextButton(
-                                                                                        onPressed: () {
-                                                                                         
-                                                                                           statuslist[index] = false;
-                                                                                          loadingCount = 0;
-                                                                                          setState(() {});
-                                                                                          context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
-                                                                                          context.read<OverrideApproveRejectBloc>().add(const ClearOverrideApproveRejectEvent());
-                                                                                          context.read<OverrideApproveRejectBloc>().add(
-                                                                                                 GetOverrideApproveRejectEvent(
-                                                                                                  ooaID: '${cusoverride[index].ooaId}', 
-                                                                                                  userId: '${widget.user.usrId}', 
-                                                                                                  status: 'R'
-                                                                                                  // approve: AssetAddApprovalInModel(
-                                                                                                  //   reqId: headers[index].aahId,
-                                                                                                  //   serialNum: null,
-                                                                                                  //   userId: widget.user.usrId,
-                                                                                                  // ),
-                                                                                                ),
-                                                                                              );
-                                                                                          Navigator.pop(context);
-                                                                                        },
-                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                      ),
-                                                                                    ],
-                                                                                  ),
-                                                                                );
+                                                                                    value: statuslist[index] == null
+                                                                                        ? true
+                                                                                        : statuslist[index] == true
+                                                                                            ? true
+                                                                                            : false,
+                                                                                    groupValue: false,
+                                                                                    onChanged: (value) {
+                                                                                      showCupertinoDialog(
+                                                                                        context: context,
+                                                                                        builder: (context) => CupertinoAlertDialog(
+                                                                                          title: Text(AppLocalizations.of(context)!.alert),
+                                                                                          content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                          actions: [
+                                                                                            TextButton(
+                                                                                              onPressed: () {
+                                                                                                setState(() {});
+                                                                                                Navigator.pop(context);
+                                                                                              },
+                                                                                              child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                            ),
+                                                                                            TextButton(
+                                                                                              onPressed: () {
+                                                                                                statuslist[index] = false;
+                                                                                                loadingCount = 0;
+                                                                                                setState(() {});
+                                                                                                context.read<OverrideApproveRejectBloc>().add(const LoadingOverideApproveRejectEvent());
+                                                                                                context.read<OverrideApproveRejectBloc>().add(const ClearOverrideApproveRejectEvent());
+                                                                                                context.read<OverrideApproveRejectBloc>().add(
+                                                                                                      GetOverrideApproveRejectEvent(ooaID: '${cusoverride[index].ooaId}', userId: '${widget.user.usrId}', status: 'R'
+                                                                                                          // approve: AssetAddApprovalInModel(
+                                                                                                          //   reqId: headers[index].aahId,
+                                                                                                          //   serialNum: null,
+                                                                                                          //   userId: widget.user.usrId,
+                                                                                                          // ),
+                                                                                                          ),
+                                                                                                    );
+                                                                                                Navigator.pop(context);
+                                                                                              },
+                                                                                              child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
+                                                                                      );
 
-                                                                                /* context
+                                                                                      /* context
                                                                                                                                                                                               .read<
                                                                                                                                                                                                   AapprovalOrRejectRadioCubit>()
                                                                                                                                                                                               .changeApprovalStatus(
                                                                                                                                                                                                   statuslist[index]); */
-                                                                              },
+                                                                                    },
+                                                                                  ),
+                                                                                  Text(
+                                                                                    AppLocalizations.of(context)!.reject,
+                                                                                    style: kfontstyle(),
+                                                                                  )
+                                                                                ],
+                                                                              ),
                                                                             ),
-                                                                            Text(
-                                                                              AppLocalizations.of(context)!.reject,
-                                                                              style: kfontstyle(),
-                                                                            )
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                );
-                                                              },
-                                                            ),
+                                                                          )
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  ),
                                                           ],
                                                         ),
                                                       ),
