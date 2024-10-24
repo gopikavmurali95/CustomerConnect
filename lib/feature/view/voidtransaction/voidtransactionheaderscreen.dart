@@ -213,6 +213,10 @@ class _VoidTranscactioHeaderScreenState
                   .toList(),
               onChanged: (value) {
                 selectedVoidTransactionMode = value!;
+                if (selectedVoidTransactionMode != 'P') {
+                  voidTransactionJsonstriongList.clear();
+                  setState(() {});
+                }
                 context
                     .read<VoidTransactionHeaderBloc>()
                     .add(const ClearVoidTransactionHeader());

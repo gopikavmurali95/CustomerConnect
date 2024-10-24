@@ -206,3 +206,4 @@ const freesampleReasonUrl = 'CusFreeSampleApproval/GetFreeSampleReason';
 const cusOverrideApprovalUrl = 'CusFreeSampleApproval/GetOverRideDetails';
 const cusOverApprovRejectUrl =
     'CusFreeSampleApproval/PostOverRideApproveReject';
+const scheduleReturnApprovalReasonUrl = 'CusOperation/GetReasonForReturnSc';
