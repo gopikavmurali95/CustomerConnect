@@ -88,12 +88,12 @@ class _ScheduledReturnDetailScreenState
         titleSpacing: 0.5,
         leading: IconButton(
           onPressed: () {
-            log(_approvedCount.toString());
+            /* log(_approvedCount.toString());
             context.read<SchduledReturnHeaderBloc>().add(
                 GetAllScheduledReturnHeadersEvent(
                     userID: widget.user.usrId ?? '',
                     mode: widget.currentMode,
-                    searchQuery: ''));
+                    searchQuery: '')); */
             Navigator.pop(context);
             // }
           },
@@ -155,6 +155,11 @@ class _ScheduledReturnDetailScreenState
                         actions: [
                           TextButton(
                             onPressed: () {
+                              context.read<SchduledReturnHeaderBloc>().add(
+                                  GetAllScheduledReturnHeadersEvent(
+                                      userID: widget.user.usrId ?? '',
+                                      mode: 'P',
+                                      searchQuery: ''));
                               Navigator.pop(context);
                               Navigator.pop(context);
                             },
@@ -462,7 +467,7 @@ class _ScheduledReturnDetailScreenState
                               statuslist /* length = details.length; */
                                   = List.generate(
                                       details.length, (index) => null);
-                              context.read< ScheduleReturnReasonBloc>().add(
+                              context.read<ScheduleReturnReasonBloc>().add(
                                   const ScheduleReturnSuccessEvent(
                                       rsnType: 'rsnType'));
                               selectedRoute = '-1';
@@ -676,7 +681,7 @@ class _ScheduledReturnDetailScreenState
                                                                         state) {
                                                                   return state
                                                                       .when(
-                                                                    getScheduleReturnReasonState: (reason) => reason==
+                                                                    getScheduleReturnReasonState: (reason) => reason ==
                                                                                 null ||
                                                                             availableresons
                                                                                 .isEmpty
@@ -931,18 +936,18 @@ class _ScheduledReturnDetailScreenState
                                                                                     spreadRadius: 0.4)
                                                                               ]),
                                                                           child:
-                                                                          // Padding(
-                                                                          //   padding:
-                                                                          //       const EdgeInsets.symmetric(vertical: 2, horizontal: 1),
-                                                                          //   child:
-                                                                          //       Text(
-                                                                          //     details[index].rsnName == null || details[index].rsnName!.isEmpty ? "No reason found" : details[index].rsnName ?? '',
-                                                                          //     style: const TextStyle(fontSize: 10),
-                                                                          //   ),
-                                                                          // ),
+                                                                              // Padding(
+                                                                              //   padding:
+                                                                              //       const EdgeInsets.symmetric(vertical: 2, horizontal: 1),
+                                                                              //   child:
+                                                                              //       Text(
+                                                                              //     details[index].rsnName == null || details[index].rsnName!.isEmpty ? "No reason found" : details[index].rsnName ?? '',
+                                                                              //     style: const TextStyle(fontSize: 10),
+                                                                              //   ),
+                                                                              // ),
                                                                               Padding(
                                                                             padding:
-                                                                                 const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
+                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
                                                                             child:
                                                                                 Text(details[index].rsnName ?? ''),
                                                                           ),
@@ -979,7 +984,10 @@ class _ScheduledReturnDetailScreenState
                                                                                   ]),
                                                                                   child: Padding(
                                                                                     padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 1),
-                                                                                    child: Text(details[index].rsnName ?? '',style: kfontstyle(fontSize:9.5),),
+                                                                                    child: Text(
+                                                                                      details[index].rsnName ?? '',
+                                                                                      style: kfontstyle(fontSize: 9.5),
+                                                                                    ),
                                                                                   ),
                                                                                 )
                                                                               : const SizedBox(),
