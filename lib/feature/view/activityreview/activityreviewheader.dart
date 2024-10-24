@@ -190,7 +190,7 @@ class _ActivityReviewHeaderScreenState
                   textAlign: TextAlign.start,
                   maxLines: 1,
                   maxLength: 20,
-                  // controller: _locationNameTextController,
+                  // controller: activityreviewHeaderctrl,
                 )),
           ),
           SizedBox(

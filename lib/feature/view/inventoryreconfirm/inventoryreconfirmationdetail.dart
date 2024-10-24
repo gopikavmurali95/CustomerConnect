@@ -18,9 +18,10 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InventoryReconfirmationDetailScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -37,26 +38,28 @@ class InventoryReconfirmationDetailScreen extends StatefulWidget {
       _InventoryReconfirmationDetailScreenState();
 }
 
-List<InventoryReconfirmReasonModel> _availableresons = [];
-List<String> selectedresons = [];
+TextEditingController _searchctrls = TextEditingController();
+int approvedCount = 0;
+Timer? debounce;
 List<InventoryReconfirmPrdModel?> approvedProducts = [];
 List<bool?> statuslist = [];
-Timer? debounce;
-TextEditingController _inventoryDetailCtrl = TextEditingController();
+List<String> selectedresons = [];
+List<InventoryReconfirmReasonModel> availableresons = [];
 int loadingCount = 0;
 
 class _InventoryReconfirmationDetailScreenState
     extends State<InventoryReconfirmationDetailScreen> {
   @override
   void initState() {
-    loadingCount = 0;
-    approvedProducts.clear();
+    _searchctrls.clear();
+    approvedCount = 0;
     context
         .read<InventoryReconfirmDetailBloc>()
         .add(const ClearInventoryReconfirmDetailEvent());
     context.read<InventoryReconfirmDetailBloc>().add(
         GetInventoryReconfirmDetailEvent(
             reqID: widget.header.iahId ?? '', searchQuery: ''));
+
     super.initState();
   }
 
@@ -89,10 +92,18 @@ class _InventoryReconfirmationDetailScreenState
         canPop:
             /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
         onPopInvoked: (didPop) {
+          _searchctrls.clear();
           inventoryReConfirmHSearchCtrl.clear();
           context.read<InventoryReconfirmHeaderBloc>().add(
-              GetInventoryReconfirmHeadersEvent(
-                  mode: widget.currentMode, searchQuery: ''));
+              const GetInventoryReconfirmHeadersEvent(
+                  mode: "A", searchQuery: ''));
+          /* if (_approvedCount != 0 && _approvedCount != _totalcount) {
+            Future.delayed(const Duration(microseconds: 100), () {
+              showPopAlert(context);
+            });
+          } else {
+            context.read<NavigatetoBackCubit>().popFromScreen(true);
+          } */
         },
         child: BlocConsumer<InventoryReconfirmApprovalBloc,
             InventoryReconfirmApprovalState>(
@@ -100,17 +111,14 @@ class _InventoryReconfirmationDetailScreenState
             state.when(
               inventoryReconfirmApproveState: (status) {
                 if (status != null) {
+                  approvedCount++;
                   Navigator.pop(context);
                   showCupertinoDialog(
                     context: context,
                     builder: (context) => CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(
-                          AppLocalizations.of(context)!.actionedSuccessfully),
-                      // content:  Text(
-                      //             " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                      // content: Text(
-                      //     "${selectedLocale?.languageCode == 'en' ? status.status : status.arStatus} "),
+                          " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -172,7 +180,7 @@ class _InventoryReconfirmationDetailScreenState
                   child: Row(
                     children: [
                       Container(
-                        height: 50,
+                        height: 70,
                         width: 10,
                         decoration: BoxDecoration(
                             color: const Color(0xfffee8e0),
@@ -188,14 +196,8 @@ class _InventoryReconfirmationDetailScreenState
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    widget.header.iahTransId ?? '',
-                                    style: kfontstyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff2C6B9E),
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
+                                  Text(widget.header.iahTransId ?? '',
+                                      style: blueTextStyle()),
                                   RichText(
                                     text: TextSpan(
                                         style: DefaultTextStyle.of(context)
@@ -206,22 +208,17 @@ class _InventoryReconfirmationDetailScreenState
                                             ),
                                         children: [
                                           TextSpan(
-                                            text: '${widget.header.rotCode} - ',
-                                            style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              color: const Color(0xff2C6B9E),
-                                            ),
-                                          ),
+                                              text:
+                                                  '${widget.header.rotCode} - ',
+                                              style: blueTextStyle()),
                                           TextSpan(
-                                            text: selectedLocale
-                                                        ?.languageCode ==
-                                                    'en'
-                                                ? widget.header.usrName ?? ''
-                                                : widget.header.arusrName ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                color: const Color(0xff413434)),
-                                          )
+                                              text: selectedLocale
+                                                          ?.languageCode ==
+                                                      'en'
+                                                  ? widget.header.usrName ?? ''
+                                                  : widget.header.arusrName ??
+                                                      '',
+                                              style: subTitleTextStyle())
                                         ]),
                                   ),
                                   Text(
@@ -277,24 +274,24 @@ class _InventoryReconfirmationDetailScreenState
                     height: 30.h,
                     width: MediaQuery.of(context).size.width,
                     child: TextFormField(
-                      controller: _inventoryDetailCtrl,
+                      controller: _searchctrls,
                       style: kfontstyle(fontSize: 13.sp, color: Colors.black87),
                       decoration: InputDecoration(
                         isDense: true,
-                        hintText: AppLocalizations.of(context)!.searchHere,
+                        hintText: AppLocalizations.of(context)!.searchhere,
                         suffix: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Expanded(
                               child: IconButton(
                                   onPressed: () {
-                                    if (_inventoryDetailCtrl.text.isNotEmpty) {
-                                      _inventoryDetailCtrl.clear();
-
+                                    if (_searchctrls.text.isNotEmpty) {
+                                      _searchctrls.clear();
                                       context
                                           .read<InventoryReconfirmDetailBloc>()
                                           .add(
                                               const ClearInventoryReconfirmDetailEvent());
+
                                       context
                                           .read<InventoryReconfirmDetailBloc>()
                                           .add(GetInventoryReconfirmDetailEvent(
@@ -321,7 +318,7 @@ class _InventoryReconfirmationDetailScreenState
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 10),
                         border: /* InputBorder
-                              .none  */
+                            .none  */
                             OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(color: Colors.grey.shade200),
@@ -350,14 +347,14 @@ class _InventoryReconfirmationDetailScreenState
                   ),
                 ),
                 SizedBox(
-                  height: 5.h,
+                  height: 10.h,
                 ),
                 Container(
                   height: 30.h,
                   width: double.infinity,
                   color: const Color(0xfff5f5f5),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -422,9 +419,6 @@ class _InventoryReconfirmationDetailScreenState
                             // Navigator.pop(context);
 
                             // _totalcount = details.length;
-                            context
-                                .read<InventoryReconfirmReasonsCubit>()
-                                .getinventoryReconfirmResons();
 
                             approvedProducts =
                                 List.generate(details.length, (index) => null);
@@ -434,8 +428,9 @@ class _InventoryReconfirmationDetailScreenState
                                 =
                                 List.generate(details.length, (index) => null);
 
-                            selectedresons =
-                                List.generate(details.length, (index) => '-1');
+                            context
+                                .read<InventoryReconfirmReasonsCubit>()
+                                .getinventoryReconfirmResons();
 
                             for (int i = 0; i < details.length; i++) {
                               if (details[i].status!.isNotEmpty) {
@@ -477,17 +472,15 @@ class _InventoryReconfirmationDetailScreenState
                                 : details.isEmpty
                                     ? Center(
                                         child: Text(
-                                          AppLocalizations.of(context)!
-                                              .noDataAvailable,
-                                          style: kfontstyle(),
-                                        ),
+                                            AppLocalizations.of(context)!
+                                                .noDataFound),
                                       )
                                     : ListView.separated(
                                         shrinkWrap: true,
                                         itemBuilder: (context, index) =>
                                             Padding(
                                           padding: const EdgeInsets.symmetric(
-                                              horizontal: 20),
+                                              horizontal: 10),
                                           child: Column(
                                             children: [
                                               Row(
@@ -593,9 +586,6 @@ class _InventoryReconfirmationDetailScreenState
                                                             ),
                                                           ],
                                                         ),
-                                                        /*  SizedBox(
-                                                          width: 35.w,
-                                                        ), */
                                                         Column(
                                                           children: [
                                                             Text(
@@ -642,9 +632,6 @@ class _InventoryReconfirmationDetailScreenState
                                                             ),
                                                           ],
                                                         ),
-                                                        SizedBox(
-                                                          width: 0.w,
-                                                        ),
                                                         Column(
                                                           children: [
                                                             Text(
@@ -689,10 +676,10 @@ class _InventoryReconfirmationDetailScreenState
                                                                       .black54),
                                                             ),
                                                           ],
-                                                        ),
+                                                        )
                                                       ],
                                                     ),
-                                                  )
+                                                  ),
                                                 ],
                                               ),
                                               SizedBox(
@@ -703,7 +690,7 @@ class _InventoryReconfirmationDetailScreenState
                                                   widget.header.iahStatus ==
                                                           'Pending'
                                                       ? Transform.scale(
-                                                          scale: 0.9,
+                                                          scale: .9,
                                                           origin: const Offset(
                                                               450, 0),
                                                           child: Row(
@@ -725,9 +712,9 @@ class _InventoryReconfirmationDetailScreenState
                                                                             null) {
                                                                           selectedresons
                                                                               .clear();
-                                                                          _availableresons
+                                                                          availableresons
                                                                               .clear();
-                                                                          _availableresons =
+                                                                          availableresons =
                                                                               [
                                                                             InventoryReconfirmReasonModel(
                                                                                 rsnId: '-1',
@@ -739,7 +726,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                               details.length,
                                                                               (index) => '-1');
 
-                                                                          _availableresons
+                                                                          availableresons
                                                                               .addAll(resons);
                                                                         }
                                                                       },
@@ -753,7 +740,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                     return state
                                                                         .when(
                                                                       getInventoryReconfirmResonsState: (resons) => resons == null ||
-                                                                              _availableresons.isEmpty
+                                                                              availableresons.isEmpty
                                                                           ? const ShimmerContainers(
                                                                               height: 30,
                                                                               width: 80,
@@ -762,6 +749,11 @@ class _InventoryReconfirmationDetailScreenState
                                                                               scale: 0.8,
                                                                               child: Container(
                                                                                 height: 30.h,
+                                                                                // width: MediaQuery.of(context)
+                                                                                //         .size
+                                                                                //         .width /
+                                                                                //     3,
+
                                                                                 decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                                   BoxShadow(
                                                                                       // ignore: use_full_hex_values_for_flutter_colors
@@ -770,10 +762,14 @@ class _InventoryReconfirmationDetailScreenState
                                                                                       spreadRadius: 0.4)
                                                                                 ]),
                                                                                 child: DropdownButtonFormField(
-                                                                                  value: _availableresons[0].rsnId,
                                                                                   elevation: 0,
+                                                                                  // isExpanded:
+                                                                                  //     true,
+
                                                                                   dropdownColor: Colors.white,
+                                                                                  value: availableresons[0].rsnId ?? '',
                                                                                   style: kfontstyle(color: Colors.black),
+                                                                                  isExpanded: true,
                                                                                   decoration: InputDecoration(
                                                                                     filled: true,
                                                                                     fillColor: Colors.white,
@@ -791,32 +787,18 @@ class _InventoryReconfirmationDetailScreenState
                                                                                       borderSide: const BorderSide(color: Colors.transparent),
                                                                                     ),
                                                                                   ),
-                                                                                  items: _availableresons.map((InventoryReconfirmReasonModel item) {
+                                                                                  items: availableresons.map((InventoryReconfirmReasonModel item) {
                                                                                     return DropdownMenuItem(
                                                                                       value: item.rsnId,
                                                                                       child: Text(
                                                                                         overflow: TextOverflow.ellipsis,
                                                                                         selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
-                                                                                        style: kfontstyle(fontSize: 8.sp),
+                                                                                        style: kfontstyle(fontSize: 10.sp),
                                                                                       ),
                                                                                     );
                                                                                   }).toList(),
                                                                                   onChanged: (value) {
                                                                                     selectedresons[index] = value ?? '';
-
-                                                                                    if (statuslist[index] == false) {
-                                                                                      approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                        reason: selectedresons[index],
-                                                                                        iadId: details[index].iadId,
-                                                                                        status: "R",
-                                                                                      );
-                                                                                    } else {
-                                                                                      approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                        reason: "",
-                                                                                        iadId: details[index].iadId,
-                                                                                        status: "A",
-                                                                                      );
-                                                                                    }
                                                                                   },
                                                                                 ),
                                                                               ),
@@ -856,10 +838,10 @@ class _InventoryReconfirmationDetailScreenState
                                                                               onTap: () {
                                                                                 setState(() {
                                                                                   statuslist[index] = true;
-
+                                                                                  loadingCount = 0;
                                                                                   setState(() {});
                                                                                   approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                    reason: "",
+                                                                                    reason: selectedresons[index],
                                                                                     iadId: details[index].iadId,
                                                                                     status: "A",
                                                                                   );
@@ -882,10 +864,10 @@ class _InventoryReconfirmationDetailScreenState
                                                                                     groupValue: true,
                                                                                     onChanged: (value) {
                                                                                       statuslist[index] = true;
-
+                                                                                      loadingCount = 0;
                                                                                       setState(() {});
                                                                                       approvedProducts[index] = InventoryReconfirmPrdModel(
-                                                                                        reason: "",
+                                                                                        reason: selectedresons[index],
                                                                                         iadId: details[index].iadId,
                                                                                         status: "A",
                                                                                       );
@@ -910,7 +892,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                               onTap: () {
                                                                                 setState(() {
                                                                                   statuslist[index] = false;
-
+                                                                                  loadingCount = 0;
                                                                                   setState(() {});
                                                                                   approvedProducts[index] = InventoryReconfirmPrdModel(
                                                                                     reason: selectedresons[index],
@@ -936,7 +918,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                                     groupValue: false,
                                                                                     onChanged: (value) {
                                                                                       statuslist[index] = false;
-
+                                                                                      loadingCount = 0;
                                                                                       setState(() {});
                                                                                       approvedProducts[index] = InventoryReconfirmPrdModel(
                                                                                         reason: selectedresons[index],
@@ -972,35 +954,43 @@ class _InventoryReconfirmationDetailScreenState
                                                                     .end,
                                                             children: [
                                                               Expanded(
-                                                                  child: details[index]
-                                                                              .status ==
-                                                                          'Rejected'
-                                                                      ? Transform
-                                                                          .scale(
-                                                                          scale:
-                                                                              0.8,
+                                                                child: details[index]
+                                                                            .status ==
+                                                                        'Rejected'
+                                                                    ? Transform
+                                                                        .scale(
+                                                                        scale:
+                                                                            0.9,
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              32.h,
+                                                                          // width: 100,
+                                                                          decoration: BoxDecoration(
+                                                                              color: Colors.white,
+                                                                              border: Border.all(color: Colors.grey.shade200),
+                                                                              borderRadius: BorderRadius.circular(10.0),
+                                                                              boxShadow: const [
+                                                                                BoxShadow(
+                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    color: Color(0xff00000050),
+                                                                                    blurRadius: 0.4,
+                                                                                    spreadRadius: 0.4)
+                                                                              ]),
                                                                           child:
-                                                                              Container(
-                                                                            height:
-                                                                                30.h,
-                                                                            decoration:
-                                                                                BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
-                                                                              BoxShadow(
-                                                                                  // ignore: use_full_hex_values_for_flutter_colors
-                                                                                  color: Color(0xff00000050),
-                                                                                  blurRadius: 0.4,
-                                                                                  spreadRadius: 0.4)
-                                                                            ]),
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
                                                                             child:
-                                                                                Padding(
-                                                                              padding: const EdgeInsets.symmetric(
-                                                                                vertical: 7,
-                                                                              ),
-                                                                              child: Text(details[index].reason ?? ''),
+                                                                                Text(
+                                                                              details[index].reason == null || details[index].reason!.isEmpty ? "No reason found" : details[index].reason ?? '',
+                                                                              style: const TextStyle(fontSize: 11),
                                                                             ),
                                                                           ),
-                                                                        )
-                                                                      : const SizedBox()),
+                                                                        ),
+                                                                      )
+                                                                    : const SizedBox(),
+                                                              ),
                                                               BlocBuilder<
                                                                   AapprovalOrRejectRadioCubit,
                                                                   AapprovalOrRejectRadioState>(
@@ -1058,9 +1048,7 @@ class _InventoryReconfirmationDetailScreenState
                                                                                       ? true
                                                                                       : false,
                                                                               groupValue: false,
-                                                                              onChanged: (value) {
-                                                                                // statuslist[index] = true;
-                                                                              },
+                                                                              onChanged: (value) {},
                                                                             ),
                                                                             Text(
                                                                               AppLocalizations.of(context)!.reject,
@@ -1102,60 +1090,25 @@ class _InventoryReconfirmationDetailScreenState
                   width: double.infinity,
                   child: Column(
                     children: [
-                      /*  Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                        ),
-                        child: TextFormField(
-                          controller: _remarksctrls,
-                          enabled: widget.disputenote.status == 'Pending'
-                              ? true
-                              : false,
-                          decoration: InputDecoration(
-                            hintText: 'Remarks',
-                            hintStyle: kfontstyle(
-                              fontSize: 12.sp,
-                              color: widget.disputenote.status == 'Pending'
-                                  ? Colors.red.shade300
-                                  : Colors.grey,
-                            ),
-                            border: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey[300]!),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey[300]!),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey[300]!),
-                            ),
-                          ),
-                        ),
-                      ), */
-
-                      /* widget.scheduledreturn.status == "Pending"
-                          ? Expanded(
-                              child: 
-                            )
-                          : /* const SizedBox(height: ,) */ const Spacer(), */
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          children: [
-                            const Flexible(
-                                flex: 1, fit: FlexFit.tight, child: SizedBox()),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Flexible(
-                              flex: 1,
-                              fit: FlexFit.tight,
-                              child: Visibility(
-                                visible: widget.header.iahStatus == "Pending"
-                                    ? true
-                                    : false,
+                        child: Visibility(
+                          visible: widget.header.iahStatus == 'Pending'
+                              ? true
+                              : false,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              const Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: SizedBox()),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Flexible(
+                                flex: 1,
+                                fit: FlexFit.tight,
                                 child: MaterialButton(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -1240,19 +1193,12 @@ class _InventoryReconfirmationDetailScreenState
                                                   loadingCount = 0;
                                                   setState(() {});
                                                   Navigator.pop(context);
-                                                  // log(jsonEncode(
-                                                  //     InventoryReconfirmApproveInModel(
-                                                  //         products:
-                                                  //             approvedProducts,
-                                                  //         reqId: widget
-                                                  //             .header.iahId,
-                                                  //         userId: widget.header
-                                                  //             .iahUsrId)));
                                                   context
                                                       .read<
                                                           InventoryReconfirmApprovalBloc>()
                                                       .add(
                                                           const InventoryReconfirmLoadingEvent());
+
                                                   context
                                                       .read<
                                                           InventoryReconfirmApprovalBloc>()
@@ -1284,9 +1230,9 @@ class _InventoryReconfirmationDetailScreenState
                                         color: Colors.white),
                                   ),
                                 ),
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       )
                     ],
@@ -1312,4 +1258,24 @@ class _InventoryReconfirmationDetailScreenState
       return false;
     }
   }
+}
+
+showPopAlert(BuildContext context) {
+  showCupertinoDialog(
+    context: context,
+    builder: (context) => CupertinoAlertDialog(
+      title: const Text('Alert'),
+      content: const Text(
+          "Please make sure you have approved or rejected all the items"),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            // Navigator.pop(context);
+          },
+          child: const Text('Ok'),
+        ),
+      ],
+    ),
+  );
 }

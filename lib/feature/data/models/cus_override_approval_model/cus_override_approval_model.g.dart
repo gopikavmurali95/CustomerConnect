@@ -1,25 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'customer_override_approval_model.dart';
+part of 'cus_override_approval_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CustomerOverrideApprovalModel _$CustomerOverrideApprovalModelFromJson(
+CusOverrideApprovalModel _$CusOverrideApprovalModelFromJson(
         Map<String, dynamic> json) =>
-    CustomerOverrideApprovalModel(
+    CusOverrideApprovalModel(
       ooaId: json['ooa_ID'] as String?,
       ooaCseId: json['ooa_cse_ID'] as String?,
       ooaUdpId: json['ooa_udp_ID'] as String?,
-      ooaRotId: json['ooa_rot_ID'] as String?,
-      ooaCusId: json['ooa_cus_ID'] as String?,
+      rotCode: json['rot_Code'] as String?,
+      rotName: json['rot_Name'] as String?,
+      cusCode: json['cus_Code'] as String?,
+      cusName: json['cus_Name'] as String?,
       ooaTransId: json['ooa_TransID'] as String?,
       ooaType: json['ooa_Type'] as String?,
-      flexiField1: json['FlexiField1'] as String?,
-      flexiField2: json['FlexiField2'] as String?,
-      flexiField3: json['FlexiField3'] as String?,
-      flexiField4: json['FlexiField4'] as String?,
+      totalInvAmt: json['TotalInvAmt'] as String?,
+      availableCreditLimit: json['AvailableCreditLimit'] as String?,
+      totalCreditLimit: json['TotalCreditLimit'] as String?,
+      totalOutstanding: json['TotalOutstanding'] as String?,
+      totalCreditDays: json['TotalCreditDays'] as String?,
       ooaApprovalStatus: json['ooa_ApprovalStatus'] as String?,
       createdBy: json['CreatedBy'] as String?,
       createdDate: json['CreatedDate'] as String?,
@@ -30,20 +33,23 @@ CustomerOverrideApprovalModel _$CustomerOverrideApprovalModelFromJson(
       ooaWfmId: json['ooa_wfm_ID'] as String?,
     );
 
-Map<String, dynamic> _$CustomerOverrideApprovalModelToJson(
-        CustomerOverrideApprovalModel instance) =>
+Map<String, dynamic> _$CusOverrideApprovalModelToJson(
+        CusOverrideApprovalModel instance) =>
     <String, dynamic>{
       'ooa_ID': instance.ooaId,
       'ooa_cse_ID': instance.ooaCseId,
       'ooa_udp_ID': instance.ooaUdpId,
-      'ooa_rot_ID': instance.ooaRotId,
-      'ooa_cus_ID': instance.ooaCusId,
+      'rot_Code': instance.rotCode,
+      'rot_Name': instance.rotName,
+      'cus_Code': instance.cusCode,
+      'cus_Name': instance.cusName,
       'ooa_TransID': instance.ooaTransId,
       'ooa_Type': instance.ooaType,
-      'FlexiField1': instance.flexiField1,
-      'FlexiField2': instance.flexiField2,
-      'FlexiField3': instance.flexiField3,
-      'FlexiField4': instance.flexiField4,
+      'TotalInvAmt': instance.totalInvAmt,
+      'AvailableCreditLimit': instance.availableCreditLimit,
+      'TotalCreditLimit': instance.totalCreditLimit,
+      'TotalOutstanding': instance.totalOutstanding,
+      'TotalCreditDays': instance.totalCreditDays,
       'ooa_ApprovalStatus': instance.ooaApprovalStatus,
       'CreatedBy': instance.createdBy,
       'CreatedDate': instance.createdDate,

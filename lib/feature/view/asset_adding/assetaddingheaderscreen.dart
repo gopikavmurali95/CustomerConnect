@@ -424,8 +424,8 @@ class _AssetAddingApprovalHeaderScreenState
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () {
-                                                                                context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(
-                                                                                  userId: widget.user.usrId ?? '64', searchQuery: ''));
+                                                                                context.read<AssetAddInApprovalHeaderBloc>().add(
+                                                                                  GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: ''));
                                                                                 Navigator.pop(context);
                                                                               },
                                                                               child: Text(AppLocalizations.of(context)!.proceed),
@@ -573,7 +573,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                         context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
                                                                                         context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
                                                                                               AssetAddingApproveEvent(
-                                                                                                approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
+                                                                                                approve: AssetAddApprovalInModel(
+                                                                                                  reqId: headers[index].aahId,
+                                                                                                   serialNum: _slNoCtrls[index].text,
+                                                                                                    userId: widget.user.usrId),
                                                                                               ),
                                                                                             );
 
@@ -643,7 +646,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                             context.read<AssetAddingApprovalAndRjectBlocBloc>().add(const AddAssetAddingApproveLoadingEvent());
                                                                                             context.read<AssetAddingApprovalAndRjectBlocBloc>().add(
                                                                                                   AssetAddingApproveEvent(
-                                                                                                    approve: AssetAddApprovalInModel(reqId: headers[index].aahId, serialNum: _slNoCtrls[index].text, userId: widget.user.usrId),
+                                                                                                    approve: AssetAddApprovalInModel(
+                                                                                                      reqId: headers[index].aahId,
+                                                                                                       serialNum: _slNoCtrls[index].text,
+                                                                                                        userId: widget.user.usrId),
                                                                                                   ),
                                                                                                 );
 

@@ -1643,8 +1643,9 @@ class ApprovalScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                       CustomerFocHeaderScreen(user: user,)),
+                                  builder: (context) => CustomerFocHeaderScreen(
+                                        user: user,
+                                      )),
                             );
                           },
                           child: Container(
@@ -1687,7 +1688,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingCustomerFOCApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>
@@ -1715,12 +1717,14 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                              Navigator.push(
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                       CustomerOverrideApprovalHeaderScreen(user: user,)),
-                            ); 
+                                      CustomerOverrideApprovalHeaderScreen(
+                                        user: user,
+                                      )),
+                            );
                           },
                           child: Container(
                             //height: 50,
@@ -1762,7 +1766,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingOverRideApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>
@@ -1839,7 +1844,8 @@ class ApprovalScreen extends StatelessWidget {
                                                       style:
                                                           approvalcountStyle())
                                                   : Text(
-                                                      count.unschVisit ?? '0',
+                                                      count.pendingSampleApprovalHeader ??
+                                                          '0',
                                                       style:
                                                           approvalcountStyle()),
                                               getApprovalCountsFailed: () =>

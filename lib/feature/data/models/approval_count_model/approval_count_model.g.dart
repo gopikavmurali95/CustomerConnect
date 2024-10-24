@@ -27,6 +27,12 @@ ApprovalCountModel _$ApprovalCountModelFromJson(Map<String, dynamic> json) =>
           json['PendingPartialDeliveryHeader'] as String?,
       pendingReturnRequestSc: json['PendingReturnRequestSC'] as String?,
       inventoryReconfirm: json['PendingInvReconfirm'] as String?,
+      pendingSampleApprovalHeader:
+          json['PendingSampleApprovalHeader'] as String?,
+      pendingCustomerFOCApprovalHeader:
+          json['PendingCustomerFOCApprovalHeader'] as String?,
+      pendingOverRideApprovalHeader:
+          json['PendingOverRideApprovalHeader'] as String?,
     )
       ..mustSellHead = json['MustSellHeader'] as String?
       ..settlementApprovalHead = json['SettlementApprovalHeader'] as String?
@@ -54,4 +60,8 @@ Map<String, dynamic> _$ApprovalCountModelToJson(ApprovalCountModel instance) =>
       'SettlementApprovalHeader': instance.settlementApprovalHead,
       'VoidTransactionHeader': instance.voidTransactionHead,
       'UnschVisit': instance.unschVisit,
+      'PendingSampleApprovalHeader': instance.pendingSampleApprovalHeader,
+      'PendingCustomerFOCApprovalHeader':
+          instance.pendingCustomerFOCApprovalHeader,
+      'PendingOverRideApprovalHeader': instance.pendingOverRideApprovalHeader,
     };

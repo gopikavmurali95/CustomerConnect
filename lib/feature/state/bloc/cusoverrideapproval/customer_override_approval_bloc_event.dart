@@ -5,6 +5,8 @@ class CustomerOverrideApprovalBlocEvent
     with _$CustomerOverrideApprovalBlocEvent {
   const factory CustomerOverrideApprovalBlocEvent.getCusOverrideEvent(
       {required String statusvalue,
+      required String ooaID,
+      required String userID,
       required String searchQuery}) = GetCusOverrideEvent;
 
   const factory CustomerOverrideApprovalBlocEvent.clearCusOverrideEvent() =

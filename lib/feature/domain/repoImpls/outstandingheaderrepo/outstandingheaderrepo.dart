@@ -21,7 +21,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
       final response = await http.post(
           Uri.parse(baseUrl + outStandingHeaderUrl),
           body: outStandIn.toJson());
-      // log(jsonEncode(outStandIn));
+      log(jsonEncode(outStandIn));
       if (response.statusCode == 200) {
         //log("outstanding response: ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -48,7 +48,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + outStandingCountUrl),
           body: outin.toJson());
-      log(response.body);
+      log(jsonEncode(outin));
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final outstandtotal = OutstandingCountModel.fromJson(json["result"][0]);

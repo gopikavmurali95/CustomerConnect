@@ -89,7 +89,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                 backgroundColor: const Color(0xffB3DAF7),
                                 child: Center(
                                   child: Text(
-                                    widget.promotion.pName!
+                                    widget.promotion.prmName!
                                         .split('')
                                         .toList()[0],
                                     style: TextStyle(
@@ -109,7 +109,7 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                                   Text(
                                     selectedLocale?.languageCode == "en"
                                         ? widget.promotion.prmName ?? ''
-                                        : widget.promotion.arPname ?? '',
+                                        : widget.promotion.arPrmName ?? '',
                                     //widget.promotion.pName!,
                                     style: blueTextStyle(),
                                   ),

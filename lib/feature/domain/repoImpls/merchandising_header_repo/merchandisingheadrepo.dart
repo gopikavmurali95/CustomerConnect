@@ -72,7 +72,7 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
           body: {"FromDate": fromDate, "ToDate": toDate});
       log("survey count FromDate: $fromDate ToDate: $toDate");
       if (response.statusCode == 200) {
-        // log('surveycount: ${response.body}');
+         log('surveycount: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final surveycount = GetSurveyCountModel.fromJson(json["result"][0]);
         return right(surveycount);
@@ -93,9 +93,9 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
     try {
       final response = await http.post(Uri.parse(baseUrl + getDisplayCountUrl),
           body: {"FromDate": fromDate, "ToDate": toDate});
-
+       log("dispaly : FromDate :$fromDate, ToDate : $toDate");
       if (response.statusCode == 200) {
-        // log('displayagreement count: ${response.body}');
+         log('displayagreement count: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final displaycount = GetDisplayCountModel.fromJson(json["result"][0]);
         return right(displaycount);

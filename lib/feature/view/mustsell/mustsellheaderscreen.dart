@@ -41,6 +41,9 @@ Timer? debounce;
 String selectedMustSellMode = 'P';
 List<MustSellIJsonModel> mustSellJsonstriongList = [];
 
+bool buttonsVisible = true; // Initially, the buttons are visible
+
+
 class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
   @override
   void initState() {
@@ -553,7 +556,196 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: mustSellJsonstriongList.isEmpty ||
+      bottomNavigationBar:mustSellJsonstriongList.isEmpty ||
+        selectedMustSellMode != 'P'
+    ? null
+    : BlocConsumer<MustSellApproveBloc, MustSellApproveState>(
+        listener: (context, state) {
+          state.when(
+            mustSellApproveStatusState: (resp) {
+              if (resp != null) {
+                // Clear search controller and reset BLoC
+                mustSellHeaderSearchCtrl.clear();
+                context.read<MustSellHeaderBloc>().add(const ClearMustSellHeadersEvent());
+                context.read<MustSellHeaderBloc>().add(GetMustSellHeadersEvent(mode: selectedMustSellMode, searchQuery: ""));
+                mustSellJsonstriongList.clear();
+                context.read<MustsellApprovalSelectionCubit>().selectedHeadersList([]);
+                
+                // Set buttons to be hidden
+                setState(() {
+                  buttonsVisible = false; // Hide buttons after approval
+                });
+
+                // Show confirmation dialog
+                Navigator.pop(context);
+                showCupertinoDialog(
+                  context: context,
+                  builder: (context) => CupertinoAlertDialog(
+                    title: Text(AppLocalizations.of(context)!.alert),
+                    content: Text("${AppLocalizations.of(context)!.msutSellApproval} ${selectedLocale?.languageCode == "en" ? resp.status ?? '' : resp.arstatus}"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          buttonsVisible=true;
+                        },
+                        child: Text(AppLocalizations.of(context)!.ok),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            },
+            mustSellApproveFailedState: () {
+              // Handle failure
+              Navigator.pop(context);
+              showCupertinoDialog(
+                context: context,
+                builder: (context) => CupertinoAlertDialog(
+                  title: Text(AppLocalizations.of(context)!.alert),
+                  content: Text(AppLocalizations.of(context)!.somethingWentWrong),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(AppLocalizations.of(context)!.ok),
+                    ),
+                  ],
+                ),
+              );
+            },
+            mustSellApproveLoadingEvent: () {
+              // Show loading indicator
+              showCupertinoModalPopup(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) => SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: const CupertinoActivityIndicator(animating: true, color: Colors.red, radius: 30),
+                ),
+              );
+            },
+          );
+        },
+        builder: (context, state) {
+          return SizedBox(
+            height: 42.h,
+            width: double.infinity,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      // Show buttons only if they are visible
+                      if (buttonsVisible) ...[
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            color: selectedMustSellMode == 'P' ? Colors.red.shade300 : Colors.grey[300],
+                            onPressed: () {
+                              if (selectedMustSellMode == 'P') {
+                                // Show confirmation dialog for rejection
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!.doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          // Update the BLoC for rejection
+                                          context.read<MustSellApproveBloc>().add(const MustSellLoadingEvent());
+                                          for (var item in mustSellJsonstriongList) {
+                                            item.status = 'R'; // Set status to rejected
+                                          }
+                                          context.read<MustSellApproveBloc>().add(ApproveMustSellEvent(approve: MustSellApproveInModel(jsonString: mustSellJsonstriongList, transId: '', userId: widget.user.usrId)));
+                                        },
+                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.rejectSelected,
+                              style: kfontstyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10.w),
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            color: selectedMustSellMode == 'P' ? Colors.green.shade300 : Colors.grey[300],
+                            onPressed: () {
+                              if (selectedMustSellMode == 'P') {
+                                // Show confirmation dialog for approval
+                                showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) => CupertinoAlertDialog(
+                                    title: Text(AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!.doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          // Update the BLoC for approval
+                                          context.read<MustSellApproveBloc>().add(const MustSellLoadingEvent());
+                                          for (var item in mustSellJsonstriongList) {
+                                            item.status = 'A'; // Set status to approved
+                                          }
+                                          context.read<MustSellApproveBloc>().add(ApproveMustSellEvent(approve: MustSellApproveInModel(jsonString: mustSellJsonstriongList, transId: '', userId: widget.user.usrId)));
+                                        },
+                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.approveSelected,
+                              style: kfontstyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+
+      
+      /*  mustSellJsonstriongList.isEmpty ||
               selectedMustSellMode != 'P'
           ? null
           : BlocConsumer<MustSellApproveBloc, MustSellApproveState>(
@@ -800,7 +992,7 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                   ),
                 );
               },
-            ),
+            ), */
     );
   }
 }

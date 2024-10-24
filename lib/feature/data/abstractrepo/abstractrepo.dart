@@ -45,19 +45,20 @@ import 'package:customer_connect/feature/data/models/cus_ins_tr_n_counts/cus_ins
 import 'package:customer_connect/feature/data/models/cus_items_model/cus_items_model.dart';
 import 'package:customer_connect/feature/data/models/cus_out_standing_in_model/cus_out_standing_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_outstanding_count_model/cus_outstanding_count_model.dart';
+import 'package:customer_connect/feature/data/models/cus_override_approval_model/cus_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promo_in_model/cus_promo_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promotion_detail_model/cus_promotion_detail_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_approval_in_model/customer_foc_approval_in_model.dart';
+//import 'package:customer_connect/feature/data/models/customer_foc_approval_in_model/customer_foc_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_approve_and_reject_model/customer_foc_approve_and_reject_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_detail_model/customer_foc_detail_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_header_model/customer_foc_header_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
 import 'package:customer_connect/feature/data/models/customer_live_location_model/customer_live_location_model.dart';
 
-import 'package:customer_connect/feature/data/models/customer_override_approval_model/customer_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
@@ -807,11 +808,13 @@ abstract class IAutoUpdateRepo {
 }
 
 abstract class ICustomerOverrideApprovalRepo {
-  Future<Either<MainFailures, List<CustomerOverrideApprovalModel>>>
+  Future<Either<MainFailures, List<CusOverrideApprovalModel>>>
       approveOverrideCustomer(String statusValue);
 
   Future<Either<MainFailures, OverideApprovRejectModel>> overrideApproveReject(
-      String ooaId, String userId, String status);}
+      String ooaId, String userId, String status);
+}
+
 abstract class IFreeSampleApprovalRepo {
   Future<Either<MainFailures, List<FreeSampleHeaderModel>>>
       getFreeSampleHeaders(String mode);

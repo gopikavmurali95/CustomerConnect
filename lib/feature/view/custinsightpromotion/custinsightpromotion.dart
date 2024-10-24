@@ -427,7 +427,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                           child: Center(
                                                             child: Text(
                                                               headers[index]
-                                                                  .pName!
+                                                                  .prmName!
                                                                   .split('')
                                                                   .toList()[0],
                                                               style: TextStyle(
@@ -465,7 +465,7 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                                 selectedLocale?.languageCode ==
                                                                         "en"
                                                                     ? headers[index]
-                                                                            .pName ??
+                                                                            .prmName ??
                                                                         ''
                                                                     : headers[index]
                                                                             .arPName ??

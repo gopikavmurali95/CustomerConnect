@@ -61,45 +61,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    /* Row(
-                      children: [
-                        Text(
-                          '${customer.cusCode} ',
-                          style: kfontstyle(
-                            fontSize: 12.sp,
-                            color: const Color(0xff413434),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            overflow: TextOverflow.ellipsis,
-                            customer.cusName ?? '',
-                            style: kfontstyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff413434)),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          '${customer.headerCode} - ',
-                          style: kfontstyle(
-                              fontSize: 11.sp, color: const Color(0xff413434)),
-                        ),
-                        Expanded(
-                          child: Text(
-                            customer.headerName ?? '',
-                            overflow: TextOverflow.ellipsis,
-                            style: kfontstyle(fontSize: 12.sp),
-                          ),
-                        ),
-                      ],
-                    ), */
+                  children: [ 
                     SizedBox(
                       width: 300.w,
                       child: RichText(
@@ -315,7 +277,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(child: CustomerInsightSpecialPriceDetailsList())
+          const CustomerInsightSpecialPriceDetailsList()
         ],
       ),
     );
