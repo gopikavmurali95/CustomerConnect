@@ -6,12 +6,14 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/route_model/route_model.dart';
+import 'package:customer_connect/feature/data/models/schedule_return_approval_reason_model/schedule_return_approval_reason_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_prd_model/scheduled_return_prd_model.dart';
 import 'package:customer_connect/feature/data/models/sheduled_return_header_model/sheduled_return_header_model.dart';
-import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
+
 import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/schedulereturnreason/schedule_return_reason_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_reject_radio_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
@@ -45,7 +47,7 @@ List<bool?> statuslist = [];
 bool isLoading = false;
 
 int loadingCount = 0;
-List<ApprovalResonModel> availableresons = [];
+List<ScheduleReturnApprovalReasonModel> availableresons = [];
 
 List<RouteModel> availableroutes = [];
 int _approvedCount = 0;
@@ -106,24 +108,24 @@ class _ScheduledReturnDetailScreenState
         ),
       ),
       body: PopScope(
-         canPop:
-              /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
-          onPopInvoked: (didPop) {
-            _searchctrls.clear();
-            searchCtrl.clear();
-            context.read<SchduledReturnHeaderBloc>().add(
-                GetAllScheduledReturnHeadersEvent(
-                    userID: widget.user.usrId ?? '',
-                    mode: widget.currentMode,
-                    searchQuery: ''));
-            /* if (_approvedCount != 0 && _approvedCount != _totalcount) {
+        canPop:
+            /* _approvedCount == 0 || _approvedCount == _totalcount ? true : */ true,
+        onPopInvoked: (didPop) {
+          _searchctrls.clear();
+          searchCtrl.clear();
+          context.read<SchduledReturnHeaderBloc>().add(
+              GetAllScheduledReturnHeadersEvent(
+                  userID: widget.user.usrId ?? '',
+                  mode: widget.currentMode,
+                  searchQuery: ''));
+          /* if (_approvedCount != 0 && _approvedCount != _totalcount) {
               Future.delayed(const Duration(microseconds: 100), () {
                 showPopAlert(context);
               });
             } else {
               context.read<NavigatetoBackCubit>().popFromScreen(true);
             } */
-          },
+        },
         child: BlocListener<NavigatetoBackCubit, NavigatetoBackState>(
           listener: (context, state) {
             state.when(
@@ -348,7 +350,7 @@ class _ScheduledReturnDetailScreenState
                                     onPressed: () {
                                       if (_searchctrls.text.isNotEmpty) {
                                         _searchctrls.clear();
-          
+
                                         context
                                             .read<ScheduledReturnDetailsBloc>()
                                             .add(
@@ -447,24 +449,24 @@ class _ScheduledReturnDetailScreenState
                           getScheduledReturnDetailState: (details) {
                             if (details != null) {
                               // Navigator.pop(context);
-          
+
                               // _totalcount = details.length;
-          
+
                               approvedProducts = List.generate(
                                   details.length, (index) => null);
                               statuslist.clear();
                               context
                                   .read<RouteForScCubit>()
                                   .getavailableroutes();
-          
+
                               statuslist /* length = details.length; */
                                   = List.generate(
                                       details.length, (index) => null);
-                              context.read<ApprovalReasonsBloc>().add(
-                                  const GetApprovalReasonsEvent(
+                              context.read< ScheduleReturnReasonBloc>().add(
+                                  const ScheduleReturnSuccessEvent(
                                       rsnType: 'rsnType'));
                               selectedRoute = '-1';
-          
+
                               for (int i = 0; i < details.length; i++) {
                                 if (details[i].status!.isNotEmpty) {
                                   if (details[i].status == 'Approved') {
@@ -633,15 +635,15 @@ class _ScheduledReturnDetailScreenState
                                                           children: [
                                                             Expanded(
                                                               child: BlocConsumer<
-                                                                  ApprovalReasonsBloc,
-                                                                  ApprovalReasonsState>(
+                                                                  ScheduleReturnReasonBloc,
+                                                                  ScheduleReturnReasonState>(
                                                                 listener:
                                                                     (context,
                                                                         state) {
                                                                   state.when(
-                                                                    getApprovalResonsState:
-                                                                        (resons) {
-                                                                      if (resons !=
+                                                                    getScheduleReturnReasonState:
+                                                                        (reason) {
+                                                                      if (reason !=
                                                                           null) {
                                                                         selectedresons
                                                                             .clear();
@@ -649,24 +651,23 @@ class _ScheduledReturnDetailScreenState
                                                                             .clear();
                                                                         availableresons =
                                                                             [
-                                                                          ApprovalResonModel(
+                                                                          ScheduleReturnApprovalReasonModel(
                                                                               rsnId: '-1',
                                                                               rsnName: selectedLocale?.languageCode == 'en' ? 'Select reason' : AppLocalizations.of(context)!.selectReason,
-                                                                              rsnArName: AppLocalizations.of(context)!.selectReason,
                                                                               rsnType: 'null')
                                                                         ];
-          
+
                                                                         selectedresons = List.generate(
                                                                             details
                                                                                 .length,
                                                                             (index) =>
                                                                                 '-1');
-          
+
                                                                         availableresons
-                                                                            .addAll(resons);
+                                                                            .addAll(reason);
                                                                       }
                                                                     },
-                                                                    getReasonsFailedState:
+                                                                    scheduleReturnReasonFailedState:
                                                                         () {},
                                                                   );
                                                                 },
@@ -675,7 +676,7 @@ class _ScheduledReturnDetailScreenState
                                                                         state) {
                                                                   return state
                                                                       .when(
-                                                                    getApprovalResonsState: (resons) => resons ==
+                                                                    getScheduleReturnReasonState: (reason) => reason==
                                                                                 null ||
                                                                             availableresons
                                                                                 .isEmpty
@@ -696,7 +697,7 @@ class _ScheduledReturnDetailScreenState
                                                                               //         .size
                                                                               //         .width /
                                                                               //     3,
-          
+
                                                                               decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                                 BoxShadow(
                                                                                     // ignore: use_full_hex_values_for_flutter_colors
@@ -708,7 +709,7 @@ class _ScheduledReturnDetailScreenState
                                                                                 elevation: 0,
                                                                                 // isExpanded:
                                                                                 //     true,
-          
+
                                                                                 dropdownColor: Colors.white,
                                                                                 value: availableresons[0].rsnId ?? '',
                                                                                 style: kfontstyle(color: Colors.black),
@@ -730,14 +731,18 @@ class _ScheduledReturnDetailScreenState
                                                                                     borderSide: const BorderSide(color: Colors.transparent),
                                                                                   ),
                                                                                 ),
-                                                                                items: availableresons.map((ApprovalResonModel item) {
+                                                                                items: availableresons.map((ScheduleReturnApprovalReasonModel item) {
                                                                                   return DropdownMenuItem(
                                                                                     value: item.rsnId,
                                                                                     child: Text(
-                                                                                      overflow: TextOverflow.ellipsis,
-                                                                                      selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
+                                                                                      "${item.rsnName}",
                                                                                       style: kfontstyle(fontSize: 10.sp),
                                                                                     ),
+                                                                                    // child: Text(
+                                                                                    //   overflow: TextOverflow.ellipsis,
+                                                                                    //   selectedLocale?.languageCode == 'en' ? item.rsnName ?? '' : item.rsnArName ?? '',
+                                                                                    //   style: kfontstyle(fontSize: 10.sp),
+                                                                                    // ),
                                                                                   );
                                                                                 }).toList(),
                                                                                 onChanged: (value) {
@@ -746,7 +751,7 @@ class _ScheduledReturnDetailScreenState
                                                                               ),
                                                                             ),
                                                                           ),
-                                                                    getReasonsFailedState:
+                                                                    scheduleReturnReasonFailedState:
                                                                         () =>
                                                                             const SizedBox(),
                                                                   );
@@ -756,7 +761,7 @@ class _ScheduledReturnDetailScreenState
                                                             // SizedBox(
                                                             //   width: 10.w,
                                                             // ),
-          
+
                                                             Row(
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
@@ -913,7 +918,7 @@ class _ScheduledReturnDetailScreenState
                                                                         child:
                                                                             Container(
                                                                           height:
-                                                                              30.h,
+                                                                              32.h,
                                                                           decoration: BoxDecoration(
                                                                               color: Colors.white,
                                                                               border: Border.all(color: Colors.grey.shade200),
@@ -926,9 +931,18 @@ class _ScheduledReturnDetailScreenState
                                                                                     spreadRadius: 0.4)
                                                                               ]),
                                                                           child:
+                                                                          // Padding(
+                                                                          //   padding:
+                                                                          //       const EdgeInsets.symmetric(vertical: 2, horizontal: 1),
+                                                                          //   child:
+                                                                          //       Text(
+                                                                          //     details[index].rsnName == null || details[index].rsnName!.isEmpty ? "No reason found" : details[index].rsnName ?? '',
+                                                                          //     style: const TextStyle(fontSize: 10),
+                                                                          //   ),
+                                                                          // ),
                                                                               Padding(
                                                                             padding:
-                                                                                const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                                                                                 const EdgeInsets.symmetric(vertical: 7, horizontal: 1),
                                                                             child:
                                                                                 Text(details[index].rsnName ?? ''),
                                                                           ),
@@ -945,17 +959,17 @@ class _ScheduledReturnDetailScreenState
                                                                     Transform
                                                                         .scale(
                                                                       scale:
-                                                                          0.8,
+                                                                          0.9,
                                                                       origin: const Offset(
-                                                                          -120,
+                                                                          -100,
                                                                           0),
                                                                       child:
                                                                           Row(
                                                                         children: [
                                                                           details[index].status == 'Rejected'
                                                                               ? Container(
-                                                                                  height: 30.h,
-                                                                                  width: 110.w,
+                                                                                  height: 32.h,
+                                                                                  width: 120.w,
                                                                                   decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                                     BoxShadow(
                                                                                         // ignore: use_full_hex_values_for_flutter_colors
@@ -964,8 +978,8 @@ class _ScheduledReturnDetailScreenState
                                                                                         spreadRadius: 0.4)
                                                                                   ]),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
-                                                                                    child: Text(details[index].rsnName ?? ''),
+                                                                                    padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 1),
+                                                                                    child: Text(details[index].rsnName ?? '',style: kfontstyle(fontSize:9.5),),
                                                                                   ),
                                                                                 )
                                                                               : const SizedBox(),
@@ -1088,7 +1102,7 @@ class _ScheduledReturnDetailScreenState
                             ),
                           ),
                         ), */
-          
+
                         /* widget.scheduledreturn.status == "Pending"
                             ? Expanded(
                                 child: 
@@ -1111,7 +1125,7 @@ class _ScheduledReturnDetailScreenState
                                       state.when(
                                         getAllRoutesForScReturnState: (routes) {
                                           availableroutes.clear();
-          
+
                                           availableroutes = [
                                             RouteModel(
                                                 rotId: '-1',
@@ -1121,14 +1135,14 @@ class _ScheduledReturnDetailScreenState
                                                     ? 'Select a Route'
                                                     : 'حدد الطريق')
                                           ];
-          
+
                                           if (routes != null) {
                                             availableroutes.addAll(routes);
                                           }
                                         },
                                         getRoutesFailedState: () {
                                           availableroutes.clear();
-          
+
                                           availableroutes = [
                                             RouteModel(
                                                 rotId: '-1',
@@ -1163,7 +1177,7 @@ class _ScheduledReturnDetailScreenState
                                                           //         .size
                                                           //         .width /
                                                           //     3,
-          
+
                                                           decoration: BoxDecoration(
                                                               color:
                                                                   Colors.white,
@@ -1191,10 +1205,10 @@ class _ScheduledReturnDetailScreenState
                                                             elevation: 0,
                                                             // isExpanded:
                                                             //     true,
-          
+
                                                             dropdownColor:
                                                                 Colors.white,
-          
+
                                                             decoration:
                                                                 InputDecoration(
                                                               filled: true,
@@ -1248,7 +1262,7 @@ class _ScheduledReturnDetailScreenState
                                                                         context)
                                                                     .size
                                                                     .width,
-          
+
                                                             items: availableroutes
                                                                 .map((RouteModel
                                                                     item) {
@@ -1382,7 +1396,7 @@ class _ScheduledReturnDetailScreenState
                                                               SchduledReturnApprovalBloc>()
                                                           .add(
                                                               const AddScheduledReturnApprovalLoadingEvent());
-          
+
                                                       context
                                                           .read<
                                                               SchduledReturnApprovalBloc>()

@@ -159,6 +159,7 @@ import 'package:customer_connect/feature/data/models/route_model/route_model.dar
 import 'package:customer_connect/feature/data/models/sales_oder_count_model/sales_oder_count_model.dart';
 import 'package:customer_connect/feature/data/models/sales_order_details_inparas_model/sales_order_details_inparas_model.dart';
 import 'package:customer_connect/feature/data/models/sales_order_details_model/sales_order_details_model.dart';
+import 'package:customer_connect/feature/data/models/schedule_return_approval_reason_model/schedule_return_approval_reason_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_in_model/scheduled_return_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/scheduled_return_approval_out_model/scheduled_return_approval_out_model.dart';
 import 'package:customer_connect/feature/data/models/settelemet_approval_reject/settelemet_approval_reject.dart';
@@ -482,6 +483,10 @@ abstract class IScheduledReturnApprovalRepo {
   Future<Either<MainFailures, List<SheduledReturnDetailModel>>>
       getScheduledReturnApprovalDetails(String reqID);
   Future<Either<MainFailures, List<RouteModel>>> getAllRoutes();
+  Future<Either<MainFailures, List<ScheduleReturnApprovalReasonModel>>>
+      getScheduleReturnReasons(
+    String rsnType,
+  );
   Future<Either<MainFailures, ScheduledReturnApprovalOutModel>>
       scheduledReturnApproval(ScheduledReturnApprovalInModel approve);
 }

@@ -72,7 +72,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
               area: '',
               fromDate: widget.fromdatectrl.text,
               toDate: widget.todatectrl.text,
-              route: /* widget.customer.rotId */'',
+              route: /* widget.customer.rotId */ '',
               subArea: ''),
         ));
     _scrollController.addListener(_scrollListener);

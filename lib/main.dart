@@ -124,6 +124,7 @@ import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_orde
 import 'package:customer_connect/feature/state/bloc/salesorderdetails/sales_order_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnapproval/schduled_return_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheduledreturnheader/schduled_return_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/schedulereturnreason/schedule_return_reason_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/scheuledreturndetail/scheduled_return_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlementapprovalheader/settlement_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/settlementapprovalreject/settlement_approval_reject_bloc.dart';
@@ -827,6 +828,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<CusromerFocRejectionBloc>(),
+        ),
+         BlocProvider(
+          create: (context) => getit<ScheduleReturnReasonBloc>(),
         ),
       ],
       child: ScreenUtilInit(
