@@ -15,7 +15,7 @@ class CustomerItemListWidget extends StatelessWidget {
     return BlocBuilder<CusItemsBloc, CusItemsState>(
       builder: (context, state) {
         return state.when(
-          getCusItemsState: (items) => items == null
+          getCusItemsState: (items, isloading) => items == null
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: ListView.builder(
@@ -33,120 +33,129 @@ class CustomerItemListWidget extends StatelessWidget {
                         style: kfontstyle(),
                       ),
                     )
-                  : ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Column(
-                          children: [
-                            Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  : Column(
+                      children: [
+                        ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) => Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
                               children: [
-                                Flexible(
-                                  flex: 2,
-                                  fit: FlexFit.tight,
-                                  child: SizedBox(
-                                    // height: 55.h,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          items[index].prdCode ?? '',
-                                          style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff7b70ac),
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          // width: MediaQuery.of(context)
-                                          //         .size
-                                          //         .width /
-                                          //     2,
-                                          child: Text(
-                                            selectedLocale?.languageCode == "en"
-                                                ? items[index].prdName ?? ''
-                                                : items[index].prdArName ?? '',
-                                            style: kfontstyle(
+                                Row(
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      flex: 2,
+                                      fit: FlexFit.tight,
+                                      child: SizedBox(
+                                        // height: 55.h,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              items[index].prdCode ?? '',
+                                              style: kfontstyle(
                                                 fontSize: 12.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54),
-                                          ),
+                                                color: const Color(0xff7b70ac),
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              // width: MediaQuery.of(context)
+                                              //         .size
+                                              //         .width /
+                                              //     2,
+                                              child: Text(
+                                                selectedLocale?.languageCode ==
+                                                        "en"
+                                                    ? items[index].prdName ?? ''
+                                                    : items[index].prdArName ??
+                                                        '',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                /* SizedBox(
-                                  width: 50.h,
-                                ), */
-                                Flexible(
-                                  flex: 1,
-                                  fit: FlexFit.tight,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
+                                    /* SizedBox(
+                                      width: 50.h,
+                                    ), */
+                                    Flexible(
+                                      flex: 1,
+                                      fit: FlexFit.tight,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text(
-                                            items[index].uomName ?? '',
-                                            style: kfontstyle(
-                                                fontSize: 12.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.black54),
-                                          ),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                items[index].uomName ?? '',
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54),
+                                              ),
 
-                                          /* 
-                                      Text(
-                                        'Pc',
-                                        style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black54),
-                                      ), */
-                                        ],
-                                      ),
-                                      // SizedBox(
-                                      //   width: 20.h,
-                                      // ),
-                                      Column(
-                                        children: [
+                                              /* 
                                           Text(
-                                            items[index].pldPrice ?? "",
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.end,
+                                            'Pc',
                                             style: kfontstyle(
                                                 fontSize: 12.sp,
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.black54),
+                                          ), */
+                                            ],
                                           ),
-                                          /* SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      Text(
-                                        '12.00',
-                                        style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black54),
-                                      ), */
+                                          // SizedBox(
+                                          //   width: 20.h,
+                                          // ),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                items[index].pldPrice ?? "",
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.end,
+                                                style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Colors.black54),
+                                              ),
+                                            ],
+                                          ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                )
+                                    )
+                                  ],
+                                ),
+                                index == items.length - 1
+                                    ? const SizedBox.shrink()
+                                    : Divider(
+                                        color: Colors.grey[300],
+                                      ),
                               ],
                             ),
-                            Divider(
-                              color: Colors.grey[300],
-                            )
-                          ],
+                          ),
+                          itemCount: items.length,
                         ),
-                      ),
-                      itemCount: items.length,
+                        isloading == true
+                            ? SizedBox(
+                                height: 80.h,
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [CircularProgressIndicator()],
+                                ),
+                              )
+                            : const SizedBox(
+                                height: 10,
+                              )
+                      ],
                     ),
           getitemsFailedState: () => Padding(
             padding: const EdgeInsets.only(top: 250),

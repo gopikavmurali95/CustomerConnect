@@ -19,7 +19,7 @@ mixin _$CusItemsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String cusID, String route, String fromDate,
-            String toDate, String searchQuery)
+            String toDate, String pageNum, String searchQuery)
         getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) =>
@@ -27,7 +27,7 @@ mixin _$CusItemsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String cusID, String route, String fromDate,
-            String toDate, String searchQuery)?
+            String toDate, String pageNum, String searchQuery)?
         getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) =>
@@ -35,7 +35,7 @@ mixin _$CusItemsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String cusID, String route, String fromDate, String toDate,
-            String searchQuery)?
+            String pageNum, String searchQuery)?
         getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
@@ -91,6 +91,7 @@ abstract class _$$GetItemsEventImplCopyWith<$Res> {
       String route,
       String fromDate,
       String toDate,
+      String pageNum,
       String searchQuery});
 }
 
@@ -109,6 +110,7 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
     Object? route = null,
     Object? fromDate = null,
     Object? toDate = null,
+    Object? pageNum = null,
     Object? searchQuery = null,
   }) {
     return _then(_$GetItemsEventImpl(
@@ -128,6 +130,10 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
           ? _value.toDate
           : toDate // ignore: cast_nullable_to_non_nullable
               as String,
+      pageNum: null == pageNum
+          ? _value.pageNum
+          : pageNum // ignore: cast_nullable_to_non_nullable
+              as String,
       searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -144,6 +150,7 @@ class _$GetItemsEventImpl implements GetItemsEvent {
       required this.route,
       required this.fromDate,
       required this.toDate,
+      required this.pageNum,
       required this.searchQuery});
 
   @override
@@ -155,11 +162,13 @@ class _$GetItemsEventImpl implements GetItemsEvent {
   @override
   final String toDate;
   @override
+  final String pageNum;
+  @override
   final String searchQuery;
 
   @override
   String toString() {
-    return 'CusItemsEvent.getItemsEvent(cusID: $cusID, route: $route, fromDate: $fromDate, toDate: $toDate, searchQuery: $searchQuery)';
+    return 'CusItemsEvent.getItemsEvent(cusID: $cusID, route: $route, fromDate: $fromDate, toDate: $toDate, pageNum: $pageNum, searchQuery: $searchQuery)';
   }
 
   @override
@@ -172,13 +181,14 @@ class _$GetItemsEventImpl implements GetItemsEvent {
             (identical(other.fromDate, fromDate) ||
                 other.fromDate == fromDate) &&
             (identical(other.toDate, toDate) || other.toDate == toDate) &&
+            (identical(other.pageNum, pageNum) || other.pageNum == pageNum) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, cusID, route, fromDate, toDate, searchQuery);
+  int get hashCode => Object.hash(
+      runtimeType, cusID, route, fromDate, toDate, pageNum, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -190,35 +200,37 @@ class _$GetItemsEventImpl implements GetItemsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String cusID, String route, String fromDate,
-            String toDate, String searchQuery)
+            String toDate, String pageNum, String searchQuery)
         getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) {
-    return getItemsEvent(cusID, route, fromDate, toDate, searchQuery);
+    return getItemsEvent(cusID, route, fromDate, toDate, pageNum, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String cusID, String route, String fromDate,
-            String toDate, String searchQuery)?
+            String toDate, String pageNum, String searchQuery)?
         getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) {
-    return getItemsEvent?.call(cusID, route, fromDate, toDate, searchQuery);
+    return getItemsEvent?.call(
+        cusID, route, fromDate, toDate, pageNum, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String cusID, String route, String fromDate, String toDate,
-            String searchQuery)?
+            String pageNum, String searchQuery)?
         getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
   }) {
     if (getItemsEvent != null) {
-      return getItemsEvent(cusID, route, fromDate, toDate, searchQuery);
+      return getItemsEvent(
+          cusID, route, fromDate, toDate, pageNum, searchQuery);
     }
     return orElse();
   }
@@ -261,12 +273,14 @@ abstract class GetItemsEvent implements CusItemsEvent {
       required final String route,
       required final String fromDate,
       required final String toDate,
+      required final String pageNum,
       required final String searchQuery}) = _$GetItemsEventImpl;
 
   String get cusID;
   String get route;
   String get fromDate;
   String get toDate;
+  String get pageNum;
   String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetItemsEventImplCopyWith<_$GetItemsEventImpl> get copyWith =>
@@ -312,7 +326,7 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String cusID, String route, String fromDate,
-            String toDate, String searchQuery)
+            String toDate, String pageNum, String searchQuery)
         getItemsEvent,
     required TResult Function() clearItemsEvent,
   }) {
@@ -323,7 +337,7 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String cusID, String route, String fromDate,
-            String toDate, String searchQuery)?
+            String toDate, String pageNum, String searchQuery)?
         getItemsEvent,
     TResult? Function()? clearItemsEvent,
   }) {
@@ -334,7 +348,7 @@ class _$ClearItemsEventImpl implements ClearItemsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String cusID, String route, String fromDate, String toDate,
-            String searchQuery)?
+            String pageNum, String searchQuery)?
         getItemsEvent,
     TResult Function()? clearItemsEvent,
     required TResult orElse(),
@@ -385,19 +399,22 @@ abstract class ClearItemsEvent implements CusItemsEvent {
 mixin _$CusItemsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusItemsModel>? items) getCusItemsState,
+    required TResult Function(List<CusItemsModel>? items, bool isLoading)
+        getCusItemsState,
     required TResult Function() getitemsFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusItemsModel>? items)? getCusItemsState,
+    TResult? Function(List<CusItemsModel>? items, bool isLoading)?
+        getCusItemsState,
     TResult? Function()? getitemsFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusItemsModel>? items)? getCusItemsState,
+    TResult Function(List<CusItemsModel>? items, bool isLoading)?
+        getCusItemsState,
     TResult Function()? getitemsFailedState,
     required TResult orElse(),
   }) =>
@@ -447,7 +464,7 @@ abstract class _$$GetCusItemsStateImplCopyWith<$Res> {
           $Res Function(_$GetCusItemsStateImpl) then) =
       __$$GetCusItemsStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CusItemsModel>? items});
+  $Res call({List<CusItemsModel>? items, bool isLoading});
 }
 
 /// @nodoc
@@ -462,12 +479,17 @@ class __$$GetCusItemsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? items = freezed,
+    Object? isLoading = null,
   }) {
     return _then(_$GetCusItemsStateImpl(
       items: freezed == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<CusItemsModel>?,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -475,7 +497,8 @@ class __$$GetCusItemsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetCusItemsStateImpl implements GetCusItemsState {
-  const _$GetCusItemsStateImpl({required final List<CusItemsModel>? items})
+  const _$GetCusItemsStateImpl(
+      {required final List<CusItemsModel>? items, required this.isLoading})
       : _items = items;
 
   final List<CusItemsModel>? _items;
@@ -489,8 +512,11 @@ class _$GetCusItemsStateImpl implements GetCusItemsState {
   }
 
   @override
+  final bool isLoading;
+
+  @override
   String toString() {
-    return 'CusItemsState.getCusItemsState(items: $items)';
+    return 'CusItemsState.getCusItemsState(items: $items, isLoading: $isLoading)';
   }
 
   @override
@@ -498,12 +524,14 @@ class _$GetCusItemsStateImpl implements GetCusItemsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCusItemsStateImpl &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_items), isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -515,30 +543,33 @@ class _$GetCusItemsStateImpl implements GetCusItemsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusItemsModel>? items) getCusItemsState,
+    required TResult Function(List<CusItemsModel>? items, bool isLoading)
+        getCusItemsState,
     required TResult Function() getitemsFailedState,
   }) {
-    return getCusItemsState(items);
+    return getCusItemsState(items, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusItemsModel>? items)? getCusItemsState,
+    TResult? Function(List<CusItemsModel>? items, bool isLoading)?
+        getCusItemsState,
     TResult? Function()? getitemsFailedState,
   }) {
-    return getCusItemsState?.call(items);
+    return getCusItemsState?.call(items, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusItemsModel>? items)? getCusItemsState,
+    TResult Function(List<CusItemsModel>? items, bool isLoading)?
+        getCusItemsState,
     TResult Function()? getitemsFailedState,
     required TResult orElse(),
   }) {
     if (getCusItemsState != null) {
-      return getCusItemsState(items);
+      return getCusItemsState(items, isLoading);
     }
     return orElse();
   }
@@ -576,10 +607,12 @@ class _$GetCusItemsStateImpl implements GetCusItemsState {
 }
 
 abstract class GetCusItemsState implements CusItemsState {
-  const factory GetCusItemsState({required final List<CusItemsModel>? items}) =
-      _$GetCusItemsStateImpl;
+  const factory GetCusItemsState(
+      {required final List<CusItemsModel>? items,
+      required final bool isLoading}) = _$GetCusItemsStateImpl;
 
   List<CusItemsModel>? get items;
+  bool get isLoading;
   @JsonKey(ignore: true)
   _$$GetCusItemsStateImplCopyWith<_$GetCusItemsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -624,7 +657,8 @@ class _$GetitemsFailedStateImpl implements GetitemsFailedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CusItemsModel>? items) getCusItemsState,
+    required TResult Function(List<CusItemsModel>? items, bool isLoading)
+        getCusItemsState,
     required TResult Function() getitemsFailedState,
   }) {
     return getitemsFailedState();
@@ -633,7 +667,8 @@ class _$GetitemsFailedStateImpl implements GetitemsFailedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CusItemsModel>? items)? getCusItemsState,
+    TResult? Function(List<CusItemsModel>? items, bool isLoading)?
+        getCusItemsState,
     TResult? Function()? getitemsFailedState,
   }) {
     return getitemsFailedState?.call();
@@ -642,7 +677,8 @@ class _$GetitemsFailedStateImpl implements GetitemsFailedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CusItemsModel>? items)? getCusItemsState,
+    TResult Function(List<CusItemsModel>? items, bool isLoading)?
+        getCusItemsState,
     TResult Function()? getitemsFailedState,
     required TResult orElse(),
   }) {

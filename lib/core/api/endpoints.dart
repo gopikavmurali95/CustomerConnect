@@ -207,3 +207,4 @@ const cusOverrideApprovalUrl = 'CusFreeSampleApproval/GetOverRideDetails';
 const cusOverApprovRejectUrl =
     'CusFreeSampleApproval/PostOverRideApproveReject';
 const scheduleReturnApprovalReasonUrl = 'CusOperation/GetReasonForReturnSc';
+const itemListingCountUrl = 'CusInsightCusItems/SelectCustomerICount';

@@ -7,6 +7,7 @@ class CusItemsEvent with _$CusItemsEvent {
       required String route,
       required String fromDate,
       required String toDate,
+      required String pageNum,
       required String searchQuery}) = GetItemsEvent;
   const factory CusItemsEvent.clearItemsEvent() = ClearItemsEvent;
 }
