@@ -24,7 +24,7 @@ class MerchandiseReturnRequestScreen extends StatefulWidget {
 
 List<MerchandisingStatusFilterModel> filterReturnReqReq = [
   MerchandisingStatusFilterModel(statusName: "All", mode: 'AL'),
-  MerchandisingStatusFilterModel(statusName: "Approved", mode: 'AP'),
+  MerchandisingStatusFilterModel(statusName: "Action Taken", mode: 'AP'),
   MerchandisingStatusFilterModel(statusName: "Requested", mode: 'RQ'),
 ];
 TextEditingController _merchReturnReqSearch = TextEditingController();
@@ -43,8 +43,9 @@ class _CreditNoteHeaderScreenState
               selectedLocale?.languageCode == 'en' ? "All" : "جميع الطلبات",
           mode: 'AL'),
       MerchandisingStatusFilterModel(
-          statusName:
-              selectedLocale?.languageCode == 'en' ? "Approved" : "مصدق عليه",
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Action Taken"
+              : "تم اتخاذ الإجراء",
           mode: 'AP'),
       MerchandisingStatusFilterModel(
           statusName:

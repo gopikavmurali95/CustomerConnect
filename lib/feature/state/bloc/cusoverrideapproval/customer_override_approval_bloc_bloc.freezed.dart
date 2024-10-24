@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CustomerOverrideApprovalBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String statusvalue, String searchQuery)
+    required TResult Function(
+            String statusvalue, String ooaID, String userID, String searchQuery)
         getCusOverrideEvent,
     required TResult Function() clearCusOverrideEvent,
     required TResult Function() started,
@@ -26,7 +27,8 @@ mixin _$CustomerOverrideApprovalBlocEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String statusvalue, String searchQuery)?
+    TResult? Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult? Function()? clearCusOverrideEvent,
     TResult? Function()? started,
@@ -34,7 +36,8 @@ mixin _$CustomerOverrideApprovalBlocEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String statusvalue, String searchQuery)?
+    TResult Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult Function()? clearCusOverrideEvent,
     TResult Function()? started,
@@ -93,7 +96,8 @@ abstract class _$$GetCusOverrideEventImplCopyWith<$Res> {
           $Res Function(_$GetCusOverrideEventImpl) then) =
       __$$GetCusOverrideEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String statusvalue, String searchQuery});
+  $Res call(
+      {String statusvalue, String ooaID, String userID, String searchQuery});
 }
 
 /// @nodoc
@@ -109,12 +113,22 @@ class __$$GetCusOverrideEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? statusvalue = null,
+    Object? ooaID = null,
+    Object? userID = null,
     Object? searchQuery = null,
   }) {
     return _then(_$GetCusOverrideEventImpl(
       statusvalue: null == statusvalue
           ? _value.statusvalue
           : statusvalue // ignore: cast_nullable_to_non_nullable
+              as String,
+      ooaID: null == ooaID
+          ? _value.ooaID
+          : ooaID // ignore: cast_nullable_to_non_nullable
+              as String,
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
               as String,
       searchQuery: null == searchQuery
           ? _value.searchQuery
@@ -128,16 +142,23 @@ class __$$GetCusOverrideEventImplCopyWithImpl<$Res>
 
 class _$GetCusOverrideEventImpl implements GetCusOverrideEvent {
   const _$GetCusOverrideEventImpl(
-      {required this.statusvalue, required this.searchQuery});
+      {required this.statusvalue,
+      required this.ooaID,
+      required this.userID,
+      required this.searchQuery});
 
   @override
   final String statusvalue;
+  @override
+  final String ooaID;
+  @override
+  final String userID;
   @override
   final String searchQuery;
 
   @override
   String toString() {
-    return 'CustomerOverrideApprovalBlocEvent.getCusOverrideEvent(statusvalue: $statusvalue, searchQuery: $searchQuery)';
+    return 'CustomerOverrideApprovalBlocEvent.getCusOverrideEvent(statusvalue: $statusvalue, ooaID: $ooaID, userID: $userID, searchQuery: $searchQuery)';
   }
 
   @override
@@ -147,12 +168,15 @@ class _$GetCusOverrideEventImpl implements GetCusOverrideEvent {
             other is _$GetCusOverrideEventImpl &&
             (identical(other.statusvalue, statusvalue) ||
                 other.statusvalue == statusvalue) &&
+            (identical(other.ooaID, ooaID) || other.ooaID == ooaID) &&
+            (identical(other.userID, userID) || other.userID == userID) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, statusvalue, searchQuery);
+  int get hashCode =>
+      Object.hash(runtimeType, statusvalue, ooaID, userID, searchQuery);
 
   @JsonKey(ignore: true)
   @override
@@ -164,36 +188,39 @@ class _$GetCusOverrideEventImpl implements GetCusOverrideEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String statusvalue, String searchQuery)
+    required TResult Function(
+            String statusvalue, String ooaID, String userID, String searchQuery)
         getCusOverrideEvent,
     required TResult Function() clearCusOverrideEvent,
     required TResult Function() started,
   }) {
-    return getCusOverrideEvent(statusvalue, searchQuery);
+    return getCusOverrideEvent(statusvalue, ooaID, userID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String statusvalue, String searchQuery)?
+    TResult? Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult? Function()? clearCusOverrideEvent,
     TResult? Function()? started,
   }) {
-    return getCusOverrideEvent?.call(statusvalue, searchQuery);
+    return getCusOverrideEvent?.call(statusvalue, ooaID, userID, searchQuery);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String statusvalue, String searchQuery)?
+    TResult Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult Function()? clearCusOverrideEvent,
     TResult Function()? started,
     required TResult orElse(),
   }) {
     if (getCusOverrideEvent != null) {
-      return getCusOverrideEvent(statusvalue, searchQuery);
+      return getCusOverrideEvent(statusvalue, ooaID, userID, searchQuery);
     }
     return orElse();
   }
@@ -238,9 +265,13 @@ abstract class GetCusOverrideEvent
     implements CustomerOverrideApprovalBlocEvent {
   const factory GetCusOverrideEvent(
       {required final String statusvalue,
+      required final String ooaID,
+      required final String userID,
       required final String searchQuery}) = _$GetCusOverrideEventImpl;
 
   String get statusvalue;
+  String get ooaID;
+  String get userID;
   String get searchQuery;
   @JsonKey(ignore: true)
   _$$GetCusOverrideEventImplCopyWith<_$GetCusOverrideEventImpl> get copyWith =>
@@ -288,7 +319,8 @@ class _$ClearCusOverrideEventImpl implements ClearCusOverrideEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String statusvalue, String searchQuery)
+    required TResult Function(
+            String statusvalue, String ooaID, String userID, String searchQuery)
         getCusOverrideEvent,
     required TResult Function() clearCusOverrideEvent,
     required TResult Function() started,
@@ -299,7 +331,8 @@ class _$ClearCusOverrideEventImpl implements ClearCusOverrideEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String statusvalue, String searchQuery)?
+    TResult? Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult? Function()? clearCusOverrideEvent,
     TResult? Function()? started,
@@ -310,7 +343,8 @@ class _$ClearCusOverrideEventImpl implements ClearCusOverrideEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String statusvalue, String searchQuery)?
+    TResult Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult Function()? clearCusOverrideEvent,
     TResult Function()? started,
@@ -401,7 +435,8 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String statusvalue, String searchQuery)
+    required TResult Function(
+            String statusvalue, String ooaID, String userID, String searchQuery)
         getCusOverrideEvent,
     required TResult Function() clearCusOverrideEvent,
     required TResult Function() started,
@@ -412,7 +447,8 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String statusvalue, String searchQuery)?
+    TResult? Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult? Function()? clearCusOverrideEvent,
     TResult? Function()? started,
@@ -423,7 +459,8 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String statusvalue, String searchQuery)?
+    TResult Function(String statusvalue, String ooaID, String userID,
+            String searchQuery)?
         getCusOverrideEvent,
     TResult Function()? clearCusOverrideEvent,
     TResult Function()? started,
@@ -479,21 +516,21 @@ abstract class _Started implements CustomerOverrideApprovalBlocEvent {
 mixin _$CustomerOverrideApprovalBlocState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CustomerOverrideApprovalModel>? cusoverride)
+    required TResult Function(List<CusOverrideApprovalModel>? cusoverride)
         getCusOverrideApprovalState,
     required TResult Function() cusOverrideApprovalFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CustomerOverrideApprovalModel>? cusoverride)?
+    TResult? Function(List<CusOverrideApprovalModel>? cusoverride)?
         getCusOverrideApprovalState,
     TResult? Function()? cusOverrideApprovalFailedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CustomerOverrideApprovalModel>? cusoverride)?
+    TResult Function(List<CusOverrideApprovalModel>? cusoverride)?
         getCusOverrideApprovalState,
     TResult Function()? cusOverrideApprovalFailedState,
     required TResult orElse(),
@@ -554,7 +591,7 @@ abstract class _$$GetCusOverrideApprovalStateImplCopyWith<$Res> {
           $Res Function(_$GetCusOverrideApprovalStateImpl) then) =
       __$$GetCusOverrideApprovalStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CustomerOverrideApprovalModel>? cusoverride});
+  $Res call({List<CusOverrideApprovalModel>? cusoverride});
 }
 
 /// @nodoc
@@ -576,7 +613,7 @@ class __$$GetCusOverrideApprovalStateImplCopyWithImpl<$Res>
       cusoverride: freezed == cusoverride
           ? _value._cusoverride
           : cusoverride // ignore: cast_nullable_to_non_nullable
-              as List<CustomerOverrideApprovalModel>?,
+              as List<CusOverrideApprovalModel>?,
     ));
   }
 }
@@ -585,12 +622,12 @@ class __$$GetCusOverrideApprovalStateImplCopyWithImpl<$Res>
 
 class _$GetCusOverrideApprovalStateImpl implements GetCusOverrideApprovalState {
   const _$GetCusOverrideApprovalStateImpl(
-      {required final List<CustomerOverrideApprovalModel>? cusoverride})
+      {required final List<CusOverrideApprovalModel>? cusoverride})
       : _cusoverride = cusoverride;
 
-  final List<CustomerOverrideApprovalModel>? _cusoverride;
+  final List<CusOverrideApprovalModel>? _cusoverride;
   @override
-  List<CustomerOverrideApprovalModel>? get cusoverride {
+  List<CusOverrideApprovalModel>? get cusoverride {
     final value = _cusoverride;
     if (value == null) return null;
     if (_cusoverride is EqualUnmodifiableListView) return _cusoverride;
@@ -626,7 +663,7 @@ class _$GetCusOverrideApprovalStateImpl implements GetCusOverrideApprovalState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CustomerOverrideApprovalModel>? cusoverride)
+    required TResult Function(List<CusOverrideApprovalModel>? cusoverride)
         getCusOverrideApprovalState,
     required TResult Function() cusOverrideApprovalFailedState,
   }) {
@@ -636,7 +673,7 @@ class _$GetCusOverrideApprovalStateImpl implements GetCusOverrideApprovalState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CustomerOverrideApprovalModel>? cusoverride)?
+    TResult? Function(List<CusOverrideApprovalModel>? cusoverride)?
         getCusOverrideApprovalState,
     TResult? Function()? cusOverrideApprovalFailedState,
   }) {
@@ -646,7 +683,7 @@ class _$GetCusOverrideApprovalStateImpl implements GetCusOverrideApprovalState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CustomerOverrideApprovalModel>? cusoverride)?
+    TResult Function(List<CusOverrideApprovalModel>? cusoverride)?
         getCusOverrideApprovalState,
     TResult Function()? cusOverrideApprovalFailedState,
     required TResult orElse(),
@@ -698,10 +735,10 @@ class _$GetCusOverrideApprovalStateImpl implements GetCusOverrideApprovalState {
 abstract class GetCusOverrideApprovalState
     implements CustomerOverrideApprovalBlocState {
   const factory GetCusOverrideApprovalState(
-          {required final List<CustomerOverrideApprovalModel>? cusoverride}) =
+          {required final List<CusOverrideApprovalModel>? cusoverride}) =
       _$GetCusOverrideApprovalStateImpl;
 
-  List<CustomerOverrideApprovalModel>? get cusoverride;
+  List<CusOverrideApprovalModel>? get cusoverride;
   @JsonKey(ignore: true)
   _$$GetCusOverrideApprovalStateImplCopyWith<_$GetCusOverrideApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -750,7 +787,7 @@ class _$CusOverrideApprovalFailedStateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<CustomerOverrideApprovalModel>? cusoverride)
+    required TResult Function(List<CusOverrideApprovalModel>? cusoverride)
         getCusOverrideApprovalState,
     required TResult Function() cusOverrideApprovalFailedState,
   }) {
@@ -760,7 +797,7 @@ class _$CusOverrideApprovalFailedStateImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<CustomerOverrideApprovalModel>? cusoverride)?
+    TResult? Function(List<CusOverrideApprovalModel>? cusoverride)?
         getCusOverrideApprovalState,
     TResult? Function()? cusOverrideApprovalFailedState,
   }) {
@@ -770,7 +807,7 @@ class _$CusOverrideApprovalFailedStateImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<CustomerOverrideApprovalModel>? cusoverride)?
+    TResult Function(List<CusOverrideApprovalModel>? cusoverride)?
         getCusOverrideApprovalState,
     TResult Function()? cusOverrideApprovalFailedState,
     required TResult orElse(),

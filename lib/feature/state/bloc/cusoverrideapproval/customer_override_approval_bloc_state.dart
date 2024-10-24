@@ -4,7 +4,7 @@ part of 'customer_override_approval_bloc_bloc.dart';
 class CustomerOverrideApprovalBlocState
     with _$CustomerOverrideApprovalBlocState {
   const factory CustomerOverrideApprovalBlocState.getCusOverrideApprovalState(
-          {required List<CustomerOverrideApprovalModel>? cusoverride}) =
+          {required List<CusOverrideApprovalModel>? cusoverride}) =
       GetCusOverrideApprovalState;
 
   const factory CustomerOverrideApprovalBlocState.cusOverrideApprovalFailedState() =

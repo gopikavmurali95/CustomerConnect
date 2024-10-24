@@ -1218,7 +1218,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             child:
                                                                                 Text(
                                                                               pdet[index].reason == null || pdet[index].reason!.isEmpty ? "No reason found" : pdet[index].reason ?? '',
-                                                                              style: TextStyle(fontSize: 11),
+                                                                              style: const TextStyle(fontSize: 11),
                                                                             ),
                                                                           ),
                                                                         ),

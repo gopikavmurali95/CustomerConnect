@@ -1,7 +1,7 @@
 //Development
 
-// const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
-// const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+//const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+//const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
 //Demo
 const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
@@ -20,7 +20,7 @@ const customertransactioncountsurl = "Home/SelectCustomerTransactionCounts";
 const salesorderscountsurl = "Home/SelectSalesOrdersCounts";
 const loadingHeaderUrl = 'LoadIn/SelectLoadInHeader';
 const loadingDetailUrl = 'LoadIn/SelectLoadInDetail';
-const pickingHeaderUrl = "Picking/SelectPickingHeader";
+const pickingHeaderUrl = "Picking/SelectPickingHeader"; 
 const pickingDetailUrl = "Picking/SelectPickingDetail";
 const invoiceheaderurl = 'Inv/SelectInvoiceHeader';
 const invoicedetailsurl = 'Inv/SelectInvoiceDetail';
@@ -50,7 +50,6 @@ const cusInsOutStandingHeaderUrl =
     'CusInsightOutStanging/CusInsightOutstandingHeader';
 const qualificationgroupurl = 'Promotion/SelectGroupItems';
 const cusInsPromotionSelectGroupUrl = 'CusInsPromotion/SelectGroupItems';
-
 const cusOutsandingCOuntUrl =
     'CusInsightOutStanging/CusInsightOutStandingCount';
 const cusItemsUrl = 'CusInsightCusItems/SelectCusItems';
@@ -204,6 +203,6 @@ const freesampleDetailUrl = 'CusFreeSampleApproval/getFreeSampleDetailList';
 const submitfreesampleurl = 'CusFreeSampleApproval/PostFreeSamplApproval';
 const freesampleReasonUrl = 'CusFreeSampleApproval/GetFreeSampleReason';
 const cusOverrideApprovalUrl = 'CusFreeSampleApproval/GetOverRideDetails';
-const cusOverApprovRejectUrl =
-    'CusFreeSampleApproval/PostOverRideApproveReject';
+const cusOverApprovRejectUrl = 'CusFreeSampleApproval/PostOverRideApproveReject';
 const itemListingCountUrl = 'CusInsightCusItems/SelectCustomerICount';
+const scheduleReturnApprovalReasonUrl = 'CusOperation/GetReasonForReturnSc';
