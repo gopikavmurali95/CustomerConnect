@@ -15,7 +15,7 @@ class CustomerItemListWidget extends StatelessWidget {
     return BlocBuilder<CusItemsBloc, CusItemsState>(
       builder: (context, state) {
         return state.when(
-          getCusItemsState: (items) => items == null
+          getCusItemsState: (items, isloading) => items == null
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: ListView.builder(
@@ -123,16 +123,6 @@ class CustomerItemListWidget extends StatelessWidget {
                                                 fontWeight: FontWeight.w400,
                                                 color: Colors.black54),
                                           ),
-                                          /* SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      Text(
-                                        '12.00',
-                                        style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black54),
-                                      ), */
                                         ],
                                       ),
                                     ],
@@ -140,9 +130,19 @@ class CustomerItemListWidget extends StatelessWidget {
                                 )
                               ],
                             ),
-                            Divider(
-                              color: Colors.grey[300],
-                            )
+                            index == items.length - 1
+                                ? const SizedBox.shrink()
+                                : Divider(
+                                    color: Colors.grey[300],
+                                  ),
+                            isloading == true
+                                ? const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [CircularProgressIndicator()],
+                                  )
+                                : const SizedBox(
+                                    height: 10,
+                                  )
                           ],
                         ),
                       ),

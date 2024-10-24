@@ -61,7 +61,7 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [ 
+                  children: [
                     SizedBox(
                       width: 300.w,
                       child: RichText(

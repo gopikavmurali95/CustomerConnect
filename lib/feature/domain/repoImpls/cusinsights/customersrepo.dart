@@ -110,7 +110,6 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
         );
       }
     } catch (e) {
-      log('login error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

@@ -15,33 +15,29 @@ class CusItemsBloc extends Bloc<CusItemsEvent, CusItemsState> {
   final ICusItemsRepo itemsRepo;
   CusItemsBloc(this.itemsRepo) : super(CusItemsState.initial()) {
     on<GetItemsEvent>((event, emit) async {
-      List<CusItemsModel> searcheditems = [];
-      Either<MainFailures, List<CusItemsModel>> items = await itemsRepo
-          .getCusItems(event.cusID, event.route, event.fromDate, event.toDate);
+      Either<MainFailures, List<CusItemsModel>> items =
+          await itemsRepo.getCusItems(event.cusID, event.route, event.fromDate,
+              event.toDate, event.pageNum, event.searchQuery);
+
+      List<CusItemsModel> olditemlist = [];
+      final currentState = state as GetCusItemsState;
+      olditemlist.addAll(currentState.items ?? []);
 
       emit(
         items.fold(
           (l) => const GetitemsFailedState(),
           (r) {
-            searcheditems = r
-                .where((element) =>
-                    element.prdCode!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()) ||
-                    element.prdName!
-                        .toLowerCase()
-                        .toUpperCase()
-                        .contains(event.searchQuery.toUpperCase()))
-                .toList();
-            return GetCusItemsState(
-                items: event.searchQuery.isEmpty ? r : searcheditems);
+            if (event.searchQuery.isNotEmpty) {
+              olditemlist.clear();
+            }
+            olditemlist.addAll(r);
+            return GetCusItemsState(items: olditemlist, isLoading: false);
           },
         ),
       );
     });
     on<ClearItemsEvent>((event, emit) {
-      emit(const GetCusItemsState(items: null));
+      emit(const GetCusItemsState(items: null, isLoading: false));
     });
   }
 }
