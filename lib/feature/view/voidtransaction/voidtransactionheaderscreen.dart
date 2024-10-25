@@ -38,6 +38,7 @@ TextEditingController _voidTranHeaderSearchCtrl = TextEditingController();
 Timer? debounce;
 String selectedVoidTransactionMode = 'P';
 List<VoidTransactionJsonModel> voidTransactionJsonstriongList = [];
+bool isTransactionProcessed = false;
 
 class _VoidTranscactioHeaderScreenState
     extends State<VoidTranscactioHeaderScreen> {
@@ -467,7 +468,345 @@ class _VoidTranscactioHeaderScreenState
         ))
       ]),
       bottomNavigationBar: voidTransactionJsonstriongList.isEmpty ||
-              selectedVoidTransactionMode != 'P'
+              selectedVoidTransactionMode != 'P' ||
+              isTransactionProcessed
+          ? null
+          : SizedBox(
+              height: 42.h,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: BlocConsumer<VoidTransactionRejectionBloc,
+                              VoidTransactionRejectionState>(
+                            listener: (context, state) {
+                              state.when(
+                                voidTranctionRejectingState: (resp) {
+                                  if (resp != null) {
+                                    // Set the processed state
+                                    setState(() {
+                                      isTransactionProcessed = true;
+                                    });
+
+                                    _voidTranHeaderSearchCtrl.clear();
+                                    context
+                                        .read<VoidTransactionHeaderBloc>()
+                                        .add(
+                                            const ClearVoidTransactionHeader());
+                                    context
+                                        .read<VoidTransactionHeaderBloc>()
+                                        .add(GetVoidTransactionHeaderEvent(
+                                            statusValue:
+                                                selectedVoidTransactionMode,
+                                            searchQuery: ""));
+                                    voidTransactionJsonstriongList.clear();
+                                    context
+                                        .read<VoidTransactionSelectionCubit>()
+                                        .selectedHeadersList([]);
+                                    Navigator.pop(context);
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .rejectedSuccessfully),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                voidTransactionRejectionFailed: () {
+                                  Navigator.pop(context);
+                                  showCupertinoDialog(
+                                    context: context,
+                                    builder: (context) => CupertinoAlertDialog(
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .somethingWentWrong),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            builder: (context, state) {
+                              return MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                color: Colors.red.shade300,
+                                onPressed: () {
+                                  if (selectedVoidTransactionMode == 'P') {
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              context
+                                                  .read<
+                                                      VoidTransactionApprovalBloc>()
+                                                  .add(
+                                                      const VoidTransactionLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      VoidTransactionRejectionBloc>()
+                                                  .add(VoidTransactionRejectingEvent(
+                                                      rejecting:
+                                                          VoidTransacrtionApprovalInModel(
+                                                              jsonString:
+                                                                  voidTransactionJsonstriongList)));
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.rejectSelected,
+                                  style: kfontstyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Flexible(
+                            flex: 1,
+                            fit: FlexFit.tight,
+                            child: BlocConsumer<VoidTransactionApprovalBloc,
+                                VoidTransactionApprovalState>(
+                              listener: (context, state) {
+                                state.when(
+                                  voidTransactionApprovingState: (resp) {
+                                    if (resp != null) {
+                                      // Set the processed state
+                                      setState(() {
+                                        isTransactionProcessed = true;
+                                      });
+
+                                      _voidTranHeaderSearchCtrl.clear();
+                                      context
+                                          .read<VoidTransactionHeaderBloc>()
+                                          .add(
+                                              const ClearVoidTransactionHeader());
+                                      context
+                                          .read<VoidTransactionHeaderBloc>()
+                                          .add(GetVoidTransactionHeaderEvent(
+                                              statusValue:
+                                                  selectedVoidTransactionMode,
+                                              searchQuery: ""));
+                                      voidTransactionJsonstriongList.clear();
+                                      context
+                                          .read<VoidTransactionSelectionCubit>()
+                                          .selectedHeadersList([]);
+                                      Navigator.pop(context);
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .approvedSuccessfully),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  voidTransactionApprovalFailed: () {
+                                    Navigator.pop(context);
+                                    showCupertinoDialog(
+                                      context: context,
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .somethingWentWrong),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                  voidTransactionLoadingState: () {
+                                    showCupertinoModalPopup(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        builder: (context) => SizedBox(
+                                              height: MediaQuery.of(context)
+                                                  .size
+                                                  .height,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child: const PopScope(
+                                                canPop: true,
+                                                child:
+                                                    CupertinoActivityIndicator(
+                                                  animating: true,
+                                                  color: Colors.red,
+                                                  radius: 30,
+                                                ),
+                                              ),
+                                            ));
+                                  },
+                                );
+                              },
+                              builder: (context, state) {
+                                return MaterialButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  color: selectedVoidTransactionMode == 'P'
+                                      ? Colors.green.shade300
+                                      : Colors.grey[300],
+                                  onPressed: () {
+                                    if (selectedVoidTransactionMode == 'P') {
+                                      showCupertinoDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                context
+                                                    .read<
+                                                        VoidTransactionApprovalBloc>()
+                                                    .add(
+                                                        const VoidTransactionLoadingEvent());
+
+                                                context
+                                                    .read<
+                                                        VoidTransactionApprovalBloc>()
+                                                    .add(VoidTransactionApprovingEvent(
+                                                        approving:
+                                                            VoidTransacrtionApprovalInModel(
+                                                                jsonString:
+                                                                    voidTransactionJsonstriongList)));
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  },
+                                  child: Text(
+                                    AppLocalizations.of(context)!
+                                        .approveSelected,
+                                    style: kfontstyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                );
+                              },
+                            ))
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+      /* bottomNavigationBar: voidTransactionJsonstriongList.isEmpty ||
+              selectedVoidTransactionMode != 'P' || buttonsVisible
           ? null
           : SizedBox(
               height: 42.h,
@@ -793,7 +1132,7 @@ class _VoidTranscactioHeaderScreenState
                   )
                 ],
               ),
-            ),
+            ), */
     );
   }
 }
