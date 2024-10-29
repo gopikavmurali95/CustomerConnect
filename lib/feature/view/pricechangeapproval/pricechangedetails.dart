@@ -1099,7 +1099,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                                 loadingCount = 0;
                                                                                 setState(() {});
 
-                                                                                _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "A");
+                                                                                _procechangeapproved[index] = PriceChangePrdModel(
+                                                                                  aprvdHprice: pdet[index].pcdChangedHPrice, 
+                                                                                  aprvdLprice: pdet[index].pcdChangedLprice,
+                                                                                   pcdId: pdet[index].pcdId, 
+                                                                                   reason: selectedresons[index], 
+                                                                                   status: "A");
                                                                               },
                                                                             ),
                                                                             Text(
@@ -1160,7 +1165,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                                 loadingCount = 0;
                                                                                 setState(() {});
 
-                                                                                _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "R");
+                                                                                _procechangeapproved[index] = PriceChangePrdModel(
+                                                                                  aprvdHprice: pdet[index].pcdChangedHPrice,
+                                                                                   aprvdLprice: pdet[index].pcdChangedLprice,
+                                                                                    pcdId: pdet[index].pcdId, 
+                                                                                    reason: selectedresons[index], 
+                                                                                    status: "R");
                                                                               },
                                                                             ),
                                                                             Text(
@@ -1480,7 +1490,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
   }
 
   bool checkrejectedstatus() {
-    log(jsonEncode(_procechangeapproved));
+    //log(jsonEncode(_procechangeapproved));
     int index = statuslist.indexWhere((element) => element == false);
     if (index < 0) {
       return true;
