@@ -4,7 +4,6 @@ import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
 import 'package:customer_connect/feature/data/models/cus_override_approval_model/cus_override_approval_model.dart';
-import 'package:customer_connect/feature/data/models/customer_override_approval_model/customer_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/overide_approv_reject_model/overide_approv_reject_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';

@@ -39,7 +39,6 @@ class InventoryReconfirmationRepo
         );
       }
     } catch (e) {
-      log("field service header error resp $e");
       return left(const MainFailures.serverfailure());
     }
   }
@@ -52,7 +51,7 @@ class InventoryReconfirmationRepo
           Uri.parse(approvalBaseUrl + inventoryReconfirmDetailUrl),
           body: {"ReqID": reqId});
       if (response.statusCode == 200) {
-        log("inventory reconfirmation  ${response.body}");
+        log("ReqID: $reqId");
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> detaildata = json['result'];
         List<InventoryReconfirmDetailModel> details = detaildata

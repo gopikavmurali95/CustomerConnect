@@ -5,6 +5,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/itemlistingcountbloc/item_listing_count_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
@@ -30,19 +31,85 @@ class CustomerItemList extends StatefulWidget {
 
 final _cusItemSearchCtrl = TextEditingController();
 Timer? debounce;
+int pagecounter = 1;
+ScrollController itemscrollController = ScrollController();
+bool isfirstfetch = true;
 
 class _CustomerItemListState extends State<CustomerItemList> {
   @override
   void initState() {
+    pagecounter = 1;
+    itemscrollController = ScrollController();
     _cusItemSearchCtrl.clear();
     context.read<CusItemsBloc>().add(const ClearItemsEvent());
+/* 
     context.read<CusItemsBloc>().add(GetItemsEvent(
         cusID: widget.customer.cusId ?? '',
         route: widget.customer.rotId ?? '',
         fromDate: widget.fromdatectrl.text,
         toDate: widget.todatectrl.text,
-        searchQuery: ''));
+        searchQuery: '',
+        pageNum: '1')); */
+    setUpScrollController(
+        cusID: widget.customer.cusId ?? '',
+        route: widget.customer.rotId ?? '',
+        fromDate: widget.fromdatectrl.text,
+        toDate: widget.todatectrl.text,
+        searchQuery: '',
+        pageNum: '1');
     super.initState();
+  }
+
+  setUpScrollController(
+      {required String cusID,
+      required String route,
+      required String fromDate,
+      required String toDate,
+      required String searchQuery,
+      required String pageNum}) {
+    if (isfirstfetch == true) {
+      isfirstfetch = false;
+      pagecounter++;
+
+      context.read<CusItemsBloc>().add(GetItemsEvent(
+          cusID: widget.customer.cusId ?? '',
+          route: widget.customer.rotId ?? '',
+          fromDate: widget.fromdatectrl.text,
+          toDate: widget.todatectrl.text,
+          searchQuery: '',
+          pageNum: '1'));
+
+      context.read<CusItemsBloc>().add(GetItemsEvent(
+          cusID: widget.customer.cusId ?? '',
+          route: widget.customer.rotId ?? '',
+          fromDate: widget.fromdatectrl.text,
+          toDate: widget.todatectrl.text,
+          searchQuery: '',
+          pageNum: '1'));
+
+      context.read<ItemListingCountBloc>().add(GetItmesCountEvent(
+          cusId: widget.customer.cusId ?? '',
+          route: widget.customer.rotId ?? '',
+          fromDate: widget.fromdatectrl.text,
+          toDate: widget.todatectrl.text,
+          searchString: '',
+          pagenum: '1'));
+    }
+    itemscrollController.addListener(() {
+      if (itemscrollController.position.atEdge) {
+        if (itemscrollController.position.pixels != 0) {
+          context.read<CusItemsBloc>().add(GetItemsEvent(
+              cusID: widget.customer.cusId ?? '',
+              route: widget.customer.rotId ?? '',
+              fromDate: widget.fromdatectrl.text,
+              toDate: widget.todatectrl.text,
+              searchQuery: '',
+              pageNum: pagecounter.toString()));
+
+          pagecounter++;
+        }
+      }
+    });
   }
 
   Future<void> _onRefreshLoadin(BuildContext context) async {
@@ -53,7 +120,8 @@ class _CustomerItemListState extends State<CustomerItemList> {
         route: widget.customer.rotId ?? '',
         fromDate: widget.fromdatectrl.text,
         toDate: widget.todatectrl.text,
-        searchQuery: ''));
+        searchQuery: '',
+        pageNum: '1'));
     await Future.delayed(const Duration(seconds: 2));
   }
 
@@ -89,6 +157,7 @@ class _CustomerItemListState extends State<CustomerItemList> {
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
+            controller: itemscrollController,
             child: Column(
               children: [
                 Padding(
@@ -200,11 +269,21 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                   .read<CusItemsBloc>()
                                   .add(const ClearItemsEvent());
                               context.read<CusItemsBloc>().add(GetItemsEvent(
+                                    cusID: widget.customer.cusId ?? '',
+                                    route: widget.customer.rotId ?? '',
+                                    fromDate: widget.fromdatectrl.text,
+                                    toDate: widget.todatectrl.text,
+                                    searchQuery: value.trim(),
+                                    pageNum: pagecounter.toString(),
+                                  ));
+
+                              context.read<CusItemsBloc>().add(GetItemsEvent(
                                   cusID: widget.customer.cusId ?? '',
                                   route: widget.customer.rotId ?? '',
                                   fromDate: widget.fromdatectrl.text,
                                   toDate: widget.todatectrl.text,
-                                  searchQuery: value.trim()));
+                                  searchQuery: '',
+                                  pageNum: pagecounter.toString()));
                             },
                           );
                         },
@@ -233,8 +312,22 @@ class _CustomerItemListState extends State<CustomerItemList> {
                                                 fromDate:
                                                     widget.fromdatectrl.text,
                                                 toDate: widget.todatectrl.text,
-                                                searchQuery: ''),
+                                                searchQuery: '',
+                                                pageNum:
+                                                    pagecounter.toString()),
                                           );
+
+                                      context.read<CusItemsBloc>().add(
+                                          GetItemsEvent(
+                                              cusID:
+                                                  widget.customer.cusId ?? '',
+                                              route:
+                                                  widget.customer.rotId ?? '',
+                                              fromDate:
+                                                  widget.fromdatectrl.text,
+                                              toDate: widget.todatectrl.text,
+                                              searchQuery: '',
+                                              pageNum: pagecounter.toString()));
                                     },
                                     icon: Icon(
                                       Icons.close,

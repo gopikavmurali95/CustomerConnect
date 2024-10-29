@@ -7,13 +7,11 @@ import 'package:customer_connect/feature/data/di/injectable.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/domain/notification/fcmmessgehandler.dart';
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
-// import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/activityreviewdetail/activity_review_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/activityreviewheader/activity_review_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/activityreviewtarget/activity_review_targets_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/activitysalesdata/activity_review_sales_data_bloc.dart';
-// import 'package:customer_connect/feature/state/bloc/PartialDeliveryReasons/partial_delivery_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalreasons/approval_reasons_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/approvepricechange/approve_price_change_bloc.dart';
@@ -71,6 +69,7 @@ import 'package:customer_connect/feature/state/bloc/cusinstrnscount/cus_ins_trn_
 import 'package:customer_connect/feature/state/bloc/cusinvdetail/cus_inv_detail_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/itemlistingcountbloc/item_listing_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loading/loading_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/loadreqapproval/load_req_approval_bloc.dart';
@@ -829,6 +828,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<CusromerFocRejectionBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getit<ItemListingCountBloc>(),),
          BlocProvider(
           create: (context) => getit<ScheduleReturnReasonBloc>(),
         ),

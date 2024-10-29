@@ -52,14 +52,12 @@ import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_pr
 import 'package:customer_connect/feature/data/models/cus_sp_price_in_model/cus_sp_price_in_model.dart';
 import 'package:customer_connect/feature/data/models/cus_sp_price_model/cus_sp_price_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_approval_in_model/customer_foc_approval_in_model.dart';
-//import 'package:customer_connect/feature/data/models/customer_foc_approval_in_model/customer_foc_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_approve_and_reject_model/customer_foc_approve_and_reject_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_detail_model/customer_foc_detail_model.dart';
 import 'package:customer_connect/feature/data/models/customer_foc_header_model/customer_foc_header_model.dart';
 import 'package:customer_connect/feature/data/models/customer_insight_group_model/customer_insight_group_model.dart';
 import 'package:customer_connect/feature/data/models/customer_live_location_model/customer_live_location_model.dart';
 
-import 'package:customer_connect/feature/data/models/customer_override_approval_model/customer_override_approval_model.dart';
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
@@ -93,6 +91,7 @@ import 'package:customer_connect/feature/data/models/invoice_details_footer_mode
 import 'package:customer_connect/feature/data/models/invoice_details_model/invoice_details_model.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_inparas/invoice_header_inparas.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
+import 'package:customer_connect/feature/data/models/item_listing_count/item_listing_count.dart';
 import 'package:customer_connect/feature/data/models/journey_plan_approval_in_model/journey_plan_approval_in_model.dart';
 import 'package:customer_connect/feature/data/models/journey_plan_header_model/journey_plan_header_model.dart';
 import 'package:customer_connect/feature/data/models/joutney_plan_approval_out_model/joutney_plan_approval_out_model.dart';
@@ -348,7 +347,20 @@ abstract class ICusOutstandingRepo {
 
 abstract class ICusItemsRepo {
   Future<Either<MainFailures, List<CusItemsModel>>> getCusItems(
-      String cusId, String route, String froDate, String toDate);
+      String cusId,
+      String route,
+      String fromDate,
+      String toDate,
+      String pagenum,
+      String searchString);
+
+  Future<Either<MainFailures, ItemListingCount>> getCusItemsCount(
+      String cusId,
+      String route,
+      String fromDate,
+      String toDate,
+      String pagenum,
+      String searchString);
 }
 
 abstract class IPickingHeaderRepo {

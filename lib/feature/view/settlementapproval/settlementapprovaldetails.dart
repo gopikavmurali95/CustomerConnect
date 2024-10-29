@@ -342,8 +342,8 @@ class _SettlementApprovalDetailScreenState
                         context: context,
                         builder: (context) => CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(AppLocalizations.of(context)!
-                              .doYouWantToRejectThisProduct),
+                          content: Text(
+                              AppLocalizations.of(context)!.doyouWantToProceed),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -460,7 +460,7 @@ class _SettlementApprovalDetailScreenState
                             builder: (context) => CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(AppLocalizations.of(context)!
-                                  .doYouWantToApproveThisProduct),
+                                  .doyouWantToProceed),
                               actions: [
                                 TextButton(
                                   onPressed: () {

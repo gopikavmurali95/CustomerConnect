@@ -35,7 +35,9 @@ class ActivityReviewHeaderBloc
                     .contains(event.searchQuery.toUpperCase()))
             .toList();
         return GetActivityRevewHeadersState(
-            headers: event.searchQuery.isEmpty ? r : searcheditems);
+            headers: event.searchQuery.isEmpty
+                ? r.reversed.toList()
+                : searcheditems.reversed.toList());
       }));
     });
     on<ClearActivityReviewHeaderEvent>((event, emit) {
