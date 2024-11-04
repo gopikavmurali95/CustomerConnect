@@ -253,22 +253,23 @@ class CustomerInsightSpecialPriceDetails extends StatelessWidget {
                       SizedBox(
                         width: 30.h,
                       ),
-                      Text(
-                        AppLocalizations.of(context)!.uom,
-                        style: boxHeading(),
-                      ),
-                      SizedBox(
-                        width: 15.h,
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.stdPrice,
-                        style: boxHeading(),
-                      ),
+                      // Text(
+                      //   AppLocalizations.of(context)!.uom,
+                      //   style: boxHeading(),
+                      // ),
                       SizedBox(
                         width: 15.h,
                       ),
                       Text(
                         AppLocalizations.of(context)!.spclprice,
+                        style: boxHeading(),
+                      ),
+                      SizedBox(
+                        width: 15.h,
+                      ),
+                      Text(
+                        "Rtn Price",
+                        //AppLocalizations.of(context)!.spclprice,
                         style: boxHeading(),
                       ),
                     ],

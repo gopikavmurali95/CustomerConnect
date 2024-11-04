@@ -23,7 +23,7 @@ class OutActvitySurveyHeaderScreen extends StatefulWidget {
 List<MerchandisingStatusFilterModel> filterMerchandisingSurvey = [
   MerchandisingStatusFilterModel(statusName: "All ", mode: 'AL'),
   MerchandisingStatusFilterModel(statusName: "Completed", mode: 'C'),
-  MerchandisingStatusFilterModel(statusName: "Pending", mode: 'P'),
+  MerchandisingStatusFilterModel(statusName: "Assigned", mode: 'P'),
 ];
 
 Timer? debounce;
@@ -45,7 +45,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
           mode: 'C'),
       MerchandisingStatusFilterModel(
           statusName:
-              selectedLocale?.languageCode == "en" ? "Pending" : "قيد الانتظار",
+              selectedLocale?.languageCode == "en" ? "Assigned" : "مُكَلَّف",
           mode: 'P'),
     ];
     context
@@ -265,7 +265,7 @@ class _PriceChangeHeaderState extends State<OutActvitySurveyHeaderScreen> {
                                                       .completedSurveys
                                                   : AppLocalizations.of(
                                                           context)!
-                                                      .pendingSurveys,
+                                                      .assignedSurveys,
                                           style: countHeading(),
                                         ),
                                         Padding(

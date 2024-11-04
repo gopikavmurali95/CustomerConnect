@@ -149,12 +149,12 @@ class InsightArListWidget extends StatelessWidget {
                                         decoration: BoxDecoration(
                                             color: headers[index].payMode ==
                                                     'HC'
-                                                ? colorslist[0]
+                                                ? const Color.fromARGB(255, 184, 241, 255)//colorslist[0]
                                                 : headers[index].payMode == "CH"
-                                                    ? colorslist[3]
+                                                    ?  const Color.fromARGB(255, 244, 209, 192)//colorslist[3]
                                                     : headers[index].payMode ==
                                                             "POS"
-                                                        ? colorslist[2]
+                                                        ?  const Color.fromARGB(255, 193, 244, 213)//colorslist[2]
                                                         : const Color(
                                                             0xfff7f4e2),
                                             borderRadius:

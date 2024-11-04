@@ -148,14 +148,14 @@ class ARHeaderListWidget extends StatelessWidget {
                                             color: arHeaders[index]
                                                         .arhPayMode ==
                                                     'HC'
-                                                ? colorslist[0]
+                                                ? const Color.fromARGB(255, 200, 239, 249)//colorslist[0]
                                                 : arHeaders[index].arhPayMode ==
                                                         "CH"
-                                                    ? colorslist[3]
+                                                    ? const Color.fromARGB(255, 246, 213, 197)//colorslist[3]
                                                     : arHeaders[index]
                                                                 .arhPayMode ==
                                                             "POS"
-                                                        ? colorslist[2]
+                                                        ?  const Color.fromARGB(255, 200, 244, 218)//colorslist[2]
                                                         : const Color(
                                                             0xfff7f4e2),
                                             borderRadius:

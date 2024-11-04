@@ -257,36 +257,45 @@ class _SpecialPricingState extends State<SpecialPricing> {
                       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
-                          flex: 4,
+                          flex: 3,
                           fit: FlexFit.tight,
                           child: Text(
                             AppLocalizations.of(context)!.items,
                             style: boxHeading(),
                           ),
                         ),
+                        // Flexible(
+                        //   flex: 1,
+                        //   fit: FlexFit.tight,
+                        //   child: Text(
+                        //     AppLocalizations.of(context)!.uom,
+                        //     style: boxHeading(),
+                        //   ),
+                        // ),
                         Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                            AppLocalizations.of(context)!.uom,
+                          
+                          AppLocalizations.of(context)!.spclprice,
                             style: boxHeading(),
                           ),
                         ),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Text(
-                            AppLocalizations.of(context)!.stdPrice,
-                            // "std Price",
-                            style: boxHeading(),
-                          ),
-                        ),
+                        // Flexible(
+                        //   flex: 1,
+                        //   fit: FlexFit.tight,
+                        //   child: Text(
+                        //     AppLocalizations.of(context)!.stdPrice,
+                        //     // "std Price",
+                        //     style: boxHeading(),
+                        //   ),
+                        // ),
                         Flexible(
                           flex: 0,
                           fit: FlexFit.tight,
                           child: Text(
-                            AppLocalizations.of(context)!.spclprice,
-                            // "Spcl Price",
+                           // AppLocalizations.of(context)!.spclprice,
+                             "Rtn Price",
                             style: boxHeading(),
                           ),
                         ),
@@ -372,28 +381,53 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                                         '',
                                                     style: subTitleTextStyle(),
                                                   ),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                       " ${AppLocalizations.of(
+                                                                context)!
+                                                            .uom}:",
+                                                        style: boxHeading(),
+                                                      
+                                                        // style: subTitleTextStyle(),
+                                                      ),
+                                                      const SizedBox(width: 5,),
+                                                       Text(
+                                                    spPrice[index].uom ?? '',
+                                                    style: subTitleTextStyle(),
+                                                  ),
+                                                  const SizedBox(width: 10,),
+                                                  Text(
+                                                       " ${AppLocalizations.of(
+                                                                context)!
+                                                            .stdPrice}:",
+                                                        style: boxHeading(),
+                                                      
+                                                        // style: subTitleTextStyle(),
+                                                      ),
+                                                      const SizedBox(width: 5,),
+                                                       Text(
+                                                    spPrice[index].stdPrice ?? '',
+                                                    style: subTitleTextStyle(),
+                                                  ),
+                                                    ],
+                                                  ),
+                                                 
                                                 ],
                                               ),
                                             ),
                                           ),
-                                          Column(
-                                            children: [
-                                              Text(
-                                                spPrice[index].uom ?? '',
-                                                style: subTitleTextStyle(),
-                                              ),
-                                            ],
-                                          ),
+                                          
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 5.0),
+                                                left: 1.0),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               // crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(
                                                   textAlign: TextAlign.end,
-                                                  spPrice[index].stdPrice ?? '',
+                                                  spPrice[index].specialPrice ?? '',
                                                   style: subTitleTextStyle(),
                                                 ),
                                               ],
@@ -408,7 +442,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                               children: [
                                                 Text(
                                                   textAlign: TextAlign.end,
-                                                  spPrice[index].specialPrice ??
+                                                  spPrice[index].pldReturnPrice??
                                                       '',
                                                   style: subTitleTextStyle(),
                                                 ),
