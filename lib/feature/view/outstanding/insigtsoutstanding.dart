@@ -235,33 +235,39 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                         ]),
                                   ),
                                 ),
-                                RichText(
-                                  text: TextSpan(
-                                      style: DefaultTextStyle.of(context)
-                                          .style
-                                          .copyWith(
-                                            fontWeight: FontWeight.normal,
-                                            decoration: TextDecoration.none,
+                                SizedBox(
+                                  width: 300.w,
+                                  child: RichText(
+                                    text: TextSpan(
+                                        style: DefaultTextStyle.of(context)
+                                            .style
+                                            .copyWith(
+                                              fontWeight: FontWeight.normal,
+                                              decoration: TextDecoration.none,
+                                            ),
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                '${widget.customer.headerCode} - ',
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                color: const Color(0xff413434)),
                                           ),
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              '${widget.customer.headerCode} - ',
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              color: const Color(0xff413434)),
-                                        ),
-                                        TextSpan(
-                                          text: selectedLocale?.languageCode ==
-                                                  'en'
-                                              ? widget.customer.headerName ?? ""
-                                              : widget.customer.arheaderName ??
-                                                  '',
-                                          style: kfontstyle(
-                                              fontSize: 12.sp,
-                                              color: const Color(0xff413434)),
-                                        )
-                                      ]),
+                                          TextSpan(
+                                            text: selectedLocale
+                                                        ?.languageCode ==
+                                                    'en'
+                                                ? widget.customer.headerName ??
+                                                    ""
+                                                : widget.customer
+                                                        .arheaderName ??
+                                                    '',
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                color: const Color(0xff413434)),
+                                          )
+                                        ]),
+                                  ),
                                 ),
                                 Text(
                                   '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en' ? widget.customer.areaName : widget.customer.arAreaName} ',
@@ -707,7 +713,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
               area: '',
               fromDate: widget.fromdatectrl.text,
               toDate: widget.todatectrl.text,
-              route: widget.customer.rotId,
+              route: '',
               subArea: ''),
         ));
   }

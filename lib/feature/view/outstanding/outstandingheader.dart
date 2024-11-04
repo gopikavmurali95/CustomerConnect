@@ -5,11 +5,13 @@ import 'dart:developer';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/out_standing_header/OutStandingHeaderModel.dart';
+import 'package:customer_connect/feature/data/models/outstanding_dd_filter_model/outstanding_dd_filter_model.dart';
 import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_standing_pagination_cubit.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/view/outstanding/widgets/outstandinglistwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +32,13 @@ class OutstandingHeaderScreen extends StatefulWidget {
       _OutstandingHeaderScreenState();
 }
 
+List<OutstandingDdFilterModel> filterOutstanding = [
+  OutstandingDdFilterModel(statusName: "All", statusValue: 'Al'),
+  OutstandingDdFilterModel(statusName: "Due", statusValue: 'd'),
+  OutstandingDdFilterModel(statusName: "Overdue", statusValue: 'o'),
+];
+String _selectedMode = 'Al';
+
 Timer? debounce;
 ScrollController outStandingscrollController = ScrollController();
 bool isfirstfetch = true;
@@ -43,24 +52,27 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
   @override
   void initState() {
     _pievalues.clear();
+    filterOutstanding = [
+      OutstandingDdFilterModel(
+          statusName: selectedLocale?.languageCode == 'en' ? 'All' : 'الجميع',
+          statusValue: 'Al'),
+      OutstandingDdFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Due"
+              : "الفاتورة المستحقة",
+          statusValue: 'd'),
+      OutstandingDdFilterModel(
+          statusName: selectedLocale?.languageCode == 'en'
+              ? "Overdue"
+              : "فاتورة متأخرة",
+          statusValue: 'o'),
+    ];
+
     outStandingscrollController = ScrollController();
+    _selectedMode='Al';
     pagecounter = 1;
     _outstandingHeaderSearchCtrl.clear();
     context.read<OutstandingBloc>().add(const ClearOutStandingEvent());
-
-    setUpScrollController(OutStandingHeaderModel(
-        area: '',
-        customer: '',
-        fromDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-        outlet: '',
-        route: '',
-        subArea: '',
-        toDate:
-            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-        userID: widget.user.usrId,
-        pageNum: '1',
-        searchQuery: ''));
     context.read<OutstandingBloc>().add(GetOutstandingDataEvent(
         searchQuery: '',
         outIn: OutStandingHeaderModel(
@@ -75,7 +87,42 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             userID: widget.user.usrId,
             pageNum: '1',
-            searchQuery: '')));
+            searchQuery: '',
+            statusValue: '')));
+    context.read<OutStandingPaginationCubit>().clearOutStanding();
+     
+    context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
+        OutStandingHeaderModel(
+            area: '',
+            customer: '',
+            fromDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            outlet: '',
+            route: '',
+            subArea: '',
+            toDate:
+                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+            userID: widget.user.usrId,
+            searchQuery: _outstandingHeaderSearchCtrl.text,
+            pageNum: '1',
+            statusValue: 'Al'),
+        '');
+
+    setUpScrollController(OutStandingHeaderModel(
+        area: '',
+        customer: '',
+        fromDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        outlet: '',
+        route: '',
+        subArea: '',
+        toDate:
+            '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+        userID: widget.user.usrId,
+        pageNum: pagecounter.toString(),
+        searchQuery: '',
+        statusValue: 'Al'));
+   
     super.initState();
   }
 
@@ -97,7 +144,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                   '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
               userID: widget.user.usrId,
               pageNum: '1',
-              searchQuery: '')));
+              searchQuery: '',
+              statusValue: '')));
 
       context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
           OutStandingHeaderModel(
@@ -112,7 +160,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                   '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
               userID: widget.user.usrId,
               searchQuery: _outstandingHeaderSearchCtrl.text,
-              pageNum: '1'),
+              pageNum: '1',
+              statusValue: 'Al'),
           '');
     } else {
       outStandingscrollController.addListener(() {
@@ -131,6 +180,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                         '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                     userID: widget.user.usrId,
                     searchQuery: _outstandingHeaderSearchCtrl.text,
+                    statusValue: _selectedMode,
                     pageNum: pagecounter.toString()),
                 '');
             pagecounter++;
@@ -224,7 +274,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                           '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                                       userID: widget.user.usrId,
                                       pageNum: pagecounter.toString(),
-                                      searchQuery: value.trim()),
+                                      searchQuery: value.trim(),
+                                      statusValue: _selectedMode),
                                   value.trim(),
                                 );
                           },
@@ -281,6 +332,86 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                       maxLength: 20,
                       // controller: _locationNameTextController,
                     )),
+                SizedBox(
+                  height: 10.h,
+                ),
+                SizedBox(
+                  height: 30.h,
+                  width: MediaQuery.of(context).size.width,
+                  child: DropdownButtonFormField(
+                    elevation: 0,
+                    value: filterOutstanding[0].statusValue,
+                    dropdownColor: Colors.white,
+                    style: kfontstyle(fontSize: 10.sp, color: Colors.black87),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 10),
+                      border: /* InputBorder
+                                    .none  */
+                          OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
+                      ),
+                    ),
+                    items: filterOutstanding
+                        .map(
+                          (e) => DropdownMenuItem(
+                            value: e.statusValue,
+                            child: Text(e.statusName ?? ''),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      _selectedMode = value!;
+                      pagecounter = 1;
+                      context.read<OutstandingBloc>().add(GetOutstandingDataEvent(
+                          searchQuery: '',
+                          outIn: OutStandingHeaderModel(
+                              area: '',
+                              customer: '',
+                              fromDate:
+                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                              outlet: '',
+                              route: '',
+                              subArea: '',
+                              toDate:
+                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                              userID: widget.user.usrId,
+                              pageNum: '1',
+                              searchQuery: '',
+                              statusValue: 'Al')));
+                      context
+                          .read<OutStandingPaginationCubit>()
+                          .clearOutStanding();
+                      context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
+                          OutStandingHeaderModel(
+                              area: '',
+                              customer: '',
+                              fromDate:
+                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                              outlet: '',
+                              route: '',
+                              subArea: '',
+                              toDate:
+                                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                              userID: widget.user.usrId,
+                              searchQuery: _outstandingHeaderSearchCtrl.text,
+                              pageNum: pagecounter.toString(),
+                              statusValue: value),
+                          '');
+                    },
+                  ),
+                ),
               ],
             ),
           ),
@@ -513,10 +644,15 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                             builder: (context, state) {
                               return Text(
                                 state.when(
-                                  getOutstandingDataState: (headers) =>
-                                      headers == null
-                                          ? "0"
-                                          : headers.totCount ?? '0',
+                                  getOutstandingDataState: (headers) => headers ==
+                                          null
+                                      ? "0"
+                                      : /* headers.totCount ?? '0' */ _selectedMode ==
+                                              'Al'
+                                          ? headers.totCount ?? '0'
+                                          : _selectedMode == 'd'
+                                              ? headers.dueCount ?? '0'
+                                              : headers.overDueCount ?? '0',
                                   outstandingFailedState: () => "0",
                                 ),
                                 style: countHeading(),
@@ -546,22 +682,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
 
   Future<void> _onRefreshOutstandingHeaderScreen(
       BuildContext context, LoginUserModel model) async {
-    context.read<OutstandingBloc>().add(const ClearOutStandingEvent());
-    context.read<OutstandingBloc>().add(GetOutstandingDataEvent(
-        searchQuery: '',
-        outIn: OutStandingHeaderModel(
-            area: '',
-            customer: '',
-            fromDate:
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-            outlet: '',
-            route: '',
-            subArea: '',
-            toDate:
-                '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-            userID: widget.user.usrId,
-            pageNum: '1',
-            searchQuery: '')));
+        
+    
     context.read<OutStandingPaginationCubit>().clearOutStanding();
     context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
         OutStandingHeaderModel(
@@ -576,7 +698,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
             userID: widget.user.usrId,
             pageNum: '1',
-            searchQuery: ''),
+            searchQuery: '',
+            statusValue: _selectedMode),
         '');
   }
 }

@@ -16,7 +16,8 @@ class OutStandingHeaderModel {
       this.customer,
       this.outlet,
       this.pageNum,
-      this.searchQuery});
+      this.searchQuery,
+      this.statusValue});
 
   OutStandingHeaderModel.fromJson(dynamic json) {
     userID = json['UserID'];
@@ -29,6 +30,7 @@ class OutStandingHeaderModel {
     outlet = json['Outlet'];
     pageNum = json['Pagenum'];
     searchQuery = json['SearchString'];
+    statusValue = json['Status_Value'];
   }
   String? userID;
   String? fromDate;
@@ -40,6 +42,7 @@ class OutStandingHeaderModel {
   String? outlet;
   String? pageNum;
   String? searchQuery;
+  String? statusValue;
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['UserID'] = userID;
@@ -52,6 +55,7 @@ class OutStandingHeaderModel {
     map['Outlet'] = outlet;
     map['Pagenum'] = pageNum;
     map['SearchString'] = searchQuery;
+    map['Status_Value'] = statusValue;
 
     return map;
   }

@@ -8,13 +8,15 @@ import 'package:injectable/injectable.dart';
 
 part 'schedule_return_reason_event.dart';
 part 'schedule_return_reason_state.dart';
- part 'schedule_return_reason_bloc.freezed.dart';
+part 'schedule_return_reason_bloc.freezed.dart';
 
 @injectable
-class ScheduleReturnReasonBloc extends Bloc<ScheduleReturnReasonEvent, ScheduleReturnReasonState> {
+class ScheduleReturnReasonBloc
+    extends Bloc<ScheduleReturnReasonEvent, ScheduleReturnReasonState> {
   final IScheduledReturnApprovalRepo reasonRepo;
-  ScheduleReturnReasonBloc(this.reasonRepo) : super(ScheduleReturnReasonState.initial()) {
-   on<ScheduleReturnSuccessEvent>((event, emit) async {
+  ScheduleReturnReasonBloc(this.reasonRepo)
+      : super(ScheduleReturnReasonState.initial()) {
+    on<ScheduleReturnSuccessEvent>((event, emit) async {
       Either<MainFailures, List<ScheduleReturnApprovalReasonModel>> reason =
           await reasonRepo.getScheduleReturnReasons(event.rsnType);
       emit(reason.fold((l) => const ScheduleReturnReasonFailedState(),

@@ -102,8 +102,8 @@ class _CustomersScrenState extends State<CustomersScren> {
               userId: widget.user.usrId ?? '',
               area: '',
               subarea: '',
-              route: '',
-              searchQuery: '',
+              route: _routeIDCtrl.text,
+              searchQuery: _customerSearchCtrl.text,
               pagenum: pagecounter.toString()));
           pagecounter++;
         }
@@ -279,7 +279,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                                                     (CuSInsRotList? data) {
                                                   _routeIDCtrl.text =
                                                       data!.rotId!;
-
+                                                  pagecounter = 1;
                                                   if (data.rotId! != '-1' ||
                                                       data.rotId!.isNotEmpty) {
                                                     context
