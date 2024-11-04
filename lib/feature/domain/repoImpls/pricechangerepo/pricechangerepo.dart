@@ -50,6 +50,7 @@ class PriceChangeRepo implements IPriceChangeRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + priceChamgeDetailsUrl),
           body: {"pch_ID": pchID});
+      log("price chnge: ${response.body}");
       log("pch_ID: $pchID");
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);

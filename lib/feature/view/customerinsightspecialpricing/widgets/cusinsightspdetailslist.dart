@@ -60,6 +60,16 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
+                                  Row(
+                                    children: [
+                                      Text("UOM: ",style: boxHeading(),),
+                                      Text(spPrice[index].uom ?? '',style: subTitleTextStyle(),),
+                                      const SizedBox(width: 10,),
+                                      Text("Std Price: ",style: boxHeading(),),
+                                      Text(spPrice[index].stdPrice ?? '',style: subTitleTextStyle() ,),
+                                    ],
+                                  ),
+                                   
                                 ],
                               ),
                             ),
@@ -69,33 +79,27 @@ class CustomerInsightSpecialPriceDetailsList extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Column(
-                                    children: [
-                                      Text(spPrice[index].uom ?? ''),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      Text(spPrice[index].uom ?? ''),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text(spPrice[index].stdPrice ?? ''),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      Text(spPrice[index].stdPrice ?? ''),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
+                                  
+                                 
+                                  
+                                    const SizedBox(width: 10,),
                                       Text(spPrice[index].specialPrice ?? ''),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      Text(spPrice[index].specialPrice ?? ''),
-                                    ],
-                                  ),
+                                      // SizedBox(
+                                      //   height: 5.h,
+                                      // ),
+                                     // Text(spPrice[index].stdPrice ?? ''),
+                                    
+                                  
+                                  
+                                    
+                                      Text(spPrice[index].pldReturnPrice ?? ''),
+                                      // SizedBox(
+                                      //   height: 5.h,
+                                      // ),
+                                      // Text(spPrice[index].specialPrice ?? ''),
+                                    
+                                  
+                                  
                                 ],
                               ),
                             ),

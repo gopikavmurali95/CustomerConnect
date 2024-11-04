@@ -26,6 +26,7 @@ class ArCollectionRepo implements IArCollectionRepo {
       // log("details : ${response.body}");
       log({"arh_ID": arhID}.toString());
       if (response.statusCode == 200) {
+        log("ar detail: ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> ardetaildata = json['result'];

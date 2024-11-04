@@ -796,7 +796,7 @@ class _ScheduledReturnDetailScreenState
                                                                                 loadingCount = 0;
                                                                                 setState(() {});
                                                                                 approvedProducts[index] = ScheduledReturnPrdModel(
-                                                                                  reason: selectedresons[index],
+                                                                                  reason:selectedresons[index],
                                                                                   rrdId: details[index].rrdId,
                                                                                   status: "A",
                                                                                 );
@@ -868,7 +868,7 @@ class _ScheduledReturnDetailScreenState
                                                                                   }),
                                                                                   /*  activeColor: isselected == false
                                                                                                                                                                           ? const Color(0xff0075ff)
-                                                                                                                                                                          : Colors.grey, */
+                                                                                                        : Colors.grey, */
                                                                                   value: statuslist[index] == null
                                                                                       ? true
                                                                                       : statuslist[index] == true

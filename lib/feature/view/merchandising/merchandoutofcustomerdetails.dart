@@ -230,70 +230,84 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                           horizontal: 0.0),
                                       child: Column(
                                         children: [
-                                          Row(
-                                            children: [
-                                              Container(
-                                                height: 40,
-                                                width: 10,
-                                                decoration: BoxDecoration(
-                                                  color:
-                                                      const Color(0xfffee8e0),
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
+                                          InkWell(
+                                            onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              OutOfStockCustomerDetailScreen(
+                                            header: headers[index],
+                                          ),
+                                        ),
+                                      );
+                                    },
+
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  height: 40,
+                                                  width: 10,
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xfffee8e0),
+                                                    borderRadius:
+                                                        BorderRadius.circular(20),
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                width: 10.w,
-                                              ),
-                                              Expanded(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      headers[index].cusCode ??
-                                                          '',
-                                                      style: kfontstyle(
-                                                        fontSize: 12.sp,
-                                                        color: const Color(
-                                                            0xff2C6B9E),
-                                                        fontWeight:
-                                                            FontWeight.w600,
+                                                SizedBox(
+                                                  width: 10.w,
+                                                ),
+                                                Expanded(
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        headers[index].cusCode ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                          fontSize: 12.sp,
+                                                          color: const Color(
+                                                              0xff2C6B9E),
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      selectedLocale
-                                                                  ?.languageCode ==
-                                                              'en'
-                                                          ? headers[index]
-                                                                  .cusName ??
-                                                              ''
-                                                          : headers[index]
-                                                                  .cusArName ??
-                                                              '',
-                                                      style: kfontstyle(
-                                                        fontSize: 10.sp,
-                                                        color: const Color
-                                                            .fromARGB(
-                                                            255, 64, 65, 67),
+                                                      Text(
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                'en'
+                                                            ? headers[index]
+                                                                    .cusName ??
+                                                                ''
+                                                            : headers[index]
+                                                                    .cusArName ??
+                                                                '',
+                                                        style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          color: const Color
+                                                              .fromARGB(
+                                                              255, 64, 65, 67),
+                                                        ),
+                                                        overflow:
+                                                            TextOverflow.ellipsis,
                                                       ),
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 5),
-                                                child: Text(
-                                                  headers[index].prodCount ??
-                                                      '',
-                                                  style: countHeading(),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                          horizontal: 5),
+                                                  child: Text(
+                                                    headers[index].prodCount ??
+                                                        '',
+                                                    style: countHeading(),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                           Divider(
                                             color: Colors.grey[300],

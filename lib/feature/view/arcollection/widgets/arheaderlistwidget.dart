@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/arheader/ar_header_bloc.dart';
-import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
@@ -148,14 +147,14 @@ class ARHeaderListWidget extends StatelessWidget {
                                             color: arHeaders[index]
                                                         .arhPayMode ==
                                                     'HC'
-                                                ? colorslist[0]
+                                                ? const Color.fromARGB(255, 200, 239, 249)//colorslist[0]
                                                 : arHeaders[index].arhPayMode ==
                                                         "CH"
-                                                    ? colorslist[3]
+                                                    ? const Color.fromARGB(255, 246, 213, 197)//colorslist[3]
                                                     : arHeaders[index]
                                                                 .arhPayMode ==
                                                             "POS"
-                                                        ? colorslist[2]
+                                                        ?  const Color.fromARGB(255, 200, 244, 218)//colorslist[2]
                                                         : const Color(
                                                             0xfff7f4e2),
                                             borderRadius:

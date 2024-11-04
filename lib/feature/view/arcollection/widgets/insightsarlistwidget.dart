@@ -1,7 +1,6 @@
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
-import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
@@ -149,12 +148,12 @@ class InsightArListWidget extends StatelessWidget {
                                         decoration: BoxDecoration(
                                             color: headers[index].payMode ==
                                                     'HC'
-                                                ? colorslist[0]
+                                                ? const Color.fromARGB(255, 184, 241, 255)//colorslist[0]
                                                 : headers[index].payMode == "CH"
-                                                    ? colorslist[3]
+                                                    ?  const Color.fromARGB(255, 244, 209, 192)//colorslist[3]
                                                     : headers[index].payMode ==
                                                             "POS"
-                                                        ? colorslist[2]
+                                                        ?  const Color.fromARGB(255, 193, 244, 213)//colorslist[2]
                                                         : const Color(
                                                             0xfff7f4e2),
                                             borderRadius:

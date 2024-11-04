@@ -50,134 +50,137 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                         builder: (context) => const CustomerRequestScreen()),
                   );
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            spreadRadius: 1.5,
-                            blurRadius: 2)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/request@2x.png',
-                              height: 28,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Expanded(
-                              child: Text(
-                                AppLocalizations.of(context)!.customerRequests,
-                                // 'Customer Requests',
-                                style: kfontstyle(
-                                    fontSize: 9.sp,
-                                    color: Colors.black87,
-                                    fontWeight: FontWeight.w500),
+                child: Padding(
+                   padding: const EdgeInsets.only(left: 3.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.shade200,
+                              spreadRadius: 1.5,
+                              blurRadius: 2)
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/request@2x.png',
+                                height: 28,
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.newRequests,
-                              // 'New Requests',
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.newRequest}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.respondedRequests,
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.respondedReq}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        )
-                      ],
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context)!.customerRequests,
+                                  // 'Customer Requests',
+                                  style: kfontstyle(
+                                      fontSize: 9.sp,
+                                      color: Colors.black87,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.newRequests,
+                                // 'New Requests',
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.newRequest}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.respondedRequests,
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.respondedReq}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -196,134 +199,137 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             const MerchandiseCreditNoteRequestScreen()),
                   );
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            spreadRadius: 1.5,
-                            blurRadius: 2)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/cnr@2x.png',
-                              height: 28,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Expanded(
-                              child: Text(
-                                AppLocalizations.of(context)!
-                                    .creditNoteRequests,
-                                // 'Credit Note Requests',
-                                style: kfontstyle(
-                                    fontSize: 9.sp,
-                                    color: Colors.black87,
-                                    fontWeight: FontWeight.w500),
+                child: Padding(
+                 padding: const EdgeInsets.only(right: 3),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.shade200,
+                              spreadRadius: 1.5,
+                              blurRadius: 2)
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/cnr@2x.png',
+                                height: 28,
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.requested,
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.reqCreditNoteReq}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.approved,
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.approvedCreditNoteReq}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        )
-                      ],
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context)!
+                                      .creditNoteRequests,
+                                  // 'Credit Note Requests',
+                                  style: kfontstyle(
+                                      fontSize: 9.sp,
+                                      color: Colors.black87,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.requested,
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.reqCreditNoteReq}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.approved,
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.approvedCreditNoteReq}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -346,134 +352,137 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             const MerchandiseDisputeNoteRequestScreen()),
                   );
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            spreadRadius: 1.5,
-                            blurRadius: 2)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/dr@2x.png',
-                              height: 28,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Expanded(
-                              child: Text(
-                                AppLocalizations.of(context)!
-                                    .disputeNoteRequest,
-                                // 'Dispute Note Requests',
-                                style: kfontstyle(
-                                    fontSize: 9.sp,
-                                    color: Colors.black87,
-                                    fontWeight: FontWeight.w500),
+                child: Padding(
+                   padding: const EdgeInsets.only(left: 3.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.shade200,
+                              spreadRadius: 1.5,
+                              blurRadius: 2)
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/dr@2x.png',
+                                height: 28,
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.requested,
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.reqDisputeNoteReq}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.approved,
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.approvedDisputeNoteReq}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        )
-                      ],
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context)!
+                                      .disputeNoteRequest,
+                                  // 'Dispute Note Requests',
+                                  style: kfontstyle(
+                                      fontSize: 9.sp,
+                                      color: Colors.black87,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.requested,
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.reqDisputeNoteReq}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.approved,
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.approvedDisputeNoteReq}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -492,132 +501,135 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                             const MerchandiseReturnRequestScreen()),
                   );
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.shade200,
-                            spreadRadius: 1.5,
-                            blurRadius: 2)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/returnr@2x.png',
-                              height: 28,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            Expanded(
-                              child: Text(
-                                AppLocalizations.of(context)!.returnRequest,
-                                style: kfontstyle(
-                                    fontSize: 9.sp,
-                                    color: Colors.black87,
-                                    fontWeight: FontWeight.w500),
+                child: Padding(
+                   padding: const EdgeInsets.only(right: 3),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.shade200,
+                              spreadRadius: 1.5,
+                              blurRadius: 2)
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/returnr@2x.png',
+                                height: 28,
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.requested,
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.reqReturnRequest}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.approved,
-                              style: kfontstyle(
-                                  fontSize: 8.sp, color: Colors.grey.shade600),
-                            ),
-                            BlocBuilder<MerchCusServiceCountBloc,
-                                MerchCusServiceCountState>(
-                              builder: (context, state) {
-                                return state.when(
-                                    getCusServiceCountState:
-                                        (cusServicecount) => cusServicecount ==
-                                                null
-                                            ? Text(
-                                                "0",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              )
-                                            : Text(
-                                                "${cusServicecount.approvedReturnRequest}",
-                                                style: kfontstyle(
-                                                    fontSize: 11.sp,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xff413434)),
-                                              ),
-                                    cusServiceCountFailedstate: () => Text(
-                                          "0",
-                                          style: kfontstyle(
-                                              fontSize: 11.sp,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xff413434)),
-                                        ));
-                              },
-                            )
-                          ],
-                        )
-                      ],
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  AppLocalizations.of(context)!.returnRequest,
+                                  style: kfontstyle(
+                                      fontSize: 9.sp,
+                                      color: Colors.black87,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.requested,
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.reqReturnRequest}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.approved,
+                                style: kfontstyle(
+                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                              ),
+                              BlocBuilder<MerchCusServiceCountBloc,
+                                  MerchCusServiceCountState>(
+                                builder: (context, state) {
+                                  return state.when(
+                                      getCusServiceCountState:
+                                          (cusServicecount) => cusServicecount ==
+                                                  null
+                                              ? Text(
+                                                  "0",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                )
+                                              : Text(
+                                                  "${cusServicecount.approvedReturnRequest}",
+                                                  style: kfontstyle(
+                                                      fontSize: 11.sp,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: const Color(
+                                                          0xff413434)),
+                                                ),
+                                      cusServiceCountFailedstate: () => Text(
+                                            "0",
+                                            style: kfontstyle(
+                                                fontSize: 11.sp,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff413434)),
+                                          ));
+                                },
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
