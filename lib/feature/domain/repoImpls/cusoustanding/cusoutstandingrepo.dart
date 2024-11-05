@@ -62,7 +62,7 @@ class CusOutStandingRepo implements ICusOutstandingRepo {
         );
       }
     } catch (e) {
-      log('Outstandingcount error : $e');
+      // log('Outstandingcount error : $e');
       return left(const MainFailures.serverfailure());
     }
   }

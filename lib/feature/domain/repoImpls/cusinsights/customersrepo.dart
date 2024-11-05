@@ -99,6 +99,15 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
         'Pagenum': pagenum,
       });
 
+      log({
+        'UserID': userId,
+        'Area': area,
+        'SubArea': subarea,
+        'Route': route,
+        'SearchString': searchString,
+        'Pagenum': pagenum,
+      }.toString());
+
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

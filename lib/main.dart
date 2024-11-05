@@ -829,8 +829,9 @@ class MyApp extends StatelessWidget {
           create: (context) => getit<CusromerFocRejectionBloc>(),
         ),
         BlocProvider(
-          create: (context) => getit<ItemListingCountBloc>(),),
-         BlocProvider(
+          create: (context) => getit<ItemListingCountBloc>(),
+        ),
+        BlocProvider(
           create: (context) => getit<ScheduleReturnReasonBloc>(),
         ),
       ],

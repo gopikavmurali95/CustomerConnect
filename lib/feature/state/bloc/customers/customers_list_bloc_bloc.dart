@@ -26,7 +26,7 @@ class CustomersListBlocBloc
       final currentState = state as GetCustomersSstate;
       oldcustomerlist.addAll(currentState.customers ?? []);
       emit(customers.fold(
-          (l) => const GetCustomersSstate(customers: [], isLoading: false),
+          (l) =>  GetCustomersSstate(customers: oldcustomerlist, isLoading: false),
           (r) /* => GetCustomersSstate(customers: r) */ {
         if (event.searchQuery.isNotEmpty) {
           oldcustomerlist.clear();

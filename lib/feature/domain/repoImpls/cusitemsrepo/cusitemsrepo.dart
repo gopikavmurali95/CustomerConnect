@@ -64,9 +64,10 @@ class CusItemsRepo implements ICusItemsRepo {
       String fromDate,
       String toDate,
       String pagenum,
-      String searchString) async{
+      String searchString) async {
     try {
-      final response = await http.post(Uri.parse(baseUrl + itemListingCountUrl), body: {
+      final response =
+          await http.post(Uri.parse(baseUrl + itemListingCountUrl), body: {
         "CusID": cusId,
         "Route": route,
         "FromDate": fromDate,
@@ -74,10 +75,9 @@ class CusItemsRepo implements ICusItemsRepo {
         "Pagenum": pagenum,
         "SearchString": searchString
       });
-     
-     log(response.body);
+
+      log(response.body);
       if (response.statusCode == 200) {
-        
         Map<String, dynamic> json = jsonDecode(response.body);
         final countModel = ItemListingCount.fromJson(json["result"][0]);
         return right(countModel);

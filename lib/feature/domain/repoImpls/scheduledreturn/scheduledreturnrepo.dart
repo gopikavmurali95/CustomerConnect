@@ -131,19 +131,21 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
   }
 
   @override
-  Future<Either<MainFailures, List<ScheduleReturnApprovalReasonModel>>> 
-  getScheduleReturnReasons(String rsnType) async{
+  Future<Either<MainFailures, List<ScheduleReturnApprovalReasonModel>>>
+      getScheduleReturnReasons(String rsnType) async {
     try {
-      final response =
-          await http.post(Uri.parse(approvalBaseUrl + scheduleReturnApprovalReasonUrl), );
+      final response = await http.post(
+        Uri.parse(approvalBaseUrl + scheduleReturnApprovalReasonUrl),
+      );
       if (response.statusCode == 200) {
-       log('sr reasonse response: ${response.body}');
+        log('sr reasonse response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> scheeduleReturnReason = json['result'];
-        List<ScheduleReturnApprovalReasonModel> scheduleReason =  scheeduleReturnReason
-            .map<ScheduleReturnApprovalReasonModel>(
-                (json) => ScheduleReturnApprovalReasonModel.fromJson(json))
-            .toList();
+        List<ScheduleReturnApprovalReasonModel> scheduleReason =
+            scheeduleReturnReason
+                .map<ScheduleReturnApprovalReasonModel>(
+                    (json) => ScheduleReturnApprovalReasonModel.fromJson(json))
+                .toList();
         return right(scheduleReason);
       } else {
         return left(
@@ -153,7 +155,5 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
     } catch (e) {
       return left(const MainFailures.serverfailure());
     }
-    
-   
   }
 }

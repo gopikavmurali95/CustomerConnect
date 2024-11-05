@@ -23,7 +23,7 @@ class OutStandingHeadRepo implements IOutStandingHeaderRepo {
           body: outStandIn.toJson());
       log(jsonEncode(outStandIn));
       if (response.statusCode == 200) {
-        //log("outstanding response: ${response.body}");
+        log("outstanding response: ${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
 
         final List<dynamic> outstanddata = json['result'];

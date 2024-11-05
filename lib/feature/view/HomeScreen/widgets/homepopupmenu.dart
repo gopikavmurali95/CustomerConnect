@@ -123,8 +123,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                           children: <Widget>[
                             ListTile(
                               leading: const Icon(Icons.language),
-                              title: Text(AppLocalizations.of(context)!
-                                  .english /*  "English" */),
+                              title: const Text("English"),
                               onTap: () async {
                                 selectedLocale = const Locale('en');
                                 final sharedprefs =
@@ -143,7 +142,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                             const Divider(),
                             ListTile(
                               leading: const Icon(Icons.language),
-                              title: Text(AppLocalizations.of(context)!.arabic),
+                              title: const Text('العربية'),
                               onTap: () async {
                                 selectedLocale = const Locale('ar');
 
