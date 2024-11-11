@@ -1,13 +1,16 @@
 // ignore_for_file: file_names
 
+import 'dart:io';
+
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/view/todaysdelivery/todaysdelivery.dart';
 import 'package:customer_connect/feature/view/totalorders/totalordersheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -84,7 +87,8 @@ class SalesOrders extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                                context,
+                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                TotalOrders(user: user)):
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         TotalOrders(
@@ -195,7 +199,8 @@ class SalesOrders extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                                context,
+                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                TodaysDelivery(user: user)):
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         TodaysDelivery(
@@ -348,7 +353,7 @@ class SalesOrders extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 Navigator.push(
-                                    context,
+                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>TotalOrders(user: user)):
                                     MaterialPageRoute(
                                         builder: (context) => TotalOrders(
                                               user: user,
@@ -416,7 +421,7 @@ class SalesOrders extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 Navigator.push(
-                                    context,
+                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>TodaysDelivery(user: user)):
                                     MaterialPageRoute(
                                         builder: (context) => TodaysDelivery(
                                               user: user,

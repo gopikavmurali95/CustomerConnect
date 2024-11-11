@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/cubit/selectlanguage/select_language_locale_cubit.dart';
@@ -214,7 +216,7 @@ class HomePopUPMenuButton extends StatelessWidget {
                             Future.delayed(const Duration(microseconds: 100),
                                 () {
                               Navigator.pushAndRemoveUntil(
-                                  context,
+                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const LoginScreen()):
                                   MaterialPageRoute(
                                     builder: (context) => const LoginScreen(),
                                   ),

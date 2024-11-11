@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 import 'dart:isolate';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -318,7 +319,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () {
                               Navigator.pop(context);
                               Navigator.push(
-                                  context,
+                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> AutoUpdateScreen(status: status,)):
                                   MaterialPageRoute(
                                     builder: (context) => AutoUpdateScreen(
                                       status: status,
@@ -1015,7 +1016,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           IconButton(
                             onPressed: () async {
                               Navigator.push(
-                                  context,
+                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                  NotificationScreen(user: widget.user)):
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         NotificationScreen(user: widget.user),

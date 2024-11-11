@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -274,7 +275,8 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                             itemBuilder: (context, index) => GestureDetector(
                                   onTap: () {
                                     Navigator.push(
-                                      context,
+                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                      CustomerFocDetailScreen(header: headerdata[index], user: widget.user)):
                                       MaterialPageRoute(
                                           builder: (context) =>
                                               CustomerFocDetailScreen(

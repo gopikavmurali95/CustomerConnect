@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/ardetails/ar_details_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/imagepreveiewscreen.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/arddetailinvoicewidget.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -163,7 +166,8 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                     onPressed: () {
                       widget.arheader;
                       Navigator.push(
-                        context,
+                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                        ArImagePreviewScreen(arheader: widget.arheader)):
                         MaterialPageRoute(
                           builder: (context) => ArImagePreviewScreen(
                             arheader: widget.arheader,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -456,7 +458,12 @@ class _CustomerTraansactionWidgetState
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,
+                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                              InsightsInvoiceScreen(
+                                user: widget.user,
+                               customer: widget.customer, 
+                               fromdatectrl: widget.fromdatectrl, 
+                               todatectrl:widget.todatectrl)):
                               MaterialPageRoute(
                                 builder: (context) => InsightsInvoiceScreen(
                                   customer: widget.customer,
@@ -480,7 +487,11 @@ class _CustomerTraansactionWidgetState
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
+                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                InsightsArCollection(
+                                  user: widget.user,
+                                   customer: widget.customer,
+                                    fromdatectrl: widget.fromdatectrl, todatectrl: widget.todatectrl)):
                                 MaterialPageRoute(
                                   builder: (context) => InsightsArCollection(
                                     customer: widget.customer,
@@ -503,7 +514,12 @@ class _CustomerTraansactionWidgetState
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,
+                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                SalesrdersScreen(
+                                  user: widget.user, 
+                                  customer: widget.customer, 
+                                  fromdatecontroller: widget.fromdatectrl, 
+                                  todatecontroller: widget.todatectrl)):
                                 MaterialPageRoute(
                                   builder: (context) => SalesrdersScreen(
                                     customer: widget.customer,

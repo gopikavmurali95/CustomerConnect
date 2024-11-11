@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -5,6 +7,7 @@ import 'package:customer_connect/feature/state/bloc/cussppriceheader/cus_sp_pric
 import 'package:customer_connect/feature/view/customerinsightspecialpricing/cusinsightspdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,7 +62,8 @@ class InsightSpecialPriceList extends StatelessWidget {
                                           prhID: headers[index].prhId!,
                                           searchQuery: ''));
                                   Navigator.push(
-                                      context,
+                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustomerInsightSpecialPriceDetails(
+                                        user: user, customer: customer, spPriceHeader: headers[index])):
                                       MaterialPageRoute(
                                           builder: (context) =>
                                               CustomerInsightSpecialPriceDetails(

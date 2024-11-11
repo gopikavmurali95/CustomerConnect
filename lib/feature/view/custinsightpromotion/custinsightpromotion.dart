@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -6,8 +7,10 @@ import 'package:customer_connect/feature/data/models/cus_promo_in_model/cus_prom
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
+import 'package:customer_connect/feature/view/custinsightpromotion/widget/cusinsightpromotiondetlist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
@@ -112,7 +115,11 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
           IconButton(
               onPressed: () {
                 Navigator.push(
-                  context,
+                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustInsightPromotionDetails(
+                    user: widget.user, 
+                    customer: widget.customer, 
+                    header: CusPromotionHeader(id: '1'),)
+                  ):
                   MaterialPageRoute(
                     builder: (context) => CustInsightPromotionDetails(
                       customer: widget.customer,
@@ -504,7 +511,10 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                         GestureDetector(
                                                           onTap: () {
                                                             Navigator.push(
-                                                              context,
+                                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustInsightPromotionDetails(
+                                                                user: widget.user,
+                                                                 customer: widget.customer, 
+                                                                 header: headers[index])):
                                                               MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>

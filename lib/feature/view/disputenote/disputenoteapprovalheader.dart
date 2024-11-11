@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -11,6 +12,7 @@ import 'package:customer_connect/feature/state/cubit/progressIndicator/progress_
 import 'package:customer_connect/feature/view/disputenote/disputenotedetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -326,7 +328,9 @@ class _DisputeNoteApprovalHEaderScreenState
                                               .read<NavigatetoBackCubit>()
                                               .popFromScreen(false);
                                           Navigator.push(
-                                            context,
+                                            context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                            DisputeNoteDetailScreen(user: widget.user, disputenote: headers[index],
+                                             currentMode: _selectedDisputeMode)):
                                             MaterialPageRoute(
                                               builder: (context) =>
                                                   DisputeNoteDetailScreen(

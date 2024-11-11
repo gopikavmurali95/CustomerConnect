@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
@@ -67,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     () {
                       Navigator.pop(context);
                       Navigator.pushAndRemoveUntil(
-                          context,
+                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> HomeScreen(user: user)):
                           MaterialPageRoute(
                             builder: (context) => HomeScreen(
                               user: user,
