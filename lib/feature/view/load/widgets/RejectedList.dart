@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/view/LoadInDetail/load_detail_rejected.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +57,9 @@ class RejectedList extends StatelessWidget {
                                 child: ListTile(
                                   onTap: () {
                                     Navigator.push(
-                                      context,
+                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                      LoadDetailRejected(loadingheader: loadingheaders[index])):
+                                      
                                       MaterialPageRoute(
                                         builder: (context) =>
                                             LoadDetailRejected(

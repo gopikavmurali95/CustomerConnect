@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -8,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/materialreqhead/material_req
 import 'package:customer_connect/feature/view/materialrequest/materialrequestdetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -401,6 +403,11 @@ class _MaterialRequestHeaderScreenState
                                                     {
                                                   Navigator.push(
                                                     context,
+                                                    Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                    MaterialRequestDetailScreen(
+                                                      user: widget.user, 
+                                                      materialrequest: headers[index],
+                                                       currentMode: _selectedMaterialReq)):
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             MaterialRequestDetailScreen(

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -343,7 +344,10 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                          MustSellDetailScreen(
+                                            header: headers[index],
+                                             user: widget.user)):
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   MustSellDetailScreen(

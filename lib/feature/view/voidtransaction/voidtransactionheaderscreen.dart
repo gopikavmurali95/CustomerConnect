@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -512,8 +513,10 @@ class _VoidTranscactioHeaderScreenState
                                     Navigator.pop(context);
                                     showCupertinoDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) {
+                                        if(Platform.isIOS)
+                                        {
+                                        return   CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -530,7 +533,30 @@ class _VoidTranscactioHeaderScreenState
                                                     .ok),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else{
+                                          return AlertDialog(
+                                           title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .rejectedSuccessfully),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                         
                                     );
                                   }
                                 },

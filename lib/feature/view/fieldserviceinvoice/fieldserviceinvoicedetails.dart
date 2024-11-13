@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/field_service_invoice_header_model/field_service_invoice_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_service_detail_bloc.dart';
@@ -521,9 +523,12 @@ class FieldServiceInvoiceDetailsState
                   if (response != null) {
                     Navigator.pop(context);
                     // if (isApproval) {
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context) {
+                        if(Platform.isIOS)
+                        {
+                          return CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(selectedLocale?.languageCode == "en"
                             ? response.status ?? ''
@@ -541,16 +546,42 @@ class FieldServiceInvoiceDetailsState
                             child: Text(AppLocalizations.of(context)!.proceed),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else{
+                          return AlertDialog(
+                             title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(selectedLocale?.languageCode == "en"
+                            ? response.status ?? ''
+                            : response.arStatus ?? ''),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              context.read<FieldServiceHeaderBloc>().add(
+                                  GetAllFieldServiceHeadersEvent(
+                                      userId: widget.header.userID ?? '',
+                                      searchQuery: ''));
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.proceed),
+                          ),
+                        ],
+                          );
+                        }
+                      }
                     );
                     // }
                   }
                 },
                 fieldServiceInvoiceApprovalFailed: () {
                   Navigator.pop(context);
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(
                           AppLocalizations.of(context)!.somethingWentWrong),
@@ -565,7 +596,27 @@ class FieldServiceInvoiceDetailsState
                           child: Text(AppLocalizations.of(context)!.ok),
                         ),
                       ],
-                    ),
+                    );
+                      }
+                      else{
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(
+                          AppLocalizations.of(context)!.somethingWentWrong),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            context.read<FIeldServiceDetailBloc>().add(
+                                GetAllFieldServiceDetailEvent(
+                                    reqId: widget.header.sahId ?? ''));
+                            Navigator.pop(context);
+                          },
+                          child: Text(AppLocalizations.of(context)!.ok),
+                        ),
+                      ]
+                        );
+                      }
+                    } 
                   );
                 },
                 fieldServiceInvoiceLoadingState: () {
@@ -613,9 +664,12 @@ class FieldServiceInvoiceDetailsState
                                             ? */
                                 Colors.red.shade300 /* : Colors.grey[300] */,
                             onPressed: () {
-                              showCupertinoDialog(
+                              showDialog(
                                 context: context,
-                                builder: (context) => CupertinoAlertDialog(
+                                builder: (context) {
+                                  if(Platform.isIOS)
+                                  {
+                                    return CupertinoAlertDialog(
                                   title:
                                       Text(AppLocalizations.of(context)!.alert),
                                   content: Text(AppLocalizations.of(context)!
@@ -650,7 +704,48 @@ class FieldServiceInvoiceDetailsState
                                           .proceed),
                                     ),
                                   ],
-                                ),
+                                );
+                                  }
+                                  else
+                                  {
+                                    return AlertDialog(
+                                      title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .doYouWantToRejectThisProduct),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {});
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.cancel),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        context
+                                            .read<
+                                                FieldServiceInvoiceApprovalBloc>()
+                                            .add(
+                                                const FieldServiceInvoicLoadingEvent());
+                                        context
+                                            .read<
+                                                FieldServiceInvoiceApprovalBloc>()
+                                            .add(InvoiceRejectEvent(
+                                                reqID:
+                                                    widget.header.sahId ?? '',
+                                                userID: widget.header.userID ??
+                                                    ''));
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(AppLocalizations.of(context)!
+                                          .proceed),
+                                    ),
+                                  ],
+                                    );
+                                  }
+                                }
                               );
                             },
                             child: Text(
@@ -679,9 +774,12 @@ class FieldServiceInvoiceDetailsState
                                             ? */
                                 Colors.green.shade300 /* : Colors.grey[300] */,
                             onPressed: () {
-                              showCupertinoDialog(
+                              showDialog(
                                 context: context,
-                                builder: (context) => CupertinoAlertDialog(
+                                builder: (context) {
+                                  if(Platform.isIOS)
+                                  {
+                                    return  CupertinoAlertDialog(
                                   title:
                                       Text(AppLocalizations.of(context)!.alert),
                                   content: Text(AppLocalizations.of(context)!
@@ -720,7 +818,52 @@ class FieldServiceInvoiceDetailsState
                                           .proceed),
                                     ),
                                   ],
-                                ),
+                                );
+                                  }
+                                  else{
+                                    return AlertDialog(
+                                      title:
+                                      Text(AppLocalizations.of(context)!.alert),
+                                  content: Text(AppLocalizations.of(context)!
+                                      .doYouWantToApproveThisProduct),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {});
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.cancel),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        context
+                                            .read<
+                                                FieldServiceInvoiceApprovalBloc>()
+                                            .add(
+                                                const FieldServiceInvoicLoadingEvent());
+                                        context
+                                            .read<
+                                                FieldServiceInvoiceApprovalBloc>()
+                                            .add(
+                                                GetFieldServiceInvoiceApprovalEvent(
+                                                    reqID:
+                                                        widget.header.sahId ??
+                                                            '',
+                                                    userID:
+                                                        widget.header.userID ??
+                                                            ''));
+
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(AppLocalizations.of(context)!
+                                          .proceed),
+                                    ),
+                                  ],
+
+                                    );
+                                  }
+                                }
                               );
                             },
                             child: Text(

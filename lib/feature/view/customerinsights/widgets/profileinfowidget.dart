@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/cusprofile/cus_profile_bloc.dart';
@@ -161,9 +162,12 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                               logger.e('Cannot launch phone');
                             }
                           } else {
-                            return showCupertinoDialog(
+                            return showDialog(
                                 context: context,
-                                builder: (context) => CupertinoAlertDialog(
+                                builder: (context) {
+                                  if(Platform.isIOS)
+                                  {
+                                    return  CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(
@@ -178,7 +182,28 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                 AppLocalizations.of(context)!
                                                     .ok))
                                       ],
-                                    ));
+                                    );
+                                  }
+                                  else
+                                  {
+                                    return AlertDialog(
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .phoneNumberNotAvailable),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok))
+                                      ],
+                                    );
+                                  }
+                                });
                           }
                         } catch (e) {
                           logger.e('Error opening phone: $e');
@@ -213,9 +238,13 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                               logger.e('Cannot launch Whatsapp');
                             }
                           } else {
-                            return showCupertinoDialog(
+                            return showDialog(
                                 context: context,
-                                builder: (context) => CupertinoAlertDialog(
+                                builder: (context) 
+                                {
+                                  if(Platform.isIOS)
+                                  {
+                                    return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(
@@ -230,7 +259,29 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                 AppLocalizations.of(context)!
                                                     .ok))
                                       ],
-                                    ));
+                                    );
+                                  }
+
+
+                                  else{
+                                    return AlertDialog(
+                                       title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .whatsAppNtAvailable),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok))
+                                      ],
+                                    );
+                                  }
+                                });
                           }
                         } catch (e) {
                           logger.e('Error opening whatsapp: $e');
@@ -266,9 +317,12 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                               logger.e('Cannot launch map');
                             }
                           } else {
-                            return showCupertinoDialog(
+                            return showDialog(
                                 context: context,
-                                builder: (context) => CupertinoAlertDialog(
+                                builder: (context) {
+                                  if(Platform.isIOS)
+                                  {
+                                    return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(
@@ -281,7 +335,25 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                             },
                                             child: const Text('Ok'))
                                       ],
-                                    ));
+                                    );
+                                  }
+                                  else{
+                                    return AlertDialog(
+                                      title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .locationNotAvailable),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text('Ok'))
+                                      ],
+                                    );
+                                  }
+                                });
                           }
                         } catch (e) {
                           logger.e('Error launching map: $e');

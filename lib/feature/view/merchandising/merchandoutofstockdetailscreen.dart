@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockitems/out_of_stock_items_bloc.dart';
@@ -235,6 +236,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                     onTap: () {
                                                       Navigator.push(
                                                         context,
+                                                        Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                        OutOfStockItemsDetailsScreen(header: headers[index])):
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 OutOfStockItemsDetailsScreen(
@@ -250,6 +253,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                           onTap: (){
                                                       Navigator.push(
                                                         context,
+                                                        Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                        OutOfStockItemsDetailsScreen(header: headers[index])):
                                                         MaterialPageRoute(
                                                             builder: (context) =>
                                                                 OutOfStockItemsDetailsScreen(

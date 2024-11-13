@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
@@ -443,10 +444,12 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                       /* isLoading = false; */
                                                       if (response.status !=
                                                           null) {
-                                                        showCupertinoDialog(
+                                                        showDialog(
                                                           context: context,
-                                                          builder: (context) =>
-                                                              CupertinoAlertDialog(
+                                                          builder: (context) {
+                                                            if(Platform.isIOS)
+                                                            {
+                                                              return CupertinoAlertDialog(
                                                             title: Text(
                                                                 AppLocalizations.of(
                                                                         context)!
@@ -465,7 +468,33 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                         .ok),
                                                               ),
                                                             ],
-                                                          ),
+                                                          );
+                                                            }
+                                                            else
+                                                            {
+                                                              return AlertDialog(
+                                                                 title: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .alert),
+                                                            content: Text(
+                                                                "${AppLocalizations.of(context)!.loadRequest} ${AppLocalizations.of(context)!.approvedSuccessfully} "),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child: Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .ok),
+                                                              ),
+                                                            ],
+                                                              );
+                                                            }
+                                                          }
+                                                              
                                                         );
                                                       } /*  else {
                                                         statuslist[index] =
@@ -537,10 +566,12 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                     statuslist[index] = null;
                                                     setState(() {});
                                                     Navigator.pop(context);
-                                                    showCupertinoDialog(
+                                                    showDialog(
                                                       context: context,
-                                                      builder: (context) =>
-                                                          CupertinoAlertDialog(
+                                                      builder: (context) {
+                                                        if(Platform.isIOS)
+                                                        {
+                                                          return CupertinoAlertDialog(
                                                         title: Text(
                                                             AppLocalizations.of(
                                                                     context)!
@@ -561,7 +592,34 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                                     .ok),
                                                           ),
                                                         ],
-                                                      ),
+                                                      );
+                                                        }
+                                                        else{
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .alert),
+                                                        content: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .somethingWentWrong),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .ok),
+                                                          ),
+                                                        ],
+                                                          );
+                                                        }
+                                                      }
+                                                          
                                                     );
                                                   },
                                                 );
@@ -921,9 +979,12 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                 if (response != null) {
                   Navigator.pop(context);
                   // if (isApproval) {
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(selectedLocale?.languageCode == "en"
                           ? response.status ?? ''
@@ -937,16 +998,38 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                           child: Text(AppLocalizations.of(context)!.proceed),
                         ),
                       ],
-                    ),
+                    );
+                      }
+                      else {
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(selectedLocale?.languageCode == "en"
+                          ? response.status ?? ''
+                          : response.arstatus ?? ''),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                          child: Text(AppLocalizations.of(context)!.proceed),
+                        ),
+                      ],
+                        );
+                      }
+                    }
                   );
                   // }
                 }
               },
               loadReqApprovalFailedState: () {
                 Navigator.pop(context);
-                showCupertinoDialog(
+                showDialog(
                   context: context,
-                  builder: (context) => CupertinoAlertDialog(
+                  builder: (context) {
+                    if(Platform.isIOS)
+                    {
+                      return CupertinoAlertDialog(
                     title: Text(AppLocalizations.of(context)!.alert),
                     content:
                         Text(AppLocalizations.of(context)!.somethingWentWrong),
@@ -962,7 +1045,28 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                         child: Text(AppLocalizations.of(context)!.ok),
                       ),
                     ],
-                  ),
+                  );
+                    }
+                    else{
+                      return AlertDialog(
+                        title: Text(AppLocalizations.of(context)!.alert),
+                    content:
+                        Text(AppLocalizations.of(context)!.somethingWentWrong),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          context.read<LoadReqDetailBloc>().add(
+                              GetloadreqdetailEvent(
+                                  reqId: widget.loadrequest.lrhID ?? "",
+                                  searchQuery: ''));
+                          Navigator.pop(context);
+                        },
+                        child: Text(AppLocalizations.of(context)!.ok),
+                      ),
+                    ],
+                      );
+                    }
+                  }
                 );
               },
               loadReqApprovalLoadingState: () {
@@ -1013,9 +1117,12 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                   rotID: widget.loadrequest.rotID,
                                   userId: widget.user.usrId)));
                               if (widget.loadrequest.status == 'Pending') {
-                                showCupertinoDialog(
+                                showDialog(
                                   context: context,
-                                  builder: (context) => CupertinoAlertDialog(
+                                  builder: (context) {
+                                    if(Platform.isIOS)
+                                    {
+                                      return CupertinoAlertDialog(
                                     title: Text(
                                         AppLocalizations.of(context)!.alert),
                                     content: Text(AppLocalizations.of(context)!
@@ -1067,7 +1174,65 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                 .proceed),
                                       ),
                                     ],
-                                  ),
+                                  );
+                                    }
+                                    else{
+                                      return
+                                      AlertDialog(
+                                        title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          loadingCount = 0;
+
+                                          Navigator.pop(context);
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(
+                                                  const ApprovLoadingReqEvent());
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(
+                                                ApprovloadReqEvent(
+                                                  approval:
+                                                      LoadReqInApprovalModel(
+                                                          products:
+                                                              _loadproducts,
+                                                          reqID: widget
+                                                              .loadrequest
+                                                              .lrhID,
+                                                          rotID: widget
+                                                              .loadrequest
+                                                              .rotID,
+                                                          userId: widget
+                                                              .loadrequest
+                                                              .userID,
+                                                          status: "R"),
+                                                ),
+                                              );
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                      );
+                                    }
+                                  }
                                 );
                               }
                             },
@@ -1095,9 +1260,12 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                 : Colors.grey[300],
                             onPressed: () {
                               if (widget.loadrequest.status == 'Pending') {
-                                showCupertinoDialog(
+                                showDialog(
                                   context: context,
-                                  builder: (context) => CupertinoAlertDialog(
+                                  builder: (context) {
+                                    if(Platform.isIOS)
+                                    {
+                                      return CupertinoAlertDialog(
                                     title: Text(
                                         AppLocalizations.of(context)!.alert),
                                     content: Text(AppLocalizations.of(context)!
@@ -1146,7 +1314,61 @@ class _LoadReqDetailscreenState extends State<LoadReqDetailscreen> {
                                                 .proceed),
                                       ),
                                     ],
-                                  ),
+                                  );
+                                    }
+                                    else{
+                                      return AlertDialog(
+                                         title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          loadingCount = 0;
+
+                                          Navigator.pop(context);
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(
+                                                  const ApprovLoadingReqEvent());
+
+                                          context
+                                              .read<LoadReqApprovalBloc>()
+                                              .add(ApprovloadReqEvent(
+                                                  approval:
+                                                      LoadReqInApprovalModel(
+                                                          products:
+                                                              _loadproducts,
+                                                          reqID: widget
+                                                              .loadrequest
+                                                              .lrhID,
+                                                          rotID: widget
+                                                              .loadrequest
+                                                              .rotID,
+                                                          userId: widget
+                                                              .loadrequest
+                                                              .userID,
+                                                          status: "A")));
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                      );
+                                    }
+                                  }
                                 );
                               }
                             },

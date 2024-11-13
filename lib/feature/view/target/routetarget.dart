@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/target_header_list_model/target_header_list_model.dart';
@@ -222,6 +223,8 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                           onTap: () {
                                             Navigator.push(
                                                 context,
+                                                Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                TargetPackageScreen(details: details[index], header: widget.headr)):
                                                 CupertinoPageRoute(
                                                     builder: (context) =>
                                                         TargetPackageScreen(

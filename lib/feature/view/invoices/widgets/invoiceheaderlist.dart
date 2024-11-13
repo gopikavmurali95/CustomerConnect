@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_header/invoice_header_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/inovicedetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,7 +61,10 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                 onTap: () {
                                   //context.read<InvoiceDetailsBloc>().add(GetInvoiceDetailsEvent(id: invheader))
                                   Navigator.push(
-                                    context,
+                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                    InvoiceDetailScreen(
+                                      isfromUser: isfromUser, invoiceheader: invheader[index],
+                                       user: user)):
                                     MaterialPageRoute(
                                       builder: (context) => InvoiceDetailScreen(
                                         isfromUser: isfromUser,

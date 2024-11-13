@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -9,6 +10,7 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovaldetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -316,6 +318,11 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                       .popFromScreen(false);
                                                   Navigator.push(
                                                       context,
+                                                      Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                      VanToVanApprovalDetails
+                                                      (user: widget.user, 
+                                                      vanToVanHeader: pChange[index],
+                                                       currentMode: _selectedMode)):
                                                       MaterialPageRoute(
                                                           builder: (context) =>
                                                               VanToVanApprovalDetails(

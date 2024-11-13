@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -9,6 +10,7 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_detailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -281,6 +283,12 @@ class _ScheduledReturnHEaderScreenState
                                                         .cancelPop(false);
                                                     Navigator.push(
                                                       context,
+                                                      Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                      ScheduledReturnDetailScreen(
+                                                        user: widget.user, 
+                                                        scheduledreturn: headers[index],
+                                                      
+                                                         currentMode: _selectedeMode)):
                                                       MaterialPageRoute(
                                                         builder: (context) =>
                                                             ScheduledReturnDetailScreen(

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
@@ -88,6 +89,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               onTap: () {
                                 Navigator.pushReplacement(
                                     context,
+                                    Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                    SpecialPricingCustomer(user: widget.user,
+                                     spPrice: widget.spPrice)):
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             SpecialPricingCustomer(
@@ -125,7 +129,9 @@ class _SpecialPricingState extends State<SpecialPricing> {
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
-                              context,
+                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                              SpecialPricingCustomer(user: widget.user,
+                               spPrice: widget.spPrice)):
                               MaterialPageRoute(
                                   builder: (context) => SpecialPricingCustomer(
                                         user: widget.user,

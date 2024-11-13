@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/free_sample_approve_in_model/free_sample_approve_in_model.dart';
@@ -827,9 +828,12 @@ class _FreeSampleDetailListWidgetState
                               if (widget.header.approvalStatus == 'Pending' ||
                                   widget.header.approvalStatus!.isEmpty) {
                                 if (statuslist.contains(null)) {
-                                  showCupertinoDialog(
+                                  showDialog(
                                     context: context,
-                                    builder: (context) => CupertinoAlertDialog(
+                                    builder: (context) {
+                                      if(Platform.isIOS)
+                                      {
+                                        return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(AppLocalizations.of(
@@ -845,12 +849,36 @@ class _FreeSampleDetailListWidgetState
                                               AppLocalizations.of(context)!.ok),
                                         ),
                                       ],
-                                    ),
+                                    );
+                                      }
+                                      else{
+                                        return AlertDialog(
+                                           title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(
+                                              context)!
+                                          .pleaseMakeSureToApproveAndReject),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            // Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
+                                        ),
+                                      ],
+                                        );
+                                      }
+                                    }
                                   );
                                 } else if (checkrejectedstatus() == false) {
-                                  showCupertinoDialog(
+                                  showDialog(
                                     context: context,
-                                    builder: (context) => CupertinoAlertDialog(
+                                    builder: (context) {
+                                      if(Platform.isIOS)
+                                      {
+                                        return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(AppLocalizations.of(
@@ -865,12 +893,36 @@ class _FreeSampleDetailListWidgetState
                                               AppLocalizations.of(context)!.ok),
                                         ),
                                       ],
-                                    ),
+                                    );
+                                      }
+                                      else{
+                                        return AlertDialog(
+                                          title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(
+                                              context)!
+                                          .youShouldApproveOrRejectAndSpecifyReason),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
+                                        ),
+                                      ],
+                                        );
+                                      }
+
+                                    }
                                   );
                                 } else {
                                   showCupertinoDialog(
                                     context: context,
-                                    builder: (context) => CupertinoAlertDialog(
+                                    builder: (context) {
+                                      if(Platform.isIOS)
+                                      {
+                                        return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(
@@ -934,7 +986,74 @@ class _FreeSampleDetailListWidgetState
                                                   .proceed),
                                         ),
                                       ],
-                                    ),
+                                    );
+                                      }
+                                      else{
+                                        return AlertDialog( title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .doyouWantToProceed),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            setState(() {});
+
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .cancel),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            // setState(() {});
+                                            List<FreeSampleApprovePrdModel>
+                                                finalprds = [];
+
+                                            /*  for (var item in fsProducs) {
+                                              if (item != null) {
+                                                finalprds.add(item);
+                                              }
+                                            }
+ */
+                                            for (var i = 0;
+                                                i < fsProducs.length;
+                                                i++) {
+                                              if (fsProducs[i] != null) {
+                                                fsProducs[i]!.reasonId =
+                                                    selectedresons[i];
+                                                finalprds.add(fsProducs[i]!);
+                                              }
+                                            }
+                                            log(jsonEncode(finalprds));
+
+                                            context
+                                                .read<FreeSampleApproveBloc>()
+                                                .add(
+                                                    const FreesamplesubmitLoadingEvent());
+                                            context
+                                                .read<FreeSampleApproveBloc>()
+                                                .add(
+                                                  SubmitFreeSampleRequestEvent(
+                                                    approve:
+                                                        FreeSampleApproveInModel(
+                                                            headerId: widget
+                                                                .header.fshId,
+                                                            products: finalprds,
+                                                            userId: widget
+                                                                .user.usrId),
+                                                  ),
+                                                );
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .proceed),
+                                        ),
+                                      ],);
+                                      }
+                                    }
                                   );
                                 }
                               }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
@@ -1563,6 +1564,8 @@ showPopAlertConfrom(BuildContext context, LoginUserModel user) {
 
             Navigator.pushReplacement(
                 context,
+                Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                ScheduledReturnHEaderScreen(user: user)):
                 MaterialPageRoute(
                   builder: (context) => ScheduledReturnHEaderScreen(user: user),
                 ));

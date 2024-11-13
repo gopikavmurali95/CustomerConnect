@@ -192,9 +192,12 @@ class HomePopUPMenuButton extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(
                         AppLocalizations.of(context)!.doYouWantToLogout,
@@ -226,7 +229,44 @@ class HomePopUPMenuButton extends StatelessWidget {
                           child: Text(AppLocalizations.of(context)!.proceed),
                         ),
                       ],
-                    ),
+                    );
+                      }
+                      else{
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(
+                        AppLocalizations.of(context)!.doYouWantToLogout,
+                        style: kfontstyle(),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () async {
+                            Navigator.pop(context);
+                          },
+                          child: Text(AppLocalizations.of(context)!.cancel),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            Navigator.pop(context);
+                            final sharedprefs =
+                                await SharedPreferences.getInstance();
+                            sharedprefs.clear();
+                            Future.delayed(const Duration(microseconds: 100),
+                                () {
+                              Navigator.pushAndRemoveUntil(
+                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const LoginScreen()):
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginScreen(),
+                                  ),
+                                  (route) => false);
+                            });
+                          },
+                          child: Text(AppLocalizations.of(context)!.proceed),
+                        ),
+                      ],
+                        );
+                      }
+                    }
                   );
                 },
                 child: Row(
