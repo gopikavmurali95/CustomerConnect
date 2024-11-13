@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -577,10 +578,13 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                 if (loadingCount == 1) {
                                                   loadingCount = 0;
                                                   Navigator.pop(context);
-                                                  showCupertinoDialog(
+                                                  showDialog(
                                                     context: context,
-                                                    builder: (context) =>
-                                                        CupertinoAlertDialog(
+                                                    builder: (context) 
+                                                    {
+                                                      if(Platform.isIOS)
+                                                      {
+                                                        return CupertinoAlertDialog(
                                                       title: Text(
                                                           AppLocalizations.of(
                                                                   context)!
@@ -608,18 +612,55 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                   .ok),
                                                         ),
                                                       ],
-                                                    ),
+                                                    );
+                                                      }
+                                                      else
+                                                     {
+                                                       return AlertDialog(
+                                                        title: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .alert),
+                                                      content: Text(selectedLocale
+                                                                  ?.languageCode ==
+                                                              "en"
+                                                          ? response.status ??
+                                                              ''
+                                                          : response.arStatus ??
+                                                              ''),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () {
+                                                            approvedCount++;
+
+                                                            Navigator.pop(
+                                                                context);
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .ok),
+                                                        ),
+                                                      ],
+                                                      );
+                                                     }
+                                                    }
+                                                        
                                                   );
                                                 }
                                               }
                                             },
                                             vanToVanApprovalFailedstate: () {
                                               Navigator.pop(context);
-                                              showCupertinoDialog(
+                                              showDialog(
                                                   context: context,
                                                   builder:
-                                                      (context) =>
-                                                          CupertinoAlertDialog(
+                                                      (context) {
+                                                        if(Platform.isIOS)
+                                                        {
+                                                          return  CupertinoAlertDialog(
                                                             title: Text(
                                                                 AppLocalizations.of(
                                                                         context)!
@@ -647,7 +688,43 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                         .ok),
                                                               )
                                                             ],
-                                                          ));
+                                                          );
+                                                        }
+                                                        else
+                                                        {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .alert),
+                                                            content: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .somethingWentWrong),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  context.read<VanToVanDetailsBloc>().add(GetVanToVanDetailEvent(
+                                                                      reqID: widget
+                                                                              .vanToVanHeader
+                                                                              .vvhId ??
+                                                                          '',
+                                                                      searchQuery:
+                                                                          ''));
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child: Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .ok),
+                                                              )
+                                                            ],
+                                                          );
+                                                        }
+                                                      }
+                                                         
+                                                          );
                                             },
                                             vanToVanApprovalLoadingState: () {
                                               if (loadingCount == 0) {
@@ -981,10 +1058,13 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                 if (widget.vanToVanHeader.approvalStatus ==
                                     'Pending') {
                                   if (approvedProducts.contains(null)) {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) 
+                                      {
+                                        if(Platform.isIOS)
+                                        {
+                                          return  CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -1002,13 +1082,41 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                     .ok),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureToApproveAndReject),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                         
                                     );
                                   } else {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) 
+                                      {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -1066,7 +1174,63 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                     .proceed),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                             title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
+                                              setState(() {});
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<VanToVanApprovalBloc>()
+                                                  .add(
+                                                      const VanToVanApprovalLoadingEvent());
+
+                                              context
+                                                  .read<VanToVanApprovalBloc>()
+                                                  .add(GetVanToVanApprovalEent(
+                                                      approvalIn:
+                                                          VanToVanApprovalInParas(
+                                                              products:
+                                                                  approvedProducts,
+                                                              userID: widget
+                                                                  .vanToVanHeader
+                                                                  .userID,
+                                                              reqID: widget
+                                                                  .vanToVanHeader
+                                                                  .vvhId)));
+
+                                              
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   }
                                 }

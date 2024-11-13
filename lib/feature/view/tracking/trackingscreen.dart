@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:customer_connect/constants/fonts.dart';
@@ -796,9 +797,13 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                               onTap: () {
                                 if (_dateController.text.isEmpty ||
                                     _routeIDCtrl.text.isEmpty) {
-                                  showCupertinoDialog(
+                                  showDialog(
                                     context: context,
-                                    builder: (context) => CupertinoAlertDialog(
+                                    builder: (context) 
+                                    {
+                                      if(Platform.isIOS)
+                                      {
+                                        return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(AppLocalizations.of(
@@ -814,7 +819,29 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                               AppLocalizations.of(context)!.ok),
                                         ),
                                       ],
-                                    ),
+                                    );
+                                      }
+                                      else
+                                      {
+                                        return AlertDialog(
+                                           title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(AppLocalizations.of(
+                                              context)!
+                                          .pleaseMakeSureYouHaveSelectedaRouteAndDate),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            // Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
+                                        ),
+                                      ],
+                                        );
+                                      }
+                                    }
                                   );
                                 } else {
                                   context
@@ -867,10 +894,13 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                               InkWell(
                                 onTap: () {
                                   if (_dateController.text.isEmpty) {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) 
+                                      {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -888,7 +918,32 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                                     .ok),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureYouHaveSelectedaDate),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   } else {
                                     context.read<TrackSalesManListBloc>().add(

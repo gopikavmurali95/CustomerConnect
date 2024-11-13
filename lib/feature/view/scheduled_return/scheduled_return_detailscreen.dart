@@ -147,9 +147,13 @@ class _ScheduledReturnDetailScreenState
                   if (status != null) {
                     _approvedCount++;
                     Navigator.pop(context);
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context) 
+                      {
+                        if(Platform.isIOS)
+                        {
+                          return CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(
                             " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
@@ -167,15 +171,43 @@ class _ScheduledReturnDetailScreenState
                             child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else
+                        {
+                          return AlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              context.read<SchduledReturnHeaderBloc>().add(
+                                  GetAllScheduledReturnHeadersEvent(
+                                      userID: widget.user.usrId ?? '',
+                                      mode: 'P',
+                                      searchQuery: ''));
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
+                        ],
+                          );
+                        }
+                      } 
                     );
                   }
                 },
                 schduledReturnApprovalFailedState: () {
                   Navigator.pop(context);
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) 
+                    {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(
                         AppLocalizations.of(context)!.somethingWentWrong,
@@ -189,7 +221,27 @@ class _ScheduledReturnDetailScreenState
                           child: Text(AppLocalizations.of(context)!.ok),
                         ),
                       ],
-                    ),
+                    );
+                      }
+                      else
+                      {
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(
+                        AppLocalizations.of(context)!.somethingWentWrong,
+                        style: kfontstyle(),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(AppLocalizations.of(context)!.ok),
+                        ),
+                      ],
+                        );
+                      }
+                    } 
                   );
                 },
                 scheduledReturnLoadingState: () {
@@ -1322,10 +1374,13 @@ class _ScheduledReturnDetailScreenState
                                           'Pending') {
                                         if (selectedRoute != '-1') {
                                           if (approvedProducts.contains(null)) {
-                                            showCupertinoDialog(
+                                            showDialog(
                                               context: context,
-                                              builder: (context) =>
-                                                  CupertinoAlertDialog(
+                                              builder: (context) 
+                                              {
+                                                if(Platform.isIOS)
+                                                {
+                                                  return CupertinoAlertDialog(
                                                 title: Text(AppLocalizations.of(
                                                         context)!
                                                     .alert),
@@ -1344,14 +1399,43 @@ class _ScheduledReturnDetailScreenState
                                                             .ok),
                                                   ),
                                                 ],
-                                              ),
+                                              );
+                                                }
+                                                else
+                                                {
+                                                  return AlertDialog(
+                                                     title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(AppLocalizations
+                                                        .of(context)!
+                                                    .pleaseMakeSureToApproveAndReject),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      // Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
+                                                  ),
+                                                ],
+                                                  );
+                                                }
+                                              }
+                                                  
                                             );
                                           } else if (checkrejectedstatus() ==
                                               false) {
-                                            showCupertinoDialog(
+                                            showDialog(
                                               context: context,
-                                              builder: (context) =>
-                                                  CupertinoAlertDialog(
+                                              builder: (context) 
+                                              {
+                                                if(Platform.isIOS)
+                                                {
+                                                  return CupertinoAlertDialog(
                                                 title: Text(AppLocalizations.of(
                                                         context)!
                                                     .alert),
@@ -1370,13 +1454,42 @@ class _ScheduledReturnDetailScreenState
                                                             .ok),
                                                   ),
                                                 ],
-                                              ),
+                                              );
+                                                }
+                                                else
+                                                {
+                                                  return AlertDialog(
+                                                     title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(AppLocalizations
+                                                        .of(context)!
+                                                    .youShouldApproveOrRejectAndSpecifyReason),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      // Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
+                                                  ),
+                                                ],
+                                                  );
+                                                }
+                                              }
+                                                  
                                             );
                                           } else {
-                                            showCupertinoDialog(
+                                            showDialog(
                                               context: context,
-                                              builder: (context) =>
-                                                  CupertinoAlertDialog(
+                                              builder: (context) 
+                                              {
+                                                if(Platform.isIOS)
+                                                {
+                                                  return CupertinoAlertDialog(
                                                 title: Text(AppLocalizations.of(
                                                         context)!
                                                     .alert),
@@ -1433,14 +1546,81 @@ class _ScheduledReturnDetailScreenState
                                                             .proceed),
                                                   ),
                                                 ],
-                                              ),
+                                              );
+                                                }
+                                                else
+                                                {
+                                                  return AlertDialog(
+                                                    title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .doyouWantToProceed),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      loadingCount = 0;
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                      context
+                                                          .read<
+                                                              SchduledReturnApprovalBloc>()
+                                                          .add(
+                                                              const AddScheduledReturnApprovalLoadingEvent());
+
+                                                      context
+                                                          .read<
+                                                              SchduledReturnApprovalBloc>()
+                                                          .add(
+                                                            APProveOrRejectScheduledReturnEvent(
+                                                              approve:
+                                                                  ScheduledReturnApprovalInModel(
+                                                                returnId: widget
+                                                                    .scheduledreturn
+                                                                    .rrhId,
+                                                                routeId:
+                                                                    selectedRoute,
+                                                                products:
+                                                                    approvedProducts,
+                                                                userId: widget
+                                                                    .scheduledreturn
+                                                                    .userID,
+                                                              ),
+                                                            ),
+                                                          );
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .proceed),
+                                                  ),
+                                                ],
+                                                  );
+                                                }
+                                              }
+                                                  
                                             );
                                           }
                                         } else {
-                                          showCupertinoDialog(
+                                          showDialog(
                                             context: context,
-                                            builder: (context) =>
-                                                CupertinoAlertDialog(
+                                            builder: (context) 
+                                            {
+                                              if(Platform.isIOS)
+                                              {
+                                                return CupertinoAlertDialog(
                                               title: Text(
                                                   AppLocalizations.of(context)!
                                                       .alert),
@@ -1459,7 +1639,34 @@ class _ScheduledReturnDetailScreenState
                                                           .ok),
                                                 ),
                                               ],
-                                            ),
+                                            );
+                                              }
+                                              else
+                                              
+                                              {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .selectRoute),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                                );
+                                              }
+                                            }
+                                                
                                           );
                                         }
                                       }
@@ -1524,9 +1731,13 @@ List<ApprovalResonModel> ddtest = [
 ];
 
 showPopAlert(BuildContext context) {
-  showCupertinoDialog(
+  showDialog(
     context: context,
-    builder: (context) => CupertinoAlertDialog(
+    builder: (context) 
+    {
+      if(Platform.isIOS)
+      {
+        return CupertinoAlertDialog(
       title: const Text('Alert'),
       content: const Text(
           "Please make sure you have approved or rejected all the items"),
@@ -1539,14 +1750,38 @@ showPopAlert(BuildContext context) {
           child: const Text('Ok'),
         ),
       ],
-    ),
+    );
+      }
+      else
+      {
+        return AlertDialog(
+          title: const Text('Alert'),
+      content: const Text(
+          "Please make sure you have approved or rejected all the items"),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            // Navigator.pop(context);
+          },
+          child: const Text('Ok'),
+        ),
+      ],
+        );
+      }
+    
+    } 
   );
 }
 
 showPopAlertConfrom(BuildContext context, LoginUserModel user) {
-  showCupertinoDialog(
+  showDialog(
     context: context,
-    builder: (context) => CupertinoAlertDialog(
+    builder: (context) 
+    {
+      if(Platform.isIOS)
+      {
+        return  CupertinoAlertDialog(
       title: const Text('Alert'),
       content: const Text("Confirm going back from the screen"),
       actions: [
@@ -1573,6 +1808,40 @@ showPopAlertConfrom(BuildContext context, LoginUserModel user) {
           child: const Text('confirm'),
         ),
       ],
-    ),
+    );
+      }
+      else
+      {
+        return AlertDialog(
+          title: const Text('Alert'),
+      content: const Text("Confirm going back from the screen"),
+      actions: [
+        TextButton(
+          onPressed: () {
+            // Navigator.popUntil(context, (route) => false);
+            Navigator.pop(context);
+          },
+          child: const Text('cancel'),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            // Navigator.pop(context);
+
+            Navigator.pushReplacement(
+                context,
+                Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                ScheduledReturnHEaderScreen(user: user)):
+                MaterialPageRoute(
+                  builder: (context) => ScheduledReturnHEaderScreen(user: user),
+                ));
+          },
+          child: const Text('confirm'),
+        ),
+      ],
+        );
+      
+      }
+    }
   );
 }

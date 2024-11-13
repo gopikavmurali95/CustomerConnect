@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approval_reson_model/approval_reson_model.dart';
@@ -138,9 +139,12 @@ class _MaterialRequestDetailScreenState
                       if (response != null) {
                         Navigator.pop(context);
                         if (response.status != null) {
-                          showCupertinoDialog(
+                          showDialog(
                             context: context,
-                            builder: (context) => CupertinoAlertDialog(
+                            builder: (context) {
+                              if(Platform.isIOS)
+                              {
+                                return CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
                                   "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} "),
@@ -153,7 +157,25 @@ class _MaterialRequestDetailScreenState
                                   child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
-                            ),
+                            );
+                              }
+                              else{
+                                return  AlertDialog(
+                                   title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} "),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                                );
+                              }
+                            }
                           );
                         }
                       }
@@ -178,9 +200,12 @@ class _MaterialRequestDetailScreenState
                     materialReqApprovalFailedState: () {
                       Navigator.pop(context);
 
-                      showCupertinoDialog(
+                      showDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context) {
+                          if(Platform.isIOS)
+                          {
+                            return CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               AppLocalizations.of(context)!.somethingWentWrong),
@@ -192,7 +217,24 @@ class _MaterialRequestDetailScreenState
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                          }
+                          else {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              AppLocalizations.of(context)!.somethingWentWrong),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          }
+                        }
                       );
                     },
                   );
@@ -1005,9 +1047,12 @@ class _MaterialRequestDetailScreenState
                             Colors.red.shade300 /* : Colors.grey[300] */,
                         onPressed: () {
                           log(jsonEncode(_materialreqproducts));
-                          showCupertinoDialog(
+                          showDialog(
                             context: context,
-                            builder: (context) => CupertinoAlertDialog(
+                            builder: (context) {
+                              if(Platform.isIOS)
+                              {
+                                return CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(AppLocalizations.of(context)!
                                   .doYouWantToRejectThisProduct),
@@ -1045,7 +1090,52 @@ class _MaterialRequestDetailScreenState
                                       AppLocalizations.of(context)!.proceed),
                                 ),
                               ],
-                            ),
+                            );
+                              }
+                              else
+                              {
+                                return AlertDialog(
+                                  title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .doYouWantToRejectThisProduct),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.cancel),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                        const MaterialReqApprovalLoadingEvent());
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                          MetarialRequestRejectEvent(
+                                              reject:
+                                                  MaterialReqRejectionInModel(
+                                                      products:
+                                                          _materialreqproducts,
+                                                      userId:
+                                                          widget.materialrequest
+                                                              .userID,
+                                                      reqID: widget
+                                                          .materialrequest
+                                                          .mrhID,
+                                                      remark: '')),
+                                        );
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
+                                ),
+                              ],
+
+                                );
+                              }
+                            }
                           );
                         },
                         child: Text(
@@ -1074,9 +1164,12 @@ class _MaterialRequestDetailScreenState
                                     ? */
                             Colors.green.shade300 /* : Colors.grey[300] */,
                         onPressed: () {
-                          showCupertinoDialog(
+                          showDialog(
                             context: context,
-                            builder: (context) => CupertinoAlertDialog(
+                            builder: (context) {
+                              if(Platform.isIOS)
+                              {
+                                return CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(AppLocalizations.of(context)!
                                   .doYouWantToApproveThisProduct),
@@ -1113,7 +1206,50 @@ class _MaterialRequestDetailScreenState
                                       AppLocalizations.of(context)!.proceed),
                                 ),
                               ],
-                            ),
+                            );
+                              }
+                              else
+                              {
+                                return AlertDialog(
+                                  title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .doYouWantToApproveThisProduct),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {});
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.cancel),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                        const MaterialReqApprovalLoadingEvent());
+                                    context.read<MaterialReqApprovalBloc>().add(
+                                          MaterialReqApprovalSuccessEvent(
+                                              approvalInModel:
+                                                  MaterialReqApprovalInModel(
+                                            products: _materialreqproducts,
+                                            userId:
+                                                widget.materialrequest.userID,
+                                            reqID: widget.materialrequest.mrhID,
+                                            mode: "A",
+                                            warehouse:
+                                                widget.materialrequest.mrhWarID,
+                                          )),
+                                        );
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
+                                ),
+                              ],
+                                );
+                              }
+                            }
                           );
                           // log("jngjirnj ${jsonEncode(_materialreqproducts)}");
                           /*  log(jsonEncode(MaterialReqApprovalInModel(

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approve_price_changein_model/approve_price_changein_model.dart';
@@ -256,9 +257,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                         Navigator.pop(context);
                         isLoading = false;
                         if (response.mode == '1') {
-                          showCupertinoDialog(
+                          showDialog(
                             context: context,
-                            builder: (context) => CupertinoAlertDialog(
+                            builder: (context) {
+                              if(Platform.isIOS)
+                              {
+                                return CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(selectedLocale?.languageCode == 'en'
                                   ? 'Your request has been successfully actioned'
@@ -278,16 +282,46 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                   child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
-                            ),
+                            );
+
+                              }
+                              else
+                              {
+                                return AlertDialog(
+                                  title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(selectedLocale?.languageCode == 'en'
+                                  ? 'Your request has been successfully actioned'
+                                  : 'لقد تم تنفيذ طلبك بنجاح'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    /* context.read<PriceChangeHeaderBloc>().add(
+                                        GetPriceChangeHeaderEvent(
+                                            rotID: widget.user.usrId!,
+                                            mode: '',
+                                            searchQuery: '')); */
+
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                                );
+                              }
+                            } 
                           );
                         } else {
                           statuslist =
                               List.generate(_totalcount, (index) => null);
                           setState(() {});
                           // Navigator.pop(context);
-                          showCupertinoDialog(
+                          showDialog(
                             context: context,
-                            builder: (context) => CupertinoAlertDialog(
+                            builder: (context) {
+                              if(Platform.isIOS)
+                              {
+                                return CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(
                                   "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} ,${AppLocalizations.of(context)!.tryAgain}"),
@@ -299,7 +333,25 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                   child: Text(AppLocalizations.of(context)!.ok),
                                 ),
                               ],
-                            ),
+                            );
+                              }
+                              else
+                              {
+                                return AlertDialog(
+                                   title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(
+                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} ,${AppLocalizations.of(context)!.tryAgain}"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                                );
+                              }
+                            }
                           );
                         }
                       }
@@ -325,9 +377,12 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                       statuslist = List.generate(_totalcount, (index) => null);
                       setState(() {});
                       Navigator.pop(context);
-                      showCupertinoDialog(
+                      showDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context) {
+                          if(Platform.isIOS)
+                          {
+                            return CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               AppLocalizations.of(context)!.somethingWentWrong),
@@ -339,7 +394,26 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                          }
+                          else
+                          
+                          {
+                            return AlertDialog(
+                               title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              AppLocalizations.of(context)!.somethingWentWrong),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          }
+                        } 
                       );
                     },
                   );
@@ -1375,9 +1449,13 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                             if (widget.priceChangeApprovel.pchApprovalStatus ==
                                 'Pending') {
                               if (_procechangeapproved.contains(null)) {
-                                showCupertinoDialog(
+                                showDialog(
                                   context: context,
-                                  builder: (context) => CupertinoAlertDialog(
+                                  builder: (context) 
+                                  {
+                                    if(Platform.isIOS)
+                                    {
+                                      return CupertinoAlertDialog(
                                     title: Text(
                                         AppLocalizations.of(context)!.alert),
                                     content: Text(AppLocalizations.of(context)!
@@ -1392,12 +1470,37 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                             AppLocalizations.of(context)!.ok),
                                       ),
                                     ],
-                                  ),
+                                  );
+                                    }
+                                    else
+                                    {
+                                      return AlertDialog(
+                                        title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .pleaseMakeSureToApproveAndReject),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          // Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                      );
+                                    }
+                                  }
                                 );
                               } else if (checkrejectedstatus() == false) {
-                                showCupertinoDialog(
+                                showDialog(
                                   context: context,
-                                  builder: (context) => CupertinoAlertDialog(
+                                  builder: (context) 
+                                  {
+                                    if(Platform.isIOS)
+                                    {
+                                      return CupertinoAlertDialog(
                                     title: Text(
                                         AppLocalizations.of(context)!.alert),
                                     content: Text(AppLocalizations.of(context)!
@@ -1411,12 +1514,37 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                             AppLocalizations.of(context)!.ok),
                                       ),
                                     ],
-                                  ),
+                                  );
+                                    }
+                                    else
+                                    {
+                                      return AlertDialog(
+                                         title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .youShouldApproveOrRejectAndSpecifyReason),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                      );
+                                    }
+                                  }
+
                                 );
                               } else {
-                                showCupertinoDialog(
+                                showDialog(
                                   context: context,
-                                  builder: (context) => CupertinoAlertDialog(
+                                  builder: (context) 
+                                  {
+                                    if(Platform.isIOS)
+                                    {
+                                      return  CupertinoAlertDialog(
                                     title: Text(
                                         AppLocalizations.of(context)!.alert),
                                     content: Text(AppLocalizations.of(context)!
@@ -1463,7 +1591,60 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                 .proceed),
                                       ),
                                     ],
-                                  ),
+                                  );
+                                    }
+                                    else
+                                    {
+                                      return AlertDialog(
+                                        title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          loadingCount = 0;
+                                          setState(() {});
+                                          Navigator.pop(context);
+
+                                          context
+                                              .read<ApprovePriceChangeBloc>()
+                                              .add(
+                                                  const AddApprovalLoadinEvent());
+
+                                          context
+                                              .read<ApprovePriceChangeBloc>()
+                                              .add(
+                                                GetPricChangeApprovalEvent(
+                                                  approval: ApprovePriceChangeinModel(
+                                                      priceId: widget
+                                                          .priceChangeApprovel
+                                                          .pchId,
+                                                      userId: widget
+                                                          .priceChangeApprovel
+                                                          .userID,
+                                                      products:
+                                                          _procechangeapproved),
+                                                ),
+                                              );
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                      );
+                                    }
+                                  }
                                 );
                               }
                             }

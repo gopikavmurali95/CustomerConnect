@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -536,9 +537,13 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                           GetUnScheduledHeadersEvent(
                               searchQuery: '', mode: selectedUnScheduledMode));
                       Navigator.pop(context);
-                      showCupertinoDialog(
+                      showDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context) 
+                        {
+                          if(Platform.isIOS)
+                          {
+                            return CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''}"),
@@ -550,7 +555,25 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                          }
+                          else
+                          {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''}"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          }
+                        }
                       );
                       setState(() {});
                     }
@@ -568,7 +591,10 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                       Navigator.pop(context);
                       showCupertinoDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context) {
+                          if(Platform.isIOS)
+                          {
+                            return CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''}"),
@@ -580,16 +606,39 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                          }
+                          else
+                          {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''}"),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          
+                          }
+                        }
                       );
                       setState(() {});
                     }
                   },
                   unScheduledVisitApprovalFailedState: () {
                     Navigator.pop(context);
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context) 
+                      {
+                        if(Platform.isIOS)
+                        {
+                          return CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(
                             AppLocalizations.of(context)!.somethingWentWrong),
@@ -601,7 +650,25 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                             child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else
+                        {
+                          return AlertDialog(
+                             title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
+                        ],
+                          );
+                        }
+                      }
                     );
                   },
                   unScheduledApprovalLoadingEvent: () {
@@ -645,10 +712,13 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                     : Colors.grey[300],
                                 onPressed: () {
                                   if (selectedUnScheduledMode == 'P') {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) 
+                                      {
+                                        if(Platform.isIOS)
+                                        {
+                                          return  CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -690,7 +760,56 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                     .proceed),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                      const UnScheuledLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                    RejectUnScheduledEvent(
+                                                      reject:
+                                                          unScheduledJsonstriongList,
+                                                    ),
+                                                  );
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                         
                                     );
                                   }
                                 },
@@ -718,10 +837,12 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                     : Colors.grey[300],
                                 onPressed: () {
                                   if (selectedUnScheduledMode == 'P') {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -764,7 +885,57 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                     .proceed),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                      const UnScheuledLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      UnScheduledApprovalBloc>()
+                                                  .add(
+                                                    ApproveUnScheduledVisitEvent(
+                                                      approve:
+                                                          unScheduledJsonstriongList,
+                                                    ),
+                                                  );
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   }
                                 },
