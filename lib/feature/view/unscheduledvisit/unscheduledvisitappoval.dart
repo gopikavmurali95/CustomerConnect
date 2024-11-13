@@ -26,7 +26,6 @@ List<ApprovalStatusFilterModel> ddfilterUnScheduled = [
   ApprovalStatusFilterModel(statusName: "Pending Approvals", mode: 'P'),
   ApprovalStatusFilterModel(statusName: "Approved Requests", mode: 'A'),
   ApprovalStatusFilterModel(statusName: "Rejected Requests", mode: 'R'),
-  ApprovalStatusFilterModel(statusName: "All Requests", mode: 'AL'),
 ];
 String selectedUnScheduledMode = 'P';
 TextEditingController unScheduledHeaderSearchCtrl = TextEditingController();
@@ -56,11 +55,6 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
               ? "Rejected Requests"
               : "تم رفض الطلبات",
           mode: 'R'),
-      ApprovalStatusFilterModel(
-          statusName: selectedLocale?.languageCode == "en"
-              ? "All Requests"
-              : "جميع الطلبات",
-          mode: 'AL'),
     ];
     context
         .read<UnScheduledVisitHeaderBloc>()
@@ -346,7 +340,7 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
-                                                              '${headers[index].rotCode} - ${headers[index].rotName} ${AppLocalizations.of(context)!.route}',
+                                                              '${headers[index].rotCode} - ${headers[index].rotName}',
                                                               style: kfontstyle(
                                                                 fontSize: 12.sp,
                                                                 color: const Color(

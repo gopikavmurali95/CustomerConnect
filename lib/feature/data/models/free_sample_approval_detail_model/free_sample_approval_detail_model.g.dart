@@ -22,7 +22,7 @@ FreeSampleApprovalDetailModel _$FreeSampleApprovalDetailModelFromJson(
       createdDate: json['CreatedDate'] as String?,
       modifiedBy: json['ModifiedBy'] as String?,
       modifiedDate: json['ModifiedDate'] as String?,
-    );
+    )..reason = json['Reason'] as String?;
 
 Map<String, dynamic> _$FreeSampleApprovalDetailModelToJson(
         FreeSampleApprovalDetailModel instance) =>
@@ -40,4 +40,5 @@ Map<String, dynamic> _$FreeSampleApprovalDetailModelToJson(
       'CreatedDate': instance.createdDate,
       'ModifiedBy': instance.modifiedBy,
       'ModifiedDate': instance.modifiedDate,
+      'Reason': instance.reason,
     };

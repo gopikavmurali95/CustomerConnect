@@ -58,7 +58,7 @@ class FreeSampleApprovalRepo implements IFreeSampleApprovalRepo {
         data: {"HeaderID": headerID},
       );
 
-      // log(jsonEncode(response.data));
+      log(jsonEncode(response.data));
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.data);

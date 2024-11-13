@@ -30,6 +30,8 @@ class FreeSampleApprovalDetailModel {
   String? modifiedBy;
   @JsonKey(name: 'ModifiedDate')
   String? modifiedDate;
+  @JsonKey(name: 'Reason')
+  String? reason;
 
   FreeSampleApprovalDetailModel({
     this.fsaId,
