@@ -79,9 +79,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 } else {
                   Navigator.pop(context);
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
                       title: Text('${user.title}'),
                       content: Text("${user.descr}"),
                       actions: [
@@ -92,16 +95,35 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: const Text('Try again'),
                         ),
                       ],
-                    ),
+                    );
+                      }
+                      else{
+                        return AlertDialog(
+                          title: Text('${user.title}'),
+                      content: Text("${user.descr}"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Try again'),
+                        ),
+                      ],
+                        );
+                      }
+                    }
                   );
                 }
               }
             },
             userLoginFailedState: () {
               Navigator.pop(context);
-              showCupertinoDialog(
+              showDialog(
                 context: context,
-                builder: (context) => CupertinoAlertDialog(
+                builder: (context) {
+                  if(Platform.isIOS)
+                  {
+                    return CupertinoAlertDialog(
                   title: const Text('Failure'),
                   content: const Text('Something went wrong'),
                   actions: [
@@ -112,7 +134,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text('Ok'),
                     ),
                   ],
-                ),
+                );
+                  }
+                  else{
+                    return AlertDialog(
+                       title: const Text('Failure'),
+                  content: const Text('Something went wrong'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                    );
+                  }
+                }
               );
             },
             loginLoadingState: () {

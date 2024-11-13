@@ -511,7 +511,7 @@ class _VoidTranscactioHeaderScreenState
                                         .read<VoidTransactionSelectionCubit>()
                                         .selectedHeadersList([]);
                                     Navigator.pop(context);
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
                                       builder: (context) {
                                         if(Platform.isIOS)
@@ -562,9 +562,13 @@ class _VoidTranscactioHeaderScreenState
                                 },
                                 voidTransactionRejectionFailed: () {
                                   Navigator.pop(context);
-                                  showCupertinoDialog(
+                                  showDialog(
                                     context: context,
-                                    builder: (context) => CupertinoAlertDialog(
+                                    builder: (context) 
+                                    {
+                                      if(Platform.isIOS)
+                                      {
+                                        return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(
@@ -579,7 +583,28 @@ class _VoidTranscactioHeaderScreenState
                                               AppLocalizations.of(context)!.ok),
                                         ),
                                       ],
-                                    ),
+                                    );
+                                      }
+                                      else
+                                      {
+                                        return AlertDialog(
+                                           title: Text(
+                                          AppLocalizations.of(context)!.alert),
+                                      content: Text(
+                                          AppLocalizations.of(context)!
+                                              .somethingWentWrong),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!.ok),
+                                        ),
+                                      ],
+                                        );
+                                      }
+                                    }
                                   );
                                 },
                               );
@@ -592,10 +617,12 @@ class _VoidTranscactioHeaderScreenState
                                 color: Colors.red.shade300,
                                 onPressed: () {
                                   if (selectedVoidTransactionMode == 'P') {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -635,7 +662,54 @@ class _VoidTranscactioHeaderScreenState
                                                     .proceed),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                             title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              context
+                                                  .read<
+                                                      VoidTransactionApprovalBloc>()
+                                                  .add(
+                                                      const VoidTransactionLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      VoidTransactionRejectionBloc>()
+                                                  .add(VoidTransactionRejectingEvent(
+                                                      rejecting:
+                                                          VoidTransacrtionApprovalInModel(
+                                                              jsonString:
+                                                                  voidTransactionJsonstriongList)));
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   }
                                 },
@@ -683,10 +757,13 @@ class _VoidTranscactioHeaderScreenState
                                           .read<VoidTransactionSelectionCubit>()
                                           .selectedHeadersList([]);
                                       Navigator.pop(context);
-                                      showCupertinoDialog(
+                                      showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
+                                        builder: (context)
+                                        {
+                                          if(Platform.isIOS)
+                                          {
+                                            return  CupertinoAlertDialog(
                                           title: Text(
                                               AppLocalizations.of(context)!
                                                   .alert),
@@ -703,16 +780,44 @@ class _VoidTranscactioHeaderScreenState
                                                       .ok),
                                             ),
                                           ],
-                                        ),
+                                        );
+                                          }
+                                          else
+                                          {
+                                            return AlertDialog(
+                                               title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .approvedSuccessfully),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                            );
+
+                                          }
+                                        }
+                                           
                                       );
                                     }
                                   },
                                   voidTransactionApprovalFailed: () {
                                     Navigator.pop(context);
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) 
+                                      {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -729,7 +834,32 @@ class _VoidTranscactioHeaderScreenState
                                                     .ok),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .somethingWentWrong),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+
+                                          
                                     );
                                   },
                                   voidTransactionLoadingState: () {
@@ -758,6 +888,7 @@ class _VoidTranscactioHeaderScreenState
                               },
                               builder: (context, state) {
                                 return MaterialButton(
+                   
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -766,10 +897,13 @@ class _VoidTranscactioHeaderScreenState
                                       : Colors.grey[300],
                                   onPressed: () {
                                     if (selectedVoidTransactionMode == 'P') {
-                                      showCupertinoDialog(
+                                      showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
+                                        builder: (context) 
+                                        {
+                                          if(Platform.isIOS)
+                                          {
+                                            return CupertinoAlertDialog(
                                           title: Text(
                                               AppLocalizations.of(context)!
                                                   .alert),
@@ -809,7 +943,54 @@ class _VoidTranscactioHeaderScreenState
                                                       .proceed),
                                             ),
                                           ],
-                                        ),
+                                        );
+                                          }
+                                          else
+                                          {
+                                            return AlertDialog(
+                                              title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                context
+                                                    .read<
+                                                        VoidTransactionApprovalBloc>()
+                                                    .add(
+                                                        const VoidTransactionLoadingEvent());
+
+                                                context
+                                                    .read<
+                                                        VoidTransactionApprovalBloc>()
+                                                    .add(VoidTransactionApprovingEvent(
+                                                        approving:
+                                                            VoidTransacrtionApprovalInModel(
+                                                                jsonString:
+                                                                    voidTransactionJsonstriongList)));
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                            );
+                                          }
+                                        }
+                                            
                                       );
                                     }
                                   },

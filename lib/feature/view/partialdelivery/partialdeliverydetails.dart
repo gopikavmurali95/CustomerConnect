@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 
@@ -271,9 +272,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                       Navigator.pop(context);
                       isLoading = false;
 
-                      showCupertinoDialog(
+                      showDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context) {
+                          if(Platform.isIOS)
+                          {
+                            return CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
@@ -286,7 +290,26 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                            
+                          }
+                          else{
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          }
+                        }
                       );
                     }
                   },
@@ -311,9 +334,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                     statuslist = List.generate(_totalcount, (index) => null);
                     setState(() {});
                     Navigator.pop(context);
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context) {
+                        if(Platform.isIOS)
+                        {
+                          return  CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(
                             AppLocalizations.of(context)!.somethingWentWrong),
@@ -325,7 +351,25 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                             child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else
+                        {
+                          return AlertDialog(
+                             title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
+                        ],
+                          );
+                        }
+                      }
                     );
                   },
                 );
@@ -1063,10 +1107,12 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                         'Pending' ||
                                     widget.header.dahApprovalStatus!.isEmpty) {
                                   if (_partialdeliveryapproved.contains(null)) {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) {
+                                        if(Platform.isIOS)
+                                        {
+                                          return  CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -1084,13 +1130,40 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                     .ok),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(AppLocalizations.of(
+                                                context)!
+                                            .pleaseMakeSureToApproveAndReject),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              // Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                         
                                     );
                                   } else if (checkrejectedstatus() == false) {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -1107,13 +1180,39 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                     .ok),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                             title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .selectReason),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .ok),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   } else {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -1162,7 +1261,63 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                     .proceed),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              loadingCount = 0;
+                                              setState(() {});
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<
+                                                      PartialDeliveryApprovalBloc>()
+                                                  .add(
+                                                      const PartialDeliveryLoadingEvent());
+
+                                              context
+                                                  .read<
+                                                      PartialDeliveryApprovalBloc>()
+                                                  .add(GetPartialDeliveryApprovalEvent(
+                                                      approvalin:
+                                                          PartialDeliveryApprovalModel(
+                                                              products:
+                                                                  _partialdeliveryapproved,
+                                                              returnId:
+                                                                  widget.header
+                                                                      .dahId,
+                                                              userId: widget
+                                                                  .user
+                                                                  .usrId)));
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   }
                                 }

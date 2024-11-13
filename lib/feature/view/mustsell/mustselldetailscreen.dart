@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -495,9 +496,12 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                           .read<MustsellApprovalSelectionCubit>()
                           .selectedHeadersList([]);
                       Navigator.pop(context);
-                      showCupertinoDialog(
+                      showDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context) {
+                          if(Platform.isIOS)
+                          {
+                            return  CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
@@ -510,15 +514,38 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                          }
+                          else
+                          {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          }
+                        }
                       );
                     }
                   },
                   mustSellApproveFailedState: () {
                     Navigator.pop(context);
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context) 
+                      {
+                        if(Platform.isIOS)
+                        {
+                          return CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(
                             AppLocalizations.of(context)!.somethingWentWrong),
@@ -530,7 +557,25 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                             child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else
+                        {
+                          return AlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
+                        ],
+                          );
+                        }
+                      }
                     );
                   },
                   mustSellApproveLoadingEvent: () {
@@ -574,10 +619,12 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                     : Colors.grey[300],
                                 onPressed: () {
                                   if (selectedMustSellMode == 'P') {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -626,7 +673,63 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                     .proceed),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else 
+                                        {
+                                          return AlertDialog(
+                                            title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+
+                                              context
+                                                  .read<MustSellApproveBloc>()
+                                                  .add(
+                                                      const MustSellLoadingEvent());
+                                              context
+                                                  .read<MustSellApproveBloc>()
+                                                  .add(
+                                                    ApproveMustSellEvent(
+                                                      approve:
+                                                          MustSellApproveInModel(
+                                                              jsonString: [
+                                                            MustSellIJsonModel(
+                                                                msaId: widget
+                                                                    .header
+                                                                    .msaId,
+                                                                status: "R")
+                                                          ],
+                                                              transId: '',
+                                                              userId: widget
+                                                                  .user.usrId),
+                                                    ),
+                                                  );
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   }
                                 },
@@ -654,10 +757,13 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                     : Colors.grey[300],
                                 onPressed: () {
                                   if (selectedMustSellMode == 'P') {
-                                    showCupertinoDialog(
+                                    showDialog(
                                       context: context,
-                                      builder: (context) =>
-                                          CupertinoAlertDialog(
+                                      builder: (context) 
+                                      {
+                                        if(Platform.isIOS)
+                                        {
+                                          return CupertinoAlertDialog(
                                         title: Text(
                                             AppLocalizations.of(context)!
                                                 .alert),
@@ -706,7 +812,62 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                                     .proceed),
                                           ),
                                         ],
-                                      ),
+                                      );
+                                        }
+                                        else{
+                                          return AlertDialog(
+                                             title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doyouWantToProceed),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              context
+                                                  .read<MustSellApproveBloc>()
+                                                  .add(
+                                                      const MustSellLoadingEvent());
+
+                                              context
+                                                  .read<MustSellApproveBloc>()
+                                                  .add(
+                                                    ApproveMustSellEvent(
+                                                      approve:
+                                                          MustSellApproveInModel(
+                                                              jsonString: [
+                                                            MustSellIJsonModel(
+                                                                msaId: widget
+                                                                    .header
+                                                                    .msaId,
+                                                                status: "A")
+                                                          ],
+                                                              transId: '',
+                                                              userId: widget
+                                                                  .user.usrId),
+                                                    ),
+                                                  );
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                          );
+                                        }
+                                      }
+                                          
                                     );
                                   }
                                 },

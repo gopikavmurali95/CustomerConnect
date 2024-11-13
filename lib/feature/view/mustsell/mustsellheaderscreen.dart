@@ -587,9 +587,12 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
 
                       // Show confirmation dialog
                       Navigator.pop(context);
-                      showCupertinoDialog(
+                      showDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context){
+                          if(Platform.isIOS)
+                          {
+                            return CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
@@ -602,16 +605,38 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                          }
+                          else
+                          {
+                            return AlertDialog(
+                               title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                buttonsVisible = true;
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          }
+                        }
                       );
                     }
                   },
                   mustSellApproveFailedState: () {
                     // Handle failure
                     Navigator.pop(context);
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context) {
+                        if(Platform.isIOS)
+                        {
+                          return CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(
                             AppLocalizations.of(context)!.somethingWentWrong),
@@ -623,7 +648,24 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                             child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else{
+                          return AlertDialog(
+                             title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
+                        ],
+                          );
+                        }
+                      }
                     );
                   },
                   mustSellApproveLoadingEvent: () {
@@ -666,10 +708,12 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                   onPressed: () {
                                     if (selectedMustSellMode == 'P') {
                                       // Show confirmation dialog for rejection
-                                      showCupertinoDialog(
+                                      showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
+                                        builder: (context) {
+                                          if(Platform.isIOS)
+                                          {
+                                            return CupertinoAlertDialog(
                                           title: Text(
                                               AppLocalizations.of(context)!
                                                   .alert),
@@ -715,7 +759,60 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                       .proceed),
                                             ),
                                           ],
-                                        ),
+                                        );
+                                          }
+                                          else
+                                          {
+                                            return AlertDialog(
+                                              title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Update the BLoC for rejection
+                                                context
+                                                    .read<MustSellApproveBloc>()
+                                                    .add(
+                                                        const MustSellLoadingEvent());
+                                                for (var item
+                                                    in mustSellJsonstriongList) {
+                                                  item.status =
+                                                      'R'; // Set status to rejected
+                                                }
+                                                context
+                                                    .read<MustSellApproveBloc>()
+                                                    .add(ApproveMustSellEvent(
+                                                        approve:
+                                                            MustSellApproveInModel(
+                                                                jsonString:
+                                                                    mustSellJsonstriongList,
+                                                                transId: '',
+                                                                userId: widget
+                                                                    .user
+                                                                    .usrId)));
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                            );
+                                          }
+                                        }
+                                            
                                       );
                                     }
                                   },
@@ -743,10 +840,12 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                   onPressed: () {
                                     if (selectedMustSellMode == 'P') {
                                       // Show confirmation dialog for approval
-                                      showCupertinoDialog(
+                                      showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            CupertinoAlertDialog(
+                                        builder: (context) {
+                                          if(Platform.isIOS)
+                                          {
+                                            return   CupertinoAlertDialog(
                                           title: Text(
                                               AppLocalizations.of(context)!
                                                   .alert),
@@ -792,7 +891,60 @@ class _MustSellHeaderScreenState extends State<MustSellHeaderScreen> {
                                                       .proceed),
                                             ),
                                           ],
-                                        ),
+                                        );
+                                          }
+                                          else
+                                          {
+                                            return AlertDialog(
+                                               title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Update the BLoC for approval
+                                                context
+                                                    .read<MustSellApproveBloc>()
+                                                    .add(
+                                                        const MustSellLoadingEvent());
+                                                for (var item
+                                                    in mustSellJsonstriongList) {
+                                                  item.status =
+                                                      'A'; // Set status to approved
+                                                }
+                                                context
+                                                    .read<MustSellApproveBloc>()
+                                                    .add(ApproveMustSellEvent(
+                                                        approve:
+                                                            MustSellApproveInModel(
+                                                                jsonString:
+                                                                    mustSellJsonstriongList,
+                                                                transId: '',
+                                                                userId: widget
+                                                                    .user
+                                                                    .usrId)));
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                            );
+                                          }
+                                        }
+                                          
                                       );
                                     }
                                   },
