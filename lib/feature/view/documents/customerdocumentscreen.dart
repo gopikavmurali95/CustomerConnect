@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -204,7 +206,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                   InkWell(
                                     onTap: () {
                                       Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                          PdfViewScreen(pdfUrl: docs[0].docUrl??'')):
                                           MaterialPageRoute(
                                             builder: (context) => PdfViewScreen(
                                               pdfUrl: docs[0].docUrl ?? '',
@@ -275,7 +278,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                     InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                            context,
+                                            context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                            PdfViewScreen(pdfUrl: docs[1].docUrl??'')):
                                             MaterialPageRoute(
                                               builder: (context) =>
                                                   PdfViewScreen(
@@ -459,7 +463,8 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                         InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                                context,
+                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                PdfViewScreen(pdfUrl: docs[2].docUrl??'')):
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       PdfViewScreen(

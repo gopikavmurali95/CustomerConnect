@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpric
 import 'package:customer_connect/feature/view/SpecialPricing/specialpricingcustomer.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -81,6 +84,10 @@ class SpPrHeaderList extends StatelessWidget {
                                           onTap: () {
                                             Navigator.push(
                                                 context,
+                                                Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                SpecialPricingCustomer(user: user,
+                                                 spPrice: spHeader[index])):
+
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         SpecialPricingCustomer(
@@ -136,6 +143,10 @@ class SpPrHeaderList extends StatelessWidget {
                                                   searchQuery: ''));
                                           Navigator.push(
                                               context,
+                                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                              SpecialPricing(user: user,
+                                              spPrice: spHeader[index],)):
+                                              
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       SpecialPricing(

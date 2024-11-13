@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/edit_profile_in_model/edit_profile_in_model.dart';
@@ -68,9 +70,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     cusID: widget.customer.cusId ?? ''));
                 Navigator.pop(context);
                 if (editrep.res == '1') {
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) 
+                    {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
+                      
                       title: Text(selectedLocale?.languageCode == "en"
                           ? editrep.title ?? ''
                           : editrep.arTitle ?? ''),
@@ -88,13 +95,39 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           },
                         )
                       ],
-                    ),
+                    );
+                      }
+                      else {
+                        return AlertDialog(
+                          title: Text(selectedLocale?.languageCode == "en"
+                          ? editrep.title ?? ''
+                          : editrep.arTitle ?? ''),
+                      content: Text(AppLocalizations.of(context)!
+                          .yourProfileHasbeenUpdated),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: Text(
+                            AppLocalizations.of(context)!.ok,
+                            style: kfontstyle(),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                        );
+                      }
+                    }
                   );
                 } else {
                   Navigator.pop(context);
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
                       title: Text(selectedLocale?.languageCode == "en"
                           ? editrep.title ?? ''
                           : editrep.arTitle ?? ''),
@@ -111,7 +144,29 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           },
                         )
                       ],
-                    ),
+                    );
+                      }
+                      else{
+                        return AlertDialog(
+                           title: Text(selectedLocale?.languageCode == "en"
+                          ? editrep.title ?? ''
+                          : editrep.arTitle ?? ''),
+                      content: Text(AppLocalizations.of(context)!
+                          .yourProfileUpdationFailed),
+                      actions: [
+                        CupertinoDialogAction(
+                          child: Text(
+                            AppLocalizations.of(context)!.ok,
+                            style: kfontstyle(),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                        );
+                      }
+                    }
                   );
                 }
               }

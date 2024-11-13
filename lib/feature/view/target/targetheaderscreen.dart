@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/targetheaderlist/targer_header_list_bloc.dart';
@@ -219,6 +220,8 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                       onTap: () {
                                         Navigator.push(
                                             context,
+                                            Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                            RouteTargetWidget(headr: header[index])):
                                             CupertinoPageRoute(
                                                 builder: (context) =>
                                                     RouteTargetWidget(

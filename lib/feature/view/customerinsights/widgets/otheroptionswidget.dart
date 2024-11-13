@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -8,6 +10,7 @@ import 'package:customer_connect/feature/view/customeritemlist/customeritemlist.
 import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
 import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/insigtsoutstanding.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -183,7 +186,12 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                    InsghtsOutStandingScreen(
+                      user: user,
+                       customer: customer, 
+                       fromdatectrl: fromdatectrl,
+                        todatectrl: todatectrl)):
                     MaterialPageRoute(
                       builder: (context) => InsghtsOutStandingScreen(
                         customer: customer,
@@ -202,7 +210,8 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustomerInsightSpecialPricing(user: 
+                    user, customer: customer, fromdatectrl: fromdatectrl, todatectrl: todatectrl)):
                     MaterialPageRoute(
                       builder: (context) => CustomerInsightSpecialPricing(
                         customer: customer,
@@ -221,7 +230,11 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                    CustomerInsightPromotion(user: user, 
+                    customer: customer,
+                     fromdatectrl: fromdatectrl,
+                      todatectrl: todatectrl)):
                     MaterialPageRoute(
                       builder: (context) => CustomerInsightPromotion(
                         customer: customer,
@@ -240,7 +253,9 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                    CustomerItemList(
+                      customer: customer, user: user, fromdatectrl: fromdatectrl, todatectrl: todatectrl)):
                     MaterialPageRoute(
                       builder: (context) => CustomerItemList(
                         customer: customer,
@@ -259,7 +274,8 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                    CustomerDocumentScreen(user: user, customer: customer)):
                     MaterialPageRoute(
                       builder: (context) => CustomerDocumentScreen(
                         customer: customer,
@@ -276,7 +292,8 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                    GeoLocationScreen(user: user, customer: customer, fromdatectrl: fromdatectrl, todatectrl: todatectrl)):
                     MaterialPageRoute(
                       builder: (context) => GeoLocationScreen(
                         customer: customer,

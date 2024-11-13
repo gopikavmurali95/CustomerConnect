@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/merchcusactcount/merch_cus_act_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/merchdisplaycount/merchdisplaycount_bloc.dart';
@@ -7,6 +9,7 @@ import 'package:customer_connect/feature/view/merchandising/outletactivitiessect
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactdisplayagreementscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtysurveyscreen.dart';
 import 'package:customer_connect/feature/view/merchandising/outletactivitiessection/outactvtytaskscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -59,7 +62,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutletActivityTaskHeaderScreen()):
                     MaterialPageRoute(
                         builder: (context) =>
                             const OutletActivityTaskHeaderScreen()),
@@ -178,7 +181,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutActvitySurveyHeaderScreen()):
                     MaterialPageRoute(
                         builder: (context) =>
                             const OutActvitySurveyHeaderScreen()),
@@ -301,7 +304,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutActDisplayAgreementScreen()):
                     MaterialPageRoute(
                         builder: (context) =>
                             const OutActDisplayAgreementScreen()),
@@ -420,7 +423,7 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutActCustomerActivityScreen()):
                     MaterialPageRoute(
                         builder: (context) =>
                             const OutActCustomerActivityScreen()),

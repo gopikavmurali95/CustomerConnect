@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
@@ -41,7 +43,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         .read<ApprovalCountsBloc>()
                         .add(GetApprovalsCountEvent(userID: user.usrId ?? ''));
                     Navigator.push(
-                      context,
+                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>ApprovalScreen(user: user)):
                       MaterialPageRoute(
                         builder: (context) => ApprovalScreen(
                           user: user,
@@ -104,7 +106,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
+                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustomersScren(user: user)):
                         MaterialPageRoute(
                           builder: (context) => CustomersScren(
                             user: user,
@@ -171,7 +173,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
+                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const TrackSalesManScreen()):
                         CupertinoPageRoute(
                           builder: (context) => const TrackSalesManScreen(),
                         ));
@@ -235,7 +237,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
+                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PromotionHeader(user: user,)):
                         MaterialPageRoute(
                             builder: (context) => PromotionHeader(
                                   user: user,
@@ -303,7 +305,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>SpecialPricingHeader(user:user,)):
                     MaterialPageRoute(
                       builder: (context) => SpecialPricingHeader(
                         user: user,
@@ -367,7 +369,8 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                    context,
+                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>OutstandingHeaderScreen(
+                      isfromUser: false, user: user)):
                     MaterialPageRoute(
                       builder: (context) => OutstandingHeaderScreen(
                         isfromUser: false,
@@ -432,7 +435,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
+                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const TargetHeaderScreen()):
                       CupertinoPageRoute(
                         builder: (context) => const TargetHeaderScreen(),
                       ));
@@ -493,7 +496,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
+                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const ActivityReviewHeaderScreen()):
                       CupertinoPageRoute(
                         builder: (context) =>
                             const ActivityReviewHeaderScreen(),
@@ -556,7 +559,7 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
+                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const MerchandisingScreen()):
                       CupertinoPageRoute(
                         builder: (context) => const MerchandisingScreen(),
                       ));

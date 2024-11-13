@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/inventory_reconfirm_approve_in_model/inventory_reconfirm_approve_in_model.dart';
@@ -112,9 +113,12 @@ class _InventoryReconfirmationDetailScreenState
                 if (status != null) {
                   approvedCount++;
                   Navigator.pop(context);
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => CupertinoAlertDialog(
+                    builder: (context) {
+                      if(Platform.isIOS)
+                      {
+                        return CupertinoAlertDialog(
                       title: Text(AppLocalizations.of(context)!.alert),
                       content: Text(
                           " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
@@ -127,15 +131,36 @@ class _InventoryReconfirmationDetailScreenState
                           child: Text(AppLocalizations.of(context)!.ok),
                         ),
                       ],
-                    ),
+                    );
+                      }
+                      else{
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                      content: Text(
+                          " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                          child: Text(AppLocalizations.of(context)!.ok),
+                        ),
+                      ],
+                        );
+                      }
+                    }
                   );
                 }
               },
               inventoryReconfirmApproveFailedState: () {
                 Navigator.pop(context);
-                showCupertinoDialog(
+                showDialog(
                   context: context,
-                  builder: (context) => CupertinoAlertDialog(
+                  builder: (context) {
+                    if(Platform.isIOS)
+                    {
+                      return CupertinoAlertDialog(
                     title: Text(AppLocalizations.of(context)!.alert),
                     content: Text(
                       AppLocalizations.of(context)!.somethingWentWrong,
@@ -149,7 +174,27 @@ class _InventoryReconfirmationDetailScreenState
                         child: Text(AppLocalizations.of(context)!.ok),
                       ),
                     ],
-                  ),
+                  );
+                    }
+                    else{
+                      return AlertDialog(
+                         title: Text(AppLocalizations.of(context)!.alert),
+                    content: Text(
+                      AppLocalizations.of(context)!.somethingWentWrong,
+                      style: kfontstyle(),
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(AppLocalizations.of(context)!.ok),
+                      ),
+                    ],
+
+                      );
+                    }
+                  }
                 );
               },
               inventoryReconfirmApproveLoadingState: () {
@@ -1118,10 +1163,12 @@ class _InventoryReconfirmationDetailScreenState
                                   onPressed: () {
                                     if (widget.header.iahStatus == 'Pending') {
                                       if (approvedProducts.contains(null)) {
-                                        showCupertinoDialog(
+                                        showDialog(
                                           context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
+                                          builder: (context) {
+                                            if(Platform.isIOS)
+                                            {
+                                              return CupertinoAlertDialog(
                                             title: Text(
                                                 AppLocalizations.of(context)!
                                                     .alert),
@@ -1139,14 +1186,40 @@ class _InventoryReconfirmationDetailScreenState
                                                     .ok),
                                               ),
                                             ],
-                                          ),
+                                          );
+                                            }
+                                            else{
+                                              return AlertDialog(
+                                                title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .pleaseMakeSureToApproveAndReject),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                              );
+                                            }
+                                          }
+                                              
                                         );
                                       } else if (checkrejectedstatus() ==
                                           false) {
-                                        showCupertinoDialog(
+                                        showDialog(
                                           context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
+                                          builder: (context) {
+                                            if(Platform.isIOS)
+                                            {
+                                              return CupertinoAlertDialog(
                                             title: Text(
                                                 AppLocalizations.of(context)!
                                                     .alert),
@@ -1164,13 +1237,39 @@ class _InventoryReconfirmationDetailScreenState
                                                     .ok),
                                               ),
                                             ],
-                                          ),
+                                          );
+                                            }
+                                            else{
+                                              return AlertDialog(
+                                                 title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .youShouldApproveOrRejectAndSpecifyReason),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                              );
+                                            }
+                                          }
+                                              
                                         );
                                       } else {
                                         showCupertinoDialog(
                                           context: context,
-                                          builder: (context) =>
-                                              CupertinoAlertDialog(
+                                          builder: (context) {
+                                            if(Platform.isIOS)
+                                            {
+                                              return   CupertinoAlertDialog(
                                             title: Text(
                                                 AppLocalizations.of(context)!
                                                     .alert),
@@ -1216,7 +1315,59 @@ class _InventoryReconfirmationDetailScreenState
                                                     .proceed),
                                               ),
                                             ],
-                                          ),
+                                          );
+                                            }
+                                            else{
+                                              return AlertDialog(
+                                                 title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(
+                                                AppLocalizations.of(context)!
+                                                    .doyouWantToProceed),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  setState(() {});
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .cancel),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  loadingCount = 0;
+                                                  setState(() {});
+                                                  Navigator.pop(context);
+                                                  context
+                                                      .read<
+                                                          InventoryReconfirmApprovalBloc>()
+                                                      .add(
+                                                          const InventoryReconfirmLoadingEvent());
+
+                                                  context
+                                                      .read<
+                                                          InventoryReconfirmApprovalBloc>()
+                                                      .add(ApproveInventoryReconfirmEvent(
+                                                          approve: InventoryReconfirmApproveInModel(
+                                                              products:
+                                                                  approvedProducts,
+                                                              reqId: widget
+                                                                  .header.iahId,
+                                                              userId: widget
+                                                                  .header
+                                                                  .iahUsrId)));
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .proceed),
+                                              ),
+                                            ],
+                                              );
+                                            }
+                                          }
+                                            
                                         );
                                       }
                                     }
@@ -1260,9 +1411,12 @@ class _InventoryReconfirmationDetailScreenState
 }
 
 showPopAlert(BuildContext context) {
-  showCupertinoDialog(
+  showDialog(
     context: context,
-    builder: (context) => CupertinoAlertDialog(
+    builder: (context) {
+      if(Platform.isIOS)
+      {
+        return CupertinoAlertDialog(
       title: const Text('Alert'),
       content: const Text(
           "Please make sure you have approved or rejected all the items"),
@@ -1275,6 +1429,25 @@ showPopAlert(BuildContext context) {
           child: const Text('Ok'),
         ),
       ],
-    ),
+    );
+      }
+      else
+      {
+        return AlertDialog(
+           title: const Text('Alert'),
+      content: const Text(
+          "Please make sure you have approved or rejected all the items"),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            // Navigator.pop(context);
+          },
+          child: const Text('Ok'),
+        ),
+      ],
+        );
+      }
+    }
   );
 }

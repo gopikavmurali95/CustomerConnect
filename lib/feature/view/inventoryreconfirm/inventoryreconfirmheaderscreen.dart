@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -8,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/inventoryreconfirmheader/inv
 import 'package:customer_connect/feature/view/inventoryreconfirm/inventoryreconfirmationdetail.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -322,7 +324,9 @@ class _InventoryReconfirmHeadersScreenState
                                                       GestureDetector(
                                                         onTap: () {
                                                           Navigator.push(
-                                                              context,
+                                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                              InventoryReconfirmationDetailScreen(user: widget.user, header: inventory[index],
+                                                               currentMode: _selectedMode)):
                                                               MaterialPageRoute(
                                                                   builder:
                                                                       (context) =>

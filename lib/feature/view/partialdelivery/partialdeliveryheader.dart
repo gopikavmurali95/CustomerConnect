@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -8,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partia
 import 'package:customer_connect/feature/view/partialdelivery/partialdeliverydetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -274,6 +276,11 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                           onTap: () {
                                             Navigator.push(
                                               context,
+                                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                              PArtialDeliveryDetails(
+                                                user: widget.user, 
+                                                header: header[index], 
+                                                currentMode: _selectedeMode)):
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     PArtialDeliveryDetails(

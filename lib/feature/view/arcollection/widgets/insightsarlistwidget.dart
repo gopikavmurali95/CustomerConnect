@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/ar_header_model/ar_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusinsarheader/cus_ins_ar_header_bloc.dart';
 import 'package:customer_connect/feature/view/arcollection/ardetailsceren.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,6 +46,52 @@ class InsightArListWidget extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                   context,
+                                  Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                  ARDetailScreen(
+                                      arheader: ArHeaderModel(
+                                          arhBalanceAmount:
+                                              headers[index].balanceAmount,
+                                          arhCollectedAmount:
+                                              headers[index].collectedAmount,
+                                          arhPayMode:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].payMode
+                                                  : headers[index].arPayMode,
+                                          arhPayType: headers[index].payType,
+                                          arpChequeDate:
+                                              headers[index].chequeDate,
+                                          arpChequeNo: headers[index].chequeNo,
+                                          bankName:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].bankName
+                                                  : headers[index].arBankName,
+                                          cshCode: headers[index].cshCode,
+                                          cshId: headers[index].cshId,
+                                          cshName:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].cshName
+                                                  : headers[index].arCshName,
+                                          cusCode: headers[index].cusCode,
+                                          cusId: headers[index].cusId,
+                                          cusName:
+                                              selectedLocale?.languageCode ==
+                                                      'en'
+                                                  ? headers[index].cusName
+                                                  : headers[index].cusName,
+                                          date: headers[index].date,
+                                          image: headers[index].arpImage1,
+                                          rotCode: headers[index].rotCode,
+                                          rotId: headers[index].rotId,
+                                          rotName: headers[index].rotName,
+                                          time: headers[index].time,
+                                          arhArNumber:
+                                              headers[index].arhArNumber,
+                                          arhId: headers[index].arhId),
+                                    ),):
+
                                   MaterialPageRoute(
                                     builder: (context) => ARDetailScreen(
                                       arheader: ArHeaderModel(

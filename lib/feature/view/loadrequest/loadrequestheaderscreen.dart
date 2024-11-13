@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -335,7 +337,11 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                           (context, index) => GestureDetector(
                                                 onTap: () {
                                                   Navigator.push(
-                                                    context,
+                                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                    LoadReqDetailscreen(
+                                                      user: widget.user,
+                                                       loadrequest: headers[index],
+                                                        currentMode: _selectedloadrequest)):
                                                     MaterialPageRoute(
                                                         builder: (context) =>
                                                             LoadReqDetailscreen(

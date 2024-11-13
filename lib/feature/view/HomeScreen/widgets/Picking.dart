@@ -1,10 +1,13 @@
 // ignore_for_file: file_names
+import 'dart:io';
+
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/view/load/load_completed.dart';
 import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -79,7 +82,8 @@ class PickingWidget extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {
                                             Navigator.push(
-                                              context,
+                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                              PickHeaderNotStarted(user: user)):
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     PickHeaderNotStarted(
@@ -159,7 +163,7 @@ class PickingWidget extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {
                                             Navigator.push(
-                                              context,
+                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderOngoing(user: user)):
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     PickHeaderOngoing(
@@ -242,7 +246,7 @@ class PickingWidget extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {
                                             Navigator.push(
-                                              context,
+                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderCompleted(user: user)):
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     PickHeaderCompleted(
@@ -373,7 +377,7 @@ class PickingWidget extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                              context,
+                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadPending(user: user)):
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     LoadPending(
@@ -455,7 +459,7 @@ class PickingWidget extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                              context,
+                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadCompleted(user: user)):
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     LoadCompleted(
@@ -538,7 +542,7 @@ class PickingWidget extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                              context,
+                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadRejected(user: user)):
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     LoadRejected(
@@ -671,7 +675,7 @@ class PickingWidget extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderNotStarted(user: user)):
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 PickHeaderNotStarted(
@@ -743,7 +747,7 @@ class PickingWidget extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderOngoing(user: user)):
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 PickHeaderOngoing(
@@ -815,7 +819,7 @@ class PickingWidget extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderCompleted(user: user)):
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 PickHeaderCompleted(
@@ -933,7 +937,7 @@ class PickingWidget extends StatelessWidget {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadPending(user: user)):
                                           MaterialPageRoute(
                                             builder: (context) => LoadPending(
                                               user: user,
@@ -1004,7 +1008,7 @@ class PickingWidget extends StatelessWidget {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadCompleted(user: user)):
                                           MaterialPageRoute(
                                             builder: (context) => LoadCompleted(
                                               user: user,
@@ -1075,7 +1079,7 @@ class PickingWidget extends StatelessWidget {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadRejected(user: user)):
                                           MaterialPageRoute(
                                             builder: (context) => LoadRejected(
                                               user: user,

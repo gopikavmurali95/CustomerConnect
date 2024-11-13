@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/freesampleheader/free_sample_header_bloc.dart';
 import 'package:customer_connect/feature/view/freesample/freesampledetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,7 +68,8 @@ class FreeSampleHeaderListWidget extends StatelessWidget {
                           itemBuilder: (context, index) => GestureDetector(
                                 onTap: () {
                                   Navigator.push(
-                                    context,
+                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                    FreeSampleDetailScreen(user: user, currentMode: selectedMode, header: headers[index])):
                                     MaterialPageRoute(
                                       builder: (context) =>
                                           FreeSampleDetailScreen(

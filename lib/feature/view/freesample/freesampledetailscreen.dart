@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/free_sample_header_model/free_sample_header_model.dart';
@@ -231,7 +232,10 @@ class _FreeSampleDetailScreenState extends State<FreeSampleDetailScreen> {
 
                       showCupertinoDialog(
                         context: context,
-                        builder: (context) => CupertinoAlertDialog(
+                        builder: (context) {
+                          if(Platform.isIOS)
+                          {
+                            return CupertinoAlertDialog(
                           title: Text(AppLocalizations.of(context)!.alert),
                           content: Text(
                               " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
@@ -244,7 +248,26 @@ class _FreeSampleDetailScreenState extends State<FreeSampleDetailScreen> {
                               child: Text(AppLocalizations.of(context)!.ok),
                             ),
                           ],
-                        ),
+                        );
+                          }
+                          else
+                          {
+                            return AlertDialog(
+                               title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                            );
+                          }
+                        }
                       );
                     }
                   },
@@ -252,9 +275,12 @@ class _FreeSampleDetailScreenState extends State<FreeSampleDetailScreen> {
                     // statuslist = List.generate(_totalcount, (index) => null);
                     // setState(() {});
                     Navigator.pop(context);
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context){
+                        if(Platform.isIOS)
+                        {
+                          return CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(
                             AppLocalizations.of(context)!.somethingWentWrong),
@@ -266,7 +292,24 @@ class _FreeSampleDetailScreenState extends State<FreeSampleDetailScreen> {
                             child: Text(AppLocalizations.of(context)!.ok),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else{
+                          return AlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
+                        ],
+                          );
+                        }
+                      }
                     );
                   },
                   freesampleSubmitLoadingState: () {

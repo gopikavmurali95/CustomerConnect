@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/asset_removal_approval_in_model/asset_removal_approval_in_model.dart';
@@ -424,12 +425,14 @@ class _AssetRemovalApprovalScreenState
                                                                       Navigator.pop(
                                                                           context);
                                                                       // if (isApproval) {
-                                                                      showCupertinoDialog(
+                                                                      showDialog(
                                                                         context:
                                                                             context,
                                                                         builder:
-                                                                            (context) =>
-                                                                                CupertinoAlertDialog(
+                                                                            (context) {
+                                                                              if(Platform.isIOS)
+                                                                              {
+                                                                                return CupertinoAlertDialog(
                                                                           title:
                                                                               Text(AppLocalizations.of(context)!.alert),
                                                                           content:
@@ -443,7 +446,27 @@ class _AssetRemovalApprovalScreenState
                                                                               child: Text(AppLocalizations.of(context)!.ok),
                                                                             ),
                                                                           ],
-                                                                        ),
+                                                                        );
+                                                                              }
+                                                                              else{
+                                                                                return AlertDialog(
+                                                                                   title:
+                                                                              Text(AppLocalizations.of(context)!.alert),
+                                                                          content:
+                                                                              Text("${AppLocalizations.of(context)!.remove_assets} ${selectedLocale?.languageCode == "en" ? response.status ?? '' : response.arStatus ?? ''}"),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () {
+                                                                                context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
+                                                                                Navigator.pop(context);
+                                                                              },
+                                                                              child: Text(AppLocalizations.of(context)!.ok),
+                                                                            ),
+                                                                          ],
+                                                                                );
+                                                                              }
+                                                                            }
+                                                                                
                                                                       );
                                                                       // }
                                                                     }
@@ -452,12 +475,15 @@ class _AssetRemovalApprovalScreenState
                                                                       () {
                                                                     Navigator.pop(
                                                                         context);
-                                                                    showCupertinoDialog(
+                                                                    showDialog(
                                                                       context:
                                                                           context,
                                                                       builder:
-                                                                          (context) =>
-                                                                              CupertinoAlertDialog(
+                                                                          (context) {
+                                                                            if(Platform.isIOS)
+                                                                            {
+                                                                              return  CupertinoAlertDialog(
+                                                                       
                                                                         title: Text(
                                                                             AppLocalizations.of(context)!.alert),
                                                                         content:
@@ -473,7 +499,31 @@ class _AssetRemovalApprovalScreenState
                                                                                 Text(AppLocalizations.of(context)!.ok),
                                                                           ),
                                                                         ],
-                                                                      ),
+                                                                      );
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                              return AlertDialog(
+                                                                                 title: Text(
+                                                                            AppLocalizations.of(context)!.alert),
+                                                                        content:
+                                                                            Text(AppLocalizations.of(context)!.somethingWentWrong),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed:
+                                                                                () {
+                                                                              context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
+                                                                              Navigator.pop(context);
+                                                                            },
+                                                                            child:
+                                                                                Text(AppLocalizations.of(context)!.ok),
+                                                                          ),
+                                                                        ],
+
+                                                                              );
+                                                                            }
+                                                                          }
+                                                                             
                                                                     );
                                                                   },
                                                                   assetRemovalApproveLoadingState:
@@ -521,9 +571,12 @@ class _AssetRemovalApprovalScreenState
                                                                             () {
                                                                           setState(
                                                                               () {
-                                                                            showCupertinoDialog(
+                                                                            showDialog(
                                                                               context: context,
-                                                                              builder: (context) => CupertinoAlertDialog(
+                                                                              builder: (context) {
+                                                                                if(Platform.isIOS)
+                                                                                {
+                                                                                  return CupertinoAlertDialog(
                                                                                 title: Text(AppLocalizations.of(context)!.alert),
                                                                                 content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
                                                                                 actions: [
@@ -555,7 +608,44 @@ class _AssetRemovalApprovalScreenState
                                                                                     child: Text(AppLocalizations.of(context)!.proceed),
                                                                                   ),
                                                                                 ],
-                                                                              ),
+                                                                              );
+                                                                                }
+                                                                                else{
+                                                                                  return AlertDialog(
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      setState(() {});
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                  ),
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      statuslist[index] = true;
+                                                                                      loadingCount = 0;
+                                                                                      setState(() {});
+                                                                                      context.read<AssetRemovalApprvalBloc>().add(const AssetRemovalApprovalLoadingEvent());
+                                                                                      context.read<AssetRemovalApprvalBloc>().add(
+                                                                                            ApproveAssetRemovalEvent(
+                                                                                              approve: AssetRemovalApprovalInModel(
+                                                                                                userId: widget.user.usrId ?? '',
+                                                                                                arqId: headers[index].arqId,
+                                                                                                ascId: headers[index].arqAscId,
+                                                                                              ),
+                                                                                            ),
+                                                                                          );
+
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                  ),
+                                                                                ],
+                                                                                  );
+                                                                                }
+                                                                              }
                                                                             );
                                                                           });
                                                                         },
@@ -576,9 +666,12 @@ class _AssetRemovalApprovalScreenState
                                                                                       : false,
                                                                               groupValue: true,
                                                                               onChanged: (value) {
-                                                                                showCupertinoDialog(
+                                                                                showDialog(
                                                                                   context: context,
-                                                                                  builder: (context) => CupertinoAlertDialog(
+                                                                                  builder: (context) {
+                                                                                    if(Platform.isIOS)
+                                                                                    {
+                                                                                      return CupertinoAlertDialog(
                                                                                     title: Text(AppLocalizations.of(context)!.alert),
                                                                                     content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
                                                                                     actions: [
@@ -610,7 +703,45 @@ class _AssetRemovalApprovalScreenState
                                                                                         child: Text(AppLocalizations.of(context)!.proceed),
                                                                                       ),
                                                                                     ],
-                                                                                  ),
+                                                                                  );
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                      return AlertDialog(
+                                                                                        title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          setState(() {});
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          statuslist[index] = true;
+                                                                                          loadingCount = 0;
+                                                                                          setState(() {});
+                                                                                          context.read<AssetRemovalApprvalBloc>().add(const AssetRemovalApprovalLoadingEvent());
+                                                                                          context.read<AssetRemovalApprvalBloc>().add(
+                                                                                                ApproveAssetRemovalEvent(
+                                                                                                  approve: AssetRemovalApprovalInModel(
+                                                                                                    userId: widget.user.usrId ?? '',
+                                                                                                    arqId: headers[index].arqId,
+                                                                                                    ascId: headers[index].arqAscId,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              );
+
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                      ),
+                                                                                    ],
+                                                                                      );
+                                                                                    }
+                                                                                  }
                                                                                 );
                                                                               },
                                                                             ),
@@ -632,9 +763,12 @@ class _AssetRemovalApprovalScreenState
                                                                             () {
                                                                           setState(
                                                                               () {
-                                                                            showCupertinoDialog(
+                                                                            showDialog(
                                                                               context: context,
-                                                                              builder: (context) => CupertinoAlertDialog(
+                                                                              builder: (context) {
+                                                                                if(Platform.isIOS)
+                                                                                {
+                                                                                  return CupertinoAlertDialog(
                                                                                 title: Text(AppLocalizations.of(context)!.alert),
                                                                                 content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
                                                                                 actions: [
@@ -665,7 +799,44 @@ class _AssetRemovalApprovalScreenState
                                                                                     child: Text(AppLocalizations.of(context)!.proceed),
                                                                                   ),
                                                                                 ],
-                                                                              ),
+                                                                              );
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                  return AlertDialog(
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      setState(() {});
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                  ),
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      statuslist[index] = false;
+                                                                                      loadingCount = 0;
+                                                                                      setState(() {});
+                                                                                      context.read<AssetRemovalApprvalBloc>().add(const AssetRemovalApprovalLoadingEvent());
+                                                                                      context.read<AssetRemovalApprvalBloc>().add(
+                                                                                            AssetRemovalRejectEvent(
+                                                                                              reject: AssetRemovalApprovalInModel(
+                                                                                                userId: widget.user.usrId ?? '',
+                                                                                                arqId: headers[index].arqId,
+                                                                                                ascId: headers[index].arqAscId,
+                                                                                              ),
+                                                                                            ),
+                                                                                          );
+                                                                                      Navigator.pop(context);
+                                                                                    },
+                                                                                    child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                  ),
+                                                                                ],
+                                                                                  );
+                                                                                }
+                                                                              }
                                                                             );
                                                                           });
                                                                         },
@@ -686,9 +857,12 @@ class _AssetRemovalApprovalScreenState
                                                                                       : false,
                                                                               groupValue: false,
                                                                               onChanged: (value) {
-                                                                                showCupertinoDialog(
+                                                                                showDialog(
                                                                                   context: context,
-                                                                                  builder: (context) => CupertinoAlertDialog(
+                                                                                  builder: (context) {
+                                                                                    if(Platform.isIOS)
+                                                                                    {
+                                                                                      return CupertinoAlertDialog(
                                                                                     title: Text(AppLocalizations.of(context)!.alert),
                                                                                     content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
                                                                                     actions: [
@@ -719,7 +893,44 @@ class _AssetRemovalApprovalScreenState
                                                                                         child: Text(AppLocalizations.of(context)!.proceed),
                                                                                       ),
                                                                                     ],
-                                                                                  ),
+                                                                                  );
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                      return AlertDialog(
+                                                                                         title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          setState(() {});
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          statuslist[index] = false;
+                                                                                          loadingCount = 0;
+                                                                                          setState(() {});
+                                                                                          context.read<AssetRemovalApprvalBloc>().add(const AssetRemovalApprovalLoadingEvent());
+                                                                                          context.read<AssetRemovalApprvalBloc>().add(
+                                                                                                AssetRemovalRejectEvent(
+                                                                                                  reject: AssetRemovalApprovalInModel(
+                                                                                                    userId: widget.user.usrId ?? '',
+                                                                                                    arqId: headers[index].arqId,
+                                                                                                    ascId: headers[index].arqAscId,
+                                                                                                  ),
+                                                                                                ),
+                                                                                              );
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                      ),
+                                                                                    ],
+                                                                                      );
+                                                                                    }
+                                                                                  }
                                                                                 );
                                                                               },
                                                                             ),

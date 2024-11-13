@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -8,6 +9,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cuspromotionsheader/cus_promotions_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
@@ -113,13 +115,20 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => CustInsightPromotionDetails(
-                      customer: widget.customer,
-                      header: CusPromotionHeader(id: '1'),
-                      user: widget.user,
-                    ),
-                  ),
+                  Platform.isIOS
+                      ? CupertinoPageRoute(
+                          builder: (context) => CustInsightPromotionDetails(
+                                user: widget.user,
+                                customer: widget.customer,
+                                header: CusPromotionHeader(id: '1'),
+                              ))
+                      : MaterialPageRoute(
+                          builder: (context) => CustInsightPromotionDetails(
+                            customer: widget.customer,
+                            header: CusPromotionHeader(id: '1'),
+                            user: widget.user,
+                          ),
+                        ),
                 );
               },
               icon: SvgPicture.asset(
@@ -505,19 +514,27 @@ class _CustomerInsightPromotionState extends State<CustomerInsightPromotion> {
                                                           onTap: () {
                                                             Navigator.push(
                                                               context,
-                                                              MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        CustInsightPromotionDetails(
-                                                                  customer: widget
-                                                                      .customer,
-                                                                  header:
-                                                                      headers[
-                                                                          index],
-                                                                  user: widget
-                                                                      .user,
-                                                                ),
-                                                              ),
+                                                              Platform.isIOS
+                                                                  ? CupertinoPageRoute(
+                                                                      builder: (context) => CustInsightPromotionDetails(
+                                                                          user: widget
+                                                                              .user,
+                                                                          customer: widget
+                                                                              .customer,
+                                                                          header:
+                                                                              headers[index]))
+                                                                  : MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              CustInsightPromotionDetails(
+                                                                        customer:
+                                                                            widget.customer,
+                                                                        header:
+                                                                            headers[index],
+                                                                        user: widget
+                                                                            .user,
+                                                                      ),
+                                                                    ),
                                                             );
                                                           },
                                                           child: Text(

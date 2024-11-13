@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cussalesorders/cus_sales_orders_bloc.dart';
 import 'package:customer_connect/feature/view/salesorders/salesorderdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,10 +47,18 @@ class SalesOrdersListingWidget extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SalesOrderDetails(
-                                            user: user,
-                                            salesorders: orders[index])));
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                SalesOrderDetails(
+                                                    user: user,
+                                                    salesorders: orders[index]))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                SalesOrderDetails(
+                                                    user: user,
+                                                    salesorders:
+                                                        orders[index])));
                               },
                               child: Row(
                                 children: [

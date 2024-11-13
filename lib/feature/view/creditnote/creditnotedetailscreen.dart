@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/credit_note_header_model/credit_note_header_model.dart';
@@ -98,9 +99,12 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
               creditNoteActionTakenState: (resp, isApprove) {
                 if (resp != null && isApprove != null) {
                   Navigator.pop(context);
-                  showCupertinoDialog(
+                  showDialog(
                     context: context,
-                    builder: (context) => PopScope(
+                    builder: (context) {
+                      if(Platform.isIOS)
+                      {
+                        return  PopScope(
                       canPop: false,
                       child: CupertinoAlertDialog(
                         title: Text(
@@ -123,15 +127,43 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                           ),
                         ],
                       ),
-                    ),
+                    );
+                      }
+                      else{
+                        return AlertDialog(
+                          title: Text(
+                          AppLocalizations.of(context)!.alert,
+                          style: kfontstyle(),
+                        ),
+                        content: Text(
+                          isApprove == true
+                              ? '${AppLocalizations.of(context)!.credit_memo} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}'
+                              : '${AppLocalizations.of(context)!.credit_memo} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}',
+                          style: kfontstyle(),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            },
+                            child: Text(AppLocalizations.of(context)!.ok),
+                          ),
+                        ],
+                        );
+                      }
+                    }
                   );
                 }
               },
               creditNoteApprovalFailedState: () {
                 Navigator.pop(context);
-                showCupertinoDialog(
+                showDialog(
                   context: context,
-                  builder: (context) => CupertinoAlertDialog(
+                  builder: (context) {
+                    if(Platform.isIOS)
+                    {
+                      return CupertinoAlertDialog(
                     title: Text(
                       AppLocalizations.of(context)!.alert,
                       style: kfontstyle(),
@@ -148,7 +180,30 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                         child: Text(AppLocalizations.of(context)!.ok),
                       ),
                     ],
-                  ),
+                  );
+                    }
+                    else
+                    {
+                      return AlertDialog(
+                        title: Text(
+                      AppLocalizations.of(context)!.alert,
+                      style: kfontstyle(),
+                    ),
+                    content: Text(
+                      AppLocalizations.of(context)!.somethingWentWrong,
+                      style: kfontstyle(),
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(AppLocalizations.of(context)!.ok),
+                      ),
+                    ],
+                      );
+                    }
+                  }
                 );
               },
               creditNoteApprovalLoadingState: () {
@@ -620,9 +675,12 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                           FocusScope.of(context).unfocus();
 
                           Navigator.pop(context);
-                          showCupertinoDialog(
+                          showDialog(
                             context: context,
-                            builder: (context) => CupertinoAlertDialog(
+                            builder: (context) {
+                              if(Platform.isIOS)
+                              {
+                                return CupertinoAlertDialog(
                               title: Text(AppLocalizations.of(context)!.alert),
                               content: Text(statuslevel.status ?? ''),
                               actions: [
@@ -662,7 +720,53 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                       AppLocalizations.of(context)!.proceed),
                                 ),
                               ],
-                            ),
+                            );
+                            }
+                            else
+                            {
+                              return AlertDialog(
+                                title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(statuslevel.status ?? ''),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.cancel),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    context
+                                        .read<CreditNoteApprovalAndRejectBloc>()
+                                        .add(
+                                            const CreditNoteApprovalLoadingEvent());
+                                    context
+                                        .read<CreditNoteApprovalAndRejectBloc>()
+                                        .add(
+                                          CreditNoteTakeActionEvent(
+                                            approve:
+                                                DisputeInvoiceApproveInModel(
+                                                    nextLevel: isApproval ==
+                                                            true
+                                                        ? statuslevel.nextLevel
+                                                        : '',
+                                                    remark: _remarksctrls.text,
+                                                    reqId:
+                                                        widget.creditNote.cnhId,
+                                                    userId: widget.user.usrId ??
+                                                        ''),
+                                          ),
+                                        );
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
+                                ),
+                              ],
+                              );
+                            }
+                            }
                           );
                           /*  } else {
                             showCupertinoDialog(
@@ -685,9 +789,12 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                       },
                       creditNoteApprovalLevelFailedState: () {
                         Navigator.pop(context);
-                        showCupertinoDialog(
+                        showDialog(
                           context: context,
-                          builder: (context) => CupertinoAlertDialog(
+                          builder: (context) {
+                            if(Platform.isIOS)
+                            {
+                              return  CupertinoAlertDialog(
                             title: Text(
                               AppLocalizations.of(context)!.alert,
                               style: kfontstyle(),
@@ -704,7 +811,30 @@ class _CreditNoteDetailScreenState extends State<CreditNoteDetailScreen> {
                                 child: Text(AppLocalizations.of(context)!.ok),
                               ),
                             ],
-                          ),
+                          );
+                            }
+                            else
+                            {
+                              return AlertDialog(
+                                 title: Text(
+                              AppLocalizations.of(context)!.alert,
+                              style: kfontstyle(),
+                            ),
+                            content: Text(
+                              AppLocalizations.of(context)!.somethingWentWrong,
+                              style: kfontstyle(),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(AppLocalizations.of(context)!.ok),
+                              ),
+                            ],
+                              );
+                            }
+                          }
                         );
                       },
                       creditNoteApprovalLevelLoadingState: () {

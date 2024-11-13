@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/approvalstatusfilter/approvalfitermodel.dart';
@@ -8,6 +9,7 @@ import 'package:customer_connect/feature/state/bloc/loadtransferheader/load_tran
 import 'package:customer_connect/feature/view/loadtransfer/loadtransferdetailscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -280,7 +282,11 @@ class _LoadTransferApprovalHeaderScreenState
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,
+                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                          LoadTransferDetailScreen(
+                                            user: widget.user, 
+                                            header: headers[index],
+                                     currentMode: _selectedMode)):
                                           MaterialPageRoute(
                                             builder: (context) =>
                                                 LoadTransferDetailScreen(

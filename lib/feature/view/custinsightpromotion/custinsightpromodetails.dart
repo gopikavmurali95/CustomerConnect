@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
 import 'package:customer_connect/feature/data/models/cus_promotion_header/cus_promotion_header.dart';
@@ -8,6 +10,7 @@ import 'package:customer_connect/feature/view/cusinsighassignmentgroup/cusinsigh
 import 'package:customer_connect/feature/view/cusinsightqualificationgroup/cusinsightqualificationgroup.dart';
 import 'package:customer_connect/feature/view/custinsightpromotion/widget/cusinsightpromotiondetlist.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -254,7 +257,8 @@ class _CustInsightPromotionDetailsState
                             mode: '',
                             searchQuery: ''));
                     Navigator.push(
-                        context,
+                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CusInsightQualificationGroup
+                        (header: widget.header)):
                         MaterialPageRoute(
                             builder: (context) => CusInsightQualificationGroup(
                                   header: widget.header,
@@ -327,7 +331,8 @@ class _CustInsightPromotionDetailsState
                             mode: 'A',
                             searchQuery: ''));
                     Navigator.push(
-                        context,
+                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CusInsightAssignmentGroup
+                        (header: widget.header)):
                         MaterialPageRoute(
                             builder: (context) => CusInsightAssignmentGroup(
                                   header: widget.header,

@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/picking_not_started.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,7 +64,8 @@ class NotStartedHead extends StatelessWidget {
                                               pickingOut[index].pickingID!,
                                           searchQuery: ''));
                                   Navigator.push(
-                                    context,
+                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                    PickingDetailNotStarted(picking: pickingOut[index])):
                                     MaterialPageRoute(
                                       builder: (context) =>
                                           PickingDetailNotStarted(

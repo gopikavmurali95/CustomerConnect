@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:customer_connect/feature/view/SpecialPricing/Widgets/spcustomerl
 import 'package:customer_connect/feature/view/SpecialPricing/Widgets/specialpricingdetails.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -139,6 +141,9 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                   searchQuery: ''));
                           Navigator.pushReplacement(
                               context,
+                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                              SpecialPricing(user: widget.user,
+                               spPrice: widget.spPrice,)):
                               MaterialPageRoute(
                                   builder: (context) => SpecialPricing(
                                         user: widget.user,

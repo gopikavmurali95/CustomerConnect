@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 import 'dart:isolate';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -302,9 +303,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       'Latest Version Number', status.verName ?? '');
                   msg = msg.replaceAll('(Version Number)', '');
                   Future.delayed(const Duration(microseconds: 100), () {
-                    showCupertinoDialog(
+                    showDialog(
                       context: context,
-                      builder: (context) => CupertinoAlertDialog(
+                      builder: (context) {
+                        if(Platform.isIOS)
+                        {
+                          return CupertinoAlertDialog(
                         title: Text(AppLocalizations.of(context)!.alert),
                         content: Text(msg),
                         actions: [
@@ -318,7 +322,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () {
                               Navigator.pop(context);
                               Navigator.push(
-                                  context,
+                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> AutoUpdateScreen(status: status,)):
                                   MaterialPageRoute(
                                     builder: (context) => AutoUpdateScreen(
                                       status: status,
@@ -328,7 +332,36 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Text(AppLocalizations.of(context)!.update),
                           ),
                         ],
-                      ),
+                      );
+                        }
+                        else{
+                          return AlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                        content: Text(msg),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text("Ignore"),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              Navigator.push(
+                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> AutoUpdateScreen(status: status,)):
+                                  MaterialPageRoute(
+                                    builder: (context) => AutoUpdateScreen(
+                                      status: status,
+                                    ),
+                                  ));
+                            },
+                            child: Text(AppLocalizations.of(context)!.update),
+                          ),
+                        ],
+                          );
+                        }
+                      }
                     );
                   });
                 }
@@ -1015,7 +1048,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           IconButton(
                             onPressed: () async {
                               Navigator.push(
-                                  context,
+                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                  NotificationScreen(user: widget.user)):
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         NotificationScreen(user: widget.user),

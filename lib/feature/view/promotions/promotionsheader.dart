@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
@@ -10,6 +11,7 @@ import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart'
 import 'package:customer_connect/feature/view/promotions/promotiondetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -253,6 +255,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                               searchQuery: ''));
                                       Navigator.push(
                                           context,
+                                          Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                          PromotionCustomer(promotion: promoheader[index])):
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   PromotionCustomer(
@@ -345,6 +349,8 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                           ''));
                                               Navigator.push(
                                                   context,
+                                                  Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                                  PromotionDetails(promotion: promoheader[index])):
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           PromotionDetails(

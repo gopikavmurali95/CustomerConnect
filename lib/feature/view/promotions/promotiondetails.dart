@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/promotion_header_model/promotion_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/promotion_customer/promotion_customer_bloc.dart';
@@ -8,6 +10,7 @@ import 'package:customer_connect/feature/view/promotions/promotioncustomer.dart'
 import 'package:customer_connect/feature/view/promotions/widget/promotiondetailslist.dart';
 import 'package:customer_connect/feature/view/qualificationgroup/qualificationgroup.dart';
 import 'package:customer_connect/main.dart';
+import 'package:flutter/cupertino.dart';
 
 // import 'package:flutter/cupertino.dart';
 
@@ -124,6 +127,8 @@ class PromotionDetails extends StatelessWidget {
                                         searchQuery: ''));
                                 Navigator.pushReplacement(
                                     context,
+                                    Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                    PromotionCustomer(promotion: promotion)):
                                     MaterialPageRoute(
                                         builder: (context) => PromotionCustomer(
                                               promotion: promotion,
@@ -160,6 +165,8 @@ class PromotionDetails extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                               context,
+                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                              QualificationGroup(promotion: promotion)):
                               MaterialPageRoute(
                                   builder: (context) => QualificationGroup(
                                         promotion: promotion,
@@ -228,6 +235,8 @@ class PromotionDetails extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                               context,
+                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                              AssignmentGroup(promotion: promotion)):
                               MaterialPageRoute(
                                   builder: (context) => AssignmentGroup(
                                         promotion: promotion,

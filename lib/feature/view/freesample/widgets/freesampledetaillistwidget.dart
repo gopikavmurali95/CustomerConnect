@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/free_sample_approve_in_model/free_sample_approve_in_model.dart';
@@ -657,6 +658,62 @@ class _FreeSampleDetailListWidgetState
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
                                           children: [
+                                            Expanded(
+                                                child: details[index]
+                                                            .approvalStatus ==
+                                                        'Rejected'
+                                                    ? Transform.scale(
+                                                        scale: 0.9,
+                                                        child: Container(
+                                                          height: 32.h,
+                                                          // width: 100,
+                                                          decoration: BoxDecoration(
+                                                              color:
+                                                                  Colors.white,
+                                                              border: Border.all(
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade200),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                              boxShadow: const [
+                                                                BoxShadow(
+                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                    color: Color(
+                                                                        0xff00000050),
+                                                                    blurRadius:
+                                                                        0.4,
+                                                                    spreadRadius:
+                                                                        0.4)
+                                                              ]),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    vertical: 7,
+                                                                    horizontal:
+                                                                        1),
+                                                            child: Text(
+                                                              details[index].reason ==
+                                                                          null ||
+                                                                      details[index]
+                                                                          .reason!
+                                                                          .isEmpty
+                                                                  ? "No reason found"
+                                                                  : details[index]
+                                                                          .reason ??
+                                                                      '',
+                                                              style:
+                                                                  const TextStyle(
+                                                                      fontSize:
+                                                                          11),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    : const SizedBox()),
                                             Transform.scale(
                                               scale: 0.8,
                                               origin: const Offset(-100, 0),
@@ -827,115 +884,247 @@ class _FreeSampleDetailListWidgetState
                               if (widget.header.approvalStatus == 'Pending' ||
                                   widget.header.approvalStatus!.isEmpty) {
                                 if (statuslist.contains(null)) {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(
-                                              context)!
-                                          .pleaseMakeSureToApproveAndReject),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            // Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                    ),
-                                  );
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        if (Platform.isIOS) {
+                                          return CupertinoAlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .pleaseMakeSureToApproveAndReject),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        } else {
+                                          return AlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .pleaseMakeSureToApproveAndReject),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                      });
                                 } else if (checkrejectedstatus() == false) {
-                                  showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(
-                                              context)!
-                                          .youShouldApproveOrRejectAndSpecifyReason),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                    ),
-                                  );
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        if (Platform.isIOS) {
+                                          return CupertinoAlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .youShouldApproveOrRejectAndSpecifyReason),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        } else {
+                                          return AlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .youShouldApproveOrRejectAndSpecifyReason),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                      });
                                 } else {
                                   showCupertinoDialog(
-                                    context: context,
-                                    builder: (context) => CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .doyouWantToProceed),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            setState(() {});
+                                      context: context,
+                                      builder: (context) {
+                                        if (Platform.isIOS) {
+                                          return CupertinoAlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(
+                                                AppLocalizations.of(context)!
+                                                    .doyouWantToProceed),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  setState(() {});
 
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .cancel),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            // setState(() {});
-                                            List<FreeSampleApprovePrdModel>
-                                                finalprds = [];
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .cancel),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  // setState(() {});
+                                                  List<FreeSampleApprovePrdModel>
+                                                      finalprds = [];
 
-                                            /*  for (var item in fsProducs) {
+                                                  /*  for (var item in fsProducs) {
                                               if (item != null) {
                                                 finalprds.add(item);
                                               }
                                             }
  */
-                                            for (var i = 0;
-                                                i < fsProducs.length;
-                                                i++) {
-                                              if (fsProducs[i] != null) {
-                                                fsProducs[i]!.reasonId =
-                                                    selectedresons[i];
-                                                finalprds.add(fsProducs[i]!);
+                                                  for (var i = 0;
+                                                      i < fsProducs.length;
+                                                      i++) {
+                                                    if (fsProducs[i] != null) {
+                                                      fsProducs[i]!.reasonId =
+                                                          selectedresons[i];
+                                                      finalprds
+                                                          .add(fsProducs[i]!);
+                                                    }
+                                                  }
+                                                  log(jsonEncode(finalprds));
+
+                                                  context
+                                                      .read<
+                                                          FreeSampleApproveBloc>()
+                                                      .add(
+                                                          const FreesamplesubmitLoadingEvent());
+                                                  context
+                                                      .read<
+                                                          FreeSampleApproveBloc>()
+                                                      .add(
+                                                        SubmitFreeSampleRequestEvent(
+                                                          approve:
+                                                              FreeSampleApproveInModel(
+                                                                  headerId: widget
+                                                                      .header
+                                                                      .fshId,
+                                                                  products:
+                                                                      finalprds,
+                                                                  userId: widget
+                                                                      .user
+                                                                      .usrId),
+                                                        ),
+                                                      );
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .proceed),
+                                              ),
+                                            ],
+                                          );
+                                        } else {
+                                          return AlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(
+                                                AppLocalizations.of(context)!
+                                                    .doyouWantToProceed),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  setState(() {});
+
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .cancel),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  // setState(() {});
+                                                  List<FreeSampleApprovePrdModel>
+                                                      finalprds = [];
+
+                                                  /*  for (var item in fsProducs) {
+                                              if (item != null) {
+                                                finalprds.add(item);
                                               }
                                             }
-                                            log(jsonEncode(finalprds));
+ */
+                                                  for (var i = 0;
+                                                      i < fsProducs.length;
+                                                      i++) {
+                                                    if (fsProducs[i] != null) {
+                                                      fsProducs[i]!.reasonId =
+                                                          selectedresons[i];
+                                                      finalprds
+                                                          .add(fsProducs[i]!);
+                                                    }
+                                                  }
+                                                  log(jsonEncode(finalprds));
 
-                                            context
-                                                .read<FreeSampleApproveBloc>()
-                                                .add(
-                                                    const FreesamplesubmitLoadingEvent());
-                                            context
-                                                .read<FreeSampleApproveBloc>()
-                                                .add(
-                                                  SubmitFreeSampleRequestEvent(
-                                                    approve:
-                                                        FreeSampleApproveInModel(
-                                                            headerId: widget
-                                                                .header.fshId,
-                                                            products: finalprds,
-                                                            userId: widget
-                                                                .user.usrId),
-                                                  ),
-                                                );
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .proceed),
-                                        ),
-                                      ],
-                                    ),
-                                  );
+                                                  context
+                                                      .read<
+                                                          FreeSampleApproveBloc>()
+                                                      .add(
+                                                          const FreesamplesubmitLoadingEvent());
+                                                  context
+                                                      .read<
+                                                          FreeSampleApproveBloc>()
+                                                      .add(
+                                                        SubmitFreeSampleRequestEvent(
+                                                          approve:
+                                                              FreeSampleApproveInModel(
+                                                                  headerId: widget
+                                                                      .header
+                                                                      .fshId,
+                                                                  products:
+                                                                      finalprds,
+                                                                  userId: widget
+                                                                      .user
+                                                                      .usrId),
+                                                        ),
+                                                      );
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .proceed),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                      });
                                 }
                               }
                             },

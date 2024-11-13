@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/outofstockcount/outofstockcount_bloc.dart';
 
@@ -7,6 +9,7 @@ import 'package:customer_connect/feature/view/merchandising/merchandoutofstockde
 import 'package:customer_connect/feature/view/merchandising/widget/calenderwidget.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/customerservices.dart';
 import 'package:customer_connect/feature/view/merchandising/widget/outletactivities.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -167,7 +170,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
-                                    context,
+                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                    OutOfStockScreen
+                                    (fromDateCtrl: fromdateController, 
+                                    toDateCtrl: todateController)):
                                     MaterialPageRoute(
                                       builder: (context) => OutOfStockScreen(
                                         fromDateCtrl: fromdateController,
@@ -215,7 +221,10 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
-                                    context,
+                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
+                                    OutOfCustomerScreen(
+                                      fromDate: fromdateController,
+                                       toDate: todateController)):
                                     MaterialPageRoute(
                                       builder: (context) => OutOfCustomerScreen(
                                         fromDate: fromdateController,

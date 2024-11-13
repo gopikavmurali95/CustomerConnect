@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/loadingheader/loading_header_bloc.dart';
 import 'package:customer_connect/feature/view/LoadInDetail/load_detail_pending.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,12 +62,21 @@ class PendingList extends StatelessWidget {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) => LoadDetailPending(
-                                        loadingheader: loadingheaders[index],
-                                        user: user,
-                                      ),
-                                    ),
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                LoadDetailPending(
+                                                    loadingheader:
+                                                        loadingheaders[index],
+                                                    user: user))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                LoadDetailPending(
+                                              loadingheader:
+                                                  loadingheaders[index],
+                                              user: user,
+                                            ),
+                                          ),
                                   );
                                 },
                                 //titleAlignment: ListTileTitleAlignment.center,
