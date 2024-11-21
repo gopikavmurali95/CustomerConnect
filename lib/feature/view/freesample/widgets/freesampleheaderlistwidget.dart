@@ -68,16 +68,22 @@ class FreeSampleHeaderListWidget extends StatelessWidget {
                           itemBuilder: (context, index) => GestureDetector(
                                 onTap: () {
                                   Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    FreeSampleDetailScreen(user: user, currentMode: selectedMode, header: headers[index])):
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          FreeSampleDetailScreen(
-                                        user: user,
-                                        header: headers[index],
-                                        currentMode: selectedMode,
-                                      ),
-                                    ),
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                FreeSampleDetailScreen(
+                                                    user: user,
+                                                    currentMode: selectedMode,
+                                                    header: headers[index]))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                FreeSampleDetailScreen(
+                                              user: user,
+                                              header: headers[index],
+                                              currentMode: selectedMode,
+                                            ),
+                                          ),
                                   );
                                 },
                                 child: Row(
@@ -166,8 +172,7 @@ class FreeSampleHeaderListWidget extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Text(
-                                                  headers[index].createdDate ??
-                                                      '',
+                                                  '${headers[index].rotCode} | ${headers[index].createdDate}',
                                                   style: kfontstyle(
                                                       fontSize: 10.sp,
                                                       color: Colors.grey),

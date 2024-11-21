@@ -538,9 +538,9 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                           if(Platform.isIOS)
                           {
                             return CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
+                          title:  const Text('Success'),
                           content: Text(
-                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''}"),
+                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''} successfully"),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -554,9 +554,9 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                           else
                           {
                             return AlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
+                              title:const Text('Success'),
                           content: Text(
-                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''}"),
+                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''} successfully"),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -589,9 +589,9 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                           if(Platform.isIOS)
                           {
                             return CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
+                          title:const Text('Success'),
                           content: Text(
-                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''}"),
+                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''} successfully"),
                           actions: [
                             TextButton(
                               onPressed: () {
@@ -605,9 +605,9 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                           else
                           {
                             return AlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
+                              title:const Text('Success'),
                           content: Text(
-                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''}"),
+                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''} successfully"),
                           actions: [
                             TextButton(
                               onPressed: () {

@@ -151,6 +151,7 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                       ),
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
                           height: 14.h,

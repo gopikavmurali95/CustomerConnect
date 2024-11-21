@@ -9,7 +9,4 @@ class OverrideApproveRejectEvent with _$OverrideApproveRejectEvent {
 
   const factory OverrideApproveRejectEvent.loadingOverideApproveRejectEvent() =
       LoadingOverideApproveRejectEvent;
-
-  const factory OverrideApproveRejectEvent.clearOverrideApproveRejectEvent() =
-      ClearOverrideApproveRejectEvent;
 }
