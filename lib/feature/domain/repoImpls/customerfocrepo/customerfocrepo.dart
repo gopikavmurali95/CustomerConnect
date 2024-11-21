@@ -56,6 +56,7 @@ class CustomerFocHeaderRepo implements ICustomerFocRepo {
       );
 
       if (response.statusCode == 200) {
+        log(response.data);
         Map<String, dynamic> json = jsonDecode(response.data);
         final List<dynamic> detaildata = json['result'];
         List<CustomerFocDetailModel> detaillist = detaildata

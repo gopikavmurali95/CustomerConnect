@@ -21,7 +21,6 @@ mixin _$OverrideApproveRejectEvent {
     required TResult Function(String ooaID, String userId, String status)
         getOverrideApproveRejectEvent,
     required TResult Function() loadingOverideApproveRejectEvent,
-    required TResult Function() clearOverrideApproveRejectEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +28,6 @@ mixin _$OverrideApproveRejectEvent {
     TResult? Function(String ooaID, String userId, String status)?
         getOverrideApproveRejectEvent,
     TResult? Function()? loadingOverideApproveRejectEvent,
-    TResult? Function()? clearOverrideApproveRejectEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +35,6 @@ mixin _$OverrideApproveRejectEvent {
     TResult Function(String ooaID, String userId, String status)?
         getOverrideApproveRejectEvent,
     TResult Function()? loadingOverideApproveRejectEvent,
-    TResult Function()? clearOverrideApproveRejectEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,8 +44,6 @@ mixin _$OverrideApproveRejectEvent {
         getOverrideApproveRejectEvent,
     required TResult Function(LoadingOverideApproveRejectEvent value)
         loadingOverideApproveRejectEvent,
-    required TResult Function(ClearOverrideApproveRejectEvent value)
-        clearOverrideApproveRejectEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,8 +52,6 @@ mixin _$OverrideApproveRejectEvent {
         getOverrideApproveRejectEvent,
     TResult? Function(LoadingOverideApproveRejectEvent value)?
         loadingOverideApproveRejectEvent,
-    TResult? Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,8 +60,6 @@ mixin _$OverrideApproveRejectEvent {
         getOverrideApproveRejectEvent,
     TResult Function(LoadingOverideApproveRejectEvent value)?
         loadingOverideApproveRejectEvent,
-    TResult Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -184,7 +175,6 @@ class _$GetOverrideApproveRejectEventImpl
     required TResult Function(String ooaID, String userId, String status)
         getOverrideApproveRejectEvent,
     required TResult Function() loadingOverideApproveRejectEvent,
-    required TResult Function() clearOverrideApproveRejectEvent,
   }) {
     return getOverrideApproveRejectEvent(ooaID, userId, status);
   }
@@ -195,7 +185,6 @@ class _$GetOverrideApproveRejectEventImpl
     TResult? Function(String ooaID, String userId, String status)?
         getOverrideApproveRejectEvent,
     TResult? Function()? loadingOverideApproveRejectEvent,
-    TResult? Function()? clearOverrideApproveRejectEvent,
   }) {
     return getOverrideApproveRejectEvent?.call(ooaID, userId, status);
   }
@@ -206,7 +195,6 @@ class _$GetOverrideApproveRejectEventImpl
     TResult Function(String ooaID, String userId, String status)?
         getOverrideApproveRejectEvent,
     TResult Function()? loadingOverideApproveRejectEvent,
-    TResult Function()? clearOverrideApproveRejectEvent,
     required TResult orElse(),
   }) {
     if (getOverrideApproveRejectEvent != null) {
@@ -222,8 +210,6 @@ class _$GetOverrideApproveRejectEventImpl
         getOverrideApproveRejectEvent,
     required TResult Function(LoadingOverideApproveRejectEvent value)
         loadingOverideApproveRejectEvent,
-    required TResult Function(ClearOverrideApproveRejectEvent value)
-        clearOverrideApproveRejectEvent,
   }) {
     return getOverrideApproveRejectEvent(this);
   }
@@ -235,8 +221,6 @@ class _$GetOverrideApproveRejectEventImpl
         getOverrideApproveRejectEvent,
     TResult? Function(LoadingOverideApproveRejectEvent value)?
         loadingOverideApproveRejectEvent,
-    TResult? Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
   }) {
     return getOverrideApproveRejectEvent?.call(this);
   }
@@ -248,8 +232,6 @@ class _$GetOverrideApproveRejectEventImpl
         getOverrideApproveRejectEvent,
     TResult Function(LoadingOverideApproveRejectEvent value)?
         loadingOverideApproveRejectEvent,
-    TResult Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
     required TResult orElse(),
   }) {
     if (getOverrideApproveRejectEvent != null) {
@@ -321,7 +303,6 @@ class _$LoadingOverideApproveRejectEventImpl
     required TResult Function(String ooaID, String userId, String status)
         getOverrideApproveRejectEvent,
     required TResult Function() loadingOverideApproveRejectEvent,
-    required TResult Function() clearOverrideApproveRejectEvent,
   }) {
     return loadingOverideApproveRejectEvent();
   }
@@ -332,7 +313,6 @@ class _$LoadingOverideApproveRejectEventImpl
     TResult? Function(String ooaID, String userId, String status)?
         getOverrideApproveRejectEvent,
     TResult? Function()? loadingOverideApproveRejectEvent,
-    TResult? Function()? clearOverrideApproveRejectEvent,
   }) {
     return loadingOverideApproveRejectEvent?.call();
   }
@@ -343,7 +323,6 @@ class _$LoadingOverideApproveRejectEventImpl
     TResult Function(String ooaID, String userId, String status)?
         getOverrideApproveRejectEvent,
     TResult Function()? loadingOverideApproveRejectEvent,
-    TResult Function()? clearOverrideApproveRejectEvent,
     required TResult orElse(),
   }) {
     if (loadingOverideApproveRejectEvent != null) {
@@ -359,8 +338,6 @@ class _$LoadingOverideApproveRejectEventImpl
         getOverrideApproveRejectEvent,
     required TResult Function(LoadingOverideApproveRejectEvent value)
         loadingOverideApproveRejectEvent,
-    required TResult Function(ClearOverrideApproveRejectEvent value)
-        clearOverrideApproveRejectEvent,
   }) {
     return loadingOverideApproveRejectEvent(this);
   }
@@ -372,8 +349,6 @@ class _$LoadingOverideApproveRejectEventImpl
         getOverrideApproveRejectEvent,
     TResult? Function(LoadingOverideApproveRejectEvent value)?
         loadingOverideApproveRejectEvent,
-    TResult? Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
   }) {
     return loadingOverideApproveRejectEvent?.call(this);
   }
@@ -385,8 +360,6 @@ class _$LoadingOverideApproveRejectEventImpl
         getOverrideApproveRejectEvent,
     TResult Function(LoadingOverideApproveRejectEvent value)?
         loadingOverideApproveRejectEvent,
-    TResult Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
     required TResult orElse(),
   }) {
     if (loadingOverideApproveRejectEvent != null) {
@@ -400,133 +373,6 @@ abstract class LoadingOverideApproveRejectEvent
     implements OverrideApproveRejectEvent {
   const factory LoadingOverideApproveRejectEvent() =
       _$LoadingOverideApproveRejectEventImpl;
-}
-
-/// @nodoc
-abstract class _$$ClearOverrideApproveRejectEventImplCopyWith<$Res> {
-  factory _$$ClearOverrideApproveRejectEventImplCopyWith(
-          _$ClearOverrideApproveRejectEventImpl value,
-          $Res Function(_$ClearOverrideApproveRejectEventImpl) then) =
-      __$$ClearOverrideApproveRejectEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ClearOverrideApproveRejectEventImplCopyWithImpl<$Res>
-    extends _$OverrideApproveRejectEventCopyWithImpl<$Res,
-        _$ClearOverrideApproveRejectEventImpl>
-    implements _$$ClearOverrideApproveRejectEventImplCopyWith<$Res> {
-  __$$ClearOverrideApproveRejectEventImplCopyWithImpl(
-      _$ClearOverrideApproveRejectEventImpl _value,
-      $Res Function(_$ClearOverrideApproveRejectEventImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ClearOverrideApproveRejectEventImpl
-    implements ClearOverrideApproveRejectEvent {
-  const _$ClearOverrideApproveRejectEventImpl();
-
-  @override
-  String toString() {
-    return 'OverrideApproveRejectEvent.clearOverrideApproveRejectEvent()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ClearOverrideApproveRejectEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String ooaID, String userId, String status)
-        getOverrideApproveRejectEvent,
-    required TResult Function() loadingOverideApproveRejectEvent,
-    required TResult Function() clearOverrideApproveRejectEvent,
-  }) {
-    return clearOverrideApproveRejectEvent();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String ooaID, String userId, String status)?
-        getOverrideApproveRejectEvent,
-    TResult? Function()? loadingOverideApproveRejectEvent,
-    TResult? Function()? clearOverrideApproveRejectEvent,
-  }) {
-    return clearOverrideApproveRejectEvent?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String ooaID, String userId, String status)?
-        getOverrideApproveRejectEvent,
-    TResult Function()? loadingOverideApproveRejectEvent,
-    TResult Function()? clearOverrideApproveRejectEvent,
-    required TResult orElse(),
-  }) {
-    if (clearOverrideApproveRejectEvent != null) {
-      return clearOverrideApproveRejectEvent();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(GetOverrideApproveRejectEvent value)
-        getOverrideApproveRejectEvent,
-    required TResult Function(LoadingOverideApproveRejectEvent value)
-        loadingOverideApproveRejectEvent,
-    required TResult Function(ClearOverrideApproveRejectEvent value)
-        clearOverrideApproveRejectEvent,
-  }) {
-    return clearOverrideApproveRejectEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(GetOverrideApproveRejectEvent value)?
-        getOverrideApproveRejectEvent,
-    TResult? Function(LoadingOverideApproveRejectEvent value)?
-        loadingOverideApproveRejectEvent,
-    TResult? Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
-  }) {
-    return clearOverrideApproveRejectEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(GetOverrideApproveRejectEvent value)?
-        getOverrideApproveRejectEvent,
-    TResult Function(LoadingOverideApproveRejectEvent value)?
-        loadingOverideApproveRejectEvent,
-    TResult Function(ClearOverrideApproveRejectEvent value)?
-        clearOverrideApproveRejectEvent,
-    required TResult orElse(),
-  }) {
-    if (clearOverrideApproveRejectEvent != null) {
-      return clearOverrideApproveRejectEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ClearOverrideApproveRejectEvent
-    implements OverrideApproveRejectEvent {
-  const factory ClearOverrideApproveRejectEvent() =
-      _$ClearOverrideApproveRejectEventImpl;
 }
 
 /// @nodoc

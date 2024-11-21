@@ -58,7 +58,7 @@ class FreeSampleApprovalRepo implements IFreeSampleApprovalRepo {
         data: {"HeaderID": headerID},
       );
 
-      log(jsonEncode(response.data));
+      // log(jsonEncode(response.data));
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.data);
@@ -84,11 +84,7 @@ class FreeSampleApprovalRepo implements IFreeSampleApprovalRepo {
       FreeSampleApproveInModel approve) async {
     try {
       Dio dio = Dio();
-      log({
-        "Json": jsonEncode(approve.products),
-        "UserId": approve.userId,
-        "HeaderID": approve.headerId,
-      }.toString());
+
       final response = await dio.post(
         approvalBaseUrl + submitfreesampleurl,
         data: {
@@ -97,7 +93,11 @@ class FreeSampleApprovalRepo implements IFreeSampleApprovalRepo {
           "HeaderID": approve.headerId,
         },
       );
-
+      log({
+        "Json": jsonEncode(approve.products),
+        "UserId": approve.userId,
+        "HeaderID": approve.headerId,
+      }.toString());
       if (response.statusCode == 200) {
         log('Approve Response: ${response.data}');
         Map<String, dynamic> json = jsonDecode(response.data);

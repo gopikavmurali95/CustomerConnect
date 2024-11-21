@@ -275,14 +275,19 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                             itemBuilder: (context, index) => GestureDetector(
                                   onTap: () {
                                     Navigator.push(
-                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                      CustomerFocDetailScreen(header: headerdata[index], user: widget.user)):
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              CustomerFocDetailScreen(
-                                                header: headerdata[index],
-                                                user: widget.user,
-                                              )),
+                                      context,
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  CustomerFocDetailScreen(
+                                                      header: headerdata[index],
+                                                      user: widget.user))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CustomerFocDetailScreen(
+                                                    header: headerdata[index],
+                                                    user: widget.user,
+                                                  )),
                                     );
                                   },
                                   child: Row(
@@ -491,88 +496,114 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                       .selectedHeadersList([]);
                                   Navigator.pop(context);
                                   showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      if(Platform.isIOS)
-                                      {
-                                        return CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content:
-                                          const Text("Rejected successfully"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                    );
-                                      }
-                                      else{
-                                        return AlertDialog(
-                                          title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content:
-                                          const Text("Rejected successfully"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                        );
-                                      }
-                                    }
-                                  );
+                                      context: context,
+                                      builder: (context) {
+                                        if (Platform.isIOS) {
+                                          return CupertinoAlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: const Text(
+                                                "Rejected successfully"),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(
+                                                          const ClearCustomerFocHeader());
+                                                  context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(GetCustomerFocHeaderEvent(
+                                                          statusValue:
+                                                              selectedCustomerFocMode,
+                                                          searchQuery: ''));
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        } else {
+                                          return AlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: const Text(
+                                                "Rejected successfully"),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(
+                                                          const ClearCustomerFocHeader());
+                                                  context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(GetCustomerFocHeaderEvent(
+                                                          statusValue:
+                                                              selectedCustomerFocMode,
+                                                          searchQuery: ''));
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                      });
                                 }
                               }, focFailedState: () {
                                 Navigator.pop(context);
                                 showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    if(Platform.isIOS)
-                                    {
-                                      return CupertinoAlertDialog(
-                                    title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: const Text(
-                                        'Customer Foc Rejection Failed'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!.ok),
-                                      ),
-                                    ],
-                                  );
-                                    }
-                                    else {
-                                      return AlertDialog(
-                                        title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: const Text(
-                                        'Customer Foc Rejection Failed'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!.ok),
-                                      ),
-                                    ],
-                                      );
-                                    }
-                                  }
-                                );
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: const Text(
+                                              'Customer Foc Rejection Failed'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: const Text(
+                                              'Customer Foc Rejection Failed'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                    });
                               });
                             },
                             builder: (context, state) {
@@ -584,191 +615,196 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                 onPressed: () {
                                   if (focJsonstriongList.isEmpty) {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: const Text(
-                                            'Please Select atleast one item'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else{
-                                          return AlertDialog(
-                                             title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: const Text(
-                                            'Please Select atleast one item'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: const Text(
+                                                  'Please Select atleast one item'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: const Text(
+                                                  'Please Select atleast one item'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   } else {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: const Text(
-                                            'Do you want to reject?'),
-                                        content: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              height: 10.h,
-                                            ),
-                                            const Text(
-                                                'Response Remark (if any)'),
-                                            CupertinoTextField(
-                                              controller: remarkCtrl,
-                                              // placeholder: 'Enter your remark here',
-                                              padding: const EdgeInsets.all(12),
-                                              decoration: const BoxDecoration(
-                                                border: Border(
-                                                  bottom: BorderSide(
-                                                    color: Colors.grey,
-                                                    width: 1.0,
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: const Text(
+                                                  'Do you want to reject?'),
+                                              content: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(
+                                                    height: 10.h,
                                                   ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              context
-                                                  .read<
-                                                      CustomerFocApprovalBloc>()
-                                                  .add(
-                                                      const CustomerFocLoadingEvent());
-                                              context
-                                                  .read<
-                                                      CusromerFocRejectionBloc>()
-                                                  .add(FocRejectionEvent(
-                                                      rejectionIn: CustomerFocApprovalInModel(
-                                                          remarks:
-                                                              remarkCtrl.text,
-                                                          userId:
-                                                              widget.user.usrId,
-                                                          headerId: '',
-                                                          jsonString:
-                                                              focJsonstriongList)));
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else
-                                        {
-                                          return AlertDialog(
-                                            title: const Text(
-                                            'Do you want to reject?'),
-                                        content: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              height: 10.h,
-                                            ),
-                                            const Text(
-                                                'Response Remark (if any)'),
-                                            CupertinoTextField(
-                                              controller: remarkCtrl,
-                                              // placeholder: 'Enter your remark here',
-                                              padding: const EdgeInsets.all(12),
-                                              decoration: const BoxDecoration(
-                                                border: Border(
-                                                  bottom: BorderSide(
-                                                    color: Colors.grey,
-                                                    width: 1.0,
+                                                  const Text(
+                                                      'Response Remark (if any)'),
+                                                  CupertinoTextField(
+                                                    controller: remarkCtrl,
+                                                    // placeholder: 'Enter your remark here',
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            12),
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      border: Border(
+                                                        bottom: BorderSide(
+                                                          color: Colors.grey,
+                                                          width: 1.0,
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
+                                                ],
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              context
-                                                  .read<
-                                                      CustomerFocApprovalBloc>()
-                                                  .add(
-                                                      const CustomerFocLoadingEvent());
-                                              context
-                                                  .read<
-                                                      CusromerFocRejectionBloc>()
-                                                  .add(FocRejectionEvent(
-                                                      rejectionIn: CustomerFocApprovalInModel(
-                                                          remarks:
-                                                              remarkCtrl.text,
-                                                          userId:
-                                                              widget.user.usrId,
-                                                          headerId: '',
-                                                          jsonString:
-                                                              focJsonstriongList)));
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            CustomerFocApprovalBloc>()
+                                                        .add(
+                                                            const CustomerFocLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            CusromerFocRejectionBloc>()
+                                                        .add(FocRejectionEvent(
+                                                            rejectionIn: CustomerFocApprovalInModel(
+                                                                remarks:
+                                                                    remarkCtrl
+                                                                        .text,
+                                                                userId: widget
+                                                                    .user.usrId,
+                                                                headerId: '',
+                                                                jsonString:
+                                                                    focJsonstriongList)));
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: const Text(
+                                                  'Do you want to reject?'),
+                                              content: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(
+                                                    height: 10.h,
+                                                  ),
+                                                  const Text(
+                                                      'Response Remark (if any)'),
+                                                  CupertinoTextField(
+                                                    controller: remarkCtrl,
+                                                    // placeholder: 'Enter your remark here',
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            12),
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      border: Border(
+                                                        bottom: BorderSide(
+                                                          color: Colors.grey,
+                                                          width: 1.0,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            CustomerFocApprovalBloc>()
+                                                        .add(
+                                                            const CustomerFocLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            CusromerFocRejectionBloc>()
+                                                        .add(FocRejectionEvent(
+                                                            rejectionIn: CustomerFocApprovalInModel(
+                                                                remarks:
+                                                                    remarkCtrl
+                                                                        .text,
+                                                                userId: widget
+                                                                    .user.usrId,
+                                                                headerId: '',
+                                                                jsonString:
+                                                                    focJsonstriongList)));
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   }
                                 },
                                 child: Text(
@@ -810,96 +846,117 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                         .selectedHeadersList([]);
                                     Navigator.pop(context);
                                     showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content:
-                                            const Text("Approved successfully"),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else
-                                        {
-                                          return AlertDialog(
-                                            title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content:
-                                            const Text("Approved successfully"),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: const Text(
+                                                  "Approved successfully"),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(
+                                                          const ClearCustomerFocHeader());
+                                                  context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(GetCustomerFocHeaderEvent(
+                                                          statusValue:
+                                                              selectedCustomerFocMode,
+                                                          searchQuery: ''));
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: const Text(
+                                                  "Approved successfully"),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(
+                                                          const ClearCustomerFocHeader());
+                                                  context
+                                                      .read<
+                                                          CustomerFocHeaderBloc>()
+                                                      .add(GetCustomerFocHeaderEvent(
+                                                          statusValue:
+                                                              selectedCustomerFocMode,
+                                                          searchQuery: ''));
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   }
                                 },
                                 customerFocApprovalFailed: () {
                                   Navigator.pop(context);
                                   showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      if(Platform.isIOS)
-                                      {
-                                        return CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: const Text(
-                                          'Customer Foc Approval Failed'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                    );
-                                      }
-                                      else
-                                      {
-                                        return AlertDialog(
-                                          title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: const Text(
-                                          'Customer Foc Approval Failed'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                        );
-                                      }
-                                    }
-                                  );
+                                      context: context,
+                                      builder: (context) {
+                                        if (Platform.isIOS) {
+                                          return CupertinoAlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: const Text(
+                                                'Customer Foc Approval Failed'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        } else {
+                                          return AlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: const Text(
+                                                'Customer Foc Approval Failed'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                      });
                                 },
                                 customerFocApprovalLoadingState: () {
                                   showCupertinoModalPopup(
@@ -933,157 +990,157 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                 onPressed: () {
                                   if (focJsonstriongList.isEmpty) {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: const Text(
-                                            'Please Select atleast one item'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else{
-                                          return AlertDialog(
-                                            title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: const Text(
-                                            'Please Select atleast one item'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: const Text(
+                                                  'Please Select atleast one item'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: const Text(
+                                                  'Please Select atleast one item'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   } else {
                                     if (selectedCustomerFocMode == 'A') {
                                       showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          if(Platform.isIOS)
-                                          {
-                                            return CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .doyouWantToProceed),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cancel),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                context
-                                                    .read<
-                                                        CustomerFocApprovalBloc>()
-                                                    .add(const CustomerFocApprovalEvent
-                                                        .customerFocLoadingEvent());
-                                                context
-                                                    .read<
-                                                        CustomerFocApprovalBloc>()
-                                                    .add(CustomerFocApprovalEvent
-                                                        .customerFocApprovalEvent(
-                                                            approveInpara:
-                                                                CustomerFocApprovalInModel(
-                                                                    remarks: '',
-                                                                    userId: widget
-                                                                        .user
-                                                                        .usrId,
-                                                                    headerId:
-                                                                        '',
-                                                                    jsonString:
-                                                                        focJsonstriongList)));
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .proceed),
-                                            ),
-                                          ],
-                                        );
-                                          }
-                                          else {
-                                            return AlertDialog(
-                                             title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .doyouWantToProceed),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cancel),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                context
-                                                    .read<
-                                                        CustomerFocApprovalBloc>()
-                                                    .add(const CustomerFocApprovalEvent
-                                                        .customerFocLoadingEvent());
-                                                context
-                                                    .read<
-                                                        CustomerFocApprovalBloc>()
-                                                    .add(CustomerFocApprovalEvent
-                                                        .customerFocApprovalEvent(
-                                                            approveInpara:
-                                                                CustomerFocApprovalInModel(
-                                                                    remarks: '',
-                                                                    userId: widget
-                                                                        .user
-                                                                        .usrId,
-                                                                    headerId:
-                                                                        '',
-                                                                    jsonString:
-                                                                        focJsonstriongList)));
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .proceed),
-                                            ),
-                                          ],
-                                          );
-                                          }
-                                        }
-                                            
-                                      );
+                                          context: context,
+                                          builder: (context) {
+                                            if (Platform.isIOS) {
+                                              return CupertinoAlertDialog(
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .doyouWantToProceed),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      // Navigator.pop(context);
+                                                      context
+                                                          .read<
+                                                              CustomerFocApprovalBloc>()
+                                                          .add(const CustomerFocApprovalEvent
+                                                              .customerFocLoadingEvent());
+                                                      context
+                                                          .read<
+                                                              CustomerFocApprovalBloc>()
+                                                          .add(CustomerFocApprovalEvent.customerFocApprovalEvent(
+                                                              approveInpara:
+                                                                  CustomerFocApprovalInModel(
+                                                                      remarks:
+                                                                          '',
+                                                                      userId: widget
+                                                                          .user
+                                                                          .usrId,
+                                                                      headerId:
+                                                                          '',
+                                                                      jsonString:
+                                                                          focJsonstriongList)));
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .proceed),
+                                                  ),
+                                                ],
+                                              );
+                                            } else {
+                                              return AlertDialog(
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .doyouWantToProceed),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      // Navigator.pop(context);
+                                                      context
+                                                          .read<
+                                                              CustomerFocApprovalBloc>()
+                                                          .add(const CustomerFocApprovalEvent
+                                                              .customerFocLoadingEvent());
+                                                      context
+                                                          .read<
+                                                              CustomerFocApprovalBloc>()
+                                                          .add(CustomerFocApprovalEvent.customerFocApprovalEvent(
+                                                              approveInpara:
+                                                                  CustomerFocApprovalInModel(
+                                                                      remarks:
+                                                                          '',
+                                                                      userId: widget
+                                                                          .user
+                                                                          .usrId,
+                                                                      headerId:
+                                                                          '',
+                                                                      jsonString:
+                                                                          focJsonstriongList)));
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .proceed),
+                                                  ),
+                                                ],
+                                              );
+                                            }
+                                          });
                                     }
                                   }
                                 },
