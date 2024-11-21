@@ -406,10 +406,10 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                         .w500,
                                                               ),
                                                             ),
-                                                            /* Row(
+                                                             Row(
                                                               children: [
                                                                 Text(
-                                                                  '${headers[index].astCode} - ',
+                                                                 "Type: ",
                                                                   style: kfontstyle(
                                                                       fontSize: 12.sp,
                                                                       color: const Color(
@@ -422,12 +422,7 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                    selectedLocale?.languageCode ==
-                                                                            "en"
-                                                                        ? /* headers[index].astName ?? */
-                                                                            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-                                                                        : headers[index].astArName ??
-                                                                            '',
+                                                                   "${cusoverride[index].ooaType}",
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -436,7 +431,7 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                   ),
                                                                 ),
                                                               ],
-                                                            ), */
+                                                            ), 
                                                             RichText(
                                                               text: TextSpan(
                                                                 style: DefaultTextStyle.of(
