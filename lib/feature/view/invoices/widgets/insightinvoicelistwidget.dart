@@ -55,20 +55,23 @@ class InsightInvoiceListWidget extends StatelessWidget {
                         itemBuilder: (context, index) => InkWell(
                               onTap: () {
                                 Navigator.push(
-                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                  CusInsInvoiceDetailScreen(
-                                    customer: customer,
-                                    invoice:headers[index] ,
-                                    user: user,
-                                  )):
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        CusInsInvoiceDetailScreen(
-                                      customer: customer,
-                                      invoice: headers[index],
-                                      user: user,
-                                    ),
-                                  ),
+                                  context,
+                                  Platform.isIOS
+                                      ? CupertinoPageRoute(
+                                          builder: (context) =>
+                                              CusInsInvoiceDetailScreen(
+                                                customer: customer,
+                                                invoice: headers[index],
+                                                user: user,
+                                              ))
+                                      : MaterialPageRoute(
+                                          builder: (context) =>
+                                              CusInsInvoiceDetailScreen(
+                                            customer: customer,
+                                            invoice: headers[index],
+                                            user: user,
+                                          ),
+                                        ),
                                 );
                               },
                               child: Row(

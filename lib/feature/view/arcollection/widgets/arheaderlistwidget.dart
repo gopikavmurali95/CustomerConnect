@@ -43,13 +43,16 @@ class ARHeaderListWidget extends StatelessWidget {
                               onTap: () {
                                 log(arHeaders[index].arhId ?? '');
                                 Navigator.push(
-                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                  ARDetailScreen(arheader: arHeaders[index])):
-                                  MaterialPageRoute(
-                                    builder: (context) => ARDetailScreen(
-                                      arheader: arHeaders[index],
-                                    ),
-                                  ),
+                                  context,
+                                  Platform.isIOS
+                                      ? CupertinoPageRoute(
+                                          builder: (context) => ARDetailScreen(
+                                              arheader: arHeaders[index]))
+                                      : MaterialPageRoute(
+                                          builder: (context) => ARDetailScreen(
+                                            arheader: arHeaders[index],
+                                          ),
+                                        ),
                                 );
                               },
                               child: Row(
@@ -147,17 +150,25 @@ class ARHeaderListWidget extends StatelessWidget {
                                         height: 14.h,
                                         width: 30.w,
                                         decoration: BoxDecoration(
-                                            color: arHeaders[index]
-                                                        .arhPayMode ==
+                                            color: arHeaders[index].arhPayMode ==
                                                     'HC'
-                                                ? const Color.fromARGB(255, 200, 239, 249)//colorslist[0]
+                                                ? const Color.fromARGB(255, 200,
+                                                    239, 249) //colorslist[0]
                                                 : arHeaders[index].arhPayMode ==
                                                         "CH"
-                                                    ? const Color.fromARGB(255, 246, 213, 197)//colorslist[3]
+                                                    ? const Color.fromARGB(
+                                                        255,
+                                                        246,
+                                                        213,
+                                                        197) //colorslist[3]
                                                     : arHeaders[index]
                                                                 .arhPayMode ==
                                                             "POS"
-                                                        ?  const Color.fromARGB(255, 200, 244, 218)//colorslist[2]
+                                                        ? const Color.fromARGB(
+                                                            255,
+                                                            200,
+                                                            244,
+                                                            218) //colorslist[2]
                                                         : const Color(
                                                             0xfff7f4e2),
                                             borderRadius:

@@ -72,12 +72,15 @@ class _PromotionCustomerState extends State<PromotionCustomer> {
                         GetPromotionDetailsEvent(
                             id: widget.promotion.qid ?? ''));
                     Navigator.pushReplacement(
-                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PromotionDetails(
-                          promotion: widget.promotion)):
-                        MaterialPageRoute(
-                            builder: (context) => PromotionDetails(
-                                  promotion: widget.promotion,
-                                )));
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) => PromotionDetails(
+                                    promotion: widget.promotion))
+                            : MaterialPageRoute(
+                                builder: (context) => PromotionDetails(
+                                      promotion: widget.promotion,
+                                    )));
                   },
                   child: SizedBox(
                     height: 75,

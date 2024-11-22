@@ -39,13 +39,16 @@ class ApprovalTiles extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
-                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                      ScheduledReturnHEaderScreen(user: user)):
-                      MaterialPageRoute(
-                        builder: (context) => ScheduledReturnHEaderScreen(
-                          user: user,
-                        ),
-                      ),
+                      context,
+                      Platform.isIOS
+                          ? CupertinoPageRoute(
+                              builder: (context) =>
+                                  ScheduledReturnHEaderScreen(user: user))
+                          : MaterialPageRoute(
+                              builder: (context) => ScheduledReturnHEaderScreen(
+                                user: user,
+                              ),
+                            ),
                     );
                   },
                   child: Container(
@@ -91,13 +94,16 @@ class ApprovalTiles extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     Navigator.push(
-                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                      PartialDeliveryHeader(user: user)):
-                      MaterialPageRoute(
-                        builder: (context) => PartialDeliveryHeader(
-                          user: user,
-                        ),
-                      ),
+                      context,
+                      Platform.isIOS
+                          ? CupertinoPageRoute(
+                              builder: (context) =>
+                                  PartialDeliveryHeader(user: user))
+                          : MaterialPageRoute(
+                              builder: (context) => PartialDeliveryHeader(
+                                user: user,
+                              ),
+                            ),
                     );
                   },
                   child: Container(

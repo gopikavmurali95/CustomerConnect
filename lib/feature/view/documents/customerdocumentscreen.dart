@@ -206,13 +206,21 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                   InkWell(
                                     onTap: () {
                                       Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                          PdfViewScreen(pdfUrl: docs[0].docUrl??'')):
-                                          MaterialPageRoute(
-                                            builder: (context) => PdfViewScreen(
-                                              pdfUrl: docs[0].docUrl ?? '',
-                                            ),
-                                          ));
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      PdfViewScreen(
+                                                          pdfUrl:
+                                                              docs[0].docUrl ??
+                                                                  ''))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PdfViewScreen(
+                                                    pdfUrl:
+                                                        docs[0].docUrl ?? '',
+                                                  ),
+                                                ));
                                     },
                                     child: Card(
                                       surfaceTintColor: Colors.white,
@@ -278,14 +286,21 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                     InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                            context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                            PdfViewScreen(pdfUrl: docs[1].docUrl??'')):
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PdfViewScreen(
-                                                pdfUrl: docs[1].docUrl ?? '',
-                                              ),
-                                            ));
+                                            context,
+                                            Platform.isIOS
+                                                ? CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        PdfViewScreen(
+                                                            pdfUrl: docs[1]
+                                                                    .docUrl ??
+                                                                ''))
+                                                : MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        PdfViewScreen(
+                                                      pdfUrl:
+                                                          docs[1].docUrl ?? '',
+                                                    ),
+                                                  ));
                                       },
                                       child: Card(
                                         surfaceTintColor: Colors.white,
@@ -463,15 +478,22 @@ class _CustomerDocumentScreenState extends State<CustomerDocumentScreen> {
                                         InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                PdfViewScreen(pdfUrl: docs[2].docUrl??'')):
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      PdfViewScreen(
-                                                    pdfUrl:
-                                                        docs[2].docUrl ?? '',
-                                                  ),
-                                                ));
+                                                context,
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            PdfViewScreen(
+                                                                pdfUrl: docs[2]
+                                                                        .docUrl ??
+                                                                    ''))
+                                                    : MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            PdfViewScreen(
+                                                          pdfUrl:
+                                                              docs[2].docUrl ??
+                                                                  '',
+                                                        ),
+                                                      ));
                                           },
                                           child: Card(
                                             surfaceTintColor: Colors.white,

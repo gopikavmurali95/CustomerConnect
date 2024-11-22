@@ -291,21 +291,27 @@ class _PriceChangeHeaderState extends State<PriceChangeHeader> {
                                                       .popFromScreen(false);
                                                   Navigator.push(
                                                       context,
-                                                      Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                      PriceChangeDetail(
-                                                        priceChangeApprovel: pChange[index],
-                                                         user: widget.user, currentMode: _selectedPriceChangeMode)):
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              PriceChangeDetail(
-                                                                priceChangeApprovel:
-                                                                    pChange[
-                                                                        index],
-                                                                user:
-                                                                    widget.user,
-                                                                currentMode:
-                                                                    _selectedPriceChangeMode,
-                                                              )));
+                                                      Platform.isIOS
+                                                          ? CupertinoPageRoute(
+                                                              builder: (context) => PriceChangeDetail(
+                                                                  priceChangeApprovel:
+                                                                      pChange[
+                                                                          index],
+                                                                  user: widget
+                                                                      .user,
+                                                                  currentMode:
+                                                                      _selectedPriceChangeMode))
+                                                          : MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  PriceChangeDetail(
+                                                                    priceChangeApprovel:
+                                                                        pChange[
+                                                                            index],
+                                                                    user: widget
+                                                                        .user,
+                                                                    currentMode:
+                                                                        _selectedPriceChangeMode,
+                                                                  )));
                                                   log(_selectedPriceChangeMode);
                                                 },
                                                 child: Row(

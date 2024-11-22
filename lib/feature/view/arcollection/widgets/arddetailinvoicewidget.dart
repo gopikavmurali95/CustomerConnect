@@ -14,8 +14,7 @@ class ARDetailInvoiceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column
-      (
+      child: Column(
         children: [
           Container(
             height: 30.h,

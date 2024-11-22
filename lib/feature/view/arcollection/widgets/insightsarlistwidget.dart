@@ -46,98 +46,99 @@ class InsightArListWidget extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                  ARDetailScreen(
-                                      arheader: ArHeaderModel(
-                                          arhBalanceAmount:
-                                              headers[index].balanceAmount,
-                                          arhCollectedAmount:
-                                              headers[index].collectedAmount,
-                                          arhPayMode:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].payMode
-                                                  : headers[index].arPayMode,
-                                          arhPayType: headers[index].payType,
-                                          arpChequeDate:
-                                              headers[index].chequeDate,
-                                          arpChequeNo: headers[index].chequeNo,
-                                          bankName:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].bankName
-                                                  : headers[index].arBankName,
-                                          cshCode: headers[index].cshCode,
-                                          cshId: headers[index].cshId,
-                                          cshName:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].cshName
-                                                  : headers[index].arCshName,
-                                          cusCode: headers[index].cusCode,
-                                          cusId: headers[index].cusId,
-                                          cusName:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].cusName
-                                                  : headers[index].cusName,
-                                          date: headers[index].date,
-                                          image: headers[index].arpImage1,
-                                          rotCode: headers[index].rotCode,
-                                          rotId: headers[index].rotId,
-                                          rotName: headers[index].rotName,
-                                          time: headers[index].time,
-                                          arhArNumber:
-                                              headers[index].arhArNumber,
-                                          arhId: headers[index].arhId),
-                                    ),):
-
-                                  MaterialPageRoute(
-                                    builder: (context) => ARDetailScreen(
-                                      arheader: ArHeaderModel(
-                                          arhBalanceAmount:
-                                              headers[index].balanceAmount,
-                                          arhCollectedAmount:
-                                              headers[index].collectedAmount,
-                                          arhPayMode:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].payMode
-                                                  : headers[index].arPayMode,
-                                          arhPayType: headers[index].payType,
-                                          arpChequeDate:
-                                              headers[index].chequeDate,
-                                          arpChequeNo: headers[index].chequeNo,
-                                          bankName:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].bankName
-                                                  : headers[index].arBankName,
-                                          cshCode: headers[index].cshCode,
-                                          cshId: headers[index].cshId,
-                                          cshName:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].cshName
-                                                  : headers[index].arCshName,
-                                          cusCode: headers[index].cusCode,
-                                          cusId: headers[index].cusId,
-                                          cusName:
-                                              selectedLocale?.languageCode ==
-                                                      'en'
-                                                  ? headers[index].cusName
-                                                  : headers[index].cusName,
-                                          date: headers[index].date,
-                                          image: headers[index].arpImage1,
-                                          rotCode: headers[index].rotCode,
-                                          rotId: headers[index].rotId,
-                                          rotName: headers[index].rotName,
-                                          time: headers[index].time,
-                                          arhArNumber:
-                                              headers[index].arhArNumber,
-                                          arhId: headers[index].arhId),
-                                    ),
-                                  ),
+                                  Platform.isIOS
+                                      ? CupertinoPageRoute(
+                                          builder: (context) => ARDetailScreen(
+                                            arheader: ArHeaderModel(
+                                                arhBalanceAmount: headers[index]
+                                                    .balanceAmount,
+                                                arhCollectedAmount: headers[index]
+                                                    .collectedAmount,
+                                                arhPayMode: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? headers[index].payMode
+                                                    : headers[index].arPayMode,
+                                                arhPayType:
+                                                    headers[index].payType,
+                                                arpChequeDate:
+                                                    headers[index].chequeDate,
+                                                arpChequeNo:
+                                                    headers[index].chequeNo,
+                                                bankName: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? headers[index].bankName
+                                                    : headers[index].arBankName,
+                                                cshCode: headers[index].cshCode,
+                                                cshId: headers[index].cshId,
+                                                cshName: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? headers[index].cshName
+                                                    : headers[index].arCshName,
+                                                cusCode: headers[index].cusCode,
+                                                cusId: headers[index].cusId,
+                                                cusName:
+                                                    selectedLocale?.languageCode == 'en'
+                                                        ? headers[index].cusName
+                                                        : headers[index].cusName,
+                                                date: headers[index].date,
+                                                image: headers[index].arpImage1,
+                                                rotCode: headers[index].rotCode,
+                                                rotId: headers[index].rotId,
+                                                rotName: headers[index].rotName,
+                                                time: headers[index].time,
+                                                arhArNumber: headers[index].arhArNumber,
+                                                arhId: headers[index].arhId),
+                                          ),
+                                        )
+                                      : MaterialPageRoute(
+                                          builder: (context) => ARDetailScreen(
+                                            arheader: ArHeaderModel(
+                                                arhBalanceAmount: headers[index]
+                                                    .balanceAmount,
+                                                arhCollectedAmount: headers[index]
+                                                    .collectedAmount,
+                                                arhPayMode: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? headers[index].payMode
+                                                    : headers[index].arPayMode,
+                                                arhPayType:
+                                                    headers[index].payType,
+                                                arpChequeDate:
+                                                    headers[index].chequeDate,
+                                                arpChequeNo:
+                                                    headers[index].chequeNo,
+                                                bankName: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? headers[index].bankName
+                                                    : headers[index].arBankName,
+                                                cshCode: headers[index].cshCode,
+                                                cshId: headers[index].cshId,
+                                                cshName: selectedLocale
+                                                            ?.languageCode ==
+                                                        'en'
+                                                    ? headers[index].cshName
+                                                    : headers[index].arCshName,
+                                                cusCode: headers[index].cusCode,
+                                                cusId: headers[index].cusId,
+                                                cusName:
+                                                    selectedLocale?.languageCode == 'en'
+                                                        ? headers[index].cusName
+                                                        : headers[index].cusName,
+                                                date: headers[index].date,
+                                                image: headers[index].arpImage1,
+                                                rotCode: headers[index].rotCode,
+                                                rotId: headers[index].rotId,
+                                                rotName: headers[index].rotName,
+                                                time: headers[index].time,
+                                                arhArNumber: headers[index].arhArNumber,
+                                                arhId: headers[index].arhId),
+                                          ),
+                                        ),
                                 );
                               },
                               child: Row(
@@ -197,12 +198,21 @@ class InsightArListWidget extends StatelessWidget {
                                         decoration: BoxDecoration(
                                             color: headers[index].payMode ==
                                                     'HC'
-                                                ? const Color.fromARGB(255, 184, 241, 255)//colorslist[0]
+                                                ? const Color.fromARGB(255, 184,
+                                                    241, 255) //colorslist[0]
                                                 : headers[index].payMode == "CH"
-                                                    ?  const Color.fromARGB(255, 244, 209, 192)//colorslist[3]
+                                                    ? const Color.fromARGB(
+                                                        255,
+                                                        244,
+                                                        209,
+                                                        192) //colorslist[3]
                                                     : headers[index].payMode ==
                                                             "POS"
-                                                        ?  const Color.fromARGB(255, 193, 244, 213)//colorslist[2]
+                                                        ? const Color.fromARGB(
+                                                            255,
+                                                            193,
+                                                            244,
+                                                            213) //colorslist[2]
                                                         : const Color(
                                                             0xfff7f4e2),
                                             borderRadius:

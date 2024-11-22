@@ -524,100 +524,95 @@ class FieldServiceInvoiceDetailsState
                     Navigator.pop(context);
                     // if (isApproval) {
                     showDialog(
-                      context: context,
-                      builder: (context) {
-                        if(Platform.isIOS)
-                        {
-                          return CupertinoAlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(selectedLocale?.languageCode == "en"
-                            ? response.status ?? ''
-                            : response.arStatus ?? ''),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              context.read<FieldServiceHeaderBloc>().add(
-                                  GetAllFieldServiceHeadersEvent(
-                                      userId: widget.header.userID ?? '',
-                                      searchQuery: ''));
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.proceed),
-                          ),
-                        ],
-                      );
-                        }
-                        else{
-                          return AlertDialog(
-                             title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(selectedLocale?.languageCode == "en"
-                            ? response.status ?? ''
-                            : response.arStatus ?? ''),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              context.read<FieldServiceHeaderBloc>().add(
-                                  GetAllFieldServiceHeadersEvent(
-                                      userId: widget.header.userID ?? '',
-                                      searchQuery: ''));
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.proceed),
-                          ),
-                        ],
-                          );
-                        }
-                      }
-                    );
+                        context: context,
+                        builder: (context) {
+                          if (Platform.isIOS) {
+                            return CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(selectedLocale?.languageCode == "en"
+                                  ? response.status ?? ''
+                                  : response.arStatus ?? ''),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<FieldServiceHeaderBloc>().add(
+                                        GetAllFieldServiceHeadersEvent(
+                                            userId: widget.header.userID ?? '',
+                                            searchQuery: ''));
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(selectedLocale?.languageCode == "en"
+                                  ? response.status ?? ''
+                                  : response.arStatus ?? ''),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<FieldServiceHeaderBloc>().add(
+                                        GetAllFieldServiceHeadersEvent(
+                                            userId: widget.header.userID ?? '',
+                                            searchQuery: ''));
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.proceed),
+                                ),
+                              ],
+                            );
+                          }
+                        });
                     // }
                   }
                 },
                 fieldServiceInvoiceApprovalFailed: () {
                   Navigator.pop(context);
                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      if(Platform.isIOS)
-                      {
-                        return CupertinoAlertDialog(
-                      title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text(
-                          AppLocalizations.of(context)!.somethingWentWrong),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            context.read<FIeldServiceDetailBloc>().add(
-                                GetAllFieldServiceDetailEvent(
-                                    reqId: widget.header.sahId ?? ''));
-                            Navigator.pop(context);
-                          },
-                          child: Text(AppLocalizations.of(context)!.ok),
-                        ),
-                      ],
-                    );
-                      }
-                      else{
-                        return AlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text(
-                          AppLocalizations.of(context)!.somethingWentWrong),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            context.read<FIeldServiceDetailBloc>().add(
-                                GetAllFieldServiceDetailEvent(
-                                    reqId: widget.header.sahId ?? ''));
-                            Navigator.pop(context);
-                          },
-                          child: Text(AppLocalizations.of(context)!.ok),
-                        ),
-                      ]
-                        );
-                      }
-                    } 
-                  );
+                      context: context,
+                      builder: (context) {
+                        if (Platform.isIOS) {
+                          return CupertinoAlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                            content: Text(AppLocalizations.of(context)!
+                                .somethingWentWrong),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  context.read<FIeldServiceDetailBloc>().add(
+                                      GetAllFieldServiceDetailEvent(
+                                          reqId: widget.header.sahId ?? ''));
+                                  Navigator.pop(context);
+                                },
+                                child: Text(AppLocalizations.of(context)!.ok),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .somethingWentWrong),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<FIeldServiceDetailBloc>().add(
+                                        GetAllFieldServiceDetailEvent(
+                                            reqId: widget.header.sahId ?? ''));
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ]);
+                        }
+                      });
                 },
                 fieldServiceInvoiceLoadingState: () {
                   // if (loadingCount == 0) {
@@ -665,88 +660,96 @@ class FieldServiceInvoiceDetailsState
                                 Colors.red.shade300 /* : Colors.grey[300] */,
                             onPressed: () {
                               showDialog(
-                                context: context,
-                                builder: (context) {
-                                  if(Platform.isIOS)
-                                  {
-                                    return CupertinoAlertDialog(
-                                  title:
-                                      Text(AppLocalizations.of(context)!.alert),
-                                  content: Text(AppLocalizations.of(context)!
-                                      .doYouWantToRejectThisProduct),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {});
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                          AppLocalizations.of(context)!.cancel),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(
-                                                const FieldServiceInvoicLoadingEvent());
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(InvoiceRejectEvent(
-                                                reqID:
-                                                    widget.header.sahId ?? '',
-                                                userID: widget.header.userID ??
-                                                    ''));
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(AppLocalizations.of(context)!
-                                          .proceed),
-                                    ),
-                                  ],
-                                );
-                                  }
-                                  else
-                                  {
-                                    return AlertDialog(
-                                      title:
-                                      Text(AppLocalizations.of(context)!.alert),
-                                  content: Text(AppLocalizations.of(context)!
-                                      .doYouWantToRejectThisProduct),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {});
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                          AppLocalizations.of(context)!.cancel),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(
-                                                const FieldServiceInvoicLoadingEvent());
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(InvoiceRejectEvent(
-                                                reqID:
-                                                    widget.header.sahId ?? '',
-                                                userID: widget.header.userID ??
-                                                    ''));
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(AppLocalizations.of(context)!
-                                          .proceed),
-                                    ),
-                                  ],
-                                    );
-                                  }
-                                }
-                              );
+                                  context: context,
+                                  builder: (context) {
+                                    if (Platform.isIOS) {
+                                      return CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doYouWantToRejectThisProduct),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(
+                                                      const FieldServiceInvoicLoadingEvent());
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(InvoiceRejectEvent(
+                                                      reqID:
+                                                          widget.header.sahId ??
+                                                              '',
+                                                      userID: widget
+                                                              .header.userID ??
+                                                          ''));
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      );
+                                    } else {
+                                      return AlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doYouWantToRejectThisProduct),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(
+                                                      const FieldServiceInvoicLoadingEvent());
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(InvoiceRejectEvent(
+                                                      reqID:
+                                                          widget.header.sahId ??
+                                                              '',
+                                                      userID: widget
+                                                              .header.userID ??
+                                                          ''));
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      );
+                                    }
+                                  });
                             },
                             child: Text(
                               AppLocalizations.of(context)!.reject,
@@ -775,96 +778,100 @@ class FieldServiceInvoiceDetailsState
                                 Colors.green.shade300 /* : Colors.grey[300] */,
                             onPressed: () {
                               showDialog(
-                                context: context,
-                                builder: (context) {
-                                  if(Platform.isIOS)
-                                  {
-                                    return  CupertinoAlertDialog(
-                                  title:
-                                      Text(AppLocalizations.of(context)!.alert),
-                                  content: Text(AppLocalizations.of(context)!
-                                      .doYouWantToApproveThisProduct),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {});
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                          AppLocalizations.of(context)!.cancel),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(
-                                                const FieldServiceInvoicLoadingEvent());
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(
-                                                GetFieldServiceInvoiceApprovalEvent(
-                                                    reqID:
-                                                        widget.header.sahId ??
-                                                            '',
-                                                    userID:
-                                                        widget.header.userID ??
-                                                            ''));
+                                  context: context,
+                                  builder: (context) {
+                                    if (Platform.isIOS) {
+                                      return CupertinoAlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doYouWantToApproveThisProduct),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(
+                                                      const FieldServiceInvoicLoadingEvent());
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(
+                                                      GetFieldServiceInvoiceApprovalEvent(
+                                                          reqID: widget.header
+                                                                  .sahId ??
+                                                              '',
+                                                          userID: widget.header
+                                                                  .userID ??
+                                                              ''));
 
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(AppLocalizations.of(context)!
-                                          .proceed),
-                                    ),
-                                  ],
-                                );
-                                  }
-                                  else{
-                                    return AlertDialog(
-                                      title:
-                                      Text(AppLocalizations.of(context)!.alert),
-                                  content: Text(AppLocalizations.of(context)!
-                                      .doYouWantToApproveThisProduct),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {});
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                          AppLocalizations.of(context)!.cancel),
-                                    ),
-                                    TextButton(
-                                      onPressed: () {
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(
-                                                const FieldServiceInvoicLoadingEvent());
-                                        context
-                                            .read<
-                                                FieldServiceInvoiceApprovalBloc>()
-                                            .add(
-                                                GetFieldServiceInvoiceApprovalEvent(
-                                                    reqID:
-                                                        widget.header.sahId ??
-                                                            '',
-                                                    userID:
-                                                        widget.header.userID ??
-                                                            ''));
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      );
+                                    } else {
+                                      return AlertDialog(
+                                        title: Text(
+                                            AppLocalizations.of(context)!
+                                                .alert),
+                                        content: Text(
+                                            AppLocalizations.of(context)!
+                                                .doYouWantToApproveThisProduct),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              setState(() {});
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(
+                                                      const FieldServiceInvoicLoadingEvent());
+                                              context
+                                                  .read<
+                                                      FieldServiceInvoiceApprovalBloc>()
+                                                  .add(
+                                                      GetFieldServiceInvoiceApprovalEvent(
+                                                          reqID: widget.header
+                                                                  .sahId ??
+                                                              '',
+                                                          userID: widget.header
+                                                                  .userID ??
+                                                              ''));
 
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(AppLocalizations.of(context)!
-                                          .proceed),
-                                    ),
-                                  ],
-
-                                    );
-                                  }
-                                }
-                              );
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .proceed),
+                                          ),
+                                        ],
+                                      );
+                                    }
+                                  });
                             },
                             child: Text(
                               AppLocalizations.of(context)!.approve,

@@ -310,13 +310,17 @@ class _ActivityReviewHeaderScreenState
                                     GestureDetector(
                                   onTap: () {
                                     Navigator.push(
-                                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                         DailyActivityReviewDetailScreen(header: headers[index])):
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                DailyActivityReviewDetailScreen(
-                                                  header: headers[index],
-                                                )));
+                                        context,
+                                        Platform.isIOS
+                                            ? CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    DailyActivityReviewDetailScreen(
+                                                        header: headers[index]))
+                                            : MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DailyActivityReviewDetailScreen(
+                                                      header: headers[index],
+                                                    )));
                                   },
                                   child: Column(
                                     children: [

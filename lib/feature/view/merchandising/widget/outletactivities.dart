@@ -62,14 +62,18 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutletActivityTaskHeaderScreen()):
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const OutletActivityTaskHeaderScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) =>
+                                const OutletActivityTaskHeaderScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const OutletActivityTaskHeaderScreen()),
                   );
                 },
                 child: Padding(
-                   padding: const EdgeInsets.only(left: 3.0),
+                  padding: const EdgeInsets.only(left: 3.0),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -114,7 +118,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.assignedTasks,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchTaskCountBloc,
                                   MerchTaskCountState>(
@@ -126,7 +131,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                                 "0",
                                                 style: countHeading(),
                                               )
-                                            : Text("${taskcount.assignedTasks}"),
+                                            : Text(
+                                                "${taskcount.assignedTasks}"),
                                     taskCountFailedState: () => Text(
                                       "0",
                                       style: countHeading(),
@@ -145,7 +151,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.completedTasks,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchTaskCountBloc,
                                   MerchTaskCountState>(
@@ -157,7 +164,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                                                 "0",
                                                 style: countHeading(),
                                               )
-                                            : Text("${taskcount.completedTasks}"),
+                                            : Text(
+                                                "${taskcount.completedTasks}"),
                                     taskCountFailedState: () => Text(
                                       "0",
                                       style: countHeading(),
@@ -181,14 +189,18 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutActvitySurveyHeaderScreen()):
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActvitySurveyHeaderScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) =>
+                                const OutActvitySurveyHeaderScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const OutActvitySurveyHeaderScreen()),
                   );
                 },
                 child: Padding(
-                   padding: const EdgeInsets.only(right: 3),
+                  padding: const EdgeInsets.only(right: 3),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -233,7 +245,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.assignedSurveys,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchSurveyCountBloc,
                                   MerchSurveyCountState>(
@@ -264,7 +277,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.completedSurveys,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchSurveyCountBloc,
                                   MerchSurveyCountState>(
@@ -304,14 +318,18 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutActDisplayAgreementScreen()):
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActDisplayAgreementScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) =>
+                                const OutActDisplayAgreementScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const OutActDisplayAgreementScreen()),
                   );
                 },
                 child: Padding(
-                   padding: const EdgeInsets.only(left: 3.0),
+                  padding: const EdgeInsets.only(left: 3.0),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -338,7 +356,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               ),
                               Expanded(
                                 child: Text(
-                                  AppLocalizations.of(context)!.displayAgreement,
+                                  AppLocalizations.of(context)!
+                                      .displayAgreement,
                                   style: kfontstyle(
                                       fontSize: 9.sp,
                                       color: Colors.black87,
@@ -356,7 +375,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.newAgreements,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchdisplaycountBloc,
                                   MerchdisplaycountState>(
@@ -387,7 +407,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.activeAgreements,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchdisplaycountBloc,
                                   MerchdisplaycountState>(
@@ -423,14 +444,18 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const OutActCustomerActivityScreen()):
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const OutActCustomerActivityScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) =>
+                                const OutActCustomerActivityScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const OutActCustomerActivityScreen()),
                   );
                 },
                 child: Padding(
-                   padding: const EdgeInsets.only(right: 3),
+                  padding: const EdgeInsets.only(right: 3),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -476,7 +501,8 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.openActivities,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusActCountBloc,
                                   MerchCusActCountState>(
@@ -505,9 +531,11 @@ class _OutletAcivitiesWidgetState extends State<OutletAcivitiesWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                AppLocalizations.of(context)!.completedActivities,
+                                AppLocalizations.of(context)!
+                                    .completedActivities,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusActCountBloc,
                                   MerchCusActCountState>(

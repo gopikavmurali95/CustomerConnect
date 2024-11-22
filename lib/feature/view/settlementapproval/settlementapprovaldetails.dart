@@ -276,89 +276,82 @@ class _SettlementApprovalDetailScreenState
                       Navigator.pop(context);
                       // if (isApproval) {
                       showDialog(
-                        context: context,
-                        builder: (context) 
-                        {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(AppLocalizations.of(context)!
-                              .rejectedSuccessfully),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                        );
-
-                          }
-                          else
-                          {
-                            return AlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(AppLocalizations.of(context)!
-                              .rejectedSuccessfully),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                            );
-                          }
-                        }
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .rejectedSuccessfully),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .rejectedSuccessfully),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                       // }
                     }
                   },
                   rejectApprovalFailedState: () {
                     Navigator.pop(context);
                     showDialog(
-                      context: context,
-                      builder: (context) 
-                      {
-                        if(Platform.isIOS)
-                        {
-                          return CupertinoAlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                      );
-                        }
-                        else
-                        {
-                          return AlertDialog(
-                             title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                          );
-                        }
-                      }
-                    );
+                        context: context,
+                        builder: (context) {
+                          if (Platform.isIOS) {
+                            return CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .somethingWentWrong),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .somethingWentWrong),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          }
+                        });
                   },
                   postApprovalLoadingState: () {
                     showCupertinoModalPopup(
@@ -387,79 +380,82 @@ class _SettlementApprovalDetailScreenState
                     color: Colors.red.shade300,
                     onPressed: () {
                       showDialog(
-                        context: context,
-                        builder: (context) 
-                        {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              AppLocalizations.of(context)!.doyouWantToProceed),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                setState(() {});
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.cancel),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                context
-                                    .read<SettlementApprovalRejectBloc>()
-                                    .add(const RejectApprovalLoadingEvent());
-                                context
-                                    .read<SettlementApprovalRejectBloc>()
-                                    .add(
-                                      GetRejectApprovalEvent(
-                                          udpID: widget.header.udpId ?? ""),
-                                    );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .doyouWantToProceed),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.cancel),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      context
+                                          .read<SettlementApprovalRejectBloc>()
+                                          .add(
+                                              const RejectApprovalLoadingEvent());
+                                      context
+                                          .read<SettlementApprovalRejectBloc>()
+                                          .add(
+                                            GetRejectApprovalEvent(
+                                                udpID:
+                                                    widget.header.udpId ?? ""),
+                                          );
 
-                                Navigator.pop(context);
-                              },
-                              child:
-                                  Text(AppLocalizations.of(context)!.proceed),
-                            ),
-                          ],
-                        );
-                          }
-                          else
-                          {
-                            return AlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              AppLocalizations.of(context)!.doyouWantToProceed),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                setState(() {});
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.cancel),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                context
-                                    .read<SettlementApprovalRejectBloc>()
-                                    .add(const RejectApprovalLoadingEvent());
-                                context
-                                    .read<SettlementApprovalRejectBloc>()
-                                    .add(
-                                      GetRejectApprovalEvent(
-                                          udpID: widget.header.udpId ?? ""),
-                                    );
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.proceed),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .doyouWantToProceed),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {});
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.cancel),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      context
+                                          .read<SettlementApprovalRejectBloc>()
+                                          .add(
+                                              const RejectApprovalLoadingEvent());
+                                      context
+                                          .read<SettlementApprovalRejectBloc>()
+                                          .add(
+                                            GetRejectApprovalEvent(
+                                                udpID:
+                                                    widget.header.udpId ?? ""),
+                                          );
 
-                                Navigator.pop(context);
-                              },
-                              child:
-                                  Text(AppLocalizations.of(context)!.proceed),
-                            ),
-                          ],
-                            );
-                          }
-                        }
-                      );
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.proceed),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                     },
                     child: Text(
                       AppLocalizations.of(context)!.reject,
@@ -481,87 +477,77 @@ class _SettlementApprovalDetailScreenState
                     Navigator.pop(context);
                     // if (isApproval) {
                     showDialog(
-                      context: context,
-                      builder: (context) 
-                      {
-                        if(Platform.isIOS)
-                        {
-                          return  CupertinoAlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(AppLocalizations.of(context)!
-                            .approvedSuccessfully), //Text("${response.status}"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                      );
-                        }
-                        else
-                        {
-                          return AlertDialog(
-                            title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(AppLocalizations.of(context)!
-                            .approvedSuccessfully), //Text("${response.status}"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                          );
-                        }
-                      }
-                    );
+                        context: context,
+                        builder: (context) {
+                          if (Platform.isIOS) {
+                            return CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .approvedSuccessfully), //Text("${response.status}"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .approvedSuccessfully), //Text("${response.status}"),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          }
+                        });
                     // }
                   }
                 }, postSettlementApprovalFailedState: () {
                   Navigator.pop(context);
                   showDialog(
-                    context: context,
-                    builder: (context) 
-                    {
-                      if(Platform.isIOS)
-                      {
-                        return CupertinoAlertDialog(
-                      title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text(
-                          AppLocalizations.of(context)!.somethingWentWrong),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text(AppLocalizations.of(context)!.ok),
-                        ),
-                      ],
-                    );
-                      }
-                      else
-                      {
-                        return AlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text(
-                          AppLocalizations.of(context)!.somethingWentWrong),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text(AppLocalizations.of(context)!.ok),
-                        ),
-                      ],
-                        );
-                      }
-                    }
-                  );
+                      context: context,
+                      builder: (context) {
+                        if (Platform.isIOS) {
+                          return CupertinoAlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                            content: Text(AppLocalizations.of(context)!
+                                .somethingWentWrong),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(AppLocalizations.of(context)!.ok),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return AlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                            content: Text(AppLocalizations.of(context)!
+                                .somethingWentWrong),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(AppLocalizations.of(context)!.ok),
+                              ),
+                            ],
+                          );
+                        }
+                      });
                 }, postLoadingState: () {
                   showCupertinoModalPopup(
                       context: context,
@@ -589,85 +575,94 @@ class _SettlementApprovalDetailScreenState
                         color: Colors.green.shade300,
                         onPressed: () {
                           showDialog(
-                            context: context,
-                            builder: (context) 
-                            {
-                              if(Platform.isIOS)
-                              {
-                                return CupertinoAlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(AppLocalizations.of(context)!
-                                  .doyouWantToProceed),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.cancel),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    context
-                                        .read<PostSettlementApprovalBloc>()
-                                        .add(const PostLoadingApprovalEvent());
+                              context: context,
+                              builder: (context) {
+                                if (Platform.isIOS) {
+                                  return CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          context
+                                              .read<
+                                                  PostSettlementApprovalBloc>()
+                                              .add(
+                                                  const PostLoadingApprovalEvent());
 
-                                    context
-                                        .read<PostSettlementApprovalBloc>()
-                                        .add(
-                                          GetPostApprovalEvent(
-                                            udpID: widget.header.udpId ?? "",
-                                          ),
-                                        );
+                                          context
+                                              .read<
+                                                  PostSettlementApprovalBloc>()
+                                              .add(
+                                                GetPostApprovalEvent(
+                                                  udpID:
+                                                      widget.header.udpId ?? "",
+                                                ),
+                                              );
 
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.proceed),
-                                ),
-                              ],
-                            );
-                              }
-                              else
-                              {
-                                return AlertDialog(
-                                  title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(AppLocalizations.of(context)!
-                                  .doyouWantToProceed),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.cancel),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    context
-                                        .read<PostSettlementApprovalBloc>()
-                                        .add(const PostLoadingApprovalEvent());
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return AlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doyouWantToProceed),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          context
+                                              .read<
+                                                  PostSettlementApprovalBloc>()
+                                              .add(
+                                                  const PostLoadingApprovalEvent());
 
-                                    context
-                                        .read<PostSettlementApprovalBloc>()
-                                        .add(
-                                          GetPostApprovalEvent(
-                                            udpID: widget.header.udpId ?? "",
-                                          ),
-                                        );
+                                          context
+                                              .read<
+                                                  PostSettlementApprovalBloc>()
+                                              .add(
+                                                GetPostApprovalEvent(
+                                                  udpID:
+                                                      widget.header.udpId ?? "",
+                                                ),
+                                              );
 
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.proceed),
-                                ),
-                              ],
-                                );
-                              }
-                            }
-                          );
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  );
+                                }
+                              });
                         },
                         child: Text(
                           AppLocalizations.of(context)!.approve,

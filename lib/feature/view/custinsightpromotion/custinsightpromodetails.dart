@@ -257,12 +257,17 @@ class _CustInsightPromotionDetailsState
                             mode: '',
                             searchQuery: ''));
                     Navigator.push(
-                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CusInsightQualificationGroup
-                        (header: widget.header)):
-                        MaterialPageRoute(
-                            builder: (context) => CusInsightQualificationGroup(
-                                  header: widget.header,
-                                )));
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) =>
+                                    CusInsightQualificationGroup(
+                                        header: widget.header))
+                            : MaterialPageRoute(
+                                builder: (context) =>
+                                    CusInsightQualificationGroup(
+                                      header: widget.header,
+                                    )));
                   },
                   child: Container(
                     height: 62,
@@ -331,12 +336,15 @@ class _CustInsightPromotionDetailsState
                             mode: 'A',
                             searchQuery: ''));
                     Navigator.push(
-                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CusInsightAssignmentGroup
-                        (header: widget.header)):
-                        MaterialPageRoute(
-                            builder: (context) => CusInsightAssignmentGroup(
-                                  header: widget.header,
-                                )));
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) => CusInsightAssignmentGroup(
+                                    header: widget.header))
+                            : MaterialPageRoute(
+                                builder: (context) => CusInsightAssignmentGroup(
+                                      header: widget.header,
+                                    )));
                   },
                   child: Container(
                     height: 62,

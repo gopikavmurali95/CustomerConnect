@@ -587,7 +587,6 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
 }
 
 List<Color> colorslist = [
-
   const Color(0xff9ce2f5),
   const Color(0xffe6dd94),
   const Color(0xff93e1b2),

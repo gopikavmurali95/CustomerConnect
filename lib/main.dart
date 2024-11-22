@@ -133,6 +133,7 @@ import 'package:customer_connect/feature/state/bloc/settlemetcashdetails/settlem
 import 'package:customer_connect/feature/state/bloc/special_price_customers/special_price_customers_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/special_price_header/special_price_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/specialpricedetails/special_price_details_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/stampedcopybloc/stamped_copy_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/targetdetailcount/target_details_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/targetdetailsgraphamt/target_details_graph_amt_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/targetdetailsgraphqty/rarget_details_graph_qty_bloc.dart';
@@ -833,6 +834,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getit<ScheduleReturnReasonBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<StampedCopyBloc>(),
         ),
       ],
       child: ScreenUtilInit(

@@ -186,20 +186,22 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                    InsghtsOutStandingScreen(
-                      user: user,
-                       customer: customer, 
-                       fromdatectrl: fromdatectrl,
-                        todatectrl: todatectrl)):
-                    MaterialPageRoute(
-                      builder: (context) => InsghtsOutStandingScreen(
-                        customer: customer,
-                        fromdatectrl: fromdatectrl,
-                        todatectrl: todatectrl,
-                        user: user,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => InsghtsOutStandingScreen(
+                                user: user,
+                                customer: customer,
+                                fromdatectrl: fromdatectrl,
+                                todatectrl: todatectrl))
+                        : MaterialPageRoute(
+                            builder: (context) => InsghtsOutStandingScreen(
+                              customer: customer,
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                              user: user,
+                            ),
+                          ),
                   );
                 },
                 child: OtherOptionsTilesWideget(
@@ -210,16 +212,22 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustomerInsightSpecialPricing(user: 
-                    user, customer: customer, fromdatectrl: fromdatectrl, todatectrl: todatectrl)):
-                    MaterialPageRoute(
-                      builder: (context) => CustomerInsightSpecialPricing(
-                        customer: customer,
-                        user: user,
-                        fromdatectrl: fromdatectrl,
-                        todatectrl: todatectrl,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => CustomerInsightSpecialPricing(
+                                user: user,
+                                customer: customer,
+                                fromdatectrl: fromdatectrl,
+                                todatectrl: todatectrl))
+                        : MaterialPageRoute(
+                            builder: (context) => CustomerInsightSpecialPricing(
+                              customer: customer,
+                              user: user,
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            ),
+                          ),
                   );
                 },
                 child: OtherOptionsTilesWideget(
@@ -230,19 +238,22 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                    CustomerInsightPromotion(user: user, 
-                    customer: customer,
-                     fromdatectrl: fromdatectrl,
-                      todatectrl: todatectrl)):
-                    MaterialPageRoute(
-                      builder: (context) => CustomerInsightPromotion(
-                        customer: customer,
-                        user: user,
-                        fromdatectrl: fromdatectrl,
-                        todatectrl: todatectrl,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => CustomerInsightPromotion(
+                                user: user,
+                                customer: customer,
+                                fromdatectrl: fromdatectrl,
+                                todatectrl: todatectrl))
+                        : MaterialPageRoute(
+                            builder: (context) => CustomerInsightPromotion(
+                              customer: customer,
+                              user: user,
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            ),
+                          ),
                   );
                 },
                 child: OtherOptionsTilesWideget(
@@ -253,17 +264,22 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                    CustomerItemList(
-                      customer: customer, user: user, fromdatectrl: fromdatectrl, todatectrl: todatectrl)):
-                    MaterialPageRoute(
-                      builder: (context) => CustomerItemList(
-                        customer: customer,
-                        user: user,
-                        fromdatectrl: fromdatectrl,
-                        todatectrl: todatectrl,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => CustomerItemList(
+                                customer: customer,
+                                user: user,
+                                fromdatectrl: fromdatectrl,
+                                todatectrl: todatectrl))
+                        : MaterialPageRoute(
+                            builder: (context) => CustomerItemList(
+                              customer: customer,
+                              user: user,
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            ),
+                          ),
                   );
                 },
                 child: OtherOptionsTilesWideget(
@@ -274,14 +290,17 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                    CustomerDocumentScreen(user: user, customer: customer)):
-                    MaterialPageRoute(
-                      builder: (context) => CustomerDocumentScreen(
-                        customer: customer,
-                        user: user,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => CustomerDocumentScreen(
+                                user: user, customer: customer))
+                        : MaterialPageRoute(
+                            builder: (context) => CustomerDocumentScreen(
+                              customer: customer,
+                              user: user,
+                            ),
+                          ),
                   );
                 },
                 child: OtherOptionsTilesWideget(
@@ -292,16 +311,22 @@ class OtherOptionsWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                    GeoLocationScreen(user: user, customer: customer, fromdatectrl: fromdatectrl, todatectrl: todatectrl)):
-                    MaterialPageRoute(
-                      builder: (context) => GeoLocationScreen(
-                        customer: customer,
-                        user: user,
-                        fromdatectrl: fromdatectrl,
-                        todatectrl: todatectrl,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => GeoLocationScreen(
+                                user: user,
+                                customer: customer,
+                                fromdatectrl: fromdatectrl,
+                                todatectrl: todatectrl))
+                        : MaterialPageRoute(
+                            builder: (context) => GeoLocationScreen(
+                              customer: customer,
+                              user: user,
+                              fromdatectrl: fromdatectrl,
+                              todatectrl: todatectrl,
+                            ),
+                          ),
                   );
                 },
                 child: OtherOptionsTilesWideget(

@@ -337,27 +337,35 @@ class _LoadRequestHeaderScreenState extends State<LoadRequestHeaderScreen> {
                                           (context, index) => GestureDetector(
                                                 onTap: () {
                                                   Navigator.push(
-                                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                    LoadReqDetailscreen(
-                                                      user: widget.user,
-                                                       loadrequest: headers[index],
-                                                        currentMode: _selectedloadrequest)):
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            LoadReqDetailscreen(
-                                                              user: widget.user,
-                                                              loadrequest:
-                                                                  headers[
-                                                                      index],
-                                                              currentMode:
-                                                                  _selectedloadrequest,
-                                                            )
+                                                    context,
+                                                    Platform.isIOS
+                                                        ? CupertinoPageRoute(
+                                                            builder: (context) =>
+                                                                LoadReqDetailscreen(
+                                                                    user: widget
+                                                                        .user,
+                                                                    loadrequest:
+                                                                        headers[
+                                                                            index],
+                                                                    currentMode:
+                                                                        _selectedloadrequest))
+                                                        : MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                LoadReqDetailscreen(
+                                                                  user: widget
+                                                                      .user,
+                                                                  loadrequest:
+                                                                      headers[
+                                                                          index],
+                                                                  currentMode:
+                                                                      _selectedloadrequest,
+                                                                )
 
-                                                        // LoadTransferDetailScreen(
-                                                        //   header: headers[index],
-                                                        //   user: widget.user,
-                                                        // ),
-                                                        ),
+                                                            // LoadTransferDetailScreen(
+                                                            //   header: headers[index],
+                                                            //   user: widget.user,
+                                                            // ),
+                                                            ),
                                                   );
                                                 },
                                                 child: Row(

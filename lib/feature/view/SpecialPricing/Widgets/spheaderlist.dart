@@ -84,17 +84,21 @@ class SpPrHeaderList extends StatelessWidget {
                                           onTap: () {
                                             Navigator.push(
                                                 context,
-                                                Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                SpecialPricingCustomer(user: user,
-                                                 spPrice: spHeader[index])):
-
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        SpecialPricingCustomer(
-                                                          user: user,
-                                                          spPrice:
-                                                              spHeader[index],
-                                                        )));
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            SpecialPricingCustomer(
+                                                                user: user,
+                                                                spPrice:
+                                                                    spHeader[
+                                                                        index]))
+                                                    : MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            SpecialPricingCustomer(
+                                                              user: user,
+                                                              spPrice: spHeader[
+                                                                  index],
+                                                            )));
                                           },
                                           child: Column(
                                             mainAxisAlignment:
@@ -143,17 +147,21 @@ class SpPrHeaderList extends StatelessWidget {
                                                   searchQuery: ''));
                                           Navigator.push(
                                               context,
-                                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                              SpecialPricing(user: user,
-                                              spPrice: spHeader[index],)):
-                                              
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      SpecialPricing(
-                                                        user: user,
-                                                        spPrice:
-                                                            spHeader[index],
-                                                      )));
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          SpecialPricing(
+                                                            user: user,
+                                                            spPrice:
+                                                                spHeader[index],
+                                                          ))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          SpecialPricing(
+                                                            user: user,
+                                                            spPrice:
+                                                                spHeader[index],
+                                                          )));
                                         },
                                         child: Text(
                                           AppLocalizations.of(context)!.details,

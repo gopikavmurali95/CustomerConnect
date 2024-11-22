@@ -87,13 +87,17 @@ class SalesOrders extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                TotalOrders(user: user)):
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        TotalOrders(
-                                                          user: user,
-                                                        )));
+                                                context,
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            TotalOrders(
+                                                                user: user))
+                                                    : MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            TotalOrders(
+                                                              user: user,
+                                                            )));
                                           },
                                           child: Container(
                                             /*  height: 70,
@@ -199,13 +203,17 @@ class SalesOrders extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                TodaysDelivery(user: user)):
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        TodaysDelivery(
-                                                          user: user,
-                                                        )));
+                                                context,
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            TodaysDelivery(
+                                                                user: user))
+                                                    : MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            TodaysDelivery(
+                                                              user: user,
+                                                            )));
                                           },
                                           child: Container(
                                             /* height: 70,
@@ -353,11 +361,15 @@ class SalesOrders extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>TotalOrders(user: user)):
-                                    MaterialPageRoute(
-                                        builder: (context) => TotalOrders(
-                                              user: user,
-                                            )));
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                TotalOrders(user: user))
+                                        : MaterialPageRoute(
+                                            builder: (context) => TotalOrders(
+                                                  user: user,
+                                                )));
                               },
                               child: Container(
                                 /*  height: 70,
@@ -421,11 +433,16 @@ class SalesOrders extends StatelessWidget {
                             child: InkWell(
                               onTap: () {
                                 Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>TodaysDelivery(user: user)):
-                                    MaterialPageRoute(
-                                        builder: (context) => TodaysDelivery(
-                                              user: user,
-                                            )));
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                TodaysDelivery(user: user))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                TodaysDelivery(
+                                                  user: user,
+                                                )));
                               },
                               child: Container(
                                 /* height: 70,

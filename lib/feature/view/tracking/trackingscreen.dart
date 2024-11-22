@@ -798,51 +798,50 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                 if (_dateController.text.isEmpty ||
                                     _routeIDCtrl.text.isEmpty) {
                                   showDialog(
-                                    context: context,
-                                    builder: (context) 
-                                    {
-                                      if(Platform.isIOS)
-                                      {
-                                        return CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(
-                                              context)!
-                                          .pleaseMakeSureYouHaveSelectedaRouteAndDate),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            // Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                    );
-                                      }
-                                      else
-                                      {
-                                        return AlertDialog(
-                                           title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(AppLocalizations.of(
-                                              context)!
-                                          .pleaseMakeSureYouHaveSelectedaRouteAndDate),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            // Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!.ok),
-                                        ),
-                                      ],
-                                        );
-                                      }
-                                    }
-                                  );
+                                      context: context,
+                                      builder: (context) {
+                                        if (Platform.isIOS) {
+                                          return CupertinoAlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .pleaseMakeSureYouHaveSelectedaRouteAndDate),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        } else {
+                                          return AlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: Text(AppLocalizations.of(
+                                                    context)!
+                                                .pleaseMakeSureYouHaveSelectedaRouteAndDate),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  // Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                      });
                                 } else {
                                   context
                                       .read<TrackSalesManListBloc>()
@@ -895,56 +894,52 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                 onTap: () {
                                   if (_dateController.text.isEmpty) {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) 
-                                      {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureYouHaveSelectedaDate),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else
-                                        {
-                                          return AlertDialog(
-                                            title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureYouHaveSelectedaDate),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(AppLocalizations.of(
+                                                      context)!
+                                                  .pleaseMakeSureYouHaveSelectedaDate),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(AppLocalizations.of(
+                                                      context)!
+                                                  .pleaseMakeSureYouHaveSelectedaDate),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   } else {
                                     context.read<TrackSalesManListBloc>().add(
                                         GetAllCustomersLocationEvent(

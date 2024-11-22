@@ -422,91 +422,112 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
 
                       Navigator.pop(context);
                       showDialog(
-                        context: context,
-                        builder: (context) {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(selectedLocale?.languageCode == 'en'
-                              ? statuslevel.status ?? ''
-                              : statuslevel.arStatus ?? ''),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.cancel),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                context
-                                    .read<DisputeNoteApprovalAndRejectBloc>()
-                                    .add(
-                                        const AddDisputeNoteApprovalLoadingEvent());
-                                context
-                                    .read<DisputeNoteApprovalAndRejectBloc>()
-                                    .add(
-                                      ApproveDisputeNoteEvent(
-                                        approve: DisputeInvoiceApproveInModel(
-                                            nextLevel: isApproval == true
-                                                ? statuslevel.nextLevel
-                                                : '',
-                                            remark: _remarksctrls.text,
-                                            reqId: widget.disputenote.drhId,
-                                            userId: widget.user.usrId ?? ''),
-                                      ),
-                                    );
-                              },
-                              child:
-                                  Text(AppLocalizations.of(context)!.proceed),
-                            ),
-                          ],
-                        );
-                          }
-                          else{
-                            return AlertDialog(
-                               title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(selectedLocale?.languageCode == 'en'
-                              ? statuslevel.status ?? ''
-                              : statuslevel.arStatus ?? ''),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.cancel),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                context
-                                    .read<DisputeNoteApprovalAndRejectBloc>()
-                                    .add(
-                                        const AddDisputeNoteApprovalLoadingEvent());
-                                context
-                                    .read<DisputeNoteApprovalAndRejectBloc>()
-                                    .add(
-                                      ApproveDisputeNoteEvent(
-                                        approve: DisputeInvoiceApproveInModel(
-                                            nextLevel: isApproval == true
-                                                ? statuslevel.nextLevel
-                                                : '',
-                                            remark: _remarksctrls.text,
-                                            reqId: widget.disputenote.drhId,
-                                            userId: widget.user.usrId ?? ''),
-                                      ),
-                                    );
-                              },
-                              child:
-                                  Text(AppLocalizations.of(context)!.proceed),
-                            ),
-                          ],
-                            );
-                          }
-                        }
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(
+                                    selectedLocale?.languageCode == 'en'
+                                        ? statuslevel.status ?? ''
+                                        : statuslevel.arStatus ?? ''),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.cancel),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      context
+                                          .read<
+                                              DisputeNoteApprovalAndRejectBloc>()
+                                          .add(
+                                              const AddDisputeNoteApprovalLoadingEvent());
+                                      context
+                                          .read<
+                                              DisputeNoteApprovalAndRejectBloc>()
+                                          .add(
+                                            ApproveDisputeNoteEvent(
+                                              approve:
+                                                  DisputeInvoiceApproveInModel(
+                                                      nextLevel:
+                                                          isApproval == true
+                                                              ? statuslevel
+                                                                  .nextLevel
+                                                              : '',
+                                                      remark:
+                                                          _remarksctrls.text,
+                                                      reqId: widget
+                                                          .disputenote.drhId,
+                                                      userId:
+                                                          widget.user.usrId ??
+                                                              ''),
+                                            ),
+                                          );
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.proceed),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(
+                                    selectedLocale?.languageCode == 'en'
+                                        ? statuslevel.status ?? ''
+                                        : statuslevel.arStatus ?? ''),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.cancel),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      context
+                                          .read<
+                                              DisputeNoteApprovalAndRejectBloc>()
+                                          .add(
+                                              const AddDisputeNoteApprovalLoadingEvent());
+                                      context
+                                          .read<
+                                              DisputeNoteApprovalAndRejectBloc>()
+                                          .add(
+                                            ApproveDisputeNoteEvent(
+                                              approve:
+                                                  DisputeInvoiceApproveInModel(
+                                                      nextLevel:
+                                                          isApproval == true
+                                                              ? statuslevel
+                                                                  .nextLevel
+                                                              : '',
+                                                      remark:
+                                                          _remarksctrls.text,
+                                                      reqId: widget
+                                                          .disputenote.drhId,
+                                                      userId:
+                                                          widget.user.usrId ??
+                                                              ''),
+                                            ),
+                                          );
+                                    },
+                                    child: Text(
+                                        AppLocalizations.of(context)!.proceed),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                       /* } else {
                         showCupertinoDialog(
                           context: context,
@@ -529,51 +550,50 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                   disputStatusLevelFailedState: () {
                     Navigator.pop(context);
                     showDialog(
-                      context: context,
-                      builder: (context) {
-                        if(Platform.isIOS)
-                        {
-                          return  CupertinoAlertDialog(
-                        title: Text(
-                          AppLocalizations.of(context)!.alert,
-                          style: kfontstyle(),
-                        ),
-                        content: Text(
-                          AppLocalizations.of(context)!.somethingWentWrong,
-                          style: kfontstyle(),
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                      );
-                        }
-                        else{
-                          return AlertDialog(
-                            title: Text(
-                          AppLocalizations.of(context)!.alert,
-                          style: kfontstyle(),
-                        ),
-                        content: Text(
-                          AppLocalizations.of(context)!.somethingWentWrong,
-                          style: kfontstyle(),
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                          );
-                        }
-                      }
-                    );
+                        context: context,
+                        builder: (context) {
+                          if (Platform.isIOS) {
+                            return CupertinoAlertDialog(
+                              title: Text(
+                                AppLocalizations.of(context)!.alert,
+                                style: kfontstyle(),
+                              ),
+                              content: Text(
+                                AppLocalizations.of(context)!
+                                    .somethingWentWrong,
+                                style: kfontstyle(),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return AlertDialog(
+                              title: Text(
+                                AppLocalizations.of(context)!.alert,
+                                style: kfontstyle(),
+                              ),
+                              content: Text(
+                                AppLocalizations.of(context)!
+                                    .somethingWentWrong,
+                                style: kfontstyle(),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          }
+                        });
                   },
                   disputeApprovastatusLoadingState: () {
                     FocusScope.of(context).unfocus();
@@ -604,111 +624,110 @@ class _DisputeNoteDetailScreenState extends State<DisputeNoteDetailScreen> {
                       if (resp != null && isApprove != null) {
                         Navigator.pop(context);
                         showCupertinoDialog(
-                          context: context,
-                          builder: (context) {
-                            if(Platform.isIOS)
-                            {
-                              return PopScope(
-                            canPop: false,
-                            child: CupertinoAlertDialog(
-                              title: Text(
-                                AppLocalizations.of(context)!.alert,
-                                style: kfontstyle(),
-                              ),
-                              content: Text(
-                                isApprove == true
-                                    ? '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}'
-                                    : '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}',
-                                style: kfontstyle(),
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                            ),
-                          );
-                            }
-                            else
-                            {
-                              return AlertDialog(
-                                title: Text(
-                                AppLocalizations.of(context)!.alert,
-                                style: kfontstyle(),
-                              ),
-                              content: Text(
-                                isApprove == true
-                                    ? '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}'
-                                    : '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}',
-                                style: kfontstyle(),
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                              );
-                            }
-                          }
-                        );
+                            context: context,
+                            builder: (context) {
+                              if (Platform.isIOS) {
+                                return PopScope(
+                                  canPop: false,
+                                  child: CupertinoAlertDialog(
+                                    title: Text(
+                                      AppLocalizations.of(context)!.alert,
+                                      style: kfontstyle(),
+                                    ),
+                                    content: Text(
+                                      isApprove == true
+                                          ? '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}'
+                                          : '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}',
+                                      style: kfontstyle(),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              } else {
+                                return AlertDialog(
+                                  title: Text(
+                                    AppLocalizations.of(context)!.alert,
+                                    style: kfontstyle(),
+                                  ),
+                                  content: Text(
+                                    isApprove == true
+                                        ? '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}'
+                                        : '${AppLocalizations.of(context)!.disputeNoteRequest} ${selectedLocale?.languageCode == 'en' ? resp.status : resp.arstatus}',
+                                    style: kfontstyle(),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)!.ok),
+                                    ),
+                                  ],
+                                );
+                              }
+                            });
                       }
                     },
                     disputeApprovalFailedState: () {
                       Navigator.pop(context);
                       showDialog(
-                        context: context,
-                        builder: (context) {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title: Text(
-                            AppLocalizations.of(context)!.alert,
-                            style: kfontstyle(),
-                          ),
-                          content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong,
-                            style: kfontstyle(),
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                        );
-                          }
-                          else{
-                            return AlertDialog(
-                               title: Text(
-                            AppLocalizations.of(context)!.alert,
-                            style: kfontstyle(),
-                          ),
-                          content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong,
-                            style: kfontstyle(),
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                            );
-                          }
-                        }
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title: Text(
+                                  AppLocalizations.of(context)!.alert,
+                                  style: kfontstyle(),
+                                ),
+                                content: Text(
+                                  AppLocalizations.of(context)!
+                                      .somethingWentWrong,
+                                  style: kfontstyle(),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title: Text(
+                                  AppLocalizations.of(context)!.alert,
+                                  style: kfontstyle(),
+                                ),
+                                content: Text(
+                                  AppLocalizations.of(context)!
+                                      .somethingWentWrong,
+                                  style: kfontstyle(),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                     },
                     disputeApprovalLoadingState: () {
                       showCupertinoModalPopup(

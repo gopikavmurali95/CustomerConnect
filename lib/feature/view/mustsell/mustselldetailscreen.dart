@@ -497,86 +497,81 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                           .selectedHeadersList([]);
                       Navigator.pop(context);
                       showDialog(
-                        context: context,
-                        builder: (context) {
-                          if(Platform.isIOS)
-                          {
-                            return  CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                        );
-                          }
-                          else
-                          {
-                            return AlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                            );
-                          }
-                        }
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(
+                                    " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(
+                                    " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                     }
                   },
                   mustSellApproveFailedState: () {
                     Navigator.pop(context);
                     showDialog(
-                      context: context,
-                      builder: (context) 
-                      {
-                        if(Platform.isIOS)
-                        {
-                          return CupertinoAlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                      );
-                        }
-                        else
-                        {
-                          return AlertDialog(
-                            title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                          );
-                        }
-                      }
-                    );
+                        context: context,
+                        builder: (context) {
+                          if (Platform.isIOS) {
+                            return CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .somethingWentWrong),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .somethingWentWrong),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          }
+                        });
                   },
                   mustSellApproveLoadingEvent: () {
                     showCupertinoModalPopup(
@@ -620,117 +615,124 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                 onPressed: () {
                                   if (selectedMustSellMode == 'P') {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
 
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                      const MustSellLoadingEvent());
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                    ApproveMustSellEvent(
-                                                      approve:
-                                                          MustSellApproveInModel(
-                                                              jsonString: [
-                                                            MustSellIJsonModel(
-                                                                msaId: widget
-                                                                    .header
-                                                                    .msaId,
-                                                                status: "R")
-                                                          ],
-                                                              transId: '',
-                                                              userId: widget
-                                                                  .user.usrId),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else 
-                                        {
-                                          return AlertDialog(
-                                            title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                            const MustSellLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                          ApproveMustSellEvent(
+                                                            approve:
+                                                                MustSellApproveInModel(
+                                                                    jsonString: [
+                                                                  MustSellIJsonModel(
+                                                                      msaId: widget
+                                                                          .header
+                                                                          .msaId,
+                                                                      status:
+                                                                          "R")
+                                                                ],
+                                                                    transId: '',
+                                                                    userId: widget
+                                                                        .user
+                                                                        .usrId),
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
 
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                      const MustSellLoadingEvent());
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                    ApproveMustSellEvent(
-                                                      approve:
-                                                          MustSellApproveInModel(
-                                                              jsonString: [
-                                                            MustSellIJsonModel(
-                                                                msaId: widget
-                                                                    .header
-                                                                    .msaId,
-                                                                status: "R")
-                                                          ],
-                                                              transId: '',
-                                                              userId: widget
-                                                                  .user.usrId),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                            const MustSellLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                          ApproveMustSellEvent(
+                                                            approve:
+                                                                MustSellApproveInModel(
+                                                                    jsonString: [
+                                                                  MustSellIJsonModel(
+                                                                      msaId: widget
+                                                                          .header
+                                                                          .msaId,
+                                                                      status:
+                                                                          "R")
+                                                                ],
+                                                                    transId: '',
+                                                                    userId: widget
+                                                                        .user
+                                                                        .usrId),
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   }
                                 },
                                 child: Text(
@@ -758,117 +760,124 @@ class _MustSellDetailScreenState extends State<MustSellDetailScreen> {
                                 onPressed: () {
                                   if (selectedMustSellMode == 'P') {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) 
-                                      {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                      const MustSellLoadingEvent());
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                            const MustSellLoadingEvent());
 
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                    ApproveMustSellEvent(
-                                                      approve:
-                                                          MustSellApproveInModel(
-                                                              jsonString: [
-                                                            MustSellIJsonModel(
-                                                                msaId: widget
-                                                                    .header
-                                                                    .msaId,
-                                                                status: "A")
-                                                          ],
-                                                              transId: '',
-                                                              userId: widget
-                                                                  .user.usrId),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else{
-                                          return AlertDialog(
-                                             title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                      const MustSellLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                          ApproveMustSellEvent(
+                                                            approve:
+                                                                MustSellApproveInModel(
+                                                                    jsonString: [
+                                                                  MustSellIJsonModel(
+                                                                      msaId: widget
+                                                                          .header
+                                                                          .msaId,
+                                                                      status:
+                                                                          "A")
+                                                                ],
+                                                                    transId: '',
+                                                                    userId: widget
+                                                                        .user
+                                                                        .usrId),
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                            const MustSellLoadingEvent());
 
-                                              context
-                                                  .read<MustSellApproveBloc>()
-                                                  .add(
-                                                    ApproveMustSellEvent(
-                                                      approve:
-                                                          MustSellApproveInModel(
-                                                              jsonString: [
-                                                            MustSellIJsonModel(
-                                                                msaId: widget
-                                                                    .header
-                                                                    .msaId,
-                                                                status: "A")
-                                                          ],
-                                                              transId: '',
-                                                              userId: widget
-                                                                  .user.usrId),
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                                    context
+                                                        .read<
+                                                            MustSellApproveBloc>()
+                                                        .add(
+                                                          ApproveMustSellEvent(
+                                                            approve:
+                                                                MustSellApproveInModel(
+                                                                    jsonString: [
+                                                                  MustSellIJsonModel(
+                                                                      msaId: widget
+                                                                          .header
+                                                                          .msaId,
+                                                                      status:
+                                                                          "A")
+                                                                ],
+                                                                    transId: '',
+                                                                    userId: widget
+                                                                        .user
+                                                                        .usrId),
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   }
                                 },
                                 child: Text(

@@ -58,14 +58,21 @@ class CompletedList extends StatelessWidget {
                                 child: ListTile(
                                   onTap: () {
                                     Navigator.push(
-                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                      LoadDetailCompleted(loadingheader: loadingheaders[index])):
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            LoadDetailCompleted(
-                                          loadingheader: loadingheaders[index],
-                                        ),
-                                      ),
+                                      context,
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  LoadDetailCompleted(
+                                                      loadingheader:
+                                                          loadingheaders[
+                                                              index]))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LoadDetailCompleted(
+                                                loadingheader:
+                                                    loadingheaders[index],
+                                              ),
+                                            ),
                                     );
                                   },
                                   //titleAlignment: ListTileTitleAlignment.center,

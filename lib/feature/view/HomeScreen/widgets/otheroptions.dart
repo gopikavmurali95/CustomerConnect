@@ -43,12 +43,15 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         .read<ApprovalCountsBloc>()
                         .add(GetApprovalsCountEvent(userID: user.usrId ?? ''));
                     Navigator.push(
-                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>ApprovalScreen(user: user)):
-                      MaterialPageRoute(
-                        builder: (context) => ApprovalScreen(
-                          user: user,
-                        ),
-                      ),
+                      context,
+                      Platform.isIOS
+                          ? CupertinoPageRoute(
+                              builder: (context) => ApprovalScreen(user: user))
+                          : MaterialPageRoute(
+                              builder: (context) => ApprovalScreen(
+                                user: user,
+                              ),
+                            ),
                     );
                   },
                   child: Container(
@@ -106,12 +109,16 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustomersScren(user: user)):
-                        MaterialPageRoute(
-                          builder: (context) => CustomersScren(
-                            user: user,
-                          ),
-                        ));
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) =>
+                                    CustomersScren(user: user))
+                            : MaterialPageRoute(
+                                builder: (context) => CustomersScren(
+                                  user: user,
+                                ),
+                              ));
                   },
                   child: Container(
                     height: 65.h,
@@ -173,10 +180,15 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const TrackSalesManScreen()):
-                        CupertinoPageRoute(
-                          builder: (context) => const TrackSalesManScreen(),
-                        ));
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) =>
+                                    const TrackSalesManScreen())
+                            : CupertinoPageRoute(
+                                builder: (context) =>
+                                    const TrackSalesManScreen(),
+                              ));
                   },
                   child: Container(
                     height: 65.h,
@@ -237,11 +249,16 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PromotionHeader(user: user,)):
-                        MaterialPageRoute(
-                            builder: (context) => PromotionHeader(
-                                  user: user,
-                                )));
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) => PromotionHeader(
+                                      user: user,
+                                    ))
+                            : MaterialPageRoute(
+                                builder: (context) => PromotionHeader(
+                                      user: user,
+                                    )));
                   },
                   child: Container(
                     height: 65.h,
@@ -305,12 +322,17 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>SpecialPricingHeader(user:user,)):
-                    MaterialPageRoute(
-                      builder: (context) => SpecialPricingHeader(
-                        user: user,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => SpecialPricingHeader(
+                                  user: user,
+                                ))
+                        : MaterialPageRoute(
+                            builder: (context) => SpecialPricingHeader(
+                              user: user,
+                            ),
+                          ),
                   );
                 },
                 child: Container(
@@ -369,14 +391,17 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>OutstandingHeaderScreen(
-                      isfromUser: false, user: user)):
-                    MaterialPageRoute(
-                      builder: (context) => OutstandingHeaderScreen(
-                        isfromUser: false,
-                        user: user,
-                      ),
-                    ),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => OutstandingHeaderScreen(
+                                isfromUser: false, user: user))
+                        : MaterialPageRoute(
+                            builder: (context) => OutstandingHeaderScreen(
+                              isfromUser: false,
+                              user: user,
+                            ),
+                          ),
                   );
                 },
                 child: Container(
@@ -435,10 +460,13 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const TargetHeaderScreen()):
-                      CupertinoPageRoute(
-                        builder: (context) => const TargetHeaderScreen(),
-                      ));
+                      context,
+                      Platform.isIOS
+                          ? CupertinoPageRoute(
+                              builder: (context) => const TargetHeaderScreen())
+                          : CupertinoPageRoute(
+                              builder: (context) => const TargetHeaderScreen(),
+                            ));
                 },
                 child: Container(
                   height: 65.h,
@@ -496,11 +524,15 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const ActivityReviewHeaderScreen()):
-                      CupertinoPageRoute(
-                        builder: (context) =>
-                            const ActivityReviewHeaderScreen(),
-                      ));
+                      context,
+                      Platform.isIOS
+                          ? CupertinoPageRoute(
+                              builder: (context) =>
+                                  const ActivityReviewHeaderScreen())
+                          : CupertinoPageRoute(
+                              builder: (context) =>
+                                  const ActivityReviewHeaderScreen(),
+                            ));
                 },
                 child: Container(
                   height: 65.h,
@@ -559,10 +591,13 @@ class OtherOptionsHomeWidget extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const MerchandisingScreen()):
-                      CupertinoPageRoute(
-                        builder: (context) => const MerchandisingScreen(),
-                      ));
+                      context,
+                      Platform.isIOS
+                          ? CupertinoPageRoute(
+                              builder: (context) => const MerchandisingScreen())
+                          : CupertinoPageRoute(
+                              builder: (context) => const MerchandisingScreen(),
+                            ));
                 },
                 child: Container(
                   height: 65.h,

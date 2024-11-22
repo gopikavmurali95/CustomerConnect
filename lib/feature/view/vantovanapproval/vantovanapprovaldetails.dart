@@ -579,76 +579,74 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                   loadingCount = 0;
                                                   Navigator.pop(context);
                                                   showDialog(
-                                                    context: context,
-                                                    builder: (context) 
-                                                    {
-                                                      if(Platform.isIOS)
-                                                      {
-                                                        return CupertinoAlertDialog(
-                                                      title: Text(
-                                                          AppLocalizations.of(
-                                                                  context)!
-                                                              .alert),
-                                                      content: Text(selectedLocale
-                                                                  ?.languageCode ==
-                                                              "en"
-                                                          ? response.status ??
-                                                              ''
-                                                          : response.arStatus ??
-                                                              ''),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () {
-                                                            approvedCount++;
+                                                      context: context,
+                                                      builder: (context) {
+                                                        if (Platform.isIOS) {
+                                                          return CupertinoAlertDialog(
+                                                            title: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .alert),
+                                                            content: Text(selectedLocale
+                                                                        ?.languageCode ==
+                                                                    "en"
+                                                                ? response
+                                                                        .status ??
+                                                                    ''
+                                                                : response
+                                                                        .arStatus ??
+                                                                    ''),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  approvedCount++;
 
-                                                            Navigator.pop(
-                                                                context);
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text(
-                                                              AppLocalizations.of(
-                                                                      context)!
-                                                                  .ok),
-                                                        ),
-                                                      ],
-                                                    );
-                                                      }
-                                                      else
-                                                     {
-                                                       return AlertDialog(
-                                                        title: Text(
-                                                          AppLocalizations.of(
-                                                                  context)!
-                                                              .alert),
-                                                      content: Text(selectedLocale
-                                                                  ?.languageCode ==
-                                                              "en"
-                                                          ? response.status ??
-                                                              ''
-                                                          : response.arStatus ??
-                                                              ''),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () {
-                                                            approvedCount++;
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child: Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .ok),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        } else {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .alert),
+                                                            content: Text(selectedLocale
+                                                                        ?.languageCode ==
+                                                                    "en"
+                                                                ? response
+                                                                        .status ??
+                                                                    ''
+                                                                : response
+                                                                        .arStatus ??
+                                                                    ''),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  approvedCount++;
 
-                                                            Navigator.pop(
-                                                                context);
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text(
-                                                              AppLocalizations.of(
-                                                                      context)!
-                                                                  .ok),
-                                                        ),
-                                                      ],
-                                                      );
-                                                     }
-                                                    }
-                                                        
-                                                  );
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child: Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .ok),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        }
+                                                      });
                                                 }
                                               }
                                             },
@@ -656,75 +654,75 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                               Navigator.pop(context);
                                               showDialog(
                                                   context: context,
-                                                  builder:
-                                                      (context) {
-                                                        if(Platform.isIOS)
-                                                        {
-                                                          return  CupertinoAlertDialog(
-                                                            title: Text(
-                                                                AppLocalizations.of(
-                                                                        context)!
-                                                                    .alert),
-                                                            content: Text(
-                                                                AppLocalizations.of(
-                                                                        context)!
-                                                                    .somethingWentWrong),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () {
-                                                                  context.read<VanToVanDetailsBloc>().add(GetVanToVanDetailEvent(
+                                                  builder: (context) {
+                                                    if (Platform.isIOS) {
+                                                      return CupertinoAlertDialog(
+                                                        title: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .alert),
+                                                        content: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .somethingWentWrong),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              context
+                                                                  .read<
+                                                                      VanToVanDetailsBloc>()
+                                                                  .add(GetVanToVanDetailEvent(
                                                                       reqID: widget
                                                                               .vanToVanHeader
                                                                               .vvhId ??
                                                                           '',
                                                                       searchQuery:
                                                                           ''));
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                },
-                                                                child: Text(
-                                                                    AppLocalizations.of(
-                                                                            context)!
-                                                                        .ok),
-                                                              )
-                                                            ],
-                                                          );
-                                                        }
-                                                        else
-                                                        {
-                                                          return AlertDialog(
-                                                            title: Text(
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: Text(
                                                                 AppLocalizations.of(
                                                                         context)!
-                                                                    .alert),
-                                                            content: Text(
-                                                                AppLocalizations.of(
-                                                                        context)!
-                                                                    .somethingWentWrong),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () {
-                                                                  context.read<VanToVanDetailsBloc>().add(GetVanToVanDetailEvent(
+                                                                    .ok),
+                                                          )
+                                                        ],
+                                                      );
+                                                    } else {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .alert),
+                                                        content: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .somethingWentWrong),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              context
+                                                                  .read<
+                                                                      VanToVanDetailsBloc>()
+                                                                  .add(GetVanToVanDetailEvent(
                                                                       reqID: widget
                                                                               .vanToVanHeader
                                                                               .vvhId ??
                                                                           '',
                                                                       searchQuery:
                                                                           ''));
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                },
-                                                                child: Text(
-                                                                    AppLocalizations.of(
-                                                                            context)!
-                                                                        .ok),
-                                                              )
-                                                            ],
-                                                          );
-                                                        }
-                                                      }
-                                                         
-                                                          );
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .ok),
+                                                          )
+                                                        ],
+                                                      );
+                                                    }
+                                                  });
                                             },
                                             vanToVanApprovalLoadingState: () {
                                               if (loadingCount == 0) {
@@ -1059,106 +1057,102 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                     'Pending') {
                                   if (approvedProducts.contains(null)) {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) 
-                                      {
-                                        if(Platform.isIOS)
-                                        {
-                                          return  CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureToApproveAndReject),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else
-                                        {
-                                          return AlertDialog(
-                                            title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(AppLocalizations.of(
-                                                context)!
-                                            .pleaseMakeSureToApproveAndReject),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                         
-                                    );
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(AppLocalizations.of(
+                                                      context)!
+                                                  .pleaseMakeSureToApproveAndReject),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(AppLocalizations.of(
+                                                      context)!
+                                                  .pleaseMakeSureToApproveAndReject),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .ok),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   } else {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) 
-                                      {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
-                                              setState(() {});
-                                              Navigator.pop(context);
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    loadingCount = 0;
+                                                    setState(() {});
+                                                    Navigator.pop(context);
 
-                                              context
-                                                  .read<VanToVanApprovalBloc>()
-                                                  .add(
-                                                      const VanToVanApprovalLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            VanToVanApprovalBloc>()
+                                                        .add(
+                                                            const VanToVanApprovalLoadingEvent());
 
-                                              context
-                                                  .read<VanToVanApprovalBloc>()
-                                                  .add(GetVanToVanApprovalEent(
-                                                      approvalIn:
-                                                          VanToVanApprovalInParas(
-                                                              products:
-                                                                  approvedProducts,
-                                                              userID: widget
-                                                                  .vanToVanHeader
-                                                                  .userID,
-                                                              reqID: widget
-                                                                  .vanToVanHeader
-                                                                  .vvhId)));
+                                                    context
+                                                        .read<
+                                                            VanToVanApprovalBloc>()
+                                                        .add(GetVanToVanApprovalEent(
+                                                            approvalIn: VanToVanApprovalInParas(
+                                                                products:
+                                                                    approvedProducts,
+                                                                userID: widget
+                                                                    .vanToVanHeader
+                                                                    .userID,
+                                                                reqID: widget
+                                                                    .vanToVanHeader
+                                                                    .vvhId)));
 
-                                              /*     log(jsonEncode(
+                                                    /*     log(jsonEncode(
                                                   VanToVanApprovalInParas(
                                                       products:
                                                           approvedProducts,
@@ -1168,70 +1162,68 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                       reqID: widget
                                                           .vanToVanHeader
                                                           .vvhId))); */
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else
-                                        {
-                                          return AlertDialog(
-                                             title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              loadingCount = 0;
-                                              setState(() {});
-                                              Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    loadingCount = 0;
+                                                    setState(() {});
+                                                    Navigator.pop(context);
 
-                                              context
-                                                  .read<VanToVanApprovalBloc>()
-                                                  .add(
-                                                      const VanToVanApprovalLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            VanToVanApprovalBloc>()
+                                                        .add(
+                                                            const VanToVanApprovalLoadingEvent());
 
-                                              context
-                                                  .read<VanToVanApprovalBloc>()
-                                                  .add(GetVanToVanApprovalEent(
-                                                      approvalIn:
-                                                          VanToVanApprovalInParas(
-                                                              products:
-                                                                  approvedProducts,
-                                                              userID: widget
-                                                                  .vanToVanHeader
-                                                                  .userID,
-                                                              reqID: widget
-                                                                  .vanToVanHeader
-                                                                  .vvhId)));
-
-                                              
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                                    context
+                                                        .read<
+                                                            VanToVanApprovalBloc>()
+                                                        .add(GetVanToVanApprovalEent(
+                                                            approvalIn: VanToVanApprovalInParas(
+                                                                products:
+                                                                    approvedProducts,
+                                                                userID: widget
+                                                                    .vanToVanHeader
+                                                                    .userID,
+                                                                reqID: widget
+                                                                    .vanToVanHeader
+                                                                    .vvhId)));
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   }
                                 }
                               },

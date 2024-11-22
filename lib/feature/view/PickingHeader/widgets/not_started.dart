@@ -64,14 +64,18 @@ class NotStartedHead extends StatelessWidget {
                                               pickingOut[index].pickingID!,
                                           searchQuery: ''));
                                   Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    PickingDetailNotStarted(picking: pickingOut[index])):
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          PickingDetailNotStarted(
-                                        picking: pickingOut[index],
-                                      ),
-                                    ),
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                PickingDetailNotStarted(
+                                                    picking: pickingOut[index]))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                PickingDetailNotStarted(
+                                              picking: pickingOut[index],
+                                            ),
+                                          ),
                                   );
                                 },
                                 horizontalTitleGap: 10,

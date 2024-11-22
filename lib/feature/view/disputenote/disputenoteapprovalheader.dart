@@ -328,18 +328,26 @@ class _DisputeNoteApprovalHEaderScreenState
                                               .read<NavigatetoBackCubit>()
                                               .popFromScreen(false);
                                           Navigator.push(
-                                            context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                            DisputeNoteDetailScreen(user: widget.user, disputenote: headers[index],
-                                             currentMode: _selectedDisputeMode)):
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  DisputeNoteDetailScreen(
-                                                disputenote: headers[index],
-                                                user: widget.user,
-                                                currentMode:
-                                                    _selectedDisputeMode,
-                                              ),
-                                            ),
+                                            context,
+                                            Platform.isIOS
+                                                ? CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        DisputeNoteDetailScreen(
+                                                            user: widget.user,
+                                                            disputenote:
+                                                                headers[index],
+                                                            currentMode:
+                                                                _selectedDisputeMode))
+                                                : MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DisputeNoteDetailScreen(
+                                                      disputenote:
+                                                          headers[index],
+                                                      user: widget.user,
+                                                      currentMode:
+                                                          _selectedDisputeMode,
+                                                    ),
+                                                  ),
                                           );
                                         },
                                         child: Row(

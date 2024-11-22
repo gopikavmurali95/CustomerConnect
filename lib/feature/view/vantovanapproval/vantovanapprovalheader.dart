@@ -309,66 +309,74 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10),
                                       child: ListView.separated(
-                                          itemBuilder: (context, index) =>
-                                              GestureDetector(
-                                                onTap: () {
-                                                  context
-                                                      .read<
-                                                          NavigatetoBackCubit>()
-                                                      .popFromScreen(false);
-                                                  Navigator.push(
-                                                      context,
-                                                      Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                      VanToVanApprovalDetails
-                                                      (user: widget.user, 
-                                                      vanToVanHeader: pChange[index],
-                                                       currentMode: _selectedMode)):
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              VanToVanApprovalDetails(
-                                                                vanToVanHeader:
-                                                                    pChange[
-                                                                        index],
-                                                                user:
-                                                                    widget.user,
-                                                                currentMode:
-                                                                    _selectedMode,
-                                                              )));
-                                                },
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                      height: 70,
-                                                      width: 10,
-                                                      decoration: BoxDecoration(
-                                                          color: const Color(
-                                                              0xfffee8e0),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20)),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 10.w,
-                                                    ),
-                                                    Expanded(
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            '${pChange[index].vvhTransId}',
-                                                            style: kfontstyle(
-                                                              fontSize: 12.sp,
+                                          itemBuilder:
+                                              (context, index) =>
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      context
+                                                          .read<
+                                                              NavigatetoBackCubit>()
+                                                          .popFromScreen(false);
+                                                      Navigator.push(
+                                                          context,
+                                                          Platform.isIOS
+                                                              ? CupertinoPageRoute(
+                                                                  builder: (context) => VanToVanApprovalDetails(
+                                                                      user: widget
+                                                                          .user,
+                                                                      vanToVanHeader:
+                                                                          pChange[
+                                                                              index],
+                                                                      currentMode:
+                                                                          _selectedMode))
+                                                              : MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          VanToVanApprovalDetails(
+                                                                            vanToVanHeader:
+                                                                                pChange[index],
+                                                                            user:
+                                                                                widget.user,
+                                                                            currentMode:
+                                                                                _selectedMode,
+                                                                          )));
+                                                    },
+                                                    child: Row(
+                                                      children: [
+                                                        Container(
+                                                          height: 70,
+                                                          width: 10,
+                                                          decoration: BoxDecoration(
                                                               color: const Color(
-                                                                  0xff2C6B9E),
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                          ),
-                                                          /* Row(
+                                                                  0xfffee8e0),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20)),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 10.w,
+                                                        ),
+                                                        Expanded(
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                '${pChange[index].vvhTransId}',
+                                                                style:
+                                                                    kfontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: const Color(
+                                                                      0xff2C6B9E),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                ),
+                                                              ),
+                                                              /* Row(
                                                             children: [
                                                               Text(
                                                                 '${pChange[index].vvhFromRot} - ',
@@ -396,43 +404,40 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                             ],
                                                           ), */
 
-                                                          RichText(
-                                                            text: TextSpan(
-                                                                style: DefaultTextStyle.of(
-                                                                        context)
-                                                                    .style
-                                                                    .copyWith(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                      decoration:
-                                                                          TextDecoration
-                                                                              .none,
-                                                                    ),
-                                                                children: [
-                                                                  TextSpan(
-                                                                    text:
-                                                                        '${pChange[index].vvhFromRot} - ',
-                                                                    style:
-                                                                        kfontstyle(
-                                                                      fontSize:
-                                                                          11.sp,
-                                                                      color: const Color(
-                                                                          0xff2C6B9E),
-                                                                    ),
-                                                                  ),
-                                                                  TextSpan(
-                                                                    text:
-                                                                        "${pChange[index].vvhToRot}",
-                                                                    style: kfontstyle(
-                                                                        fontSize: 12
-                                                                            .sp,
-                                                                        color: const Color(
-                                                                            0xff413434)),
-                                                                  )
-                                                                ]),
-                                                          ),
-                                                          /*Text(
+                                                              RichText(
+                                                                text: TextSpan(
+                                                                    style: DefaultTextStyle.of(
+                                                                            context)
+                                                                        .style
+                                                                        .copyWith(
+                                                                          fontWeight:
+                                                                              FontWeight.normal,
+                                                                          decoration:
+                                                                              TextDecoration.none,
+                                                                        ),
+                                                                    children: [
+                                                                      TextSpan(
+                                                                        text:
+                                                                            '${pChange[index].vvhFromRot} - ',
+                                                                        style:
+                                                                            kfontstyle(
+                                                                          fontSize:
+                                                                              11.sp,
+                                                                          color:
+                                                                              const Color(0xff2C6B9E),
+                                                                        ),
+                                                                      ),
+                                                                      TextSpan(
+                                                                        text:
+                                                                            "${pChange[index].vvhToRot}",
+                                                                        style: kfontstyle(
+                                                                            fontSize:
+                                                                                12.sp,
+                                                                            color: const Color(0xff413434)),
+                                                                      )
+                                                                    ]),
+                                                              ),
+                                                              /*Text(
                                                         overflow: TextOverflow.ellipsis,
                                                         "${pChange[index].status}",
                                                         style: kfontstyle(
@@ -440,74 +445,79 @@ class _VanToVanApprovalHeaderState extends State<VanToVanApprovalHeader> {
                                                             color: const Color(
                                                                 0xff413434)),
                                                       ),*/
-                                                          Text(
-                                                            '${pChange[index].createdDate} ',
-                                                            style: kfontstyle(
-                                                                fontSize: 10.sp,
-                                                                color: Colors
-                                                                    .grey),
+                                                              Text(
+                                                                '${pChange[index].createdDate} ',
+                                                                style: kfontstyle(
+                                                                    fontSize:
+                                                                        10.sp,
+                                                                    color: Colors
+                                                                        .grey),
+                                                              ),
+                                                            ],
                                                           ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color: /*  pChange[index]
+                                                        ),
+                                                        Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: /*  pChange[index]
                                                                     .approvalStatus!
                                                                     .isEmpty ||
                                                                 pChange[index]
                                                                         .approvalStatus !=
                                                                     'Approved'
                                                             ?  */
-                                                            pChange[index]
-                                                                        .approvalStatus ==
-                                                                    'Pending'
-                                                                ? /* Colors
+                                                                pChange[index]
+                                                                            .approvalStatus ==
+                                                                        'Pending'
+                                                                    ? /* Colors
                                                                     .red[300] */
-                                                                const Color(
-                                                                    0xfff7f4e2)
-                                                                : const Color(
-                                                                    0xffe3f7e2),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                          20,
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal: 8,
-                                                                vertical: 5),
-                                                        child: Text(
-                                                          selectedLocale
-                                                                      ?.languageCode ==
-                                                                  "en"
-                                                              ? pChange[index]
-                                                                      .approvalStatus ??
-                                                                  ''
-                                                              : pChange[index]
-                                                                      .approvalArStatus ??
-                                                                  '',
-                                                          style: kfontstyle(
-                                                              fontSize: 10.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: pChange[index]
-                                                                          .approvalStatus ==
-                                                                      'Rejected'
-                                                                  ? Colors
-                                                                      .white54
-                                                                  : Colors
-                                                                      .black54),
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
+                                                                    const Color(
+                                                                        0xfff7f4e2)
+                                                                    : const Color(
+                                                                        0xffe3f7e2),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              20,
+                                                            ),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        8,
+                                                                    vertical:
+                                                                        5),
+                                                            child: Text(
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      "en"
+                                                                  ? pChange[index]
+                                                                          .approvalStatus ??
+                                                                      ''
+                                                                  : pChange[index]
+                                                                          .approvalArStatus ??
+                                                                      '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: pChange[index]
+                                                                              .approvalStatus ==
+                                                                          'Rejected'
+                                                                      ? Colors
+                                                                          .white54
+                                                                      : Colors
+                                                                          .black54),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
                                           separatorBuilder: (context, index) =>
                                               Divider(
                                                 color: Colors.grey[300],

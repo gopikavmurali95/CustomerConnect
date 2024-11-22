@@ -150,27 +150,37 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                         ],
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 14.h,
-                          width: 30.w,
-                          decoration: BoxDecoration(
-                              color: widget.invoiceheader.invoiceType == 'DI'
-                                  ? const Color(0xffe3f7e2)
-                                  : const Color(0xfff7f4e2),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
-                            child: Text(
-                              widget.invoiceheader.invoiceType ?? '',
-                              style: TextStyle(
-                                  fontSize: 10.sp,
-                                  color: const Color(0xff413434)),
+                    SizedBox(
+                      height: 70.h,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 14.h,
+                            width: 30.w,
+                            decoration: BoxDecoration(
+                                color: widget.invoiceheader.invoiceType == 'DI'
+                                    ? const Color(0xffe3f7e2)
+                                    : const Color(0xfff7f4e2),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Center(
+                              child: Text(
+                                widget.invoiceheader.invoiceType ?? '',
+                                style: TextStyle(
+                                    fontSize: 10.sp,
+                                    color: const Color(0xff413434)),
+                              ),
                             ),
                           ),
-                        )
-                      ],
+                          InkWell(
+                            onTap: () {},
+                            child: Image.asset(
+                              'assets/images/stamp.png',
+                              height: 22,
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),

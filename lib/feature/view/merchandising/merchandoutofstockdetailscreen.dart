@@ -236,34 +236,40 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                     onTap: () {
                                                       Navigator.push(
                                                         context,
-                                                        Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                        OutOfStockItemsDetailsScreen(header: headers[index])):
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                OutOfStockItemsDetailsScreen(
-                                                                  header:
-                                                                      headers[
-                                                                          index],
-                                                                )),
+                                                        Platform.isIOS
+                                                            ? CupertinoPageRoute(
+                                                                builder: (context) =>
+                                                                    OutOfStockItemsDetailsScreen(
+                                                                        header: headers[
+                                                                            index]))
+                                                            : MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        OutOfStockItemsDetailsScreen(
+                                                                          header:
+                                                                              headers[index],
+                                                                        )),
                                                       );
                                                     },
                                                     child: Column(
                                                       children: [
                                                         InkWell(
-                                                          onTap: (){
-                                                      Navigator.push(
-                                                        context,
-                                                        Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                        OutOfStockItemsDetailsScreen(header: headers[index])):
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                OutOfStockItemsDetailsScreen(
-                                                                  header:
-                                                                      headers[
-                                                                          index],
-                                                                )),
-                                                      );
-                                                    },
+                                                          onTap: () {
+                                                            Navigator.push(
+                                                              context,
+                                                              Platform.isIOS
+                                                                  ? CupertinoPageRoute(
+                                                                      builder: (context) => OutOfStockItemsDetailsScreen(
+                                                                          header: headers[
+                                                                              index]))
+                                                                  : MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) =>
+                                                                              OutOfStockItemsDetailsScreen(
+                                                                                header: headers[index],
+                                                                              )),
+                                                            );
+                                                          },
                                                           child: Row(
                                                             children: [
                                                               Container(
@@ -273,9 +279,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                                     color: const Color(
                                                                         0xfffee8e0),
                                                                     borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                20)),
+                                                                        BorderRadius.circular(
+                                                                            20)),
                                                               ),
                                                               SizedBox(
                                                                 width: 10.w,
@@ -297,8 +302,7 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                                         color: const Color(
                                                                             0xff2C6B9E),
                                                                         fontWeight:
-                                                                            FontWeight
-                                                                                .w600,
+                                                                            FontWeight.w600,
                                                                       ),
                                                                     ),
                                                                     Row(
@@ -309,9 +313,8 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                                             selectedLocale?.languageCode == 'en'
                                                                                 ? headers[index].prdName ?? ''
                                                                                 : headers[index].prdArName ?? '',
-                                                                            style: kfontstyle(
-                                                                                fontSize: 10.sp,
-                                                                                color: const Color.fromARGB(255, 64, 65, 67)),
+                                                                            style:
+                                                                                kfontstyle(fontSize: 10.sp, color: const Color.fromARGB(255, 64, 65, 67)),
                                                                             overflow:
                                                                                 TextOverflow.ellipsis,
                                                                           ),
@@ -322,11 +325,10 @@ class _OutOfStockScreenState extends State<OutOfStockScreen> {
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .symmetric(
-                                                                        horizontal:
-                                                                            5),
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        5),
                                                                 child: Text(
                                                                   headers[index]
                                                                           .cusCount ??

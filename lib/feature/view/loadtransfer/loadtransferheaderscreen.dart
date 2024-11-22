@@ -282,19 +282,24 @@ class _LoadTransferApprovalHeaderScreenState
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                          LoadTransferDetailScreen(
-                                            user: widget.user, 
-                                            header: headers[index],
-                                     currentMode: _selectedMode)):
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                LoadTransferDetailScreen(
-                                              header: headers[index],
-                                              user: widget.user,
-                                              currentMode: _selectedMode,
-                                            ),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      LoadTransferDetailScreen(
+                                                          user: widget.user,
+                                                          header:
+                                                              headers[index],
+                                                          currentMode:
+                                                              _selectedMode))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoadTransferDetailScreen(
+                                                    header: headers[index],
+                                                    user: widget.user,
+                                                    currentMode: _selectedMode,
+                                                  ),
+                                                ),
                                         );
                                       },
                                       child: Row(

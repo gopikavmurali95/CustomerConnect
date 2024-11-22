@@ -53,15 +53,21 @@ class CustomersListingWidget extends StatelessWidget {
                               itemBuilder: (context, index) => InkWell(
                                     onTap: () {
                                       Navigator.push(
-                                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                        CustomerInsightsScreen(customer: customers[index], user: user)):
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              CustomerInsightsScreen(
-                                            customer: customers[index],
-                                            user: user,
-                                          ),
-                                        ),
+                                        context,
+                                        Platform.isIOS
+                                            ? CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    CustomerInsightsScreen(
+                                                        customer:
+                                                            customers[index],
+                                                        user: user))
+                                            : MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CustomerInsightsScreen(
+                                                  customer: customers[index],
+                                                  user: user,
+                                                ),
+                                              ),
                                       );
                                     },
                                     child: Row(

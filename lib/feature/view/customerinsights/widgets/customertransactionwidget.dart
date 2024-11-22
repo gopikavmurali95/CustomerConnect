@@ -458,20 +458,24 @@ class _CustomerTraansactionWidgetState
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              InsightsInvoiceScreen(
-                                user: widget.user,
-                               customer: widget.customer, 
-                               fromdatectrl: widget.fromdatectrl, 
-                               todatectrl:widget.todatectrl)):
-                              MaterialPageRoute(
-                                builder: (context) => InsightsInvoiceScreen(
-                                  customer: widget.customer,
-                                  user: widget.user,
-                                  fromdatectrl: widget.fromdatectrl,
-                                  todatectrl: widget.todatectrl,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          InsightsInvoiceScreen(
+                                              user: widget.user,
+                                              customer: widget.customer,
+                                              fromdatectrl: widget.fromdatectrl,
+                                              todatectrl: widget.todatectrl))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          InsightsInvoiceScreen(
+                                        customer: widget.customer,
+                                        user: widget.user,
+                                        fromdatectrl: widget.fromdatectrl,
+                                        todatectrl: widget.todatectrl,
+                                      ),
+                                    ),
                             );
                           },
                           child: CusTransNavWIdget(
@@ -487,19 +491,25 @@ class _CustomerTraansactionWidgetState
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                InsightsArCollection(
-                                  user: widget.user,
-                                   customer: widget.customer,
-                                    fromdatectrl: widget.fromdatectrl, todatectrl: widget.todatectrl)):
-                                MaterialPageRoute(
-                                  builder: (context) => InsightsArCollection(
-                                    customer: widget.customer,
-                                    user: widget.user,
-                                    fromdatectrl: widget.fromdatectrl,
-                                    todatectrl: widget.todatectrl,
-                                  ),
-                                ));
+                                context,
+                                Platform.isIOS
+                                    ? CupertinoPageRoute(
+                                        builder: (context) =>
+                                            InsightsArCollection(
+                                                user: widget.user,
+                                                customer: widget.customer,
+                                                fromdatectrl:
+                                                    widget.fromdatectrl,
+                                                todatectrl: widget.todatectrl))
+                                    : MaterialPageRoute(
+                                        builder: (context) =>
+                                            InsightsArCollection(
+                                          customer: widget.customer,
+                                          user: widget.user,
+                                          fromdatectrl: widget.fromdatectrl,
+                                          todatectrl: widget.todatectrl,
+                                        ),
+                                      ));
                           },
                           child: CusTransNavWIdget(
                             title: AppLocalizations.of(context)!.ar_collection,
@@ -514,20 +524,25 @@ class _CustomerTraansactionWidgetState
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                SalesrdersScreen(
-                                  user: widget.user, 
-                                  customer: widget.customer, 
-                                  fromdatecontroller: widget.fromdatectrl, 
-                                  todatecontroller: widget.todatectrl)):
-                                MaterialPageRoute(
-                                  builder: (context) => SalesrdersScreen(
-                                    customer: widget.customer,
-                                    fromdatecontroller: widget.fromdatectrl,
-                                    todatecontroller: widget.todatectrl,
-                                    user: widget.user,
-                                  ),
-                                ));
+                                context,
+                                Platform.isIOS
+                                    ? CupertinoPageRoute(
+                                        builder: (context) => SalesrdersScreen(
+                                            user: widget.user,
+                                            customer: widget.customer,
+                                            fromdatecontroller:
+                                                widget.fromdatectrl,
+                                            todatecontroller:
+                                                widget.todatectrl))
+                                    : MaterialPageRoute(
+                                        builder: (context) => SalesrdersScreen(
+                                          customer: widget.customer,
+                                          fromdatecontroller:
+                                              widget.fromdatectrl,
+                                          todatecontroller: widget.todatectrl,
+                                          user: widget.user,
+                                        ),
+                                      ));
                           },
                           child: CusTransNavWIdget(
                             title: AppLocalizations.of(context)!.sales_orders,

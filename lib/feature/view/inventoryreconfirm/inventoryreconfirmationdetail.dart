@@ -114,88 +114,81 @@ class _InventoryReconfirmationDetailScreenState
                   approvedCount++;
                   Navigator.pop(context);
                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      if(Platform.isIOS)
-                      {
-                        return CupertinoAlertDialog(
-                      title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text(
-                          " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                          child: Text(AppLocalizations.of(context)!.ok),
-                        ),
-                      ],
-                    );
-                      }
-                      else{
-                        return AlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                      content: Text(
-                          " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                          child: Text(AppLocalizations.of(context)!.ok),
-                        ),
-                      ],
-                        );
-                      }
-                    }
-                  );
+                      context: context,
+                      builder: (context) {
+                        if (Platform.isIOS) {
+                          return CupertinoAlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                            content: Text(
+                                " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
+                                child: Text(AppLocalizations.of(context)!.ok),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return AlertDialog(
+                            title: Text(AppLocalizations.of(context)!.alert),
+                            content: Text(
+                                " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
+                                child: Text(AppLocalizations.of(context)!.ok),
+                              ),
+                            ],
+                          );
+                        }
+                      });
                 }
               },
               inventoryReconfirmApproveFailedState: () {
                 Navigator.pop(context);
                 showDialog(
-                  context: context,
-                  builder: (context) {
-                    if(Platform.isIOS)
-                    {
-                      return CupertinoAlertDialog(
-                    title: Text(AppLocalizations.of(context)!.alert),
-                    content: Text(
-                      AppLocalizations.of(context)!.somethingWentWrong,
-                      style: kfontstyle(),
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(AppLocalizations.of(context)!.ok),
-                      ),
-                    ],
-                  );
-                    }
-                    else{
-                      return AlertDialog(
-                         title: Text(AppLocalizations.of(context)!.alert),
-                    content: Text(
-                      AppLocalizations.of(context)!.somethingWentWrong,
-                      style: kfontstyle(),
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(AppLocalizations.of(context)!.ok),
-                      ),
-                    ],
-
-                      );
-                    }
-                  }
-                );
+                    context: context,
+                    builder: (context) {
+                      if (Platform.isIOS) {
+                        return CupertinoAlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong,
+                            style: kfontstyle(),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                        );
+                      } else {
+                        return AlertDialog(
+                          title: Text(AppLocalizations.of(context)!.alert),
+                          content: Text(
+                            AppLocalizations.of(context)!.somethingWentWrong,
+                            style: kfontstyle(),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(AppLocalizations.of(context)!.ok),
+                            ),
+                          ],
+                        );
+                      }
+                    });
               },
               inventoryReconfirmApproveLoadingState: () {
                 showCupertinoModalPopup(
@@ -1164,211 +1157,217 @@ class _InventoryReconfirmationDetailScreenState
                                     if (widget.header.iahStatus == 'Pending') {
                                       if (approvedProducts.contains(null)) {
                                         showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            if(Platform.isIOS)
-                                            {
-                                              return CupertinoAlertDialog(
-                                            title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(AppLocalizations.of(
-                                                    context)!
-                                                .pleaseMakeSureToApproveAndReject),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  // Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .ok),
-                                              ),
-                                            ],
-                                          );
-                                            }
-                                            else{
-                                              return AlertDialog(
-                                                title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(AppLocalizations.of(
-                                                    context)!
-                                                .pleaseMakeSureToApproveAndReject),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  // Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .ok),
-                                              ),
-                                            ],
-                                              );
-                                            }
-                                          }
-                                              
-                                        );
+                                            context: context,
+                                            builder: (context) {
+                                              if (Platform.isIOS) {
+                                                return CupertinoAlertDialog(
+                                                  title: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .alert),
+                                                  content: Text(AppLocalizations
+                                                          .of(context)!
+                                                      .pleaseMakeSureToApproveAndReject),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        // Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .ok),
+                                                    ),
+                                                  ],
+                                                );
+                                              } else {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .alert),
+                                                  content: Text(AppLocalizations
+                                                          .of(context)!
+                                                      .pleaseMakeSureToApproveAndReject),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        // Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .ok),
+                                                    ),
+                                                  ],
+                                                );
+                                              }
+                                            });
                                       } else if (checkrejectedstatus() ==
                                           false) {
                                         showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            if(Platform.isIOS)
-                                            {
-                                              return CupertinoAlertDialog(
-                                            title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(AppLocalizations.of(
-                                                    context)!
-                                                .youShouldApproveOrRejectAndSpecifyReason),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  // Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .ok),
-                                              ),
-                                            ],
-                                          );
-                                            }
-                                            else{
-                                              return AlertDialog(
-                                                 title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(AppLocalizations.of(
-                                                    context)!
-                                                .youShouldApproveOrRejectAndSpecifyReason),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  // Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .ok),
-                                              ),
-                                            ],
-                                              );
-                                            }
-                                          }
-                                              
-                                        );
+                                            context: context,
+                                            builder: (context) {
+                                              if (Platform.isIOS) {
+                                                return CupertinoAlertDialog(
+                                                  title: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .alert),
+                                                  content: Text(AppLocalizations
+                                                          .of(context)!
+                                                      .youShouldApproveOrRejectAndSpecifyReason),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        // Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .ok),
+                                                    ),
+                                                  ],
+                                                );
+                                              } else {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .alert),
+                                                  content: Text(AppLocalizations
+                                                          .of(context)!
+                                                      .youShouldApproveOrRejectAndSpecifyReason),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                        // Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .ok),
+                                                    ),
+                                                  ],
+                                                );
+                                              }
+                                            });
                                       } else {
                                         showCupertinoDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            if(Platform.isIOS)
-                                            {
-                                              return   CupertinoAlertDialog(
-                                            title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(
-                                                AppLocalizations.of(context)!
-                                                    .doyouWantToProceed),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .cancel),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  loadingCount = 0;
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                  context
-                                                      .read<
-                                                          InventoryReconfirmApprovalBloc>()
-                                                      .add(
-                                                          const InventoryReconfirmLoadingEvent());
+                                            context: context,
+                                            builder: (context) {
+                                              if (Platform.isIOS) {
+                                                return CupertinoAlertDialog(
+                                                  title: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .alert),
+                                                  content: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .doyouWantToProceed),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        setState(() {});
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .cancel),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        loadingCount = 0;
+                                                        setState(() {});
+                                                        Navigator.pop(context);
+                                                        context
+                                                            .read<
+                                                                InventoryReconfirmApprovalBloc>()
+                                                            .add(
+                                                                const InventoryReconfirmLoadingEvent());
 
-                                                  context
-                                                      .read<
-                                                          InventoryReconfirmApprovalBloc>()
-                                                      .add(ApproveInventoryReconfirmEvent(
-                                                          approve: InventoryReconfirmApproveInModel(
-                                                              products:
-                                                                  approvedProducts,
-                                                              reqId: widget
-                                                                  .header.iahId,
-                                                              userId: widget
-                                                                  .header
-                                                                  .iahUsrId)));
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .proceed),
-                                              ),
-                                            ],
-                                          );
-                                            }
-                                            else{
-                                              return AlertDialog(
-                                                 title: Text(
-                                                AppLocalizations.of(context)!
-                                                    .alert),
-                                            content: Text(
-                                                AppLocalizations.of(context)!
-                                                    .doyouWantToProceed),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .cancel),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  loadingCount = 0;
-                                                  setState(() {});
-                                                  Navigator.pop(context);
-                                                  context
-                                                      .read<
-                                                          InventoryReconfirmApprovalBloc>()
-                                                      .add(
-                                                          const InventoryReconfirmLoadingEvent());
+                                                        context
+                                                            .read<
+                                                                InventoryReconfirmApprovalBloc>()
+                                                            .add(ApproveInventoryReconfirmEvent(
+                                                                approve: InventoryReconfirmApproveInModel(
+                                                                    products:
+                                                                        approvedProducts,
+                                                                    reqId: widget
+                                                                        .header
+                                                                        .iahId,
+                                                                    userId: widget
+                                                                        .header
+                                                                        .iahUsrId)));
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .proceed),
+                                                    ),
+                                                  ],
+                                                );
+                                              } else {
+                                                return AlertDialog(
+                                                  title: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .alert),
+                                                  content: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .doyouWantToProceed),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        setState(() {});
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .cancel),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        loadingCount = 0;
+                                                        setState(() {});
+                                                        Navigator.pop(context);
+                                                        context
+                                                            .read<
+                                                                InventoryReconfirmApprovalBloc>()
+                                                            .add(
+                                                                const InventoryReconfirmLoadingEvent());
 
-                                                  context
-                                                      .read<
-                                                          InventoryReconfirmApprovalBloc>()
-                                                      .add(ApproveInventoryReconfirmEvent(
-                                                          approve: InventoryReconfirmApproveInModel(
-                                                              products:
-                                                                  approvedProducts,
-                                                              reqId: widget
-                                                                  .header.iahId,
-                                                              userId: widget
-                                                                  .header
-                                                                  .iahUsrId)));
-                                                },
-                                                child: Text(AppLocalizations.of(
-                                                        context)!
-                                                    .proceed),
-                                              ),
-                                            ],
-                                              );
-                                            }
-                                          }
-                                            
-                                        );
+                                                        context
+                                                            .read<
+                                                                InventoryReconfirmApprovalBloc>()
+                                                            .add(ApproveInventoryReconfirmEvent(
+                                                                approve: InventoryReconfirmApproveInModel(
+                                                                    products:
+                                                                        approvedProducts,
+                                                                    reqId: widget
+                                                                        .header
+                                                                        .iahId,
+                                                                    userId: widget
+                                                                        .header
+                                                                        .iahUsrId)));
+                                                      },
+                                                      child: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .proceed),
+                                                    ),
+                                                  ],
+                                                );
+                                              }
+                                            });
                                       }
                                     }
                                   },
@@ -1412,42 +1411,38 @@ class _InventoryReconfirmationDetailScreenState
 
 showPopAlert(BuildContext context) {
   showDialog(
-    context: context,
-    builder: (context) {
-      if(Platform.isIOS)
-      {
-        return CupertinoAlertDialog(
-      title: const Text('Alert'),
-      content: const Text(
-          "Please make sure you have approved or rejected all the items"),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-            // Navigator.pop(context);
-          },
-          child: const Text('Ok'),
-        ),
-      ],
-    );
-      }
-      else
-      {
-        return AlertDialog(
-           title: const Text('Alert'),
-      content: const Text(
-          "Please make sure you have approved or rejected all the items"),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-            // Navigator.pop(context);
-          },
-          child: const Text('Ok'),
-        ),
-      ],
-        );
-      }
-    }
-  );
+      context: context,
+      builder: (context) {
+        if (Platform.isIOS) {
+          return CupertinoAlertDialog(
+            title: const Text('Alert'),
+            content: const Text(
+                "Please make sure you have approved or rejected all the items"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // Navigator.pop(context);
+                },
+                child: const Text('Ok'),
+              ),
+            ],
+          );
+        } else {
+          return AlertDialog(
+            title: const Text('Alert'),
+            content: const Text(
+                "Please make sure you have approved or rejected all the items"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  // Navigator.pop(context);
+                },
+                child: const Text('Ok'),
+              ),
+            ],
+          );
+        }
+      });
 }

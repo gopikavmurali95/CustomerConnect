@@ -140,43 +140,44 @@ class _MaterialRequestDetailScreenState
                         Navigator.pop(context);
                         if (response.status != null) {
                           showDialog(
-                            context: context,
-                            builder: (context) {
-                              if(Platform.isIOS)
-                              {
-                                return CupertinoAlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} "),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                            );
-                              }
-                              else{
-                                return  AlertDialog(
-                                   title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} "),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                                );
-                              }
-                            }
-                          );
+                              context: context,
+                              builder: (context) {
+                                if (Platform.isIOS) {
+                                  return CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(
+                                        "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} "),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return AlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(
+                                        "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} "),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  );
+                                }
+                              });
                         }
                       }
                     },
@@ -201,41 +202,42 @@ class _MaterialRequestDetailScreenState
                       Navigator.pop(context);
 
                       showDialog(
-                        context: context,
-                        builder: (context) {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              AppLocalizations.of(context)!.somethingWentWrong),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                        );
-                          }
-                          else {
-                            return AlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              AppLocalizations.of(context)!.somethingWentWrong),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                            );
-                          }
-                        }
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .somethingWentWrong),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .somethingWentWrong),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                     },
                   );
                 },
@@ -1048,95 +1050,102 @@ class _MaterialRequestDetailScreenState
                         onPressed: () {
                           log(jsonEncode(_materialreqproducts));
                           showDialog(
-                            context: context,
-                            builder: (context) {
-                              if(Platform.isIOS)
-                              {
-                                return CupertinoAlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(AppLocalizations.of(context)!
-                                  .doYouWantToRejectThisProduct),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.cancel),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                        const MaterialReqApprovalLoadingEvent());
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                          MetarialRequestRejectEvent(
-                                              reject:
-                                                  MaterialReqRejectionInModel(
-                                                      products:
-                                                          _materialreqproducts,
-                                                      userId:
-                                                          widget.materialrequest
-                                                              .userID,
-                                                      reqID: widget
-                                                          .materialrequest
-                                                          .mrhID,
-                                                      remark: '')),
-                                        );
+                              context: context,
+                              builder: (context) {
+                                if (Platform.isIOS) {
+                                  return CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doYouWantToRejectThisProduct),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                  const MaterialReqApprovalLoadingEvent());
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                MetarialRequestRejectEvent(
+                                                    reject: MaterialReqRejectionInModel(
+                                                        products:
+                                                            _materialreqproducts,
+                                                        userId: widget
+                                                            .materialrequest
+                                                            .userID,
+                                                        reqID: widget
+                                                            .materialrequest
+                                                            .mrhID,
+                                                        remark: '')),
+                                              );
 
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.proceed),
-                                ),
-                              ],
-                            );
-                              }
-                              else
-                              {
-                                return AlertDialog(
-                                  title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(AppLocalizations.of(context)!
-                                  .doYouWantToRejectThisProduct),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.cancel),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                        const MaterialReqApprovalLoadingEvent());
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                          MetarialRequestRejectEvent(
-                                              reject:
-                                                  MaterialReqRejectionInModel(
-                                                      products:
-                                                          _materialreqproducts,
-                                                      userId:
-                                                          widget.materialrequest
-                                                              .userID,
-                                                      reqID: widget
-                                                          .materialrequest
-                                                          .mrhID,
-                                                      remark: '')),
-                                        );
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return AlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doYouWantToRejectThisProduct),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                  const MaterialReqApprovalLoadingEvent());
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                MetarialRequestRejectEvent(
+                                                    reject: MaterialReqRejectionInModel(
+                                                        products:
+                                                            _materialreqproducts,
+                                                        userId: widget
+                                                            .materialrequest
+                                                            .userID,
+                                                        reqID: widget
+                                                            .materialrequest
+                                                            .mrhID,
+                                                        remark: '')),
+                                              );
 
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.proceed),
-                                ),
-                              ],
-
-                                );
-                              }
-                            }
-                          );
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  );
+                                }
+                              });
                         },
                         child: Text(
                           AppLocalizations.of(context)!.reject,
@@ -1165,92 +1174,106 @@ class _MaterialRequestDetailScreenState
                             Colors.green.shade300 /* : Colors.grey[300] */,
                         onPressed: () {
                           showDialog(
-                            context: context,
-                            builder: (context) {
-                              if(Platform.isIOS)
-                              {
-                                return CupertinoAlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(AppLocalizations.of(context)!
-                                  .doYouWantToApproveThisProduct),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.cancel),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                        const MaterialReqApprovalLoadingEvent());
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                          MaterialReqApprovalSuccessEvent(
-                                              approvalInModel:
-                                                  MaterialReqApprovalInModel(
-                                            products: _materialreqproducts,
-                                            userId:
-                                                widget.materialrequest.userID,
-                                            reqID: widget.materialrequest.mrhID,
-                                            mode: "A",
-                                            warehouse:
-                                                widget.materialrequest.mrhWarID,
-                                          )),
-                                        );
+                              context: context,
+                              builder: (context) {
+                                if (Platform.isIOS) {
+                                  return CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doYouWantToApproveThisProduct),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                  const MaterialReqApprovalLoadingEvent());
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                MaterialReqApprovalSuccessEvent(
+                                                    approvalInModel:
+                                                        MaterialReqApprovalInModel(
+                                                  products:
+                                                      _materialreqproducts,
+                                                  userId: widget
+                                                      .materialrequest.userID,
+                                                  reqID: widget
+                                                      .materialrequest.mrhID,
+                                                  mode: "A",
+                                                  warehouse: widget
+                                                      .materialrequest.mrhWarID,
+                                                )),
+                                              );
 
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.proceed),
-                                ),
-                              ],
-                            );
-                              }
-                              else
-                              {
-                                return AlertDialog(
-                                  title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(AppLocalizations.of(context)!
-                                  .doYouWantToApproveThisProduct),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.cancel),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                        const MaterialReqApprovalLoadingEvent());
-                                    context.read<MaterialReqApprovalBloc>().add(
-                                          MaterialReqApprovalSuccessEvent(
-                                              approvalInModel:
-                                                  MaterialReqApprovalInModel(
-                                            products: _materialreqproducts,
-                                            userId:
-                                                widget.materialrequest.userID,
-                                            reqID: widget.materialrequest.mrhID,
-                                            mode: "A",
-                                            warehouse:
-                                                widget.materialrequest.mrhWarID,
-                                          )),
-                                        );
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return AlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(AppLocalizations.of(context)!
+                                        .doYouWantToApproveThisProduct),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .cancel),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                  const MaterialReqApprovalLoadingEvent());
+                                          context
+                                              .read<MaterialReqApprovalBloc>()
+                                              .add(
+                                                MaterialReqApprovalSuccessEvent(
+                                                    approvalInModel:
+                                                        MaterialReqApprovalInModel(
+                                                  products:
+                                                      _materialreqproducts,
+                                                  userId: widget
+                                                      .materialrequest.userID,
+                                                  reqID: widget
+                                                      .materialrequest.mrhID,
+                                                  mode: "A",
+                                                  warehouse: widget
+                                                      .materialrequest.mrhWarID,
+                                                )),
+                                              );
 
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(
-                                      AppLocalizations.of(context)!.proceed),
-                                ),
-                              ],
-                                );
-                              }
-                            }
-                          );
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .proceed),
+                                      ),
+                                    ],
+                                  );
+                                }
+                              });
                           // log("jngjirnj ${jsonEncode(_materialreqproducts)}");
                           /*  log(jsonEncode(MaterialReqApprovalInModel(
                             products: _materialreqproducts,

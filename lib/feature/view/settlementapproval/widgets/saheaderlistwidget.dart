@@ -44,13 +44,17 @@ class SettlementApprovalHeaderListWidget extends StatelessWidget {
                         itemBuilder: (context, index) => GestureDetector(
                           onTap: () {
                             Navigator.push(
-                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                SettlementApprovalDetailScreen(header: headers[index])):
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        SettlementApprovalDetailScreen(
-                                          header: headers[index],
-                                        )));
+                                context,
+                                Platform.isIOS
+                                    ? CupertinoPageRoute(
+                                        builder: (context) =>
+                                            SettlementApprovalDetailScreen(
+                                                header: headers[index]))
+                                    : MaterialPageRoute(
+                                        builder: (context) =>
+                                            SettlementApprovalDetailScreen(
+                                              header: headers[index],
+                                            )));
                           },
                           child: Column(
                             children: [

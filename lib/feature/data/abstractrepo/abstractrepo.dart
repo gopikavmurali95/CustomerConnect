@@ -173,6 +173,7 @@ import 'package:customer_connect/feature/data/models/special_price_customer_mode
 import 'package:customer_connect/feature/data/models/special_price_details_model/special_price_details_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_model/special_price_header_model.dart';
 import 'package:customer_connect/feature/data/models/special_price_header_outparas/special_price_header_outparas.dart';
+import 'package:customer_connect/feature/data/models/stamped_copy_model/stamped_copy_model.dart';
 import 'package:customer_connect/feature/data/models/target_details_count_model/target_details_count_model.dart';
 import 'package:customer_connect/feature/data/models/target_details_graph_amt_model/target_details_graph_amt_model.dart';
 import 'package:customer_connect/feature/data/models/target_details_graph_qty_model/target_details_graph_qty_model.dart';
@@ -860,4 +861,10 @@ abstract class ICustomerFocRepo {
 
   Future<Either<MainFailures, CustomerFocApproveAndRejectModel>>
       customerFocReject(CustomerFocApprovalInModel reject);
+}
+
+abstract class IStampedCopyRepo {
+  Future<Either<MainFailures, StampedCopyModel>> getCopy(
+    String invID,
+  );
 }

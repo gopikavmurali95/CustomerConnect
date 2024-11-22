@@ -57,15 +57,21 @@ class RejectedList extends StatelessWidget {
                                 child: ListTile(
                                   onTap: () {
                                     Navigator.push(
-                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                      LoadDetailRejected(loadingheader: loadingheaders[index])):
-                                      
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            LoadDetailRejected(
-                                          loadingheader: loadingheaders[index],
-                                        ),
-                                      ),
+                                      context,
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  LoadDetailRejected(
+                                                      loadingheader:
+                                                          loadingheaders[
+                                                              index]))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LoadDetailRejected(
+                                                loadingheader:
+                                                    loadingheaders[index],
+                                              ),
+                                            ),
                                     );
                                   },
                                   horizontalTitleGap: 10,

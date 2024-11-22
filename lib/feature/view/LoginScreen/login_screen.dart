@@ -68,90 +68,87 @@ class _LoginScreenState extends State<LoginScreen> {
                     () {
                       Navigator.pop(context);
                       Navigator.pushAndRemoveUntil(
-                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> HomeScreen(user: user)):
-                          MaterialPageRoute(
-                            builder: (context) => HomeScreen(
-                              user: user,
-                            ),
-                          ),
+                          context,
+                          Platform.isIOS
+                              ? CupertinoPageRoute(
+                                  builder: (context) => HomeScreen(user: user))
+                              : MaterialPageRoute(
+                                  builder: (context) => HomeScreen(
+                                    user: user,
+                                  ),
+                                ),
                           (route) => false);
                     },
                   );
                 } else {
                   Navigator.pop(context);
                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      if(Platform.isIOS)
-                      {
-                        return CupertinoAlertDialog(
-                      title: Text('${user.title}'),
-                      content: Text("${user.descr}"),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Try again'),
-                        ),
-                      ],
-                    );
-                      }
-                      else{
-                        return AlertDialog(
-                          title: Text('${user.title}'),
-                      content: Text("${user.descr}"),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Try again'),
-                        ),
-                      ],
-                        );
-                      }
-                    }
-                  );
+                      context: context,
+                      builder: (context) {
+                        if (Platform.isIOS) {
+                          return CupertinoAlertDialog(
+                            title: Text('${user.title}'),
+                            content: Text("${user.descr}"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Try again'),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return AlertDialog(
+                            title: Text('${user.title}'),
+                            content: Text("${user.descr}"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Try again'),
+                              ),
+                            ],
+                          );
+                        }
+                      });
                 }
               }
             },
             userLoginFailedState: () {
               Navigator.pop(context);
               showDialog(
-                context: context,
-                builder: (context) {
-                  if(Platform.isIOS)
-                  {
-                    return CupertinoAlertDialog(
-                  title: const Text('Failure'),
-                  content: const Text('Something went wrong'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('Ok'),
-                    ),
-                  ],
-                );
-                  }
-                  else{
-                    return AlertDialog(
-                       title: const Text('Failure'),
-                  content: const Text('Something went wrong'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('Ok'),
-                    ),
-                  ],
-                    );
-                  }
-                }
-              );
+                  context: context,
+                  builder: (context) {
+                    if (Platform.isIOS) {
+                      return CupertinoAlertDialog(
+                        title: const Text('Failure'),
+                        content: const Text('Something went wrong'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Ok'),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return AlertDialog(
+                        title: const Text('Failure'),
+                        content: const Text('Something went wrong'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Ok'),
+                          ),
+                        ],
+                      );
+                    }
+                  });
             },
             loginLoadingState: () {
               showCupertinoModalPopup(

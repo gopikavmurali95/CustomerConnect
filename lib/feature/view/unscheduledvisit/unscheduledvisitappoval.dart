@@ -532,43 +532,40 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                               searchQuery: '', mode: selectedUnScheduledMode));
                       Navigator.pop(context);
                       showDialog(
-                        context: context,
-                        builder: (context) 
-                        {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title:  const Text('Success'),
-                          content: Text(
-                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''} successfully"),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                        );
-                          }
-                          else
-                          {
-                            return AlertDialog(
-                              title:const Text('Success'),
-                          content: Text(
-                              "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''} successfully"),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                            );
-                          }
-                        }
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title: const Text('Success'),
+                                content: Text(
+                                    "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''} successfully"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title: const Text('Success'),
+                                content: Text(
+                                    "${AppLocalizations.of(context)!.unschedVisitApproval} ${resp.descr ?? ''} successfully"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                       setState(() {});
                     }
                   },
@@ -584,86 +581,78 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                               searchQuery: '', mode: selectedUnScheduledMode));
                       Navigator.pop(context);
                       showCupertinoDialog(
-                        context: context,
-                        builder: (context) {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title:const Text('Success'),
-                          content: Text(
-                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''} successfully"),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                        );
-                          }
-                          else
-                          {
-                            return AlertDialog(
-                              title:const Text('Success'),
-                          content: Text(
-                              "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''} successfully"),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                            );
-                          
-                          }
-                        }
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title: const Text('Success'),
+                                content: Text(
+                                    "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''} successfully"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title: const Text('Success'),
+                                content: Text(
+                                    "${AppLocalizations.of(context)!.unscheduledVisitRejection} ${resp.descr ?? ''} successfully"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                       setState(() {});
                     }
                   },
                   unScheduledVisitApprovalFailedState: () {
                     Navigator.pop(context);
                     showDialog(
-                      context: context,
-                      builder: (context) 
-                      {
-                        if(Platform.isIOS)
-                        {
-                          return CupertinoAlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                      );
-                        }
-                        else
-                        {
-                          return AlertDialog(
-                             title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(
-                            AppLocalizations.of(context)!.somethingWentWrong),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(AppLocalizations.of(context)!.ok),
-                          ),
-                        ],
-                          );
-                        }
-                      }
-                    );
+                        context: context,
+                        builder: (context) {
+                          if (Platform.isIOS) {
+                            return CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .somethingWentWrong),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(AppLocalizations.of(context)!
+                                  .somethingWentWrong),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.ok),
+                                ),
+                              ],
+                            );
+                          }
+                        });
                   },
                   unScheduledApprovalLoadingEvent: () {
                     showCupertinoModalPopup(
@@ -707,104 +696,102 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                 onPressed: () {
                                   if (selectedUnScheduledMode == 'P') {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) 
-                                      {
-                                        if(Platform.isIOS)
-                                        {
-                                          return  CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                      const UnScheuledLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                            const UnScheuledLoadingEvent());
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                    RejectUnScheduledEvent(
-                                                      reject:
-                                                          unScheduledJsonstriongList,
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else
-                                        {
-                                          return AlertDialog(
-                                            title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                          RejectUnScheduledEvent(
+                                                            reject:
+                                                                unScheduledJsonstriongList,
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                      const UnScheuledLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                            const UnScheuledLoadingEvent());
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                    RejectUnScheduledEvent(
-                                                      reject:
-                                                          unScheduledJsonstriongList,
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                         
-                                    );
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                          RejectUnScheduledEvent(
+                                                            reject:
+                                                                unScheduledJsonstriongList,
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   }
                                 },
                                 child: Text(
@@ -832,105 +819,104 @@ class _UnScheduledVisitScreenState extends State<UnScheduledVisitScreen> {
                                 onPressed: () {
                                   if (selectedUnScheduledMode == 'P') {
                                     showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        if(Platform.isIOS)
-                                        {
-                                          return CupertinoAlertDialog(
-                                        title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
+                                        context: context,
+                                        builder: (context) {
+                                          if (Platform.isIOS) {
+                                            return CupertinoAlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                      const UnScheuledLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                            const UnScheuledLoadingEvent());
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                    ApproveUnScheduledVisitEvent(
-                                                      approve:
-                                                          unScheduledJsonstriongList,
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                      );
-                                        }
-                                        else
-                                        {
-                                          return AlertDialog(
-                                            title: Text(
-                                            AppLocalizations.of(context)!
-                                                .alert),
-                                        content: Text(
-                                            AppLocalizations.of(context)!
-                                                .doyouWantToProceed),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () {
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .cancel),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              // Navigator.pop(context);
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                          ApproveUnScheduledVisitEvent(
+                                                            approve:
+                                                                unScheduledJsonstriongList,
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .alert),
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .doyouWantToProceed),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    setState(() {});
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .cancel),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    // Navigator.pop(context);
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                      const UnScheuledLoadingEvent());
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                            const UnScheuledLoadingEvent());
 
-                                              context
-                                                  .read<
-                                                      UnScheduledApprovalBloc>()
-                                                  .add(
-                                                    ApproveUnScheduledVisitEvent(
-                                                      approve:
-                                                          unScheduledJsonstriongList,
-                                                    ),
-                                                  );
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .proceed),
-                                          ),
-                                        ],
-                                          );
-                                        }
-                                      }
-                                          
-                                    );
+                                                    context
+                                                        .read<
+                                                            UnScheduledApprovalBloc>()
+                                                        .add(
+                                                          ApproveUnScheduledVisitEvent(
+                                                            approve:
+                                                                unScheduledJsonstriongList,
+                                                          ),
+                                                        );
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .proceed),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        });
                                   }
                                 },
                                 child: Text(

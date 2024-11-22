@@ -48,13 +48,17 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const CustomerRequestScreen()):
-                    MaterialPageRoute(
-                        builder: (context) => const CustomerRequestScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) => const CustomerRequestScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const CustomerRequestScreen()),
                   );
                 },
                 child: Padding(
-                   padding: const EdgeInsets.only(left: 3.0),
+                  padding: const EdgeInsets.only(left: 3.0),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -81,7 +85,8 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               ),
                               Expanded(
                                 child: Text(
-                                  AppLocalizations.of(context)!.customerRequests,
+                                  AppLocalizations.of(context)!
+                                      .customerRequests,
                                   // 'Customer Requests',
                                   style: kfontstyle(
                                       fontSize: 9.sp,
@@ -101,31 +106,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                                 AppLocalizations.of(context)!.newRequests,
                                 // 'New Requests',
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.newRequest}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.newRequest}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(
@@ -146,31 +154,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.respondedRequests,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.respondedReq}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.respondedReq}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(
@@ -196,15 +207,18 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const
-                    MerchandiseCreditNoteRequestScreen()):
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const MerchandiseCreditNoteRequestScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) =>
+                                const MerchandiseCreditNoteRequestScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const MerchandiseCreditNoteRequestScreen()),
                   );
                 },
                 child: Padding(
-                 padding: const EdgeInsets.only(right: 3),
+                  padding: const EdgeInsets.only(right: 3),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -251,31 +265,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.requested,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.reqCreditNoteReq}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.reqCreditNoteReq}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(
@@ -296,31 +313,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.approved,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.approvedCreditNoteReq}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.approvedCreditNoteReq}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(
@@ -350,15 +370,18 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                    const MerchandiseDisputeNoteRequestScreen()):
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const MerchandiseDisputeNoteRequestScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) =>
+                                const MerchandiseDisputeNoteRequestScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const MerchandiseDisputeNoteRequestScreen()),
                   );
                 },
                 child: Padding(
-                   padding: const EdgeInsets.only(left: 3.0),
+                  padding: const EdgeInsets.only(left: 3.0),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -405,31 +428,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.requested,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.reqDisputeNoteReq}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.reqDisputeNoteReq}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(
@@ -450,31 +476,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.approved,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.approvedDisputeNoteReq}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.approvedDisputeNoteReq}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(
@@ -500,16 +529,18 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                    const 
-                    MerchandiseReturnRequestScreen()):
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const MerchandiseReturnRequestScreen()),
+                    context,
+                    Platform.isIOS
+                        ? CupertinoPageRoute(
+                            builder: (context) =>
+                                const MerchandiseReturnRequestScreen())
+                        : MaterialPageRoute(
+                            builder: (context) =>
+                                const MerchandiseReturnRequestScreen()),
                   );
                 },
                 child: Padding(
-                   padding: const EdgeInsets.only(right: 3),
+                  padding: const EdgeInsets.only(right: 3),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -554,31 +585,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.requested,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.reqReturnRequest}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.reqReturnRequest}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(
@@ -599,31 +633,34 @@ class _CustomerServicesWidgetState extends State<CustomerServicesWidget> {
                               Text(
                                 AppLocalizations.of(context)!.approved,
                                 style: kfontstyle(
-                                    fontSize: 8.sp, color: Colors.grey.shade600),
+                                    fontSize: 8.sp,
+                                    color: Colors.grey.shade600),
                               ),
                               BlocBuilder<MerchCusServiceCountBloc,
                                   MerchCusServiceCountState>(
                                 builder: (context, state) {
                                   return state.when(
                                       getCusServiceCountState:
-                                          (cusServicecount) => cusServicecount ==
-                                                  null
-                                              ? Text(
-                                                  "0",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                )
-                                              : Text(
-                                                  "${cusServicecount.approvedReturnRequest}",
-                                                  style: kfontstyle(
-                                                      fontSize: 11.sp,
-                                                      fontWeight: FontWeight.w500,
-                                                      color: const Color(
-                                                          0xff413434)),
-                                                ),
+                                          (cusServicecount) =>
+                                              cusServicecount == null
+                                                  ? Text(
+                                                      "0",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    )
+                                                  : Text(
+                                                      "${cusServicecount.approvedReturnRequest}",
+                                                      style: kfontstyle(
+                                                          fontSize: 11.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: const Color(
+                                                              0xff413434)),
+                                                    ),
                                       cusServiceCountFailedstate: () => Text(
                                             "0",
                                             style: kfontstyle(

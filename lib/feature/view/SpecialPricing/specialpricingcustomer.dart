@@ -141,14 +141,17 @@ class _SpecialPricingCustomerState extends State<SpecialPricingCustomer> {
                                   searchQuery: ''));
                           Navigator.pushReplacement(
                               context,
-                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              SpecialPricing(user: widget.user,
-                               spPrice: widget.spPrice,)):
-                              MaterialPageRoute(
-                                  builder: (context) => SpecialPricing(
-                                        user: widget.user,
-                                        spPrice: widget.spPrice,
-                                      )));
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) => SpecialPricing(
+                                            user: widget.user,
+                                            spPrice: widget.spPrice,
+                                          ))
+                                  : MaterialPageRoute(
+                                      builder: (context) => SpecialPricing(
+                                            user: widget.user,
+                                            spPrice: widget.spPrice,
+                                          )));
                         },
                         child: Row(
                           children: [

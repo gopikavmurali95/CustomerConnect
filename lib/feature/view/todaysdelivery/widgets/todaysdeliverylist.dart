@@ -40,16 +40,19 @@ class TodaysDeliveryList extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              TodaysDeliveryDetails(
-                                todaysdelivery: delivery[index],
-                                 user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => TodaysDeliveryDetails(
-                                  todaysdelivery: delivery[index],
-                                  user: user,
-                                ),
-                              ),
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          TodaysDeliveryDetails(
+                                              todaysdelivery: delivery[index],
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          TodaysDeliveryDetails(
+                                        todaysdelivery: delivery[index],
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Row(

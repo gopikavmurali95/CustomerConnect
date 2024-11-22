@@ -69,7 +69,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
     ];
 
     outStandingscrollController = ScrollController();
-    _selectedMode='Al';
+    _selectedMode = 'Al';
     pagecounter = 1;
     _outstandingHeaderSearchCtrl.clear();
     context.read<OutstandingBloc>().add(const ClearOutStandingEvent());
@@ -90,7 +90,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
             searchQuery: '',
             statusValue: '')));
     context.read<OutStandingPaginationCubit>().clearOutStanding();
-     
+
     context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
         OutStandingHeaderModel(
             area: '',
@@ -122,7 +122,7 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
         pageNum: pagecounter.toString(),
         searchQuery: '',
         statusValue: 'Al'));
-   
+
     super.initState();
   }
 
@@ -682,8 +682,6 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
 
   Future<void> _onRefreshOutstandingHeaderScreen(
       BuildContext context, LoginUserModel model) async {
-        
-    
     context.read<OutStandingPaginationCubit>().clearOutStanding();
     context.read<OutStandingPaginationCubit>().getOutStatndingHeaders(
         OutStandingHeaderModel(

@@ -62,15 +62,23 @@ class InsightSpecialPriceList extends StatelessWidget {
                                           prhID: headers[index].prhId!,
                                           searchQuery: ''));
                                   Navigator.push(
-                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>CustomerInsightSpecialPriceDetails(
-                                        user: user, customer: customer, spPriceHeader: headers[index])):
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              CustomerInsightSpecialPriceDetails(
-                                                user: user,
-                                                customer: customer,
-                                                spPriceHeader: headers[index],
-                                              )));
+                                      context,
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  CustomerInsightSpecialPriceDetails(
+                                                      user: user,
+                                                      customer: customer,
+                                                      spPriceHeader:
+                                                          headers[index]))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CustomerInsightSpecialPriceDetails(
+                                                    user: user,
+                                                    customer: customer,
+                                                    spPriceHeader:
+                                                        headers[index],
+                                                  )));
                                 },
                                 child: Row(
                                   mainAxisAlignment:

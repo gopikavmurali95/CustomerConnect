@@ -89,15 +89,21 @@ class CustomerTransaction extends StatelessWidget {
                                           child: InkWell(
                                             onTap: () {
                                               Navigator.push(
-                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                InvoiceHeaderScreen(isfromUser: false, user: user)):
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      InvoiceHeaderScreen(
-                                                    isfromUser: false,
-                                                    user: user,
-                                                  ),
-                                                ),
+                                                context,
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            InvoiceHeaderScreen(
+                                                                isfromUser:
+                                                                    false,
+                                                                user: user))
+                                                    : MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            InvoiceHeaderScreen(
+                                                          isfromUser: false,
+                                                          user: user,
+                                                        ),
+                                                      ),
                                               );
                                             },
                                             child: Container(
@@ -210,15 +216,21 @@ class CustomerTransaction extends StatelessWidget {
                                           child: InkWell(
                                             onTap: () {
                                               Navigator.push(
-                                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                ArCollectionScreen(isFromUser: false, user: user)):
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ArCollectionScreen(
-                                                    isFromUser: false,
-                                                    user: user,
-                                                  ),
-                                                ),
+                                                context,
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            ArCollectionScreen(
+                                                                isFromUser:
+                                                                    false,
+                                                                user: user))
+                                                    : MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ArCollectionScreen(
+                                                          isFromUser: false,
+                                                          user: user,
+                                                        ),
+                                                      ),
                                               );
                                             },
                                             child: Container(
@@ -357,15 +369,20 @@ class CustomerTransaction extends StatelessWidget {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.push(
-                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                      InvoiceHeaderScreen(isfromUser: false, user: user)):
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            InvoiceHeaderScreen(
-                                          isfromUser: false,
-                                          user: user,
-                                        ),
-                                      ),
+                                      context,
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  InvoiceHeaderScreen(
+                                                      isfromUser: false,
+                                                      user: user))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  InvoiceHeaderScreen(
+                                                isfromUser: false,
+                                                user: user,
+                                              ),
+                                            ),
                                     );
                                   },
                                   child: Container(
@@ -428,15 +445,20 @@ class CustomerTransaction extends StatelessWidget {
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.push(
-                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                      ArCollectionScreen(isFromUser: false, user: user)):
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            ArCollectionScreen(
-                                          isFromUser: false,
-                                          user: user,
-                                        ),
-                                      ),
+                                      context,
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  ArCollectionScreen(
+                                                      isFromUser: false,
+                                                      user: user))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ArCollectionScreen(
+                                                isFromUser: false,
+                                                user: user,
+                                              ),
+                                            ),
                                     );
                                   },
                                   child: Container(

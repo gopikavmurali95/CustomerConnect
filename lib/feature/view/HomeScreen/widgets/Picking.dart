@@ -82,13 +82,17 @@ class PickingWidget extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {
                                             Navigator.push(
-                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                              PickHeaderNotStarted(user: user)):
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PickHeaderNotStarted(
-                                                        user: user),
-                                              ),
+                                              context,
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          PickHeaderNotStarted(
+                                                              user: user))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PickHeaderNotStarted(
+                                                              user: user),
+                                                    ),
                                             );
                                           },
                                           child: Container(
@@ -163,13 +167,18 @@ class PickingWidget extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {
                                             Navigator.push(
-                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderOngoing(user: user)):
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PickHeaderOngoing(
-                                                  user: user,
-                                                ),
-                                              ),
+                                              context,
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          PickHeaderOngoing(
+                                                              user: user))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PickHeaderOngoing(
+                                                        user: user,
+                                                      ),
+                                                    ),
                                             );
                                           },
                                           child: Container(
@@ -246,13 +255,18 @@ class PickingWidget extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {
                                             Navigator.push(
-                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderCompleted(user: user)):
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PickHeaderCompleted(
-                                                  user: user,
-                                                ),
-                                              ),
+                                              context,
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          PickHeaderCompleted(
+                                                              user: user))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PickHeaderCompleted(
+                                                        user: user,
+                                                      ),
+                                                    ),
                                             );
                                           },
                                           child: Container(
@@ -377,13 +391,18 @@ class PickingWidget extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadPending(user: user)):
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoadPending(
-                                                  user: user,
-                                                ),
-                                              ),
+                                              context,
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          LoadPending(
+                                                              user: user))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LoadPending(
+                                                        user: user,
+                                                      ),
+                                                    ),
                                             );
                                           },
                                           child: Container(
@@ -459,13 +478,18 @@ class PickingWidget extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadCompleted(user: user)):
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoadCompleted(
-                                                  user: user,
-                                                ),
-                                              ),
+                                              context,
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          LoadCompleted(
+                                                              user: user))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LoadCompleted(
+                                                        user: user,
+                                                      ),
+                                                    ),
                                             );
                                           },
                                           child: Container(
@@ -542,13 +566,18 @@ class PickingWidget extends StatelessWidget {
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
-                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadRejected(user: user)):
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LoadRejected(
-                                                  user: user,
-                                                ),
-                                              ),
+                                              context,
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          LoadRejected(
+                                                              user: user))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LoadRejected(
+                                                        user: user,
+                                                      ),
+                                                    ),
                                             );
                                           },
                                           child: Container(
@@ -675,12 +704,17 @@ class PickingWidget extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderNotStarted(user: user)):
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                PickHeaderNotStarted(
-                                                    user: user),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      PickHeaderNotStarted(
+                                                          user: user))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PickHeaderNotStarted(
+                                                          user: user),
+                                                ),
                                         );
                                       },
                                       child: Container(
@@ -747,13 +781,18 @@ class PickingWidget extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderOngoing(user: user)):
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                PickHeaderOngoing(
-                                              user: user,
-                                            ),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      PickHeaderOngoing(
+                                                          user: user))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PickHeaderOngoing(
+                                                    user: user,
+                                                  ),
+                                                ),
                                         );
                                       },
                                       child: Container(
@@ -819,13 +858,18 @@ class PickingWidget extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>PickHeaderCompleted(user: user)):
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                PickHeaderCompleted(
-                                              user: user,
-                                            ),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      PickHeaderCompleted(
+                                                          user: user))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PickHeaderCompleted(
+                                                    user: user,
+                                                  ),
+                                                ),
                                         );
                                       },
                                       child: Container(
@@ -937,12 +981,17 @@ class PickingWidget extends StatelessWidget {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadPending(user: user)):
-                                          MaterialPageRoute(
-                                            builder: (context) => LoadPending(
-                                              user: user,
-                                            ),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      LoadPending(user: user))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoadPending(
+                                                    user: user,
+                                                  ),
+                                                ),
                                         );
                                       },
                                       child: Container(
@@ -1008,12 +1057,17 @@ class PickingWidget extends StatelessWidget {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadCompleted(user: user)):
-                                          MaterialPageRoute(
-                                            builder: (context) => LoadCompleted(
-                                              user: user,
-                                            ),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      LoadCompleted(user: user))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoadCompleted(
+                                                    user: user,
+                                                  ),
+                                                ),
                                         );
                                       },
                                       child: Container(
@@ -1079,12 +1133,17 @@ class PickingWidget extends StatelessWidget {
                                     child: InkWell(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>LoadRejected(user: user)):
-                                          MaterialPageRoute(
-                                            builder: (context) => LoadRejected(
-                                              user: user,
-                                            ),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      LoadRejected(user: user))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoadRejected(
+                                                    user: user,
+                                                  ),
+                                                ),
                                         );
                                       },
                                       child: Container(

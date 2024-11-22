@@ -27,6 +27,20 @@ class MainActivity : FlutterActivity() {
 
         platformChannel.setMethodCallHandler { call, result ->
             when (call.method) {
+                "opengdrive" -> {
+                        val arguments = call.arguments as Map<String, Any>?
+                        if (arguments != null) {
+                            val pdfurl = arguments["pdfUrl"] as String
+                           
+                            opengdrive(pdfurl)
+                            
+
+                            result.success("Transaction started")
+                        } else {
+                            result.error("MISSING_ARGUMENTS", "Arguments are missing", null)
+                        }
+                    }
+
                 "installApk" -> {
                     val apkPath = call.argument<String>("apkPath")
                     if (apkPath != null) {
@@ -75,5 +89,23 @@ class MainActivity : FlutterActivity() {
             e.printStackTrace()
             -1 // Error code in case of failure
         }
+    }
+
+    private fun opengdrive(
+        pdfUrl: String,
+       
+    ) {
+        val GOOGLE_DRIVE_PACKAGE_NAME = "com.google.android.apps.docs"
+        val GOOGLE_DRIVE_REQUEST_CODE = 456
+        
+       
+        
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(pdfUrl)
+            `package` = GOOGLE_DRIVE_PACKAGE_NAME
+        }
+        
+        startActivityForResult(intent, GOOGLE_DRIVE_REQUEST_CODE)
+
     }
 }

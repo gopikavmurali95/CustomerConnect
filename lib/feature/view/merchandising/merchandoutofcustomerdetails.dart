@@ -219,14 +219,18 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                     onTap: () {
                                       Navigator.push(
                                         context,
-                                        Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                         OutOfStockCustomerDetailScreen(header: headers[index],)):
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              OutOfStockCustomerDetailScreen(
-                                            header: headers[index],
-                                          ),
-                                        ),
+                                        Platform.isIOS
+                                            ? CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    OutOfStockCustomerDetailScreen(
+                                                      header: headers[index],
+                                                    ))
+                                            : MaterialPageRoute(
+                                                builder: (context) =>
+                                                    OutOfStockCustomerDetailScreen(
+                                                  header: headers[index],
+                                                ),
+                                              ),
                                       );
                                     },
                                     child: Padding(
@@ -236,18 +240,23 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                         children: [
                                           InkWell(
                                             onTap: () {
-                                      Navigator.push(
-                                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                        OutOfStockCustomerDetailScreen(header: headers[index])):
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              OutOfStockCustomerDetailScreen(
-                                            header: headers[index],
-                                          ),
-                                        ),
-                                      );
-                                    },
-
+                                              Navigator.push(
+                                                context,
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            OutOfStockCustomerDetailScreen(
+                                                                header: headers[
+                                                                    index]))
+                                                    : MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            OutOfStockCustomerDetailScreen(
+                                                          header:
+                                                              headers[index],
+                                                        ),
+                                                      ),
+                                              );
+                                            },
                                             child: Row(
                                               children: [
                                                 Container(
@@ -257,7 +266,8 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                                     color:
                                                         const Color(0xfffee8e0),
                                                     borderRadius:
-                                                        BorderRadius.circular(20),
+                                                        BorderRadius.circular(
+                                                            20),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -266,10 +276,12 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                                 Expanded(
                                                   child: Column(
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
-                                                        headers[index].cusCode ??
+                                                        headers[index]
+                                                                .cusCode ??
                                                             '',
                                                         style: kfontstyle(
                                                           fontSize: 12.sp,
@@ -295,16 +307,15 @@ class _OutOfCustomerScreenState extends State<OutOfCustomerScreen> {
                                                               .fromARGB(
                                                               255, 64, 65, 67),
                                                         ),
-                                                        overflow:
-                                                            TextOverflow.ellipsis,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.symmetric(
-                                                          horizontal: 5),
+                                                  padding: const EdgeInsets
+                                                      .symmetric(horizontal: 5),
                                                   child: Text(
                                                     headers[index].prodCount ??
                                                         '',

@@ -276,19 +276,24 @@ class _PartialDeliveryHeaderState extends State<PartialDeliveryHeader> {
                                           onTap: () {
                                             Navigator.push(
                                               context,
-                                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                              PArtialDeliveryDetails(
-                                                user: widget.user, 
-                                                header: header[index], 
-                                                currentMode: _selectedeMode)):
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    PArtialDeliveryDetails(
-                                                  user: widget.user,
-                                                  header: header[index],
-                                                  currentMode: _selectedeMode,
-                                                ),
-                                              ),
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          PArtialDeliveryDetails(
+                                                              user: widget.user,
+                                                              header:
+                                                                  header[index],
+                                                              currentMode:
+                                                                  _selectedeMode))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PArtialDeliveryDetails(
+                                                        user: widget.user,
+                                                        header: header[index],
+                                                        currentMode:
+                                                            _selectedeMode,
+                                                      ),
+                                                    ),
                                             );
                                           },
                                           child: Row(

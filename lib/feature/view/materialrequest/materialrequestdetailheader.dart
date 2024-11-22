@@ -403,21 +403,28 @@ class _MaterialRequestHeaderScreenState
                                                     {
                                                   Navigator.push(
                                                     context,
-                                                    Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                    MaterialRequestDetailScreen(
-                                                      user: widget.user, 
-                                                      materialrequest: headers[index],
-                                                       currentMode: _selectedMaterialReq)):
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            MaterialRequestDetailScreen(
-                                                              user: widget.user,
-                                                              materialrequest:
-                                                                  headers[
-                                                                      index],
-                                                              currentMode:
-                                                                  _selectedMaterialReq,
-                                                            )),
+                                                    Platform.isIOS
+                                                        ? CupertinoPageRoute(
+                                                            builder: (context) =>
+                                                                MaterialRequestDetailScreen(
+                                                                    user: widget
+                                                                        .user,
+                                                                    materialrequest:
+                                                                        headers[
+                                                                            index],
+                                                                    currentMode:
+                                                                        _selectedMaterialReq))
+                                                        : MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MaterialRequestDetailScreen(
+                                                                  user: widget
+                                                                      .user,
+                                                                  materialrequest:
+                                                                      headers[
+                                                                          index],
+                                                                  currentMode:
+                                                                      _selectedMaterialReq,
+                                                                )),
                                                   );
                                                 },
                                                 child: Row(

@@ -223,15 +223,23 @@ class _RouteTargetWidgetState extends State<RouteTargetWidget> {
                                           onTap: () {
                                             Navigator.push(
                                                 context,
-                                                Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                TargetPackageScreen(details: details[index], header: widget.headr)):
-                                                CupertinoPageRoute(
-                                                    builder: (context) =>
-                                                        TargetPackageScreen(
-                                                          details:
-                                                              details[index],
-                                                          header: widget.headr,
-                                                        )));
+                                                Platform.isIOS
+                                                    ? CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            TargetPackageScreen(
+                                                                details:
+                                                                    details[
+                                                                        index],
+                                                                header: widget
+                                                                    .headr))
+                                                    : CupertinoPageRoute(
+                                                        builder: (context) =>
+                                                            TargetPackageScreen(
+                                                              details: details[
+                                                                  index],
+                                                              header:
+                                                                  widget.headr,
+                                                            )));
                                           },
                                           child: Column(
                                             children: [

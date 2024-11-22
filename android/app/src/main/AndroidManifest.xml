@@ -130,5 +130,6 @@
             <data android:scheme="https" />
         </intent>
         <package android:name="com.whatsapp" />
+        <package android:name="com.google.android.apps.docs" />
     </queries>
 </manifest>

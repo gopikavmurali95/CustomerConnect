@@ -410,60 +410,56 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                                 isLoading = false;
 
                                                 showDialog(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    if(Platform.isIOS)
-                                                    {
-                                                      return CupertinoAlertDialog(
-                                                    title: Text(
-                                                        AppLocalizations.of(
-                                                                context)!
-                                                            .alert),
-                                                    content: Text(
-                                                        " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Text(
-                                                            AppLocalizations.of(
-                                                                    context)!
-                                                                .ok),
-                                                      ),
-                                                    ],
-                                                  );
-                                                    }
-                                                    else{
-                                                      return AlertDialog(
-                                                         title: Text(
-                                                        AppLocalizations.of(
-                                                                context)!
-                                                            .alert),
-                                                    content: Text(
-                                                        " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Text(
-                                                            AppLocalizations.of(
-                                                                    context)!
-                                                                .ok),
-                                                      ),
-                                                    ],
-                                                      );
-                                                    }
-                                                  }
-                                                      
-                                                );
+                                                    context: context,
+                                                    builder: (context) {
+                                                      if (Platform.isIOS) {
+                                                        return CupertinoAlertDialog(
+                                                          title: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .alert),
+                                                          content: Text(
+                                                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                  AppLocalizations.of(
+                                                                          context)!
+                                                                      .ok),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      } else {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .alert),
+                                                          content: Text(
+                                                              " ${selectedLocale?.languageCode == 'en' ? 'Your request has been successfully actioned' : 'لقد تم تنفيذ طلبك بنجاح'} "),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                  AppLocalizations.of(
+                                                                          context)!
+                                                                      .ok),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      }
+                                                    });
                                               }
                                             },
                                             loadTransferApprovalLoadingState:
@@ -510,59 +506,56 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                               setState(() {});
                                               Navigator.pop(context);
                                               showDialog(
-                                                context: context,
-                                                builder: (context) {
-                                                  if(Platform.isIOS)
-                                                  {
-                                                    return CupertinoAlertDialog(
-                                                  title: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .alert),
-                                                  content: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .somethingWentWrong),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                          AppLocalizations.of(
-                                                                  context)!
-                                                              .ok),
-                                                    ),
-                                                  ],
-                                                );
-                                                  }
-                                                  else
-                                                  {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .alert),
-                                                  content: Text(
-                                                      AppLocalizations.of(
-                                                              context)!
-                                                          .somethingWentWrong),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Text(
-                                                          AppLocalizations.of(
-                                                                  context)!
-                                                              .ok),
-                                                    ),
-                                                  ],
-                                                    );
-                                                  }
-                                                }
-                                                    
-                                              );
+                                                  context: context,
+                                                  builder: (context) {
+                                                    if (Platform.isIOS) {
+                                                      return CupertinoAlertDialog(
+                                                        title: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .alert),
+                                                        content: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .somethingWentWrong),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .ok),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    } else {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .alert),
+                                                        content: Text(
+                                                            AppLocalizations.of(
+                                                                    context)!
+                                                                .somethingWentWrong),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.pop(
+                                                                  context);
+                                                            },
+                                                            child: Text(
+                                                                AppLocalizations.of(
+                                                                        context)!
+                                                                    .ok),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    }
+                                                  });
                                             },
                                           );
                                         },
@@ -1146,173 +1139,174 @@ class _LoadTransferDetailScreenState extends State<LoadTransferDetailScreen> {
                                       'Pending') {
                                     if (_loadprducts.contains(null)) {
                                       showDialog(
-                                        context: context,
-                                        builder: (context) 
-                                        {
-                                          if(Platform.isIOS)
-                                          {
-                                            return  CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(AppLocalizations.of(
-                                                  context)!
-                                              .pleaseMakeSureToApproveAndReject),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                // Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .ok),
-                                            ),
-                                          ],
-                                        );
-                                          }
-                                          else
-                                          {
-                                            return AlertDialog(
-                                              title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(AppLocalizations.of(
-                                                  context)!
-                                              .pleaseMakeSureToApproveAndReject),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                // Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .ok),
-                                            ),
-                                          ],
-                                            );
-                                          }
-                                        }
-                                           
-                                      );
+                                          context: context,
+                                          builder: (context) {
+                                            if (Platform.isIOS) {
+                                              return CupertinoAlertDialog(
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(AppLocalizations
+                                                        .of(context)!
+                                                    .pleaseMakeSureToApproveAndReject),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      // Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
+                                                  ),
+                                                ],
+                                              );
+                                            } else {
+                                              return AlertDialog(
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(AppLocalizations
+                                                        .of(context)!
+                                                    .pleaseMakeSureToApproveAndReject),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      // Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .ok),
+                                                  ),
+                                                ],
+                                              );
+                                            }
+                                          });
                                     } else {
                                       showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          if(Platform.isIOS)
-                                          {
-                                            return CupertinoAlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .doyouWantToProceed),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cancel),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                loadingCount = 0;
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                                context
-                                                    .read<
-                                                        LoadTransferApprovalBloc>()
-                                                    .add(
-                                                        const AddLoadTransferLoadingEvent());
+                                          context: context,
+                                          builder: (context) {
+                                            if (Platform.isIOS) {
+                                              return CupertinoAlertDialog(
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .doyouWantToProceed),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      loadingCount = 0;
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                      context
+                                                          .read<
+                                                              LoadTransferApprovalBloc>()
+                                                          .add(
+                                                              const AddLoadTransferLoadingEvent());
 
-                                                context
-                                                    .read<
-                                                        LoadTransferApprovalBloc>()
-                                                    .add(
-                                                      ApproveLoadtransferEvent(
-                                                        approve:
-                                                            LoadTransferApprovalInModel(
-                                                          products:
-                                                              _loadprducts,
-                                                          reqId: widget
-                                                              .header.ltrId,
-                                                          userId: widget.header
-                                                                  .userID ??
-                                                              '',
-                                                        ),
-                                                      ),
-                                                    );
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .proceed),
-                                            ),
-                                          ],
-                                        );
-                                          }
-                                          else
-                                          {
-                                            return AlertDialog(
-                                               title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .alert),
-                                          content: Text(
-                                              AppLocalizations.of(context)!
-                                                  .doyouWantToProceed),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .cancel),
-                                            ),
-                                            TextButton(
-                                              onPressed: () {
-                                                loadingCount = 0;
-                                                setState(() {});
-                                                Navigator.pop(context);
-                                                context
-                                                    .read<
-                                                        LoadTransferApprovalBloc>()
-                                                    .add(
-                                                        const AddLoadTransferLoadingEvent());
+                                                      context
+                                                          .read<
+                                                              LoadTransferApprovalBloc>()
+                                                          .add(
+                                                            ApproveLoadtransferEvent(
+                                                              approve:
+                                                                  LoadTransferApprovalInModel(
+                                                                products:
+                                                                    _loadprducts,
+                                                                reqId: widget
+                                                                    .header
+                                                                    .ltrId,
+                                                                userId: widget
+                                                                        .header
+                                                                        .userID ??
+                                                                    '',
+                                                              ),
+                                                            ),
+                                                          );
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .proceed),
+                                                  ),
+                                                ],
+                                              );
+                                            } else {
+                                              return AlertDialog(
+                                                title: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .alert),
+                                                content: Text(
+                                                    AppLocalizations.of(
+                                                            context)!
+                                                        .doyouWantToProceed),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .cancel),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      loadingCount = 0;
+                                                      setState(() {});
+                                                      Navigator.pop(context);
+                                                      context
+                                                          .read<
+                                                              LoadTransferApprovalBloc>()
+                                                          .add(
+                                                              const AddLoadTransferLoadingEvent());
 
-                                                context
-                                                    .read<
-                                                        LoadTransferApprovalBloc>()
-                                                    .add(
-                                                      ApproveLoadtransferEvent(
-                                                        approve:
-                                                            LoadTransferApprovalInModel(
-                                                          products:
-                                                              _loadprducts,
-                                                          reqId: widget
-                                                              .header.ltrId,
-                                                          userId: widget.header
-                                                                  .userID ??
-                                                              '',
-                                                        ),
-                                                      ),
-                                                    );
-                                              },
-                                              child: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .proceed),
-                                            ),
-                                          ],
-                                            );
-                                          }
-                                        }
-                                            
-                                      );
+                                                      context
+                                                          .read<
+                                                              LoadTransferApprovalBloc>()
+                                                          .add(
+                                                            ApproveLoadtransferEvent(
+                                                              approve:
+                                                                  LoadTransferApprovalInModel(
+                                                                products:
+                                                                    _loadprducts,
+                                                                reqId: widget
+                                                                    .header
+                                                                    .ltrId,
+                                                                userId: widget
+                                                                        .header
+                                                                        .userID ??
+                                                                    '',
+                                                              ),
+                                                            ),
+                                                          );
+                                                    },
+                                                    child: Text(
+                                                        AppLocalizations.of(
+                                                                context)!
+                                                            .proceed),
+                                                  ),
+                                                ],
+                                              );
+                                            }
+                                          });
                                     }
                                   }
                                 },

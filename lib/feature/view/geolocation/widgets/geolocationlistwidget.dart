@@ -52,94 +52,87 @@ class GeoLocationListWidget extends StatelessWidget {
                       ),
                     );
                 showDialog(
-                  context: context,
-                  builder: (context) {
-                    if(Platform.isIOS)
-                    {
-                      return CupertinoAlertDialog(
-                    title: Text(
-                      AppLocalizations.of(context)!.alert,
-                      style: kfontstyle(),
-                    ),
-                    content: Text(
-                        '${AppLocalizations.of(context)!.updateGeocode} ${selectedLocale?.languageCode == "en" ? result.title : result.arTitle}'),
-                    actions: [
-                      CupertinoDialogAction(
-                        child: Text(AppLocalizations.of(context)!.ok),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  );
-                    }
-                    else{
-                      return AlertDialog(
-                         title: Text(
-                      AppLocalizations.of(context)!.alert,
-                      style: kfontstyle(),
-                    ),
-                    content: Text(
-                        '${AppLocalizations.of(context)!.updateGeocode} ${selectedLocale?.languageCode == "en" ? result.title : result.arTitle}'),
-                    actions: [
-                      CupertinoDialogAction(
-                        child: Text(AppLocalizations.of(context)!.ok),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                      );
-                    }
-                  }
-                );
+                    context: context,
+                    builder: (context) {
+                      if (Platform.isIOS) {
+                        return CupertinoAlertDialog(
+                          title: Text(
+                            AppLocalizations.of(context)!.alert,
+                            style: kfontstyle(),
+                          ),
+                          content: Text(
+                              '${AppLocalizations.of(context)!.updateGeocode} ${selectedLocale?.languageCode == "en" ? result.title : result.arTitle}'),
+                          actions: [
+                            CupertinoDialogAction(
+                              child: Text(AppLocalizations.of(context)!.ok),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        );
+                      } else {
+                        return AlertDialog(
+                          title: Text(
+                            AppLocalizations.of(context)!.alert,
+                            style: kfontstyle(),
+                          ),
+                          content: Text(
+                              '${AppLocalizations.of(context)!.updateGeocode} ${selectedLocale?.languageCode == "en" ? result.title : result.arTitle}'),
+                          actions: [
+                            CupertinoDialogAction(
+                              child: Text(AppLocalizations.of(context)!.ok),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        );
+                      }
+                    });
               }
             },
             updateGeoLocationFailedState: () {
               Navigator.pop(context);
               showDialog(
-                context: context,
-                builder: (context){
-
-                  if(Platform.isIOS)
-                  {
-                    return CupertinoAlertDialog(
-                  title: Text(
-                    AppLocalizations.of(context)!.alert,
-                    style: kfontstyle(),
-                  ),
-                  content:
-                      Text(AppLocalizations.of(context)!.updateGeocodeFailed),
-                  actions: [
-                    CupertinoDialogAction(
-                      child: Text(AppLocalizations.of(context)!.ok),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                );
-                  }
-                  else{
-                    return AlertDialog(
-                       title: Text(
-                    AppLocalizations.of(context)!.alert,
-                    style: kfontstyle(),
-                  ),
-                  content:
-                      Text(AppLocalizations.of(context)!.updateGeocodeFailed),
-                  actions: [
-                    CupertinoDialogAction(
-                      child: Text(AppLocalizations.of(context)!.ok),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                    );
-                  }
-                }
-              );
+                  context: context,
+                  builder: (context) {
+                    if (Platform.isIOS) {
+                      return CupertinoAlertDialog(
+                        title: Text(
+                          AppLocalizations.of(context)!.alert,
+                          style: kfontstyle(),
+                        ),
+                        content: Text(
+                            AppLocalizations.of(context)!.updateGeocodeFailed),
+                        actions: [
+                          CupertinoDialogAction(
+                            child: Text(AppLocalizations.of(context)!.ok),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    } else {
+                      return AlertDialog(
+                        title: Text(
+                          AppLocalizations.of(context)!.alert,
+                          style: kfontstyle(),
+                        ),
+                        content: Text(
+                            AppLocalizations.of(context)!.updateGeocodeFailed),
+                        actions: [
+                          CupertinoDialogAction(
+                            child: Text(AppLocalizations.of(context)!.ok),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    }
+                  });
             },
             updateGeoLocationLoadingSTate: () {
               showCupertinoDialog(
@@ -251,8 +244,7 @@ class GeoLocationListWidget extends StatelessWidget {
                                                 return showDialog(
                                                     context: context,
                                                     builder: (context) {
-                                                      if(Platform.isIOS)
-                                                      {
+                                                      if (Platform.isIOS) {
                                                         return CupertinoAlertDialog(
                                                           title: Text(
                                                               AppLocalizations.of(
@@ -274,10 +266,9 @@ class GeoLocationListWidget extends StatelessWidget {
                                                                         .ok))
                                                           ],
                                                         );
-                                                      }
-                                                      else{
+                                                      } else {
                                                         return AlertDialog(
-                                                           title: Text(
+                                                          title: Text(
                                                               AppLocalizations.of(
                                                                       context)!
                                                                   .alert),
@@ -298,9 +289,7 @@ class GeoLocationListWidget extends StatelessWidget {
                                                           ],
                                                         );
                                                       }
-                                                    }
-                                                        
-                                                        );
+                                                    });
                                               }
                                             } catch (e) {
                                               logger
@@ -331,118 +320,118 @@ class GeoLocationListWidget extends StatelessWidget {
                                     onTap: geolocations[index].status == 'N'
                                         ? () {
                                             showCupertinoDialog(
-                                              context: context,
-                                              builder: (context) {
-                                                if(Platform.isIOS)
-                                                {
-                                                  return   CupertinoAlertDialog(
-                                                title: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .alert,
-                                                  style: kfontstyle(),
-                                                ),
-                                                content: Text(AppLocalizations
-                                                        .of(context)!
-                                                    .doYouWantToConfirmThisGeocode),
-                                                actions: [
-                                                  CupertinoDialogAction(
-                                                    child: Text(
+                                                context: context,
+                                                builder: (context) {
+                                                  if (Platform.isIOS) {
+                                                    return CupertinoAlertDialog(
+                                                      title: Text(
                                                         AppLocalizations.of(
                                                                 context)!
-                                                            .no),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                  ),
-                                                  CupertinoDialogAction(
-                                                    child: Text(
+                                                            .alert,
+                                                        style: kfontstyle(),
+                                                      ),
+                                                      content: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .doYouWantToConfirmThisGeocode),
+                                                      actions: [
+                                                        CupertinoDialogAction(
+                                                          child: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .no),
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                        ),
+                                                        CupertinoDialogAction(
+                                                          child: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .confirm),
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                            context
+                                                                .read<
+                                                                    UpdateGeoLocationCubit>()
+                                                                .addUpdateLoading();
+                                                            context
+                                                                .read<
+                                                                    UpdateGeoLocationCubit>()
+                                                                .updateGeoLocation(
+                                                                  ConfirmGeoCodeInModel(
+                                                                    cglId: geolocations[
+                                                                            index]
+                                                                        .cglId,
+                                                                    cglCusGeoLoc:
+                                                                        geolocations[index]
+                                                                            .cglCusGeoLoc,
+                                                                    cusId: customer
+                                                                        .cusId,
+                                                                  ),
+                                                                );
+                                                          },
+                                                        )
+                                                      ],
+                                                    );
+                                                  } else {
+                                                    return AlertDialog(
+                                                      title: Text(
                                                         AppLocalizations.of(
                                                                 context)!
-                                                            .confirm),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                      context
-                                                          .read<
-                                                              UpdateGeoLocationCubit>()
-                                                          .addUpdateLoading();
-                                                      context
-                                                          .read<
-                                                              UpdateGeoLocationCubit>()
-                                                          .updateGeoLocation(
-                                                            ConfirmGeoCodeInModel(
-                                                              cglId:
-                                                                  geolocations[
-                                                                          index]
-                                                                      .cglId,
-                                                              cglCusGeoLoc:
-                                                                  geolocations[
-                                                                          index]
-                                                                      .cglCusGeoLoc,
-                                                              cusId: customer
-                                                                  .cusId,
-                                                            ),
-                                                          );
-                                                    },
-                                                  )
-                                                ],
-                                              );
-                                                }
-                                                else{
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                  AppLocalizations.of(context)!
-                                                      .alert,
-                                                  style: kfontstyle(),
-                                                ),
-                                                content: Text(AppLocalizations
-                                                        .of(context)!
-                                                    .doYouWantToConfirmThisGeocode),
-                                                actions: [
-                                                  CupertinoDialogAction(
-                                                    child: Text(
-                                                        AppLocalizations.of(
-                                                                context)!
-                                                            .no),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                  ),
-                                                  CupertinoDialogAction(
-                                                    child: Text(
-                                                        AppLocalizations.of(
-                                                                context)!
-                                                            .confirm),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                      context
-                                                          .read<
-                                                              UpdateGeoLocationCubit>()
-                                                          .addUpdateLoading();
-                                                      context
-                                                          .read<
-                                                              UpdateGeoLocationCubit>()
-                                                          .updateGeoLocation(
-                                                            ConfirmGeoCodeInModel(
-                                                              cglId:
-                                                                  geolocations[
-                                                                          index]
-                                                                      .cglId,
-                                                              cglCusGeoLoc:
-                                                                  geolocations[
-                                                                          index]
-                                                                      .cglCusGeoLoc,
-                                                              cusId: customer
-                                                                  .cusId,
-                                                            ),
-                                                          );
-                                                    },
-                                                  )
-                                                ],
-                                                  );
-                                                }
-                                              }
-                                                
-                                            );
+                                                            .alert,
+                                                        style: kfontstyle(),
+                                                      ),
+                                                      content: Text(
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .doYouWantToConfirmThisGeocode),
+                                                      actions: [
+                                                        CupertinoDialogAction(
+                                                          child: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .no),
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                        ),
+                                                        CupertinoDialogAction(
+                                                          child: Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .confirm),
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                            context
+                                                                .read<
+                                                                    UpdateGeoLocationCubit>()
+                                                                .addUpdateLoading();
+                                                            context
+                                                                .read<
+                                                                    UpdateGeoLocationCubit>()
+                                                                .updateGeoLocation(
+                                                                  ConfirmGeoCodeInModel(
+                                                                    cglId: geolocations[
+                                                                            index]
+                                                                        .cglId,
+                                                                    cglCusGeoLoc:
+                                                                        geolocations[index]
+                                                                            .cglCusGeoLoc,
+                                                                    cusId: customer
+                                                                        .cusId,
+                                                                  ),
+                                                                );
+                                                          },
+                                                        )
+                                                      ],
+                                                    );
+                                                  }
+                                                });
                                           }
                                         : null,
                                     child: Container(

@@ -95,7 +95,7 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                 height: 10.h,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 3.0,right: 3),
+                padding: const EdgeInsets.only(left: 3.0, right: 3),
                 child: Container(
                   width: double.infinity,
                   //height: 80.h,
@@ -110,8 +110,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                             blurRadius: 2)
                       ]),
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -170,16 +170,22 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    OutOfStockScreen
-                                    (fromDateCtrl: fromdateController, 
-                                    toDateCtrl: todateController)):
-                                    MaterialPageRoute(
-                                      builder: (context) => OutOfStockScreen(
-                                        fromDateCtrl: fromdateController,
-                                        toDateCtrl: todateController,
-                                      ),
-                                    ),
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                OutOfStockScreen(
+                                                    fromDateCtrl:
+                                                        fromdateController,
+                                                    toDateCtrl:
+                                                        todateController))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                OutOfStockScreen(
+                                              fromDateCtrl: fromdateController,
+                                              toDateCtrl: todateController,
+                                            ),
+                                          ),
                                   );
                                 },
                                 child: Text(
@@ -200,7 +206,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                                         count == null
                                             ? const Text("0")
                                             : Text("${count.itemCount}"),
-                                    outOfStockFailedState: () => const Text("0"));
+                                    outOfStockFailedState: () =>
+                                        const Text("0"));
                               },
                             ),
                             SizedBox(
@@ -221,16 +228,21 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    OutOfCustomerScreen(
-                                      fromDate: fromdateController,
-                                       toDate: todateController)):
-                                    MaterialPageRoute(
-                                      builder: (context) => OutOfCustomerScreen(
-                                        fromDate: fromdateController,
-                                        toDate: todateController,
-                                      ),
-                                    ),
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                OutOfCustomerScreen(
+                                                    fromDate:
+                                                        fromdateController,
+                                                    toDate: todateController))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                OutOfCustomerScreen(
+                                              fromDate: fromdateController,
+                                              toDate: todateController,
+                                            ),
+                                          ),
                                   );
                                 },
                                 child: Text(
@@ -253,7 +265,8 @@ class _MerchandisingScreenState extends State<MerchandisingScreen> {
                                             //counts.saleOrder ?? "",
                                             Text(count.cusCount ?? ""),
                                     //Text("${count.cusCount}"),
-                                    outOfStockFailedState: () => const Text("0"));
+                                    outOfStockFailedState: () =>
+                                        const Text("0"));
                               },
                             )
                           ],

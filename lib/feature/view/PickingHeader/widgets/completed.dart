@@ -64,13 +64,18 @@ class Completed extends StatelessWidget {
                                               pickingOut[index].pickingID!,
                                           searchQuery: ''));
                                   Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    PickingCompleted(picking: pickingOut[index])):
-                                    MaterialPageRoute(
-                                      builder: (context) => PickingCompleted(
-                                        picking: pickingOut[index],
-                                      ),
-                                    ),
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                PickingCompleted(
+                                                    picking: pickingOut[index]))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                PickingCompleted(
+                                              picking: pickingOut[index],
+                                            ),
+                                          ),
                                   );
                                 },
                                 //titleAlignment: ListTileTitleAlignment.center,

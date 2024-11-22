@@ -67,13 +67,18 @@ class OnGoing extends StatelessWidget {
                                             searchQuery: ''));
                                     Navigator.push(
                                       context,
-                                      Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                      PickingOgoing(picking: pickingOut[index])):
-                                      MaterialPageRoute(
-                                        builder: (context) => PickingOgoing(
-                                          picking: pickingOut[index],
-                                        ),
-                                      ),
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  PickingOgoing(
+                                                      picking:
+                                                          pickingOut[index]))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  PickingOgoing(
+                                                picking: pickingOut[index],
+                                              ),
+                                            ),
                                     );
                                   },
                                   contentPadding: EdgeInsets.zero,

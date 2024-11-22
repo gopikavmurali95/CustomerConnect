@@ -304,65 +304,78 @@ class _HomeScreenState extends State<HomeScreen> {
                   msg = msg.replaceAll('(Version Number)', '');
                   Future.delayed(const Duration(microseconds: 100), () {
                     showDialog(
-                      context: context,
-                      builder: (context) {
-                        if(Platform.isIOS)
-                        {
-                          return CupertinoAlertDialog(
-                        title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(msg),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text("Ignore"),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> AutoUpdateScreen(status: status,)):
-                                  MaterialPageRoute(
-                                    builder: (context) => AutoUpdateScreen(
-                                      status: status,
-                                    ),
-                                  ));
-                            },
-                            child: Text(AppLocalizations.of(context)!.update),
-                          ),
-                        ],
-                      );
-                        }
-                        else{
-                          return AlertDialog(
-                            title: Text(AppLocalizations.of(context)!.alert),
-                        content: Text(msg),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text("Ignore"),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> AutoUpdateScreen(status: status,)):
-                                  MaterialPageRoute(
-                                    builder: (context) => AutoUpdateScreen(
-                                      status: status,
-                                    ),
-                                  ));
-                            },
-                            child: Text(AppLocalizations.of(context)!.update),
-                          ),
-                        ],
-                          );
-                        }
-                      }
-                    );
+                        context: context,
+                        builder: (context) {
+                          if (Platform.isIOS) {
+                            return CupertinoAlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(msg),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("Ignore"),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        Platform.isIOS
+                                            ? CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    AutoUpdateScreen(
+                                                      status: status,
+                                                    ))
+                                            : MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AutoUpdateScreen(
+                                                  status: status,
+                                                ),
+                                              ));
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.update),
+                                ),
+                              ],
+                            );
+                          } else {
+                            return AlertDialog(
+                              title: Text(AppLocalizations.of(context)!.alert),
+                              content: Text(msg),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("Ignore"),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        Platform.isIOS
+                                            ? CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    AutoUpdateScreen(
+                                                      status: status,
+                                                    ))
+                                            : MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AutoUpdateScreen(
+                                                  status: status,
+                                                ),
+                                              ));
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.update),
+                                ),
+                              ],
+                            );
+                          }
+                        });
                   });
                 }
               }
@@ -1048,12 +1061,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           IconButton(
                             onPressed: () async {
                               Navigator.push(
-                                  context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                  NotificationScreen(user: widget.user)):
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        NotificationScreen(user: widget.user),
-                                  ));
+                                  context,
+                                  Platform.isIOS
+                                      ? CupertinoPageRoute(
+                                          builder: (context) =>
+                                              NotificationScreen(
+                                                  user: widget.user))
+                                      : MaterialPageRoute(
+                                          builder: (context) =>
+                                              NotificationScreen(
+                                                  user: widget.user),
+                                        ));
                               // /* downloadAndInstallApk(
                               //         // 'https://drive.google.com/file/d/1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',
                               //         // 'https://drive.google.com/uc?id=1fC_fHR6F0RC8ixJ0yG_KNUb1WROI_wQS',

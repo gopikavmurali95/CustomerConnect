@@ -81,12 +81,15 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> PriceChangeHeader(
-                                  user: user)):
-                                MaterialPageRoute(
-                                    builder: (context) => PriceChangeHeader(
-                                          user: user,
-                                        )));
+                                context,
+                                Platform.isIOS
+                                    ? CupertinoPageRoute(
+                                        builder: (context) =>
+                                            PriceChangeHeader(user: user))
+                                    : MaterialPageRoute(
+                                        builder: (context) => PriceChangeHeader(
+                                              user: user,
+                                            )));
                           },
                           child: Container(
                             // height: 60,
@@ -238,13 +241,17 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> 
-                              PartialDeliveryHeader(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => PartialDeliveryHeader(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          PartialDeliveryHeader(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          PartialDeliveryHeader(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -315,14 +322,18 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=> 
-                              ScheduledReturnHEaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ScheduledReturnHEaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          ScheduledReturnHEaderScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          ScheduledReturnHEaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -395,13 +406,17 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              ReturnApprovalHeader(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => ReturnApprovalHeader(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          ReturnApprovalHeader(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          ReturnApprovalHeader(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -473,13 +488,17 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                                context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                DisputeNoteApprovalHEaderScreen(user: user)):
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        DisputeNoteApprovalHEaderScreen(
-                                          user: user,
-                                        )));
+                                context,
+                                Platform.isIOS
+                                    ? CupertinoPageRoute(
+                                        builder: (context) =>
+                                            DisputeNoteApprovalHEaderScreen(
+                                                user: user))
+                                    : MaterialPageRoute(
+                                        builder: (context) =>
+                                            DisputeNoteApprovalHEaderScreen(
+                                              user: user,
+                                            )));
                           },
                           child: Container(
                             // height: 50,
@@ -551,13 +570,17 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              CreditNoteHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => CreditNoteHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          CreditNoteHeaderScreen(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          CreditNoteHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -628,14 +651,18 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              AssetAddingApprovalHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    AssetAddingApprovalHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          AssetAddingApprovalHeaderScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          AssetAddingApprovalHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -706,14 +733,18 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              AssetRemovalApprovalScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    AssetRemovalApprovalScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          AssetRemovalApprovalScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          AssetRemovalApprovalScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -793,13 +824,17 @@ class ApprovalScreen extends StatelessWidget {
                                     mode: "P",
                                     searchQuery: ''));
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              VanToVanApprovalHeader(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => VanToVanApprovalHeader(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          VanToVanApprovalHeader(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          VanToVanApprovalHeader(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -870,14 +905,18 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              LoadTransferApprovalHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    LoadTransferApprovalHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          LoadTransferApprovalHeaderScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          LoadTransferApprovalHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -948,13 +987,17 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              JourneyPlanHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => JourneyPlanHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          JourneyPlanHeaderScreen(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          JourneyPlanHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -1030,13 +1073,17 @@ class ApprovalScreen extends StatelessWidget {
                                 GetAllFieldServiceHeadersEvent(
                                     userId: user.usrId ?? '', searchQuery: ''));
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              FieldServiceInvoiceHeader(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => FieldServiceInvoiceHeader(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          FieldServiceInvoiceHeader(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          FieldServiceInvoiceHeader(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -1109,14 +1156,18 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              MaterialRequestHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    MaterialRequestHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          MaterialRequestHeaderScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          MaterialRequestHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -1190,13 +1241,17 @@ class ApprovalScreen extends StatelessWidget {
                                 GetAllFieldServiceHeadersEvent(
                                     userId: user.usrId ?? '', searchQuery: ''));
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              LoadRequestHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => LoadRequestHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          LoadRequestHeaderScreen(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          LoadRequestHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -1268,14 +1323,18 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              InventoryReconfirmHeadersScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    InventoryReconfirmHeadersScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          InventoryReconfirmHeadersScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          InventoryReconfirmHeadersScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -1347,14 +1406,18 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              VoidTranscactioHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    VoidTranscactioHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          VoidTranscactioHeaderScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          VoidTranscactioHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -1427,12 +1490,17 @@ class ApprovalScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>MustSellHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                builder: (context) => MustSellHeaderScreen(
-                                  user: user,
-                                ),
-                              ),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          MustSellHeaderScreen(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          MustSellHeaderScreen(
+                                        user: user,
+                                      ),
+                                    ),
                             );
                           },
                           child: Container(
@@ -1504,14 +1572,18 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              SettlementApprovalHeaderScreen(user: user, users: user)):
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SettlementApprovalHeaderScreen(
-                                        users: user,
-                                        user: user,
-                                      )),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          SettlementApprovalHeaderScreen(
+                                              user: user, users: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          SettlementApprovalHeaderScreen(
+                                            users: user,
+                                            user: user,
+                                          )),
                             );
                           },
                           child: Container(
@@ -1585,10 +1657,14 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>const UnScheduledVisitScreen()):
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const UnScheduledVisitScreen()),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          const UnScheduledVisitScreen())
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          const UnScheduledVisitScreen()),
                             );
                           },
                           child: Container(
@@ -1661,12 +1737,16 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              CustomerFocHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                  builder: (context) => CustomerFocHeaderScreen(
-                                        user: user,
-                                      )),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          CustomerFocHeaderScreen(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          CustomerFocHeaderScreen(
+                                            user: user,
+                                          )),
                             );
                           },
                           child: Container(
@@ -1739,13 +1819,17 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              CustomerOverrideApprovalHeaderScreen(user: user)):
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      CustomerOverrideApprovalHeaderScreen(
-                                        user: user,
-                                      )),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          CustomerOverrideApprovalHeaderScreen(
+                                              user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          CustomerOverrideApprovalHeaderScreen(
+                                            user: user,
+                                          )),
                             );
                           },
                           child: Container(
@@ -1818,13 +1902,16 @@ class ApprovalScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              FreeSampleApprovalHeader(user: user)):
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      FreeSampleApprovalHeader(
-                                        user: user,
-                                      )),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          FreeSampleApprovalHeader(user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          FreeSampleApprovalHeader(
+                                            user: user,
+                                          )),
                             );
                           },
                           child: Container(

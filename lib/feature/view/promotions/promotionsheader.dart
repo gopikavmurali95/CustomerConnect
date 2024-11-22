@@ -255,14 +255,19 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                               searchQuery: ''));
                                       Navigator.push(
                                           context,
-                                          Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                          PromotionCustomer(promotion: promoheader[index])):
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PromotionCustomer(
-                                                    promotion:
-                                                        promoheader[index],
-                                                  )));
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      PromotionCustomer(
+                                                          promotion:
+                                                              promoheader[
+                                                                  index]))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PromotionCustomer(
+                                                        promotion:
+                                                            promoheader[index],
+                                                      )));
                                     },
                                     child: SizedBox(
                                       //color: Colors.red,
@@ -349,15 +354,20 @@ class _PromotionHeaderState extends State<PromotionHeader> {
                                                           ''));
                                               Navigator.push(
                                                   context,
-                                                  Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                  PromotionDetails(promotion: promoheader[index])):
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          PromotionDetails(
-                                                            promotion:
-                                                                promoheader[
-                                                                    index],
-                                                          )));
+                                                  Platform.isIOS
+                                                      ? CupertinoPageRoute(
+                                                          builder: (context) =>
+                                                              PromotionDetails(
+                                                                  promotion:
+                                                                      promoheader[
+                                                                          index]))
+                                                      : MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              PromotionDetails(
+                                                                promotion:
+                                                                    promoheader[
+                                                                        index],
+                                                              )));
                                             },
                                             icon: SizedBox(
                                               height: 20.h,

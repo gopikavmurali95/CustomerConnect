@@ -324,12 +324,18 @@ class _InventoryReconfirmHeadersScreenState
                                                       GestureDetector(
                                                         onTap: () {
                                                           Navigator.push(
-                                                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                              InventoryReconfirmationDetailScreen(user: widget.user, header: inventory[index],
-                                                               currentMode: _selectedMode)):
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
+                                                              context,
+                                                              Platform.isIOS
+                                                                  ? CupertinoPageRoute(
+                                                                      builder: (context) => InventoryReconfirmationDetailScreen(
+                                                                          user: widget
+                                                                              .user,
+                                                                          header: inventory[
+                                                                              index],
+                                                                          currentMode:
+                                                                              _selectedMode))
+                                                                  : MaterialPageRoute(
+                                                                      builder: (context) =>
                                                                           InventoryReconfirmationDetailScreen(
                                                                             header:
                                                                                 inventory[index],

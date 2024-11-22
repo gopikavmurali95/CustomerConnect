@@ -89,15 +89,18 @@ class _SpecialPricingState extends State<SpecialPricing> {
                               onTap: () {
                                 Navigator.pushReplacement(
                                     context,
-                                    Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    SpecialPricingCustomer(user: widget.user,
-                                     spPrice: widget.spPrice)):
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            SpecialPricingCustomer(
-                                              user: widget.user,
-                                              spPrice: widget.spPrice,
-                                            )));
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                SpecialPricingCustomer(
+                                                    user: widget.user,
+                                                    spPrice: widget.spPrice))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                SpecialPricingCustomer(
+                                                  user: widget.user,
+                                                  spPrice: widget.spPrice,
+                                                )));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -129,14 +132,19 @@ class _SpecialPricingState extends State<SpecialPricing> {
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              SpecialPricingCustomer(user: widget.user,
-                               spPrice: widget.spPrice)):
-                              MaterialPageRoute(
-                                  builder: (context) => SpecialPricingCustomer(
-                                        user: widget.user,
-                                        spPrice: widget.spPrice,
-                                      )));
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          SpecialPricingCustomer(
+                                              user: widget.user,
+                                              spPrice: widget.spPrice))
+                                  : MaterialPageRoute(
+                                      builder: (context) =>
+                                          SpecialPricingCustomer(
+                                            user: widget.user,
+                                            spPrice: widget.spPrice,
+                                          )));
                         },
                         child: Row(
                           children: [
@@ -282,8 +290,7 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 1,
                           fit: FlexFit.tight,
                           child: Text(
-                          
-                          AppLocalizations.of(context)!.spclprice,
+                            AppLocalizations.of(context)!.spclprice,
                             style: boxHeading(),
                           ),
                         ),
@@ -300,8 +307,8 @@ class _SpecialPricingState extends State<SpecialPricing> {
                           flex: 0,
                           fit: FlexFit.tight,
                           child: Text(
-                           // AppLocalizations.of(context)!.spclprice,
-                             "Rtn Price",
+                            // AppLocalizations.of(context)!.spclprice,
+                            "Rtn Price",
                             style: boxHeading(),
                           ),
                         ),
@@ -390,40 +397,46 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                                   Row(
                                                     children: [
                                                       Text(
-                                                       " ${AppLocalizations.of(
-                                                                context)!
-                                                            .uom}:",
+                                                        " ${AppLocalizations.of(context)!.uom}:",
                                                         style: boxHeading(),
-                                                      
+
                                                         // style: subTitleTextStyle(),
                                                       ),
-                                                      const SizedBox(width: 5,),
-                                                       Text(
-                                                    spPrice[index].uom ?? '',
-                                                    style: subTitleTextStyle(),
-                                                  ),
-                                                  const SizedBox(width: 10,),
-                                                  Text(
-                                                       " ${AppLocalizations.of(
-                                                                context)!
-                                                            .stdPrice}:",
+                                                      const SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      Text(
+                                                        spPrice[index].uom ??
+                                                            '',
+                                                        style:
+                                                            subTitleTextStyle(),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 10,
+                                                      ),
+                                                      Text(
+                                                        " ${AppLocalizations.of(context)!.stdPrice}:",
                                                         style: boxHeading(),
-                                                      
+
                                                         // style: subTitleTextStyle(),
                                                       ),
-                                                      const SizedBox(width: 5,),
-                                                       Text(
-                                                    spPrice[index].stdPrice ?? '',
-                                                    style: subTitleTextStyle(),
-                                                  ),
+                                                      const SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      Text(
+                                                        spPrice[index]
+                                                                .stdPrice ??
+                                                            '',
+                                                        style:
+                                                            subTitleTextStyle(),
+                                                      ),
                                                     ],
                                                   ),
-                                                 
                                                 ],
                                               ),
                                             ),
                                           ),
-                                          
+
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 1.0),
@@ -433,7 +446,8 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                               children: [
                                                 Text(
                                                   textAlign: TextAlign.end,
-                                                  spPrice[index].specialPrice ?? '',
+                                                  spPrice[index].specialPrice ??
+                                                      '',
                                                   style: subTitleTextStyle(),
                                                 ),
                                               ],
@@ -448,7 +462,8 @@ class _SpecialPricingState extends State<SpecialPricing> {
                                               children: [
                                                 Text(
                                                   textAlign: TextAlign.end,
-                                                  spPrice[index].pldReturnPrice??
+                                                  spPrice[index]
+                                                          .pldReturnPrice ??
                                                       '',
                                                   style: subTitleTextStyle(),
                                                 ),

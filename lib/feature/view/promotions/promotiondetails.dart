@@ -127,12 +127,16 @@ class PromotionDetails extends StatelessWidget {
                                         searchQuery: ''));
                                 Navigator.pushReplacement(
                                     context,
-                                    Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    PromotionCustomer(promotion: promotion)):
-                                    MaterialPageRoute(
-                                        builder: (context) => PromotionCustomer(
-                                              promotion: promotion,
-                                            )));
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                PromotionCustomer(
+                                                    promotion: promotion))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                PromotionCustomer(
+                                                  promotion: promotion,
+                                                )));
                               },
                               child: Row(
                                 children: [
@@ -165,12 +169,14 @@ class PromotionDetails extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                               context,
-                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              QualificationGroup(promotion: promotion)):
-                              MaterialPageRoute(
-                                  builder: (context) => QualificationGroup(
-                                        promotion: promotion,
-                                      )));
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) => QualificationGroup(
+                                          promotion: promotion))
+                                  : MaterialPageRoute(
+                                      builder: (context) => QualificationGroup(
+                                            promotion: promotion,
+                                          )));
                         },
                         child: Container(
                           height: 62,
@@ -235,12 +241,14 @@ class PromotionDetails extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                               context,
-                              Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              AssignmentGroup(promotion: promotion)):
-                              MaterialPageRoute(
-                                  builder: (context) => AssignmentGroup(
-                                        promotion: promotion,
-                                      )));
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) =>
+                                          AssignmentGroup(promotion: promotion))
+                                  : MaterialPageRoute(
+                                      builder: (context) => AssignmentGroup(
+                                            promotion: promotion,
+                                          )));
                         },
                         child: Container(
                           height: 62,

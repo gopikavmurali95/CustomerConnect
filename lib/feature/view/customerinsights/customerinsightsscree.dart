@@ -192,14 +192,18 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                     InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                            EditProfileScreen(user: widget.user, customer: widget.customer)):
-                            MaterialPageRoute(
-                              builder: (context) => EditProfileScreen(
-                                user: widget.user,
-                                customer: widget.customer,
-                              ),
-                            ));
+                            context,
+                            Platform.isIOS
+                                ? CupertinoPageRoute(
+                                    builder: (context) => EditProfileScreen(
+                                        user: widget.user,
+                                        customer: widget.customer))
+                                : MaterialPageRoute(
+                                    builder: (context) => EditProfileScreen(
+                                      user: widget.user,
+                                      customer: widget.customer,
+                                    ),
+                                  ));
                       },
                       child: Container(
                         decoration: BoxDecoration(

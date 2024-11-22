@@ -166,13 +166,16 @@ class _ARDetailScreenState extends State<ARDetailScreen> {
                     onPressed: () {
                       widget.arheader;
                       Navigator.push(
-                        context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                        ArImagePreviewScreen(arheader: widget.arheader)):
-                        MaterialPageRoute(
-                          builder: (context) => ArImagePreviewScreen(
-                            arheader: widget.arheader,
-                          ),
-                        ),
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) => ArImagePreviewScreen(
+                                    arheader: widget.arheader))
+                            : MaterialPageRoute(
+                                builder: (context) => ArImagePreviewScreen(
+                                  arheader: widget.arheader,
+                                ),
+                              ),
                       );
                     },
                     child: Text(

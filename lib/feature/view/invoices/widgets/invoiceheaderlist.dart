@@ -61,17 +61,23 @@ class InvoiceHeaderListWidget extends StatelessWidget {
                                 onTap: () {
                                   //context.read<InvoiceDetailsBloc>().add(GetInvoiceDetailsEvent(id: invheader))
                                   Navigator.push(
-                                    context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                    InvoiceDetailScreen(
-                                      isfromUser: isfromUser, invoiceheader: invheader[index],
-                                       user: user)):
-                                    MaterialPageRoute(
-                                      builder: (context) => InvoiceDetailScreen(
-                                        isfromUser: isfromUser,
-                                        invoiceheader: invheader[index],
-                                        user: user,
-                                      ),
-                                    ),
+                                    context,
+                                    Platform.isIOS
+                                        ? CupertinoPageRoute(
+                                            builder: (context) =>
+                                                InvoiceDetailScreen(
+                                                    isfromUser: isfromUser,
+                                                    invoiceheader:
+                                                        invheader[index],
+                                                    user: user))
+                                        : MaterialPageRoute(
+                                            builder: (context) =>
+                                                InvoiceDetailScreen(
+                                              isfromUser: isfromUser,
+                                              invoiceheader: invheader[index],
+                                              user: user,
+                                            ),
+                                          ),
                                   );
                                 },
                                 child: Row(

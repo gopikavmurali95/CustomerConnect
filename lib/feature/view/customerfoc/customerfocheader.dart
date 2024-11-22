@@ -859,17 +859,17 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                                 TextButton(
                                                   onPressed: () {
                                                     context
-                                                      .read<
-                                                          CustomerFocHeaderBloc>()
-                                                      .add(
-                                                          const ClearCustomerFocHeader());
-                                                  context
-                                                      .read<
-                                                          CustomerFocHeaderBloc>()
-                                                      .add(GetCustomerFocHeaderEvent(
-                                                          statusValue:
-                                                              selectedCustomerFocMode,
-                                                          searchQuery: ''));
+                                                        .read<
+                                                            CustomerFocHeaderBloc>()
+                                                        .add(
+                                                            const ClearCustomerFocHeader());
+                                                    context
+                                                        .read<
+                                                            CustomerFocHeaderBloc>()
+                                                        .add(GetCustomerFocHeaderEvent(
+                                                            statusValue:
+                                                                selectedCustomerFocMode,
+                                                            searchQuery: ''));
                                                     Navigator.pop(context);
                                                   },
                                                   child: Text(
@@ -890,17 +890,17 @@ class _CustomerFocHeaderScreenState extends State<CustomerFocHeaderScreen> {
                                                 TextButton(
                                                   onPressed: () {
                                                     context
-                                                      .read<
-                                                          CustomerFocHeaderBloc>()
-                                                      .add(
-                                                          const ClearCustomerFocHeader());
-                                                  context
-                                                      .read<
-                                                          CustomerFocHeaderBloc>()
-                                                      .add(GetCustomerFocHeaderEvent(
-                                                          statusValue:
-                                                              selectedCustomerFocMode,
-                                                          searchQuery: ''));
+                                                        .read<
+                                                            CustomerFocHeaderBloc>()
+                                                        .add(
+                                                            const ClearCustomerFocHeader());
+                                                    context
+                                                        .read<
+                                                            CustomerFocHeaderBloc>()
+                                                        .add(GetCustomerFocHeaderEvent(
+                                                            statusValue:
+                                                                selectedCustomerFocMode,
+                                                            searchQuery: ''));
                                                     Navigator.pop(context);
                                                   },
                                                   child: Text(

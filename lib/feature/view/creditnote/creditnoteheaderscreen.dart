@@ -310,16 +310,24 @@ class _CreditNoteHeaderScreenState extends State<CreditNoteHeaderScreen> {
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                          context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                          CreditNoteDetailScreen(creditNote: headers[index], user: widget.user, currentMode: _selectedMode)):
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                CreditNoteDetailScreen(
-                                              creditNote: headers[index],
-                                              user: widget.user,
-                                              currentMode: _selectedMode,
-                                            ),
-                                          ),
+                                          context,
+                                          Platform.isIOS
+                                              ? CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      CreditNoteDetailScreen(
+                                                          creditNote:
+                                                              headers[index],
+                                                          user: widget.user,
+                                                          currentMode:
+                                                              _selectedMode))
+                                              : MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CreditNoteDetailScreen(
+                                                    creditNote: headers[index],
+                                                    user: widget.user,
+                                                    currentMode: _selectedMode,
+                                                  ),
+                                                ),
                                         );
                                       },
                                       child: Row(

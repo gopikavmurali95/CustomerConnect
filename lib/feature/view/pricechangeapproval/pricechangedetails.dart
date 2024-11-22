@@ -258,101 +258,104 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                         isLoading = false;
                         if (response.mode == '1') {
                           showDialog(
-                            context: context,
-                            builder: (context) {
-                              if(Platform.isIOS)
-                              {
-                                return CupertinoAlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(selectedLocale?.languageCode == 'en'
-                                  ? 'Your request has been successfully actioned'
-                                  : 'لقد تم تنفيذ طلبك بنجاح'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    /* context.read<PriceChangeHeaderBloc>().add(
+                              context: context,
+                              builder: (context) {
+                                if (Platform.isIOS) {
+                                  return CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(selectedLocale
+                                                ?.languageCode ==
+                                            'en'
+                                        ? 'Your request has been successfully actioned'
+                                        : 'لقد تم تنفيذ طلبك بنجاح'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          /* context.read<PriceChangeHeaderBloc>().add(
                                         GetPriceChangeHeaderEvent(
                                             rotID: widget.user.usrId!,
                                             mode: '',
                                             searchQuery: '')); */
 
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                            );
-
-                              }
-                              else
-                              {
-                                return AlertDialog(
-                                  title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(selectedLocale?.languageCode == 'en'
-                                  ? 'Your request has been successfully actioned'
-                                  : 'لقد تم تنفيذ طلبك بنجاح'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    /* context.read<PriceChangeHeaderBloc>().add(
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return AlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(selectedLocale
+                                                ?.languageCode ==
+                                            'en'
+                                        ? 'Your request has been successfully actioned'
+                                        : 'لقد تم تنفيذ طلبك بنجاح'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          /* context.read<PriceChangeHeaderBloc>().add(
                                         GetPriceChangeHeaderEvent(
                                             rotID: widget.user.usrId!,
                                             mode: '',
                                             searchQuery: '')); */
 
-                                    Navigator.pop(context);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                                );
-                              }
-                            } 
-                          );
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  );
+                                }
+                              });
                         } else {
                           statuslist =
                               List.generate(_totalcount, (index) => null);
                           setState(() {});
                           // Navigator.pop(context);
                           showDialog(
-                            context: context,
-                            builder: (context) {
-                              if(Platform.isIOS)
-                              {
-                                return CupertinoAlertDialog(
-                              title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} ,${AppLocalizations.of(context)!.tryAgain}"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                            );
-                              }
-                              else
-                              {
-                                return AlertDialog(
-                                   title: Text(AppLocalizations.of(context)!.alert),
-                              content: Text(
-                                  "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} ,${AppLocalizations.of(context)!.tryAgain}"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text(AppLocalizations.of(context)!.ok),
-                                ),
-                              ],
-                                );
-                              }
-                            }
-                          );
+                              context: context,
+                              builder: (context) {
+                                if (Platform.isIOS) {
+                                  return CupertinoAlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(
+                                        "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} ,${AppLocalizations.of(context)!.tryAgain}"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return AlertDialog(
+                                    title: Text(
+                                        AppLocalizations.of(context)!.alert),
+                                    content: Text(
+                                        "${AppLocalizations.of(context)!.productStatusUpdate} ${selectedLocale?.languageCode == 'en' ? response.status : response.arStatus} ,${AppLocalizations.of(context)!.tryAgain}"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                            AppLocalizations.of(context)!.ok),
+                                      ),
+                                    ],
+                                  );
+                                }
+                              });
                         }
                       }
                     },
@@ -378,43 +381,42 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                       setState(() {});
                       Navigator.pop(context);
                       showDialog(
-                        context: context,
-                        builder: (context) {
-                          if(Platform.isIOS)
-                          {
-                            return CupertinoAlertDialog(
-                          title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              AppLocalizations.of(context)!.somethingWentWrong),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                        );
-                          }
-                          else
-                          
-                          {
-                            return AlertDialog(
-                               title: Text(AppLocalizations.of(context)!.alert),
-                          content: Text(
-                              AppLocalizations.of(context)!.somethingWentWrong),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(AppLocalizations.of(context)!.ok),
-                            ),
-                          ],
-                            );
-                          }
-                        } 
-                      );
+                          context: context,
+                          builder: (context) {
+                            if (Platform.isIOS) {
+                              return CupertinoAlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .somethingWentWrong),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return AlertDialog(
+                                title:
+                                    Text(AppLocalizations.of(context)!.alert),
+                                content: Text(AppLocalizations.of(context)!
+                                    .somethingWentWrong),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child:
+                                        Text(AppLocalizations.of(context)!.ok),
+                                  ),
+                                ],
+                              );
+                            }
+                          });
                     },
                   );
                 },
@@ -1172,12 +1174,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                                 loadingCount = 0;
                                                                                 setState(() {});
 
-                                                                                _procechangeapproved[index] = PriceChangePrdModel(
-                                                                                  aprvdHprice: pdet[index].pcdChangedHPrice, 
-                                                                                  aprvdLprice: pdet[index].pcdChangedLprice,
-                                                                                   pcdId: pdet[index].pcdId, 
-                                                                                   reason: selectedresons[index], 
-                                                                                   status: "A");
+                                                                                _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "A");
                                                                               },
                                                                             ),
                                                                             Text(
@@ -1238,12 +1235,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                                 loadingCount = 0;
                                                                                 setState(() {});
 
-                                                                                _procechangeapproved[index] = PriceChangePrdModel(
-                                                                                  aprvdHprice: pdet[index].pcdChangedHPrice,
-                                                                                   aprvdLprice: pdet[index].pcdChangedLprice,
-                                                                                    pcdId: pdet[index].pcdId, 
-                                                                                    reason: selectedresons[index], 
-                                                                                    status: "R");
+                                                                                _procechangeapproved[index] = PriceChangePrdModel(aprvdHprice: pdet[index].pcdChangedHPrice, aprvdLprice: pdet[index].pcdChangedLprice, pcdId: pdet[index].pcdId, reason: selectedresons[index], status: "R");
                                                                               },
                                                                             ),
                                                                             Text(
@@ -1450,202 +1442,206 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                 'Pending') {
                               if (_procechangeapproved.contains(null)) {
                                 showDialog(
-                                  context: context,
-                                  builder: (context) 
-                                  {
-                                    if(Platform.isIOS)
-                                    {
-                                      return CupertinoAlertDialog(
-                                    title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .pleaseMakeSureToApproveAndReject),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                          // Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!.ok),
-                                      ),
-                                    ],
-                                  );
-                                    }
-                                    else
-                                    {
-                                      return AlertDialog(
-                                        title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .pleaseMakeSureToApproveAndReject),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                          // Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!.ok),
-                                      ),
-                                    ],
-                                      );
-                                    }
-                                  }
-                                );
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .pleaseMakeSureToApproveAndReject),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .pleaseMakeSureToApproveAndReject),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                // Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                    });
                               } else if (checkrejectedstatus() == false) {
                                 showDialog(
-                                  context: context,
-                                  builder: (context) 
-                                  {
-                                    if(Platform.isIOS)
-                                    {
-                                      return CupertinoAlertDialog(
-                                    title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .youShouldApproveOrRejectAndSpecifyReason),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!.ok),
-                                      ),
-                                    ],
-                                  );
-                                    }
-                                    else
-                                    {
-                                      return AlertDialog(
-                                         title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .youShouldApproveOrRejectAndSpecifyReason),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!.ok),
-                                      ),
-                                    ],
-                                      );
-                                    }
-                                  }
-
-                                );
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .youShouldApproveOrRejectAndSpecifyReason),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(AppLocalizations.of(
+                                                  context)!
+                                              .youShouldApproveOrRejectAndSpecifyReason),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                    });
                               } else {
                                 showDialog(
-                                  context: context,
-                                  builder: (context) 
-                                  {
-                                    if(Platform.isIOS)
-                                    {
-                                      return  CupertinoAlertDialog(
-                                    title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .doyouWantToProceed),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .cancel),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          loadingCount = 0;
-                                          setState(() {});
-                                          Navigator.pop(context);
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                loadingCount = 0;
+                                                setState(() {});
+                                                Navigator.pop(context);
 
-                                          context
-                                              .read<ApprovePriceChangeBloc>()
-                                              .add(
-                                                  const AddApprovalLoadinEvent());
+                                                context
+                                                    .read<
+                                                        ApprovePriceChangeBloc>()
+                                                    .add(
+                                                        const AddApprovalLoadinEvent());
 
-                                          context
-                                              .read<ApprovePriceChangeBloc>()
-                                              .add(
-                                                GetPricChangeApprovalEvent(
-                                                  approval: ApprovePriceChangeinModel(
-                                                      priceId: widget
-                                                          .priceChangeApprovel
-                                                          .pchId,
-                                                      userId: widget
-                                                          .priceChangeApprovel
-                                                          .userID,
-                                                      products:
-                                                          _procechangeapproved),
-                                                ),
-                                              );
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .proceed),
-                                      ),
-                                    ],
-                                  );
-                                    }
-                                    else
-                                    {
-                                      return AlertDialog(
-                                        title: Text(
-                                        AppLocalizations.of(context)!.alert),
-                                    content: Text(AppLocalizations.of(context)!
-                                        .doyouWantToProceed),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .cancel),
-                                      ),
-                                      TextButton(
-                                        onPressed: () {
-                                          loadingCount = 0;
-                                          setState(() {});
-                                          Navigator.pop(context);
+                                                context
+                                                    .read<
+                                                        ApprovePriceChangeBloc>()
+                                                    .add(
+                                                      GetPricChangeApprovalEvent(
+                                                        approval: ApprovePriceChangeinModel(
+                                                            priceId: widget
+                                                                .priceChangeApprovel
+                                                                .pchId,
+                                                            userId: widget
+                                                                .priceChangeApprovel
+                                                                .userID,
+                                                            products:
+                                                                _procechangeapproved),
+                                                      ),
+                                                    );
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .doyouWantToProceed),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {});
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .cancel),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                loadingCount = 0;
+                                                setState(() {});
+                                                Navigator.pop(context);
 
-                                          context
-                                              .read<ApprovePriceChangeBloc>()
-                                              .add(
-                                                  const AddApprovalLoadinEvent());
+                                                context
+                                                    .read<
+                                                        ApprovePriceChangeBloc>()
+                                                    .add(
+                                                        const AddApprovalLoadinEvent());
 
-                                          context
-                                              .read<ApprovePriceChangeBloc>()
-                                              .add(
-                                                GetPricChangeApprovalEvent(
-                                                  approval: ApprovePriceChangeinModel(
-                                                      priceId: widget
-                                                          .priceChangeApprovel
-                                                          .pchId,
-                                                      userId: widget
-                                                          .priceChangeApprovel
-                                                          .userID,
-                                                      products:
-                                                          _procechangeapproved),
-                                                ),
-                                              );
-                                        },
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .proceed),
-                                      ),
-                                    ],
-                                      );
-                                    }
-                                  }
-                                );
+                                                context
+                                                    .read<
+                                                        ApprovePriceChangeBloc>()
+                                                    .add(
+                                                      GetPricChangeApprovalEvent(
+                                                        approval: ApprovePriceChangeinModel(
+                                                            priceId: widget
+                                                                .priceChangeApprovel
+                                                                .pchId,
+                                                            userId: widget
+                                                                .priceChangeApprovel
+                                                                .userID,
+                                                            products:
+                                                                _procechangeapproved),
+                                                      ),
+                                                    );
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .proceed),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                    });
                               }
                             }
                           },

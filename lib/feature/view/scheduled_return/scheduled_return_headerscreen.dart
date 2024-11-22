@@ -274,65 +274,68 @@ class _ScheduledReturnHEaderScreenState
                                   ),
                                   Expanded(
                                     child: ListView.separated(
-                                        itemBuilder:
-                                            (context, index) => GestureDetector(
-                                                  onTap: () {
-                                                    context
-                                                        .read<
-                                                            NavigatetoBackCubit>()
-                                                        .cancelPop(false);
-                                                    Navigator.push(
-                                                      context,
-                                                      Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                      ScheduledReturnDetailScreen(
-                                                        user: widget.user, 
-                                                        scheduledreturn: headers[index],
-                                                      
-                                                         currentMode: _selectedeMode)):
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ScheduledReturnDetailScreen(
-                                                          scheduledreturn:
-                                                              headers[index],
-                                                          user: widget.user,
-                                                          currentMode:
-                                                              _selectedeMode,
+                                        itemBuilder: (context, index) =>
+                                            GestureDetector(
+                                              onTap: () {
+                                                context
+                                                    .read<NavigatetoBackCubit>()
+                                                    .cancelPop(false);
+                                                Navigator.push(
+                                                  context,
+                                                  Platform.isIOS
+                                                      ? CupertinoPageRoute(
+                                                          builder: (context) =>
+                                                              ScheduledReturnDetailScreen(
+                                                                  user: widget
+                                                                      .user,
+                                                                  scheduledreturn:
+                                                                      headers[
+                                                                          index],
+                                                                  currentMode:
+                                                                      _selectedeMode))
+                                                      : MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              ScheduledReturnDetailScreen(
+                                                            scheduledreturn:
+                                                                headers[index],
+                                                            user: widget.user,
+                                                            currentMode:
+                                                                _selectedeMode,
+                                                          ),
                                                         ),
-                                                      ),
-                                                    );
-                                                  },
-                                                  child: Row(
-                                                    children: [
-                                                      Container(
-                                                        height: 70,
-                                                        width: 10,
-                                                        decoration: BoxDecoration(
-                                                            color: const Color(
-                                                                0xfffee8e0),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20)),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10.w,
-                                                      ),
-                                                      Expanded(
-                                                        child: Row(
-                                                          children: [
-                                                            Expanded(
-                                                              child: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                      headers[index]
-                                                                              .rrhRequestNumber ??
-                                                                          '',
-                                                                      style:
-                                                                          blueTextStyle()),
-                                                                  /* Row(
+                                                );
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    height: 70,
+                                                    width: 10,
+                                                    decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xfffee8e0),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20)),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 10.w,
+                                                  ),
+                                                  Expanded(
+                                                    child: Row(
+                                                      children: [
+                                                        Expanded(
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                  headers[index]
+                                                                          .rrhRequestNumber ??
+                                                                      '',
+                                                                  style:
+                                                                      blueTextStyle()),
+                                                              /* Row(
                                                                     children: [
                                                                       Text(
                                                                         '${headers[index].cusCode} - ',
@@ -355,107 +358,113 @@ class _ScheduledReturnHEaderScreenState
                                                                       ),
                                                                     ],
                                                                   ), */
-                                                                  RichText(
-                                                                    text:
-                                                                        TextSpan(
-                                                                      style: DefaultTextStyle.of(
-                                                                              context)
-                                                                          .style,
-                                                                      children: [
-                                                                        TextSpan(
-                                                                          text:
-                                                                              '${headers[index].cusCode} - ',
-                                                                          style:
-                                                                              kfontstyle(
-                                                                            fontSize:
-                                                                                11.sp,
-                                                                            color:
-                                                                                const Color(0xff2C6B9E),
-                                                                          ),
-                                                                        ),
-                                                                        TextSpan(
-                                                                            text: selectedLocale?.languageCode == 'en'
-                                                                                ? headers[index].cusName ?? ''
-                                                                                : headers[index].arcusName ?? '',
-                                                                            style: subTitleTextStyle()
-                                                                            // overflow: TextOverflow.ellipsis,
-                                                                            ),
-                                                                      ],
+                                                              RichText(
+                                                                text: TextSpan(
+                                                                  style: DefaultTextStyle.of(
+                                                                          context)
+                                                                      .style,
+                                                                  children: [
+                                                                    TextSpan(
+                                                                      text:
+                                                                          '${headers[index].cusCode} - ',
+                                                                      style:
+                                                                          kfontstyle(
+                                                                        fontSize:
+                                                                            11.sp,
+                                                                        color: const Color(
+                                                                            0xff2C6B9E),
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                  Text(
-                                                                    headers[index]
-                                                                            .createdDate ??
-                                                                        '',
-                                                                    style: kfontstyle(
-                                                                        fontSize: 10
-                                                                            .sp,
-                                                                        color: Colors
-                                                                            .grey),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: headers[index]
-                                                                            .status!
-                                                                            .isEmpty ||
-                                                                        headers[index].status !=
-                                                                            'Action Taken'
-                                                                    ? headers[index].status ==
-                                                                            'Rejected'
-                                                                        ? Colors.red[
-                                                                            300]
-                                                                        : const Color(
-                                                                            0xfff7f4e2)
-                                                                    : const Color(
-                                                                        0xffe3f7e2),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                  20,
+                                                                    TextSpan(
+                                                                        text: selectedLocale?.languageCode == 'en'
+                                                                            ? headers[index].cusName ??
+                                                                                ''
+                                                                            : headers[index].arcusName ??
+                                                                                '',
+                                                                        style:
+                                                                            subTitleTextStyle()
+                                                                        // overflow: TextOverflow.ellipsis,
+                                                                        ),
+                                                                  ],
                                                                 ),
                                                               ),
-                                                              child: Padding(
-                                                                padding: const EdgeInsets
+                                                              Text(
+                                                                headers[index]
+                                                                        .createdDate ??
+                                                                    '',
+                                                                style: kfontstyle(
+                                                                    fontSize:
+                                                                        10.sp,
+                                                                    color: Colors
+                                                                        .grey),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: headers[index]
+                                                                        .status!
+                                                                        .isEmpty ||
+                                                                    headers[index]
+                                                                            .status !=
+                                                                        'Action Taken'
+                                                                ? headers[index]
+                                                                            .status ==
+                                                                        'Rejected'
+                                                                    ? Colors.red[
+                                                                        300]
+                                                                    : const Color(
+                                                                        0xfff7f4e2)
+                                                                : const Color(
+                                                                    0xffe3f7e2),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              20,
+                                                            ),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
                                                                     .symmetric(
                                                                     horizontal:
                                                                         8,
                                                                     vertical:
                                                                         5),
-                                                                child: Text(
-                                                                  selectedLocale
-                                                                              ?.languageCode ==
-                                                                          'en'
-                                                                      ? headers[index]
-                                                                              .status ??
-                                                                          ''
-                                                                      : headers[index]
-                                                                              .arStatus ??
-                                                                          '',
-                                                                  style: kfontstyle(
-                                                                      fontSize:
-                                                                          10.sp,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: headers[index].status ==
-                                                                              'Rejected'
-                                                                          ? Colors
-                                                                              .white54
-                                                                          : Colors
-                                                                              .black54),
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
+                                                            child: Text(
+                                                              selectedLocale
+                                                                          ?.languageCode ==
+                                                                      'en'
+                                                                  ? headers[index]
+                                                                          .status ??
+                                                                      ''
+                                                                  : headers[index]
+                                                                          .arStatus ??
+                                                                      '',
+                                                              style: kfontstyle(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  color: headers[index]
+                                                                              .status ==
+                                                                          'Rejected'
+                                                                      ? Colors
+                                                                          .white54
+                                                                      : Colors
+                                                                          .black54),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
+                                                ],
+                                              ),
+                                            ),
                                         separatorBuilder: (context, index) =>
                                             Divider(
                                               color: Colors.grey[300],

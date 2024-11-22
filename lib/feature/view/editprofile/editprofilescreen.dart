@@ -71,103 +71,95 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 Navigator.pop(context);
                 if (editrep.res == '1') {
                   showDialog(
-                    context: context,
-                    builder: (context) 
-                    {
-                      if(Platform.isIOS)
-                      {
-                        return CupertinoAlertDialog(
-                      
-                      title: Text(selectedLocale?.languageCode == "en"
-                          ? editrep.title ?? ''
-                          : editrep.arTitle ?? ''),
-                      content: Text(AppLocalizations.of(context)!
-                          .yourProfileHasbeenUpdated),
-                      actions: [
-                        CupertinoDialogAction(
-                          child: Text(
-                            AppLocalizations.of(context)!.ok,
-                            style: kfontstyle(),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
-                    );
-                      }
-                      else {
-                        return AlertDialog(
-                          title: Text(selectedLocale?.languageCode == "en"
-                          ? editrep.title ?? ''
-                          : editrep.arTitle ?? ''),
-                      content: Text(AppLocalizations.of(context)!
-                          .yourProfileHasbeenUpdated),
-                      actions: [
-                        CupertinoDialogAction(
-                          child: Text(
-                            AppLocalizations.of(context)!.ok,
-                            style: kfontstyle(),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
-                        );
-                      }
-                    }
-                  );
+                      context: context,
+                      builder: (context) {
+                        if (Platform.isIOS) {
+                          return CupertinoAlertDialog(
+                            title: Text(selectedLocale?.languageCode == "en"
+                                ? editrep.title ?? ''
+                                : editrep.arTitle ?? ''),
+                            content: Text(AppLocalizations.of(context)!
+                                .yourProfileHasbeenUpdated),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: Text(
+                                  AppLocalizations.of(context)!.ok,
+                                  style: kfontstyle(),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
+                              )
+                            ],
+                          );
+                        } else {
+                          return AlertDialog(
+                            title: Text(selectedLocale?.languageCode == "en"
+                                ? editrep.title ?? ''
+                                : editrep.arTitle ?? ''),
+                            content: Text(AppLocalizations.of(context)!
+                                .yourProfileHasbeenUpdated),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: Text(
+                                  AppLocalizations.of(context)!.ok,
+                                  style: kfontstyle(),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
+                              )
+                            ],
+                          );
+                        }
+                      });
                 } else {
                   Navigator.pop(context);
                   showDialog(
-                    context: context,
-                    builder: (context) {
-                      if(Platform.isIOS)
-                      {
-                        return CupertinoAlertDialog(
-                      title: Text(selectedLocale?.languageCode == "en"
-                          ? editrep.title ?? ''
-                          : editrep.arTitle ?? ''),
-                      content: Text(AppLocalizations.of(context)!
-                          .yourProfileUpdationFailed),
-                      actions: [
-                        CupertinoDialogAction(
-                          child: Text(
-                            AppLocalizations.of(context)!.ok,
-                            style: kfontstyle(),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
-                    );
-                      }
-                      else{
-                        return AlertDialog(
-                           title: Text(selectedLocale?.languageCode == "en"
-                          ? editrep.title ?? ''
-                          : editrep.arTitle ?? ''),
-                      content: Text(AppLocalizations.of(context)!
-                          .yourProfileUpdationFailed),
-                      actions: [
-                        CupertinoDialogAction(
-                          child: Text(
-                            AppLocalizations.of(context)!.ok,
-                            style: kfontstyle(),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
-                        );
-                      }
-                    }
-                  );
+                      context: context,
+                      builder: (context) {
+                        if (Platform.isIOS) {
+                          return CupertinoAlertDialog(
+                            title: Text(selectedLocale?.languageCode == "en"
+                                ? editrep.title ?? ''
+                                : editrep.arTitle ?? ''),
+                            content: Text(AppLocalizations.of(context)!
+                                .yourProfileUpdationFailed),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: Text(
+                                  AppLocalizations.of(context)!.ok,
+                                  style: kfontstyle(),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              )
+                            ],
+                          );
+                        } else {
+                          return AlertDialog(
+                            title: Text(selectedLocale?.languageCode == "en"
+                                ? editrep.title ?? ''
+                                : editrep.arTitle ?? ''),
+                            content: Text(AppLocalizations.of(context)!
+                                .yourProfileUpdationFailed),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: Text(
+                                  AppLocalizations.of(context)!.ok,
+                                  style: kfontstyle(),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              )
+                            ],
+                          );
+                        }
+                      });
                 }
               }
             },

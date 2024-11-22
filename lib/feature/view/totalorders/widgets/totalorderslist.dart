@@ -39,12 +39,16 @@ class TotalOrderList extends StatelessWidget {
                     itemBuilder: (context, index) => InkWell(
                           onTap: () {
                             Navigator.push(
-                              context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                              TotalOrderDetails(totalorders: header[index],
-                               user: user)):
-                              MaterialPageRoute(
-                                  builder: (context) => TotalOrderDetails(
-                                      totalorders: header[index], user: user)),
+                              context,
+                              Platform.isIOS
+                                  ? CupertinoPageRoute(
+                                      builder: (context) => TotalOrderDetails(
+                                          totalorders: header[index],
+                                          user: user))
+                                  : MaterialPageRoute(
+                                      builder: (context) => TotalOrderDetails(
+                                          totalorders: header[index],
+                                          user: user)),
                             );
                           },
                           child: Row(

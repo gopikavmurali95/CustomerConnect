@@ -220,13 +220,17 @@ class _TargetHeaderScreenState extends State<TargetHeaderScreen> {
                                       onTap: () {
                                         Navigator.push(
                                             context,
-                                            Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                            RouteTargetWidget(headr: header[index])):
-                                            CupertinoPageRoute(
-                                                builder: (context) =>
-                                                    RouteTargetWidget(
-                                                      headr: header[index],
-                                                    )));
+                                            Platform.isIOS
+                                                ? CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        RouteTargetWidget(
+                                                            headr:
+                                                                header[index]))
+                                                : CupertinoPageRoute(
+                                                    builder: (context) =>
+                                                        RouteTargetWidget(
+                                                          headr: header[index],
+                                                        )));
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(

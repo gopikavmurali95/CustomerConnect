@@ -276,20 +276,27 @@ class _ReturnApprovalHeaderState extends State<ReturnApprovalHeader> {
                                                     .popFromScreen(false);
                                                 Navigator.push(
                                                   context,
-                                                  Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                                  ReturnApprovalDetailScreen(
-                                                    returnApprovel: headers[index],
-                                                     user: widget.user, currentMode: _selectedeMode)):
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ReturnApprovalDetailScreen(
-                                                      returnApprovel:
-                                                          headers[index],
-                                                      user: widget.user,
-                                                      currentMode:
-                                                          _selectedeMode,
-                                                    ),
-                                                  ),
+                                                  Platform.isIOS
+                                                      ? CupertinoPageRoute(
+                                                          builder: (context) =>
+                                                              ReturnApprovalDetailScreen(
+                                                                  returnApprovel:
+                                                                      headers[
+                                                                          index],
+                                                                  user: widget
+                                                                      .user,
+                                                                  currentMode:
+                                                                      _selectedeMode))
+                                                      : MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              ReturnApprovalDetailScreen(
+                                                            returnApprovel:
+                                                                headers[index],
+                                                            user: widget.user,
+                                                            currentMode:
+                                                                _selectedeMode,
+                                                          ),
+                                                        ),
                                                 );
                                               },
                                               child: Row(

@@ -165,9 +165,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             return showDialog(
                                 context: context,
                                 builder: (context) {
-                                  if(Platform.isIOS)
-                                  {
-                                    return  CupertinoAlertDialog(
+                                  if (Platform.isIOS) {
+                                    return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(
@@ -183,9 +182,7 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                     .ok))
                                       ],
                                     );
-                                  }
-                                  else
-                                  {
+                                  } else {
                                     return AlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
@@ -240,10 +237,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                           } else {
                             return showDialog(
                                 context: context,
-                                builder: (context) 
-                                {
-                                  if(Platform.isIOS)
-                                  {
+                                builder: (context) {
+                                  if (Platform.isIOS) {
                                     return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
@@ -260,12 +255,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                     .ok))
                                       ],
                                     );
-                                  }
-
-
-                                  else{
+                                  } else {
                                     return AlertDialog(
-                                       title: Text(
+                                      title: Text(
                                           AppLocalizations.of(context)!.alert),
                                       content: Text(
                                           AppLocalizations.of(context)!
@@ -320,8 +312,7 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             return showDialog(
                                 context: context,
                                 builder: (context) {
-                                  if(Platform.isIOS)
-                                  {
+                                  if (Platform.isIOS) {
                                     return CupertinoAlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),
@@ -336,8 +327,7 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                             child: const Text('Ok'))
                                       ],
                                     );
-                                  }
-                                  else{
+                                  } else {
                                     return AlertDialog(
                                       title: Text(
                                           AppLocalizations.of(context)!.alert),

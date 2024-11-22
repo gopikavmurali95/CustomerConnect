@@ -500,44 +500,38 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                               context);
                                                                           // if (isApproval) {
                                                                           showDialog(
-                                                                            context:
-                                                                                context,
-                                                                            builder: (context) {
-                                                                              if(Platform.isIOS)
-                                                                              {
-                                                                                return CupertinoAlertDialog(
-                                                                              title: Text(AppLocalizations.of(context)!.alert),
-                                                                              content: Text('${AppLocalizations.of(context)!.journeyPlan} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} '),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
-                                                                                    Navigator.pop(context);
-                                                                                  },
-                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                ),
-                                                                              ],
-                                                                            );
-                                                                              }
-                                                                              else
-                                                                              {
-                                                                                return AlertDialog(
-                                                                                  title: Text(AppLocalizations.of(context)!.alert),
-                                                                              content: Text('${AppLocalizations.of(context)!.journeyPlan} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} '),
-                                                                              actions: [
-                                                                                TextButton(
-                                                                                  onPressed: () {
-                                                                                    context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
-                                                                                    Navigator.pop(context);
-                                                                                  },
-                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                ),
-                                                                              ],
-                                                                                );
-                                                                              }
-                                                                            }
-                                                                                
-                                                                          );
+                                                                              context: context,
+                                                                              builder: (context) {
+                                                                                if (Platform.isIOS) {
+                                                                                  return CupertinoAlertDialog(
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text('${AppLocalizations.of(context)!.journeyPlan} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} '),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                      ),
+                                                                                    ],
+                                                                                  );
+                                                                                } else {
+                                                                                  return AlertDialog(
+                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                    content: Text('${AppLocalizations.of(context)!.journeyPlan} ${selectedLocale?.languageCode == "en" ? response.status : response.arstatus} '),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () {
+                                                                                          context.read<JourneyPlanHeaderBloc>().add(GetAllJourneyPlanHeadersEvent(userID: widget.user.usrId ?? '', mode: 'P', searchQuery: ''));
+                                                                                          Navigator.pop(context);
+                                                                                        },
+                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                      ),
+                                                                                    ],
+                                                                                  );
+                                                                                }
+                                                                              });
                                                                           // }
                                                                         }
                                                                       },
@@ -546,46 +540,38 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                         Navigator.pop(
                                                                             context);
                                                                         showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder: (context) {
-                                                                            if(Platform.isIOS)
-                                                                            {
-                                                                              return CupertinoAlertDialog(
-                                                                            title:
-                                                                                Text(AppLocalizations.of(context)!.alert),
-                                                                            content:
-                                                                                Text(AppLocalizations.of(context)!.somethingWentWrong),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () {
-                                                                                  Navigator.pop(context);
-                                                                                },
-                                                                                child: Text(AppLocalizations.of(context)!.ok),
-                                                                              ),
-                                                                            ],
-                                                                          );
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                              return AlertDialog(
-                                                                                 title:
-                                                                                Text(AppLocalizations.of(context)!.alert),
-                                                                            content:
-                                                                                Text(AppLocalizations.of(context)!.somethingWentWrong),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () {
-                                                                                  Navigator.pop(context);
-                                                                                },
-                                                                                child: Text(AppLocalizations.of(context)!.ok),
-                                                                              ),
-                                                                            ],
-                                                                              );
-                                                                            }
-                                                                          }
-                                                                              
-                                                                        );
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (context) {
+                                                                              if (Platform.isIOS) {
+                                                                                return CupertinoAlertDialog(
+                                                                                  title: Text(AppLocalizations.of(context)!.alert),
+                                                                                  content: Text(AppLocalizations.of(context)!.somethingWentWrong),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () {
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: Text(AppLocalizations.of(context)!.ok),
+                                                                                    ),
+                                                                                  ],
+                                                                                );
+                                                                              } else {
+                                                                                return AlertDialog(
+                                                                                  title: Text(AppLocalizations.of(context)!.alert),
+                                                                                  content: Text(AppLocalizations.of(context)!.somethingWentWrong),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () {
+                                                                                        Navigator.pop(context);
+                                                                                      },
+                                                                                      child: Text(AppLocalizations.of(context)!.ok),
+                                                                                    ),
+                                                                                  ],
+                                                                                );
+                                                                              }
+                                                                            });
                                                                       },
                                                                       approveJourneyPlanLoadingState:
                                                                           () {
@@ -626,82 +612,78 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                 child: InkWell(
                                                                                   onTap: () {
                                                                                     showDialog(
-                                                                                      context: context,
-                                                                                      builder: (context) {
-                                                                                        if(Platform.isIOS)
-                                                                                        {
-                                                                                          return CupertinoAlertDialog(
-                                                                                        title: Text(AppLocalizations.of(context)!.alert),
-                                                                                        content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              setState(() {});
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                          ),
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              statuslist[index] = true;
-                                                                                              loadingCount = 0;
-                                                                                              setState(() {});
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                        context: context,
+                                                                                        builder: (context) {
+                                                                                          if (Platform.isIOS) {
+                                                                                            return CupertinoAlertDialog(
+                                                                                              title: Text(AppLocalizations.of(context)!.alert),
+                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                              actions: [
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    setState(() {});
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                ),
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    statuslist[index] = true;
+                                                                                                    loadingCount = 0;
+                                                                                                    setState(() {});
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                    ApproveJourneyPlanEvent(
-                                                                                                      approve: JourneyPlanApprovalInModel(
-                                                                                                        jpsId: headers[index].jpsId,
-                                                                                                        userId: headers[index].userID,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  );
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                          ApproveJourneyPlanEvent(
+                                                                                                            approve: JourneyPlanApprovalInModel(
+                                                                                                              jpsId: headers[index].jpsId,
+                                                                                                              userId: headers[index].userID,
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        );
 
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                          ),
-                                                                                        ],
-                                                                                      );
-                                                                                        }
-                                                                                        else
-                                                                                        {
-                                                                                          return AlertDialog(
-                                                                                            title: Text(AppLocalizations.of(context)!.alert),
-                                                                                        content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              setState(() {});
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                          ),
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              statuslist[index] = true;
-                                                                                              loadingCount = 0;
-                                                                                              setState(() {});
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                ),
+                                                                                              ],
+                                                                                            );
+                                                                                          } else {
+                                                                                            return AlertDialog(
+                                                                                              title: Text(AppLocalizations.of(context)!.alert),
+                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                              actions: [
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    setState(() {});
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                ),
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    statuslist[index] = true;
+                                                                                                    loadingCount = 0;
+                                                                                                    setState(() {});
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                    ApproveJourneyPlanEvent(
-                                                                                                      approve: JourneyPlanApprovalInModel(
-                                                                                                        jpsId: headers[index].jpsId,
-                                                                                                        userId: headers[index].userID,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  );
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                          ApproveJourneyPlanEvent(
+                                                                                                            approve: JourneyPlanApprovalInModel(
+                                                                                                              jpsId: headers[index].jpsId,
+                                                                                                              userId: headers[index].userID,
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        );
 
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                          ),
-                                                                                        ],
-                                                                                          );
-                                                                                        }
-                                                                                      }
-                                                                                    );
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                ),
+                                                                                              ],
+                                                                                            );
+                                                                                          }
+                                                                                        });
                                                                                   },
                                                                                   child: Row(
                                                                                     children: [
@@ -720,81 +702,78 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                         groupValue: true,
                                                                                         onChanged: (value) {
                                                                                           showDialog(
-                                                                                            context: context,
-                                                                                            builder: (context) {
-                                                                                              if(Platform.isIOS)
-                                                                                              {
-                                                                                                return CupertinoAlertDialog(
-                                                                                              title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                              actions: [
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    setState(() {});
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                                ),
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    statuslist[index] = true;
-                                                                                                    loadingCount = 0;
-                                                                                                    setState(() {});
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                              context: context,
+                                                                                              builder: (context) {
+                                                                                                if (Platform.isIOS) {
+                                                                                                  return CupertinoAlertDialog(
+                                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                                    actions: [
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          setState(() {});
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                      ),
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          statuslist[index] = true;
+                                                                                                          loadingCount = 0;
+                                                                                                          setState(() {});
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                          ApproveJourneyPlanEvent(
-                                                                                                            approve: JourneyPlanApprovalInModel(
-                                                                                                              jpsId: headers[index].jpsId,
-                                                                                                              userId: headers[index].userID,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        );
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                                ApproveJourneyPlanEvent(
+                                                                                                                  approve: JourneyPlanApprovalInModel(
+                                                                                                                    jpsId: headers[index].jpsId,
+                                                                                                                    userId: headers[index].userID,
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              );
 
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                                ),
-                                                                                              ],
-                                                                                            );
-                                                                                              }
-                                                                                              else{
-                                                                                                return AlertDialog(
-                                                                                                  title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
-                                                                                              actions: [
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    setState(() {});
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                                ),
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    statuslist[index] = true;
-                                                                                                    loadingCount = 0;
-                                                                                                    setState(() {});
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  );
+                                                                                                } else {
+                                                                                                  return AlertDialog(
+                                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                                    actions: [
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          setState(() {});
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                      ),
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          statuslist[index] = true;
+                                                                                                          loadingCount = 0;
+                                                                                                          setState(() {});
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                          ApproveJourneyPlanEvent(
-                                                                                                            approve: JourneyPlanApprovalInModel(
-                                                                                                              jpsId: headers[index].jpsId,
-                                                                                                              userId: headers[index].userID,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        );
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                                ApproveJourneyPlanEvent(
+                                                                                                                  approve: JourneyPlanApprovalInModel(
+                                                                                                                    jpsId: headers[index].jpsId,
+                                                                                                                    userId: headers[index].userID,
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              );
 
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                                ),
-                                                                                              ],
-                                                                                                );
-                                                                                              }
-                                                                                            }
-                                                                                          );
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  );
+                                                                                                }
+                                                                                              });
                                                                                         },
                                                                                       ),
                                                                                       Text(
@@ -810,81 +789,78 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                 child: InkWell(
                                                                                   onTap: () {
                                                                                     showDialog(
-                                                                                      context: context,
-                                                                                      builder: (context) {
-                                                                                        if(Platform.isIOS)
-                                                                                        {
-                                                                                          return CupertinoAlertDialog(
-                                                                                        title: Text(AppLocalizations.of(context)!.alert),
-                                                                                        content: const Text('Do you want to reject this journey plan'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              setState(() {});
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                          ),
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              statuslist[index] = false;
-                                                                                              loadingCount = 0;
-                                                                                              setState(() {});
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                        context: context,
+                                                                                        builder: (context) {
+                                                                                          if (Platform.isIOS) {
+                                                                                            return CupertinoAlertDialog(
+                                                                                              title: Text(AppLocalizations.of(context)!.alert),
+                                                                                              content: const Text('Do you want to reject this journey plan'),
+                                                                                              actions: [
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    setState(() {});
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                ),
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    statuslist[index] = false;
+                                                                                                    loadingCount = 0;
+                                                                                                    setState(() {});
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                    RejectaJOurneyPlanEvent(
-                                                                                                      reject: JourneyPlanApprovalInModel(
-                                                                                                        jpsId: headers[index].jpsId,
-                                                                                                        userId: headers[index].userID,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  );
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                          RejectaJOurneyPlanEvent(
+                                                                                                            reject: JourneyPlanApprovalInModel(
+                                                                                                              jpsId: headers[index].jpsId,
+                                                                                                              userId: headers[index].userID,
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        );
 
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                          ),
-                                                                                        ],
-                                                                                      );
-                                                                                        }
-                                                                                        else{
-                                                                                          return AlertDialog(
-                                                                                             title: Text(AppLocalizations.of(context)!.alert),
-                                                                                        content: const Text('Do you want to reject this journey plan'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              setState(() {});
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                          ),
-                                                                                          TextButton(
-                                                                                            onPressed: () {
-                                                                                              statuslist[index] = false;
-                                                                                              loadingCount = 0;
-                                                                                              setState(() {});
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                ),
+                                                                                              ],
+                                                                                            );
+                                                                                          } else {
+                                                                                            return AlertDialog(
+                                                                                              title: Text(AppLocalizations.of(context)!.alert),
+                                                                                              content: const Text('Do you want to reject this journey plan'),
+                                                                                              actions: [
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    setState(() {});
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                ),
+                                                                                                TextButton(
+                                                                                                  onPressed: () {
+                                                                                                    statuslist[index] = false;
+                                                                                                    loadingCount = 0;
+                                                                                                    setState(() {});
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                              context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                    RejectaJOurneyPlanEvent(
-                                                                                                      reject: JourneyPlanApprovalInModel(
-                                                                                                        jpsId: headers[index].jpsId,
-                                                                                                        userId: headers[index].userID,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  );
+                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                          RejectaJOurneyPlanEvent(
+                                                                                                            reject: JourneyPlanApprovalInModel(
+                                                                                                              jpsId: headers[index].jpsId,
+                                                                                                              userId: headers[index].userID,
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        );
 
-                                                                                              Navigator.pop(context);
-                                                                                            },
-                                                                                            child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                          ),
-                                                                                        ],
-                                                                                          );
-                                                                                        }
-                                                                                      }
-                                                                                    );
+                                                                                                    Navigator.pop(context);
+                                                                                                  },
+                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                ),
+                                                                                              ],
+                                                                                            );
+                                                                                          }
+                                                                                        });
                                                                                   },
                                                                                   child: Row(
                                                                                     children: [
@@ -903,81 +879,78 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                         groupValue: false,
                                                                                         onChanged: (value) {
                                                                                           showDialog(
-                                                                                            context: context,
-                                                                                            builder: (context) {
-                                                                                              if(Platform.isIOS)
-                                                                                              {
-                                                                                                return CupertinoAlertDialog(
-                                                                                              title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
-                                                                                              actions: [
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    setState(() {});
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                                ),
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    statuslist[index] = false;
-                                                                                                    loadingCount = 0;
-                                                                                                    setState(() {});
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                              context: context,
+                                                                                              builder: (context) {
+                                                                                                if (Platform.isIOS) {
+                                                                                                  return CupertinoAlertDialog(
+                                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                                    actions: [
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          setState(() {});
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                      ),
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          statuslist[index] = false;
+                                                                                                          loadingCount = 0;
+                                                                                                          setState(() {});
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                          RejectaJOurneyPlanEvent(
-                                                                                                            reject: JourneyPlanApprovalInModel(
-                                                                                                              jpsId: headers[index].jpsId,
-                                                                                                              userId: headers[index].userID,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        );
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                                RejectaJOurneyPlanEvent(
+                                                                                                                  reject: JourneyPlanApprovalInModel(
+                                                                                                                    jpsId: headers[index].jpsId,
+                                                                                                                    userId: headers[index].userID,
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              );
 
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                                ),
-                                                                                              ],
-                                                                                            );
-                                                                                              }
-                                                                                              else{
-                                                                                                return AlertDialog(
-                                                                                                   title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
-                                                                                              actions: [
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    setState(() {});
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.cancel),
-                                                                                                ),
-                                                                                                TextButton(
-                                                                                                  onPressed: () {
-                                                                                                    statuslist[index] = false;
-                                                                                                    loadingCount = 0;
-                                                                                                    setState(() {});
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  );
+                                                                                                } else {
+                                                                                                  return AlertDialog(
+                                                                                                    title: Text(AppLocalizations.of(context)!.alert),
+                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                                    actions: [
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          setState(() {});
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.cancel),
+                                                                                                      ),
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          statuslist[index] = false;
+                                                                                                          loadingCount = 0;
+                                                                                                          setState(() {});
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(const AddJourneyPlanApprovalLoadingEvent());
 
-                                                                                                    context.read<JoureyPlanApprovalBloc>().add(
-                                                                                                          RejectaJOurneyPlanEvent(
-                                                                                                            reject: JourneyPlanApprovalInModel(
-                                                                                                              jpsId: headers[index].jpsId,
-                                                                                                              userId: headers[index].userID,
-                                                                                                            ),
-                                                                                                          ),
-                                                                                                        );
+                                                                                                          context.read<JoureyPlanApprovalBloc>().add(
+                                                                                                                RejectaJOurneyPlanEvent(
+                                                                                                                  reject: JourneyPlanApprovalInModel(
+                                                                                                                    jpsId: headers[index].jpsId,
+                                                                                                                    userId: headers[index].userID,
+                                                                                                                  ),
+                                                                                                                ),
+                                                                                                              );
 
-                                                                                                    Navigator.pop(context);
-                                                                                                  },
-                                                                                                  child: Text(AppLocalizations.of(context)!.proceed),
-                                                                                                ),
-                                                                                              ],
-                                                                                                );
-                                                                                              }
-                                                                                            } 
-                                                                                          );
+                                                                                                          Navigator.pop(context);
+                                                                                                        },
+                                                                                                        child: Text(AppLocalizations.of(context)!.proceed),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  );
+                                                                                                }
+                                                                                              });
 
                                                                                           /* context
                                                                                                                                                                                               .read<

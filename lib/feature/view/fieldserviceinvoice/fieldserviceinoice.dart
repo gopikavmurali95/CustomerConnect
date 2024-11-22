@@ -179,14 +179,18 @@ class FieldServiceInvoiceHeader extends StatelessWidget {
                             itemBuilder: (context, index) => GestureDetector(
                                   onTap: () {
                                     Navigator.push(
-                                      context,Platform.isIOS?CupertinoPageRoute(builder: (context)=>
-                                      FieldServiceInvoiceDetails(header: headers[index])):
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            FieldServiceInvoiceDetails(
-                                          header: headers[index],
-                                        ),
-                                      ),
+                                      context,
+                                      Platform.isIOS
+                                          ? CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  FieldServiceInvoiceDetails(
+                                                      header: headers[index]))
+                                          : MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FieldServiceInvoiceDetails(
+                                                header: headers[index],
+                                              ),
+                                            ),
                                     );
                                   },
                                   child: Row(
