@@ -392,6 +392,32 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                         .w500,
                                                               ),
                                                             ),
+                                                             Row(
+                                                              children: [
+                                                                Text(
+                                                                 "Type: ",
+                                                                  style: kfontstyle(
+                                                                      fontSize: 12.sp,
+                                                                      color: const Color(
+                                                                        0xff2C6B9E,
+                                                                      ),
+                                                                      fontWeight: FontWeight.w500),
+                                                                ),
+                                                                Expanded(
+                                                                  child: Text(
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                   "${cusoverride[index].ooaType}",
+                                                                    style: kfontstyle(
+                                                                        fontSize: 12
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff413434)),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ), 
                                                             RichText(
                                                               text: TextSpan(
                                                                 style: DefaultTextStyle.of(
