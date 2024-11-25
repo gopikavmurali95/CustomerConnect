@@ -1,14 +1,17 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/invoice_header_model/invoice_header_model.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
-// import 'package:customer_connect/feature/state/cubit/invdettotal/invoice_details_total_cubit.dart';
+import 'package:customer_connect/feature/state/bloc/stampedcopybloc/stamped_copy_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoicedetaillist.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -172,11 +175,218 @@ class _InvoiceDetailScreenState extends State<InvoiceDetailScreen> {
                               ),
                             ),
                           ),
-                          InkWell(
-                            onTap: () {},
-                            child: Image.asset(
-                              'assets/images/stamp.png',
-                              height: 22,
+                          BlocListener<StampedCopyBloc, StampedCopyState>(
+                            listener: (context, state) {
+                              state.when(generateStampedCopy: (copy) async {
+                                if (copy!.stamped!.endsWith('.pdf')) {
+                                  Navigator.pop(context);
+                                  const platform =
+                                      MethodChannel('apkInstallerChannel');
+
+                                  await platform.invokeMethod(
+                                      'opengdrive', {"pdfUrl": copy.stamped});
+                                } else if (copy.stamped!.endsWith('.png') ||
+                                    copy.stamped!.endsWith('.jpg')) {
+                                  Navigator.pop(context);
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      backgroundColor: Colors.white,
+                                      surfaceTintColor: Colors.white,
+                                      title: Row(
+                                        children: [
+                                          GestureDetector(
+                                            child: SvgPicture.asset(
+                                              'assets/svg/categories/back.svg',
+                                              width: 10,
+                                            ),
+                                            onTap: () {
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                          SizedBox(
+                                            width: 10.w,
+                                          ),
+                                          Text(
+                                            copy.transId ?? '',
+                                            style: TextStyle(fontSize: 12.sp),
+                                          )
+                                        ],
+                                      ),
+                                      content: Container(
+                                        padding: const EdgeInsets.all(0),
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                3,
+                                        width:
+                                            MediaQuery.of(context).size.width -
+                                                100,
+                                        decoration: const BoxDecoration(
+                                            color: Colors.white),
+                                        child: Image.network(
+                                          copy.stamped ?? '',
+                                          loadingBuilder: (context, child,
+                                              loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            }
+                                            return Center(
+                                              child: CircularProgressIndicator(
+                                                value: loadingProgress
+                                                            .expectedTotalBytes !=
+                                                        null
+                                                    ? loadingProgress
+                                                            .cumulativeBytesLoaded /
+                                                        loadingProgress
+                                                            .expectedTotalBytes!
+                                                    : null,
+                                              ),
+                                            );
+                                          },
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  const SizedBox(
+                                                      child: Center(
+                                            child: Text('Image loading failed'),
+                                          )),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      actions: [
+                                        CupertinoDialogAction(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .close),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                } else {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        if (Platform.isIOS) {
+                                          return CupertinoAlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: const Text(
+                                                'No signed copy attached'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        } else {
+                                          return AlertDialog(
+                                            title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .alert),
+                                            content: const Text(
+                                                'No signed copy attached'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok),
+                                              ),
+                                            ],
+                                          );
+                                        }
+                                      });
+                                }
+                              }, stampedCopyFailed: () {
+                                Navigator.pop(context);
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: const Text(
+                                              'No signed copy attached'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!
+                                                  .alert),
+                                          content: const Text(
+                                              'No signed copy attached'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .ok),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                    });
+                              }, stampedCopyLoading: () {
+                                showCupertinoModalPopup(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (context) => SizedBox(
+                                          height: MediaQuery.of(context)
+                                              .size
+                                              .height,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          child: const PopScope(
+                                            canPop: true,
+                                            child: CupertinoActivityIndicator(
+                                              animating: true,
+                                              color: Colors.red,
+                                              radius: 30,
+                                            ),
+                                          ),
+                                        ));
+                              });
+                            },
+                            child: InkWell(
+                              onTap: () {
+                                context
+                                    .read<StampedCopyBloc>()
+                                    .add(const ClearStampedCopy());
+                                context
+                                    .read<StampedCopyBloc>()
+                                    .add(const StampedCopyLoadingEvent());
+                                context.read<StampedCopyBloc>().add(
+                                    GenerateStampedCopyEvent(
+                                        invId: widget.invoiceheader.id ?? ''));
+                              },
+                              child: Image.asset(
+                                'assets/images/stamp.png',
+                                height: 22,
+                              ),
                             ),
                           ),
                         ],
