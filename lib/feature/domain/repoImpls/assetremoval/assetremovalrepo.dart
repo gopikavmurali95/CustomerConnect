@@ -95,6 +95,16 @@ class AssetRemovalRequestRepo implements IAssetRemovalRequestRepo {
         "UserId": reject.userId,
       });
 
+      log({
+        "JSONString": jsonEncode([
+          {
+            "arq_ID": reject.arqId,
+            "asc_ID": reject.ascId,
+          }
+        ]),
+        "UserId": reject.userId,
+      }.toString());
+
       if (response.statusCode == 200) {
         log('Reject Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

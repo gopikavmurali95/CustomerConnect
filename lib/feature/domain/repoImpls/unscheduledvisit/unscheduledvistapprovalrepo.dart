@@ -49,6 +49,10 @@ class UnScheduledVisitApprovalRepo implements IUnScheduledVisitApprovalRepo {
         "JSONString": jsonEncode(approve),
       });
 
+      log({
+        "JSONString": jsonEncode(approve),
+      }.toString());
+
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -75,6 +79,11 @@ class UnScheduledVisitApprovalRepo implements IUnScheduledVisitApprovalRepo {
           .post(Uri.parse(approvalBaseUrl + unScheduledVisitRejectUrl), body: {
         "JSONString": jsonEncode(reject),
       });
+
+
+ log({
+        "JSONString": jsonEncode(reject),
+      }.toString());
 
       if (response.statusCode == 200) {
         log(response.body);

@@ -47,6 +47,8 @@ class AssetAddIngApprovalRepo implements IAssetAddApprovalRepo {
           Uri.parse(approvalBaseUrl + assetAddApprovalUrl),
           body: approve.toJson());
 
+          log(jsonEncode(approve));
+
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -72,6 +74,8 @@ class AssetAddIngApprovalRepo implements IAssetAddApprovalRepo {
         Uri.parse(approvalBaseUrl + assetAddRejectUrl),
         body: {"ReqID": approve.reqId, "UserID": approve.userId},
       );
+
+      log(jsonEncode(approve));
       if (response.statusCode == 200) {
         log(response.body);
         Map<String, dynamic> json = jsonDecode(response.body);

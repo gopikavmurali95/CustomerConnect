@@ -112,6 +112,7 @@ class ScheduledReturnApprovalRepo implements IScheduledReturnApprovalRepo {
         "ReturnID": approve.returnId,
         "RouteId": approve.routeId
       });
+      log(jsonEncode(approve));
       log("UserId: ${approve.userId}, ReturnID:${approve.returnId} RouteId:${approve.returnId}");
       if (response.statusCode == 200) {
         log('sr Approve Response: ${response.body}');

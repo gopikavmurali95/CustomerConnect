@@ -18,7 +18,7 @@ class UserLoginRepo implements ILoginRepo {
       final response = await http.post(Uri.parse(baseUrl + loginUrl),
           body: {"Username": username, "Password": password, "Token": token});
 
-      // log("${baseUrl + loginUrl} ,{Username: $username, Password: $password, Token: $token}");
+      log("${baseUrl + loginUrl} ,{Username: $username, Password: $password, Token: $token}");
       log('Response: ${response.body}');
       if (response.statusCode == 200) {
         // logger.w('Response: ${response.body}');

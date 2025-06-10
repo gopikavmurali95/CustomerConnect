@@ -127,6 +127,8 @@ class CustomerFocHeaderRepo implements ICustomerFocRepo {
         },
       );
 
+      log(jsonEncode(reject));
+
       // log("reasonId: $reasonId, cfh_ID: $cfhID, userId: $userId");
 
       if (response.statusCode == 200) {

@@ -80,6 +80,8 @@ class MustSellRepo implements IMustSellRepo {
         "TransID": approve.transId,
       });
 
+      log(jsonEncode(approve.jsonString));
+
       if (response.statusCode == 200) {
         log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

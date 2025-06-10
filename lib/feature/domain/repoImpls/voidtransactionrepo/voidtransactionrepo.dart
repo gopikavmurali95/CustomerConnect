@@ -77,6 +77,10 @@ class VoidTransactionHeaderRepo implements IVoidTransactionRepo {
         "JSONString": jsonEncode(reject.jsonString),
       });
 
+      log({
+        "JSONString": jsonEncode(reject.jsonString),
+      }.toString());
+
       if (response.statusCode == 200) {
         log('Reject Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

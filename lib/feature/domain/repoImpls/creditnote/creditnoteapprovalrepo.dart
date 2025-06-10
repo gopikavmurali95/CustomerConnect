@@ -23,6 +23,8 @@ class CreditNoteApprovalRepo implements ICreditNoteApprovalRepo {
           Uri.parse(approvalBaseUrl + creditNoteApprovalHeaderUrl),
           body: {"UserID": userID, "Status_Value": mode});
 
+          log("userid: $userID, Status_Value: $mode ");
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
@@ -78,6 +80,8 @@ class CreditNoteApprovalRepo implements ICreditNoteApprovalRepo {
           Uri.parse(approvalBaseUrl + creditNoteAapprovalUrl),
           body: approve.toJson());
 
+          log(jsonEncode(approve));
+
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final status = DisputeApprovalRespModel.fromJson(json["result"][0]);
@@ -104,6 +108,7 @@ class CreditNoteApprovalRepo implements ICreditNoteApprovalRepo {
         "UserId": reject.userId
       });
 
+log(jsonEncode(reject));
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final status = DisputeApprovalRespModel.fromJson(json["result"][0]);

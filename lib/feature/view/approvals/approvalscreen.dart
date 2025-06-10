@@ -1981,7 +1981,8 @@ class ApprovalScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ], visibility: [
+                      ],
+                       visibility: [
                         state.when(
                           getCustomerSettingsState: (settings) =>
                               settings?.priceChangeAppr == null ||

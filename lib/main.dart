@@ -849,6 +849,14 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 useMaterial3: true,
                 scaffoldBackgroundColor: Colors.white,
+                dialogTheme: DialogTheme(
+                  backgroundColor: Colors.white,
+                  surfaceTintColor:
+                      Colors.white, 
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
                 textTheme: TextTheme(
                   bodySmall: kfontstyle(),
                   bodyLarge: kfontstyle(),

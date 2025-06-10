@@ -111,6 +111,8 @@ class ReturnApprovalRepo implements IReturnApprovalRepo {
         "JSONString": jsonEncode(approveIn.products)
       });
 
+      log(jsonEncode(approveIn));
+
       if (response.statusCode == 200) {
         // log('Approve Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
