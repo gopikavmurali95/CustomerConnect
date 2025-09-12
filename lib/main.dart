@@ -849,7 +849,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 useMaterial3: true,
                 scaffoldBackgroundColor: Colors.white,
-                dialogTheme: DialogTheme(
+                dialogTheme: DialogThemeData(
                   backgroundColor: Colors.white,
                   surfaceTintColor:
                       Colors.white, 
