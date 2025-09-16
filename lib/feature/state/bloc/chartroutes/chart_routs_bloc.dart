@@ -16,7 +16,7 @@ class ChartRoutsBloc extends Bloc<ChartRoutsEvent, ChartRoutsState> {
   ChartRoutsBloc(this.homeChartsRepo) : super(ChartRoutsState.initial()) {
     on<GetchartRouteDataEvent>((event, emit) async {
       Either<MainFailures, ChartRoutesModel> routes =
-          await homeChartsRepo.routesChart(event.date, event.date);
+          await homeChartsRepo.routesChart(event.date, event.date, event.userId);
 
       emit(routes.fold(
           (l) => GetChartRoutesDataState(

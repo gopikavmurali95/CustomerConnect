@@ -18,7 +18,7 @@ class ChartActualVisitsBloc
       : super(ChartActualVisitsState.initial()) {
     on<GetChartActualVisitsDataEvent>((event, emit) async {
       Either<MainFailures, ChartActualVisitModel> visit =
-          await homeChartsRepo.actualVisitsChart(event.date, event.date);
+          await homeChartsRepo.actualVisitsChart(event.date, event.date, event.userId);
 
       emit(visit.fold(
           (l) => GetChartActualVisitsDataState(

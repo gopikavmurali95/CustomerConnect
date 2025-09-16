@@ -187,12 +187,12 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                             ? CupertinoPageRoute(
                                 builder: (context) => const WebViewScreen(
                                       url:
-                                          'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250912',
+                                          'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
                                     ))
                             : CupertinoPageRoute(
                                 builder: (context) => const WebViewScreen(
                                   url:
-                                      'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250912',
+                                      'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
                                 ),
                               ));
                   },

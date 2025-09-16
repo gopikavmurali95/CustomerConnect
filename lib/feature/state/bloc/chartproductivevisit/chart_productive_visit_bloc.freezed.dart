@@ -18,21 +18,22 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChartProductiveVisitEvent {
   String get fromDate => throw _privateConstructorUsedError;
   String get toDate => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String fromDate, String toDate)
+    required TResult Function(String fromDate, String toDate, String userId)
         getChartPRoductiveVisitDataEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String fromDate, String toDate)?
+    TResult? Function(String fromDate, String toDate, String userId)?
         getChartPRoductiveVisitDataEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String fromDate, String toDate)?
+    TResult Function(String fromDate, String toDate, String userId)?
         getChartPRoductiveVisitDataEvent,
     required TResult orElse(),
   }) =>
@@ -70,7 +71,7 @@ abstract class $ChartProductiveVisitEventCopyWith<$Res> {
           $Res Function(ChartProductiveVisitEvent) then) =
       _$ChartProductiveVisitEventCopyWithImpl<$Res, ChartProductiveVisitEvent>;
   @useResult
-  $Res call({String fromDate, String toDate});
+  $Res call({String fromDate, String toDate, String userId});
 }
 
 /// @nodoc
@@ -91,6 +92,7 @@ class _$ChartProductiveVisitEventCopyWithImpl<$Res,
   $Res call({
     Object? fromDate = null,
     Object? toDate = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
       fromDate: null == fromDate
@@ -100,6 +102,10 @@ class _$ChartProductiveVisitEventCopyWithImpl<$Res,
       toDate: null == toDate
           ? _value.toDate
           : toDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -114,7 +120,7 @@ abstract class _$$GetChartPRoductiveVisitDataEventImplCopyWith<$Res>
       __$$GetChartPRoductiveVisitDataEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String fromDate, String toDate});
+  $Res call({String fromDate, String toDate, String userId});
 }
 
 /// @nodoc
@@ -134,6 +140,7 @@ class __$$GetChartPRoductiveVisitDataEventImplCopyWithImpl<$Res>
   $Res call({
     Object? fromDate = null,
     Object? toDate = null,
+    Object? userId = null,
   }) {
     return _then(_$GetChartPRoductiveVisitDataEventImpl(
       fromDate: null == fromDate
@@ -144,6 +151,10 @@ class __$$GetChartPRoductiveVisitDataEventImplCopyWithImpl<$Res>
           ? _value.toDate
           : toDate // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -153,16 +164,18 @@ class __$$GetChartPRoductiveVisitDataEventImplCopyWithImpl<$Res>
 class _$GetChartPRoductiveVisitDataEventImpl
     implements GetChartPRoductiveVisitDataEvent {
   const _$GetChartPRoductiveVisitDataEventImpl(
-      {required this.fromDate, required this.toDate});
+      {required this.fromDate, required this.toDate, required this.userId});
 
   @override
   final String fromDate;
   @override
   final String toDate;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'ChartProductiveVisitEvent.getChartPRoductiveVisitDataEvent(fromDate: $fromDate, toDate: $toDate)';
+    return 'ChartProductiveVisitEvent.getChartPRoductiveVisitDataEvent(fromDate: $fromDate, toDate: $toDate, userId: $userId)';
   }
 
   @override
@@ -172,11 +185,12 @@ class _$GetChartPRoductiveVisitDataEventImpl
             other is _$GetChartPRoductiveVisitDataEventImpl &&
             (identical(other.fromDate, fromDate) ||
                 other.fromDate == fromDate) &&
-            (identical(other.toDate, toDate) || other.toDate == toDate));
+            (identical(other.toDate, toDate) || other.toDate == toDate) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fromDate, toDate);
+  int get hashCode => Object.hash(runtimeType, fromDate, toDate, userId);
 
   /// Create a copy of ChartProductiveVisitEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -191,30 +205,30 @@ class _$GetChartPRoductiveVisitDataEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String fromDate, String toDate)
+    required TResult Function(String fromDate, String toDate, String userId)
         getChartPRoductiveVisitDataEvent,
   }) {
-    return getChartPRoductiveVisitDataEvent(fromDate, toDate);
+    return getChartPRoductiveVisitDataEvent(fromDate, toDate, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String fromDate, String toDate)?
+    TResult? Function(String fromDate, String toDate, String userId)?
         getChartPRoductiveVisitDataEvent,
   }) {
-    return getChartPRoductiveVisitDataEvent?.call(fromDate, toDate);
+    return getChartPRoductiveVisitDataEvent?.call(fromDate, toDate, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String fromDate, String toDate)?
+    TResult Function(String fromDate, String toDate, String userId)?
         getChartPRoductiveVisitDataEvent,
     required TResult orElse(),
   }) {
     if (getChartPRoductiveVisitDataEvent != null) {
-      return getChartPRoductiveVisitDataEvent(fromDate, toDate);
+      return getChartPRoductiveVisitDataEvent(fromDate, toDate, userId);
     }
     return orElse();
   }
@@ -255,12 +269,15 @@ abstract class GetChartPRoductiveVisitDataEvent
     implements ChartProductiveVisitEvent {
   const factory GetChartPRoductiveVisitDataEvent(
       {required final String fromDate,
-      required final String toDate}) = _$GetChartPRoductiveVisitDataEventImpl;
+      required final String toDate,
+      required final String userId}) = _$GetChartPRoductiveVisitDataEventImpl;
 
   @override
   String get fromDate;
   @override
   String get toDate;
+  @override
+  String get userId;
 
   /// Create a copy of ChartProductiveVisitEvent
   /// with the given fields replaced by the non-null parameter values.

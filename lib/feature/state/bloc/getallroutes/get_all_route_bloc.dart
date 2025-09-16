@@ -17,7 +17,7 @@ class GetAllRouteBloc extends Bloc<GetAllRouteEvent, GetAllRouteState> {
   GetAllRouteBloc(this.routesRepo) : super(GetAllRouteState.initial()) {
     on<GetAllRouteForCusEvent>((event, emit) async {
       Either<MainFailures, List<CuSInsRotList>> routes =
-          await routesRepo.getallRoutes();
+          await routesRepo.getallRoutes(event.userID);
       List<CuSInsRotList> availableroutes = [];
       emit(routes.fold((l) => const GetAllRoutesFailedState(), (r) {
         availableroutes.clear();

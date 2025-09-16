@@ -19,7 +19,7 @@ class ChartNonProductiveBloc
     on<GetChartNonProductiveDataEvent>((event, emit) async {
       Either<MainFailures, ChartNonProductiveModel> data =
           await nonProductiveRepo.nonProductiveChart(
-              event.fromDate, event.toDate);
+              event.fromDate, event.toDate,event.userId);
       emit(data.fold(
           (l) => GetChartNonProductiveDataState(
               nonProductiveData:

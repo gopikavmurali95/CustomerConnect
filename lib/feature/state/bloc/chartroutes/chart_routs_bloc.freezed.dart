@@ -17,19 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChartRoutsEvent {
   String get date => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String date) getchartRouteDataEvent,
+    required TResult Function(String date, String userId)
+        getchartRouteDataEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String date)? getchartRouteDataEvent,
+    TResult? Function(String date, String userId)? getchartRouteDataEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String date)? getchartRouteDataEvent,
+    TResult Function(String date, String userId)? getchartRouteDataEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +66,7 @@ abstract class $ChartRoutsEventCopyWith<$Res> {
           ChartRoutsEvent value, $Res Function(ChartRoutsEvent) then) =
       _$ChartRoutsEventCopyWithImpl<$Res, ChartRoutsEvent>;
   @useResult
-  $Res call({String date});
+  $Res call({String date, String userId});
 }
 
 /// @nodoc
@@ -83,11 +85,16 @@ class _$ChartRoutsEventCopyWithImpl<$Res, $Val extends ChartRoutsEvent>
   @override
   $Res call({
     Object? date = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -102,7 +109,7 @@ abstract class _$$GetchartRouteDataEventImplCopyWith<$Res>
       __$$GetchartRouteDataEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String date});
+  $Res call({String date, String userId});
 }
 
 /// @nodoc
@@ -120,11 +127,16 @@ class __$$GetchartRouteDataEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = null,
+    Object? userId = null,
   }) {
     return _then(_$GetchartRouteDataEventImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -133,14 +145,17 @@ class __$$GetchartRouteDataEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetchartRouteDataEventImpl implements GetchartRouteDataEvent {
-  const _$GetchartRouteDataEventImpl({required this.date});
+  const _$GetchartRouteDataEventImpl(
+      {required this.date, required this.userId});
 
   @override
   final String date;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'ChartRoutsEvent.getchartRouteDataEvent(date: $date)';
+    return 'ChartRoutsEvent.getchartRouteDataEvent(date: $date, userId: $userId)';
   }
 
   @override
@@ -148,11 +163,12 @@ class _$GetchartRouteDataEventImpl implements GetchartRouteDataEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetchartRouteDataEventImpl &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date);
+  int get hashCode => Object.hash(runtimeType, date, userId);
 
   /// Create a copy of ChartRoutsEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -166,27 +182,28 @@ class _$GetchartRouteDataEventImpl implements GetchartRouteDataEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String date) getchartRouteDataEvent,
+    required TResult Function(String date, String userId)
+        getchartRouteDataEvent,
   }) {
-    return getchartRouteDataEvent(date);
+    return getchartRouteDataEvent(date, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String date)? getchartRouteDataEvent,
+    TResult? Function(String date, String userId)? getchartRouteDataEvent,
   }) {
-    return getchartRouteDataEvent?.call(date);
+    return getchartRouteDataEvent?.call(date, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String date)? getchartRouteDataEvent,
+    TResult Function(String date, String userId)? getchartRouteDataEvent,
     required TResult orElse(),
   }) {
     if (getchartRouteDataEvent != null) {
-      return getchartRouteDataEvent(date);
+      return getchartRouteDataEvent(date, userId);
     }
     return orElse();
   }
@@ -222,11 +239,14 @@ class _$GetchartRouteDataEventImpl implements GetchartRouteDataEvent {
 }
 
 abstract class GetchartRouteDataEvent implements ChartRoutsEvent {
-  const factory GetchartRouteDataEvent({required final String date}) =
-      _$GetchartRouteDataEventImpl;
+  const factory GetchartRouteDataEvent(
+      {required final String date,
+      required final String userId}) = _$GetchartRouteDataEventImpl;
 
   @override
   String get date;
+  @override
+  String get userId;
 
   /// Create a copy of ChartRoutsEvent
   /// with the given fields replaced by the non-null parameter values.

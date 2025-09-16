@@ -17,19 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChartPlannedVisitsEvent {
   String get date => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String date) getChartPlannedVisitsEvent,
+    required TResult Function(String date, String userId)
+        getChartPlannedVisitsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String date)? getChartPlannedVisitsEvent,
+    TResult? Function(String date, String userId)? getChartPlannedVisitsEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String date)? getChartPlannedVisitsEvent,
+    TResult Function(String date, String userId)? getChartPlannedVisitsEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,7 +68,7 @@ abstract class $ChartPlannedVisitsEventCopyWith<$Res> {
           $Res Function(ChartPlannedVisitsEvent) then) =
       _$ChartPlannedVisitsEventCopyWithImpl<$Res, ChartPlannedVisitsEvent>;
   @useResult
-  $Res call({String date});
+  $Res call({String date, String userId});
 }
 
 /// @nodoc
@@ -86,11 +88,16 @@ class _$ChartPlannedVisitsEventCopyWithImpl<$Res,
   @override
   $Res call({
     Object? date = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -105,7 +112,7 @@ abstract class _$$GetChartPlannedVisitsEventImplCopyWith<$Res>
       __$$GetChartPlannedVisitsEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String date});
+  $Res call({String date, String userId});
 }
 
 /// @nodoc
@@ -124,11 +131,16 @@ class __$$GetChartPlannedVisitsEventImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? date = null,
+    Object? userId = null,
   }) {
     return _then(_$GetChartPlannedVisitsEventImpl(
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -137,14 +149,17 @@ class __$$GetChartPlannedVisitsEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetChartPlannedVisitsEventImpl implements GetChartPlannedVisitsEvent {
-  const _$GetChartPlannedVisitsEventImpl({required this.date});
+  const _$GetChartPlannedVisitsEventImpl(
+      {required this.date, required this.userId});
 
   @override
   final String date;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'ChartPlannedVisitsEvent.getChartPlannedVisitsEvent(date: $date)';
+    return 'ChartPlannedVisitsEvent.getChartPlannedVisitsEvent(date: $date, userId: $userId)';
   }
 
   @override
@@ -152,11 +167,12 @@ class _$GetChartPlannedVisitsEventImpl implements GetChartPlannedVisitsEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetChartPlannedVisitsEventImpl &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date);
+  int get hashCode => Object.hash(runtimeType, date, userId);
 
   /// Create a copy of ChartPlannedVisitsEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -170,27 +186,28 @@ class _$GetChartPlannedVisitsEventImpl implements GetChartPlannedVisitsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String date) getChartPlannedVisitsEvent,
+    required TResult Function(String date, String userId)
+        getChartPlannedVisitsEvent,
   }) {
-    return getChartPlannedVisitsEvent(date);
+    return getChartPlannedVisitsEvent(date, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String date)? getChartPlannedVisitsEvent,
+    TResult? Function(String date, String userId)? getChartPlannedVisitsEvent,
   }) {
-    return getChartPlannedVisitsEvent?.call(date);
+    return getChartPlannedVisitsEvent?.call(date, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String date)? getChartPlannedVisitsEvent,
+    TResult Function(String date, String userId)? getChartPlannedVisitsEvent,
     required TResult orElse(),
   }) {
     if (getChartPlannedVisitsEvent != null) {
-      return getChartPlannedVisitsEvent(date);
+      return getChartPlannedVisitsEvent(date, userId);
     }
     return orElse();
   }
@@ -228,11 +245,14 @@ class _$GetChartPlannedVisitsEventImpl implements GetChartPlannedVisitsEvent {
 }
 
 abstract class GetChartPlannedVisitsEvent implements ChartPlannedVisitsEvent {
-  const factory GetChartPlannedVisitsEvent({required final String date}) =
-      _$GetChartPlannedVisitsEventImpl;
+  const factory GetChartPlannedVisitsEvent(
+      {required final String date,
+      required final String userId}) = _$GetChartPlannedVisitsEventImpl;
 
   @override
   String get date;
+  @override
+  String get userId;
 
   /// Create a copy of ChartPlannedVisitsEvent
   /// with the given fields replaced by the non-null parameter values.

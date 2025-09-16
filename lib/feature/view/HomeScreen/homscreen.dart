@@ -125,27 +125,32 @@ class _HomeScreenState extends State<HomeScreen> {
 
     context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartPlannedVisitsBloc>().add(GetChartPlannedVisitsEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartActualVisitsBloc>().add(GetChartActualVisitsDataEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartProductiveVisitBloc>().add(GetChartPRoductiveVisitDataEvent(
         fromDate:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
         toDate:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartNonProductiveBloc>().add(GetChartNonProductiveDataEvent(
         fromDate:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
         toDate:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
     super.initState();
   }
 
@@ -241,26 +246,31 @@ class _HomeScreenState extends State<HomeScreen> {
   void _performTapAction(int index) {
     context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartPlannedVisitsBloc>().add(GetChartPlannedVisitsEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartActualVisitsBloc>().add(GetChartActualVisitsDataEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
     context.read<ChartProductiveVisitBloc>().add(GetChartPRoductiveVisitDataEvent(
         fromDate:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
         toDate:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartNonProductiveBloc>().add(GetChartNonProductiveDataEvent(
         fromDate:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
         toDate:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
     context.read<HomeGraphSwitchCubit>().chnageGraph(homegraphList[index]);
   }
 
@@ -769,7 +779,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                  height: 5.h,
+                                                  height: 15.h,
                                                 ),
                                                 Visibility(
                                                   visible: state.when(
@@ -1133,26 +1143,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
     context.read<ChartRoutsBloc>().add(GetchartRouteDataEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartPlannedVisitsBloc>().add(GetChartPlannedVisitsEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartActualVisitsBloc>().add(GetChartActualVisitsDataEvent(
         date:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
     context.read<ChartProductiveVisitBloc>().add(GetChartPRoductiveVisitDataEvent(
         fromDate:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
         toDate:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
 
     context.read<ChartNonProductiveBloc>().add(GetChartNonProductiveDataEvent(
         fromDate:
             '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
         toDate:
-            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'));
+            '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}',
+        userId: widget.user.usrId ?? ''));
     context.read<SelectLanguageLocaleCubit>().changeLanguage(selectedLocale);
     await Future.delayed(const Duration(seconds: 2));
   }

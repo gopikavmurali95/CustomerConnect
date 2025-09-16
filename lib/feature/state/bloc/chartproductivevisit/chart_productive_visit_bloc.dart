@@ -19,7 +19,7 @@ class ChartProductiveVisitBloc
     on<GetChartPRoductiveVisitDataEvent>((event, emit) async {
       Either<MainFailures, ChartProductiveVisitModel> productivevisitdata =
           await productiveVisitRepo.productiveChart(
-              event.fromDate, event.toDate);
+              event.fromDate, event.toDate, event.userId);
       emit(productivevisitdata.fold(
           (l) => GetChartProductiveVisitDataSate(
               productiveVisitData: ChartProductiveVisitModel(

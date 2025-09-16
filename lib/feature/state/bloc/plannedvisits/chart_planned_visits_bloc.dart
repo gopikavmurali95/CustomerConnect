@@ -18,7 +18,7 @@ class ChartPlannedVisitsBloc
       : super(ChartPlannedVisitsState.initial()) {
     on<GetChartPlannedVisitsEvent>((event, emit) async {
       Either<MainFailures, ChartPlannedVisitsModel> planned =
-          await homeChartsRepo.plannedVisitsChart(event.date, event.date);
+          await homeChartsRepo.plannedVisitsChart(event.date, event.date, event.userId);
 
       emit(planned.fold(
           (l) => GetChartPlannedVisitDataState(

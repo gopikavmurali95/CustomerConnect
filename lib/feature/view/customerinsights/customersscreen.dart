@@ -41,7 +41,9 @@ class _CustomersScrenState extends State<CustomersScren> {
     _customerSearchCtrl.clear();
     _routeIDCtrl.clear();
 
-    context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
+    context
+        .read<GetAllRouteBloc>()
+        .add(GetAllRouteForCusEvent(userID: widget.user.usrId ?? ''));
     context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
 
     context.read<CustomersListBlocBloc>().add(GetCustomersEvent(

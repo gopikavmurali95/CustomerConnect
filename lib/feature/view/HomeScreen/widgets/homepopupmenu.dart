@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/selectlanguage/select_language_locale_cubit.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
 import 'package:customer_connect/l10n/app_localizations.dart';
@@ -220,6 +221,12 @@ class HomePopUPMenuButton extends StatelessWidget {
                                   sharedprefs.clear();
                                   Future.delayed(
                                       const Duration(microseconds: 100), () {
+                                    context
+                                        .read<CustomerSettingsBloc>()
+                                        .add(const ClearSettingsEvent());
+                                    context.read<CustomerSettingsBloc>().add(
+                                        GetCustomerSettingsEvent(
+                                            usrID: user.usrId ?? '0'));
                                     Navigator.pushAndRemoveUntil(
                                         context,
                                         Platform.isIOS

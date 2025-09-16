@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GetAllRouteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllRouteForCusEvent,
+    required TResult Function(String userID) getAllRouteForCusEvent,
     required TResult Function() clearAllRouteEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllRouteForCusEvent,
+    TResult? Function(String userID)? getAllRouteForCusEvent,
     TResult? Function()? clearAllRouteEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllRouteForCusEvent,
+    TResult Function(String userID)? getAllRouteForCusEvent,
     TResult Function()? clearAllRouteEvent,
     required TResult orElse(),
   }) =>
@@ -84,6 +84,8 @@ abstract class _$$GetAllRouteForCusEventImplCopyWith<$Res> {
           _$GetAllRouteForCusEventImpl value,
           $Res Function(_$GetAllRouteForCusEventImpl) then) =
       __$$GetAllRouteForCusEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userID});
 }
 
 /// @nodoc
@@ -97,55 +99,80 @@ class __$$GetAllRouteForCusEventImplCopyWithImpl<$Res>
 
   /// Create a copy of GetAllRouteEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userID = null,
+  }) {
+    return _then(_$GetAllRouteForCusEventImpl(
+      userID: null == userID
+          ? _value.userID
+          : userID // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetAllRouteForCusEventImpl implements GetAllRouteForCusEvent {
-  const _$GetAllRouteForCusEventImpl();
+  const _$GetAllRouteForCusEventImpl({required this.userID});
+
+  @override
+  final String userID;
 
   @override
   String toString() {
-    return 'GetAllRouteEvent.getAllRouteForCusEvent()';
+    return 'GetAllRouteEvent.getAllRouteForCusEvent(userID: $userID)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetAllRouteForCusEventImpl);
+            other is _$GetAllRouteForCusEventImpl &&
+            (identical(other.userID, userID) || other.userID == userID));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, userID);
+
+  /// Create a copy of GetAllRouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAllRouteForCusEventImplCopyWith<_$GetAllRouteForCusEventImpl>
+      get copyWith => __$$GetAllRouteForCusEventImplCopyWithImpl<
+          _$GetAllRouteForCusEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllRouteForCusEvent,
+    required TResult Function(String userID) getAllRouteForCusEvent,
     required TResult Function() clearAllRouteEvent,
   }) {
-    return getAllRouteForCusEvent();
+    return getAllRouteForCusEvent(userID);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllRouteForCusEvent,
+    TResult? Function(String userID)? getAllRouteForCusEvent,
     TResult? Function()? clearAllRouteEvent,
   }) {
-    return getAllRouteForCusEvent?.call();
+    return getAllRouteForCusEvent?.call(userID);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllRouteForCusEvent,
+    TResult Function(String userID)? getAllRouteForCusEvent,
     TResult Function()? clearAllRouteEvent,
     required TResult orElse(),
   }) {
     if (getAllRouteForCusEvent != null) {
-      return getAllRouteForCusEvent();
+      return getAllRouteForCusEvent(userID);
     }
     return orElse();
   }
@@ -184,7 +211,16 @@ class _$GetAllRouteForCusEventImpl implements GetAllRouteForCusEvent {
 }
 
 abstract class GetAllRouteForCusEvent implements GetAllRouteEvent {
-  const factory GetAllRouteForCusEvent() = _$GetAllRouteForCusEventImpl;
+  const factory GetAllRouteForCusEvent({required final String userID}) =
+      _$GetAllRouteForCusEventImpl;
+
+  String get userID;
+
+  /// Create a copy of GetAllRouteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetAllRouteForCusEventImplCopyWith<_$GetAllRouteForCusEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -228,7 +264,7 @@ class _$ClearAllRouteEventImpl implements ClearAllRouteEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getAllRouteForCusEvent,
+    required TResult Function(String userID) getAllRouteForCusEvent,
     required TResult Function() clearAllRouteEvent,
   }) {
     return clearAllRouteEvent();
@@ -237,7 +273,7 @@ class _$ClearAllRouteEventImpl implements ClearAllRouteEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllRouteForCusEvent,
+    TResult? Function(String userID)? getAllRouteForCusEvent,
     TResult? Function()? clearAllRouteEvent,
   }) {
     return clearAllRouteEvent?.call();
@@ -246,7 +282,7 @@ class _$ClearAllRouteEventImpl implements ClearAllRouteEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllRouteForCusEvent,
+    TResult Function(String userID)? getAllRouteForCusEvent,
     TResult Function()? clearAllRouteEvent,
     required TResult orElse(),
   }) {

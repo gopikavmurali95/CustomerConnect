@@ -16,11 +16,11 @@ import 'package:injectable/injectable.dart';
 class HomeChartRepo implements IHomeChartsRepo {
   @override
   Future<Either<MainFailures, ChartRoutesModel>> routesChart(
-      String fromDate, String toDate) async {
+      String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartRoutesUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
       // log(response.body);
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -38,11 +38,11 @@ class HomeChartRepo implements IHomeChartsRepo {
 
   @override
   Future<Either<MainFailures, ChartActualVisitModel>> actualVisitsChart(
-      String fromDate, String toDate) async {
+      String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartActualVisitsUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartActualVisitModel.fromJson(json["result"][0]);
@@ -59,11 +59,11 @@ class HomeChartRepo implements IHomeChartsRepo {
 
   @override
   Future<Either<MainFailures, ChartNonProductiveModel>> nonProductiveChart(
-      String fromDate, String toDate) async {
+      String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartNonProductiveVistisUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartNonProductiveModel.fromJson(json["result"][0]);
@@ -80,11 +80,11 @@ class HomeChartRepo implements IHomeChartsRepo {
 
   @override
   Future<Either<MainFailures, ChartPlannedVisitsModel>> plannedVisitsChart(
-      String fromDate, String toDate) async {
+      String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartPlannedVisitsUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartPlannedVisitsModel.fromJson(json["result"][0]);
@@ -101,11 +101,11 @@ class HomeChartRepo implements IHomeChartsRepo {
 
   @override
   Future<Either<MainFailures, ChartProductiveVisitModel>> productiveChart(
-      String fromDate, String toDate) async {
+      String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartProductiveVisitsUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartProductiveVisitModel.fromJson(json["result"][0]);

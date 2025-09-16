@@ -44,7 +44,7 @@ late GoogleMapController mapController;
 class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
   @override
   void initState() {
-    context.read<GetAllRouteBloc>().add(const GetAllRouteForCusEvent());
+    // context.read<GetAllRouteBloc>().add( GetAllRouteForCusEvent(userID: ));
     _controller = Completer<GoogleMapController>();
 
     super.initState();

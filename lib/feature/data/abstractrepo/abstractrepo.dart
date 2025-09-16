@@ -546,7 +546,10 @@ abstract class IVanToVanApprovalRepo {
 
 abstract class IAssetAddApprovalRepo {
   Future<Either<MainFailures, List<AssetAddRequestHeaderModel>>>
-      getAssetAddApprovalHeaders(String userID, /* String companyCode, String expStartDate, String expEndDate, String currentlevel */);
+      getAssetAddApprovalHeaders(
+    String userID,
+    /* String companyCode, String expStartDate, String expEndDate, String currentlevel */
+  );
 
   Future<Either<MainFailures, AssetAddRespOutModel>> assetAddApproval(
       AssetAddApprovalInModel approve);
@@ -556,8 +559,9 @@ abstract class IAssetAddApprovalRepo {
 
 abstract class IAssetRemovalRequestRepo {
   Future<Either<MainFailures, List<AssetRemovalRequestHeaderModel>>>
-      getAssetRemovalApprovalHeaders(String userID,
-       );
+      getAssetRemovalApprovalHeaders(
+    String userID,
+  );
 
   Future<Either<MainFailures, AssetRemovalApproveOutModel>>
       assetRemovalApproval(AssetRemovalApprovalInModel approve);
@@ -599,7 +603,7 @@ abstract class IMaterialReqHeaderRepo {
 }
 
 abstract class IGetAllAvailableRoutesRepo {
-  Future<Either<MainFailures, List<CuSInsRotList>>> getallRoutes();
+  Future<Either<MainFailures, List<CuSInsRotList>>> getallRoutes(String userID);
 }
 
 abstract class ILoadRequestHeaderRepo {
@@ -761,15 +765,15 @@ abstract class IMerchandinsingSurveyRepo {
 
 abstract class IHomeChartsRepo {
   Future<Either<MainFailures, ChartRoutesModel>> routesChart(
-      String fromDate, String toDate);
+      String fromDate, String toDate, String userId);
   Future<Either<MainFailures, ChartPlannedVisitsModel>> plannedVisitsChart(
-      String fromDate, String toDate);
+      String fromDate, String toDate, String userId);
   Future<Either<MainFailures, ChartActualVisitModel>> actualVisitsChart(
-      String fromDate, String toDate);
+      String fromDate, String toDate, String userId);
   Future<Either<MainFailures, ChartProductiveVisitModel>> productiveChart(
-      String fromDate, String toDate);
+      String fromDate, String toDate, String userId);
   Future<Either<MainFailures, ChartNonProductiveModel>> nonProductiveChart(
-      String fromDate, String toDate);
+      String fromDate, String toDate, String userId);
 }
 
 abstract class IMerchDisplayAgreement {
