@@ -84,6 +84,9 @@ class _$UnScheduledVisitHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UnScheduledVisitHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetUnScheduledHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetUnScheduledHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnScheduledVisitHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +159,9 @@ class _$GetUnScheduledHeadersEventImpl implements GetUnScheduledHeadersEvent {
   @override
   int get hashCode => Object.hash(runtimeType, searchQuery, mode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledVisitHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetUnScheduledHeadersEventImplCopyWith<_$GetUnScheduledHeadersEventImpl>
@@ -241,7 +248,10 @@ abstract class GetUnScheduledHeadersEvent
 
   String get searchQuery;
   String get mode;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UnScheduledVisitHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetUnScheduledHeadersEventImplCopyWith<_$GetUnScheduledHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -263,6 +273,9 @@ class __$$ClearUnScheduledVisitEventImplCopyWithImpl<$Res>
       _$ClearUnScheduledVisitEventImpl _value,
       $Res Function(_$ClearUnScheduledVisitEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UnScheduledVisitHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -432,6 +445,9 @@ class _$UnScheduledVisitHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UnScheduledVisitHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -454,6 +470,8 @@ class __$$GetUnScheduledVistHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetUnScheduledVistHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnScheduledVisitHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -503,7 +521,9 @@ class _$GetUnScheduledVistHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledVisitHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetUnScheduledVistHeadersStateImplCopyWith<
@@ -590,7 +610,10 @@ abstract class GetUnScheduledVistHeadersState
       _$GetUnScheduledVistHeadersStateImpl;
 
   List<UnScheduledApprovalHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UnScheduledVisitHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetUnScheduledVistHeadersStateImplCopyWith<
           _$GetUnScheduledVistHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -613,6 +636,9 @@ class __$$UnScheduledVisitFailedStateImplCopyWithImpl<$Res>
       _$UnScheduledVisitFailedStateImpl _value,
       $Res Function(_$UnScheduledVisitFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UnScheduledVisitHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

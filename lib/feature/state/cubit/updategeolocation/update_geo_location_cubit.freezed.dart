@@ -91,6 +91,9 @@ class _$UpdateGeoLocationStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UpdateGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -113,6 +116,8 @@ class __$$UpdateGeoLocationSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$UpdateGeoLocationSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UpdateGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +157,9 @@ class _$UpdateGeoLocationSuccessStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UpdateGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateGeoLocationSuccessStateImplCopyWith<
@@ -247,7 +254,10 @@ abstract class UpdateGeoLocationSuccessState implements UpdateGeoLocationState {
       _$UpdateGeoLocationSuccessStateImpl;
 
   ConfirmGeoLocationsModel? get result;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UpdateGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateGeoLocationSuccessStateImplCopyWith<
           _$UpdateGeoLocationSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -270,6 +280,9 @@ class __$$UpdateGeoLocationFailedStateImplCopyWithImpl<$Res>
       _$UpdateGeoLocationFailedStateImpl _value,
       $Res Function(_$UpdateGeoLocationFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UpdateGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -396,6 +409,9 @@ class __$$UpdateGeoLocationLoadingSTateImplCopyWithImpl<$Res>
       _$UpdateGeoLocationLoadingSTateImpl _value,
       $Res Function(_$UpdateGeoLocationLoadingSTateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UpdateGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -80,6 +80,9 @@ class _$PriceChangeHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PriceChangeHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetPriceChangeHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPriceChangeHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PriceChangeHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,7 +163,9 @@ class _$GetPriceChangeHeaderEventImpl implements GetPriceChangeHeaderEvent {
   @override
   int get hashCode => Object.hash(runtimeType, rotID, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PriceChangeHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPriceChangeHeaderEventImplCopyWith<_$GetPriceChangeHeaderEventImpl>
@@ -244,7 +251,10 @@ abstract class GetPriceChangeHeaderEvent implements PriceChangeHeaderEvent {
   String get rotID;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PriceChangeHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPriceChangeHeaderEventImplCopyWith<_$GetPriceChangeHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -266,6 +276,9 @@ class __$$ClearPriceChangeHeaderImplCopyWithImpl<$Res>
       _$ClearPriceChangeHeaderImpl _value,
       $Res Function(_$ClearPriceChangeHeaderImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PriceChangeHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -425,6 +438,9 @@ class _$PriceChangeHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PriceChangeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -445,6 +461,8 @@ class __$$GetPriceChangeStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPriceChangeStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PriceChangeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -493,7 +511,9 @@ class _$GetPriceChangeStateImpl implements GetPriceChangeState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_pcHeader));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PriceChangeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPriceChangeStateImplCopyWith<_$GetPriceChangeStateImpl> get copyWith =>
@@ -573,7 +593,10 @@ abstract class GetPriceChangeState implements PriceChangeHeaderState {
       _$GetPriceChangeStateImpl;
 
   List<PriceChangeHeaderModel>? get pcHeader;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PriceChangeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPriceChangeStateImplCopyWith<_$GetPriceChangeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -595,6 +618,9 @@ class __$$PriceChangeFailureStateImplCopyWithImpl<$Res>
       _$PriceChangeFailureStateImpl _value,
       $Res Function(_$PriceChangeFailureStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PriceChangeHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

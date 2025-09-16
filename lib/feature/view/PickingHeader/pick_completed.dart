@@ -5,6 +5,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 
 import 'package:customer_connect/feature/view/PickingHeader/widgets/completed.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +13,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../state/bloc/picking_header/picking_header_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickHeaderCompleted extends StatefulWidget {
   final LoginUserModel user;

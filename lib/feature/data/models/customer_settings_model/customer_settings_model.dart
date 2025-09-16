@@ -92,6 +92,9 @@ class CustomerSettingsModel {
   @JsonKey(name: 'APPR-MUSTSEL')
   String? mustSellAppr;
 
+  @JsonKey(name: 'APPR-UNSCHLD')
+  String? unschvisit;
+
   @JsonKey(name: 'APPR-SETLMNT')
   String? settleAppr;
 
@@ -200,6 +203,7 @@ class CustomerSettingsModel {
     this.cusfoc,
     this.cusovrride,
     this.freesample,
+    this.unschvisit,
   });
 
   factory CustomerSettingsModel.fromJson(Map<String, dynamic> json) {
@@ -261,7 +265,8 @@ class CustomerSettingsModel {
       'APPR-SETLMNT': 'settleAppr',
       'APPR-CUSFOC': 'cusfoc',
       'APPR-CUSFRSMPLE': 'freesample',
-      'APPR-CUSOVRDE': 'cusovrride'
+      'APPR-CUSOVRDE': 'cusovrride',
+      'APPR-UNSCHLD': 'unschvisit'
     };
 
     for (var item in response) {
@@ -432,6 +437,9 @@ class CustomerSettingsModel {
         break;
       case 'cusovrride':
         customerSettings.cusovrride = value;
+        break;
+      case 'unschvisit':
+        customerSettings.unschvisit = value;
         break;
     }
   }

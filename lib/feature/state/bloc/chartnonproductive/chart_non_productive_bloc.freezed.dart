@@ -57,7 +57,9 @@ mixin _$ChartNonProductiveEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartNonProductiveEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartNonProductiveEventCopyWith<ChartNonProductiveEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$ChartNonProductiveEventCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartNonProductiveEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +127,8 @@ class __$$GetChartNonProductiveDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetChartNonProductiveDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartNonProductiveEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,7 +178,9 @@ class _$GetChartNonProductiveDataEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartNonProductiveEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetChartNonProductiveDataEventImplCopyWith<
@@ -253,8 +261,11 @@ abstract class GetChartNonProductiveDataEvent
   String get fromDate;
   @override
   String get toDate;
+
+  /// Create a copy of ChartNonProductiveEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetChartNonProductiveDataEventImplCopyWith<
           _$GetChartNonProductiveDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -303,7 +314,9 @@ mixin _$ChartNonProductiveState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartNonProductiveState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartNonProductiveStateCopyWith<ChartNonProductiveState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -328,6 +341,8 @@ class _$ChartNonProductiveStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartNonProductiveState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -364,6 +379,8 @@ class __$$GetChartNonProductiveDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetChartNonProductiveDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartNonProductiveState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -404,7 +421,9 @@ class _$GetChartNonProductiveDataStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, nonProductiveData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartNonProductiveState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetChartNonProductiveDataStateImplCopyWith<
@@ -483,8 +502,11 @@ abstract class GetChartNonProductiveDataState
 
   @override
   ChartNonProductiveModel get nonProductiveData;
+
+  /// Create a copy of ChartNonProductiveState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetChartNonProductiveDataStateImplCopyWith<
           _$GetChartNonProductiveDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;

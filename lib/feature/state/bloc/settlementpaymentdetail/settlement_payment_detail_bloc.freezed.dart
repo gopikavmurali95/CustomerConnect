@@ -77,6 +77,9 @@ class _$SettlementPaymentDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementPaymentDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetPaymentDetailEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPaymentDetailEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementPaymentDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +141,9 @@ class _$GetPaymentDetailEventImpl implements GetPaymentDetailEvent {
   @override
   int get hashCode => Object.hash(runtimeType, udpID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementPaymentDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPaymentDetailEventImplCopyWith<_$GetPaymentDetailEventImpl>
@@ -213,7 +220,10 @@ abstract class GetPaymentDetailEvent implements SettlementPaymentDetailEvent {
       _$GetPaymentDetailEventImpl;
 
   String get udpID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementPaymentDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPaymentDetailEventImplCopyWith<_$GetPaymentDetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -235,6 +245,9 @@ class __$$ClearPaymentDetailEventImplCopyWithImpl<$Res>
       _$ClearPaymentDetailEventImpl _value,
       $Res Function(_$ClearPaymentDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementPaymentDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -392,6 +405,9 @@ class _$SettlementPaymentDetailStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementPaymentDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -413,6 +429,8 @@ class __$$GetPaymentDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPaymentDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementPaymentDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -461,7 +479,9 @@ class _$GetPaymentDetailStateImpl implements GetPaymentDetailState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_payment));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementPaymentDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPaymentDetailStateImplCopyWith<_$GetPaymentDetailStateImpl>
@@ -542,7 +562,10 @@ abstract class GetPaymentDetailState implements SettlementPaymentDetailState {
       _$GetPaymentDetailStateImpl;
 
   List<SettlementPaymentDetailModel>? get payment;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementPaymentDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPaymentDetailStateImplCopyWith<_$GetPaymentDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -564,6 +587,9 @@ class __$$PaymentDetailFailedStateImplCopyWithImpl<$Res>
       _$PaymentDetailFailedStateImpl _value,
       $Res Function(_$PaymentDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementPaymentDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

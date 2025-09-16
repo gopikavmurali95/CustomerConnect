@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/cus_ins_customers_model/cus_ins_customers_model.dart';
@@ -12,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InsightsInvoiceScreen extends StatefulWidget {
   final LoginUserModel user;

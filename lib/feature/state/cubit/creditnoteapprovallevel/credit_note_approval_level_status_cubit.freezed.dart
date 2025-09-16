@@ -94,6 +94,9 @@ class _$CreditNoteApprovalLevelStatusStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CreditNoteApprovalLevelStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -116,6 +119,8 @@ class __$$CreditNoteApprovalStatusLevelStateImplCopyWithImpl<$Res>
       $Res Function(_$CreditNoteApprovalStatusLevelStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreditNoteApprovalLevelStatusState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,7 +171,9 @@ class _$CreditNoteApprovalStatusLevelStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, statuslevel, isApproval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreditNoteApprovalLevelStatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreditNoteApprovalStatusLevelStateImplCopyWith<
@@ -265,7 +272,10 @@ abstract class CreditNoteApprovalStatusLevelState
 
   DisputeApprovalStatusModel? get statuslevel;
   bool get isApproval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreditNoteApprovalLevelStatusState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreditNoteApprovalStatusLevelStateImplCopyWith<
           _$CreditNoteApprovalStatusLevelStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -288,6 +298,9 @@ class __$$CreditNoteApprovalLevelFailedStateImplCopyWithImpl<$Res>
       _$CreditNoteApprovalLevelFailedStateImpl _value,
       $Res Function(_$CreditNoteApprovalLevelFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteApprovalLevelStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -416,6 +429,9 @@ class __$$CreditNoteApprovalLevelLoadingStateImplCopyWithImpl<$Res>
       _$CreditNoteApprovalLevelLoadingStateImpl _value,
       $Res Function(_$CreditNoteApprovalLevelLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteApprovalLevelStatusState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -4,11 +4,11 @@ import 'package:customer_connect/feature/data/models/merchandisingstatusfiltermo
 import 'package:customer_connect/feature/state/bloc/merchcustomeractivities/merch_customer_activities_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OutActCustomerActivityScreen extends StatefulWidget {
   const OutActCustomerActivityScreen({
@@ -84,6 +84,7 @@ class _PriceChangeHeaderState extends State<OutActCustomerActivityScreen> {
         ),
       ),
       body: PopScope(
+        // ignore: deprecated_member_use
         onPopInvoked: (didPop) {},
         child: Column(
           children: [

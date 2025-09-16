@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:io';
 
@@ -5,6 +7,7 @@ import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +17,6 @@ import '../../data/models/approvalstatusfilter/approvalfitermodel.dart';
 import '../../state/bloc/loadreqheader/load_req_header_bloc.dart';
 import '../LoadInDetail/load_detail_completed.dart';
 import 'loadrequestdetailscreen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadRequestHeaderScreen extends StatefulWidget {
   final LoginUserModel user;

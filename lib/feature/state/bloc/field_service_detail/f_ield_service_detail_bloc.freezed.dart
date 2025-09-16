@@ -79,6 +79,9 @@ class _$FIeldServiceDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FIeldServiceDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,8 @@ class __$$GetAllFieldServiceDetailEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllFieldServiceDetailEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FIeldServiceDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +145,9 @@ class _$GetAllFieldServiceDetailEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, reqId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FIeldServiceDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllFieldServiceDetailEventImplCopyWith<
@@ -223,7 +230,10 @@ abstract class GetAllFieldServiceDetailEvent
       _$GetAllFieldServiceDetailEventImpl;
 
   String get reqId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FIeldServiceDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllFieldServiceDetailEventImplCopyWith<
           _$GetAllFieldServiceDetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -246,6 +256,9 @@ class __$$ClearFieldServiceDetailEventImplCopyWithImpl<$Res>
       _$ClearFieldServiceDetailEventImpl _value,
       $Res Function(_$ClearFieldServiceDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FIeldServiceDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -411,6 +424,9 @@ class _$FIeldServiceDetailStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FIeldServiceDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -433,6 +449,8 @@ class __$$GetFieldServiceDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetFieldServiceDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FIeldServiceDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -481,7 +499,9 @@ class _$GetFieldServiceDetailStateImpl implements GetFieldServiceDetailState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FIeldServiceDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFieldServiceDetailStateImplCopyWith<_$GetFieldServiceDetailStateImpl>
@@ -566,7 +586,10 @@ abstract class GetFieldServiceDetailState implements FIeldServiceDetailState {
       _$GetFieldServiceDetailStateImpl;
 
   List<FieldServiceDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FIeldServiceDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFieldServiceDetailStateImplCopyWith<_$GetFieldServiceDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -588,6 +611,9 @@ class __$$FieldServiceDetailFailedStateImplCopyWithImpl<$Res>
       _$FieldServiceDetailFailedStateImpl _value,
       $Res Function(_$FieldServiceDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FIeldServiceDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -80,6 +80,9 @@ class _$CusInsCustomersCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusInsCustomersCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +111,8 @@ class __$$GetCustomersCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomersCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInsCustomersCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,7 +199,9 @@ class _$GetCustomersCountEventImpl implements GetCustomersCountEvent {
   int get hashCode => Object.hash(
       runtimeType, userId, area, subarea, route, searchString, pagenum);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsCustomersCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomersCountEventImplCopyWith<_$GetCustomersCountEventImpl>
@@ -289,7 +296,10 @@ abstract class GetCustomersCountEvent implements CusInsCustomersCountEvent {
   String get route;
   String get searchString;
   String get pagenum;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusInsCustomersCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomersCountEventImplCopyWith<_$GetCustomersCountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -309,6 +319,9 @@ class __$$ClearCustomerCountImplCopyWithImpl<$Res>
   __$$ClearCustomerCountImplCopyWithImpl(_$ClearCustomerCountImpl _value,
       $Res Function(_$ClearCustomerCountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusInsCustomersCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -468,6 +481,9 @@ class _$CusInsCustomersCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusInsCustomersCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -490,6 +506,8 @@ class __$$GetCustomersCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomersCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInsCustomersCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -528,7 +546,9 @@ class _$GetCustomersCountStateImpl implements GetCustomersCountState {
   @override
   int get hashCode => Object.hash(runtimeType, count);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsCustomersCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomersCountStateImplCopyWith<_$GetCustomersCountStateImpl>
@@ -609,7 +629,10 @@ abstract class GetCustomersCountState implements CusInsCustomersCountState {
       _$GetCustomersCountStateImpl;
 
   CusInsCustomerCountModel? get count;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusInsCustomersCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomersCountStateImplCopyWith<_$GetCustomersCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -631,6 +654,9 @@ class __$$GetCustomersCountFailedStateImplCopyWithImpl<$Res>
       _$GetCustomersCountFailedStateImpl _value,
       $Res Function(_$GetCustomersCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusInsCustomersCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

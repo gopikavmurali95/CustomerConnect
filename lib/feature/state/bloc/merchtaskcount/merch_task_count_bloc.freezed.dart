@@ -72,6 +72,9 @@ class _$MerchTaskCountEventCopyWithImpl<$Res, $Val extends MerchTaskCountEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchTaskCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$GetTaskCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTaskCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchTaskCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,7 +143,9 @@ class _$GetTaskCountEventImpl implements GetTaskCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchTaskCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTaskCountEventImplCopyWith<_$GetTaskCountEventImpl> get copyWith =>
@@ -215,7 +222,10 @@ abstract class GetTaskCountEvent implements MerchTaskCountEvent {
 
   String get fromDate;
   String get toDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchTaskCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTaskCountEventImplCopyWith<_$GetTaskCountEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -234,6 +244,9 @@ class __$$TaskCountClearEventImplCopyWithImpl<$Res>
   __$$TaskCountClearEventImplCopyWithImpl(_$TaskCountClearEventImpl _value,
       $Res Function(_$TaskCountClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchTaskCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -381,6 +394,9 @@ class _$MerchTaskCountStateCopyWithImpl<$Res, $Val extends MerchTaskCountState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchTaskCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -400,6 +416,8 @@ class __$$GetTaskCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTaskCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchTaskCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -439,7 +457,9 @@ class _$GetTaskCountStateImpl implements GetTaskCountState {
   @override
   int get hashCode => Object.hash(runtimeType, taskcount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchTaskCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTaskCountStateImplCopyWith<_$GetTaskCountStateImpl> get copyWith =>
@@ -514,7 +534,10 @@ abstract class GetTaskCountState implements MerchTaskCountState {
       {required final GetTaskCountModel? taskcount}) = _$GetTaskCountStateImpl;
 
   GetTaskCountModel? get taskcount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchTaskCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTaskCountStateImplCopyWith<_$GetTaskCountStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -533,6 +556,9 @@ class __$$TaskCountFailedStateImplCopyWithImpl<$Res>
   __$$TaskCountFailedStateImplCopyWithImpl(_$TaskCountFailedStateImpl _value,
       $Res Function(_$TaskCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchTaskCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:io';
 
@@ -8,12 +10,12 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header/asset_add_in_approval_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AssetAddingApprovalHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -43,7 +45,12 @@ class _AssetAddingApprovalHeaderScreenState
 
     context.read<AssetAddInApprovalHeaderBloc>().add(
         GetallAssetAddingRequestHeadersEvent(
-            userId: widget.user.usrId ?? '', searchQuery: ''));
+            userId: widget.user.usrId ?? '',
+            searchQuery: '',
+            /* companyCode: '001',
+            expStartDate: '28-08-2025',
+            expEndDate: '28-09-2025',
+            currentlevel: '2' */));
 
     super.initState();
   }
@@ -108,7 +115,11 @@ class _AssetAddingApprovalHeaderScreenState
                                       .read<AssetAddInApprovalHeaderBloc>()
                                       .add(GetallAssetAddingRequestHeadersEvent(
                                           searchQuery: '',
-                                          userId: widget.user.usrId ?? ''));
+                                          userId: widget.user.usrId ?? '',
+                                          /* companyCode: '001',
+                                          expStartDate: '28-08-2025',
+                                          expEndDate: '28-08-2025',
+                                          currentlevel: '2' */));
                                 }
                               },
                               icon: Icon(
@@ -151,7 +162,11 @@ class _AssetAddingApprovalHeaderScreenState
                       context.read<AssetAddInApprovalHeaderBloc>().add(
                           GetallAssetAddingRequestHeadersEvent(
                               searchQuery: value.trim(),
-                              userId: widget.user.usrId ?? ''));
+                              userId: widget.user.usrId ?? '',
+                              /* companyCode: '001',
+                              expStartDate: '28-08-2025',
+                              expEndDate: '28-08-2025',
+                              currentlevel: '2' */));
                     });
                   },
                 ),
@@ -425,7 +440,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: ''));
+                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */));
                                                                                       Navigator.pop(context);
                                                                                     },
                                                                                     child: Text(AppLocalizations.of(context)!.ok),
@@ -440,7 +455,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: ''));
+                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */));
                                                                                       Navigator.pop(context);
                                                                                     },
                                                                                     child: Text(AppLocalizations.of(context)!.ok),
@@ -471,7 +486,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               TextButton(
                                                                                 onPressed: () {
                                                                                   context.read<AssetAddInApprovalHeaderBloc>().add(
-                                                                                        GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: ''),
+                                                                                        GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */),
                                                                                       );
                                                                                   Navigator.pop(context);
                                                                                 },
@@ -489,7 +504,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               TextButton(
                                                                                 onPressed: () {
                                                                                   context.read<AssetAddInApprovalHeaderBloc>().add(
-                                                                                        GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: ''),
+                                                                                        GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */),
                                                                                       );
                                                                                   Navigator.pop(context);
                                                                                 },
@@ -676,7 +691,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                             Row(
                                                                           children: [
                                                                             Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                 return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                               }),
                                                                               /* activeColor: isselected == true
@@ -887,7 +902,7 @@ class _AssetAddingApprovalHeaderScreenState
                                                                             Row(
                                                                           children: [
                                                                             Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                 return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                               }),
                                                                               /*  activeColor: isselected == false

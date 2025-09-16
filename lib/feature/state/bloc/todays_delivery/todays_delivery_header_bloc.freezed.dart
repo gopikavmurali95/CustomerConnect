@@ -87,6 +87,9 @@ class _$TodaysDeliveryHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TodaysDeliveryHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +112,8 @@ class __$$GetTodaysDeliveryEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTodaysDeliveryEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TodaysDeliveryHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,7 +163,9 @@ class _$GetTodaysDeliveryEventImpl implements GetTodaysDeliveryEvent {
   @override
   int get hashCode => Object.hash(runtimeType, todaysdelivery, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TodaysDeliveryHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTodaysDeliveryEventImplCopyWith<_$GetTodaysDeliveryEventImpl>
@@ -249,7 +256,10 @@ abstract class GetTodaysDeliveryEvent implements TodaysDeliveryHeaderEvent {
 
   TodaysDeliveryInParas get todaysdelivery;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TodaysDeliveryHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTodaysDeliveryEventImplCopyWith<_$GetTodaysDeliveryEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -271,6 +281,9 @@ class __$$TodaysDeliveryFailedEventImplCopyWithImpl<$Res>
       _$TodaysDeliveryFailedEventImpl _value,
       $Res Function(_$TodaysDeliveryFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TodaysDeliveryHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -389,6 +402,9 @@ class __$$ClearTodaysDeliveryImplCopyWithImpl<$Res>
   __$$ClearTodaysDeliveryImplCopyWithImpl(_$ClearTodaysDeliveryImpl _value,
       $Res Function(_$ClearTodaysDeliveryImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TodaysDeliveryHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -558,6 +574,9 @@ class _$TodaysDeliveryHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TodaysDeliveryHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -580,6 +599,8 @@ class __$$GetTodaysDeliveryStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTodaysDeliveryStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TodaysDeliveryHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -629,7 +650,9 @@ class _$GetTodaysDeliveryStateImpl implements GetTodaysDeliveryState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_todaysdelivery));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TodaysDeliveryHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTodaysDeliveryStateImplCopyWith<_$GetTodaysDeliveryStateImpl>
@@ -712,7 +735,10 @@ abstract class GetTodaysDeliveryState implements TodaysDeliveryHeaderState {
       _$GetTodaysDeliveryStateImpl;
 
   List<TodaysDeliveryHeaderModel>? get todaysdelivery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TodaysDeliveryHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTodaysDeliveryStateImplCopyWith<_$GetTodaysDeliveryStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -734,6 +760,9 @@ class __$$TodaysDeliveryFailedStateImplCopyWithImpl<$Res>
       _$TodaysDeliveryFailedStateImpl _value,
       $Res Function(_$TodaysDeliveryFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TodaysDeliveryHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

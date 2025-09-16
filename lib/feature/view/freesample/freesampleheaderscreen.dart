@@ -6,10 +6,10 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/freesampleheader/free_sample_header_bloc.dart';
 import 'package:customer_connect/feature/view/freesample/widgets/freesampleheaderlistwidget.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FreeSampleApprovalHeader extends StatefulWidget {

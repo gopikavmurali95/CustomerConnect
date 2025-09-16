@@ -56,7 +56,9 @@ mixin _$MustsellApprovalSelectionState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MustsellApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MustsellApprovalSelectionStateCopyWith<MustsellApprovalSelectionState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -83,6 +85,8 @@ class _$MustsellApprovalSelectionStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MustsellApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +123,8 @@ class __$$MustSellApprovalSelectedHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$MustSellApprovalSelectedHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MustsellApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,7 +172,9 @@ class _$MustSellApprovalSelectedHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_selected));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MustsellApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MustSellApprovalSelectedHeadersStateImplCopyWith<
@@ -245,8 +253,11 @@ abstract class MustSellApprovalSelectedHeadersState
 
   @override
   List<MustSellIJsonModel> get selected;
+
+  /// Create a copy of MustsellApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MustSellApprovalSelectedHeadersStateImplCopyWith<
           _$MustSellApprovalSelectedHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;

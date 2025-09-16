@@ -72,6 +72,9 @@ class _$CusDocumentsEventCopyWithImpl<$Res, $Val extends CusDocumentsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusDocumentsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$GetCusDOcsEvevntImplCopyWithImpl<$Res>
       $Res Function(_$GetCusDOcsEvevntImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusDocumentsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,7 +134,9 @@ class _$GetCusDOcsEvevntImpl implements GetCusDOcsEvevnt {
   @override
   int get hashCode => Object.hash(runtimeType, cusID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusDocumentsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusDOcsEvevntImplCopyWith<_$GetCusDOcsEvevntImpl> get copyWith =>
@@ -204,7 +211,10 @@ abstract class GetCusDOcsEvevnt implements CusDocumentsEvent {
       _$GetCusDOcsEvevntImpl;
 
   String get cusID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusDocumentsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusDOcsEvevntImplCopyWith<_$GetCusDOcsEvevntImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -223,6 +233,9 @@ class __$$ClearCusDocsEventImplCopyWithImpl<$Res>
   __$$ClearCusDocsEventImplCopyWithImpl(_$ClearCusDocsEventImpl _value,
       $Res Function(_$ClearCusDocsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusDocumentsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -370,6 +383,9 @@ class _$CusDocumentsStateCopyWithImpl<$Res, $Val extends CusDocumentsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusDocumentsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -389,6 +405,8 @@ class __$$GetCusDocsStateImplCopyWithImpl<$Res>
       _$GetCusDocsStateImpl _value, $Res Function(_$GetCusDocsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusDocumentsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -436,7 +454,9 @@ class _$GetCusDocsStateImpl implements GetCusDocsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_docs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusDocumentsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusDocsStateImplCopyWith<_$GetCusDocsStateImpl> get copyWith =>
@@ -512,7 +532,10 @@ abstract class GetCusDocsState implements CusDocumentsState {
       {required final List<CusDocumentsModel>? docs}) = _$GetCusDocsStateImpl;
 
   List<CusDocumentsModel>? get docs;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusDocumentsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusDocsStateImplCopyWith<_$GetCusDocsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -532,6 +555,9 @@ class __$$GetCusDOcsFailedStateImplCopyWithImpl<$Res>
   __$$GetCusDOcsFailedStateImplCopyWithImpl(_$GetCusDOcsFailedStateImpl _value,
       $Res Function(_$GetCusDOcsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusDocumentsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

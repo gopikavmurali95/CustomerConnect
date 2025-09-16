@@ -84,6 +84,9 @@ class _$PartialDeliveryDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PartialDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetPartialDeliveryDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPartialDeliveryDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PartialDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetPartialDeliveryDetailsEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, reqID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PartialDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPartialDeliveryDetailsEventImplCopyWith<
@@ -243,7 +250,10 @@ abstract class GetPartialDeliveryDetailsEvent
 
   String get reqID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PartialDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPartialDeliveryDetailsEventImplCopyWith<
           _$GetPartialDeliveryDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,6 +276,9 @@ class __$$ClearPartialDeliveryDetailsImplCopyWithImpl<$Res>
       _$ClearPartialDeliveryDetailsImpl _value,
       $Res Function(_$ClearPartialDeliveryDetailsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PartialDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -436,6 +449,9 @@ class _$PartialDeliveryDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PartialDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -458,6 +474,8 @@ class __$$GetAllPartialDetliveryStateImplCopyWithImpl<$Res>
       $Res Function(_$GetAllPartialDetliveryStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PartialDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -506,7 +524,9 @@ class _$GetAllPartialDetliveryStateImpl implements GetAllPartialDetliveryState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PartialDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllPartialDetliveryStateImplCopyWith<_$GetAllPartialDetliveryStateImpl>
@@ -592,7 +612,10 @@ abstract class GetAllPartialDetliveryState
       _$GetAllPartialDetliveryStateImpl;
 
   List<PartialDeliveryDetailsModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PartialDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllPartialDetliveryStateImplCopyWith<_$GetAllPartialDetliveryStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -614,6 +637,9 @@ class __$$PartialDeliveryDetailsFailedStateImplCopyWithImpl<$Res>
       _$PartialDeliveryDetailsFailedStateImpl _value,
       $Res Function(_$PartialDeliveryDetailsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PartialDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

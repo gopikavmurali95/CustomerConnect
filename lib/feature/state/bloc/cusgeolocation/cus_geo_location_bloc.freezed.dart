@@ -76,6 +76,9 @@ class _$CusGeoLocationEventCopyWithImpl<$Res, $Val extends CusGeoLocationEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusGeoLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetCusGeoLocationEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusGeoLocationEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusGeoLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +142,9 @@ class _$GetCusGeoLocationEventImpl implements GetCusGeoLocationEvent {
   @override
   int get hashCode => Object.hash(runtimeType, cusGeoLocInModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusGeoLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusGeoLocationEventImplCopyWith<_$GetCusGeoLocationEventImpl>
@@ -217,7 +224,10 @@ abstract class GetCusGeoLocationEvent implements CusGeoLocationEvent {
       _$GetCusGeoLocationEventImpl;
 
   CusGeoLocInModel get cusGeoLocInModel;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusGeoLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusGeoLocationEventImplCopyWith<_$GetCusGeoLocationEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -239,6 +249,9 @@ class __$$ClearCusgeoLocationEventImplCopyWithImpl<$Res>
       _$ClearCusgeoLocationEventImpl _value,
       $Res Function(_$ClearCusgeoLocationEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusGeoLocationEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +410,9 @@ class _$CusGeoLocationStateCopyWithImpl<$Res, $Val extends CusGeoLocationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -419,6 +435,8 @@ class __$$getCusGeoLocationStateImplCopyWithImpl<$Res>
       $Res Function(_$getCusGeoLocationStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -468,7 +486,9 @@ class _$getCusGeoLocationStateImpl implements getCusGeoLocationState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_geolocations));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getCusGeoLocationStateImplCopyWith<_$getCusGeoLocationStateImpl>
@@ -551,7 +571,10 @@ abstract class getCusGeoLocationState implements CusGeoLocationState {
       _$getCusGeoLocationStateImpl;
 
   List<CusGeoLocationModel>? get geolocations;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getCusGeoLocationStateImplCopyWith<_$getCusGeoLocationStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -573,6 +596,9 @@ class __$$GetgeolocationFailedStateImplCopyWithImpl<$Res>
       _$GetgeolocationFailedStateImpl _value,
       $Res Function(_$GetgeolocationFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusGeoLocationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

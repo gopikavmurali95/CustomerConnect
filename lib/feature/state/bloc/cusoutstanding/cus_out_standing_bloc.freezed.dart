@@ -77,6 +77,9 @@ class _$CusOutStandingEventCopyWithImpl<$Res, $Val extends CusOutStandingEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusOutStandingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$GetCusOutstandingEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusOutstandingEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusOutStandingEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +152,9 @@ class _$GetCusOutstandingEventImpl implements GetCusOutstandingEvent {
   @override
   int get hashCode => Object.hash(runtimeType, outIn, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusOutStandingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusOutstandingEventImplCopyWith<_$GetCusOutstandingEventImpl>
@@ -229,7 +236,10 @@ abstract class GetCusOutstandingEvent implements CusOutStandingEvent {
 
   CusOutStandingInModel get outIn;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusOutStandingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusOutstandingEventImplCopyWith<_$GetCusOutstandingEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -251,6 +261,9 @@ class __$$ClearCusOutStandingEventImplCopyWithImpl<$Res>
       _$ClearCusOutStandingEventImpl _value,
       $Res Function(_$ClearCusOutStandingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusOutStandingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -413,6 +426,9 @@ class _$CusOutStandingStateCopyWithImpl<$Res, $Val extends CusOutStandingState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusOutStandingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +453,8 @@ class __$$GetCusOutStandingStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusOutStandingStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusOutStandingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,7 +512,9 @@ class _$GetCusOutStandingStateImpl implements GetCusOutStandingState {
   int get hashCode => Object.hash(
       runtimeType, counts, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusOutStandingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusOutStandingStateImplCopyWith<_$GetCusOutStandingStateImpl>
@@ -582,7 +602,10 @@ abstract class GetCusOutStandingState implements CusOutStandingState {
 
   CusOutstandingCountModel? get counts;
   List<CusInsOutstandingHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusOutStandingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusOutStandingStateImplCopyWith<_$GetCusOutStandingStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -604,6 +627,9 @@ class __$$GetOutStandingFailedStateImplCopyWithImpl<$Res>
       _$GetOutStandingFailedStateImpl _value,
       $Res Function(_$GetOutStandingFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusOutStandingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

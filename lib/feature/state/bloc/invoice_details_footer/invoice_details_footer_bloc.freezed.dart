@@ -88,6 +88,9 @@ class _$InvoiceDetailsFooterEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvoiceDetailsFooterEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +113,8 @@ class __$$GetInvoiceDetailsFooterEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInvoiceDetailsFooterEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvoiceDetailsFooterEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +154,9 @@ class _$GetInvoiceDetailsFooterEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, iD);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceDetailsFooterEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInvoiceDetailsFooterEventImplCopyWith<
@@ -241,7 +248,10 @@ abstract class GetInvoiceDetailsFooterEvent
       _$GetInvoiceDetailsFooterEventImpl;
 
   String get iD;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvoiceDetailsFooterEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInvoiceDetailsFooterEventImplCopyWith<
           _$GetInvoiceDetailsFooterEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -264,6 +274,9 @@ class __$$InvoiceDetailsFooterFailedEventImplCopyWithImpl<$Res>
       _$InvoiceDetailsFooterFailedEventImpl _value,
       $Res Function(_$InvoiceDetailsFooterFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceDetailsFooterEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -388,6 +401,9 @@ class __$$ClearInvoiceDetailsFooterImplCopyWithImpl<$Res>
       _$ClearInvoiceDetailsFooterImpl _value,
       $Res Function(_$ClearInvoiceDetailsFooterImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceDetailsFooterEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -557,6 +573,9 @@ class _$InvoiceDetailsFooterStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvoiceDetailsFooterState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -579,6 +598,8 @@ class __$$GetTypeWiseInvoiceStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTypeWiseInvoiceStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvoiceDetailsFooterState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -628,7 +649,9 @@ class _$GetTypeWiseInvoiceStateImpl implements GetTypeWiseInvoiceState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_invfooter));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceDetailsFooterState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTypeWiseInvoiceStateImplCopyWith<_$GetTypeWiseInvoiceStateImpl>
@@ -710,7 +733,10 @@ abstract class GetTypeWiseInvoiceState implements InvoiceDetailsFooterState {
       _$GetTypeWiseInvoiceStateImpl;
 
   List<InvoiceDetailsFooterModel>? get invfooter;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvoiceDetailsFooterState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTypeWiseInvoiceStateImplCopyWith<_$GetTypeWiseInvoiceStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -732,6 +758,9 @@ class __$$TypeWiseInvoiceFailedStateImplCopyWithImpl<$Res>
       _$TypeWiseInvoiceFailedStateImpl _value,
       $Res Function(_$TypeWiseInvoiceFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceDetailsFooterState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

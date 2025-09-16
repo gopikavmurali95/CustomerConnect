@@ -73,6 +73,9 @@ class _$GetAllRouteEventCopyWithImpl<$Res, $Val extends GetAllRouteEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetAllRouteEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,9 @@ class __$$GetAllRouteForCusEventImplCopyWithImpl<$Res>
       _$GetAllRouteForCusEventImpl _value,
       $Res Function(_$GetAllRouteForCusEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GetAllRouteEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -195,6 +201,9 @@ class __$$ClearAllRouteEventImplCopyWithImpl<$Res>
   __$$ClearAllRouteEventImplCopyWithImpl(_$ClearAllRouteEventImpl _value,
       $Res Function(_$ClearAllRouteEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GetAllRouteEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -345,6 +354,9 @@ class _$GetAllRouteStateCopyWithImpl<$Res, $Val extends GetAllRouteState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetAllRouteState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -366,6 +378,8 @@ class __$$GetAllRoutesSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$GetAllRoutesSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetAllRouteState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -414,7 +428,9 @@ class _$GetAllRoutesSuccessStateImpl implements GetAllRoutesSuccessState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_routes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetAllRouteState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllRoutesSuccessStateImplCopyWith<_$GetAllRoutesSuccessStateImpl>
@@ -493,7 +509,10 @@ abstract class GetAllRoutesSuccessState implements GetAllRouteState {
       _$GetAllRoutesSuccessStateImpl;
 
   List<CuSInsRotList>? get routes;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetAllRouteState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllRoutesSuccessStateImplCopyWith<_$GetAllRoutesSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -514,6 +533,9 @@ class __$$GetAllRoutesFailedStateImplCopyWithImpl<$Res>
       _$GetAllRoutesFailedStateImpl _value,
       $Res Function(_$GetAllRoutesFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GetAllRouteState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

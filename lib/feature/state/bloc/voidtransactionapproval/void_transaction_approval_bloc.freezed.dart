@@ -93,6 +93,9 @@ class _$VoidTransactionApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VoidTransactionApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -115,6 +118,8 @@ class __$$VoidTransactionApprovingEventImplCopyWithImpl<$Res>
       $Res Function(_$VoidTransactionApprovingEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VoidTransactionApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$VoidTransactionApprovingEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, approving);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VoidTransactionApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VoidTransactionApprovingEventImplCopyWith<
@@ -251,7 +258,10 @@ abstract class VoidTransactionApprovingEvent
       _$VoidTransactionApprovingEventImpl;
 
   VoidTransacrtionApprovalInModel get approving;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VoidTransactionApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VoidTransactionApprovingEventImplCopyWith<
           _$VoidTransactionApprovingEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -274,6 +284,9 @@ class __$$ClearVoidTransactionApprovalImplCopyWithImpl<$Res>
       _$ClearVoidTransactionApprovalImpl _value,
       $Res Function(_$ClearVoidTransactionApprovalImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VoidTransactionApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -401,6 +414,9 @@ class __$$VoidTransactionLoadingEventImplCopyWithImpl<$Res>
       _$VoidTransactionLoadingEventImpl _value,
       $Res Function(_$VoidTransactionLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VoidTransactionApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -589,6 +605,9 @@ class _$VoidTransactionApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VoidTransactionApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -611,6 +630,8 @@ class __$$VoidTransactionApprovingStateImplCopyWithImpl<$Res>
       $Res Function(_$VoidTransactionApprovingStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VoidTransactionApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -651,7 +672,9 @@ class _$VoidTransactionApprovingStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, approval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VoidTransactionApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VoidTransactionApprovingStateImplCopyWith<
@@ -747,7 +770,10 @@ abstract class VoidTransactionApprovingState
       _$VoidTransactionApprovingStateImpl;
 
   VoidTransactionApproveAndRejectModel? get approval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VoidTransactionApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VoidTransactionApprovingStateImplCopyWith<
           _$VoidTransactionApprovingStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -770,6 +796,9 @@ class __$$VoidTransactionApprovalFailedImplCopyWithImpl<$Res>
       _$VoidTransactionApprovalFailedImpl _value,
       $Res Function(_$VoidTransactionApprovalFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VoidTransactionApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -897,6 +926,9 @@ class __$$VoidTransactionLoadingStateImplCopyWithImpl<$Res>
       _$VoidTransactionLoadingStateImpl _value,
       $Res Function(_$VoidTransactionLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VoidTransactionApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

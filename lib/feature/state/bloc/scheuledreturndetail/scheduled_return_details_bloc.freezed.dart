@@ -84,6 +84,9 @@ class _$ScheduledReturnDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ScheduledReturnDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetAllScheduledReturnDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllScheduledReturnDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduledReturnDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetAllScheduledReturnDetailsEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, reqID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduledReturnDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllScheduledReturnDetailsEventImplCopyWith<
@@ -243,7 +250,10 @@ abstract class GetAllScheduledReturnDetailsEvent
 
   String get reqID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduledReturnDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllScheduledReturnDetailsEventImplCopyWith<
           _$GetAllScheduledReturnDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,6 +276,9 @@ class __$$ClearScheduledReturnDetailsEventImplCopyWithImpl<$Res>
       _$ClearScheduledReturnDetailsEventImpl _value,
       $Res Function(_$ClearScheduledReturnDetailsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ScheduledReturnDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +450,9 @@ class _$ScheduledReturnDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ScheduledReturnDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -459,6 +475,8 @@ class __$$GetScheduledReturnDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetScheduledReturnDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduledReturnDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -508,7 +526,9 @@ class _$GetScheduledReturnDetailStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduledReturnDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetScheduledReturnDetailStateImplCopyWith<
@@ -595,7 +615,10 @@ abstract class GetScheduledReturnDetailState
       _$GetScheduledReturnDetailStateImpl;
 
   List<SheduledReturnDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduledReturnDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetScheduledReturnDetailStateImplCopyWith<
           _$GetScheduledReturnDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -618,6 +641,9 @@ class __$$ScheduledReturnDetailFailedStateImplCopyWithImpl<$Res>
       _$ScheduledReturnDetailFailedStateImpl _value,
       $Res Function(_$ScheduledReturnDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ScheduledReturnDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

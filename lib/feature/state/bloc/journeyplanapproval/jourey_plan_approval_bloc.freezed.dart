@@ -99,6 +99,9 @@ class _$JoureyPlanApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -121,6 +124,8 @@ class __$$ApproveJourneyPlanEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveJourneyPlanEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$ApproveJourneyPlanEventImpl implements ApproveJourneyPlanEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveJourneyPlanEventImplCopyWith<_$ApproveJourneyPlanEventImpl>
@@ -261,7 +268,10 @@ abstract class ApproveJourneyPlanEvent implements JoureyPlanApprovalEvent {
       _$ApproveJourneyPlanEventImpl;
 
   JourneyPlanApprovalInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveJourneyPlanEventImplCopyWith<_$ApproveJourneyPlanEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -286,6 +296,8 @@ class __$$RejectaJOurneyPlanEventImplCopyWithImpl<$Res>
       $Res Function(_$RejectaJOurneyPlanEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -324,7 +336,9 @@ class _$RejectaJOurneyPlanEventImpl implements RejectaJOurneyPlanEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reject);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RejectaJOurneyPlanEventImplCopyWith<_$RejectaJOurneyPlanEventImpl>
@@ -426,7 +440,10 @@ abstract class RejectaJOurneyPlanEvent implements JoureyPlanApprovalEvent {
       _$RejectaJOurneyPlanEventImpl;
 
   JourneyPlanApprovalInModel get reject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RejectaJOurneyPlanEventImplCopyWith<_$RejectaJOurneyPlanEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -448,6 +465,9 @@ class __$$AddJourneyPlanApprovalLoadingEventImplCopyWithImpl<$Res>
       _$AddJourneyPlanApprovalLoadingEventImpl _value,
       $Res Function(_$AddJourneyPlanApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -583,6 +603,9 @@ class __$$ClearJourneyPlanApprovalEventImplCopyWithImpl<$Res>
       _$ClearJourneyPlanApprovalEventImpl _value,
       $Res Function(_$ClearJourneyPlanApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of JoureyPlanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -776,6 +799,9 @@ class _$JoureyPlanApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of JoureyPlanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -798,6 +824,8 @@ class __$$ApproveJourneyPlanStateImplCopyWithImpl<$Res>
       $Res Function(_$ApproveJourneyPlanStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JoureyPlanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -836,7 +864,9 @@ class _$ApproveJourneyPlanStateImpl implements ApproveJourneyPlanState {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JoureyPlanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveJourneyPlanStateImplCopyWith<_$ApproveJourneyPlanStateImpl>
@@ -928,7 +958,10 @@ abstract class ApproveJourneyPlanState implements JoureyPlanApprovalState {
       _$ApproveJourneyPlanStateImpl;
 
   JoutneyPlanApprovalOutModel? get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JoureyPlanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveJourneyPlanStateImplCopyWith<_$ApproveJourneyPlanStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -950,6 +983,9 @@ class __$$ApproveJourneyPlanFailedStateImplCopyWithImpl<$Res>
       _$ApproveJourneyPlanFailedStateImpl _value,
       $Res Function(_$ApproveJourneyPlanFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of JoureyPlanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1075,6 +1111,9 @@ class __$$ApproveJourneyPlanLoadingStateImplCopyWithImpl<$Res>
       _$ApproveJourneyPlanLoadingStateImpl _value,
       $Res Function(_$ApproveJourneyPlanLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of JoureyPlanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

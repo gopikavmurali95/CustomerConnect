@@ -53,7 +53,9 @@ mixin _$InverntoryTransExPandState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InverntoryTransExPandState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InverntoryTransExPandStateCopyWith<InverntoryTransExPandState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -79,6 +81,8 @@ class _$InverntoryTransExPandStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InverntoryTransExPandState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +119,8 @@ class __$$ExpandInvtryTransContainerStateImplCopyWithImpl<$Res>
       $Res Function(_$ExpandInvtryTransContainerStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InverntoryTransExPandState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +161,9 @@ class _$ExpandInvtryTransContainerStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, isExpanded);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InverntoryTransExPandState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExpandInvtryTransContainerStateImplCopyWith<
@@ -230,8 +238,11 @@ abstract class ExpandInvtryTransContainerState
 
   @override
   bool get isExpanded;
+
+  /// Create a copy of InverntoryTransExPandState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExpandInvtryTransContainerStateImplCopyWith<
           _$ExpandInvtryTransContainerStateImpl>
       get copyWith => throw _privateConstructorUsedError;

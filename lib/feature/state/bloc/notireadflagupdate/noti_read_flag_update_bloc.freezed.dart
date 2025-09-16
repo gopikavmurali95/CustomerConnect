@@ -74,6 +74,9 @@ class _$NotiReadFlagUpdateEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NotiReadFlagUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$UpdateNotiReadFLagEventImplCopyWithImpl<$Res>
       $Res Function(_$UpdateNotiReadFLagEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotiReadFlagUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +139,9 @@ class _$UpdateNotiReadFLagEventImpl implements UpdateNotiReadFLagEvent {
   @override
   int get hashCode => Object.hash(runtimeType, rntId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotiReadFlagUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateNotiReadFLagEventImplCopyWith<_$UpdateNotiReadFLagEventImpl>
@@ -210,7 +217,10 @@ abstract class UpdateNotiReadFLagEvent implements NotiReadFlagUpdateEvent {
       _$UpdateNotiReadFLagEventImpl;
 
   String get rntId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotiReadFlagUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateNotiReadFLagEventImplCopyWith<_$UpdateNotiReadFLagEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -230,6 +240,9 @@ class __$$ClearreadFlagStateImplCopyWithImpl<$Res>
   __$$ClearreadFlagStateImplCopyWithImpl(_$ClearreadFlagStateImpl _value,
       $Res Function(_$ClearreadFlagStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NotiReadFlagUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -387,6 +400,9 @@ class _$NotiReadFlagUpdateStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NotiReadFlagUpdateState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -409,6 +425,8 @@ class __$$UpdateNotiReadFlagUpdateStateImplCopyWithImpl<$Res>
       $Res Function(_$UpdateNotiReadFlagUpdateStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotiReadFlagUpdateState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -448,7 +466,9 @@ class _$UpdateNotiReadFlagUpdateStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, update);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotiReadFlagUpdateState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateNotiReadFlagUpdateStateImplCopyWith<
@@ -535,7 +555,10 @@ abstract class UpdateNotiReadFlagUpdateState
       _$UpdateNotiReadFlagUpdateStateImpl;
 
   NotificationReplayOutModel? get update;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotiReadFlagUpdateState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateNotiReadFlagUpdateStateImplCopyWith<
           _$UpdateNotiReadFlagUpdateStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -558,6 +581,9 @@ class __$$NotiReadUpdateFailedStateImplCopyWithImpl<$Res>
       _$NotiReadUpdateFailedStateImpl _value,
       $Res Function(_$NotiReadUpdateFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NotiReadFlagUpdateState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

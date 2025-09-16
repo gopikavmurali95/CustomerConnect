@@ -77,6 +77,9 @@ class _$VanToVanHeaderEventCopyWithImpl<$Res, $Val extends VanToVanHeaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VanToVanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$getVanToVanHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$getVanToVanHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VanToVanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$getVanToVanHeaderEventImpl implements getVanToVanHeaderEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VanToVanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$getVanToVanHeaderEventImplCopyWith<_$getVanToVanHeaderEventImpl>
@@ -239,7 +246,10 @@ abstract class getVanToVanHeaderEvent implements VanToVanHeaderEvent {
   String get userID;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VanToVanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$getVanToVanHeaderEventImplCopyWith<_$getVanToVanHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -261,6 +271,9 @@ class __$$ClearVanToVanHeaderEventImplCopyWithImpl<$Res>
       _$ClearVanToVanHeaderEventImpl _value,
       $Res Function(_$ClearVanToVanHeaderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VanToVanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -420,6 +433,9 @@ class _$VanToVanHeaderStateCopyWithImpl<$Res, $Val extends VanToVanHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VanToVanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -442,6 +458,8 @@ class __$$GettVanToVanHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GettVanToVanHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VanToVanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -490,7 +508,9 @@ class _$GettVanToVanHeaderStateImpl implements GettVanToVanHeaderState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VanToVanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GettVanToVanHeaderStateImplCopyWith<_$GettVanToVanHeaderStateImpl>
@@ -573,7 +593,10 @@ abstract class GettVanToVanHeaderState implements VanToVanHeaderState {
       _$GettVanToVanHeaderStateImpl;
 
   List<VanToVanHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VanToVanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GettVanToVanHeaderStateImplCopyWith<_$GettVanToVanHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -595,6 +618,9 @@ class __$$VanToVanHeaderFailedstateImplCopyWithImpl<$Res>
       _$VanToVanHeaderFailedstateImpl _value,
       $Res Function(_$VanToVanHeaderFailedstateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VanToVanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

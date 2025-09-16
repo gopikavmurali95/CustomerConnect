@@ -57,7 +57,9 @@ mixin _$PreventBackInvokeState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PreventBackInvokeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PreventBackInvokeStateCopyWith<PreventBackInvokeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$PreventBackInvokeStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PreventBackInvokeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +127,8 @@ class __$$PreventBackInvokeWithReasonStateImplCopyWithImpl<$Res>
       $Res Function(_$PreventBackInvokeWithReasonStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PreventBackInvokeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,7 +178,9 @@ class _$PreventBackInvokeWithReasonStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, reson, isApproved);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PreventBackInvokeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PreventBackInvokeWithReasonStateImplCopyWith<
@@ -253,8 +261,11 @@ abstract class PreventBackInvokeWithReasonState
   String? get reson;
   @override
   bool? get isApproved;
+
+  /// Create a copy of PreventBackInvokeState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PreventBackInvokeWithReasonStateImplCopyWith<
           _$PreventBackInvokeWithReasonStateImpl>
       get copyWith => throw _privateConstructorUsedError;

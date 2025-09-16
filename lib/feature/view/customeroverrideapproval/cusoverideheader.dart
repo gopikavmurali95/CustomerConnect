@@ -10,12 +10,12 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/cusoverrideapproval/customer_override_approval_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customeroverrideapprovreject/override_approve_reject_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerOverrideApprovalHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -787,7 +787,7 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                               child: Row(
                                                                                 children: [
                                                                                   Radio(
-                                                                                    fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                    fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                       return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                                     }),
                                                                                     /* activeColor: isselected == true
@@ -947,7 +947,7 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                               child: Row(
                                                                                 children: [
                                                                                   Radio(
-                                                                                    fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                    fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                       return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                                     }),
                                                                                     /*  activeColor: isselected == false

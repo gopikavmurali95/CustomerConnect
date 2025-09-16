@@ -86,6 +86,9 @@ class _$CustomerFocApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerFocApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +111,8 @@ class __$$CustomerFocApprovingEventImplCopyWithImpl<$Res>
       $Res Function(_$CustomerFocApprovingEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerFocApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +152,9 @@ class _$CustomerFocApprovingEventImpl implements CustomerFocApprovingEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approveInpara);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerFocApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomerFocApprovingEventImplCopyWith<_$CustomerFocApprovingEventImpl>
@@ -236,7 +243,10 @@ abstract class CustomerFocApprovingEvent implements CustomerFocApprovalEvent {
       _$CustomerFocApprovingEventImpl;
 
   CustomerFocApprovalInModel get approveInpara;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerFocApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomerFocApprovingEventImplCopyWith<_$CustomerFocApprovingEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -258,6 +268,9 @@ class __$$ClearCustomerFocApprovalImplCopyWithImpl<$Res>
       _$ClearCustomerFocApprovalImpl _value,
       $Res Function(_$ClearCustomerFocApprovalImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerFocApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -377,6 +390,9 @@ class __$$CustomerFocLoadingEventImplCopyWithImpl<$Res>
       _$CustomerFocLoadingEventImpl _value,
       $Res Function(_$CustomerFocLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerFocApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -553,6 +569,9 @@ class _$CustomerFocApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerFocApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -573,6 +592,8 @@ class __$$CustomerFocApprovalImplCopyWithImpl<$Res>
       $Res Function(_$CustomerFocApprovalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerFocApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -611,7 +632,9 @@ class _$CustomerFocApprovalImpl implements CustomerFocApproval {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerFocApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CustomerFocApprovalImplCopyWith<_$CustomerFocApprovalImpl> get copyWith =>
@@ -702,7 +725,10 @@ abstract class CustomerFocApproval implements CustomerFocApprovalState {
       _$CustomerFocApprovalImpl;
 
   CustomerFocApproveAndRejectModel? get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerFocApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CustomerFocApprovalImplCopyWith<_$CustomerFocApprovalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -724,6 +750,9 @@ class __$$CustomerFocApprovalFailedImplCopyWithImpl<$Res>
       _$CustomerFocApprovalFailedImpl _value,
       $Res Function(_$CustomerFocApprovalFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerFocApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -845,6 +874,9 @@ class __$$CustomerFocApprovalLoadingStateImplCopyWithImpl<$Res>
       _$CustomerFocApprovalLoadingStateImpl _value,
       $Res Function(_$CustomerFocApprovalLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerFocApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -39,7 +39,7 @@ class PickingHeaderRepo implements IPickingHeaderRepo {
         );
       }
     } catch (e) {
-      log("error message:${e}");
+      log("error message:$e");
       return left(const MainFailures.serverfailure());
     }
   }

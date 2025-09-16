@@ -1,3 +1,5 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors
+
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
@@ -13,11 +15,11 @@ import 'package:customer_connect/feature/state/bloc/freesampledetail/free_sample
 import 'package:customer_connect/feature/state/bloc/freesamplereason/free_sample_reasons_bloc.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FreeSampleDetailListWidget extends StatefulWidget {
@@ -315,7 +317,7 @@ class _FreeSampleDetailListWidgetState
                                                                             10.0),
                                                                     boxShadow: const [
                                                                       BoxShadow(
-                                                                          // ignore: use_full_hex_values_for_flutter_colors
+                                                                          
                                                                           color: Color(
                                                                               0xff00000050),
                                                                           blurRadius:
@@ -425,7 +427,7 @@ class _FreeSampleDetailListWidgetState
                                                                       10.0),
                                                           boxShadow: const [
                                                             BoxShadow(
-                                                                // ignore: use_full_hex_values_for_flutter_colors
+                                                                
                                                                 color: Color(
                                                                     0xff00000050),
                                                                 blurRadius: 0.4,
@@ -541,10 +543,10 @@ class _FreeSampleDetailListWidgetState
                                                 children: [
                                                   Radio(
                                                     fillColor:
-                                                        MaterialStateProperty
+                                                        WidgetStateProperty
                                                             .resolveWith<
                                                                 Color>((Set<
-                                                                    MaterialState>
+                                                                    WidgetState>
                                                                 states) {
                                                       return (statuslist[
                                                                   index] ==
@@ -604,10 +606,10 @@ class _FreeSampleDetailListWidgetState
                                                 children: [
                                                   Radio(
                                                     fillColor:
-                                                        MaterialStateProperty
+                                                        WidgetStateProperty
                                                             .resolveWith<
                                                                 Color>((Set<
-                                                                    MaterialState>
+                                                                    WidgetState>
                                                                 states) {
                                                       return (statuslist[
                                                                       index] !=
@@ -680,7 +682,6 @@ class _FreeSampleDetailListWidgetState
                                                                           10.0),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                    // ignore: use_full_hex_values_for_flutter_colors
                                                                     color: Color(
                                                                         0xff00000050),
                                                                     blurRadius:
@@ -729,10 +730,10 @@ class _FreeSampleDetailListWidgetState
                                                   children: [
                                                     Radio(
                                                       fillColor:
-                                                          MaterialStateProperty
+                                                          WidgetStateProperty
                                                               .resolveWith<
                                                                   Color>((Set<
-                                                                      MaterialState>
+                                                                      WidgetState>
                                                                   states) {
                                                         return (statuslist[
                                                                     index] ==
@@ -785,10 +786,10 @@ class _FreeSampleDetailListWidgetState
                                                   children: [
                                                     Radio(
                                                       fillColor:
-                                                          MaterialStateProperty
+                                                          WidgetStateProperty
                                                               .resolveWith<
                                                                   Color>((Set<
-                                                                      MaterialState>
+                                                                      WidgetState>
                                                                   states) {
                                                         return (statuslist[
                                                                         index] !=

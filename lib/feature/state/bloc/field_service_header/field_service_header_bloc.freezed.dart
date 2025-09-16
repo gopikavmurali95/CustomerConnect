@@ -82,6 +82,9 @@ class _$FieldServiceHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FieldServiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetAllFieldServiceHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllFieldServiceHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FieldServiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +158,9 @@ class _$GetAllFieldServiceHeadersEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, userId, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FieldServiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllFieldServiceHeadersEventImplCopyWith<
@@ -241,7 +248,10 @@ abstract class GetAllFieldServiceHeadersEvent
 
   String get userId;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FieldServiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllFieldServiceHeadersEventImplCopyWith<
           _$GetAllFieldServiceHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -264,6 +274,9 @@ class __$$ClearFieldServiceHeaderEventImplCopyWithImpl<$Res>
       _$ClearFieldServiceHeaderEventImpl _value,
       $Res Function(_$ClearFieldServiceHeaderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FieldServiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -432,6 +445,9 @@ class _$FieldServiceHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FieldServiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -454,6 +470,8 @@ class __$$GetFieldServiceInvoiceHEadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetFieldServiceInvoiceHEadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FieldServiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -503,7 +521,9 @@ class _$GetFieldServiceInvoiceHEadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FieldServiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFieldServiceInvoiceHEadersStateImplCopyWith<
@@ -590,7 +610,10 @@ abstract class GetFieldServiceInvoiceHEadersState
       _$GetFieldServiceInvoiceHEadersStateImpl;
 
   List<FieldServiceInvoiceHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FieldServiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFieldServiceInvoiceHEadersStateImplCopyWith<
           _$GetFieldServiceInvoiceHEadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -613,6 +636,9 @@ class __$$FieldServiceInvoiceHeaderFailedStateImplCopyWithImpl<$Res>
       _$FieldServiceInvoiceHeaderFailedStateImpl _value,
       $Res Function(_$FieldServiceInvoiceHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FieldServiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

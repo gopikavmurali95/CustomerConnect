@@ -83,6 +83,9 @@ class _$OverrideApproveRejectEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OverrideApproveRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GetOverrideApproveRejectEventImplCopyWithImpl<$Res>
       $Res Function(_$GetOverrideApproveRejectEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OverrideApproveRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +166,9 @@ class _$GetOverrideApproveRejectEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, ooaID, userId, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OverrideApproveRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOverrideApproveRejectEventImplCopyWith<
@@ -251,7 +258,10 @@ abstract class GetOverrideApproveRejectEvent
   String get ooaID;
   String get userId;
   String get status;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OverrideApproveRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOverrideApproveRejectEventImplCopyWith<
           _$GetOverrideApproveRejectEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -274,6 +284,9 @@ class __$$LoadingOverideApproveRejectEventImplCopyWithImpl<$Res>
       _$LoadingOverideApproveRejectEventImpl _value,
       $Res Function(_$LoadingOverideApproveRejectEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OverrideApproveRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -447,6 +460,9 @@ class _$OverrideApproveRejectStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OverrideApproveRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -469,6 +485,8 @@ class __$$GetOverrideApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetOverrideApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OverrideApproveRejectState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -507,7 +525,9 @@ class _$GetOverrideApprovalStateImpl implements GetOverrideApprovalState {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OverrideApproveRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOverrideApprovalStateImplCopyWith<_$GetOverrideApprovalStateImpl>
@@ -595,7 +615,10 @@ abstract class GetOverrideApprovalState implements OverrideApproveRejectState {
       _$GetOverrideApprovalStateImpl;
 
   OverideApprovRejectModel? get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OverrideApproveRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOverrideApprovalStateImplCopyWith<_$GetOverrideApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -617,6 +640,9 @@ class __$$OverrideCusFailedStateImplCopyWithImpl<$Res>
       _$OverrideCusFailedStateImpl _value,
       $Res Function(_$OverrideCusFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OverrideApproveRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -735,6 +761,9 @@ class __$$OverrideCusLoadingStateImplCopyWithImpl<$Res>
       _$OverrideCusLoadingStateImpl _value,
       $Res Function(_$OverrideCusLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OverrideApproveRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

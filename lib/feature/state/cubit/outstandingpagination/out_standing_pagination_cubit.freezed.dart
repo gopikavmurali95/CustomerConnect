@@ -57,7 +57,9 @@ mixin _$OutStandingPaginationState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutStandingPaginationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OutStandingPaginationStateCopyWith<OutStandingPaginationState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -83,6 +85,8 @@ class _$OutStandingPaginationStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OutStandingPaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,6 +128,8 @@ class __$$GetOutStandingHeadersPageStateImplCopyWithImpl<$Res>
       $Res Function(_$GetOutStandingHeadersPageStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutStandingPaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,7 +189,9 @@ class _$GetOutStandingHeadersPageStateImpl
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_headers), isLoading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutStandingPaginationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOutStandingHeadersPageStateImplCopyWith<
@@ -264,8 +272,11 @@ abstract class GetOutStandingHeadersPageState
   List<OutStandOutModel>? get headers;
   @override
   bool get isLoading;
+
+  /// Create a copy of OutStandingPaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOutStandingHeadersPageStateImplCopyWith<
           _$GetOutStandingHeadersPageStateImpl>
       get copyWith => throw _privateConstructorUsedError;

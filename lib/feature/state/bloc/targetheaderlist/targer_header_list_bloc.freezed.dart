@@ -80,6 +80,9 @@ class _$TargerHeaderListEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargerHeaderListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetTargetHeaderItemsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetHeaderItemsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargerHeaderListEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +156,9 @@ class _$GetTargetHeaderItemsEventImpl implements GetTargetHeaderItemsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargerHeaderListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetHeaderItemsEventImplCopyWith<_$GetTargetHeaderItemsEventImpl>
@@ -235,7 +242,10 @@ abstract class GetTargetHeaderItemsEvent implements TargerHeaderListEvent {
 
   String get fromDate;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargerHeaderListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetHeaderItemsEventImplCopyWith<_$GetTargetHeaderItemsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -257,6 +267,9 @@ class __$$ClearTargetHeaderItemsImplCopyWithImpl<$Res>
       _$ClearTargetHeaderItemsImpl _value,
       $Res Function(_$ClearTargetHeaderItemsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargerHeaderListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -419,6 +432,9 @@ class _$TargerHeaderListStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargerHeaderListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -441,6 +457,8 @@ class __$$GetTargetHeaderItemsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetHeaderItemsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargerHeaderListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -489,7 +507,9 @@ class _$GetTargetHeaderItemsStateImpl implements GetTargetHeaderItemsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_header));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargerHeaderListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetHeaderItemsStateImplCopyWith<_$GetTargetHeaderItemsStateImpl>
@@ -572,7 +592,10 @@ abstract class GetTargetHeaderItemsState implements TargerHeaderListState {
       _$GetTargetHeaderItemsStateImpl;
 
   List<TargetHeaderListModel>? get header;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargerHeaderListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetHeaderItemsStateImplCopyWith<_$GetTargetHeaderItemsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -594,6 +617,9 @@ class __$$TargetHeaderItemsFailedImplCopyWithImpl<$Res>
       _$TargetHeaderItemsFailedImpl _value,
       $Res Function(_$TargetHeaderItemsFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargerHeaderListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -99,6 +99,9 @@ class _$AssetRemovalApprvalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -121,6 +124,8 @@ class __$$ApproveAssetRemovalEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveAssetRemovalEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$ApproveAssetRemovalEventImpl implements ApproveAssetRemovalEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveAssetRemovalEventImplCopyWith<_$ApproveAssetRemovalEventImpl>
@@ -261,7 +268,10 @@ abstract class ApproveAssetRemovalEvent implements AssetRemovalApprvalEvent {
       _$ApproveAssetRemovalEventImpl;
 
   AssetRemovalApprovalInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveAssetRemovalEventImplCopyWith<_$ApproveAssetRemovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -286,6 +296,8 @@ class __$$AssetRemovalRejectEventImplCopyWithImpl<$Res>
       $Res Function(_$AssetRemovalRejectEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -324,7 +336,9 @@ class _$AssetRemovalRejectEventImpl implements AssetRemovalRejectEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reject);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AssetRemovalRejectEventImplCopyWith<_$AssetRemovalRejectEventImpl>
@@ -426,7 +440,10 @@ abstract class AssetRemovalRejectEvent implements AssetRemovalApprvalEvent {
       _$AssetRemovalRejectEventImpl;
 
   AssetRemovalApprovalInModel get reject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AssetRemovalRejectEventImplCopyWith<_$AssetRemovalRejectEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -448,6 +465,9 @@ class __$$AssetRemovalApprovalLoadingEventImplCopyWithImpl<$Res>
       _$AssetRemovalApprovalLoadingEventImpl _value,
       $Res Function(_$AssetRemovalApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -583,6 +603,9 @@ class __$$ClearAssetRemovalapprovalEventImplCopyWithImpl<$Res>
       _$ClearAssetRemovalapprovalEventImpl _value,
       $Res Function(_$ClearAssetRemovalapprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetRemovalApprvalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -778,6 +801,9 @@ class _$AssetRemovalApprvalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetRemovalApprvalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -800,6 +826,8 @@ class __$$AssetRemovalApprovedStateImplCopyWithImpl<$Res>
       $Res Function(_$AssetRemovalApprovedStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetRemovalApprvalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -839,7 +867,9 @@ class _$AssetRemovalApprovedStateImpl implements AssetRemovalApprovedState {
   @override
   int get hashCode => Object.hash(runtimeType, response);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetRemovalApprvalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AssetRemovalApprovedStateImplCopyWith<_$AssetRemovalApprovedStateImpl>
@@ -933,7 +963,10 @@ abstract class AssetRemovalApprovedState implements AssetRemovalApprvalState {
       _$AssetRemovalApprovedStateImpl;
 
   AssetRemovalApproveOutModel? get response;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetRemovalApprvalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AssetRemovalApprovedStateImplCopyWith<_$AssetRemovalApprovedStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -955,6 +988,9 @@ class __$$AssetRemovalAApproveFailedStateImplCopyWithImpl<$Res>
       _$AssetRemovalAApproveFailedStateImpl _value,
       $Res Function(_$AssetRemovalAApproveFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetRemovalApprvalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1082,6 +1118,9 @@ class __$$AssetRemovalApproveLoadingStateImplCopyWithImpl<$Res>
       _$AssetRemovalApproveLoadingStateImpl _value,
       $Res Function(_$AssetRemovalApproveLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetRemovalApprvalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

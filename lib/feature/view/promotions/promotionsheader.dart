@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class PromotionHeader extends StatefulWidget {
   final LoginUserModel user;
@@ -433,22 +433,4 @@ class _PromotionHeaderState extends State<PromotionHeader> {
     );
   }
 
-  Future<void> _onRefreshPromotionHeaderScreen(
-      BuildContext context, LoginUserModel model) async {
-    context.read<PromotionHeaderBloc>().add(const ClearPromotionHeader());
-    context.read<PromotionHeaderBloc>().add(GetPromotionHeaderEvent(
-          searchQuery: '',
-          promotionInparas: PromotionHeaderInParas(
-              area: '',
-              cusOutlet: '',
-              customer: '',
-              fromDate:
-                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-              route: '',
-              subArea: '',
-              toDate:
-                  '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-              userId: widget.user.usrId),
-        ));
-  }
 }

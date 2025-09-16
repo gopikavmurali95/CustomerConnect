@@ -82,6 +82,9 @@ class _$JourneyPlanHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of JourneyPlanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetAllJourneyPlanHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllJourneyPlanHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JourneyPlanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +166,9 @@ class _$GetAllJourneyPlanHeadersEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JourneyPlanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllJourneyPlanHeadersEventImplCopyWith<
@@ -250,7 +257,10 @@ abstract class GetAllJourneyPlanHeadersEvent implements JourneyPlanHeaderEvent {
   String get userID;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JourneyPlanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllJourneyPlanHeadersEventImplCopyWith<
           _$GetAllJourneyPlanHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -273,6 +283,9 @@ class __$$ClearJourneyPlanHeadersEventImplCopyWithImpl<$Res>
       _$ClearJourneyPlanHeadersEventImpl _value,
       $Res Function(_$ClearJourneyPlanHeadersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of JourneyPlanHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -441,6 +454,9 @@ class _$JourneyPlanHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of JourneyPlanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -463,6 +479,8 @@ class __$$GetAllJourneyPlanHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetAllJourneyPlanHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of JourneyPlanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -512,7 +530,9 @@ class _$GetAllJourneyPlanHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of JourneyPlanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllJourneyPlanHeadersStateImplCopyWith<
@@ -598,7 +618,10 @@ abstract class GetAllJourneyPlanHeadersState implements JourneyPlanHeaderState {
       _$GetAllJourneyPlanHeadersStateImpl;
 
   List<JourneyPlanHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of JourneyPlanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllJourneyPlanHeadersStateImplCopyWith<
           _$GetAllJourneyPlanHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -621,6 +644,9 @@ class __$$JourneyPlanHeadersFailedStateImplCopyWithImpl<$Res>
       _$JourneyPlanHeadersFailedStateImpl _value,
       $Res Function(_$JourneyPlanHeadersFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of JourneyPlanHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

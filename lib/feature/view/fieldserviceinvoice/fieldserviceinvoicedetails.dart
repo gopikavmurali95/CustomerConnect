@@ -6,11 +6,11 @@ import 'package:customer_connect/feature/state/bloc/field_service_detail/f_ield_
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/fieldserviceinvoiceapproval/field_service_invoice_approval_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FieldServiceInvoiceDetails extends StatefulWidget {

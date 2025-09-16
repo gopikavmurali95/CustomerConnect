@@ -50,7 +50,9 @@ mixin _$SelectLanguageLocaleState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectLanguageLocaleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SelectLanguageLocaleStateCopyWith<SelectLanguageLocaleState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +77,8 @@ class _$SelectLanguageLocaleStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SelectLanguageLocaleState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$SelectLanguageStateImplCopyWithImpl<$Res>
       $Res Function(_$SelectLanguageStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SelectLanguageLocaleState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +153,9 @@ class _$SelectLanguageStateImpl implements SelectLanguageState {
   @override
   int get hashCode => Object.hash(runtimeType, locale);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SelectLanguageLocaleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectLanguageStateImplCopyWith<_$SelectLanguageStateImpl> get copyWith =>
@@ -217,8 +225,11 @@ abstract class SelectLanguageState implements SelectLanguageLocaleState {
 
   @override
   Locale? get locale;
+
+  /// Create a copy of SelectLanguageLocaleState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectLanguageStateImplCopyWith<_$SelectLanguageStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

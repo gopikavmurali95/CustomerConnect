@@ -90,6 +90,9 @@ class _$SpecialPriceHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpecialPriceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -112,6 +115,8 @@ class __$$GetSpecialPriceHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSpecialPriceHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpecialPriceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +166,9 @@ class _$GetSpecialPriceHeaderEventImpl implements GetSpecialPriceHeaderEvent {
   @override
   int get hashCode => Object.hash(runtimeType, spPriceInparas, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpecialPriceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSpecialPriceHeaderEventImplCopyWith<_$GetSpecialPriceHeaderEventImpl>
@@ -255,7 +262,10 @@ abstract class GetSpecialPriceHeaderEvent implements SpecialPriceHeaderEvent {
 
   SpecialPriceHeaderModel get spPriceInparas;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpecialPriceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSpecialPriceHeaderEventImplCopyWith<_$GetSpecialPriceHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -277,6 +287,9 @@ class __$$SpecialPriceFailedEventImplCopyWithImpl<$Res>
       _$SpecialPriceFailedEventImpl _value,
       $Res Function(_$SpecialPriceFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpecialPriceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -400,6 +413,9 @@ class __$$ClearSpecialPriceEventImplCopyWithImpl<$Res>
       _$ClearSpecialPriceEventImpl _value,
       $Res Function(_$ClearSpecialPriceEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpecialPriceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -574,6 +590,9 @@ class _$SpecialPriceHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpecialPriceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -596,6 +615,8 @@ class __$$GetSspecialPriceHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSspecialPriceHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpecialPriceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -644,7 +665,9 @@ class _$GetSspecialPriceHeaderStateImpl implements GetSspecialPriceHeaderState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_spPrice));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpecialPriceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSspecialPriceHeaderStateImplCopyWith<_$GetSspecialPriceHeaderStateImpl>
@@ -729,7 +752,10 @@ abstract class GetSspecialPriceHeaderState implements SpecialPriceHeaderState {
       _$GetSspecialPriceHeaderStateImpl;
 
   List<SpecialPriceHeaderOutparas>? get spPrice;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpecialPriceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSspecialPriceHeaderStateImplCopyWith<_$GetSspecialPriceHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -751,6 +777,9 @@ class __$$SpeciaPriceHeaderFailedStateImplCopyWithImpl<$Res>
       _$SpeciaPriceHeaderFailedStateImpl _value,
       $Res Function(_$SpeciaPriceHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpecialPriceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

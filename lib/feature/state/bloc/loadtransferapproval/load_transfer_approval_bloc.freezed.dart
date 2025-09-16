@@ -89,6 +89,9 @@ class _$LoadTransferApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadTransferApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -111,6 +114,8 @@ class __$$ApproveLoadtransferEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveLoadtransferEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadTransferApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +154,9 @@ class _$ApproveLoadtransferEventImpl implements ApproveLoadtransferEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadTransferApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveLoadtransferEventImplCopyWith<_$ApproveLoadtransferEventImpl>
@@ -241,7 +248,10 @@ abstract class ApproveLoadtransferEvent implements LoadTransferApprovalEvent {
       _$ApproveLoadtransferEventImpl;
 
   LoadTransferApprovalInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadTransferApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveLoadtransferEventImplCopyWith<_$ApproveLoadtransferEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -263,6 +273,9 @@ class __$$AddLoadTransferLoadingEventImplCopyWithImpl<$Res>
       _$AddLoadTransferLoadingEventImpl _value,
       $Res Function(_$AddLoadTransferLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadTransferApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -387,6 +400,9 @@ class __$$ClearLoadTransferApprovalEventImplCopyWithImpl<$Res>
       _$ClearLoadTransferApprovalEventImpl _value,
       $Res Function(_$ClearLoadTransferApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadTransferApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -570,6 +586,9 @@ class _$LoadTransferApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadTransferApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -592,6 +611,8 @@ class __$$ApproveLoadTransferStateImplCopyWithImpl<$Res>
       $Res Function(_$ApproveLoadTransferStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadTransferApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -631,7 +652,9 @@ class _$ApproveLoadTransferStateImpl implements ApproveLoadTransferState {
   @override
   int get hashCode => Object.hash(runtimeType, response);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadTransferApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveLoadTransferStateImplCopyWith<_$ApproveLoadTransferStateImpl>
@@ -723,7 +746,10 @@ abstract class ApproveLoadTransferState implements LoadTransferApprovalState {
       _$ApproveLoadTransferStateImpl;
 
   LoadTransferApprovalOutModel? get response;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadTransferApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveLoadTransferStateImplCopyWith<_$ApproveLoadTransferStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -745,6 +771,9 @@ class __$$LoadTransferApprovalFailedStateImplCopyWithImpl<$Res>
       _$LoadTransferApprovalFailedStateImpl _value,
       $Res Function(_$LoadTransferApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadTransferApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -870,6 +899,9 @@ class __$$LoadTransferApprovalLoadingStateImplCopyWithImpl<$Res>
       _$LoadTransferApprovalLoadingStateImpl _value,
       $Res Function(_$LoadTransferApprovalLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadTransferApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

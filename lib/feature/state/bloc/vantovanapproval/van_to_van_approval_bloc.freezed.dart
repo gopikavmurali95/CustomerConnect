@@ -80,6 +80,9 @@ class _$VanToVanApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VanToVanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetVanToVanApprovalEentImplCopyWithImpl<$Res>
       $Res Function(_$GetVanToVanApprovalEentImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VanToVanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,7 +146,9 @@ class _$GetVanToVanApprovalEentImpl implements GetVanToVanApprovalEent {
   @override
   int get hashCode => Object.hash(runtimeType, approvalIn);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VanToVanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetVanToVanApprovalEentImplCopyWith<_$GetVanToVanApprovalEentImpl>
@@ -224,7 +231,10 @@ abstract class GetVanToVanApprovalEent implements VanToVanApprovalEvent {
       _$GetVanToVanApprovalEentImpl;
 
   VanToVanApprovalInParas get approvalIn;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VanToVanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetVanToVanApprovalEentImplCopyWith<_$GetVanToVanApprovalEentImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -246,6 +256,9 @@ class __$$VanToVanApprovalLoadingEventImplCopyWithImpl<$Res>
       _$VanToVanApprovalLoadingEventImpl _value,
       $Res Function(_$VanToVanApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VanToVanApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -415,6 +428,9 @@ class _$VanToVanApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VanToVanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +453,8 @@ class __$$GetVanToVanApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetVanToVanApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VanToVanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -475,7 +493,9 @@ class _$GetVanToVanApprovalStateImpl implements GetVanToVanApprovalState {
   @override
   int get hashCode => Object.hash(runtimeType, headers);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VanToVanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetVanToVanApprovalStateImplCopyWith<_$GetVanToVanApprovalStateImpl>
@@ -563,7 +583,10 @@ abstract class GetVanToVanApprovalState implements VanToVanApprovalState {
       _$GetVanToVanApprovalStateImpl;
 
   VanToVanApprovalModel? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VanToVanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetVanToVanApprovalStateImplCopyWith<_$GetVanToVanApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -585,6 +608,9 @@ class __$$VanToVanApprovalFailedstateImplCopyWithImpl<$Res>
       _$VanToVanApprovalFailedstateImpl _value,
       $Res Function(_$VanToVanApprovalFailedstateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VanToVanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -702,6 +728,9 @@ class __$$VanToVanLoadingStateImplCopyWithImpl<$Res>
   __$$VanToVanLoadingStateImplCopyWithImpl(_$VanToVanLoadingStateImpl _value,
       $Res Function(_$VanToVanLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VanToVanApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

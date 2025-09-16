@@ -76,6 +76,9 @@ class _$MerchandTaskHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchandTaskHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$TaskHeaderGetEventImplCopyWithImpl<$Res>
       $Res Function(_$TaskHeaderGetEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchandTaskHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +149,9 @@ class _$TaskHeaderGetEventImpl implements TaskHeaderGetEvent {
   @override
   int get hashCode => Object.hash(runtimeType, tasks, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchandTaskHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TaskHeaderGetEventImplCopyWith<_$TaskHeaderGetEventImpl> get copyWith =>
@@ -224,7 +231,10 @@ abstract class TaskHeaderGetEvent implements MerchandTaskHeaderEvent {
 
   GetTaskHeaderInModel get tasks;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchandTaskHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TaskHeaderGetEventImplCopyWith<_$TaskHeaderGetEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -244,6 +254,9 @@ class __$$TaskHeaderClearEventImplCopyWithImpl<$Res>
   __$$TaskHeaderClearEventImplCopyWithImpl(_$TaskHeaderClearEventImpl _value,
       $Res Function(_$TaskHeaderClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchandTaskHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -402,6 +415,9 @@ class _$MerchandTaskHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchandTaskHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -424,6 +440,8 @@ class __$$GetTaskHeaderSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTaskHeaderSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchandTaskHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -473,7 +491,9 @@ class _$GetTaskHeaderSuccessStateImpl implements GetTaskHeaderSuccessState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_tasksheader));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchandTaskHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTaskHeaderSuccessStateImplCopyWith<_$GetTaskHeaderSuccessStateImpl>
@@ -556,7 +576,10 @@ abstract class GetTaskHeaderSuccessState implements MerchandTaskHeaderState {
       _$GetTaskHeaderSuccessStateImpl;
 
   List<GetTaskHeadersOutModel>? get tasksheader;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchandTaskHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTaskHeaderSuccessStateImplCopyWith<_$GetTaskHeaderSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -577,6 +600,9 @@ class __$$TaskHeaderFailedStateImplCopyWithImpl<$Res>
   __$$TaskHeaderFailedStateImplCopyWithImpl(_$TaskHeaderFailedStateImpl _value,
       $Res Function(_$TaskHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchandTaskHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

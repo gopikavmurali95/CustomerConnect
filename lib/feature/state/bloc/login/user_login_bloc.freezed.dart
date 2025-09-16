@@ -75,6 +75,9 @@ class _$UserLoginEventCopyWithImpl<$Res, $Val extends UserLoginEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UserLoginEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,8 @@ class __$$LoginEventImplCopyWithImpl<$Res>
       _$LoginEventImpl _value, $Res Function(_$LoginEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserLoginEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +156,9 @@ class _$LoginEventImpl implements LoginEvent {
   @override
   int get hashCode => Object.hash(runtimeType, username, password, token);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserLoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoginEventImplCopyWith<_$LoginEventImpl> get copyWith =>
@@ -232,7 +239,10 @@ abstract class LoginEvent implements UserLoginEvent {
   String get username;
   String get password;
   String get token;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserLoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginEventImplCopyWith<_$LoginEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -251,6 +261,9 @@ class __$$loginLoadingEventImplCopyWithImpl<$Res>
   __$$loginLoadingEventImplCopyWithImpl(_$loginLoadingEventImpl _value,
       $Res Function(_$loginLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserLoginEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -407,6 +420,9 @@ class _$UserLoginStateCopyWithImpl<$Res, $Val extends UserLoginState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UserLoginState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -427,6 +443,8 @@ class __$$UserLoginSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$UserLoginSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserLoginState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -465,7 +483,9 @@ class _$UserLoginSuccessStateImpl implements UserLoginSuccessState {
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserLoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserLoginSuccessStateImplCopyWith<_$UserLoginSuccessStateImpl>
@@ -547,7 +567,10 @@ abstract class UserLoginSuccessState implements UserLoginState {
       _$UserLoginSuccessStateImpl;
 
   LoginUserModel? get user;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserLoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserLoginSuccessStateImplCopyWith<_$UserLoginSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -566,6 +589,9 @@ class __$$userLoginFailedStateImplCopyWithImpl<$Res>
   __$$userLoginFailedStateImplCopyWithImpl(_$userLoginFailedStateImpl _value,
       $Res Function(_$userLoginFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserLoginState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -676,6 +702,9 @@ class __$$LoginLoadingStateImplCopyWithImpl<$Res>
   __$$LoginLoadingStateImplCopyWithImpl(_$LoginLoadingStateImpl _value,
       $Res Function(_$LoginLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UserLoginState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

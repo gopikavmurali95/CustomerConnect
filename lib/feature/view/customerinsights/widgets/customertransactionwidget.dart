@@ -9,13 +9,13 @@ import 'package:customer_connect/feature/view/arcollection/insightsarcollection.
 import 'package:customer_connect/feature/view/customerinsights/widgets/insightscustransdynamicwidget.dart';
 import 'package:customer_connect/feature/view/invoices/insightsinvoicescree.dart';
 import 'package:customer_connect/feature/view/salesorders/salesordersscreen.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerTraansactionWidget extends StatefulWidget {
   final LoginUserModel user;

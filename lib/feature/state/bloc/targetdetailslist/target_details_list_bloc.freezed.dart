@@ -80,6 +80,9 @@ class _$TargetDetailsListEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetDetailsListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetTargetDetailsListEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetDetailsListEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetDetailsListEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$GetTargetDetailsListEventImpl implements GetTargetDetailsListEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, rotID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetDetailsListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetDetailsListEventImplCopyWith<_$GetTargetDetailsListEventImpl>
@@ -245,7 +252,10 @@ abstract class GetTargetDetailsListEvent implements TargetDetailsListEvent {
   String get fromDate;
   String get rotID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetDetailsListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetDetailsListEventImplCopyWith<_$GetTargetDetailsListEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -267,6 +277,9 @@ class __$$ClearTargetDetailsListImplCopyWithImpl<$Res>
       _$ClearTargetDetailsListImpl _value,
       $Res Function(_$ClearTargetDetailsListImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetDetailsListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -431,6 +444,9 @@ class _$TargetDetailsListStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetDetailsListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -453,6 +469,8 @@ class __$$GetTargetDetailsListStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetDetailsListStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetDetailsListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -501,7 +519,9 @@ class _$GetTargetDetailsListStateImpl implements GetTargetDetailsListState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetDetailsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetDetailsListStateImplCopyWith<_$GetTargetDetailsListStateImpl>
@@ -586,7 +606,10 @@ abstract class GetTargetDetailsListState implements TargetDetailsListState {
       _$GetTargetDetailsListStateImpl;
 
   List<TargetDetailsListModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetDetailsListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetDetailsListStateImplCopyWith<_$GetTargetDetailsListStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -608,6 +631,9 @@ class __$$GetTargetDetailsListFailedImplCopyWithImpl<$Res>
       _$GetTargetDetailsListFailedImpl _value,
       $Res Function(_$GetTargetDetailsListFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetDetailsListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

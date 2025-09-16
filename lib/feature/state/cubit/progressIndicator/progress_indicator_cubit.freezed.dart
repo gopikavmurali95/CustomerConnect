@@ -79,6 +79,9 @@ class _$ProgressIndicatorStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ProgressIndicatorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,8 @@ class __$$ShowProgresIndicatorStateImplCopyWithImpl<$Res>
       $Res Function(_$ShowProgresIndicatorStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProgressIndicatorState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +145,9 @@ class _$ShowProgresIndicatorStateImpl implements ShowProgresIndicatorState {
   @override
   int get hashCode => Object.hash(runtimeType, isLoading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProgressIndicatorState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShowProgresIndicatorStateImplCopyWith<_$ShowProgresIndicatorStateImpl>
@@ -221,7 +228,10 @@ abstract class ShowProgresIndicatorState implements ProgressIndicatorState {
       _$ShowProgresIndicatorStateImpl;
 
   bool get isLoading;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProgressIndicatorState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShowProgresIndicatorStateImplCopyWith<_$ShowProgresIndicatorStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -243,6 +253,9 @@ class __$$RemoveProgressIndicatorStateImplCopyWithImpl<$Res>
       _$RemoveProgressIndicatorStateImpl _value,
       $Res Function(_$RemoveProgressIndicatorStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ProgressIndicatorState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

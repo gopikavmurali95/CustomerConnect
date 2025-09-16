@@ -77,6 +77,9 @@ class _$OosCustomersEventCopyWithImpl<$Res, $Val extends OosCustomersEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OosCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$GetOosCustomersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetOosCustomersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OosCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetOosCustomersEventImpl implements GetOosCustomersEvent {
   @override
   int get hashCode => Object.hash(runtimeType, searchQuery, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OosCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOosCustomersEventImplCopyWith<_$GetOosCustomersEventImpl>
@@ -240,7 +247,10 @@ abstract class GetOosCustomersEvent implements OosCustomersEvent {
   String get searchQuery;
   String get fromDate;
   String get toDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OosCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOosCustomersEventImplCopyWith<_$GetOosCustomersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -261,6 +271,9 @@ class __$$ClearOosCustomersEventImplCopyWithImpl<$Res>
       _$ClearOosCustomersEventImpl _value,
       $Res Function(_$ClearOosCustomersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OosCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -417,6 +430,9 @@ class _$OosCustomersStateCopyWithImpl<$Res, $Val extends OosCustomersState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OosCustomersState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -436,6 +452,8 @@ class __$$GetOosCustomersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetOosCustomersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OosCustomersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -485,7 +503,9 @@ class _$GetOosCustomersStateImpl implements GetOosCustomersState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_customers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OosCustomersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOosCustomersStateImplCopyWith<_$GetOosCustomersStateImpl>
@@ -566,7 +586,10 @@ abstract class GetOosCustomersState implements OosCustomersState {
       _$GetOosCustomersStateImpl;
 
   List<OutOfStockCustomerModel>? get customers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OosCustomersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOosCustomersStateImplCopyWith<_$GetOosCustomersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -587,6 +610,9 @@ class __$$OosCustomersFailedStateImplCopyWithImpl<$Res>
       _$OosCustomersFailedStateImpl _value,
       $Res Function(_$OosCustomersFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OosCustomersState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

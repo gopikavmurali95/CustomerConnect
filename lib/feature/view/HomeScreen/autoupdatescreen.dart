@@ -1,12 +1,14 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/auto_update_resp_model/auto_update_resp_model.dart';
 import 'package:customer_connect/feature/state/cubit/updatepercentage/update_download_percentage_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/apkinstaller.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AutoUpdateScreen extends StatefulWidget {
   final AutoUpdateRespModel status;

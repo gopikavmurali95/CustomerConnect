@@ -73,6 +73,9 @@ class _$ApprovalCountsEventCopyWithImpl<$Res, $Val extends ApprovalCountsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApprovalCountsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$GetApprovalsCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetApprovalsCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApprovalCountsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,7 +138,9 @@ class _$GetApprovalsCountEventImpl implements GetApprovalsCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApprovalCountsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetApprovalsCountEventImplCopyWith<_$GetApprovalsCountEventImpl>
@@ -209,7 +216,10 @@ abstract class GetApprovalsCountEvent implements ApprovalCountsEvent {
       _$GetApprovalsCountEventImpl;
 
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApprovalCountsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetApprovalsCountEventImplCopyWith<_$GetApprovalsCountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -228,6 +238,9 @@ class __$$ClearApprovalCountsImplCopyWithImpl<$Res>
   __$$ClearApprovalCountsImplCopyWithImpl(_$ClearApprovalCountsImpl _value,
       $Res Function(_$ClearApprovalCountsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApprovalCountsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -378,6 +391,9 @@ class _$ApprovalCountsStateCopyWithImpl<$Res, $Val extends ApprovalCountsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApprovalCountsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +413,8 @@ class __$$GetApprovalsCountImplCopyWithImpl<$Res>
       $Res Function(_$GetApprovalsCountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApprovalCountsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -436,7 +454,9 @@ class _$GetApprovalsCountImpl implements GetApprovalsCount {
   @override
   int get hashCode => Object.hash(runtimeType, approvalCounts);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApprovalCountsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetApprovalsCountImplCopyWith<_$GetApprovalsCountImpl> get copyWith =>
@@ -514,7 +534,10 @@ abstract class GetApprovalsCount implements ApprovalCountsState {
       _$GetApprovalsCountImpl;
 
   ApprovalCountModel? get approvalCounts;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApprovalCountsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetApprovalsCountImplCopyWith<_$GetApprovalsCountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -536,6 +559,9 @@ class __$$GetApprovalCountsFailedImplCopyWithImpl<$Res>
       _$GetApprovalCountsFailedImpl _value,
       $Res Function(_$GetApprovalCountsFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApprovalCountsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

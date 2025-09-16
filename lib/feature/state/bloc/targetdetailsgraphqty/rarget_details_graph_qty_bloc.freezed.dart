@@ -77,6 +77,9 @@ class _$RargetDetailsGraphQtyEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RargetDetailsGraphQtyEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$GetTargetGraphQtyEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetGraphQtyEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RargetDetailsGraphQtyEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +152,9 @@ class _$GetTargetGraphQtyEventImpl implements GetTargetGraphQtyEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, rotID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RargetDetailsGraphQtyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetGraphQtyEventImplCopyWith<_$GetTargetGraphQtyEventImpl>
@@ -227,7 +234,10 @@ abstract class GetTargetGraphQtyEvent implements RargetDetailsGraphQtyEvent {
 
   String get fromDate;
   String get rotID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RargetDetailsGraphQtyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetGraphQtyEventImplCopyWith<_$GetTargetGraphQtyEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -249,6 +259,9 @@ class __$$ClearTargetGraphQuantityImplCopyWithImpl<$Res>
       _$ClearTargetGraphQuantityImpl _value,
       $Res Function(_$ClearTargetGraphQuantityImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RargetDetailsGraphQtyEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -406,6 +419,9 @@ class _$RargetDetailsGraphQtyStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RargetDetailsGraphQtyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -428,6 +444,8 @@ class __$$GetTargetGraphQtyStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetGraphQtyStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RargetDetailsGraphQtyState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -467,7 +485,9 @@ class _$GetTargetGraphQtyStateImpl implements GetTargetGraphQtyState {
   @override
   int get hashCode => Object.hash(runtimeType, quantity);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RargetDetailsGraphQtyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetGraphQtyStateImplCopyWith<_$GetTargetGraphQtyStateImpl>
@@ -548,7 +568,10 @@ abstract class GetTargetGraphQtyState implements RargetDetailsGraphQtyState {
       _$GetTargetGraphQtyStateImpl;
 
   TargetDetailsGraphQtyModel? get quantity;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RargetDetailsGraphQtyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetGraphQtyStateImplCopyWith<_$GetTargetGraphQtyStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -570,6 +593,9 @@ class __$$GetTargetGraphQtyFailedImplCopyWithImpl<$Res>
       _$GetTargetGraphQtyFailedImpl _value,
       $Res Function(_$GetTargetGraphQtyFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RargetDetailsGraphQtyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

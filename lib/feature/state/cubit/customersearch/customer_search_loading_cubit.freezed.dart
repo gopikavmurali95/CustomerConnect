@@ -74,6 +74,9 @@ class _$CustomerSearchLoadingStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerSearchLoadingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,9 @@ class __$$SearchLoadingStateImplCopyWithImpl<$Res>
   __$$SearchLoadingStateImplCopyWithImpl(_$SearchLoadingStateImpl _value,
       $Res Function(_$SearchLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerSearchLoadingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -194,6 +200,9 @@ class __$$RemoveSearchLloadingImplCopyWithImpl<$Res>
   __$$RemoveSearchLloadingImplCopyWithImpl(_$RemoveSearchLloadingImpl _value,
       $Res Function(_$RemoveSearchLloadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerSearchLoadingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

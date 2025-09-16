@@ -75,6 +75,9 @@ class _$ApproveReturnProductEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApproveReturnProductEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$ApproveProductEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveProductEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApproveReturnProductEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +139,9 @@ class _$ApproveProductEventImpl implements ApproveProductEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApproveReturnProductEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveProductEventImplCopyWith<_$ApproveProductEventImpl> get copyWith =>
@@ -212,7 +219,10 @@ abstract class ApproveProductEvent implements ApproveReturnProductEvent {
       _$ApproveProductEventImpl;
 
   ReturnApproveInModel get approval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApproveReturnProductEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveProductEventImplCopyWith<_$ApproveProductEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -234,6 +244,9 @@ class __$$AddApprovalLoadingEventImplCopyWithImpl<$Res>
       _$AddApprovalLoadingEventImpl _value,
       $Res Function(_$AddApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApproveReturnProductEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -399,6 +412,9 @@ class _$ApproveReturnProductStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApproveReturnProductState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -421,6 +437,8 @@ class __$$ApproveReturnProductdSTatusStateImplCopyWithImpl<$Res>
       $Res Function(_$ApproveReturnProductdSTatusStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApproveReturnProductState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -461,7 +479,9 @@ class _$ApproveReturnProductdSTatusStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, response);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApproveReturnProductState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveReturnProductdSTatusStateImplCopyWith<
@@ -554,7 +574,10 @@ abstract class ApproveReturnProductdSTatusState
       _$ApproveReturnProductdSTatusStateImpl;
 
   ReturnApproveOutModel? get response;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApproveReturnProductState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveReturnProductdSTatusStateImplCopyWith<
           _$ApproveReturnProductdSTatusStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -577,6 +600,9 @@ class __$$ApproveReturnLoadingStateImplCopyWithImpl<$Res>
       _$ApproveReturnLoadingStateImpl _value,
       $Res Function(_$ApproveReturnLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApproveReturnProductState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -696,6 +722,9 @@ class __$$ApprovalFailedStateImplCopyWithImpl<$Res>
   __$$ApprovalFailedStateImplCopyWithImpl(_$ApprovalFailedStateImpl _value,
       $Res Function(_$ApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApproveReturnProductState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

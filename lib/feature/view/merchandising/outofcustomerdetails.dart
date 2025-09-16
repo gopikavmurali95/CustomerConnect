@@ -5,11 +5,11 @@ import 'package:customer_connect/feature/data/models/out_of_stock_customer_model
 import 'package:customer_connect/feature/state/bloc/ooscustomerdetail/oos_customer_detail_bloc.dart';
 import 'package:customer_connect/feature/view/merchandising/merchandoutofcustomerdetails.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -60,6 +60,7 @@ class _OutOfStockScreenState extends State<OutOfStockCustomerDetailScreen> {
         ),
       ),
       body: PopScope(
+        // ignore: deprecated_member_use
         onPopInvoked: (didPop) => {
           _oosCusDetailCtrl.clear(),
           oosCusCtrl.clear(),

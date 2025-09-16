@@ -51,7 +51,9 @@ mixin _$ApprovalReasonsEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApprovalReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ApprovalReasonsEventCopyWith<ApprovalReasonsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +78,8 @@ class _$ApprovalReasonsEventCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ApprovalReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,6 +116,8 @@ class __$$GetApprovalReasonsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetApprovalReasonsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApprovalReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,7 +156,9 @@ class _$GetApprovalReasonsEventImpl implements GetApprovalReasonsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, rsnType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApprovalReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetApprovalReasonsEventImplCopyWith<_$GetApprovalReasonsEventImpl>
@@ -221,8 +229,11 @@ abstract class GetApprovalReasonsEvent implements ApprovalReasonsEvent {
 
   @override
   String get rsnType;
+
+  /// Create a copy of ApprovalReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetApprovalReasonsEventImplCopyWith<_$GetApprovalReasonsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -289,6 +300,9 @@ class _$ApprovalReasonsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApprovalReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -311,6 +325,8 @@ class __$$GetApprovalResonsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetApprovalResonsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApprovalReasonsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -359,7 +375,9 @@ class _$GetApprovalResonsStateImpl implements GetApprovalResonsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_resons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApprovalReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetApprovalResonsStateImplCopyWith<_$GetApprovalResonsStateImpl>
@@ -438,7 +456,10 @@ abstract class GetApprovalResonsState implements ApprovalReasonsState {
       _$GetApprovalResonsStateImpl;
 
   List<ApprovalResonModel>? get resons;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApprovalReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetApprovalResonsStateImplCopyWith<_$GetApprovalResonsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -459,6 +480,9 @@ class __$$GetReasonsFailedStateImplCopyWithImpl<$Res>
   __$$GetReasonsFailedStateImplCopyWithImpl(_$GetReasonsFailedStateImpl _value,
       $Res Function(_$GetReasonsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApprovalReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

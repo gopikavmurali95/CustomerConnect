@@ -50,7 +50,9 @@ mixin _$ArScrollCtrlState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArScrollCtrlState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArScrollCtrlStateCopyWith<ArScrollCtrlState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$ArScrollCtrlStateCopyWithImpl<$Res, $Val extends ArScrollCtrlState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ArScrollCtrlState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$ScrollPositionStateImplCopyWithImpl<$Res>
       $Res Function(_$ScrollPositionStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArScrollCtrlState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$ScrollPositionStateImpl implements ScrollPositionState {
   @override
   int get hashCode => Object.hash(runtimeType, isOnTop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArScrollCtrlState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScrollPositionStateImplCopyWith<_$ScrollPositionStateImpl> get copyWith =>
@@ -215,8 +223,11 @@ abstract class ScrollPositionState implements ArScrollCtrlState {
 
   @override
   bool get isOnTop;
+
+  /// Create a copy of ArScrollCtrlState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScrollPositionStateImplCopyWith<_$ScrollPositionStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -84,6 +84,9 @@ class _$TrackSalesManListEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetSalesmanLocationEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSalesmanLocationEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +158,9 @@ class _$GetSalesmanLocationEventImpl implements GetSalesmanLocationEvent {
   @override
   int get hashCode => Object.hash(runtimeType, date, rotID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSalesmanLocationEventImplCopyWith<_$GetSalesmanLocationEventImpl>
@@ -241,7 +248,10 @@ abstract class GetSalesmanLocationEvent implements TrackSalesManListEvent {
 
   String get date;
   String get rotID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSalesmanLocationEventImplCopyWith<_$GetSalesmanLocationEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -266,6 +276,8 @@ class __$$GetAllCustomersLocationEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllCustomersLocationEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -305,7 +317,9 @@ class _$GetAllCustomersLocationEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllCustomersLocationEventImplCopyWith<
@@ -392,7 +406,10 @@ abstract class GetAllCustomersLocationEvent implements TrackSalesManListEvent {
       _$GetAllCustomersLocationEventImpl;
 
   String get date;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllCustomersLocationEventImplCopyWith<
           _$GetAllCustomersLocationEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -413,6 +430,9 @@ class __$$ClearsalessmansEventImplCopyWithImpl<$Res>
   __$$ClearsalessmansEventImplCopyWithImpl(_$ClearsalessmansEventImpl _value,
       $Res Function(_$ClearsalessmansEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TrackSalesManListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -589,6 +609,9 @@ class _$TrackSalesManListStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -611,6 +634,8 @@ class __$$GettrackSalesManDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GettrackSalesManDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -659,7 +684,9 @@ class _$GettrackSalesManDataStateImpl implements GettrackSalesManDataState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_salesman));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GettrackSalesManDataStateImplCopyWith<_$GettrackSalesManDataStateImpl>
@@ -752,7 +779,10 @@ abstract class GettrackSalesManDataState implements TrackSalesManListState {
       _$GettrackSalesManDataStateImpl;
 
   List<TrackingSalesManModel>? get salesman;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GettrackSalesManDataStateImplCopyWith<_$GettrackSalesManDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -777,6 +807,8 @@ class __$$TrackAllCustomersStateImplCopyWithImpl<$Res>
       $Res Function(_$TrackAllCustomersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -826,7 +858,9 @@ class _$TrackAllCustomersStateImpl implements TrackAllCustomersState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_customers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TrackAllCustomersStateImplCopyWith<_$TrackAllCustomersStateImpl>
@@ -919,7 +953,10 @@ abstract class TrackAllCustomersState implements TrackSalesManListState {
       _$TrackAllCustomersStateImpl;
 
   List<CustomerLiveLocationModel>? get customers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TrackAllCustomersStateImplCopyWith<_$TrackAllCustomersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -941,6 +978,9 @@ class __$$TrackSalesManFailedStateImplCopyWithImpl<$Res>
       _$TrackSalesManFailedStateImpl _value,
       $Res Function(_$TrackSalesManFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TrackSalesManListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -84,6 +84,9 @@ class _$InventoryReconfirmApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InventoryReconfirmApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$ApproveInventoryReconfirmEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveInventoryReconfirmEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InventoryReconfirmApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +150,9 @@ class _$ApproveInventoryReconfirmEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InventoryReconfirmApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveInventoryReconfirmEventImplCopyWith<
@@ -232,7 +239,10 @@ abstract class ApproveInventoryReconfirmEvent
       _$ApproveInventoryReconfirmEventImpl;
 
   InventoryReconfirmApproveInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InventoryReconfirmApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveInventoryReconfirmEventImplCopyWith<
           _$ApproveInventoryReconfirmEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -255,6 +265,9 @@ class __$$InventoryReconfirmLoadingEventImplCopyWithImpl<$Res>
       _$InventoryReconfirmLoadingEventImpl _value,
       $Res Function(_$InventoryReconfirmLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -435,6 +448,9 @@ class _$InventoryReconfirmApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InventoryReconfirmApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -457,6 +473,8 @@ class __$$InventoryReconfirmApproveStateImplCopyWithImpl<$Res>
       $Res Function(_$InventoryReconfirmApproveStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InventoryReconfirmApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -497,7 +515,9 @@ class _$InventoryReconfirmApproveStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, response);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InventoryReconfirmApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InventoryReconfirmApproveStateImplCopyWith<
@@ -593,7 +613,10 @@ abstract class InventoryReconfirmApproveState
       _$InventoryReconfirmApproveStateImpl;
 
   InventoryReconfirmApprovalRespModel? get response;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InventoryReconfirmApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InventoryReconfirmApproveStateImplCopyWith<
           _$InventoryReconfirmApproveStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -616,6 +639,9 @@ class __$$InventoryReconfirmApproveFailedStateImplCopyWithImpl<$Res>
       _$InventoryReconfirmApproveFailedStateImpl _value,
       $Res Function(_$InventoryReconfirmApproveFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -743,6 +769,9 @@ class __$$InventoryReconfirmApproveLoadingStateImplCopyWithImpl<$Res>
       _$InventoryReconfirmApproveLoadingStateImpl _value,
       $Res Function(_$InventoryReconfirmApproveLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

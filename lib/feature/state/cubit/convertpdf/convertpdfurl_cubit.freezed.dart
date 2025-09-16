@@ -16,20 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ConvertpdfurlState {
-  PDFDocument? get pdf => throw _privateConstructorUsedError;
+  String? get pdf => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PDFDocument? pdf) convertPDFUrl,
+    required TResult Function(String? pdf) convertPDFUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PDFDocument? pdf)? convertPDFUrl,
+    TResult? Function(String? pdf)? convertPDFUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PDFDocument? pdf)? convertPDFUrl,
+    TResult Function(String? pdf)? convertPDFUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +50,9 @@ mixin _$ConvertpdfurlState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConvertpdfurlState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConvertpdfurlStateCopyWith<ConvertpdfurlState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,7 +63,7 @@ abstract class $ConvertpdfurlStateCopyWith<$Res> {
           ConvertpdfurlState value, $Res Function(ConvertpdfurlState) then) =
       _$ConvertpdfurlStateCopyWithImpl<$Res, ConvertpdfurlState>;
   @useResult
-  $Res call({PDFDocument? pdf});
+  $Res call({String? pdf});
 }
 
 /// @nodoc
@@ -74,6 +76,8 @@ class _$ConvertpdfurlStateCopyWithImpl<$Res, $Val extends ConvertpdfurlState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConvertpdfurlState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,7 +87,7 @@ class _$ConvertpdfurlStateCopyWithImpl<$Res, $Val extends ConvertpdfurlState>
       pdf: freezed == pdf
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
-              as PDFDocument?,
+              as String?,
     ) as $Val);
   }
 }
@@ -96,7 +100,7 @@ abstract class _$$ConvertPDFUrlStateImplCopyWith<$Res>
       __$$ConvertPDFUrlStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PDFDocument? pdf});
+  $Res call({String? pdf});
 }
 
 /// @nodoc
@@ -107,6 +111,8 @@ class __$$ConvertPDFUrlStateImplCopyWithImpl<$Res>
       $Res Function(_$ConvertPDFUrlStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConvertpdfurlState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,7 +122,7 @@ class __$$ConvertPDFUrlStateImplCopyWithImpl<$Res>
       pdf: freezed == pdf
           ? _value.pdf
           : pdf // ignore: cast_nullable_to_non_nullable
-              as PDFDocument?,
+              as String?,
     ));
   }
 }
@@ -127,7 +133,7 @@ class _$ConvertPDFUrlStateImpl implements ConvertPDFUrlState {
   const _$ConvertPDFUrlStateImpl({required this.pdf});
 
   @override
-  final PDFDocument? pdf;
+  final String? pdf;
 
   @override
   String toString() {
@@ -145,7 +151,9 @@ class _$ConvertPDFUrlStateImpl implements ConvertPDFUrlState {
   @override
   int get hashCode => Object.hash(runtimeType, pdf);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConvertpdfurlState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConvertPDFUrlStateImplCopyWith<_$ConvertPDFUrlStateImpl> get copyWith =>
@@ -155,7 +163,7 @@ class _$ConvertPDFUrlStateImpl implements ConvertPDFUrlState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PDFDocument? pdf) convertPDFUrl,
+    required TResult Function(String? pdf) convertPDFUrl,
   }) {
     return convertPDFUrl(pdf);
   }
@@ -163,7 +171,7 @@ class _$ConvertPDFUrlStateImpl implements ConvertPDFUrlState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(PDFDocument? pdf)? convertPDFUrl,
+    TResult? Function(String? pdf)? convertPDFUrl,
   }) {
     return convertPDFUrl?.call(pdf);
   }
@@ -171,7 +179,7 @@ class _$ConvertPDFUrlStateImpl implements ConvertPDFUrlState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PDFDocument? pdf)? convertPDFUrl,
+    TResult Function(String? pdf)? convertPDFUrl,
     required TResult orElse(),
   }) {
     if (convertPDFUrl != null) {
@@ -210,13 +218,16 @@ class _$ConvertPDFUrlStateImpl implements ConvertPDFUrlState {
 }
 
 abstract class ConvertPDFUrlState implements ConvertpdfurlState {
-  const factory ConvertPDFUrlState({required final PDFDocument? pdf}) =
+  const factory ConvertPDFUrlState({required final String? pdf}) =
       _$ConvertPDFUrlStateImpl;
 
   @override
-  PDFDocument? get pdf;
+  String? get pdf;
+
+  /// Create a copy of ConvertpdfurlState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConvertPDFUrlStateImplCopyWith<_$ConvertPDFUrlStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

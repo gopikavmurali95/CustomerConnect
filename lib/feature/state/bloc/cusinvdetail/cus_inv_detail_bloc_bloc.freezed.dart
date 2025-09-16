@@ -75,6 +75,9 @@ class _$CusInvDetailBlocEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusInvDetailBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$GetCusInvDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusInvDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInvDetailBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +149,9 @@ class _$GetCusInvDetailsEventImpl implements GetCusInvDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, invId, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInvDetailBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusInvDetailsEventImplCopyWith<_$GetCusInvDetailsEventImpl>
@@ -223,7 +230,10 @@ abstract class GetCusInvDetailsEvent implements CusInvDetailBlocEvent {
 
   String get invId;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusInvDetailBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusInvDetailsEventImplCopyWith<_$GetCusInvDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -242,6 +252,9 @@ class __$$ClearinvDetailsImplCopyWithImpl<$Res>
   __$$ClearinvDetailsImplCopyWithImpl(
       _$ClearinvDetailsImpl _value, $Res Function(_$ClearinvDetailsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusInvDetailBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +410,9 @@ class _$CusInvDetailBlocStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusInvDetailBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -418,6 +434,8 @@ class __$$GetcusInvDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetcusInvDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInvDetailBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -486,7 +504,9 @@ class _$GetcusInvDetailStateImpl implements GetcusInvDetailState {
       const DeepCollectionEquality().hash(_details),
       const DeepCollectionEquality().hash(_types));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInvDetailBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetcusInvDetailStateImplCopyWith<_$GetcusInvDetailStateImpl>
@@ -571,7 +591,10 @@ abstract class GetcusInvDetailState implements CusInvDetailBlocState {
 
   List<CusInsOnvDetailModel>? get details;
   List<CusInsInvTypeModel>? get types;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusInvDetailBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetcusInvDetailStateImplCopyWith<_$GetcusInvDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -591,6 +614,9 @@ class __$$GetcusInvFailedStateImplCopyWithImpl<$Res>
   __$$GetcusInvFailedStateImplCopyWithImpl(_$GetcusInvFailedStateImpl _value,
       $Res Function(_$GetcusInvFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusInvDetailBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -9,8 +9,9 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ssun_chart/pie_chart.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:ssun_chart/pie_chart.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class RouteTargetGraphWidget extends StatefulWidget {
   final TargetHeaderListModel header;
@@ -18,6 +19,14 @@ class RouteTargetGraphWidget extends StatefulWidget {
 
   @override
   State<RouteTargetGraphWidget> createState() => _RouteTargetGraphWidgetState();
+}
+
+class _ChartData {
+  final String label;
+  final double value;
+  final Color color;
+
+  _ChartData(this.label, this.value, this.color);
 }
 
 final containerGradients = [
@@ -190,62 +199,100 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                           ? SizedBox(
                                               width: 110.w,
                                               height: 110.h,
-                                              child: PieChart(
-                                                bgColor: Colors.transparent,
-                                                usePercentValues: false,
-                                                // centerTextSize: 11,
-                                                // drawCenterText: true,
-                                                drawHoleEnabled: true,
-                                                holeRadius: 20,
-                                                entryLabelTextSize: 10.sp,
-                                                transparentCircleRadius: 27,
-                                                entryLabelColor: Colors.black,
-                                                data: PieData(
-                                                  List.of(
-                                                    [
-                                                      PieDataSet(
-                                                        colors:
-                                                            routetargetcolorslist,
-                                                        entries: List.of(
-                                                          [
-                                                            PieEntry(
-                                                                percentages['achAmount'] ==
-                                                                        0.00
-                                                                    ? ''
-                                                                    : '${percentages['achAmount']!.toStringAsFixed(2)}%',
-                                                                double.parse((amount
-                                                                            .achAmt ??
-                                                                        '')
-                                                                    .replaceAll(
-                                                                        ',',
-                                                                        ''))),
-                                                            PieEntry(
-                                                                percentages['mtdAmount'] ==
-                                                                        0.00
-                                                                    ? ''
-                                                                    : '${percentages['mtdAmount']!.toStringAsFixed(2)}%',
-                                                                double.parse((amount
-                                                                            .mtdGapAmt ??
-                                                                        '')
-                                                                    .replaceAll(
-                                                                        ',',
-                                                                        ''))),
-                                                            PieEntry(
-                                                                percentages['monthAmount'] ==
-                                                                        0.00
-                                                                    ? ''
-                                                                    : '${percentages['monthAmount']!.toStringAsFixed(2)}%',
-                                                                double.parse((amount
-                                                                            .monthGapAmt ??
-                                                                        '')
-                                                                    .replaceAll(
-                                                                        ',',
-                                                                        ''))),
-                                                          ],
+                                              child: RotatedBox(
+                                                quarterTurns: 0,
+                                                child: SfCircularChart(
+                                                  margin: EdgeInsets.zero,
+                                                  series: <DoughnutSeries<
+                                                      _ChartData, String>>[
+                                                    DoughnutSeries<_ChartData,
+                                                        String>(
+                                                      dataSource: <_ChartData>[
+                                                        _ChartData(
+                                                          percentages['achAmount'] ==
+                                                                  0.00
+                                                              ? ''
+                                                              : '${percentages['achAmount']!.toStringAsFixed(2)}%',
+                                                          double.tryParse((amount
+                                                                          .achAmt ??
+                                                                      '')
+                                                                  .replaceAll(
+                                                                      ',',
+                                                                      '')) ??
+                                                              0,
+                                                          routetargetcolorslist
+                                                                  .isNotEmpty
+                                                              ? routetargetcolorslist[
+                                                                  0]
+                                                              : Colors.blue,
                                                         ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                        _ChartData(
+                                                          percentages['mtdAmount'] ==
+                                                                  0.00
+                                                              ? ''
+                                                              : '${percentages['mtdAmount']!.toStringAsFixed(2)}%',
+                                                          double.tryParse((amount
+                                                                          .mtdGapAmt ??
+                                                                      '')
+                                                                  .replaceAll(
+                                                                      ',',
+                                                                      '')) ??
+                                                              0,
+                                                          routetargetcolorslist
+                                                                      .length >
+                                                                  1
+                                                              ? routetargetcolorslist[
+                                                                  1]
+                                                              : Colors.green,
+                                                        ),
+                                                        _ChartData(
+                                                          percentages['monthAmount'] ==
+                                                                  0.00
+                                                              ? ''
+                                                              : '${percentages['monthAmount']!.toStringAsFixed(2)}%',
+                                                          double.tryParse((amount
+                                                                          .monthGapAmt ??
+                                                                      '')
+                                                                  .replaceAll(
+                                                                      ',',
+                                                                      '')) ??
+                                                              0,
+                                                          routetargetcolorslist
+                                                                      .length >
+                                                                  2
+                                                              ? routetargetcolorslist[
+                                                                  2]
+                                                              : Colors.orange,
+                                                        ),
+                                                      ]
+                                                          .where((e) =>
+                                                              e.value > 0)
+                                                          .toList(),
+                                                      xValueMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.label,
+                                                      yValueMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.value,
+                                                      pointColorMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.color,
+                                                      dataLabelMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.label,
+                                                      dataLabelSettings:
+                                                          DataLabelSettings(
+                                                        isVisible: true,
+                                                        textStyle: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 10.sp,
+                                                        ),
+                                                      ),
+                                                      radius: '100%',
+                                                      innerRadius: '40%',
+                                                      explode: true,
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
                                             )
@@ -280,18 +327,11 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                                 : routetargetcolorslist[
                                                                     2],
                                                         child: Center(
-                                                          child: CircleAvatar(
-                                                            radius: 23.h,
-                                                            backgroundColor:
-                                                                Colors.white30,
-                                                            child: Center(
-                                                              child:
-                                                                  CircleAvatar(
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .white,
-                                                                radius: 16.h,
-                                                              ),
+                                                          child: Center(
+                                                            child: CircleAvatar(
+                                                              backgroundColor:
+                                                                  Colors.white,
+                                                              radius: 23.h,
                                                             ),
                                                           ),
                                                         ),
@@ -470,66 +510,105 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                             ? SizedBox(
                                                 width: 110.w,
                                                 height: 110.h,
-                                                child: PieChart(
-                                                  bgColor: Colors.transparent,
-                                                  usePercentValues: false,
-                                                  // centerTextSize: 11,
-                                                  // drawCenterText: true,
-                                                  drawHoleEnabled: true,
-                                                  holeRadius: 20,
-                                                  entryLabelTextSize: 10.sp,
-                                                  transparentCircleRadius: 27,
-
-                                                  entryLabelColor: Colors.black,
-                                                  data: PieData(
-                                                    List.of(
-                                                      [
-                                                        PieDataSet(
-                                                          colors:
-                                                              routetargetcolorslist,
-                                                          entries: List.of(
-                                                            [
-                                                              PieEntry(
-                                                                  qtypercentages[
-                                                                              'achQty'] ==
-                                                                          0.00
-                                                                      ? ''
-                                                                      : '${qtypercentages['achQty']!.toStringAsFixed(2)}%',
-                                                                  double.parse((qty
-                                                                              .achQty ??
-                                                                          '')
-                                                                      .replaceAll(
-                                                                          ',',
-                                                                          ''))),
-                                                              PieEntry(
-                                                                  qtypercentages[
-                                                                              'mtdQty'] ==
-                                                                          0.00
-                                                                      ? ''
-                                                                      : '${qtypercentages['mtdQty']!.toStringAsFixed(2)}%',
-                                                                  double.parse((qty
-                                                                              .mtdGapQty ??
-                                                                          '')
-                                                                      .replaceAll(
-                                                                          ',',
-                                                                          ''))),
-                                                              PieEntry(
-                                                                  qtypercentages[
-                                                                              'monthQty'] ==
-                                                                          0.00
-                                                                      ? ''
-                                                                      : '${qtypercentages['monthQty']!.toStringAsFixed(2)}%',
-                                                                  double.parse((qty
-                                                                              .monthGapQty ??
-                                                                          '')
-                                                                      .replaceAll(
-                                                                          ',',
-                                                                          ''))),
-                                                            ],
+                                                child: RotatedBox(
+                                                  quarterTurns: 0,
+                                                  child: SfCircularChart(
+                                                    margin: EdgeInsets.zero,
+                                                    series: <DoughnutSeries<
+                                                        _ChartData, String>>[
+                                                      DoughnutSeries<_ChartData,
+                                                          String>(
+                                                        dataSource:
+                                                            <_ChartData>[
+                                                          _ChartData(
+                                                            qtypercentages[
+                                                                        'achQty'] ==
+                                                                    0.00
+                                                                ? ''
+                                                                : '${qtypercentages['achQty']!.toStringAsFixed(2)}%',
+                                                            double.tryParse((qty
+                                                                            .achQty ??
+                                                                        '')
+                                                                    .replaceAll(
+                                                                        ',',
+                                                                        '')) ??
+                                                                0,
+                                                            routetargetcolorslist
+                                                                    .isNotEmpty
+                                                                ? routetargetcolorslist[
+                                                                    0]
+                                                                : Colors.blue,
                                                           ),
-                                                        )
-                                                      ],
-                                                    ),
+                                                          _ChartData(
+                                                            qtypercentages[
+                                                                        'mtdQty'] ==
+                                                                    0.00
+                                                                ? ''
+                                                                : '${qtypercentages['mtdQty']!.toStringAsFixed(2)}%',
+                                                            double.tryParse((qty
+                                                                            .mtdGapQty ??
+                                                                        '')
+                                                                    .replaceAll(
+                                                                        ',',
+                                                                        '')) ??
+                                                                0,
+                                                            routetargetcolorslist
+                                                                        .length >
+                                                                    1
+                                                                ? routetargetcolorslist[
+                                                                    1]
+                                                                : Colors.green,
+                                                          ),
+                                                          _ChartData(
+                                                            qtypercentages[
+                                                                        'monthQty'] ==
+                                                                    0.00
+                                                                ? ''
+                                                                : '${qtypercentages['monthQty']!.toStringAsFixed(2)}%',
+                                                            double.tryParse((qty
+                                                                            .monthGapQty ??
+                                                                        '')
+                                                                    .replaceAll(
+                                                                        ',',
+                                                                        '')) ??
+                                                                0,
+                                                            routetargetcolorslist
+                                                                        .length >
+                                                                    2
+                                                                ? routetargetcolorslist[
+                                                                    2]
+                                                                : Colors.orange,
+                                                          ),
+                                                        ]
+                                                                .where((e) =>
+                                                                    e.value > 0)
+                                                                .toList(),
+                                                        xValueMapper:
+                                                            (_ChartData d, _) =>
+                                                                d.label,
+                                                        yValueMapper:
+                                                            (_ChartData d, _) =>
+                                                                d.value,
+                                                        pointColorMapper:
+                                                            (_ChartData d, _) =>
+                                                                d.color,
+                                                        dataLabelMapper:
+                                                            (_ChartData d, _) =>
+                                                                d.label,
+                                                        dataLabelSettings:
+                                                            DataLabelSettings(
+                                                          isVisible: true,
+                                                          textStyle: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 10.sp,
+                                                          ),
+                                                        ),
+                                                        radius: '100%',
+                                                        innerRadius:
+                                                            '40%', // same as holeRadius
+                                                        explode: true,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               )
@@ -564,19 +643,13 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                                   : routetargetcolorslist[
                                                                       2],
                                                           child: Center(
-                                                            child: CircleAvatar(
-                                                              radius: 23.h,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .white30,
-                                                              child: Center(
-                                                                child:
-                                                                    CircleAvatar(
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .white,
-                                                                  radius: 16.h,
-                                                                ),
+                                                            child: Center(
+                                                              child:
+                                                                  CircleAvatar(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                radius: 23.h,
                                                               ),
                                                             ),
                                                           ),

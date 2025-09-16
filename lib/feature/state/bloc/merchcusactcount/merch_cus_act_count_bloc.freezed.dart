@@ -75,6 +75,9 @@ class _$MerchCusActCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCusActCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,8 @@ class __$$GetCusActCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusActCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCusActCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +147,9 @@ class _$GetCusActCountEventImpl implements GetCusActCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCusActCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusActCountEventImplCopyWith<_$GetCusActCountEventImpl> get copyWith =>
@@ -221,7 +228,10 @@ abstract class GetCusActCountEvent implements MerchCusActCountEvent {
 
   String get fromDate;
   String get toDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCusActCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusActCountEventImplCopyWith<_$GetCusActCountEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -242,6 +252,9 @@ class __$$CusActCountClearEventImplCopyWithImpl<$Res>
   __$$CusActCountClearEventImplCopyWithImpl(_$CusActCountClearEventImpl _value,
       $Res Function(_$CusActCountClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCusActCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -394,6 +407,9 @@ class _$MerchCusActCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCusActCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -413,6 +429,8 @@ class __$$GetCusActCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusActCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCusActCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -452,7 +470,9 @@ class _$GetCusActCountStateImpl implements GetCusActCountState {
   @override
   int get hashCode => Object.hash(runtimeType, cuscount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCusActCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusActCountStateImplCopyWith<_$GetCusActCountStateImpl> get copyWith =>
@@ -530,7 +550,10 @@ abstract class GetCusActCountState implements MerchCusActCountState {
       _$GetCusActCountStateImpl;
 
   GetCusActcountModel? get cuscount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCusActCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusActCountStateImplCopyWith<_$GetCusActCountStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -552,6 +575,9 @@ class __$$CusActCountFailedStateImplCopyWithImpl<$Res>
       _$CusActCountFailedStateImpl _value,
       $Res Function(_$CusActCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCusActCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

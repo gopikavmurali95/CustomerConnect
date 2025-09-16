@@ -84,6 +84,9 @@ class _$InventoryReconfirmDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InventoryReconfirmDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetInventoryReconfirmDetailEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInventoryReconfirmDetailEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InventoryReconfirmDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetInventoryReconfirmDetailEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, reqID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InventoryReconfirmDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInventoryReconfirmDetailEventImplCopyWith<
@@ -243,7 +250,10 @@ abstract class GetInventoryReconfirmDetailEvent
 
   String get reqID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InventoryReconfirmDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInventoryReconfirmDetailEventImplCopyWith<
           _$GetInventoryReconfirmDetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,6 +276,9 @@ class __$$ClearInventoryReconfirmDetailEventImplCopyWithImpl<$Res>
       _$ClearInventoryReconfirmDetailEventImpl _value,
       $Res Function(_$ClearInventoryReconfirmDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +450,9 @@ class _$InventoryReconfirmDetailStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InventoryReconfirmDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -459,6 +475,8 @@ class __$$GsetInventoryReconfirmDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GsetInventoryReconfirmDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InventoryReconfirmDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -508,7 +526,9 @@ class _$GsetInventoryReconfirmDetailStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InventoryReconfirmDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GsetInventoryReconfirmDetailStateImplCopyWith<
@@ -595,7 +615,10 @@ abstract class GsetInventoryReconfirmDetailState
       _$GsetInventoryReconfirmDetailStateImpl;
 
   List<InventoryReconfirmDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InventoryReconfirmDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GsetInventoryReconfirmDetailStateImplCopyWith<
           _$GsetInventoryReconfirmDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -618,6 +641,9 @@ class __$$InventoryReconfirmDetailFailedStateImplCopyWithImpl<$Res>
       _$InventoryReconfirmDetailFailedStateImpl _value,
       $Res Function(_$InventoryReconfirmDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

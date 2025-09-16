@@ -82,6 +82,9 @@ class _$SalesOrderDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SalesOrderDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetSalesOrderDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSalesOrderDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SalesOrderDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +157,9 @@ class _$GetSalesOrderDetailsEventImpl implements GetSalesOrderDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, salesin, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SalesOrderDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSalesOrderDetailsEventImplCopyWith<_$GetSalesOrderDetailsEventImpl>
@@ -238,7 +245,10 @@ abstract class GetSalesOrderDetailsEvent implements SalesOrderDetailsEvent {
 
   SalesOrderDetailsInparasModel get salesin;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SalesOrderDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSalesOrderDetailsEventImplCopyWith<_$GetSalesOrderDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -260,6 +270,9 @@ class __$$ClearSalesOrderDetailsImplCopyWithImpl<$Res>
       _$ClearSalesOrderDetailsImpl _value,
       $Res Function(_$ClearSalesOrderDetailsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SalesOrderDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -421,6 +434,9 @@ class _$SalesOrderDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SalesOrderDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -441,6 +457,8 @@ class __$$GetSalesOrderDetailsImplCopyWithImpl<$Res>
       $Res Function(_$GetSalesOrderDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SalesOrderDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -491,7 +509,9 @@ class _$GetSalesOrderDetailsImpl implements GetSalesOrderDetails {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_salesOrderDetails));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SalesOrderDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSalesOrderDetailsImplCopyWith<_$GetSalesOrderDetailsImpl>
@@ -572,7 +592,10 @@ abstract class GetSalesOrderDetails implements SalesOrderDetailsState {
       _$GetSalesOrderDetailsImpl;
 
   List<SalesOrderDetailsModel>? get salesOrderDetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SalesOrderDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSalesOrderDetailsImplCopyWith<_$GetSalesOrderDetailsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -594,6 +617,9 @@ class __$$SalesOrderDetailsFailedImplCopyWithImpl<$Res>
       _$SalesOrderDetailsFailedImpl _value,
       $Res Function(_$SalesOrderDetailsFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SalesOrderDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

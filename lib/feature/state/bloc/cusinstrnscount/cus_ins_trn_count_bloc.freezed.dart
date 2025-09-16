@@ -57,7 +57,9 @@ mixin _$CusInsTrnCountEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsTrnCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CusInsTrnCountEventCopyWith<CusInsTrnCountEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -81,6 +83,8 @@ class _$CusInsTrnCountEventCopyWithImpl<$Res, $Val extends CusInsTrnCountEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CusInsTrnCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +133,8 @@ class __$$GettrnCountsEventImplCopyWithImpl<$Res>
       $Res Function(_$GettrnCountsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInsTrnCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -195,7 +201,9 @@ class _$GettrnCountsEventImpl implements GettrnCountsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userId, cusId, fDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsTrnCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GettrnCountsEventImplCopyWith<_$GettrnCountsEventImpl> get copyWith =>
@@ -278,8 +286,11 @@ abstract class GettrnCountsEvent implements CusInsTrnCountEvent {
   String get fDate;
   @override
   String get toDate;
+
+  /// Create a copy of CusInsTrnCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GettrnCountsEventImplCopyWith<_$GettrnCountsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -343,6 +354,9 @@ class _$CusInsTrnCountStateCopyWithImpl<$Res, $Val extends CusInsTrnCountState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusInsTrnCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -365,6 +379,8 @@ class __$$GetTransactionCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTransactionCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInsTrnCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -403,7 +419,9 @@ class _$GetTransactionCountStateImpl implements GetTransactionCountState {
   @override
   int get hashCode => Object.hash(runtimeType, counts);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsTrnCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTransactionCountStateImplCopyWith<_$GetTransactionCountStateImpl>
@@ -480,7 +498,10 @@ abstract class GetTransactionCountState implements CusInsTrnCountState {
       _$GetTransactionCountStateImpl;
 
   CusInsTrNCounts? get counts;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusInsTrnCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTransactionCountStateImplCopyWith<_$GetTransactionCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -499,6 +520,9 @@ class __$$GetcountFailedStateImplCopyWithImpl<$Res>
   __$$GetcountFailedStateImplCopyWithImpl(_$GetcountFailedStateImpl _value,
       $Res Function(_$GetcountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusInsTrnCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

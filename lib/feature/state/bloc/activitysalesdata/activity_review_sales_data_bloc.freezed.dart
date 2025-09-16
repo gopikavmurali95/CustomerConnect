@@ -77,6 +77,9 @@ class _$ActivityReviewSalesDataEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ActivityReviewSalesDataEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetActivitySalesEventImplCopyWithImpl<$Res>
       $Res Function(_$GetActivitySalesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActivityReviewSalesDataEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,7 +141,9 @@ class _$GetActivitySalesEventImpl implements GetActivitySalesEvent {
   @override
   int get hashCode => Object.hash(runtimeType, udpID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActivityReviewSalesDataEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetActivitySalesEventImplCopyWith<_$GetActivitySalesEventImpl>
@@ -213,7 +220,10 @@ abstract class GetActivitySalesEvent implements ActivityReviewSalesDataEvent {
       _$GetActivitySalesEventImpl;
 
   String get udpID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ActivityReviewSalesDataEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetActivitySalesEventImplCopyWith<_$GetActivitySalesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -235,6 +245,9 @@ class __$$ClearActivitySalesEventImplCopyWithImpl<$Res>
       _$ClearActivitySalesEventImpl _value,
       $Res Function(_$ClearActivitySalesEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ActivityReviewSalesDataEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -394,6 +407,9 @@ class _$ActivityReviewSalesDataStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ActivityReviewSalesDataState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -416,6 +432,8 @@ class __$$GetActivityReviewSalesDataImplCopyWithImpl<$Res>
       $Res Function(_$GetActivityReviewSalesDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActivityReviewSalesDataState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -454,7 +472,9 @@ class _$GetActivityReviewSalesDataImpl implements GetActivityReviewSalesData {
   @override
   int get hashCode => Object.hash(runtimeType, sales);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActivityReviewSalesDataState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetActivityReviewSalesDataImplCopyWith<_$GetActivityReviewSalesDataImpl>
@@ -538,7 +558,10 @@ abstract class GetActivityReviewSalesData
       _$GetActivityReviewSalesDataImpl;
 
   ActivityReviewSalesModel? get sales;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ActivityReviewSalesDataState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetActivityReviewSalesDataImplCopyWith<_$GetActivityReviewSalesDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -560,6 +583,9 @@ class __$$ActivitySalesFailedStateImplCopyWithImpl<$Res>
       _$ActivitySalesFailedStateImpl _value,
       $Res Function(_$ActivitySalesFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ActivityReviewSalesDataState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

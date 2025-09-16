@@ -82,6 +82,9 @@ class _$CreditNoteDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CreditNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetCreditNoteDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCreditNoteDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreditNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +157,9 @@ class _$GetCreditNoteDetailsEventImpl implements GetCreditNoteDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reqId, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreditNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCreditNoteDetailsEventImplCopyWith<_$GetCreditNoteDetailsEventImpl>
@@ -238,7 +245,10 @@ abstract class GetCreditNoteDetailsEvent implements CreditNoteDetailEvent {
 
   String get reqId;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreditNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCreditNoteDetailsEventImplCopyWith<_$GetCreditNoteDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -260,6 +270,9 @@ class __$$ClearCreditNoteDetailEventImplCopyWithImpl<$Res>
       _$ClearCreditNoteDetailEventImpl _value,
       $Res Function(_$ClearCreditNoteDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -424,6 +437,9 @@ class _$CreditNoteDetailStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CreditNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -446,6 +462,8 @@ class __$$GetCreditNoteDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCreditNoteDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreditNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,7 +512,9 @@ class _$GetCreditNoteDetailStateImpl implements GetCreditNoteDetailState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreditNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCreditNoteDetailStateImplCopyWith<_$GetCreditNoteDetailStateImpl>
@@ -577,7 +597,10 @@ abstract class GetCreditNoteDetailState implements CreditNoteDetailState {
       _$GetCreditNoteDetailStateImpl;
 
   List<CreditNoteDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreditNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCreditNoteDetailStateImplCopyWith<_$GetCreditNoteDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -599,6 +622,9 @@ class __$$CreditNoteDetailFailedStateImplCopyWithImpl<$Res>
       _$CreditNoteDetailFailedStateImpl _value,
       $Res Function(_$CreditNoteDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

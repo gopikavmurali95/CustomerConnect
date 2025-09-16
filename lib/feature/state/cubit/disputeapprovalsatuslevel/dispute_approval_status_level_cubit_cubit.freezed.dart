@@ -94,6 +94,9 @@ class _$DisputeApprovalStatusLevelCubitStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DisputeApprovalStatusLevelCubitState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -116,6 +119,8 @@ class __$$GetDisputeApprovalStatusLevelStateImplCopyWithImpl<$Res>
       $Res Function(_$GetDisputeApprovalStatusLevelStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DisputeApprovalStatusLevelCubitState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,7 +171,9 @@ class _$GetDisputeApprovalStatusLevelStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, statuslevel, isApproval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisputeApprovalStatusLevelCubitState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetDisputeApprovalStatusLevelStateImplCopyWith<
@@ -265,7 +272,10 @@ abstract class GetDisputeApprovalStatusLevelState
 
   DisputeApprovalStatusModel? get statuslevel;
   bool get isApproval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DisputeApprovalStatusLevelCubitState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDisputeApprovalStatusLevelStateImplCopyWith<
           _$GetDisputeApprovalStatusLevelStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -288,6 +298,9 @@ class __$$DisputStatusLevelFailedStateImplCopyWithImpl<$Res>
       _$DisputStatusLevelFailedStateImpl _value,
       $Res Function(_$DisputStatusLevelFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeApprovalStatusLevelCubitState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -416,6 +429,9 @@ class __$$DisputeApprovastatusLoadingStateImplCopyWithImpl<$Res>
       _$DisputeApprovastatusLoadingStateImpl _value,
       $Res Function(_$DisputeApprovastatusLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeApprovalStatusLevelCubitState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

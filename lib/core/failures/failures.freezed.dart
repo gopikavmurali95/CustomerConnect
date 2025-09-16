@@ -78,6 +78,9 @@ class _$MainFailuresCopyWithImpl<$Res, $Val extends MainFailures>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MainFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,9 @@ class __$$ClientfailureImplCopyWithImpl<$Res>
   __$$ClientfailureImplCopyWithImpl(
       _$ClientfailureImpl _value, $Res Function(_$ClientfailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MainFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -202,6 +208,9 @@ class __$$ServerfailureImplCopyWithImpl<$Res>
   __$$ServerfailureImplCopyWithImpl(
       _$ServerfailureImpl _value, $Res Function(_$ServerfailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MainFailures
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -313,6 +322,8 @@ class __$$NetworkerrorImplCopyWithImpl<$Res>
       _$NetworkerrorImpl _value, $Res Function(_$NetworkerrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MainFailures
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -351,7 +362,9 @@ class _$NetworkerrorImpl implements Networkerror {
   @override
   int get hashCode => Object.hash(runtimeType, error);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MainFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NetworkerrorImplCopyWith<_$NetworkerrorImpl> get copyWith =>
@@ -431,7 +444,10 @@ abstract class Networkerror implements MainFailures {
       _$NetworkerrorImpl;
 
   String get error;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MainFailures
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NetworkerrorImplCopyWith<_$NetworkerrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

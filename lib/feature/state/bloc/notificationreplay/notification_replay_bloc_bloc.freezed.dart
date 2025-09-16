@@ -76,6 +76,9 @@ class _$NotificationReplayBlocEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NotificationReplayBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$SendNotiReplayEventImplCopyWithImpl<$Res>
       $Res Function(_$SendNotiReplayEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationReplayBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +139,9 @@ class _$SendNotiReplayEventImpl implements SendNotiReplayEvent {
   @override
   int get hashCode => Object.hash(runtimeType, replay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationReplayBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SendNotiReplayEventImplCopyWith<_$SendNotiReplayEventImpl> get copyWith =>
@@ -211,7 +218,10 @@ abstract class SendNotiReplayEvent implements NotificationReplayBlocEvent {
       _$SendNotiReplayEventImpl;
 
   NotificationReplayInModel get replay;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotificationReplayBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendNotiReplayEventImplCopyWith<_$SendNotiReplayEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -231,6 +241,9 @@ class __$$ClearNotiReplayStateImplCopyWithImpl<$Res>
   __$$ClearNotiReplayStateImplCopyWithImpl(_$ClearNotiReplayStateImpl _value,
       $Res Function(_$ClearNotiReplayStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NotificationReplayBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -384,6 +397,9 @@ class _$NotificationReplayBlocStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NotificationReplayBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -404,6 +420,8 @@ class __$$SendNotiReplayStateImplCopyWithImpl<$Res>
       $Res Function(_$SendNotiReplayStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationReplayBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -442,7 +460,9 @@ class _$SendNotiReplayStateImpl implements SendNotiReplayState {
   @override
   int get hashCode => Object.hash(runtimeType, replay);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationReplayBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SendNotiReplayStateImplCopyWith<_$SendNotiReplayStateImpl> get copyWith =>
@@ -520,7 +540,10 @@ abstract class SendNotiReplayState implements NotificationReplayBlocState {
       _$SendNotiReplayStateImpl;
 
   NotificationReplayOutModel? get replay;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotificationReplayBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendNotiReplayStateImplCopyWith<_$SendNotiReplayStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -541,6 +564,9 @@ class __$$NotiReplayFailedStateImplCopyWithImpl<$Res>
   __$$NotiReplayFailedStateImplCopyWithImpl(_$NotiReplayFailedStateImpl _value,
       $Res Function(_$NotiReplayFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NotificationReplayBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

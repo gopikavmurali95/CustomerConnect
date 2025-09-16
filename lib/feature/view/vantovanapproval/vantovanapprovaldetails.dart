@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -17,7 +19,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class VanToVanApprovalDetails extends StatefulWidget {
   final LoginUserModel user;
@@ -798,7 +800,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                       children: [
                                                                         Radio(
                                                                           fillColor:
-                                                                              MaterialStateProperty.resolveWith<Color>((states) {
+                                                                              WidgetStateProperty.resolveWith<Color>((states) {
                                                                             return (statuslist[index] == true)
                                                                                 ? Colors.green.shade300
                                                                                 : Colors.grey;
@@ -872,7 +874,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                   children: [
                                                                     Radio(
                                                                       fillColor:
-                                                                          MaterialStateProperty.resolveWith<Color>(
+                                                                          WidgetStateProperty.resolveWith<Color>(
                                                                               (states) {
                                                                         return (statuslist[index] != null &&
                                                                                 !statuslist[index]!)
@@ -934,7 +936,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                                     children: [
                                                                       Radio(
                                                                         fillColor:
-                                                                            MaterialStateProperty.resolveWith<Color>((states) {
+                                                                            WidgetStateProperty.resolveWith<Color>((states) {
                                                                           return (statuslist[index] == true)
                                                                               ? Colors.green.shade300
                                                                               : Colors.grey;
@@ -966,7 +968,7 @@ class _VanToVanApprovalDetailsState extends State<VanToVanApprovalDetails> {
                                                               child: Row(
                                                                 children: [
                                                                   Radio(
-                                                                    fillColor: MaterialStateProperty.resolveWith<
+                                                                    fillColor: WidgetStateProperty.resolveWith<
                                                                             Color>(
                                                                         (states) {
                                                                       return (statuslist[index] != null &&

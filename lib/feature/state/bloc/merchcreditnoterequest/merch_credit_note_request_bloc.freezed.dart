@@ -87,6 +87,9 @@ class _$MerchCreditNoteRequestEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCreditNoteRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +113,8 @@ class __$$GetMerchCreditNoteRequestEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchCreditNoteRequestEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCreditNoteRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -180,7 +185,9 @@ class _$GetMerchCreditNoteRequestEventImpl
   int get hashCode =>
       Object.hash(runtimeType, fromDate, toDate, status, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCreditNoteRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchCreditNoteRequestEventImplCopyWith<
@@ -279,7 +286,10 @@ abstract class GetMerchCreditNoteRequestEvent
   String get toDate;
   String get status;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCreditNoteRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchCreditNoteRequestEventImplCopyWith<
           _$GetMerchCreditNoteRequestEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -302,6 +312,9 @@ class __$$ClearMerchCreditNoteRequestDataImplCopyWithImpl<$Res>
       _$ClearMerchCreditNoteRequestDataImpl _value,
       $Res Function(_$ClearMerchCreditNoteRequestDataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCreditNoteRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -475,6 +488,9 @@ class _$MerchCreditNoteRequestStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCreditNoteRequestState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -497,6 +513,8 @@ class __$$GetMerchCreditNoteRequestStateImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchCreditNoteRequestStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCreditNoteRequestState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -547,7 +565,9 @@ class _$GetMerchCreditNoteRequestStateImpl
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_creditNoteState));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCreditNoteRequestState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchCreditNoteRequestStateImplCopyWith<
@@ -633,7 +653,10 @@ abstract class GetMerchCreditNoteRequestState
       _$GetMerchCreditNoteRequestStateImpl;
 
   List<MerchCreditNoteRequestModel>? get creditNoteState;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCreditNoteRequestState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchCreditNoteRequestStateImplCopyWith<
           _$GetMerchCreditNoteRequestStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -656,6 +679,9 @@ class __$$MerchCreditRequestFailedImplCopyWithImpl<$Res>
       _$MerchCreditRequestFailedImpl _value,
       $Res Function(_$MerchCreditRequestFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCreditNoteRequestState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

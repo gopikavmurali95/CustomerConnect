@@ -53,7 +53,9 @@ mixin _$PassVisibiltyState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PassVisibiltyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PassVisibiltyStateCopyWith<PassVisibiltyState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -77,6 +79,8 @@ class _$PassVisibiltyStateCopyWithImpl<$Res, $Val extends PassVisibiltyState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PassVisibiltyState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,6 +117,8 @@ class __$$PasswordVisibiltyStatusStateImplCopyWithImpl<$Res>
       $Res Function(_$PasswordVisibiltyStatusStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PassVisibiltyState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +159,9 @@ class _$PasswordVisibiltyStatusStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, isVisible);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PassVisibiltyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PasswordVisibiltyStatusStateImplCopyWith<
@@ -227,8 +235,11 @@ abstract class PasswordVisibiltyStatusState implements PassVisibiltyState {
 
   @override
   bool get isVisible;
+
+  /// Create a copy of PassVisibiltyState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PasswordVisibiltyStatusStateImplCopyWith<
           _$PasswordVisibiltyStatusStateImpl>
       get copyWith => throw _privateConstructorUsedError;

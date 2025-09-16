@@ -78,6 +78,9 @@ class _$OutOfStockItemsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OutOfStockItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,8 @@ class __$$GetOutOfStockItemsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetOutOfStockItemsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutOfStockItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$GetOutOfStockItemsEventImpl implements GetOutOfStockItemsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, searchQuery, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutOfStockItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOutOfStockItemsEventImplCopyWith<_$GetOutOfStockItemsEventImpl>
@@ -243,7 +250,10 @@ abstract class GetOutOfStockItemsEvent implements OutOfStockItemsEvent {
   String get searchQuery;
   String get fromDate;
   String get toDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OutOfStockItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOutOfStockItemsEventImplCopyWith<_$GetOutOfStockItemsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -262,6 +272,9 @@ class __$$ClearOutOfStockItemsImplCopyWithImpl<$Res>
   __$$ClearOutOfStockItemsImplCopyWithImpl(_$ClearOutOfStockItemsImpl _value,
       $Res Function(_$ClearOutOfStockItemsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OutOfStockItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -422,6 +435,9 @@ class _$OutOfStockItemsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OutOfStockItemsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -444,6 +460,8 @@ class __$$GetOutOfSockItemsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetOutOfSockItemsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutOfStockItemsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -492,7 +510,9 @@ class _$GetOutOfSockItemsStateImpl implements GetOutOfSockItemsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutOfStockItemsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOutOfSockItemsStateImplCopyWith<_$GetOutOfSockItemsStateImpl>
@@ -575,7 +595,10 @@ abstract class GetOutOfSockItemsState implements OutOfStockItemsState {
       _$GetOutOfSockItemsStateImpl;
 
   List<OutOfStockItemsModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OutOfStockItemsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOutOfSockItemsStateImplCopyWith<_$GetOutOfSockItemsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -597,6 +620,9 @@ class __$$OutOfStockItemsFailedStateImplCopyWithImpl<$Res>
       _$OutOfStockItemsFailedStateImpl _value,
       $Res Function(_$OutOfStockItemsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OutOfStockItemsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

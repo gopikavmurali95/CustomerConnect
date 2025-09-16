@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/view/PickingDetail/widgets/completed_detail.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../constants/fonts.dart';
 import '../../data/models/picking_header_model/PickingOutModel.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickingCompleted extends StatefulWidget {
   final PickingOutModel picking;
@@ -79,6 +79,7 @@ class _PickingCompletedState extends State<PickingCompleted> {
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: const [
                           BoxShadow(
+                              // ignore: use_full_hex_values_for_flutter_colors
                               color: Color(0xff00000050),
                               blurRadius: 0.4,
                               spreadRadius: 0.4)

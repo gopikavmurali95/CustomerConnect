@@ -78,6 +78,9 @@ class _$ReturnApprovalHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ReturnApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,8 @@ class __$$GetReturnApprovalHeadersImplCopyWithImpl<$Res>
       $Res Function(_$GetReturnApprovalHeadersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReturnApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,7 +161,9 @@ class _$GetReturnApprovalHeadersImpl implements GetReturnApprovalHeaders {
   @override
   int get hashCode => Object.hash(runtimeType, rotID, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReturnApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetReturnApprovalHeadersImplCopyWith<_$GetReturnApprovalHeadersImpl>
@@ -240,7 +247,10 @@ abstract class GetReturnApprovalHeaders implements ReturnApprovalHeaderEvent {
   String get rotID;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReturnApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetReturnApprovalHeadersImplCopyWith<_$GetReturnApprovalHeadersImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -262,6 +272,9 @@ class __$$ClearReturnHeaderStateImplCopyWithImpl<$Res>
       _$ClearReturnHeaderStateImpl _value,
       $Res Function(_$ClearReturnHeaderStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ReturnApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -422,6 +435,9 @@ class _$ReturnApprovalHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ReturnApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -444,6 +460,8 @@ class __$$GetReturnApprovalHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetReturnApprovalHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReturnApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -493,7 +511,9 @@ class _$GetReturnApprovalHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReturnApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetReturnApprovalHeadersStateImplCopyWith<
@@ -578,7 +598,10 @@ abstract class GetReturnApprovalHeadersState
       _$GetReturnApprovalHeadersStateImpl;
 
   List<ReturnApprovalHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReturnApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetReturnApprovalHeadersStateImplCopyWith<
           _$GetReturnApprovalHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -601,6 +624,9 @@ class __$$ReturnHeaderFailedstateImplCopyWithImpl<$Res>
       _$ReturnHeaderFailedstateImpl _value,
       $Res Function(_$ReturnHeaderFailedstateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ReturnApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -77,6 +77,9 @@ class _$NotificationListingEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NotificationListingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$GetUserNotificationsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetUserNotificationsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationListingEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +142,9 @@ class _$GetUserNotificationsEventImpl implements GetUserNotificationsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationListingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetUserNotificationsEventImplCopyWith<_$GetUserNotificationsEventImpl>
@@ -216,7 +223,10 @@ abstract class GetUserNotificationsEvent implements NotificationListingEvent {
       _$GetUserNotificationsEventImpl;
 
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotificationListingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetUserNotificationsEventImplCopyWith<_$GetUserNotificationsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -238,6 +248,9 @@ class __$$ClearNotifcationsEventImplCopyWithImpl<$Res>
       _$ClearNotifcationsEventImpl _value,
       $Res Function(_$ClearNotifcationsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NotificationListingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -399,6 +412,9 @@ class _$NotificationListingStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of NotificationListingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -421,6 +437,8 @@ class __$$GetUserNotificationsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetUserNotificationsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationListingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -470,7 +488,9 @@ class _$GetUserNotificationsStateImpl implements GetUserNotificationsState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_notifications));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationListingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetUserNotificationsStateImplCopyWith<_$GetUserNotificationsStateImpl>
@@ -555,7 +575,10 @@ abstract class GetUserNotificationsState implements NotificationListingState {
       _$GetUserNotificationsStateImpl;
 
   List<UserNotificationModel>? get notifications;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotificationListingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetUserNotificationsStateImplCopyWith<_$GetUserNotificationsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -577,6 +600,9 @@ class __$$GetNotificationFailedStateImplCopyWithImpl<$Res>
       _$GetNotificationFailedStateImpl _value,
       $Res Function(_$GetNotificationFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of NotificationListingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

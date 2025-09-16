@@ -7,6 +7,7 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/view/load/load_completed.dart';
 import 'package:customer_connect/feature/view/load/load_pending.dart';
 import 'package:customer_connect/feature/view/load/load_rejected.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,6 @@ import '../../../../constants/fonts.dart';
 import '../../PickingHeader/pick_completed.dart';
 import '../../PickingHeader/pick_ongoing.dart';
 import '../../PickingHeader/pick_not_started_header.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PickingWidget extends StatelessWidget {
   final LoginUserModel user;

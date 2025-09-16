@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -9,12 +11,12 @@ import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/cus
 import 'package:customer_connect/feature/view/cusinsighassignmentgroup/cusinsighassignmentgroup.dart';
 import 'package:customer_connect/feature/view/cusinsightqualificationgroup/cusinsightqualificationgroup.dart';
 import 'package:customer_connect/feature/view/custinsightpromotion/widget/cusinsightpromotiondetlist.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustInsightPromotionDetails extends StatefulWidget {
   final LoginUserModel user;

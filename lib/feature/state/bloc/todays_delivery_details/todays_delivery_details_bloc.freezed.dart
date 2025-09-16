@@ -81,6 +81,9 @@ class _$TodaysDeliveryDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TodaysDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,8 @@ class __$$GetTodaysDeliveryDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTodaysDeliveryDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TodaysDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +157,9 @@ class _$GetTodaysDeliveryDetailsEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, id, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TodaysDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTodaysDeliveryDetailsEventImplCopyWith<
@@ -238,7 +245,10 @@ abstract class GetTodaysDeliveryDetailsEvent
 
   String get id;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TodaysDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTodaysDeliveryDetailsEventImplCopyWith<
           _$GetTodaysDeliveryDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -261,6 +271,9 @@ class __$$ClearTodasDeliveryDetailsImplCopyWithImpl<$Res>
       _$ClearTodasDeliveryDetailsImpl _value,
       $Res Function(_$ClearTodasDeliveryDetailsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TodaysDeliveryDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -424,6 +437,9 @@ class _$TodaysDeliveryDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TodaysDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -446,6 +462,8 @@ class __$$GetTodaysDeliveryDetailsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTodaysDeliveryDetailsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TodaysDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -496,7 +514,9 @@ class _$GetTodaysDeliveryDetailsStateImpl
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_deliverydet));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TodaysDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTodaysDeliveryDetailsStateImplCopyWith<
@@ -581,7 +601,10 @@ abstract class GetTodaysDeliveryDetailsState
       _$GetTodaysDeliveryDetailsStateImpl;
 
   List<TodaysDeliveryDetailsModel>? get deliverydet;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TodaysDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTodaysDeliveryDetailsStateImplCopyWith<
           _$GetTodaysDeliveryDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -604,6 +627,9 @@ class __$$TodaysDeliveryFailedStateImplCopyWithImpl<$Res>
       _$TodaysDeliveryFailedStateImpl _value,
       $Res Function(_$TodaysDeliveryFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TodaysDeliveryDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

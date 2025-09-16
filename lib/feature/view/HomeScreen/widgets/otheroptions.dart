@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -13,12 +15,12 @@ import 'package:customer_connect/feature/view/merchandising/merchandising.dart';
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/promotions/promotionsheader.dart';
 import 'package:customer_connect/feature/view/target/targetheaderscreen.dart';
-import 'package:customer_connect/feature/view/tracking/trackingscreen.dart';
+import 'package:customer_connect/feature/view/tracking/webview.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OtherOptionsHomeWidget extends StatelessWidget {
   final LoginUserModel user;
@@ -183,11 +185,15 @@ class OtherOptionsHomeWidget extends StatelessWidget {
                         context,
                         Platform.isIOS
                             ? CupertinoPageRoute(
-                                builder: (context) =>
-                                    const TrackSalesManScreen())
+                                builder: (context) => const WebViewScreen(
+                                      url:
+                                          'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250912',
+                                    ))
                             : CupertinoPageRoute(
-                                builder: (context) =>
-                                    const TrackSalesManScreen(),
+                                builder: (context) => const WebViewScreen(
+                                  url:
+                                      'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250912',
+                                ),
                               ));
                   },
                   child: Container(

@@ -83,6 +83,9 @@ class _$TargetPackageListEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetPackageListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GetTargetPackageListEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetPackageListEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetPackageListEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -174,7 +179,9 @@ class _$GetTargetPackageListEventImpl implements GetTargetPackageListEvent {
   int get hashCode =>
       Object.hash(runtimeType, pkgID, fromDate, rotID, serachQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetPackageListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetPackageListEventImplCopyWith<_$GetTargetPackageListEventImpl>
@@ -265,7 +272,10 @@ abstract class GetTargetPackageListEvent implements TargetPackageListEvent {
   String get fromDate;
   String get rotID;
   String get serachQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetPackageListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetPackageListEventImplCopyWith<_$GetTargetPackageListEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -287,6 +297,9 @@ class __$$ClearTargetPackageListImplCopyWithImpl<$Res>
       _$ClearTargetPackageListImpl _value,
       $Res Function(_$ClearTargetPackageListImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetPackageListEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -452,6 +465,9 @@ class _$TargetPackageListStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetPackageListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -474,6 +490,8 @@ class __$$GetTargetPackageListStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetPackageListStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetPackageListState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -524,7 +542,9 @@ class _$GetTargetPackageListStateImpl implements GetTargetPackageListState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_targetPackageData));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetPackageListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetPackageListStateImplCopyWith<_$GetTargetPackageListStateImpl>
@@ -607,7 +627,10 @@ abstract class GetTargetPackageListState implements TargetPackageListState {
       _$GetTargetPackageListStateImpl;
 
   List<TargetPackageListModel>? get targetPackageData;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetPackageListState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetPackageListStateImplCopyWith<_$GetTargetPackageListStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -629,6 +652,9 @@ class __$$TargetPackageListFailureImplCopyWithImpl<$Res>
       _$TargetPackageListFailureImpl _value,
       $Res Function(_$TargetPackageListFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetPackageListState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

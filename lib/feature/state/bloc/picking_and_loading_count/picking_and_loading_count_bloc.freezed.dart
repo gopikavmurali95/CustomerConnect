@@ -84,6 +84,9 @@ class _$PickingAndLoadingCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PickingAndLoadingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$PlCountSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$PlCountSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PickingAndLoadingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +147,9 @@ class _$PlCountSuccessEventImpl implements PlCountSuccessEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PickingAndLoadingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlCountSuccessEventImplCopyWith<_$PlCountSuccessEventImpl> get copyWith =>
@@ -226,7 +233,10 @@ abstract class PlCountSuccessEvent implements PickingAndLoadingCountEvent {
       _$PlCountSuccessEventImpl;
 
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PickingAndLoadingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlCountSuccessEventImplCopyWith<_$PlCountSuccessEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -246,6 +256,9 @@ class __$$PlCountFailureEventImplCopyWithImpl<$Res>
   __$$PlCountFailureEventImplCopyWithImpl(_$PlCountFailureEventImpl _value,
       $Res Function(_$PlCountFailureEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PickingAndLoadingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -361,6 +374,9 @@ class __$$ClearPichingAndLoadingCountImplCopyWithImpl<$Res>
       _$ClearPichingAndLoadingCountImpl _value,
       $Res Function(_$ClearPichingAndLoadingCountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PickingAndLoadingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -524,6 +540,9 @@ class _$PickingAndLoadingCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PickingAndLoadingCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -544,6 +563,8 @@ class __$$PlCountSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$PlCountSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PickingAndLoadingCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -582,7 +603,9 @@ class _$PlCountSuccessStateImpl implements PlCountSuccessState {
   @override
   int get hashCode => Object.hash(runtimeType, plCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PickingAndLoadingCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlCountSuccessStateImplCopyWith<_$PlCountSuccessStateImpl> get copyWith =>
@@ -660,7 +683,10 @@ abstract class PlCountSuccessState implements PickingAndLoadingCountState {
       _$PlCountSuccessStateImpl;
 
   PickingAndLoadinCountsModel? get plCount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PickingAndLoadingCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlCountSuccessStateImplCopyWith<_$PlCountSuccessStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -680,6 +706,9 @@ class __$$PlCountFailedStateImplCopyWithImpl<$Res>
   __$$PlCountFailedStateImplCopyWithImpl(_$PlCountFailedStateImpl _value,
       $Res Function(_$PlCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PickingAndLoadingCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

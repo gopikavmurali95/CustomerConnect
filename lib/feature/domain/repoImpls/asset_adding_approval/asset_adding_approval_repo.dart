@@ -15,11 +15,17 @@ import 'package:injectable/injectable.dart';
 class AssetAddIngApprovalRepo implements IAssetAddApprovalRepo {
   @override
   Future<Either<MainFailures, List<AssetAddRequestHeaderModel>>>
-      getAssetAddApprovalHeaders(String userID) async {
+      getAssetAddApprovalHeaders(String userID, /* String companyCode,
+          String expStartDate, String expEndDate, String currentlevel */) async {
     try {
-      final response = await http.post(
-          Uri.parse(approvalBaseUrl + assetAddRequestHeaderUrl),
-          body: {"UserID": userID});
+      final response = await http
+          .post(Uri.parse(approvalBaseUrl + assetAddRequestHeaderUrl), body: {
+        "UserID": userID,
+        /* "CompanyCode": companyCode,
+        "ExpStartDate": expStartDate,
+        "ExpEndDate": expEndDate,
+        "Currentlevel": currentlevel */
+      });
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final List<dynamic> headerdata = json['result'];
@@ -47,7 +53,7 @@ class AssetAddIngApprovalRepo implements IAssetAddApprovalRepo {
           Uri.parse(approvalBaseUrl + assetAddApprovalUrl),
           body: approve.toJson());
 
-          log(jsonEncode(approve));
+      log(jsonEncode(approve));
 
       if (response.statusCode == 200) {
         log(response.body);

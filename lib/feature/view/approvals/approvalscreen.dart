@@ -29,13 +29,13 @@ import 'package:customer_connect/feature/view/settlementapproval/settlementappro
 import 'package:customer_connect/feature/view/unscheduledvisit/unscheduledvisitappoval.dart';
 import 'package:customer_connect/feature/view/vantovanapproval/vantovanapprovalheader.dart';
 import 'package:customer_connect/feature/view/voidtransaction/voidtransactionheaderscreen.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../materialrequest/materialrequestdetailheader.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ApprovalScreen extends StatelessWidget {
   final LoginUserModel user;
@@ -1981,8 +1981,7 @@ class ApprovalScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ],
-                       visibility: [
+                      ], visibility: [
                         state.when(
                           getCustomerSettingsState: (settings) =>
                               settings?.priceChangeAppr == null ||
@@ -2129,15 +2128,33 @@ class ApprovalScreen extends StatelessWidget {
                         ),
                         state.when(
                           getCustomerSettingsState: (settings) =>
-                              settings?.settleAppr == null ||
-                                      settings?.settleAppr != 'Y'
+                              settings?.unschvisit == null ||
+                                      settings?.unschvisit != 'Y'
                                   ? false
                                   : true,
                           customerSettingsFailedState: () => true,
                         ),
-                        true,
-                        true,
-                        true
+                        state.when(
+                            getCustomerSettingsState: (settings) =>
+                                settings?.cusfoc == null ||
+                                        settings?.cusfoc != 'Y'
+                                    ? false
+                                    : true,
+                            customerSettingsFailedState: () => true),
+                        state.when(
+                            getCustomerSettingsState: (settings) =>
+                                settings?.cusovrride == null ||
+                                        settings?.cusovrride != 'Y'
+                                    ? false
+                                    : true,
+                            customerSettingsFailedState: () => true),
+                        state.when(
+                            getCustomerSettingsState: (settings) =>
+                                settings?.freesample == null ||
+                                        settings?.freesample != 'Y'
+                                    ? false
+                                    : true,
+                            customerSettingsFailedState: () => true),
                       ]);
                     },
                   )),

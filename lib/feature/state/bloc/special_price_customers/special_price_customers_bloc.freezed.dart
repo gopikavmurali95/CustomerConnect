@@ -86,6 +86,9 @@ class _$SpecialPriceCustomersEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpecialPriceCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +112,8 @@ class __$$GetSpecialPriceCustomersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSpecialPriceCustomersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpecialPriceCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,7 +184,9 @@ class _$GetSpecialPriceCustomersEventImpl
   int get hashCode =>
       Object.hash(runtimeType, userID, fromDate, todate, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpecialPriceCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSpecialPriceCustomersEventImplCopyWith<
@@ -276,7 +283,10 @@ abstract class GetSpecialPriceCustomersEvent
   String get fromDate;
   String get todate;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpecialPriceCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSpecialPriceCustomersEventImplCopyWith<
           _$GetSpecialPriceCustomersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -299,6 +309,9 @@ class __$$ClearSpecialPriceCustomerImplCopyWithImpl<$Res>
       _$ClearSpecialPriceCustomerImpl _value,
       $Res Function(_$ClearSpecialPriceCustomerImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpecialPriceCustomersEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -469,6 +482,9 @@ class _$SpecialPriceCustomersStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpecialPriceCustomersState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -491,6 +507,8 @@ class __$$GetSpecialPriceCustomersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSpecialPriceCustomersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpecialPriceCustomersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -541,7 +559,9 @@ class _$GetSpecialPriceCustomersStateImpl
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_spCustomers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpecialPriceCustomersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSpecialPriceCustomersStateImplCopyWith<
@@ -628,7 +648,10 @@ abstract class GetSpecialPriceCustomersState
       _$GetSpecialPriceCustomersStateImpl;
 
   List<SpecialPriceCustomerModel>? get spCustomers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpecialPriceCustomersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSpecialPriceCustomersStateImplCopyWith<
           _$GetSpecialPriceCustomersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -651,6 +674,9 @@ class __$$SpecialPriceCustomersFailedStateImplCopyWithImpl<$Res>
       _$SpecialPriceCustomersFailedStateImpl _value,
       $Res Function(_$SpecialPriceCustomersFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpecialPriceCustomersState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

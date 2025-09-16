@@ -77,6 +77,9 @@ class _$MustSellHeaderEventCopyWithImpl<$Res, $Val extends MustSellHeaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MustSellHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$GetMustSellHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMustSellHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MustSellHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +152,9 @@ class _$GetMustSellHeadersEventImpl implements GetMustSellHeadersEvent {
   @override
   int get hashCode => Object.hash(runtimeType, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MustSellHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMustSellHeadersEventImplCopyWith<_$GetMustSellHeadersEventImpl>
@@ -229,7 +236,10 @@ abstract class GetMustSellHeadersEvent implements MustSellHeaderEvent {
 
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MustSellHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMustSellHeadersEventImplCopyWith<_$GetMustSellHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -251,6 +261,9 @@ class __$$ClearMustSellHeadersEventImplCopyWithImpl<$Res>
       _$ClearMustSellHeadersEventImpl _value,
       $Res Function(_$ClearMustSellHeadersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MustSellHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -410,6 +423,9 @@ class _$MustSellHeaderStateCopyWithImpl<$Res, $Val extends MustSellHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MustSellHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -432,6 +448,8 @@ class __$$GetMustsellHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetMustsellHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MustSellHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -480,7 +498,9 @@ class _$GetMustsellHeadersStateImpl implements GetMustsellHeadersState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MustSellHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMustsellHeadersStateImplCopyWith<_$GetMustsellHeadersStateImpl>
@@ -563,7 +583,10 @@ abstract class GetMustsellHeadersState implements MustSellHeaderState {
       _$GetMustsellHeadersStateImpl;
 
   List<MustSellHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MustSellHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMustsellHeadersStateImplCopyWith<_$GetMustsellHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -585,6 +608,9 @@ class __$$MustSellHeadersFailedStateImplCopyWithImpl<$Res>
       _$MustSellHeadersFailedStateImpl _value,
       $Res Function(_$MustSellHeadersFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MustSellHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

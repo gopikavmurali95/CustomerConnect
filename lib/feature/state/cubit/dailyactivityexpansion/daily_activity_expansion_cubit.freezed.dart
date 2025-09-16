@@ -51,7 +51,9 @@ mixin _$DailyActivityExpansionState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DailyActivityExpansionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DailyActivityExpansionStateCopyWith<DailyActivityExpansionState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -78,6 +80,8 @@ class _$DailyActivityExpansionStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DailyActivityExpansionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +118,8 @@ class __$$ExpandedContainersStateImplCopyWithImpl<$Res>
       $Res Function(_$ExpandedContainersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DailyActivityExpansionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,7 +166,9 @@ class _$ExpandedContainersStateImpl implements ExpandedContainersState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_expandedList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DailyActivityExpansionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExpandedContainersStateImplCopyWith<_$ExpandedContainersStateImpl>
@@ -231,8 +239,11 @@ abstract class ExpandedContainersState implements DailyActivityExpansionState {
 
   @override
   List<bool> get expandedList;
+
+  /// Create a copy of DailyActivityExpansionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExpandedContainersStateImplCopyWith<_$ExpandedContainersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

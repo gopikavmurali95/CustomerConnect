@@ -85,6 +85,9 @@ class _$SalesOrderCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SalesOrderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +110,8 @@ class __$$SalesOrderCountSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$SalesOrderCountSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SalesOrderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +150,9 @@ class _$SalesOrderCountSuccessEventImpl implements SalesOrderCountSuccessEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SalesOrderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SalesOrderCountSuccessEventImplCopyWith<_$SalesOrderCountSuccessEventImpl>
@@ -232,7 +239,10 @@ abstract class SalesOrderCountSuccessEvent implements SalesOrderCountEvent {
       _$SalesOrderCountSuccessEventImpl;
 
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SalesOrderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SalesOrderCountSuccessEventImplCopyWith<_$SalesOrderCountSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -254,6 +264,9 @@ class __$$SalesOrderCountFailedEventImplCopyWithImpl<$Res>
       _$SalesOrderCountFailedEventImpl _value,
       $Res Function(_$SalesOrderCountFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SalesOrderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -369,6 +382,9 @@ class __$$ClearSalesOrderCountImplCopyWithImpl<$Res>
   __$$ClearSalesOrderCountImplCopyWithImpl(_$ClearSalesOrderCountImpl _value,
       $Res Function(_$ClearSalesOrderCountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SalesOrderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -538,6 +554,9 @@ class _$SalesOrderCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SalesOrderCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -560,6 +579,8 @@ class __$$SalesOrderCountSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$SalesOrderCountSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SalesOrderCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -599,7 +620,9 @@ class _$SalesOrderCountSuccessStateImpl implements SalesOrderCountSuccessState {
   @override
   int get hashCode => Object.hash(runtimeType, salesord);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SalesOrderCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SalesOrderCountSuccessStateImplCopyWith<_$SalesOrderCountSuccessStateImpl>
@@ -684,7 +707,10 @@ abstract class SalesOrderCountSuccessState implements SalesOrderCountState {
       _$SalesOrderCountSuccessStateImpl;
 
   SalesOderCountModel? get salesord;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SalesOrderCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SalesOrderCountSuccessStateImplCopyWith<_$SalesOrderCountSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -706,6 +732,9 @@ class __$$SalesOrderCountFailedStateImplCopyWithImpl<$Res>
       _$SalesOrderCountFailedStateImpl _value,
       $Res Function(_$SalesOrderCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SalesOrderCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

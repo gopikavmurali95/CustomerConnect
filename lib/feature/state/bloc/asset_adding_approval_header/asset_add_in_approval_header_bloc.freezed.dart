@@ -84,6 +84,9 @@ class _$AssetAddInApprovalHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetAddInApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetallAssetAddingRequestHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetallAssetAddingRequestHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetAddInApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,6 +139,10 @@ class _$GetallAssetAddingRequestHeadersEventImpl
 
   @override
   final String userId;
+/* required String companyCode,
+      required String expStartDate,
+      required String expEndDate,
+      required String currentlevel, */
   @override
   final String searchQuery;
 
@@ -155,7 +164,9 @@ class _$GetallAssetAddingRequestHeadersEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, userId, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetAddInApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetallAssetAddingRequestHeadersEventImplCopyWith<
@@ -241,9 +252,16 @@ abstract class GetallAssetAddingRequestHeadersEvent
           {required final String userId, required final String searchQuery}) =
       _$GetallAssetAddingRequestHeadersEventImpl;
 
-  String get userId;
+  String
+      get userId; /* required String companyCode,
+      required String expStartDate,
+      required String expEndDate,
+      required String currentlevel, */
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetAddInApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetallAssetAddingRequestHeadersEventImplCopyWith<
           _$GetallAssetAddingRequestHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,6 +284,9 @@ class __$$ClearAllRequestHeadersStateImplCopyWithImpl<$Res>
       _$ClearAllRequestHeadersStateImpl _value,
       $Res Function(_$ClearAllRequestHeadersStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetAddInApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -436,6 +457,9 @@ class _$AssetAddInApprovalHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetAddInApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -458,6 +482,8 @@ class __$$GetAllAssetAddingHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetAllAssetAddingHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetAddInApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -507,7 +533,9 @@ class _$GetAllAssetAddingHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetAddInApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllAssetAddingHeadersStateImplCopyWith<
@@ -594,7 +622,10 @@ abstract class GetAllAssetAddingHeadersState
       _$GetAllAssetAddingHeadersStateImpl;
 
   List<AssetAddRequestHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetAddInApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllAssetAddingHeadersStateImplCopyWith<
           _$GetAllAssetAddingHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -617,6 +648,9 @@ class __$$AssetAddingHeaderFailedStateImplCopyWithImpl<$Res>
       _$AssetAddingHeaderFailedStateImpl _value,
       $Res Function(_$AssetAddingHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetAddInApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -76,6 +76,9 @@ class _$CusSalesOrdersEventCopyWithImpl<$Res, $Val extends CusSalesOrdersEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusSalesOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$GetSalesOrdersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSalesOrdersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusSalesOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +148,9 @@ class _$GetSalesOrdersEventImpl implements GetSalesOrdersEvent {
   @override
   int get hashCode => Object.hash(runtimeType, salesIn, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusSalesOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSalesOrdersEventImplCopyWith<_$GetSalesOrdersEventImpl> get copyWith =>
@@ -224,7 +231,10 @@ abstract class GetSalesOrdersEvent implements CusSalesOrdersEvent {
 
   SalesOrdersInModel get salesIn;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusSalesOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSalesOrdersEventImplCopyWith<_$GetSalesOrdersEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -244,6 +254,9 @@ class __$$ClearsalesOrdersEventImplCopyWithImpl<$Res>
   __$$ClearsalesOrdersEventImplCopyWithImpl(_$ClearsalesOrdersEventImpl _value,
       $Res Function(_$ClearsalesOrdersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusSalesOrdersEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +410,9 @@ class _$CusSalesOrdersStateCopyWithImpl<$Res, $Val extends CusSalesOrdersState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusSalesOrdersState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -416,6 +432,8 @@ class __$$GetsalesOrdersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetsalesOrdersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusSalesOrdersState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -464,7 +482,9 @@ class _$GetsalesOrdersStateImpl implements GetsalesOrdersState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_orders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusSalesOrdersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetsalesOrdersStateImplCopyWith<_$GetsalesOrdersStateImpl> get copyWith =>
@@ -542,7 +562,10 @@ abstract class GetsalesOrdersState implements CusSalesOrdersState {
       _$GetsalesOrdersStateImpl;
 
   List<SalesOrdersModel>? get orders;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusSalesOrdersState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetsalesOrdersStateImplCopyWith<_$GetsalesOrdersStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -564,6 +587,9 @@ class __$$SalesOrdersFailedStateImplCopyWithImpl<$Res>
       _$SalesOrdersFailedStateImpl _value,
       $Res Function(_$SalesOrdersFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusSalesOrdersState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

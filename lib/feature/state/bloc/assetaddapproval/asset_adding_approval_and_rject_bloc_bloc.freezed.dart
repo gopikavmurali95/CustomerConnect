@@ -89,6 +89,9 @@ class _$AssetAddingApprovalAndRjectBlocEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -111,6 +114,8 @@ class __$$AssetAddingApproveEventImplCopyWithImpl<$Res>
       $Res Function(_$AssetAddingApproveEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetAddingApprovalAndRjectBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +154,9 @@ class _$AssetAddingApproveEventImpl implements AssetAddingApproveEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetAddingApprovalAndRjectBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AssetAddingApproveEventImplCopyWith<_$AssetAddingApproveEventImpl>
@@ -240,7 +247,10 @@ abstract class AssetAddingApproveEvent
       _$AssetAddingApproveEventImpl;
 
   AssetAddApprovalInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AssetAddingApproveEventImplCopyWith<_$AssetAddingApproveEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -262,6 +272,9 @@ class __$$AddAssetAddingApproveLoadingEventImplCopyWithImpl<$Res>
       _$AddAssetAddingApproveLoadingEventImpl _value,
       $Res Function(_$AddAssetAddingApproveLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -385,6 +398,9 @@ class __$$ClearAssetAddingApprovalEventImplCopyWithImpl<$Res>
       _$ClearAssetAddingApprovalEventImpl _value,
       $Res Function(_$ClearAssetAddingApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -568,6 +584,9 @@ class _$AssetAddingApprovalAndRjectBlocStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -590,6 +609,8 @@ class __$$AssetAddingApprovalStatesImplCopyWithImpl<$Res>
       $Res Function(_$AssetAddingApprovalStatesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetAddingApprovalAndRjectBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -639,7 +660,9 @@ class _$AssetAddingApprovalStatesImpl implements AssetAddingApprovalStates {
   @override
   int get hashCode => Object.hash(runtimeType, response, isApproval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetAddingApprovalAndRjectBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AssetAddingApprovalStatesImplCopyWith<_$AssetAddingApprovalStatesImpl>
@@ -733,7 +756,10 @@ abstract class AssetAddingApprovalStates
 
   AssetAddRespOutModel? get response;
   bool get isApproval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AssetAddingApprovalStatesImplCopyWith<_$AssetAddingApprovalStatesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -755,6 +781,9 @@ class __$$AssetAddingApprovalFailedStateImplCopyWithImpl<$Res>
       _$AssetAddingApprovalFailedStateImpl _value,
       $Res Function(_$AssetAddingApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -880,6 +909,9 @@ class __$$AssetAddingApprovalLoadingStateImplCopyWithImpl<$Res>
       _$AssetAddingApprovalLoadingStateImpl _value,
       $Res Function(_$AssetAddingApprovalLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetAddingApprovalAndRjectBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/state/bloc/targetheadercount/target_header_count_bloc.dart';
 import 'package:customer_connect/feature/view/target/widgets/lineartargetchart.dart';
@@ -5,7 +7,7 @@ import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class TargetGraphWidget extends StatefulWidget {
   const TargetGraphWidget({
@@ -143,7 +145,7 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                     ),
                                     ConstrainedBox(
                                       constraints: BoxConstraints(
-                                        minWidth: 50.w,
+                                        minWidth: 70.w,
                                         maxWidth: double.infinity,
                                       ),
                                       child: CustomProgressBar(
@@ -370,9 +372,9 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                     SizedBox(
                                       height: 8.h,
                                     ),
-                                    ConstrainedBox(
+                                    /* ConstrainedBox(
                                       constraints: BoxConstraints(
-                                        minWidth: 50.w,
+                                        minWidth: 70.w,
                                         maxWidth: double.infinity,
                                       ),
                                       child: CustomProgressBar(
@@ -389,6 +391,30 @@ class _TargetGraphWidgetState extends State<TargetGraphWidget> {
                                           achievedAmount:
                                               double.parse((count.totalAchQty ?? '').replaceAll(',', '')),
                                           colors: containerGradients[1][1]),
+                                    ), */
+                                    ConstrainedBox(
+                                      constraints: BoxConstraints(
+                                        minWidth: 50.w,
+                                        maxWidth: 90.w,
+                                      ),
+                                      child: CustomProgressBar(
+                                        targetAmount: double.parse(
+                                                    (count.totalAchQty ?? '')
+                                                        .replaceAll(',', '')) >
+                                                double.parse(
+                                                    (count.totalTargetQty ?? '')
+                                                        .replaceAll(',', ''))
+                                            ? double.parse(
+                                                (count.totalAchQty ?? '')
+                                                    .replaceAll(',', ''))
+                                            : double.parse(
+                                                (count.totalAchQty ?? '')
+                                                    .replaceAll(',', '')),
+                                        achievedAmount: double.parse(
+                                            (count.totalAchQty ?? '')
+                                                .replaceAll(',', '')),
+                                        colors: containerGradients[1][2],
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 3.5.h,

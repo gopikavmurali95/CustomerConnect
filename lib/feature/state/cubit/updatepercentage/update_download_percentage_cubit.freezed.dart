@@ -51,7 +51,9 @@ mixin _$UpdateDownloadPercentageState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UpdateDownloadPercentageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UpdateDownloadPercentageStateCopyWith<UpdateDownloadPercentageState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -78,6 +80,8 @@ class _$UpdateDownloadPercentageStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UpdateDownloadPercentageState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +118,8 @@ class __$$DownloadPercentageStateImplCopyWithImpl<$Res>
       $Res Function(_$DownloadPercentageStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UpdateDownloadPercentageState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +159,9 @@ class _$DownloadPercentageStateImpl implements DownloadPercentageState {
   @override
   int get hashCode => Object.hash(runtimeType, percentage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UpdateDownloadPercentageState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DownloadPercentageStateImplCopyWith<_$DownloadPercentageStateImpl>
@@ -225,8 +233,11 @@ abstract class DownloadPercentageState
 
   @override
   int get percentage;
+
+  /// Create a copy of UpdateDownloadPercentageState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DownloadPercentageStateImplCopyWith<_$DownloadPercentageStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

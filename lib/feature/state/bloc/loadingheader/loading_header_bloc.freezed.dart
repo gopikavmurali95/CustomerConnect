@@ -78,6 +78,9 @@ class _$LoadingHeaderEventCopyWithImpl<$Res, $Val extends LoadingHeaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetLoadingHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetLoadingHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +152,9 @@ class _$GetLoadingHeaderEventImpl implements GetLoadingHeaderEvent {
   @override
   int get hashCode => Object.hash(runtimeType, loadingin, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetLoadingHeaderEventImplCopyWith<_$GetLoadingHeaderEventImpl>
@@ -230,7 +237,10 @@ abstract class GetLoadingHeaderEvent implements LoadingHeaderEvent {
 
   LoadingHeaderInModel get loadingin;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetLoadingHeaderEventImplCopyWith<_$GetLoadingHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -252,6 +262,9 @@ class __$$ClearLoadingHeadderEventImplCopyWithImpl<$Res>
       _$ClearLoadingHeadderEventImpl _value,
       $Res Function(_$ClearLoadingHeadderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -410,6 +423,9 @@ class _$LoadingHeaderStateCopyWithImpl<$Res, $Val extends LoadingHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -430,6 +446,8 @@ class __$$GetloadingHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetloadingHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -479,7 +497,9 @@ class _$GetloadingHeaderStateImpl implements GetloadingHeaderState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_loadingheaders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetloadingHeaderStateImplCopyWith<_$GetloadingHeaderStateImpl>
@@ -560,7 +580,10 @@ abstract class GetloadingHeaderState implements LoadingHeaderState {
       _$GetloadingHeaderStateImpl;
 
   List<LoadingHeadermodel>? get loadingheaders;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetloadingHeaderStateImplCopyWith<_$GetloadingHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -582,6 +605,9 @@ class __$$LoadingHeaderFailedStateImplCopyWithImpl<$Res>
       _$LoadingHeaderFailedStateImpl _value,
       $Res Function(_$LoadingHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

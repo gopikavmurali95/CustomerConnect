@@ -82,6 +82,9 @@ class _$SchduledReturnHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SchduledReturnHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetAllScheduledReturnHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllScheduledReturnHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SchduledReturnHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +166,9 @@ class _$GetAllScheduledReturnHeadersEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SchduledReturnHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllScheduledReturnHeadersEventImplCopyWith<
@@ -252,7 +259,10 @@ abstract class GetAllScheduledReturnHeadersEvent
   String get userID;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SchduledReturnHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllScheduledReturnHeadersEventImplCopyWith<
           _$GetAllScheduledReturnHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -275,6 +285,9 @@ class __$$ClearScheduledReturnHeadersEventImplCopyWithImpl<$Res>
       _$ClearScheduledReturnHeadersEventImpl _value,
       $Res Function(_$ClearScheduledReturnHeadersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SchduledReturnHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -444,6 +457,9 @@ class _$SchduledReturnHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SchduledReturnHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -466,6 +482,8 @@ class __$$GetScheduledReturnHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetScheduledReturnHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SchduledReturnHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -515,7 +533,9 @@ class _$GetScheduledReturnHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SchduledReturnHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetScheduledReturnHeadersStateImplCopyWith<
@@ -602,7 +622,10 @@ abstract class GetScheduledReturnHeadersState
       _$GetScheduledReturnHeadersStateImpl;
 
   List<SheduledReturnHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SchduledReturnHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetScheduledReturnHeadersStateImplCopyWith<
           _$GetScheduledReturnHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -625,6 +648,9 @@ class __$$ScheduledRetunrHEadersFailedStateImplCopyWithImpl<$Res>
       _$ScheduledRetunrHEadersFailedStateImpl _value,
       $Res Function(_$ScheduledRetunrHEadersFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SchduledReturnHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

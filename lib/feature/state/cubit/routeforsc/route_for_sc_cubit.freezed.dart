@@ -76,6 +76,9 @@ class _$RouteForScStateCopyWithImpl<$Res, $Val extends RouteForScState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RouteForScState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetAllRoutesForScReturnStateImplCopyWithImpl<$Res>
       $Res Function(_$GetAllRoutesForScReturnStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RouteForScState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +152,9 @@ class _$GetAllRoutesForScReturnStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_routes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RouteForScState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllRoutesForScReturnStateImplCopyWith<
@@ -228,7 +235,10 @@ abstract class GetAllRoutesForScReturnState implements RouteForScState {
       _$GetAllRoutesForScReturnStateImpl;
 
   List<RouteModel>? get routes;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RouteForScState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllRoutesForScReturnStateImplCopyWith<
           _$GetAllRoutesForScReturnStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -248,6 +258,9 @@ class __$$GetRoutesFailedStateImplCopyWithImpl<$Res>
   __$$GetRoutesFailedStateImplCopyWithImpl(_$GetRoutesFailedStateImpl _value,
       $Res Function(_$GetRoutesFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RouteForScState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

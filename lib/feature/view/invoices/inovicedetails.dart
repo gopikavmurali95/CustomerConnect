@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/Invoice_details/invoice_deta
 import 'package:customer_connect/feature/state/bloc/invoice_details_footer/invoice_details_footer_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/stampedcopybloc/stamped_copy_bloc.dart';
 import 'package:customer_connect/feature/view/invoices/widgets/invoicedetaillist.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,7 +16,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InvoiceDetailScreen extends StatefulWidget {
   final bool isfromUser;

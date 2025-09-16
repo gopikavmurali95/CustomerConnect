@@ -78,6 +78,9 @@ class _$EditCusProfileEventCopyWithImpl<$Res, $Val extends EditCusProfileEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EditCusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -97,6 +100,8 @@ class __$$EditProfileEventImplCopyWithImpl<$Res>
       $Res Function(_$EditProfileEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditCusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,7 +140,9 @@ class _$EditProfileEventImpl implements EditProfileEvent {
   @override
   int get hashCode => Object.hash(runtimeType, profile);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditCusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EditProfileEventImplCopyWith<_$EditProfileEventImpl> get copyWith =>
@@ -216,7 +223,10 @@ abstract class EditProfileEvent implements EditCusProfileEvent {
       _$EditProfileEventImpl;
 
   EditProfileInModel get profile;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditCusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditProfileEventImplCopyWith<_$EditProfileEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -235,6 +245,9 @@ class __$$ClearEditStateEventImplCopyWithImpl<$Res>
   __$$ClearEditStateEventImplCopyWithImpl(_$ClearEditStateEventImpl _value,
       $Res Function(_$ClearEditStateEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditCusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -344,6 +357,9 @@ class __$$EditLoadingEventImplCopyWithImpl<$Res>
   __$$EditLoadingEventImplCopyWithImpl(_$EditLoadingEventImpl _value,
       $Res Function(_$EditLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditCusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -502,6 +518,9 @@ class _$EditCusProfileStateCopyWithImpl<$Res, $Val extends EditCusProfileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EditCusProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -521,6 +540,8 @@ class __$$EditProfileStateImplCopyWithImpl<$Res>
       $Res Function(_$EditProfileStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditCusProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -559,7 +580,9 @@ class _$EditProfileStateImpl implements EditProfileState {
   @override
   int get hashCode => Object.hash(runtimeType, editrep);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditCusProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EditProfileStateImplCopyWith<_$EditProfileStateImpl> get copyWith =>
@@ -640,7 +663,10 @@ abstract class EditProfileState implements EditCusProfileState {
       {required final EditProfileRespModel? editrep}) = _$EditProfileStateImpl;
 
   EditProfileRespModel? get editrep;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditCusProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditProfileStateImplCopyWith<_$EditProfileStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -659,6 +685,9 @@ class __$$EditFailedStateImplCopyWithImpl<$Res>
   __$$EditFailedStateImplCopyWithImpl(
       _$EditFailedStateImpl _value, $Res Function(_$EditFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditCusProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -767,6 +796,9 @@ class __$$EditLoadingStateImplCopyWithImpl<$Res>
   __$$EditLoadingStateImplCopyWithImpl(_$EditLoadingStateImpl _value,
       $Res Function(_$EditLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditCusProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

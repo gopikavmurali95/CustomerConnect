@@ -84,6 +84,9 @@ class _$SettlementApprovalHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetSettlementApprovalHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSettlementApprovalHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,7 +161,9 @@ class _$GetSettlementApprovalHeaderEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, statusvalue, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSettlementApprovalHeaderEventImplCopyWith<
@@ -245,7 +252,10 @@ abstract class GetSettlementApprovalHeaderEvent
 
   String get statusvalue;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSettlementApprovalHeaderEventImplCopyWith<
           _$GetSettlementApprovalHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -268,6 +278,9 @@ class __$$ClearSettlementApprovalHeaderEventImplCopyWithImpl<$Res>
       _$ClearSettlementApprovalHeaderEventImpl _value,
       $Res Function(_$ClearSettlementApprovalHeaderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementApprovalHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -439,6 +452,9 @@ class _$SettlementApprovalHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -461,6 +477,8 @@ class __$$GetSettlementApprovalHeaderImplCopyWithImpl<$Res>
       $Res Function(_$GetSettlementApprovalHeaderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -509,7 +527,9 @@ class _$GetSettlementApprovalHeaderImpl implements GetSettlementApprovalHeader {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSettlementApprovalHeaderImplCopyWith<_$GetSettlementApprovalHeaderImpl>
@@ -595,7 +615,10 @@ abstract class GetSettlementApprovalHeader
       _$GetSettlementApprovalHeaderImpl;
 
   List<SettlementApprovalHeaderOutModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSettlementApprovalHeaderImplCopyWith<_$GetSettlementApprovalHeaderImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -617,6 +640,9 @@ class __$$SettlementApprovalHeaderFailedStateImplCopyWithImpl<$Res>
       _$SettlementApprovalHeaderFailedStateImpl _value,
       $Res Function(_$SettlementApprovalHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementApprovalHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

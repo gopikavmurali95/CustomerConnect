@@ -5,7 +5,7 @@ import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class SPCustomerList extends StatelessWidget {
   const SPCustomerList({super.key});

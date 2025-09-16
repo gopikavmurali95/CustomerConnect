@@ -75,6 +75,9 @@ class _$SettlementCashDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementCashDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$GetCashDetailEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCashDetailEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementCashDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,7 +138,9 @@ class _$GetCashDetailEventImpl implements GetCashDetailEvent {
   @override
   int get hashCode => Object.hash(runtimeType, udpID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementCashDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCashDetailEventImplCopyWith<_$GetCashDetailEventImpl> get copyWith =>
@@ -209,7 +216,10 @@ abstract class GetCashDetailEvent implements SettlementCashDetailsEvent {
       _$GetCashDetailEventImpl;
 
   String get udpID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementCashDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCashDetailEventImplCopyWith<_$GetCashDetailEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -230,6 +240,9 @@ class __$$ClearCashDetailsEventImplCopyWithImpl<$Res>
   __$$ClearCashDetailsEventImplCopyWithImpl(_$ClearCashDetailsEventImpl _value,
       $Res Function(_$ClearCashDetailsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementCashDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -384,6 +397,9 @@ class _$SettlementCashDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementCashDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -404,6 +420,8 @@ class __$$GetCashDetailsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCashDetailsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementCashDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -442,7 +460,9 @@ class _$GetCashDetailsStateImpl implements GetCashDetailsState {
   @override
   int get hashCode => Object.hash(runtimeType, cash);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementCashDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCashDetailsStateImplCopyWith<_$GetCashDetailsStateImpl> get copyWith =>
@@ -522,7 +542,10 @@ abstract class GetCashDetailsState implements SettlementCashDetailsState {
       _$GetCashDetailsStateImpl;
 
   SettlemetApprovalcashDetailModel? get cash;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementCashDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCashDetailsStateImplCopyWith<_$GetCashDetailsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -543,6 +566,9 @@ class __$$CashDetailFailedStateImplCopyWithImpl<$Res>
   __$$CashDetailFailedStateImplCopyWithImpl(_$CashDetailFailedStateImpl _value,
       $Res Function(_$CashDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementCashDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -84,6 +84,9 @@ class _$InventoryReconfirmHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InventoryReconfirmHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetInventoryReconfirmHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInventoryReconfirmHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InventoryReconfirmHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetInventoryReconfirmHeadersEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InventoryReconfirmHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInventoryReconfirmHeadersEventImplCopyWith<
@@ -243,7 +250,10 @@ abstract class GetInventoryReconfirmHeadersEvent
 
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InventoryReconfirmHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInventoryReconfirmHeadersEventImplCopyWith<
           _$GetInventoryReconfirmHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,6 +276,9 @@ class __$$ClearInventoryReconfirmHeadersImplCopyWithImpl<$Res>
       _$ClearInventoryReconfirmHeadersImpl _value,
       $Res Function(_$ClearInventoryReconfirmHeadersImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +450,9 @@ class _$InventoryReconfirmHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InventoryReconfirmHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -459,6 +475,8 @@ class __$$GetInventoryReconfirmHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetInventoryReconfirmHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InventoryReconfirmHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -508,7 +526,9 @@ class _$GetInventoryReconfirmHeaderStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InventoryReconfirmHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInventoryReconfirmHeaderStateImplCopyWith<
@@ -595,7 +615,10 @@ abstract class GetInventoryReconfirmHeaderState
       _$GetInventoryReconfirmHeaderStateImpl;
 
   List<InventoryReconfirmHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InventoryReconfirmHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInventoryReconfirmHeaderStateImplCopyWith<
           _$GetInventoryReconfirmHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -618,6 +641,9 @@ class __$$InventoryReconfirmheaderFailedStateImplCopyWithImpl<$Res>
       _$InventoryReconfirmheaderFailedStateImpl _value,
       $Res Function(_$InventoryReconfirmheaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

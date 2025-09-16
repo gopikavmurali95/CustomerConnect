@@ -76,6 +76,9 @@ class _$PickingdetailEventCopyWithImpl<$Res, $Val extends PickingdetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PickingdetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$PickingDetailSuccessImplCopyWithImpl<$Res>
       $Res Function(_$PickingDetailSuccessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PickingdetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +149,9 @@ class _$PickingDetailSuccessImpl implements PickingDetailSuccess {
   @override
   int get hashCode => Object.hash(runtimeType, pickingID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PickingdetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PickingDetailSuccessImplCopyWith<_$PickingDetailSuccessImpl>
@@ -226,7 +233,10 @@ abstract class PickingDetailSuccess implements PickingdetailEvent {
 
   String get pickingID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PickingdetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PickingDetailSuccessImplCopyWith<_$PickingDetailSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -248,6 +258,9 @@ class __$$ClearPickingDetaileventImplCopyWithImpl<$Res>
       _$ClearPickingDetaileventImpl _value,
       $Res Function(_$ClearPickingDetaileventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PickingdetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -402,6 +415,9 @@ class _$PickingdetailStateCopyWithImpl<$Res, $Val extends PickingdetailState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PickingdetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -421,6 +437,8 @@ class __$$PickingSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$PickingSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PickingdetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -470,7 +488,9 @@ class _$PickingSuccessStateImpl implements PickingSuccessState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_pdetailList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PickingdetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PickingSuccessStateImplCopyWith<_$PickingSuccessStateImpl> get copyWith =>
@@ -549,7 +569,10 @@ abstract class PickingSuccessState implements PickingdetailState {
       _$PickingSuccessStateImpl;
 
   List<PickingDetailModel>? get pdetailList;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PickingdetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PickingSuccessStateImplCopyWith<_$PickingSuccessStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -568,6 +591,9 @@ class __$$PickingFailedStateImplCopyWithImpl<$Res>
   __$$PickingFailedStateImplCopyWithImpl(_$PickingFailedStateImpl _value,
       $Res Function(_$PickingFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PickingdetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

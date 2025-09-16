@@ -109,6 +109,9 @@ class _$MaterialReqApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -131,6 +134,8 @@ class __$$MaterialReqApprovalSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$MaterialReqApprovalSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,7 +176,9 @@ class _$MaterialReqApprovalSuccessEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, approvalInModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MaterialReqApprovalSuccessEventImplCopyWith<
@@ -285,7 +292,10 @@ abstract class MaterialReqApprovalSuccessEvent
       _$MaterialReqApprovalSuccessEventImpl;
 
   MaterialReqApprovalInModel get approvalInModel;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MaterialReqApprovalSuccessEventImplCopyWith<
           _$MaterialReqApprovalSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -308,6 +318,9 @@ class __$$MaterialReqApprovalLoadingEventImplCopyWithImpl<$Res>
       _$MaterialReqApprovalLoadingEventImpl _value,
       $Res Function(_$MaterialReqApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -456,6 +469,8 @@ class __$$MetarialRequestRejectEventImplCopyWithImpl<$Res>
       $Res Function(_$MetarialRequestRejectEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,7 +509,9 @@ class _$MetarialRequestRejectEventImpl implements MetarialRequestRejectEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reject);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MetarialRequestRejectEventImplCopyWith<_$MetarialRequestRejectEventImpl>
@@ -606,7 +623,10 @@ abstract class MetarialRequestRejectEvent implements MaterialReqApprovalEvent {
       _$MetarialRequestRejectEventImpl;
 
   MaterialReqRejectionInModel get reject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MetarialRequestRejectEventImplCopyWith<_$MetarialRequestRejectEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -628,6 +648,9 @@ class __$$MaterialReqApprovalClearEventImplCopyWithImpl<$Res>
       _$MaterialReqApprovalClearEventImpl _value,
       $Res Function(_$MaterialReqApprovalClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -770,6 +793,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaterialReqApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -971,6 +997,9 @@ class _$MaterialReqApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MaterialReqApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -993,6 +1022,8 @@ class __$$MaterialReqApprovalSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$MaterialReqApprovalSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaterialReqApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1033,7 +1064,9 @@ class _$MaterialReqApprovalSuccessStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, response);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaterialReqApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MaterialReqApprovalSuccessStateImplCopyWith<
@@ -1129,7 +1162,10 @@ abstract class MaterialReqApprovalSuccessState
       _$MaterialReqApprovalSuccessStateImpl;
 
   MaterialReqApprovalOutModel? get response;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaterialReqApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MaterialReqApprovalSuccessStateImplCopyWith<
           _$MaterialReqApprovalSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1152,6 +1188,9 @@ class __$$MaterialReqApprovalFailedStateImplCopyWithImpl<$Res>
       _$MaterialReqApprovalFailedStateImpl _value,
       $Res Function(_$MaterialReqApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaterialReqApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1279,6 +1318,9 @@ class __$$MaterialReqApprovalLoadingStateImplCopyWithImpl<$Res>
       _$MaterialReqApprovalLoadingStateImpl _value,
       $Res Function(_$MaterialReqApprovalLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaterialReqApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

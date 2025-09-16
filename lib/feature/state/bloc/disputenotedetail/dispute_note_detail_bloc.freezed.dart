@@ -82,6 +82,9 @@ class _$DisputeNoteDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DisputeNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetDisputeNoteDetailEventImplCopyWithImpl<$Res>
       $Res Function(_$GetDisputeNoteDetailEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DisputeNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +157,9 @@ class _$GetDisputeNoteDetailEventImpl implements GetDisputeNoteDetailEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reqId, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisputeNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetDisputeNoteDetailEventImplCopyWith<_$GetDisputeNoteDetailEventImpl>
@@ -238,7 +245,10 @@ abstract class GetDisputeNoteDetailEvent implements DisputeNoteDetailEvent {
 
   String get reqId;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DisputeNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDisputeNoteDetailEventImplCopyWith<_$GetDisputeNoteDetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -260,6 +270,9 @@ class __$$ClearDisputeNoteDetailEventImplCopyWithImpl<$Res>
       _$ClearDisputeNoteDetailEventImpl _value,
       $Res Function(_$ClearDisputeNoteDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeNoteDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -427,6 +440,9 @@ class _$DisputeNoteDetailStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DisputeNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -449,6 +465,8 @@ class __$$GetDisputeNoteDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetDisputeNoteDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DisputeNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -497,7 +515,9 @@ class _$GetDisputeNoteDetailStateImpl implements GetDisputeNoteDetailState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisputeNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetDisputeNoteDetailStateImplCopyWith<_$GetDisputeNoteDetailStateImpl>
@@ -582,7 +602,10 @@ abstract class GetDisputeNoteDetailState implements DisputeNoteDetailState {
       _$GetDisputeNoteDetailStateImpl;
 
   List<DisputeNoteDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DisputeNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDisputeNoteDetailStateImplCopyWith<_$GetDisputeNoteDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -604,6 +627,9 @@ class __$$GetdisputenoteDetailFailedStateImplCopyWithImpl<$Res>
       _$GetdisputenoteDetailFailedStateImpl _value,
       $Res Function(_$GetdisputenoteDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeNoteDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

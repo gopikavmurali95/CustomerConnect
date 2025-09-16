@@ -85,6 +85,9 @@ class _$MerchandisingSurveyEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchandisingSurveyEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +111,8 @@ class __$$GetMerchandisingSurveyEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchandisingSurveyEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchandisingSurveyEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,7 +182,9 @@ class _$GetMerchandisingSurveyEventImpl implements GetMerchandisingSurveyEvent {
   int get hashCode =>
       Object.hash(runtimeType, fromDate, toDate, status, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchandisingSurveyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchandisingSurveyEventImplCopyWith<_$GetMerchandisingSurveyEventImpl>
@@ -271,7 +278,10 @@ abstract class GetMerchandisingSurveyEvent implements MerchandisingSurveyEvent {
   String get toDate;
   String get status;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchandisingSurveyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchandisingSurveyEventImplCopyWith<_$GetMerchandisingSurveyEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -293,6 +303,9 @@ class __$$ClearMerchandisingSurveyListImplCopyWithImpl<$Res>
       _$ClearMerchandisingSurveyListImpl _value,
       $Res Function(_$ClearMerchandisingSurveyListImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchandisingSurveyEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -465,6 +478,9 @@ class _$MerchandisingSurveyStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchandisingSurveyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -487,6 +503,8 @@ class __$$GetMerchandisingSurveyStateImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchandisingSurveyStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchandisingSurveyState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -535,7 +553,9 @@ class _$GetMerchandisingSurveyStateImpl implements GetMerchandisingSurveyState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchandisingSurveyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchandisingSurveyStateImplCopyWith<_$GetMerchandisingSurveyStateImpl>
@@ -620,7 +640,10 @@ abstract class GetMerchandisingSurveyState implements MerchandisingSurveyState {
       _$GetMerchandisingSurveyStateImpl;
 
   List<MerchandingSurveyModel>? get data;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchandisingSurveyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchandisingSurveyStateImplCopyWith<_$GetMerchandisingSurveyStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -642,6 +665,9 @@ class __$$GetMerchandisingSurveyFailedStateImplCopyWithImpl<$Res>
       _$GetMerchandisingSurveyFailedStateImpl _value,
       $Res Function(_$GetMerchandisingSurveyFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchandisingSurveyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

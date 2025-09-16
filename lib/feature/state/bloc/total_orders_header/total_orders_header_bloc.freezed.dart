@@ -84,6 +84,9 @@ class _$TotalOrdersHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TotalOrdersHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetTotalOrdersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTotalOrdersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TotalOrdersHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +158,9 @@ class _$GetTotalOrdersEventImpl implements GetTotalOrdersEvent {
   @override
   int get hashCode => Object.hash(runtimeType, ordersin, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TotalOrdersHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTotalOrdersEventImplCopyWith<_$GetTotalOrdersEventImpl> get copyWith =>
@@ -241,7 +248,10 @@ abstract class GetTotalOrdersEvent implements TotalOrdersHeaderEvent {
 
   TotalOrdersInparas get ordersin;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TotalOrdersHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTotalOrdersEventImplCopyWith<_$GetTotalOrdersEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -263,6 +273,9 @@ class __$$TotalOrdersFailedEventImplCopyWithImpl<$Res>
       _$TotalOrdersFailedEventImpl _value,
       $Res Function(_$TotalOrdersFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TotalOrdersHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -379,6 +392,9 @@ class __$$TotalOrdersClearEventImplCopyWithImpl<$Res>
   __$$TotalOrdersClearEventImplCopyWithImpl(_$TotalOrdersClearEventImpl _value,
       $Res Function(_$TotalOrdersClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TotalOrdersHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -540,6 +556,9 @@ class _$TotalOrdersHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TotalOrdersHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -559,6 +578,8 @@ class __$$GetTotalOrderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTotalOrderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TotalOrdersHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -608,7 +629,9 @@ class _$GetTotalOrderStateImpl implements GetTotalOrderState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_totalorders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TotalOrdersHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTotalOrderStateImplCopyWith<_$GetTotalOrderStateImpl> get copyWith =>
@@ -686,7 +709,10 @@ abstract class GetTotalOrderState implements TotalOrdersHeaderState {
       _$GetTotalOrderStateImpl;
 
   List<TotalOrdersModel>? get totalorders;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TotalOrdersHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTotalOrderStateImplCopyWith<_$GetTotalOrderStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -708,6 +734,9 @@ class __$$TotalOrdersFailedStateImplCopyWithImpl<$Res>
       _$TotalOrdersFailedStateImpl _value,
       $Res Function(_$TotalOrdersFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TotalOrdersHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

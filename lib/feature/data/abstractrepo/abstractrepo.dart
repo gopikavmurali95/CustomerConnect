@@ -546,7 +546,7 @@ abstract class IVanToVanApprovalRepo {
 
 abstract class IAssetAddApprovalRepo {
   Future<Either<MainFailures, List<AssetAddRequestHeaderModel>>>
-      getAssetAddApprovalHeaders(String userID);
+      getAssetAddApprovalHeaders(String userID, /* String companyCode, String expStartDate, String expEndDate, String currentlevel */);
 
   Future<Either<MainFailures, AssetAddRespOutModel>> assetAddApproval(
       AssetAddApprovalInModel approve);
@@ -556,7 +556,8 @@ abstract class IAssetAddApprovalRepo {
 
 abstract class IAssetRemovalRequestRepo {
   Future<Either<MainFailures, List<AssetRemovalRequestHeaderModel>>>
-      getAssetRemovalApprovalHeaders(String userID);
+      getAssetRemovalApprovalHeaders(String userID,
+       );
 
   Future<Either<MainFailures, AssetRemovalApproveOutModel>>
       assetRemovalApproval(AssetRemovalApprovalInModel approve);

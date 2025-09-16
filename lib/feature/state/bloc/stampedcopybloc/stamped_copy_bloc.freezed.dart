@@ -80,6 +80,9 @@ class _$StampedCopyEventCopyWithImpl<$Res, $Val extends StampedCopyEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of StampedCopyEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,8 @@ class __$$GenerateStampedCopyEventImplCopyWithImpl<$Res>
       $Res Function(_$GenerateStampedCopyEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StampedCopyEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,7 +144,9 @@ class _$GenerateStampedCopyEventImpl implements GenerateStampedCopyEvent {
   @override
   int get hashCode => Object.hash(runtimeType, invId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StampedCopyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GenerateStampedCopyEventImplCopyWith<_$GenerateStampedCopyEventImpl>
@@ -222,7 +229,10 @@ abstract class GenerateStampedCopyEvent implements StampedCopyEvent {
       _$GenerateStampedCopyEventImpl;
 
   String get invId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StampedCopyEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GenerateStampedCopyEventImplCopyWith<_$GenerateStampedCopyEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -243,6 +253,9 @@ class __$$StampedCopyLoadingEventImplCopyWithImpl<$Res>
       _$StampedCopyLoadingEventImpl _value,
       $Res Function(_$StampedCopyLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StampedCopyEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -354,6 +367,9 @@ class __$$ClearStampedCopyImplCopyWithImpl<$Res>
   __$$ClearStampedCopyImplCopyWithImpl(_$ClearStampedCopyImpl _value,
       $Res Function(_$ClearStampedCopyImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StampedCopyEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -514,6 +530,9 @@ class _$StampedCopyStateCopyWithImpl<$Res, $Val extends StampedCopyState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of StampedCopyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -533,6 +552,8 @@ class __$$GenerateStampedCopyImplCopyWithImpl<$Res>
       $Res Function(_$GenerateStampedCopyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StampedCopyState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -571,7 +592,9 @@ class _$GenerateStampedCopyImpl implements GenerateStampedCopy {
   @override
   int get hashCode => Object.hash(runtimeType, copy);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StampedCopyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GenerateStampedCopyImplCopyWith<_$GenerateStampedCopyImpl> get copyWith =>
@@ -652,7 +675,10 @@ abstract class GenerateStampedCopy implements StampedCopyState {
       _$GenerateStampedCopyImpl;
 
   StampedCopyModel? get copy;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StampedCopyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GenerateStampedCopyImplCopyWith<_$GenerateStampedCopyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -671,6 +697,9 @@ class __$$StampedCopyFailedImplCopyWithImpl<$Res>
   __$$StampedCopyFailedImplCopyWithImpl(_$StampedCopyFailedImpl _value,
       $Res Function(_$StampedCopyFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StampedCopyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -779,6 +808,9 @@ class __$$StampedCopyLoadingImplCopyWithImpl<$Res>
   __$$StampedCopyLoadingImplCopyWithImpl(_$StampedCopyLoadingImpl _value,
       $Res Function(_$StampedCopyLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StampedCopyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -72,6 +72,9 @@ class _$CusProfileEventCopyWithImpl<$Res, $Val extends CusProfileEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$GetCusProfileEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusProfileEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +142,9 @@ class _$GetCusProfileEventImpl implements GetCusProfileEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID, cusID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusProfileEventImplCopyWith<_$GetCusProfileEventImpl> get copyWith =>
@@ -214,7 +221,10 @@ abstract class GetCusProfileEvent implements CusProfileEvent {
 
   String get userID;
   String get cusID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusProfileEventImplCopyWith<_$GetCusProfileEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -233,6 +243,9 @@ class __$$ClearProfileEventImplCopyWithImpl<$Res>
   __$$ClearProfileEventImplCopyWithImpl(_$ClearProfileEventImpl _value,
       $Res Function(_$ClearProfileEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusProfileEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -380,6 +393,9 @@ class _$CusProfileStateCopyWithImpl<$Res, $Val extends CusProfileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -399,6 +415,8 @@ class __$$GetCusProfileStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusProfileStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -437,7 +455,9 @@ class _$GetCusProfileStateImpl implements GetCusProfileState {
   @override
   int get hashCode => Object.hash(runtimeType, profile);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusProfileStateImplCopyWith<_$GetCusProfileStateImpl> get copyWith =>
@@ -513,7 +533,10 @@ abstract class GetCusProfileState implements CusProfileState {
       _$GetCusProfileStateImpl;
 
   CuSProfileModel? get profile;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusProfileStateImplCopyWith<_$GetCusProfileStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -534,6 +557,9 @@ class __$$GetcusprofileFailedStateImplCopyWithImpl<$Res>
       _$GetcusprofileFailedStateImpl _value,
       $Res Function(_$GetcusprofileFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

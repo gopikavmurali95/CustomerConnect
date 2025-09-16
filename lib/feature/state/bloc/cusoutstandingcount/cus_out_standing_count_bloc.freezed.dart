@@ -80,6 +80,9 @@ class _$CusOutStandingCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusOutStandingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetCusOutstandingCOuntEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusOutstandingCOuntEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusOutStandingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +145,9 @@ class _$GetCusOutstandingCOuntEventImpl implements GetCusOutstandingCOuntEvent {
   @override
   int get hashCode => Object.hash(runtimeType, outIn);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusOutStandingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusOutstandingCOuntEventImplCopyWith<_$GetCusOutstandingCOuntEventImpl>
@@ -223,7 +230,10 @@ abstract class GetCusOutstandingCOuntEvent implements CusOutStandingCountEvent {
       _$GetCusOutstandingCOuntEventImpl;
 
   CusOutStandingInModel get outIn;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusOutStandingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusOutstandingCOuntEventImplCopyWith<_$GetCusOutstandingCOuntEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -245,6 +255,9 @@ class __$$ClearCusOutStandingCountEventImplCopyWithImpl<$Res>
       _$ClearCusOutStandingCountEventImpl _value,
       $Res Function(_$ClearCusOutStandingCountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusOutStandingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -412,6 +425,9 @@ class _$CusOutStandingCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusOutStandingCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -434,6 +450,8 @@ class __$$GetCusOutStandingCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusOutStandingCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusOutStandingCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -472,7 +490,9 @@ class _$GetCusOutStandingCountStateImpl implements GetCusOutStandingCountState {
   @override
   int get hashCode => Object.hash(runtimeType, counts);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusOutStandingCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusOutStandingCountStateImplCopyWith<_$GetCusOutStandingCountStateImpl>
@@ -557,7 +577,10 @@ abstract class GetCusOutStandingCountState implements CusOutStandingCountState {
       _$GetCusOutStandingCountStateImpl;
 
   CusOutstandingCountModel? get counts;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusOutStandingCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusOutStandingCountStateImplCopyWith<_$GetCusOutStandingCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -579,6 +602,9 @@ class __$$CusOutStatndingCountFailedStateImplCopyWithImpl<$Res>
       _$CusOutStatndingCountFailedStateImpl _value,
       $Res Function(_$CusOutStatndingCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusOutStandingCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

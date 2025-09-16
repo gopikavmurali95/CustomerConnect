@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/activity_review_header_model/activity_review_header_model.dart';
 import 'package:customer_connect/feature/state/bloc/activityreviewdetail/activity_review_detail_bloc.dart';
@@ -9,12 +11,12 @@ import 'package:customer_connect/feature/view/activityreview/activityreviewheade
 import 'package:customer_connect/feature/view/activityreview/widgets/dailytargetcontainer.dart';
 import 'package:customer_connect/feature/view/activityreview/widgets/todayssaleswidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DailyActivityReviewDetailScreen extends StatefulWidget {
   final ActivityReviewHeaderModel header;

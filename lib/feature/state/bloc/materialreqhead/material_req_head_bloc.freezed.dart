@@ -80,6 +80,9 @@ class _$MaterialReqHeadEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MaterialReqHeadEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$MaterialHeadSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$MaterialHeadSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaterialReqHeadEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,7 +163,9 @@ class _$MaterialHeadSuccessEventImpl implements MaterialHeadSuccessEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userId, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaterialReqHeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MaterialHeadSuccessEventImplCopyWith<_$MaterialHeadSuccessEventImpl>
@@ -244,7 +251,10 @@ abstract class MaterialHeadSuccessEvent implements MaterialReqHeadEvent {
   String get userId;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaterialReqHeadEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MaterialHeadSuccessEventImplCopyWith<_$MaterialHeadSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -266,6 +276,9 @@ class __$$MaterialReqHeadClearEventImplCopyWithImpl<$Res>
       _$MaterialReqHeadClearEventImpl _value,
       $Res Function(_$MaterialReqHeadClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaterialReqHeadEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -426,6 +439,9 @@ class _$MaterialReqHeadStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MaterialReqHeadState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -448,6 +464,8 @@ class __$$MaterialreqheadsuccessImplCopyWithImpl<$Res>
       $Res Function(_$MaterialreqheadsuccessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaterialReqHeadState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -497,7 +515,9 @@ class _$MaterialreqheadsuccessImpl implements Materialreqheadsuccess {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_materialheader));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaterialReqHeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MaterialreqheadsuccessImplCopyWith<_$MaterialreqheadsuccessImpl>
@@ -578,7 +598,10 @@ abstract class Materialreqheadsuccess implements MaterialReqHeadState {
       _$MaterialreqheadsuccessImpl;
 
   List<MaterialReqHeaderModel>? get materialheader;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaterialReqHeadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MaterialreqheadsuccessImplCopyWith<_$MaterialreqheadsuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -599,6 +622,9 @@ class __$$MaterialreqheadFailedImplCopyWithImpl<$Res>
   __$$MaterialreqheadFailedImplCopyWithImpl(_$MaterialreqheadFailedImpl _value,
       $Res Function(_$MaterialreqheadFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MaterialReqHeadState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

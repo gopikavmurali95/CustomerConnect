@@ -33,7 +33,7 @@ class CustomerSettingsRepo implements ICustomerSettingsRepo {
         options: options,
       );
 
-      // log('Response: ${response.data}');
+      log('Response: ${response.data}');
 
       // Check if the response data is a string, then decode it
       if (response.statusCode == 200) {

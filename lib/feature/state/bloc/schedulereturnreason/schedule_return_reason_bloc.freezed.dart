@@ -77,6 +77,9 @@ class _$ScheduleReturnReasonEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ScheduleReturnReasonEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$ScheduleReturnSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$ScheduleReturnSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleReturnReasonEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +142,9 @@ class _$ScheduleReturnSuccessEventImpl implements ScheduleReturnSuccessEvent {
   @override
   int get hashCode => Object.hash(runtimeType, rsnType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleReturnReasonEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScheduleReturnSuccessEventImplCopyWith<_$ScheduleReturnSuccessEventImpl>
@@ -216,7 +223,10 @@ abstract class ScheduleReturnSuccessEvent implements ScheduleReturnReasonEvent {
       _$ScheduleReturnSuccessEventImpl;
 
   String get rsnType;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleReturnReasonEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScheduleReturnSuccessEventImplCopyWith<_$ScheduleReturnSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -238,6 +248,9 @@ class __$$ClearScheduleReasonEventImplCopyWithImpl<$Res>
       _$ClearScheduleReasonEventImpl _value,
       $Res Function(_$ClearScheduleReasonEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ScheduleReturnReasonEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -399,6 +412,9 @@ class _$ScheduleReturnReasonStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ScheduleReturnReasonState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -421,6 +437,8 @@ class __$$GetScheduleReturnReasonStateImplCopyWithImpl<$Res>
       $Res Function(_$GetScheduleReturnReasonStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScheduleReturnReasonState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -470,7 +488,9 @@ class _$GetScheduleReturnReasonStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_reason));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScheduleReturnReasonState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetScheduleReturnReasonStateImplCopyWith<
@@ -557,7 +577,10 @@ abstract class GetScheduleReturnReasonState
       _$GetScheduleReturnReasonStateImpl;
 
   List<ScheduleReturnApprovalReasonModel>? get reason;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScheduleReturnReasonState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetScheduleReturnReasonStateImplCopyWith<
           _$GetScheduleReturnReasonStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -580,6 +603,9 @@ class __$$ScheduleReturnReasonFailedStateImplCopyWithImpl<$Res>
       _$ScheduleReturnReasonFailedStateImpl _value,
       $Res Function(_$ScheduleReturnReasonFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ScheduleReturnReasonState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

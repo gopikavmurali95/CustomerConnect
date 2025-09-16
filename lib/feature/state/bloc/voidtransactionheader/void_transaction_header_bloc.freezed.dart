@@ -83,6 +83,9 @@ class _$VoidTransactionHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VoidTransactionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GetVoidTransactionHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetVoidTransactionHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VoidTransactionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetVoidTransactionHeaderEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, statusValue, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VoidTransactionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetVoidTransactionHeaderEventImplCopyWith<
@@ -243,7 +250,10 @@ abstract class GetVoidTransactionHeaderEvent
 
   String get statusValue;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VoidTransactionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetVoidTransactionHeaderEventImplCopyWith<
           _$GetVoidTransactionHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,6 +276,9 @@ class __$$ClearVoidTransactionHeaderImplCopyWithImpl<$Res>
       _$ClearVoidTransactionHeaderImpl _value,
       $Res Function(_$ClearVoidTransactionHeaderImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VoidTransactionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -434,6 +447,9 @@ class _$VoidTransactionHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of VoidTransactionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -456,6 +472,8 @@ class __$$GetVoidTransactionHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetVoidTransactionHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of VoidTransactionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -505,7 +523,9 @@ class _$GetVoidTransactionHeaderStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of VoidTransactionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetVoidTransactionHeaderStateImplCopyWith<
@@ -592,7 +612,10 @@ abstract class GetVoidTransactionHeaderState
       _$GetVoidTransactionHeaderStateImpl;
 
   List<VoidTransactionHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of VoidTransactionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetVoidTransactionHeaderStateImplCopyWith<
           _$GetVoidTransactionHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -615,6 +638,9 @@ class __$$VoidTransactionHeaderFailureImplCopyWithImpl<$Res>
       _$VoidTransactionHeaderFailureImpl _value,
       $Res Function(_$VoidTransactionHeaderFailureImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of VoidTransactionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -90,6 +90,9 @@ class _$UnScheduledApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -112,6 +115,8 @@ class __$$ApproveUnScheduledVisitEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveUnScheduledVisitEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$ApproveUnScheduledVisitEventImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_approve));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveUnScheduledVisitEventImplCopyWith<
@@ -254,7 +261,10 @@ abstract class ApproveUnScheduledVisitEvent
       _$ApproveUnScheduledVisitEventImpl;
 
   List<UnScheduledVisitApproveInModel> get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveUnScheduledVisitEventImplCopyWith<
           _$ApproveUnScheduledVisitEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -280,6 +290,8 @@ class __$$RejectUnScheduledEventImplCopyWithImpl<$Res>
       $Res Function(_$RejectUnScheduledEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -326,7 +338,9 @@ class _$RejectUnScheduledEventImpl implements RejectUnScheduledEvent {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_reject));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RejectUnScheduledEventImplCopyWith<_$RejectUnScheduledEventImpl>
@@ -419,7 +433,10 @@ abstract class RejectUnScheduledEvent implements UnScheduledApprovalEvent {
       _$RejectUnScheduledEventImpl;
 
   List<UnScheduledVisitApproveInModel> get reject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RejectUnScheduledEventImplCopyWith<_$RejectUnScheduledEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -441,6 +458,9 @@ class __$$UnScheuledLoadingEventImplCopyWithImpl<$Res>
       _$UnScheuledLoadingEventImpl _value,
       $Res Function(_$UnScheuledLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UnScheduledApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -636,6 +656,9 @@ class _$UnScheduledApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -658,6 +681,8 @@ class __$$ApproveUnScheduledVisitStateImplCopyWithImpl<$Res>
       $Res Function(_$ApproveUnScheduledVisitStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -697,7 +722,9 @@ class _$ApproveUnScheduledVisitStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, resp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveUnScheduledVisitStateImplCopyWith<
@@ -805,7 +832,10 @@ abstract class ApproveUnScheduledVisitState
       _$ApproveUnScheduledVisitStateImpl;
 
   UnScheduledApprovalRespModel? get resp;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveUnScheduledVisitStateImplCopyWith<
           _$ApproveUnScheduledVisitStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -831,6 +861,8 @@ class __$$RejectUnScheduledVisitStateImplCopyWithImpl<$Res>
       $Res Function(_$RejectUnScheduledVisitStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -869,7 +901,9 @@ class _$RejectUnScheduledVisitStateImpl implements RejectUnScheduledVisitState {
   @override
   int get hashCode => Object.hash(runtimeType, resp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RejectUnScheduledVisitStateImplCopyWith<_$RejectUnScheduledVisitStateImpl>
@@ -975,7 +1009,10 @@ abstract class RejectUnScheduledVisitState implements UnScheduledApprovalState {
       _$RejectUnScheduledVisitStateImpl;
 
   UnScheduledApprovalRespModel? get resp;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RejectUnScheduledVisitStateImplCopyWith<_$RejectUnScheduledVisitStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -997,6 +1034,9 @@ class __$$UnScheduledApprovalLoadingEventImplCopyWithImpl<$Res>
       _$UnScheduledApprovalLoadingEventImpl _value,
       $Res Function(_$UnScheduledApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1136,6 +1176,9 @@ class __$$UnScheduledVisitApprovalFailedStateImplCopyWithImpl<$Res>
       _$UnScheduledVisitApprovalFailedStateImpl _value,
       $Res Function(_$UnScheduledVisitApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of UnScheduledApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

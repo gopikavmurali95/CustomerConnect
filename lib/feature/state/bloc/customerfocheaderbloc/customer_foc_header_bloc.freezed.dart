@@ -80,6 +80,9 @@ class _$CustomerFocHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerFocHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetCustomerFocHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomerFocHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerFocHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +156,9 @@ class _$GetCustomerFocHeaderEventImpl implements GetCustomerFocHeaderEvent {
   @override
   int get hashCode => Object.hash(runtimeType, statusValue, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerFocHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomerFocHeaderEventImplCopyWith<_$GetCustomerFocHeaderEventImpl>
@@ -235,7 +242,10 @@ abstract class GetCustomerFocHeaderEvent implements CustomerFocHeaderEvent {
 
   String get statusValue;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerFocHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomerFocHeaderEventImplCopyWith<_$GetCustomerFocHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -257,6 +267,9 @@ class __$$ClearCustomerFocHeaderImplCopyWithImpl<$Res>
       _$ClearCustomerFocHeaderImpl _value,
       $Res Function(_$ClearCustomerFocHeaderImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerFocHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -421,6 +434,9 @@ class _$CustomerFocHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerFocHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -443,6 +459,8 @@ class __$$GetCustomerFocHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomerFocHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerFocHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -491,7 +509,9 @@ class _$GetCustomerFocHeaderStateImpl implements GetCustomerFocHeaderState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_header));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerFocHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomerFocHeaderStateImplCopyWith<_$GetCustomerFocHeaderStateImpl>
@@ -576,7 +596,10 @@ abstract class GetCustomerFocHeaderState implements CustomerFocHeaderState {
       _$GetCustomerFocHeaderStateImpl;
 
   List<CustomerFocHeaderModel>? get header;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerFocHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomerFocHeaderStateImplCopyWith<_$GetCustomerFocHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -598,6 +621,9 @@ class __$$CustomerFocHeaderFailedStateImplCopyWithImpl<$Res>
       _$CustomerFocHeaderFailedStateImpl _value,
       $Res Function(_$CustomerFocHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerFocHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

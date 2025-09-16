@@ -77,6 +77,9 @@ class _$CusInsInvoiceHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusInsInvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$GetCusInvEventImplCopyWithImpl<$Res>
       _$GetCusInvEventImpl _value, $Res Function(_$GetCusInvEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInsInvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +148,9 @@ class _$GetCusInvEventImpl implements GetCusInvEvent {
   @override
   int get hashCode => Object.hash(runtimeType, invIn, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsInvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusInvEventImplCopyWith<_$GetCusInvEventImpl> get copyWith =>
@@ -224,7 +231,10 @@ abstract class GetCusInvEvent implements CusInsInvoiceHeaderEvent {
 
   CusInsInvoiceHeaderInModel get invIn;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusInsInvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusInvEventImplCopyWith<_$GetCusInvEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -243,6 +253,9 @@ class __$$ClearinvEventImplCopyWithImpl<$Res>
   __$$ClearinvEventImplCopyWithImpl(
       _$ClearinvEventImpl _value, $Res Function(_$ClearinvEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusInsInvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -398,6 +411,9 @@ class _$CusInsInvoiceHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusInsInvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -420,6 +436,8 @@ class __$$GetCusInvoiceHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusInvoiceHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInsInvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -468,7 +486,9 @@ class _$GetCusInvoiceHeaderStateImpl implements GetCusInvoiceHeaderState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsInvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusInvoiceHeaderStateImplCopyWith<_$GetCusInvoiceHeaderStateImpl>
@@ -548,7 +568,10 @@ abstract class GetCusInvoiceHeaderState implements CusInsInvoiceHeaderState {
       _$GetCusInvoiceHeaderStateImpl;
 
   List<CusInsInvoiceModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusInsInvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusInvoiceHeaderStateImplCopyWith<_$GetCusInvoiceHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -568,6 +591,9 @@ class __$$GetcusInvFailedStateImplCopyWithImpl<$Res>
   __$$GetcusInvFailedStateImplCopyWithImpl(_$GetcusInvFailedStateImpl _value,
       $Res Function(_$GetcusInvFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusInsInvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

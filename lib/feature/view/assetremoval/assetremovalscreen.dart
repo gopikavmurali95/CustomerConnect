@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:io';
 
@@ -8,12 +10,12 @@ import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval
 import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AssetRemovalApprovalScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -96,8 +98,9 @@ class _AssetRemovalApprovalScreenState
                                   context
                                       .read<AssetRemovelRequestHeaderBloc>()
                                       .add(GetAllAssetRemovalHeadersEvent(
-                                          searchQuery: '',
-                                          userID: widget.user.usrId ?? ''));
+                                        searchQuery: '',
+                                        userID: widget.user.usrId ?? '',
+                                      ));
                                 }
                               },
                               icon: Icon(
@@ -437,7 +440,11 @@ class _AssetRemovalApprovalScreenState
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                      context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
+                                                                                      context.read<AssetRemovelRequestHeaderBloc>().add(const ClearAssetRemovalHeaderEvent());      
+                                                                                      context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(
+                                                                                            userID: widget.user.usrId ?? '',
+                                                                                            searchQuery: '',
+                                                                                          ));
                                                                                       Navigator.pop(context);
                                                                                     },
                                                                                     child: Text(AppLocalizations.of(context)!.ok),
@@ -451,7 +458,10 @@ class _AssetRemovalApprovalScreenState
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                      context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
+                                                                                      context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(
+                                                                                            userID: widget.user.usrId ?? '',
+                                                                                            searchQuery: '',
+                                                                                          ));
                                                                                       Navigator.pop(context);
                                                                                     },
                                                                                     child: Text(AppLocalizations.of(context)!.ok),
@@ -480,7 +490,10 @@ class _AssetRemovalApprovalScreenState
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () {
-                                                                                    context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
+                                                                                    context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(
+                                                                                          userID: widget.user.usrId ?? '',
+                                                                                          searchQuery: '',
+                                                                                        ));
                                                                                     Navigator.pop(context);
                                                                                   },
                                                                                   child: Text(AppLocalizations.of(context)!.ok),
@@ -494,7 +507,10 @@ class _AssetRemovalApprovalScreenState
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () {
-                                                                                    context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(userID: widget.user.usrId ?? '', searchQuery: ''));
+                                                                                    context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(
+                                                                                          userID: widget.user.usrId ?? '',
+                                                                                          searchQuery: '',
+                                                                                        ));
                                                                                     Navigator.pop(context);
                                                                                   },
                                                                                   child: Text(AppLocalizations.of(context)!.ok),
@@ -628,7 +644,7 @@ class _AssetRemovalApprovalScreenState
                                                                             Row(
                                                                           children: [
                                                                             Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                 return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                               }),
                                                                               /* activeColor: isselected == true
@@ -811,7 +827,7 @@ class _AssetRemovalApprovalScreenState
                                                                             Row(
                                                                           children: [
                                                                             Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                 return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                               }),
                                                                               /*  activeColor: isselected == false

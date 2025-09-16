@@ -1,17 +1,17 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors
+
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
-import 'package:customer_connect/feature/data/models/todays_delivery_in_paras/todays_delivery_in_paras.dart';
 import 'package:customer_connect/feature/data/models/total_orders_inparas/total_orders_inparas.dart';
-import 'package:customer_connect/feature/state/bloc/todays_delivery/todays_delivery_header_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/total_orders_header/total_orders_header_bloc.dart';
 import 'package:customer_connect/feature/view/totalorders/widgets/totalorderslist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class TotalOrders extends StatefulWidget {
   final LoginUserModel user;
@@ -238,15 +238,14 @@ class _TotalOrdersState extends State<TotalOrders> {
 
   Future<void> _onRefreshTodaysDeivery(BuildContext context) async {
     _totaOrdersSearchCtrl.clear();
-    context.read<TodaysDeliveryHeaderBloc>().add(const ClearTodaysDelivery());
-    context.read<TodaysDeliveryHeaderBloc>().add(GetTodaysDeliveryEvent(
-        todaysdelivery: TodaysDeliveryInParas(
+    context.read<TotalOrdersHeaderBloc>().add(const TotalOrdersClearEvent());
+    context.read<TotalOrdersHeaderBloc>().add(GetTotalOrdersEvent(
+        ordersin: TotalOrdersInparas(
             area: '',
             customer: '',
-            customerOutlet: '',
             fromDate:
                 '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-            mode: '',
+            outlet: '',
             route: '',
             subArea: '',
             toDate:

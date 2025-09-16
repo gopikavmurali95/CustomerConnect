@@ -18,12 +18,12 @@ import 'package:customer_connect/feature/state/cubit/approvalradio/aapproval_or_
 import 'package:customer_connect/feature/view/partialdelivery/partialdeliveryheader.dart';
 
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PArtialDeliveryDetails extends StatefulWidget {
   final PartialDeliveryHeaderModel header;
@@ -98,6 +98,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
       ),
       body: PopScope(
         canPop: true,
+        // ignore: deprecated_member_use
         onPopInvoked: (didPop) {
           searchCtrl.clear();
           _searchctrls.clear();
@@ -766,9 +767,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                   child: Row(
                                                                     children: [
                                                                       Radio(
-                                                                        fillColor: MaterialStateProperty.resolveWith<
+                                                                        fillColor: WidgetStateProperty.resolveWith<
                                                                             Color>((Set<
-                                                                                MaterialState>
+                                                                                WidgetState>
                                                                             states) {
                                                                           return (statuslist[index] == true)
                                                                               ? Colors.green.shade300
@@ -840,9 +841,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                   child: Row(
                                                                     children: [
                                                                       Radio(
-                                                                        fillColor: MaterialStateProperty.resolveWith<
+                                                                        fillColor: WidgetStateProperty.resolveWith<
                                                                             Color>((Set<
-                                                                                MaterialState>
+                                                                                WidgetState>
                                                                             states) {
                                                                           return (statuslist[index] != null && !statuslist[index]!)
                                                                               ? Colors.red.shade300
@@ -922,6 +923,7 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                         BoxShadow(
                                                                             // ignore: use_full_hex_values_for_flutter_colors
                                                                             color: Color(
+                                                                                // ignore: use_full_hex_values_for_flutter_colors
                                                                                 0xff00000050),
                                                                             blurRadius:
                                                                                 0.4,
@@ -961,9 +963,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                               child: Row(
                                                                 children: [
                                                                   Radio(
-                                                                    fillColor: MaterialStateProperty.resolveWith<
+                                                                    fillColor: WidgetStateProperty.resolveWith<
                                                                         Color>((Set<
-                                                                            MaterialState>
+                                                                            WidgetState>
                                                                         states) {
                                                                       return (statuslist[index] ==
                                                                               true)
@@ -1003,9 +1005,9 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                               child: Row(
                                                                 children: [
                                                                   Radio(
-                                                                    fillColor: MaterialStateProperty.resolveWith<
+                                                                    fillColor: WidgetStateProperty.resolveWith<
                                                                         Color>((Set<
-                                                                            MaterialState>
+                                                                            WidgetState>
                                                                         states) {
                                                                       return (statuslist[index] != null &&
                                                                               !statuslist[

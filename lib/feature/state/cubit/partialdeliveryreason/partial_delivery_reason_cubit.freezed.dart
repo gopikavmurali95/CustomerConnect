@@ -83,6 +83,9 @@ class _$PartialDeliveryReasonStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PartialDeliveryReasonState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GetpartialDeliveryReasonsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetpartialDeliveryReasonsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PartialDeliveryReasonState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +159,9 @@ class _$GetpartialDeliveryReasonsStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_reasons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PartialDeliveryReasonState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetpartialDeliveryReasonsStateImplCopyWith<
@@ -241,7 +248,10 @@ abstract class GetpartialDeliveryReasonsState
       _$GetpartialDeliveryReasonsStateImpl;
 
   List<PartialDeliveryReasonModel>? get reasons;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PartialDeliveryReasonState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetpartialDeliveryReasonsStateImplCopyWith<
           _$GetpartialDeliveryReasonsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -264,6 +274,9 @@ class __$$PartialDeliveryReasonsFailedStateImplCopyWithImpl<$Res>
       _$PartialDeliveryReasonsFailedStateImpl _value,
       $Res Function(_$PartialDeliveryReasonsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PartialDeliveryReasonState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

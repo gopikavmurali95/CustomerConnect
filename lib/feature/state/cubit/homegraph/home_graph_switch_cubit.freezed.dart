@@ -50,7 +50,9 @@ mixin _$HomeGraphSwitchState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeGraphSwitchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HomeGraphSwitchStateCopyWith<HomeGraphSwitchState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +77,8 @@ class _$HomeGraphSwitchStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HomeGraphSwitchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +112,8 @@ class __$$SwitchGraphStateImplCopyWithImpl<$Res>
       $Res Function(_$SwitchGraphStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeGraphSwitchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +152,9 @@ class _$SwitchGraphStateImpl implements SwitchGraphState {
   @override
   int get hashCode => Object.hash(runtimeType, graph);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeGraphSwitchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SwitchGraphStateImplCopyWith<_$SwitchGraphStateImpl> get copyWith =>
@@ -216,8 +224,11 @@ abstract class SwitchGraphState implements HomeGraphSwitchState {
 
   @override
   HomeGraphModel get graph;
+
+  /// Create a copy of HomeGraphSwitchState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SwitchGraphStateImplCopyWith<_$SwitchGraphStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

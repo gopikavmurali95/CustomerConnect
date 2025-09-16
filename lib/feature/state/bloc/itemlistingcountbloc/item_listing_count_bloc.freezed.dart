@@ -80,6 +80,9 @@ class _$ItemListingCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ItemListingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GetItmesCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetItmesCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ItemListingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,7 +197,9 @@ class _$GetItmesCountEventImpl implements GetItmesCountEvent {
   int get hashCode => Object.hash(
       runtimeType, cusId, route, fromDate, toDate, pagenum, searchString);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemListingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetItmesCountEventImplCopyWith<_$GetItmesCountEventImpl> get copyWith =>
@@ -287,7 +294,10 @@ abstract class GetItmesCountEvent implements ItemListingCountEvent {
   String get toDate;
   String get pagenum;
   String get searchString;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ItemListingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetItmesCountEventImplCopyWith<_$GetItmesCountEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -308,6 +318,9 @@ class __$$ClearItemListingCountImplCopyWithImpl<$Res>
   __$$ClearItemListingCountImplCopyWithImpl(_$ClearItemListingCountImpl _value,
       $Res Function(_$ClearItemListingCountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ItemListingCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -464,6 +477,9 @@ class _$ItemListingCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ItemListingCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -485,6 +501,8 @@ class __$$GetItemListCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetItemListCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ItemListingCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -523,7 +541,9 @@ class _$GetItemListCountStateImpl implements GetItemListCountState {
   @override
   int get hashCode => Object.hash(runtimeType, count);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ItemListingCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetItemListCountStateImplCopyWith<_$GetItemListCountStateImpl>
@@ -599,7 +619,10 @@ abstract class GetItemListCountState implements ItemListingCountState {
       {required final ItemListingCount? count}) = _$GetItemListCountStateImpl;
 
   ItemListingCount? get count;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ItemListingCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetItemListCountStateImplCopyWith<_$GetItemListCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -619,6 +642,9 @@ class __$$ItemCountFailedStateImplCopyWithImpl<$Res>
   __$$ItemCountFailedStateImplCopyWithImpl(_$ItemCountFailedStateImpl _value,
       $Res Function(_$ItemCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ItemListingCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

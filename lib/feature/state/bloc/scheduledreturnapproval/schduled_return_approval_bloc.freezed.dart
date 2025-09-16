@@ -90,6 +90,9 @@ class _$SchduledReturnApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SchduledReturnApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -112,6 +115,8 @@ class __$$APProveOrRejectScheduledReturnEventImplCopyWithImpl<$Res>
       $Res Function(_$APProveOrRejectScheduledReturnEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SchduledReturnApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +156,9 @@ class _$APProveOrRejectScheduledReturnEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SchduledReturnApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$APProveOrRejectScheduledReturnEventImplCopyWith<
@@ -244,7 +251,10 @@ abstract class APProveOrRejectScheduledReturnEvent
       _$APProveOrRejectScheduledReturnEventImpl;
 
   ScheduledReturnApprovalInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SchduledReturnApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$APProveOrRejectScheduledReturnEventImplCopyWith<
           _$APProveOrRejectScheduledReturnEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -267,6 +277,9 @@ class __$$AddScheduledReturnApprovalLoadingEventImplCopyWithImpl<$Res>
       _$AddScheduledReturnApprovalLoadingEventImpl _value,
       $Res Function(_$AddScheduledReturnApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SchduledReturnApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -389,6 +402,9 @@ class __$$ClearScApprovalEventImplCopyWithImpl<$Res>
   __$$ClearScApprovalEventImplCopyWithImpl(_$ClearScApprovalEventImpl _value,
       $Res Function(_$ClearScApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SchduledReturnApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -572,6 +588,9 @@ class _$SchduledReturnApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SchduledReturnApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -594,6 +613,8 @@ class __$$ScheduledReturnApprovalStatusStatesImplCopyWithImpl<$Res>
       $Res Function(_$ScheduledReturnApprovalStatusStatesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SchduledReturnApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -633,7 +654,9 @@ class _$ScheduledReturnApprovalStatusStatesImpl
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SchduledReturnApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScheduledReturnApprovalStatusStatesImplCopyWith<
@@ -729,7 +752,10 @@ abstract class ScheduledReturnApprovalStatusStates
       _$ScheduledReturnApprovalStatusStatesImpl;
 
   ScheduledReturnApprovalOutModel? get status;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SchduledReturnApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScheduledReturnApprovalStatusStatesImplCopyWith<
           _$ScheduledReturnApprovalStatusStatesImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -752,6 +778,9 @@ class __$$SchduledReturnApprovalFailedStateImplCopyWithImpl<$Res>
       _$SchduledReturnApprovalFailedStateImpl _value,
       $Res Function(_$SchduledReturnApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SchduledReturnApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -879,6 +908,9 @@ class __$$ScheduledReturnLoadingStateImplCopyWithImpl<$Res>
       _$ScheduledReturnLoadingStateImpl _value,
       $Res Function(_$ScheduledReturnLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SchduledReturnApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

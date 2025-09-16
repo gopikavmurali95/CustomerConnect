@@ -182,6 +182,7 @@ import 'package:customer_connect/feature/state/cubit/voidtransactionselection/vo
 import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
 import 'package:customer_connect/firebase_options.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -205,7 +206,6 @@ import 'feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'feature/state/bloc/settlementapprovalpost/post_settlement_approval_bloc.dart';
 import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 bool isLoadingProgress = false;
 void main() async {

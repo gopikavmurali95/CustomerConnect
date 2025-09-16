@@ -1,3 +1,5 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors
+
 import 'dart:async';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -8,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../data/models/picking_header_model/PickingInModel.dart';
 import '../../state/bloc/picking_header/picking_header_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class PickHeaderOngoing extends StatefulWidget {
   final LoginUserModel user;

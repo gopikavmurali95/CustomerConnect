@@ -75,6 +75,9 @@ class _$LoadingDetailEventCopyWithImpl<$Res, $Val extends LoadingDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$GetloadingDetailEventImplCopyWithImpl<$Res>
       $Res Function(_$GetloadingDetailEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +148,9 @@ class _$GetloadingDetailEventImpl implements GetloadingDetailEvent {
   @override
   int get hashCode => Object.hash(runtimeType, iD, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetloadingDetailEventImplCopyWith<_$GetloadingDetailEventImpl>
@@ -223,7 +230,10 @@ abstract class GetloadingDetailEvent implements LoadingDetailEvent {
 
   String get iD;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetloadingDetailEventImplCopyWith<_$GetloadingDetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -245,6 +255,9 @@ class __$$ClearLoadingDetailEventImplCopyWithImpl<$Res>
       _$ClearLoadingDetailEventImpl _value,
       $Res Function(_$ClearLoadingDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadingDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +410,9 @@ class _$LoadingDetailStateCopyWithImpl<$Res, $Val extends LoadingDetailState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadingDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -416,6 +432,8 @@ class __$$GetloadingDetailImplCopyWithImpl<$Res>
       $Res Function(_$GetloadingDetailImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadingDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -464,7 +482,9 @@ class _$GetloadingDetailImpl implements GetloadingDetail {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_detail));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadingDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetloadingDetailImplCopyWith<_$GetloadingDetailImpl> get copyWith =>
@@ -542,7 +562,10 @@ abstract class GetloadingDetail implements LoadingDetailState {
       _$GetloadingDetailImpl;
 
   List<LoadingDetailModel>? get detail;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadingDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetloadingDetailImplCopyWith<_$GetloadingDetailImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -564,6 +587,9 @@ class __$$LoadingDetailFailedStateImplCopyWithImpl<$Res>
       _$LoadingDetailFailedStateImpl _value,
       $Res Function(_$LoadingDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadingDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

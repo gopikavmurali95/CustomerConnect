@@ -80,6 +80,9 @@ class _$ApprovePriceChangeEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApprovePriceChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetPricChangeApprovalEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPricChangeApprovalEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApprovePriceChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,7 +146,9 @@ class _$GetPricChangeApprovalEventImpl implements GetPricChangeApprovalEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApprovePriceChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPricChangeApprovalEventImplCopyWith<_$GetPricChangeApprovalEventImpl>
@@ -224,7 +231,10 @@ abstract class GetPricChangeApprovalEvent implements ApprovePriceChangeEvent {
       _$GetPricChangeApprovalEventImpl;
 
   ApprovePriceChangeinModel get approval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApprovePriceChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPricChangeApprovalEventImplCopyWith<_$GetPricChangeApprovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -246,6 +256,9 @@ class __$$AddApprovalLoadinEventImplCopyWithImpl<$Res>
       _$AddApprovalLoadinEventImpl _value,
       $Res Function(_$AddApprovalLoadinEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApprovePriceChangeEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -416,6 +429,9 @@ class _$ApprovePriceChangeStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ApprovePriceChangeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -438,6 +454,8 @@ class __$$GetPriceChangeApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPriceChangeApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ApprovePriceChangeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -477,7 +495,9 @@ class _$GetPriceChangeApprovalStateImpl implements GetPriceChangeApprovalState {
   @override
   int get hashCode => Object.hash(runtimeType, approval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ApprovePriceChangeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPriceChangeApprovalStateImplCopyWith<_$GetPriceChangeApprovalStateImpl>
@@ -568,7 +588,10 @@ abstract class GetPriceChangeApprovalState implements ApprovePriceChangeState {
       _$GetPriceChangeApprovalStateImpl;
 
   ApprovePriceChangeModel? get approval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ApprovePriceChangeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPriceChangeApprovalStateImplCopyWith<_$GetPriceChangeApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -588,6 +611,9 @@ class __$$ApproveLoadingStateImplCopyWithImpl<$Res>
   __$$ApproveLoadingStateImplCopyWithImpl(_$ApproveLoadingStateImpl _value,
       $Res Function(_$ApproveLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApprovePriceChangeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -709,6 +735,9 @@ class __$$GetPriceChangeApprovalFailedImplCopyWithImpl<$Res>
       _$GetPriceChangeApprovalFailedImpl _value,
       $Res Function(_$GetPriceChangeApprovalFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ApprovePriceChangeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

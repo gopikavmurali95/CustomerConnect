@@ -12,13 +12,13 @@ import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.da
 import 'package:customer_connect/feature/view/outstanding/outstandingheader.dart';
 import 'package:customer_connect/feature/view/outstanding/widgets/insightoutstandinglist.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ssun_chart/pie_chart.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class InsghtsOutStandingScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -40,6 +40,13 @@ class InsghtsOutStandingScreen extends StatefulWidget {
 List<int> pievalues = [];
 final _cusOutstandSearchCtrl = TextEditingController();
 Timer? debounce;
+
+class _ChartData {
+  _ChartData(this.label, this.value, this.color);
+  final String label;
+  final double value;
+  final Color color;
+}
 
 class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
   final ScrollController _scrollController = ScrollController();
@@ -302,8 +309,9 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                               child: TextFormField(
                                 controller: _cusOutstandSearchCtrl,
                                 onChanged: (value) {
-                                  if (debounce?.isActive ?? false)
+                                  if (debounce?.isActive ?? false) {
                                     debounce!.cancel();
+                                  }
                                   debounce = Timer(
                                     const Duration(
                                       milliseconds: 500,
@@ -453,45 +461,72 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                           ? SizedBox(
                                                               width: 110.w,
                                                               height: 110.h,
-                                                              child: PieChart(
-                                                                bgColor: Colors
-                                                                    .transparent,
-                                                                usePercentValues:
-                                                                    false,
-                                                                centerTextColor:
-                                                                    Colors.blue,
-                                                                centerTextSize:
-                                                                    11,
-                                                                drawCenterText:
-                                                                    true,
-                                                                drawHoleEnabled:
-                                                                    true,
-                                                                holeRadius: 20,
-                                                                entryLabelTextSize:
-                                                                    10,
-                                                                transparentCircleRadius:
-                                                                    27,
-                                                                entryLabelColor:
-                                                                    Colors
-                                                                        .black,
-                                                                data: PieData(
-                                                                  List.of(
-                                                                    [
-                                                                      PieDataSet(
-                                                                        colors:
-                                                                            outstandingcolorslist,
-                                                                        entries:
-                                                                            List.of(
+                                                              child: RotatedBox(
+                                                                quarterTurns: 0,
+                                                                child:
+                                                                    SfCircularChart(
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  series: <DoughnutSeries<
+                                                                      _ChartData,
+                                                                      String>>[
+                                                                    DoughnutSeries<
+                                                                        _ChartData,
+                                                                        String>(
+                                                                      dataSource:
                                                                           [
-                                                                            PieEntry(counts.dueCount ?? '',
-                                                                                double.parse(counts.dueCount ?? '0')),
-                                                                            PieEntry(counts.overDueCount ?? '',
-                                                                                double.parse(counts.overDueCount ?? '0')),
-                                                                          ],
+                                                                        _ChartData(
+                                                                          counts.dueCount ??
+                                                                              '',
+                                                                          double.tryParse(counts.dueAmount ?? '0') ??
+                                                                              0,
+                                                                          outstandingcolorslist.isNotEmpty
+                                                                              ? outstandingcolorslist[0]
+                                                                              : Colors.blue,
                                                                         ),
-                                                                      )
-                                                                    ],
-                                                                  ),
+                                                                        _ChartData(
+                                                                          counts.overDueCount ??
+                                                                              '',
+                                                                          double.tryParse(counts.overDueAmount ?? '0') ??
+                                                                              0,
+                                                                          outstandingcolorslist.length > 1
+                                                                              ? outstandingcolorslist[1]
+                                                                              : Colors.red,
+                                                                        ),
+                                                                      ].where((e) => e.value > 0).toList(),
+                                                                      xValueMapper:
+                                                                          (_ChartData d, _) =>
+                                                                              d.label,
+                                                                      yValueMapper:
+                                                                          (_ChartData d, _) =>
+                                                                              d.value,
+                                                                      pointColorMapper:
+                                                                          (_ChartData d, _) =>
+                                                                              d.color,
+                                                                      dataLabelMapper:
+                                                                          (_ChartData d, _) =>
+                                                                              d.label,
+                                                                      dataLabelSettings:
+                                                                          const DataLabelSettings(
+                                                                        isVisible:
+                                                                            true,
+                                                                        textStyle: TextStyle(
+                                                                            color:
+                                                                                Colors.black,
+                                                                            fontSize: 10),
+                                                                      ),
+                                                                      radius:
+                                                                          '100%',
+                                                                      innerRadius:
+                                                                          '40%',
+                                                                      explode:
+                                                                          true,
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ))
                                                           : pievalues.isEmpty
@@ -520,18 +555,13 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                       child:
                                                                           Center(
                                                                         child:
-                                                                            CircleAvatar(
-                                                                          radius:
-                                                                              23.h,
-                                                                          backgroundColor:
-                                                                              Colors.white30,
+                                                                            Center(
                                                                           child:
-                                                                              Center(
-                                                                            child:
-                                                                                CircleAvatar(
-                                                                              backgroundColor: Colors.white,
-                                                                              radius: 16.h,
-                                                                            ),
+                                                                              CircleAvatar(
+                                                                            backgroundColor:
+                                                                                Colors.white,
+                                                                            radius:
+                                                                                23.h,
                                                                           ),
                                                                         ),
                                                                       ),

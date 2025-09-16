@@ -77,6 +77,9 @@ class _$CustomerInsightGroupEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerInsightGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetGroupWiseDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetGroupWiseDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerInsightGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +159,9 @@ class _$GetGroupWiseDataEventImpl implements GetGroupWiseDataEvent {
   @override
   int get hashCode => Object.hash(runtimeType, id, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerInsightGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetGroupWiseDataEventImplCopyWith<_$GetGroupWiseDataEventImpl>
@@ -237,7 +244,10 @@ abstract class GetGroupWiseDataEvent implements CustomerInsightGroupEvent {
   String get id;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerInsightGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetGroupWiseDataEventImplCopyWith<_$GetGroupWiseDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -256,6 +266,9 @@ class __$$ClearGroupDataImplCopyWithImpl<$Res>
   __$$ClearGroupDataImplCopyWithImpl(
       _$ClearGroupDataImpl _value, $Res Function(_$ClearGroupDataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerInsightGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -414,6 +427,9 @@ class _$CustomerInsightGroupStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerInsightGroupState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -436,6 +452,8 @@ class __$$GetCusInsightGroupSatetImplCopyWithImpl<$Res>
       $Res Function(_$GetCusInsightGroupSatetImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerInsightGroupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -485,7 +503,9 @@ class _$GetCusInsightGroupSatetImpl implements GetCusInsightGroupSatet {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_groupData));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerInsightGroupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusInsightGroupSatetImplCopyWith<_$GetCusInsightGroupSatetImpl>
@@ -568,7 +588,10 @@ abstract class GetCusInsightGroupSatet implements CustomerInsightGroupState {
       _$GetCusInsightGroupSatetImpl;
 
   List<CustomerInsightGroupModel>? get groupData;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerInsightGroupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusInsightGroupSatetImplCopyWith<_$GetCusInsightGroupSatetImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -590,6 +613,9 @@ class __$$CustomerInsightGroupFailedStateImplCopyWithImpl<$Res>
       _$CustomerInsightGroupFailedStateImpl _value,
       $Res Function(_$CustomerInsightGroupFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerInsightGroupState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

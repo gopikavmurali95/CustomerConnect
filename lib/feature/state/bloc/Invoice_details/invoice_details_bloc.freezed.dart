@@ -83,6 +83,9 @@ class _$InvoiceDetailsEventCopyWithImpl<$Res, $Val extends InvoiceDetailsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvoiceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GetInvoiceDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetInvoiceDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvoiceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +158,9 @@ class _$GetInvoiceDetailsEventImpl implements GetInvoiceDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, id, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInvoiceDetailsEventImplCopyWith<_$GetInvoiceDetailsEventImpl>
@@ -241,7 +248,10 @@ abstract class GetInvoiceDetailsEvent implements InvoiceDetailsEvent {
 
   String get id;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvoiceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInvoiceDetailsEventImplCopyWith<_$GetInvoiceDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -263,6 +273,9 @@ class __$$GetInvoiceDetailsFailedEventImplCopyWithImpl<$Res>
       _$GetInvoiceDetailsFailedEventImpl _value,
       $Res Function(_$GetInvoiceDetailsFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -379,6 +392,9 @@ class __$$ClearInvoiceDetailsImplCopyWithImpl<$Res>
   __$$ClearInvoiceDetailsImplCopyWithImpl(_$ClearInvoiceDetailsImpl _value,
       $Res Function(_$ClearInvoiceDetailsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -544,6 +560,9 @@ class _$InvoiceDetailsStateCopyWithImpl<$Res, $Val extends InvoiceDetailsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvoiceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -566,6 +585,8 @@ class __$$GetInvoiceDetailsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetInvoiceDetailsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvoiceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -615,7 +636,9 @@ class _$GetInvoiceDetailsStateImpl implements GetInvoiceDetailsState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_invdetails));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInvoiceDetailsStateImplCopyWith<_$GetInvoiceDetailsStateImpl>
@@ -698,7 +721,10 @@ abstract class GetInvoiceDetailsState implements InvoiceDetailsState {
       _$GetInvoiceDetailsStateImpl;
 
   List<InvoiceDetailsModel>? get invdetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvoiceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInvoiceDetailsStateImplCopyWith<_$GetInvoiceDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -720,6 +746,9 @@ class __$$GetInvoiceDetailsFailedStateImplCopyWithImpl<$Res>
       _$GetInvoiceDetailsFailedStateImpl _value,
       $Res Function(_$GetInvoiceDetailsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

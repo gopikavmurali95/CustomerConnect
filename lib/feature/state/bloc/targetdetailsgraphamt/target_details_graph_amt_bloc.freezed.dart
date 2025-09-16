@@ -76,6 +76,9 @@ class _$TargetDetailsGraphAmtEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetDetailsGraphAmtEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetTargetGraphAmtEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetGraphAmtEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetDetailsGraphAmtEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +151,9 @@ class _$GetTargetGraphAmtEventImpl implements GetTargetGraphAmtEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, rotID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetDetailsGraphAmtEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetGraphAmtEventImplCopyWith<_$GetTargetGraphAmtEventImpl>
@@ -225,7 +232,10 @@ abstract class GetTargetGraphAmtEvent implements TargetDetailsGraphAmtEvent {
 
   String get fromDate;
   String get rotID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetDetailsGraphAmtEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetGraphAmtEventImplCopyWith<_$GetTargetGraphAmtEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -245,6 +255,9 @@ class __$$ClearGraphAmountImplCopyWithImpl<$Res>
   __$$ClearGraphAmountImplCopyWithImpl(_$ClearGraphAmountImpl _value,
       $Res Function(_$ClearGraphAmountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetDetailsGraphAmtEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +410,9 @@ class _$TargetDetailsGraphAmtStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetDetailsGraphAmtState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -417,6 +433,8 @@ class __$$GetTargetGraphAmtImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetGraphAmtImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetDetailsGraphAmtState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -455,7 +473,9 @@ class _$GetTargetGraphAmtImpl implements GetTargetGraphAmt {
   @override
   int get hashCode => Object.hash(runtimeType, amount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetDetailsGraphAmtState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetGraphAmtImplCopyWith<_$GetTargetGraphAmtImpl> get copyWith =>
@@ -533,7 +553,10 @@ abstract class GetTargetGraphAmt implements TargetDetailsGraphAmtState {
       _$GetTargetGraphAmtImpl;
 
   TargetDetailsGraphAmtModel? get amount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetDetailsGraphAmtState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetGraphAmtImplCopyWith<_$GetTargetGraphAmtImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -555,6 +578,9 @@ class __$$GetTargetGraphAmtFailedImplCopyWithImpl<$Res>
       _$GetTargetGraphAmtFailedImpl _value,
       $Res Function(_$GetTargetGraphAmtFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetDetailsGraphAmtState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

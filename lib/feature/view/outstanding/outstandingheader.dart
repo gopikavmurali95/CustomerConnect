@@ -11,14 +11,15 @@ import 'package:customer_connect/feature/state/cubit/outstandingpagination/out_s
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/view/outstanding/widgets/outstandinglistwidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ssun_chart/pie_chart.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+// import 'package:ssun_chart/pie_chart.dart';
 
 class OutstandingHeaderScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -38,6 +39,13 @@ List<OutstandingDdFilterModel> filterOutstanding = [
   OutstandingDdFilterModel(statusName: "Overdue", statusValue: 'o'),
 ];
 String _selectedMode = 'Al';
+
+class _ChartData {
+  _ChartData(this.label, this.value, this.color);
+  final String label;
+  final double value;
+  final Color color;
+}
 
 Timer? debounce;
 ScrollController outStandingscrollController = ScrollController();
@@ -471,45 +479,73 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                           ? SizedBox(
                                               width: 110.w,
                                               height: 110.h,
-                                              child: PieChart(
-                                                bgColor: Colors.transparent,
-                                                usePercentValues: false,
-                                                centerTextColor: Colors.blue,
-                                                centerTextSize: 11,
-                                                drawCenterText: true,
-                                                drawHoleEnabled: true,
-                                                holeRadius: 20,
-                                                entryLabelTextSize: 10,
-                                                transparentCircleRadius: 27,
-                                                entryLabelColor: Colors.black,
-                                                data: PieData(
-                                                  List.of(
-                                                    [
-                                                      PieDataSet(
-                                                        colors:
-                                                            outstandingcolorslist,
-                                                        entries: List.of(
-                                                          [
-                                                            PieEntry(
-                                                                counts.dueCount ??
-                                                                    '',
-                                                                double.parse(
-                                                                    counts.dueCount ??
-                                                                        '0')),
-                                                            PieEntry(
-                                                                counts.overDueCount ??
-                                                                    '',
-                                                                double.parse(
-                                                                    counts.overDueCount ??
-                                                                        '0')),
-                                                          ],
+                                              child: RotatedBox(
+                                                quarterTurns: 0,
+                                                child: SfCircularChart(
+                                                  margin: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  series: <DoughnutSeries<
+                                                      _ChartData, String>>[
+                                                    DoughnutSeries<_ChartData,
+                                                        String>(
+                                                      dataSource: [
+                                                        _ChartData(
+                                                          counts.dueCount ?? '',
+                                                          double.tryParse(counts
+                                                                      .dueCount ??
+                                                                  '0') ??
+                                                              0,
+                                                          outstandingcolorslist
+                                                                  .isNotEmpty
+                                                              ? outstandingcolorslist[
+                                                                  0]
+                                                              : Colors.blue,
                                                         ),
-                                                      )
-                                                    ],
-                                                  ),
+                                                        _ChartData(
+                                                          counts.overDueCount ??
+                                                              '',
+                                                          double.tryParse(counts
+                                                                      .overDueCount ??
+                                                                  '0') ??
+                                                              0,
+                                                          outstandingcolorslist
+                                                                      .length >
+                                                                  1
+                                                              ? outstandingcolorslist[
+                                                                  1]
+                                                              : Colors.red,
+                                                        ),
+                                                      ]
+                                                          .where((e) =>
+                                                              e.value > 0)
+                                                          .toList(),
+                                                      xValueMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.label,
+                                                      yValueMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.value,
+                                                      pointColorMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.color,
+                                                      dataLabelMapper:
+                                                          (_ChartData d, _) =>
+                                                              d.label,
+                                                      dataLabelSettings:
+                                                          const DataLabelSettings(
+                                                        isVisible: true,
+                                                        textStyle: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 10),
+                                                      ),
+                                                      radius: '100%',
+                                                      innerRadius: '40%',
+                                                      explode: true,
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                            )
+                                              ))
                                           : _pievalues.isEmpty
                                               ? const Center(
                                                   child: Text('No Chart Data'),
@@ -528,16 +564,11 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                                           : outstandingcolorslist[
                                                               1],
                                                       child: Center(
-                                                        child: CircleAvatar(
-                                                          radius: 23.h,
-                                                          backgroundColor:
-                                                              Colors.white30,
-                                                          child: Center(
-                                                            child: CircleAvatar(
-                                                              backgroundColor:
-                                                                  Colors.white,
-                                                              radius: 16.h,
-                                                            ),
+                                                        child: Center(
+                                                          child: CircleAvatar(
+                                                            backgroundColor:
+                                                                Colors.white,
+                                                            radius: 23.h,
                                                           ),
                                                         ),
                                                       ),

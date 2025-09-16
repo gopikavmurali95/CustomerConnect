@@ -75,6 +75,9 @@ class _$LoadReqDetailEventCopyWithImpl<$Res, $Val extends LoadReqDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadReqDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$GetloadreqdetailEventImplCopyWithImpl<$Res>
       $Res Function(_$GetloadreqdetailEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadReqDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +148,9 @@ class _$GetloadreqdetailEventImpl implements GetloadreqdetailEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reqId, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadReqDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetloadreqdetailEventImplCopyWith<_$GetloadreqdetailEventImpl>
@@ -223,7 +230,10 @@ abstract class GetloadreqdetailEvent implements LoadReqDetailEvent {
 
   String get reqId;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadReqDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetloadreqdetailEventImplCopyWith<_$GetloadreqdetailEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -244,6 +254,9 @@ class __$$ClearLodReqDetailEventImplCopyWithImpl<$Res>
       _$ClearLodReqDetailEventImpl _value,
       $Res Function(_$ClearLodReqDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadReqDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -401,6 +414,9 @@ class _$LoadReqDetailStateCopyWithImpl<$Res, $Val extends LoadReqDetailState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadReqDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -423,6 +439,8 @@ class __$$LoadreqDetailSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$LoadreqDetailSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadReqDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -471,7 +489,9 @@ class _$LoadreqDetailSuccessStateImpl implements LoadreqDetailSuccessState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadReqDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadreqDetailSuccessStateImplCopyWith<_$LoadreqDetailSuccessStateImpl>
@@ -554,7 +574,10 @@ abstract class LoadreqDetailSuccessState implements LoadReqDetailState {
       _$LoadreqDetailSuccessStateImpl;
 
   List<LoadReqDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadReqDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadreqDetailSuccessStateImplCopyWith<_$LoadreqDetailSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -576,6 +599,9 @@ class __$$LoadreqDetailFailedStateImplCopyWithImpl<$Res>
       _$LoadreqDetailFailedStateImpl _value,
       $Res Function(_$LoadreqDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadReqDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

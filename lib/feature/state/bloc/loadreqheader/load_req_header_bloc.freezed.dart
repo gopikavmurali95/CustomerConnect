@@ -75,6 +75,9 @@ class _$LoadReqHeaderEventCopyWithImpl<$Res, $Val extends LoadReqHeaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadReqHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,8 @@ class __$$LoadreqSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$LoadreqSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadReqHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,7 +155,9 @@ class _$LoadreqSuccessEventImpl implements LoadreqSuccessEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userId, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadReqHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadreqSuccessEventImplCopyWith<_$LoadreqSuccessEventImpl> get copyWith =>
@@ -232,7 +239,10 @@ abstract class LoadreqSuccessEvent implements LoadReqHeaderEvent {
   String get userId;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadReqHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadreqSuccessEventImplCopyWith<_$LoadreqSuccessEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -251,6 +261,9 @@ class __$$LoadreqClearEventImplCopyWithImpl<$Res>
   __$$LoadreqClearEventImplCopyWithImpl(_$LoadreqClearEventImpl _value,
       $Res Function(_$LoadreqClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadReqHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -405,6 +418,9 @@ class _$LoadReqHeaderStateCopyWithImpl<$Res, $Val extends LoadReqHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadReqHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -427,6 +443,8 @@ class __$$LoadReqheadSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$LoadReqheadSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadReqHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -475,7 +493,9 @@ class _$LoadReqheadSuccessStateImpl implements LoadReqheadSuccessState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_loadlist));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadReqHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadReqheadSuccessStateImplCopyWith<_$LoadReqheadSuccessStateImpl>
@@ -556,7 +576,10 @@ abstract class LoadReqheadSuccessState implements LoadReqHeaderState {
       _$LoadReqheadSuccessStateImpl;
 
   List<LoadReqHeaderModel>? get loadlist;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadReqHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadReqheadSuccessStateImplCopyWith<_$LoadReqheadSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -577,6 +600,9 @@ class __$$LoadReqheadFailedStateImplCopyWithImpl<$Res>
       _$LoadReqheadFailedStateImpl _value,
       $Res Function(_$LoadReqheadFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadReqHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

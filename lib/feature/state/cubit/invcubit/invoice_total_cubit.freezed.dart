@@ -50,7 +50,9 @@ mixin _$InvoiceTotalState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceTotalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InvoiceTotalStateCopyWith<InvoiceTotalState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$InvoiceTotalStateCopyWithImpl<$Res, $Val extends InvoiceTotalState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InvoiceTotalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$GetInvoiceTotalImplCopyWithImpl<$Res>
       _$GetInvoiceTotalImpl _value, $Res Function(_$GetInvoiceTotalImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvoiceTotalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$GetInvoiceTotalImpl implements GetInvoiceTotal {
   @override
   int get hashCode => Object.hash(runtimeType, amount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceTotalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInvoiceTotalImplCopyWith<_$GetInvoiceTotalImpl> get copyWith =>
@@ -215,8 +223,11 @@ abstract class GetInvoiceTotal implements InvoiceTotalState {
 
   @override
   String get amount;
+
+  /// Create a copy of InvoiceTotalState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInvoiceTotalImplCopyWith<_$GetInvoiceTotalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

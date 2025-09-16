@@ -93,6 +93,9 @@ class _$CreditNoteApprovalAndRejectEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CreditNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -115,6 +118,8 @@ class __$$CreditNoteTakeActionEventImplCopyWithImpl<$Res>
       $Res Function(_$CreditNoteTakeActionEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreditNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +158,9 @@ class _$CreditNoteTakeActionEventImpl implements CreditNoteTakeActionEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreditNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreditNoteTakeActionEventImplCopyWith<_$CreditNoteTakeActionEventImpl>
@@ -248,7 +255,10 @@ abstract class CreditNoteTakeActionEvent
       _$CreditNoteTakeActionEventImpl;
 
   DisputeInvoiceApproveInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreditNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreditNoteTakeActionEventImplCopyWith<_$CreditNoteTakeActionEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -270,6 +280,9 @@ class __$$CreditNoteApprovalLoadingEventImplCopyWithImpl<$Res>
       _$CreditNoteApprovalLoadingEventImpl _value,
       $Res Function(_$CreditNoteApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +410,9 @@ class __$$CreditNoteApprovalClearEventImplCopyWithImpl<$Res>
       _$CreditNoteApprovalClearEventImpl _value,
       $Res Function(_$CreditNoteApprovalClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -586,6 +602,9 @@ class _$CreditNoteApprovalAndRejectStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CreditNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -608,6 +627,8 @@ class __$$CreditNoteActionTakenStateImplCopyWithImpl<$Res>
       $Res Function(_$CreditNoteActionTakenStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreditNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -656,7 +677,9 @@ class _$CreditNoteActionTakenStateImpl implements CreditNoteActionTakenState {
   @override
   int get hashCode => Object.hash(runtimeType, resp, isApprove);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreditNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreditNoteActionTakenStateImplCopyWith<_$CreditNoteActionTakenStateImpl>
@@ -752,7 +775,10 @@ abstract class CreditNoteActionTakenState
 
   DisputeApprovalRespModel? get resp;
   bool? get isApprove;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreditNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreditNoteActionTakenStateImplCopyWith<_$CreditNoteActionTakenStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -774,6 +800,9 @@ class __$$CreditNoteApprovalFailedStateImplCopyWithImpl<$Res>
       _$CreditNoteApprovalFailedStateImpl _value,
       $Res Function(_$CreditNoteApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -901,6 +930,9 @@ class __$$CreditNoteApprovalLoadingStateImplCopyWithImpl<$Res>
       _$CreditNoteApprovalLoadingStateImpl _value,
       $Res Function(_$CreditNoteApprovalLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CreditNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -20,21 +20,21 @@ mixin _$PostSettlementApprovalEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String udpID) getPostApprovalEvent,
     required TResult Function() clearPostApprovalEvent,
-    required TResult Function() PostLoadingApprovalEvent,
+    required TResult Function() postLoadingApprovalEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String udpID)? getPostApprovalEvent,
     TResult? Function()? clearPostApprovalEvent,
-    TResult? Function()? PostLoadingApprovalEvent,
+    TResult? Function()? postLoadingApprovalEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String udpID)? getPostApprovalEvent,
     TResult Function()? clearPostApprovalEvent,
-    TResult Function()? PostLoadingApprovalEvent,
+    TResult Function()? postLoadingApprovalEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,21 +44,21 @@ mixin _$PostSettlementApprovalEvent {
     required TResult Function(ClearPostApprovalEvent value)
         clearPostApprovalEvent,
     required TResult Function(PostLoadingApprovalEvent value)
-        PostLoadingApprovalEvent,
+        postLoadingApprovalEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult? Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult? Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult? Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +83,9 @@ class _$PostSettlementApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PostSettlementApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,8 @@ class __$$GetPostApprovalEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPostApprovalEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostSettlementApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,7 +146,9 @@ class _$GetPostApprovalEventImpl implements GetPostApprovalEvent {
   @override
   int get hashCode => Object.hash(runtimeType, udpID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostSettlementApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPostApprovalEventImplCopyWith<_$GetPostApprovalEventImpl>
@@ -154,7 +161,7 @@ class _$GetPostApprovalEventImpl implements GetPostApprovalEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String udpID) getPostApprovalEvent,
     required TResult Function() clearPostApprovalEvent,
-    required TResult Function() PostLoadingApprovalEvent,
+    required TResult Function() postLoadingApprovalEvent,
   }) {
     return getPostApprovalEvent(udpID);
   }
@@ -164,7 +171,7 @@ class _$GetPostApprovalEventImpl implements GetPostApprovalEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String udpID)? getPostApprovalEvent,
     TResult? Function()? clearPostApprovalEvent,
-    TResult? Function()? PostLoadingApprovalEvent,
+    TResult? Function()? postLoadingApprovalEvent,
   }) {
     return getPostApprovalEvent?.call(udpID);
   }
@@ -174,7 +181,7 @@ class _$GetPostApprovalEventImpl implements GetPostApprovalEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String udpID)? getPostApprovalEvent,
     TResult Function()? clearPostApprovalEvent,
-    TResult Function()? PostLoadingApprovalEvent,
+    TResult Function()? postLoadingApprovalEvent,
     required TResult orElse(),
   }) {
     if (getPostApprovalEvent != null) {
@@ -190,7 +197,7 @@ class _$GetPostApprovalEventImpl implements GetPostApprovalEvent {
     required TResult Function(ClearPostApprovalEvent value)
         clearPostApprovalEvent,
     required TResult Function(PostLoadingApprovalEvent value)
-        PostLoadingApprovalEvent,
+        postLoadingApprovalEvent,
   }) {
     return getPostApprovalEvent(this);
   }
@@ -200,7 +207,7 @@ class _$GetPostApprovalEventImpl implements GetPostApprovalEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult? Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult? Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult? Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
   }) {
     return getPostApprovalEvent?.call(this);
   }
@@ -210,7 +217,7 @@ class _$GetPostApprovalEventImpl implements GetPostApprovalEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
     required TResult orElse(),
   }) {
     if (getPostApprovalEvent != null) {
@@ -225,7 +232,10 @@ abstract class GetPostApprovalEvent implements PostSettlementApprovalEvent {
       _$GetPostApprovalEventImpl;
 
   String get udpID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostSettlementApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPostApprovalEventImplCopyWith<_$GetPostApprovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -247,6 +257,9 @@ class __$$ClearPostApprovalEventImplCopyWithImpl<$Res>
       _$ClearPostApprovalEventImpl _value,
       $Res Function(_$ClearPostApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PostSettlementApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -274,7 +287,7 @@ class _$ClearPostApprovalEventImpl implements ClearPostApprovalEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String udpID) getPostApprovalEvent,
     required TResult Function() clearPostApprovalEvent,
-    required TResult Function() PostLoadingApprovalEvent,
+    required TResult Function() postLoadingApprovalEvent,
   }) {
     return clearPostApprovalEvent();
   }
@@ -284,7 +297,7 @@ class _$ClearPostApprovalEventImpl implements ClearPostApprovalEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String udpID)? getPostApprovalEvent,
     TResult? Function()? clearPostApprovalEvent,
-    TResult? Function()? PostLoadingApprovalEvent,
+    TResult? Function()? postLoadingApprovalEvent,
   }) {
     return clearPostApprovalEvent?.call();
   }
@@ -294,7 +307,7 @@ class _$ClearPostApprovalEventImpl implements ClearPostApprovalEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String udpID)? getPostApprovalEvent,
     TResult Function()? clearPostApprovalEvent,
-    TResult Function()? PostLoadingApprovalEvent,
+    TResult Function()? postLoadingApprovalEvent,
     required TResult orElse(),
   }) {
     if (clearPostApprovalEvent != null) {
@@ -310,7 +323,7 @@ class _$ClearPostApprovalEventImpl implements ClearPostApprovalEvent {
     required TResult Function(ClearPostApprovalEvent value)
         clearPostApprovalEvent,
     required TResult Function(PostLoadingApprovalEvent value)
-        PostLoadingApprovalEvent,
+        postLoadingApprovalEvent,
   }) {
     return clearPostApprovalEvent(this);
   }
@@ -320,7 +333,7 @@ class _$ClearPostApprovalEventImpl implements ClearPostApprovalEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult? Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult? Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult? Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
   }) {
     return clearPostApprovalEvent?.call(this);
   }
@@ -330,7 +343,7 @@ class _$ClearPostApprovalEventImpl implements ClearPostApprovalEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
     required TResult orElse(),
   }) {
     if (clearPostApprovalEvent != null) {
@@ -361,6 +374,9 @@ class __$$PostLoadingApprovalEventImplCopyWithImpl<$Res>
       _$PostLoadingApprovalEventImpl _value,
       $Res Function(_$PostLoadingApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PostSettlementApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -370,7 +386,7 @@ class _$PostLoadingApprovalEventImpl implements PostLoadingApprovalEvent {
 
   @override
   String toString() {
-    return 'PostSettlementApprovalEvent.PostLoadingApprovalEvent()';
+    return 'PostSettlementApprovalEvent.postLoadingApprovalEvent()';
   }
 
   @override
@@ -388,9 +404,9 @@ class _$PostLoadingApprovalEventImpl implements PostLoadingApprovalEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String udpID) getPostApprovalEvent,
     required TResult Function() clearPostApprovalEvent,
-    required TResult Function() PostLoadingApprovalEvent,
+    required TResult Function() postLoadingApprovalEvent,
   }) {
-    return PostLoadingApprovalEvent();
+    return postLoadingApprovalEvent();
   }
 
   @override
@@ -398,9 +414,9 @@ class _$PostLoadingApprovalEventImpl implements PostLoadingApprovalEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String udpID)? getPostApprovalEvent,
     TResult? Function()? clearPostApprovalEvent,
-    TResult? Function()? PostLoadingApprovalEvent,
+    TResult? Function()? postLoadingApprovalEvent,
   }) {
-    return PostLoadingApprovalEvent?.call();
+    return postLoadingApprovalEvent?.call();
   }
 
   @override
@@ -408,11 +424,11 @@ class _$PostLoadingApprovalEventImpl implements PostLoadingApprovalEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String udpID)? getPostApprovalEvent,
     TResult Function()? clearPostApprovalEvent,
-    TResult Function()? PostLoadingApprovalEvent,
+    TResult Function()? postLoadingApprovalEvent,
     required TResult orElse(),
   }) {
-    if (PostLoadingApprovalEvent != null) {
-      return PostLoadingApprovalEvent();
+    if (postLoadingApprovalEvent != null) {
+      return postLoadingApprovalEvent();
     }
     return orElse();
   }
@@ -424,9 +440,9 @@ class _$PostLoadingApprovalEventImpl implements PostLoadingApprovalEvent {
     required TResult Function(ClearPostApprovalEvent value)
         clearPostApprovalEvent,
     required TResult Function(PostLoadingApprovalEvent value)
-        PostLoadingApprovalEvent,
+        postLoadingApprovalEvent,
   }) {
-    return PostLoadingApprovalEvent(this);
+    return postLoadingApprovalEvent(this);
   }
 
   @override
@@ -434,9 +450,9 @@ class _$PostLoadingApprovalEventImpl implements PostLoadingApprovalEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult? Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult? Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult? Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
   }) {
-    return PostLoadingApprovalEvent?.call(this);
+    return postLoadingApprovalEvent?.call(this);
   }
 
   @override
@@ -444,11 +460,11 @@ class _$PostLoadingApprovalEventImpl implements PostLoadingApprovalEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPostApprovalEvent value)? getPostApprovalEvent,
     TResult Function(ClearPostApprovalEvent value)? clearPostApprovalEvent,
-    TResult Function(PostLoadingApprovalEvent value)? PostLoadingApprovalEvent,
+    TResult Function(PostLoadingApprovalEvent value)? postLoadingApprovalEvent,
     required TResult orElse(),
   }) {
-    if (PostLoadingApprovalEvent != null) {
-      return PostLoadingApprovalEvent(this);
+    if (postLoadingApprovalEvent != null) {
+      return postLoadingApprovalEvent(this);
     }
     return orElse();
   }
@@ -534,6 +550,9 @@ class _$PostSettlementApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PostSettlementApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -556,6 +575,8 @@ class __$$GetPostSettlementApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPostSettlementApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PostSettlementApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -596,7 +617,9 @@ class _$GetPostSettlementApprovalStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, postApproval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PostSettlementApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPostSettlementApprovalStateImplCopyWith<
@@ -689,7 +712,10 @@ abstract class GetPostSettlementApprovalState
       _$GetPostSettlementApprovalStateImpl;
 
   PostSettlementApprovalModel? get postApproval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PostSettlementApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPostSettlementApprovalStateImplCopyWith<
           _$GetPostSettlementApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -712,6 +738,9 @@ class __$$PostSettlementApprovalFailedStateImplCopyWithImpl<$Res>
       _$PostSettlementApprovalFailedStateImpl _value,
       $Res Function(_$PostSettlementApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PostSettlementApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -834,6 +863,9 @@ class __$$PostLoadingStateImplCopyWithImpl<$Res>
   __$$PostLoadingStateImplCopyWithImpl(_$PostLoadingStateImpl _value,
       $Res Function(_$PostLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PostSettlementApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

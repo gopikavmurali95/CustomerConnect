@@ -86,6 +86,9 @@ class _$InvoiceHeaderEventCopyWithImpl<$Res, $Val extends InvoiceHeaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +111,8 @@ class __$$InvoiceHeaderSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$InvoiceHeaderSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,7 +162,9 @@ class _$InvoiceHeaderSuccessEventImpl implements InvoiceHeaderSuccessEvent {
   @override
   int get hashCode => Object.hash(runtimeType, invheaderin, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvoiceHeaderSuccessEventImplCopyWith<_$InvoiceHeaderSuccessEventImpl>
@@ -248,7 +255,10 @@ abstract class InvoiceHeaderSuccessEvent implements InvoiceHeaderEvent {
 
   InvoiceHeaderInparas get invheaderin;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvoiceHeaderSuccessEventImplCopyWith<_$InvoiceHeaderSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -270,6 +280,9 @@ class __$$InvoiceHeaderFailedEventImplCopyWithImpl<$Res>
       _$InvoiceHeaderFailedEventImpl _value,
       $Res Function(_$InvoiceHeaderFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -387,6 +400,9 @@ class __$$ClearInvoiceHeaderImplCopyWithImpl<$Res>
   __$$ClearInvoiceHeaderImplCopyWithImpl(_$ClearInvoiceHeaderImpl _value,
       $Res Function(_$ClearInvoiceHeaderImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -554,6 +570,9 @@ class _$InvoiceHeaderStateCopyWithImpl<$Res, $Val extends InvoiceHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -576,6 +595,8 @@ class __$$InvoiceHeaderSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$InvoiceHeaderSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -625,7 +646,9 @@ class _$InvoiceHeaderSuccessStateImpl implements InvoiceHeaderSuccessState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_invheader));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvoiceHeaderSuccessStateImplCopyWith<_$InvoiceHeaderSuccessStateImpl>
@@ -708,7 +731,10 @@ abstract class InvoiceHeaderSuccessState implements InvoiceHeaderState {
       _$InvoiceHeaderSuccessStateImpl;
 
   List<InvoiceHeaderModel>? get invheader;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvoiceHeaderSuccessStateImplCopyWith<_$InvoiceHeaderSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -730,6 +756,9 @@ class __$$InvoiceHeaderFailedStateImplCopyWithImpl<$Res>
       _$InvoiceHeaderFailedStateImpl _value,
       $Res Function(_$InvoiceHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InvoiceHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

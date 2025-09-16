@@ -50,7 +50,9 @@ mixin _$AutoUpdateEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AutoUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AutoUpdateEventCopyWith<AutoUpdateEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$AutoUpdateEventCopyWithImpl<$Res, $Val extends AutoUpdateEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AutoUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$CheckForUpdatesEventImplCopyWithImpl<$Res>
       $Res Function(_$CheckForUpdatesEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AutoUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$CheckForUpdatesEventImpl implements CheckForUpdatesEvent {
   @override
   int get hashCode => Object.hash(runtimeType, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AutoUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckForUpdatesEventImplCopyWith<_$CheckForUpdatesEventImpl>
@@ -216,8 +224,11 @@ abstract class CheckForUpdatesEvent implements AutoUpdateEvent {
 
   @override
   String get type;
+
+  /// Create a copy of AutoUpdateEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckForUpdatesEventImplCopyWith<_$CheckForUpdatesEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -260,7 +271,9 @@ mixin _$AutoUpdateState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AutoUpdateState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AutoUpdateStateCopyWith<AutoUpdateState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -284,6 +297,8 @@ class _$AutoUpdateStateCopyWithImpl<$Res, $Val extends AutoUpdateState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AutoUpdateState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -318,6 +333,8 @@ class __$$AutoUpdateStatusStateImplCopyWithImpl<$Res>
       $Res Function(_$AutoUpdateStatusStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AutoUpdateState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -356,7 +373,9 @@ class _$AutoUpdateStatusStateImpl implements AutoUpdateStatusState {
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AutoUpdateState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AutoUpdateStatusStateImplCopyWith<_$AutoUpdateStatusStateImpl>
@@ -429,8 +448,11 @@ abstract class AutoUpdateStatusState implements AutoUpdateState {
 
   @override
   AutoUpdateRespModel? get status;
+
+  /// Create a copy of AutoUpdateState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AutoUpdateStatusStateImplCopyWith<_$AutoUpdateStatusStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

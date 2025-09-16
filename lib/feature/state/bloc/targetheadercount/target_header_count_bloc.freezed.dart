@@ -77,6 +77,9 @@ class _$TargetHeaderCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetHeaderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -99,6 +102,8 @@ class __$$GetTargetHeaderCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetHeaderCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetHeaderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,7 +143,9 @@ class _$GetTargetHeaderCountEventImpl implements GetTargetHeaderCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetHeaderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetHeaderCountEventImplCopyWith<_$GetTargetHeaderCountEventImpl>
@@ -217,7 +224,10 @@ abstract class GetTargetHeaderCountEvent implements TargetHeaderCountEvent {
       _$GetTargetHeaderCountEventImpl;
 
   String get fromDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetHeaderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetHeaderCountEventImplCopyWith<_$GetTargetHeaderCountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -239,6 +249,9 @@ class __$$ClearTargetHeaderCountImplCopyWithImpl<$Res>
       _$ClearTargetHeaderCountImpl _value,
       $Res Function(_$ClearTargetHeaderCountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetHeaderCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -398,6 +411,9 @@ class _$TargetHeaderCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetHeaderCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -420,6 +436,8 @@ class __$$GetTargetHeaderCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetHeaderCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetHeaderCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -459,7 +477,9 @@ class _$GetTargetHeaderCountStateImpl implements GetTargetHeaderCountState {
   @override
   int get hashCode => Object.hash(runtimeType, headerCount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetHeaderCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetHeaderCountStateImplCopyWith<_$GetTargetHeaderCountStateImpl>
@@ -542,7 +562,10 @@ abstract class GetTargetHeaderCountState implements TargetHeaderCountState {
       _$GetTargetHeaderCountStateImpl;
 
   TargetHeaderCountModel? get headerCount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetHeaderCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetHeaderCountStateImplCopyWith<_$GetTargetHeaderCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -564,6 +587,9 @@ class __$$TtargetHeaderCountFailedImplCopyWithImpl<$Res>
       _$TtargetHeaderCountFailedImpl _value,
       $Res Function(_$TtargetHeaderCountFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetHeaderCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -50,7 +50,9 @@ mixin _$NavigatetoBackState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NavigatetoBackState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NavigatetoBackStateCopyWith<NavigatetoBackState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$NavigatetoBackStateCopyWithImpl<$Res, $Val extends NavigatetoBackState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NavigatetoBackState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$NavigateToBackScreenImplCopyWithImpl<$Res>
       $Res Function(_$NavigateToBackScreenImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NavigatetoBackState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$NavigateToBackScreenImpl implements NavigateToBackScreen {
   @override
   int get hashCode => Object.hash(runtimeType, canPop);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NavigatetoBackState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NavigateToBackScreenImplCopyWith<_$NavigateToBackScreenImpl>
@@ -216,8 +224,11 @@ abstract class NavigateToBackScreen implements NavigatetoBackState {
 
   @override
   bool get canPop;
+
+  /// Create a copy of NavigatetoBackState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NavigateToBackScreenImplCopyWith<_$NavigateToBackScreenImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

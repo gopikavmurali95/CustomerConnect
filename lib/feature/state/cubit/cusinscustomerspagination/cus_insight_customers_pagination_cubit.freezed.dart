@@ -58,7 +58,9 @@ mixin _$CusInsightCustomersPaginationState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsightCustomersPaginationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CusInsightCustomersPaginationStateCopyWith<
           CusInsightCustomersPaginationState>
       get copyWith => throw _privateConstructorUsedError;
@@ -86,6 +88,8 @@ class _$CusInsightCustomersPaginationStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CusInsightCustomersPaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,6 +131,8 @@ class __$$GetCustomersHeaderPageStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomersHeaderPageStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusInsightCustomersPaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,7 +192,9 @@ class _$GetCustomersHeaderPageStateImpl implements GetCustomersHeaderPageState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_headers), isLoading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusInsightCustomersPaginationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomersHeaderPageStateImplCopyWith<_$GetCustomersHeaderPageStateImpl>
@@ -267,8 +275,11 @@ abstract class GetCustomersHeaderPageState
   List<CusInsCustomersModel>? get headers;
   @override
   bool get isLoading;
+
+  /// Create a copy of CusInsightCustomersPaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomersHeaderPageStateImplCopyWith<_$GetCustomersHeaderPageStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

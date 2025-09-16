@@ -72,6 +72,9 @@ class _$ArDetailsEventCopyWithImpl<$Res, $Val extends ArDetailsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ArDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$GetArDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetArDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,7 +134,9 @@ class _$GetArDetailsEventImpl implements GetArDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, arhID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetArDetailsEventImplCopyWith<_$GetArDetailsEventImpl> get copyWith =>
@@ -204,7 +211,10 @@ abstract class GetArDetailsEvent implements ArDetailsEvent {
       _$GetArDetailsEventImpl;
 
   String get arhID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetArDetailsEventImplCopyWith<_$GetArDetailsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -223,6 +233,9 @@ class __$$ClearArDetailEventImplCopyWithImpl<$Res>
   __$$ClearArDetailEventImplCopyWithImpl(_$ClearArDetailEventImpl _value,
       $Res Function(_$ClearArDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -369,6 +382,9 @@ class _$ArDetailsStateCopyWithImpl<$Res, $Val extends ArDetailsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ArDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -388,6 +404,8 @@ class __$$GetArDetailsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetArDetailsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -436,7 +454,9 @@ class _$GetArDetailsStateImpl implements GetArDetailsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_ardetails));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetArDetailsStateImplCopyWith<_$GetArDetailsStateImpl> get copyWith =>
@@ -512,7 +532,10 @@ abstract class GetArDetailsState implements ArDetailsState {
       _$GetArDetailsStateImpl;
 
   List<ArDetailModel>? get ardetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetArDetailsStateImplCopyWith<_$GetArDetailsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -531,6 +554,9 @@ class __$$ArdetailsfailedStateImplCopyWithImpl<$Res>
   __$$ArdetailsfailedStateImplCopyWithImpl(_$ArdetailsfailedStateImpl _value,
       $Res Function(_$ArdetailsfailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

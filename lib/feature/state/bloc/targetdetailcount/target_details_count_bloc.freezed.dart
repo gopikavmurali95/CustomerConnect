@@ -79,6 +79,9 @@ class _$TargetDetailsCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetDetailsCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -101,6 +104,8 @@ class __$$GetTargetDetailsCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetDetailsCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetDetailsCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +154,9 @@ class _$GetTargetDetailsCountEventImpl implements GetTargetDetailsCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, rotID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetDetailsCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetDetailsCountEventImplCopyWith<_$GetTargetDetailsCountEventImpl>
@@ -232,7 +239,10 @@ abstract class GetTargetDetailsCountEvent implements TargetDetailsCountEvent {
 
   String get fromDate;
   String get rotID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetDetailsCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetDetailsCountEventImplCopyWith<_$GetTargetDetailsCountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -254,6 +264,9 @@ class __$$ClearTargetDetailsCountImplCopyWithImpl<$Res>
       _$ClearTargetDetailsCountImpl _value,
       $Res Function(_$ClearTargetDetailsCountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetDetailsCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -415,6 +428,9 @@ class _$TargetDetailsCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TargetDetailsCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +453,8 @@ class __$$GetTargetDetailCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTargetDetailCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TargetDetailsCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -476,7 +494,9 @@ class _$GetTargetDetailCountStateImpl implements GetTargetDetailCountState {
   @override
   int get hashCode => Object.hash(runtimeType, detailscount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TargetDetailsCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTargetDetailCountStateImplCopyWith<_$GetTargetDetailCountStateImpl>
@@ -559,7 +579,10 @@ abstract class GetTargetDetailCountState implements TargetDetailsCountState {
       _$GetTargetDetailCountStateImpl;
 
   TargetDetailsCountModel? get detailscount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TargetDetailsCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTargetDetailCountStateImplCopyWith<_$GetTargetDetailCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -581,6 +604,9 @@ class __$$TargetDetailCountFailedImplCopyWithImpl<$Res>
       _$TargetDetailCountFailedImpl _value,
       $Res Function(_$TargetDetailCountFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TargetDetailsCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

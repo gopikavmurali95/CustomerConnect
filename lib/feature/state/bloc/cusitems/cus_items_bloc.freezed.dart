@@ -78,6 +78,9 @@ class _$CusItemsEventCopyWithImpl<$Res, $Val extends CusItemsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,8 @@ class __$$GetItemsEventImplCopyWithImpl<$Res>
       _$GetItemsEventImpl _value, $Res Function(_$GetItemsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -190,7 +195,9 @@ class _$GetItemsEventImpl implements GetItemsEvent {
   int get hashCode => Object.hash(
       runtimeType, cusID, route, fromDate, toDate, pageNum, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetItemsEventImplCopyWith<_$GetItemsEventImpl> get copyWith =>
@@ -282,7 +289,10 @@ abstract class GetItemsEvent implements CusItemsEvent {
   String get toDate;
   String get pageNum;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetItemsEventImplCopyWith<_$GetItemsEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -301,6 +311,9 @@ class __$$ClearItemsEventImplCopyWithImpl<$Res>
   __$$ClearItemsEventImplCopyWithImpl(
       _$ClearItemsEventImpl _value, $Res Function(_$ClearItemsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusItemsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -456,6 +469,9 @@ class _$CusItemsStateCopyWithImpl<$Res, $Val extends CusItemsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusItemsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -475,6 +491,8 @@ class __$$GetCusItemsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusItemsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusItemsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -533,7 +551,9 @@ class _$GetCusItemsStateImpl implements GetCusItemsState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_items), isLoading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusItemsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusItemsStateImplCopyWith<_$GetCusItemsStateImpl> get copyWith =>
@@ -613,7 +633,10 @@ abstract class GetCusItemsState implements CusItemsState {
 
   List<CusItemsModel>? get items;
   bool get isLoading;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusItemsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusItemsStateImplCopyWith<_$GetCusItemsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -632,6 +655,9 @@ class __$$GetitemsFailedStateImplCopyWithImpl<$Res>
   __$$GetitemsFailedStateImplCopyWithImpl(_$GetitemsFailedStateImpl _value,
       $Res Function(_$GetitemsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusItemsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

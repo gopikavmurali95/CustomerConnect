@@ -84,6 +84,9 @@ class _$InventoryReconfirmReasonsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of InventoryReconfirmReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetInventoryReconfirmResonsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetInventoryReconfirmResonsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InventoryReconfirmReasonsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetInventoryReconfirmResonsStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_reasons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InventoryReconfirmReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetInventoryReconfirmResonsStateImplCopyWith<
@@ -242,7 +249,10 @@ abstract class GetInventoryReconfirmResonsState
       _$GetInventoryReconfirmResonsStateImpl;
 
   List<InventoryReconfirmReasonModel>? get reasons;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InventoryReconfirmReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetInventoryReconfirmResonsStateImplCopyWith<
           _$GetInventoryReconfirmResonsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -265,6 +275,9 @@ class __$$InventoryReconfirmReasonsFailedStateImplCopyWithImpl<$Res>
       _$InventoryReconfirmReasonsFailedStateImpl _value,
       $Res Function(_$InventoryReconfirmReasonsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of InventoryReconfirmReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

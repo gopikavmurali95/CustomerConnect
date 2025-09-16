@@ -82,6 +82,9 @@ class _$FreeSampleApproveEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$SubmitFreeSampleRequestEventImplCopyWithImpl<$Res>
       $Res Function(_$SubmitFreeSampleRequestEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +148,9 @@ class _$SubmitFreeSampleRequestEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubmitFreeSampleRequestEventImplCopyWith<
@@ -229,7 +236,10 @@ abstract class SubmitFreeSampleRequestEvent implements FreeSampleApproveEvent {
       _$SubmitFreeSampleRequestEventImpl;
 
   FreeSampleApproveInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubmitFreeSampleRequestEventImplCopyWith<
           _$SubmitFreeSampleRequestEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -252,6 +262,9 @@ class __$$FreesamplesubmitLoadingEventImplCopyWithImpl<$Res>
       _$FreesamplesubmitLoadingEventImpl _value,
       $Res Function(_$FreesamplesubmitLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -429,6 +442,9 @@ class _$FreeSampleApproveStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleApproveState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -451,6 +467,8 @@ class __$$SubmitFreeSampleRequestStateImplCopyWithImpl<$Res>
       $Res Function(_$SubmitFreeSampleRequestStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleApproveState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -490,7 +508,9 @@ class _$SubmitFreeSampleRequestStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, resp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleApproveState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubmitFreeSampleRequestStateImplCopyWith<
@@ -585,7 +605,10 @@ abstract class SubmitFreeSampleRequestState implements FreeSampleApproveState {
       _$SubmitFreeSampleRequestStateImpl;
 
   FreeSampleApprovalRespModel? get resp;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleApproveState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubmitFreeSampleRequestStateImplCopyWith<
           _$SubmitFreeSampleRequestStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -608,6 +631,9 @@ class __$$FreesampleSubmitFailedStateImplCopyWithImpl<$Res>
       _$FreesampleSubmitFailedStateImpl _value,
       $Res Function(_$FreesampleSubmitFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleApproveState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -733,6 +759,9 @@ class __$$FreesampleSubmitLoadingStateImplCopyWithImpl<$Res>
       _$FreesampleSubmitLoadingStateImpl _value,
       $Res Function(_$FreesampleSubmitLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleApproveState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

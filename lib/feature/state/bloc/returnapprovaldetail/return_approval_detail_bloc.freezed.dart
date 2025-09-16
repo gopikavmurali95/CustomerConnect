@@ -80,6 +80,9 @@ class _$ReturnApprovalDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ReturnApprovalDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetReturnApprovalDetailEvenntImplCopyWithImpl<$Res>
       $Res Function(_$GetReturnApprovalDetailEvenntImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReturnApprovalDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$GetReturnApprovalDetailEvenntImpl
   @override
   int get hashCode => Object.hash(runtimeType, reqID, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReturnApprovalDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetReturnApprovalDetailEvenntImplCopyWith<
@@ -247,7 +254,10 @@ abstract class GetReturnApprovalDetailEvennt
   String get reqID;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReturnApprovalDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetReturnApprovalDetailEvenntImplCopyWith<
           _$GetReturnApprovalDetailEvenntImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -270,6 +280,9 @@ class __$$ClearReturnDetailEventImplCopyWithImpl<$Res>
       _$ClearReturnDetailEventImpl _value,
       $Res Function(_$ClearReturnDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ReturnApprovalDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -434,6 +447,9 @@ class _$ReturnApprovalDetailStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ReturnApprovalDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -456,6 +472,8 @@ class __$$GetReturnApprovelDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetReturnApprovelDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReturnApprovalDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -505,7 +523,9 @@ class _$GetReturnApprovelDetailStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReturnApprovalDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetReturnApprovelDetailStateImplCopyWith<
@@ -592,7 +612,10 @@ abstract class GetReturnApprovelDetailState
       _$GetReturnApprovelDetailStateImpl;
 
   List<ReturnApprovalDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReturnApprovalDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetReturnApprovelDetailStateImplCopyWith<
           _$GetReturnApprovelDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -615,6 +638,9 @@ class __$$ReturnApprovalDetailFailedStateImplCopyWithImpl<$Res>
       _$ReturnApprovalDetailFailedStateImpl _value,
       $Res Function(_$ReturnApprovalDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ReturnApprovalDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

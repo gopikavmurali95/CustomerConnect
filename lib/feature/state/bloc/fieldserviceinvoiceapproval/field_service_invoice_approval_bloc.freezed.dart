@@ -99,6 +99,9 @@ class _$FieldServiceInvoiceApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -121,6 +124,8 @@ class __$$GetFieldServiceInvoiceApprovalEventImplCopyWithImpl<$Res>
       $Res Function(_$GetFieldServiceInvoiceApprovalEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,7 +174,9 @@ class _$GetFieldServiceInvoiceApprovalEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, reqID, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFieldServiceInvoiceApprovalEventImplCopyWith<
@@ -272,7 +279,10 @@ abstract class GetFieldServiceInvoiceApprovalEvent
 
   String get reqID;
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFieldServiceInvoiceApprovalEventImplCopyWith<
           _$GetFieldServiceInvoiceApprovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -296,6 +306,8 @@ class __$$InvoiceRejectEventImplCopyWithImpl<$Res>
       $Res Function(_$InvoiceRejectEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -342,7 +354,9 @@ class _$InvoiceRejectEventImpl implements InvoiceRejectEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reqID, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InvoiceRejectEventImplCopyWith<_$InvoiceRejectEventImpl> get copyWith =>
@@ -443,7 +457,10 @@ abstract class InvoiceRejectEvent implements FieldServiceInvoiceApprovalEvent {
 
   String get reqID;
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InvoiceRejectEventImplCopyWith<_$InvoiceRejectEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -465,6 +482,9 @@ class __$$FieldServiceInvoicLoadingEventImplCopyWithImpl<$Res>
       _$FieldServiceInvoicLoadingEventImpl _value,
       $Res Function(_$FieldServiceInvoicLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -598,6 +618,9 @@ class __$$ClearFieldServiceInoiveApprovalImplCopyWithImpl<$Res>
       _$ClearFieldServiceInoiveApprovalImpl _value,
       $Res Function(_$ClearFieldServiceInoiveApprovalImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FieldServiceInvoiceApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -793,6 +816,9 @@ class _$FieldServiceInvoiceApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FieldServiceInvoiceApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -815,6 +841,8 @@ class __$$GetFieldServiceInvoiceApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetFieldServiceInvoiceApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FieldServiceInvoiceApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -855,7 +883,9 @@ class _$GetFieldServiceInvoiceApprovalStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, approval);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FieldServiceInvoiceApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFieldServiceInvoiceApprovalStateImplCopyWith<
@@ -951,7 +981,10 @@ abstract class GetFieldServiceInvoiceApprovalState
       _$GetFieldServiceInvoiceApprovalStateImpl;
 
   FieldServiceInvoiceApprovalModel? get approval;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FieldServiceInvoiceApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFieldServiceInvoiceApprovalStateImplCopyWith<
           _$GetFieldServiceInvoiceApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -974,6 +1007,9 @@ class __$$FieldServiceInvoiceApprovalFailedImplCopyWithImpl<$Res>
       _$FieldServiceInvoiceApprovalFailedImpl _value,
       $Res Function(_$FieldServiceInvoiceApprovalFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FieldServiceInvoiceApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1101,6 +1137,9 @@ class __$$FieldServiceInvoiceLoadingStateImplCopyWithImpl<$Res>
       _$FieldServiceInvoiceLoadingStateImpl _value,
       $Res Function(_$FieldServiceInvoiceLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FieldServiceInvoiceApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

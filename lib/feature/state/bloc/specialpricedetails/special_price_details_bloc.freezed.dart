@@ -82,6 +82,9 @@ class _$SpecialPriceDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpecialPriceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetSpecialPriceDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSpecialPriceDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpecialPriceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +157,9 @@ class _$GetSpecialPriceDetailsEventImpl implements GetSpecialPriceDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, prhID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpecialPriceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSpecialPriceDetailsEventImplCopyWith<_$GetSpecialPriceDetailsEventImpl>
@@ -238,7 +245,10 @@ abstract class GetSpecialPriceDetailsEvent implements SpecialPriceDetailsEvent {
 
   String get prhID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpecialPriceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSpecialPriceDetailsEventImplCopyWith<_$GetSpecialPriceDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -260,6 +270,9 @@ class __$$ClearSpecialriceDetailsEventImplCopyWithImpl<$Res>
       _$ClearSpecialriceDetailsEventImpl _value,
       $Res Function(_$ClearSpecialriceDetailsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpecialPriceDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -429,6 +442,9 @@ class _$SpecialPriceDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SpecialPriceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -451,6 +467,8 @@ class __$$GetSpecialPriceDetailsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSpecialPriceDetailsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SpecialPriceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -500,7 +518,9 @@ class _$GetSpecialPriceDetailsStateImpl implements GetSpecialPriceDetailsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_spdetails));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SpecialPriceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSpecialPriceDetailsStateImplCopyWith<_$GetSpecialPriceDetailsStateImpl>
@@ -585,7 +605,10 @@ abstract class GetSpecialPriceDetailsState implements SpecialPriceDetailsState {
       _$GetSpecialPriceDetailsStateImpl;
 
   List<SpecialPriceDetailsModel>? get spdetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SpecialPriceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSpecialPriceDetailsStateImplCopyWith<_$GetSpecialPriceDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -607,6 +630,9 @@ class __$$specialPriceDetailsFailedStateImplCopyWithImpl<$Res>
       _$specialPriceDetailsFailedStateImpl _value,
       $Res Function(_$specialPriceDetailsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SpecialPriceDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -51,7 +51,9 @@ mixin _$ChartRoutsEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartRoutsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartRoutsEventCopyWith<ChartRoutsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +77,8 @@ class _$ChartRoutsEventCopyWithImpl<$Res, $Val extends ChartRoutsEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartRoutsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +114,8 @@ class __$$GetchartRouteDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetchartRouteDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartRoutsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,7 +154,9 @@ class _$GetchartRouteDataEventImpl implements GetchartRouteDataEvent {
   @override
   int get hashCode => Object.hash(runtimeType, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartRoutsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetchartRouteDataEventImplCopyWith<_$GetchartRouteDataEventImpl>
@@ -219,8 +227,11 @@ abstract class GetchartRouteDataEvent implements ChartRoutsEvent {
 
   @override
   String get date;
+
+  /// Create a copy of ChartRoutsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetchartRouteDataEventImplCopyWith<_$GetchartRouteDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -270,7 +281,9 @@ mixin _$ChartRoutsState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartRoutsStateCopyWith<ChartRoutsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -294,6 +307,8 @@ class _$ChartRoutsStateCopyWithImpl<$Res, $Val extends ChartRoutsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -329,6 +344,8 @@ class __$$GetChartRoutesDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetChartRoutesDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -368,7 +385,9 @@ class _$GetChartRoutesDataStateImpl implements GetChartRoutesDataState {
   @override
   int get hashCode => Object.hash(runtimeType, routedata);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetChartRoutesDataStateImplCopyWith<_$GetChartRoutesDataStateImpl>
@@ -448,8 +467,11 @@ abstract class GetChartRoutesDataState implements ChartRoutsState {
 
   @override
   ChartRoutesModel get routedata;
+
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetChartRoutesDataStateImplCopyWith<_$GetChartRoutesDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -474,6 +496,8 @@ class __$$RouteChartFailedStateImplCopyWithImpl<$Res>
       $Res Function(_$RouteChartFailedStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -513,7 +537,9 @@ class _$RouteChartFailedStateImpl implements RouteChartFailedState {
   @override
   int get hashCode => Object.hash(runtimeType, routedata);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RouteChartFailedStateImplCopyWith<_$RouteChartFailedStateImpl>
@@ -593,8 +619,11 @@ abstract class RouteChartFailedState implements ChartRoutsState {
 
   @override
   ChartRoutesModel get routedata;
+
+  /// Create a copy of ChartRoutsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RouteChartFailedStateImplCopyWith<_$RouteChartFailedStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -29,6 +31,7 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/homechartwidget
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/otheroptions.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -40,9 +43,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-ReceivePort _port = ReceivePort();
+ReceivePort port = ReceivePort();
 
 class HomeScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -66,8 +68,8 @@ getnotipermission() async {
 ScrollController _scrollController = ScrollController();
 ScrollController _centerscrollController = ScrollController();
 Timer? _autoScrollTimer;
-int _currentIndex = 0;
-bool _isManualTap = false;
+int currentIndex = 0;
+bool isManualTap = false;
 Timer? _manualTapDelayTimer;
 List<GlobalKey> tileKeys = [];
 
@@ -263,8 +265,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onItemTap(int index) {
-    _isManualTap = true;
-    _currentIndex = index;
+    isManualTap = true;
+    currentIndex = index;
     // setState(() {});
     _centerItem(index);
     _performTapAction(index);

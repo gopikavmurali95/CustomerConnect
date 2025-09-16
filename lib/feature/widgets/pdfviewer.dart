@@ -1,11 +1,12 @@
-import 'package:advance_pdf_viewer_fork/advance_pdf_viewer_fork.dart';
+// ignore_for_file: deprecated_member_use
+
 import 'package:customer_connect/feature/state/cubit/convertpdf/convertpdfurl_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:developer';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfViewScreen extends StatefulWidget {
   final String pdfUrl;
@@ -15,21 +16,15 @@ class PdfViewScreen extends StatefulWidget {
   State<PdfViewScreen> createState() => _PdfViewScreenState();
 }
 
-PDFDocument? doc;
-
 class _PdfViewScreenState extends State<PdfViewScreen> {
   @override
   void initState() {
-    log(widget.pdfUrl);
-    context.read<ConvertpdfurlCubit>().clearpdfUrl();
-    // convert();
-    context.read<ConvertpdfurlCubit>().convertpdf(widget.pdfUrl);
     super.initState();
-  }
+    log(widget.pdfUrl);
 
-  convert() async {
-    doc = null;
-    doc = await PDFDocument.fromURL(widget.pdfUrl.toString());
+    // Reset then load new PDF URL into Cubit
+    context.read<ConvertpdfurlCubit>().clearpdfUrl();
+    context.read<ConvertpdfurlCubit>().convertpdf(widget.pdfUrl);
   }
 
   @override
@@ -57,26 +52,14 @@ class _PdfViewScreenState extends State<PdfViewScreen> {
       ),
       body: Column(
         children: [
-          BlocBuilder<ConvertpdfurlCubit, ConvertpdfurlState>(
-            builder: (context, state) {
-              return Expanded(
-                child: state.pdf == null
-                    ? const Center(
-                        child: CupertinoActivityIndicator(
-                          animating: true,
-                          color: Colors.red,
-                          radius: 30,
-                        ),
-                      )
-                    : PDFViewer(
-                        showPicker: false,
-                        showNavigation: false,
-                        zoomSteps: 5,
-                        scrollDirection: Axis.vertical,
-                        document: state.pdf!,
-                      ),
-              );
-            },
+          Expanded(
+            child: BlocBuilder<ConvertpdfurlCubit, ConvertpdfurlState>(
+              builder: (context, state) {
+                return state.when(
+                  convertPDFUrl: (pdfUrl) => SfPdfViewer.network(pdfUrl!),
+                );
+              },
+            ),
           ),
         ],
       ),

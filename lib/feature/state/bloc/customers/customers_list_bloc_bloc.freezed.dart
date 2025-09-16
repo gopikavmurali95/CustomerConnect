@@ -85,6 +85,9 @@ class _$CustomersListBlocEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomersListBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +113,8 @@ class __$$GetCustomersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomersListBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -196,7 +201,9 @@ class _$GetCustomersEventImpl implements GetCustomersEvent {
   int get hashCode => Object.hash(
       runtimeType, userId, area, subarea, route, searchQuery, pagenum);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomersListBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomersEventImplCopyWith<_$GetCustomersEventImpl> get copyWith =>
@@ -296,7 +303,10 @@ abstract class GetCustomersEvent implements CustomersListBlocEvent {
   String get route;
   String get searchQuery;
   String get pagenum;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomersListBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomersEventImplCopyWith<_$GetCustomersEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -316,6 +326,9 @@ class __$$ClearCustomersEventImplCopyWithImpl<$Res>
   __$$ClearCustomersEventImplCopyWithImpl(_$ClearCustomersEventImpl _value,
       $Res Function(_$ClearCustomersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomersListBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -431,6 +444,9 @@ class __$$RestCustomersEventImplCopyWithImpl<$Res>
   __$$RestCustomersEventImplCopyWithImpl(_$RestCustomersEventImpl _value,
       $Res Function(_$RestCustomersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomersListBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -573,7 +589,9 @@ mixin _$CustomersListBlocState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomersListBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomersListBlocStateCopyWith<CustomersListBlocState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -598,6 +616,8 @@ class _$CustomersListBlocStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomersListBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -636,6 +656,8 @@ class __$$GetCustomersSstateImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomersSstateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomersListBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -696,7 +718,9 @@ class _$GetCustomersSstateImpl implements GetCustomersSstate {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_customers), isLoading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomersListBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomersSstateImplCopyWith<_$GetCustomersSstateImpl> get copyWith =>
@@ -773,8 +797,11 @@ abstract class GetCustomersSstate implements CustomersListBlocState {
   List<CusInsCustomersModel>? get customers;
   @override
   bool get isLoading;
+
+  /// Create a copy of CustomersListBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomersSstateImplCopyWith<_$GetCustomersSstateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

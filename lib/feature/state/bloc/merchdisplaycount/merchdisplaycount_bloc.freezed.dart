@@ -75,6 +75,9 @@ class _$MerchdisplaycountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchdisplaycountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$GetDisplayCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetDisplayCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchdisplaycountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +148,9 @@ class _$GetDisplayCountEventImpl implements GetDisplayCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchdisplaycountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetDisplayCountEventImplCopyWith<_$GetDisplayCountEventImpl>
@@ -223,7 +230,10 @@ abstract class GetDisplayCountEvent implements MerchdisplaycountEvent {
 
   String get fromDate;
   String get toDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchdisplaycountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDisplayCountEventImplCopyWith<_$GetDisplayCountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -245,6 +255,9 @@ class __$$DisplayCountClearEventImplCopyWithImpl<$Res>
       _$DisplayCountClearEventImpl _value,
       $Res Function(_$DisplayCountClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchdisplaycountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -397,6 +410,9 @@ class _$MerchdisplaycountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchdisplaycountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -417,6 +433,8 @@ class __$$GetDisplayCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetDisplayCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchdisplaycountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -456,7 +474,9 @@ class _$GetDisplayCountStateImpl implements GetDisplayCountState {
   @override
   int get hashCode => Object.hash(runtimeType, discount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchdisplaycountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetDisplayCountStateImplCopyWith<_$GetDisplayCountStateImpl>
@@ -535,7 +555,10 @@ abstract class GetDisplayCountState implements MerchdisplaycountState {
       _$GetDisplayCountStateImpl;
 
   GetDisplayCountModel? get discount;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchdisplaycountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDisplayCountStateImplCopyWith<_$GetDisplayCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -557,6 +580,9 @@ class __$$DispalyCountFailedStateImplCopyWithImpl<$Res>
       _$DispalyCountFailedStateImpl _value,
       $Res Function(_$DispalyCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchdisplaycountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

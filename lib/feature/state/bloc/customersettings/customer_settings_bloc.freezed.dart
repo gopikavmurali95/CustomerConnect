@@ -74,6 +74,9 @@ class _$CustomerSettingsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerSettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$GetCustomerSettingsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomerSettingsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerSettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +139,9 @@ class _$GetCustomerSettingsEventImpl implements GetCustomerSettingsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, usrID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerSettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomerSettingsEventImplCopyWith<_$GetCustomerSettingsEventImpl>
@@ -210,7 +217,10 @@ abstract class GetCustomerSettingsEvent implements CustomerSettingsEvent {
       _$GetCustomerSettingsEventImpl;
 
   String get usrID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerSettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomerSettingsEventImplCopyWith<_$GetCustomerSettingsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -229,6 +239,9 @@ class __$$ClearSettingsEventImplCopyWithImpl<$Res>
   __$$ClearSettingsEventImplCopyWithImpl(_$ClearSettingsEventImpl _value,
       $Res Function(_$ClearSettingsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerSettingsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -383,6 +396,9 @@ class _$CustomerSettingsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerSettingsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -405,6 +421,8 @@ class __$$GetCustomerSettingsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCustomerSettingsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -444,7 +462,9 @@ class _$GetCustomerSettingsStateImpl implements GetCustomerSettingsState {
   @override
   int get hashCode => Object.hash(runtimeType, settings);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCustomerSettingsStateImplCopyWith<_$GetCustomerSettingsStateImpl>
@@ -526,7 +546,10 @@ abstract class GetCustomerSettingsState implements CustomerSettingsState {
       _$GetCustomerSettingsStateImpl;
 
   CustomerSettingsModel? get settings;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCustomerSettingsStateImplCopyWith<_$GetCustomerSettingsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -548,6 +571,9 @@ class __$$CustomerSettingsFailedStateImplCopyWithImpl<$Res>
       _$CustomerSettingsFailedStateImpl _value,
       $Res Function(_$CustomerSettingsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerSettingsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

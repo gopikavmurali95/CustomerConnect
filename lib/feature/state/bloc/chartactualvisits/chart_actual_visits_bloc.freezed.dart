@@ -53,7 +53,9 @@ mixin _$ChartActualVisitsEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartActualVisitsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartActualVisitsEventCopyWith<ChartActualVisitsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -78,6 +80,8 @@ class _$ChartActualVisitsEventCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartActualVisitsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +118,8 @@ class __$$GetChartActualVisitsDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetChartActualVisitsDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartActualVisitsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +159,9 @@ class _$GetChartActualVisitsDataEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartActualVisitsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetChartActualVisitsDataEventImplCopyWith<
@@ -227,8 +235,11 @@ abstract class GetChartActualVisitsDataEvent implements ChartActualVisitsEvent {
 
   @override
   String get date;
+
+  /// Create a copy of ChartActualVisitsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetChartActualVisitsDataEventImplCopyWith<
           _$GetChartActualVisitsDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -275,7 +286,9 @@ mixin _$ChartActualVisitsState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartActualVisitsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartActualVisitsStateCopyWith<ChartActualVisitsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -300,6 +313,8 @@ class _$ChartActualVisitsStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartActualVisitsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -336,6 +351,8 @@ class __$$GetChartActualVisitsDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetChartActualVisitsDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartActualVisitsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -375,7 +392,9 @@ class _$GetChartActualVisitsDataStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, data);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartActualVisitsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetChartActualVisitsDataStateImplCopyWith<
@@ -452,8 +471,11 @@ abstract class GetChartActualVisitsDataState implements ChartActualVisitsState {
 
   @override
   ChartActualVisitModel get data;
+
+  /// Create a copy of ChartActualVisitsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetChartActualVisitsDataStateImplCopyWith<
           _$GetChartActualVisitsDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;

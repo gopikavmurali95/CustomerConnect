@@ -88,6 +88,9 @@ class _$CustomerTransactionEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerTransactionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +113,8 @@ class __$$CusTransactionSuccessEventImplCopyWithImpl<$Res>
       $Res Function(_$CusTransactionSuccessEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerTransactionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,7 +153,9 @@ class _$CusTransactionSuccessEventImpl implements CusTransactionSuccessEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerTransactionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CusTransactionSuccessEventImplCopyWith<_$CusTransactionSuccessEventImpl>
@@ -238,7 +245,10 @@ abstract class CusTransactionSuccessEvent implements CustomerTransactionEvent {
       _$CusTransactionSuccessEventImpl;
 
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerTransactionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CusTransactionSuccessEventImplCopyWith<_$CusTransactionSuccessEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -260,6 +270,9 @@ class __$$CusTransactionFailedEventImplCopyWithImpl<$Res>
       _$CusTransactionFailedEventImpl _value,
       $Res Function(_$CusTransactionFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerTransactionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -381,6 +394,9 @@ class __$$ClearCustomerTransactionCountImplCopyWithImpl<$Res>
       _$ClearCustomerTransactionCountImpl _value,
       $Res Function(_$ClearCustomerTransactionCountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerTransactionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -556,6 +572,9 @@ class _$CustomerTransactionStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerTransactionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -578,6 +597,8 @@ class __$$CusTransactionSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$CusTransactionSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerTransactionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -617,7 +638,9 @@ class _$CusTransactionSuccessStateImpl implements CusTransactionSuccessState {
   @override
   int get hashCode => Object.hash(runtimeType, customertrans);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerTransactionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CusTransactionSuccessStateImplCopyWith<_$CusTransactionSuccessStateImpl>
@@ -702,7 +725,10 @@ abstract class CusTransactionSuccessState implements CustomerTransactionState {
       _$CusTransactionSuccessStateImpl;
 
   CustomerTransactionModel? get customertrans;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerTransactionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CusTransactionSuccessStateImplCopyWith<_$CusTransactionSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -724,6 +750,9 @@ class __$$CusTransactionFailedStateImplCopyWithImpl<$Res>
       _$CusTransactionFailedStateImpl _value,
       $Res Function(_$CusTransactionFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerTransactionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

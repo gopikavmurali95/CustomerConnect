@@ -19,7 +19,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:intl/intl.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class TrackSalesManScreen extends StatefulWidget {
   const TrackSalesManScreen({super.key});
@@ -323,7 +323,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
     const String baseUrl =
         'https://maps.googleapis.com/maps/api/directions/json';
 
-    List<LatLng> _decodePolyline(String encoded) {
+    List<LatLng> decodePolyline(String encoded) {
       List<LatLng> poly = [];
       int index = 0, len = encoded.length;
       int lat = 0, lng = 0;
@@ -354,7 +354,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
     }
 
     // Function to get directions from the API
-    Future<Map<String, dynamic>> _fetchDirections(
+    Future<Map<String, dynamic>> fetchDirections(
         String origin, String destination, String waypoints) async {
       final String url =
           '$baseUrl?origin=$origin&destination=$destination&waypoints=$waypoints&key=$apiKey';
@@ -381,10 +381,10 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
               '${double.parse(s.geocode?.split(',').toList()[0] ?? '0.00')},${double.parse(s.geocode?.split(',').toList()[1] ?? '0.00')}')
           .join('|');
 
-      final data = await _fetchDirections(origin, destination, waypoints);
+      final data = await fetchDirections(origin, destination, waypoints);
       if (data['routes'].isNotEmpty) {
         final points = data['routes'][0]['overview_polyline']['points'];
-        polylineCoordinates.addAll(_decodePolyline(points));
+        polylineCoordinates.addAll(decodePolyline(points));
       }
     }
 
@@ -407,7 +407,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
         'https://maps.googleapis.com/maps/api/directions/json';
 
     // Function to decode polyline points
-    List<LatLng> _decodePolyline(String encoded) {
+    List<LatLng> decodePolyline(String encoded) {
       List<LatLng> poly = [];
       int index = 0, len = encoded.length;
       int lat = 0, lng = 0;
@@ -437,7 +437,7 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
       return poly;
     }
 
-    Future<Map<String, dynamic>> _fetchDirections(
+    Future<Map<String, dynamic>> fetchDirections(
         String origin, String destination, String waypoints) async {
       final String url =
           '$baseUrl?origin=$origin&destination=$destination&waypoints=$waypoints&key=$apiKey';
@@ -464,10 +464,10 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
               '${double.parse(s.geocode?.split(',').toList()[0] ?? '0.00')},${double.parse(s.geocode?.split(',').toList()[1] ?? '0.00')}')
           .join('|');
 
-      final data = await _fetchDirections(origin, destination, waypoints);
+      final data = await fetchDirections(origin, destination, waypoints);
       if (data['routes'].isNotEmpty) {
         final points = data['routes'][0]['overview_polyline']['points'];
-        polylineCoordinates.addAll(_decodePolyline(points));
+        polylineCoordinates.addAll(decodePolyline(points));
       }
     }
 
@@ -483,36 +483,6 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
     });
   }
 
-  List<LatLng> _decodePolyline(String encoded) {
-    List<LatLng> polyline = [];
-    int index = 0, len = encoded.length;
-    int lat = 0, lng = 0;
-
-    while (index < len) {
-      int b, shift = 0, result = 0;
-      do {
-        b = encoded.codeUnitAt(index++) - 63;
-        result |= (b & 0x1f) << shift;
-        shift += 5;
-      } while (b >= 0x20);
-      int dlat = (result & 1) != 0 ? ~(result >> 1) : (result >> 1);
-      lat += dlat;
-
-      shift = 0;
-      result = 0;
-      do {
-        b = encoded.codeUnitAt(index++) - 63;
-        result |= (b & 0x1f) << shift;
-        shift += 5;
-      } while (b >= 0x20);
-      int dlng = (result & 1) != 0 ? ~(result >> 1) : (result >> 1);
-      lng += dlng;
-
-      polyline.add(LatLng(lat / 1e5, lng / 1e5));
-    }
-
-    return polyline;
-  }
 
   @override
   void dispose() {
@@ -646,8 +616,9 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                                                 .circular(10.0),
                                                         boxShadow: const [
                                                           BoxShadow(
-                                                              // ignore: use_full_hex_values_for_flutter_colors
+                                                              
                                                               color: Color(
+                                                                  // ignore: use_full_hex_values_for_flutter_colors
                                                                   0xff00000050),
                                                               blurRadius: 0.4,
                                                               spreadRadius: 0.4)

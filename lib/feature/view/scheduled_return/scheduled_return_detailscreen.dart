@@ -1,3 +1,5 @@
+// ignore_for_file: use_full_hex_values_for_flutter_colors, deprecated_member_use
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
@@ -21,12 +23,12 @@ import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_b
 import 'package:customer_connect/feature/state/cubit/routeforsc/route_for_sc_cubit.dart';
 import 'package:customer_connect/feature/view/scheduled_return/scheduled_return_headerscreen.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScheduledReturnDetailScreen extends StatefulWidget {
   final LoginUserModel user;
@@ -51,7 +53,7 @@ int loadingCount = 0;
 List<ScheduleReturnApprovalReasonModel> availableresons = [];
 
 List<RouteModel> availableroutes = [];
-int _approvedCount = 0;
+int approvedCount = 0;
 // int _totalcount = 0;
 String selectedRoute = '-1';
 List<ScheduledReturnPrdModel?> approvedProducts = [];
@@ -63,7 +65,7 @@ class _ScheduledReturnDetailScreenState
   @override
   void initState() {
     _searchctrls.clear();
-    _approvedCount = 0;
+    approvedCount = 0;
     loadingCount = 0;
 
     availableresons.clear();
@@ -145,7 +147,7 @@ class _ScheduledReturnDetailScreenState
               state.when(
                 scheduledReturnApprovalStatusStates: (status) {
                   if (status != null) {
-                    _approvedCount++;
+                    approvedCount++;
                     Navigator.pop(context);
                     showDialog(
                         context: context,
@@ -750,7 +752,7 @@ class _ScheduledReturnDetailScreenState
 
                                                                               decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                                 BoxShadow(
-                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    
                                                                                     color: Color(0xff00000050),
                                                                                     blurRadius: 0.4,
                                                                                     spreadRadius: 0.4)
@@ -851,7 +853,7 @@ class _ScheduledReturnDetailScreenState
                                                                                 Row(
                                                                               children: [
                                                                                 Radio(
-                                                                                  fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                  fillColor: WidgetStateProperty.resolveWith<Color>((Set<MaterialState> states) {
                                                                                     return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                                   }),
                                                                                   /* activeColor: isselected == true
@@ -908,7 +910,7 @@ class _ScheduledReturnDetailScreenState
                                                                                 Row(
                                                                               children: [
                                                                                 Radio(
-                                                                                  fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                  fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                     return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                                   }),
                                                                                   /*  activeColor: isselected == false
@@ -975,7 +977,7 @@ class _ScheduledReturnDetailScreenState
                                                                               borderRadius: BorderRadius.circular(10.0),
                                                                               boxShadow: const [
                                                                                 BoxShadow(
-                                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                                    
                                                                                     color: Color(0xff00000050),
                                                                                     blurRadius: 0.4,
                                                                                     spreadRadius: 0.4)
@@ -1022,7 +1024,7 @@ class _ScheduledReturnDetailScreenState
                                                                                   width: 120.w,
                                                                                   decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
                                                                                     BoxShadow(
-                                                                                        // ignore: use_full_hex_values_for_flutter_colors
+                                                                                        
                                                                                         color: Color(0xff00000050),
                                                                                         blurRadius: 0.4,
                                                                                         spreadRadius: 0.4)
@@ -1038,7 +1040,7 @@ class _ScheduledReturnDetailScreenState
                                                                               : const SizedBox(),
                                                                           Radio(
                                                                             fillColor:
-                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                               return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                             }),
                                                                             value: statuslist[index] == null
@@ -1071,7 +1073,7 @@ class _ScheduledReturnDetailScreenState
                                                                         children: [
                                                                           Radio(
                                                                             fillColor:
-                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                               return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                             }),
                                                                             value: statuslist[index] == null
@@ -1244,7 +1246,7 @@ class _ScheduledReturnDetailScreenState
                                                                           10.0),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                    // ignore: use_full_hex_values_for_flutter_colors
+                                                                    
                                                                     color: Color(
                                                                         0xff00000050),
                                                                     blurRadius:

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
@@ -21,7 +23,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 
 class PriceChangeDetail extends StatefulWidget {
   final PriceChangeHeaderModel priceChangeApprovel;
@@ -1160,7 +1162,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             Row(
                                                                           children: [
                                                                             Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                 return (statuslist[index] == true) ? Colors.green.shade300 : Colors.grey;
                                                                               }),
                                                                               value: statuslist[index] == null
@@ -1217,7 +1219,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                             Row(
                                                                           children: [
                                                                             Radio(
-                                                                              fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                              fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                                 return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                               }),
                                                                               /*  activeColor: isselected == false
@@ -1351,7 +1353,7 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
                                                                         children: [
                                                                           Radio(
                                                                             fillColor:
-                                                                                MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+                                                                                WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
                                                                               return (statuslist[index] != null && !statuslist[index]!) ? Colors.red.shade300 : Colors.grey;
                                                                             }),
                                                                             value: statuslist[index] == null

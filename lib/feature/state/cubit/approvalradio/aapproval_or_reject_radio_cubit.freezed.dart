@@ -50,7 +50,9 @@ mixin _$AapprovalOrRejectRadioState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AapprovalOrRejectRadioState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AapprovalOrRejectRadioStateCopyWith<AapprovalOrRejectRadioState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -77,6 +79,8 @@ class _$AapprovalOrRejectRadioStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AapprovalOrRejectRadioState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -111,6 +115,8 @@ class __$$ApprovalStatusStateImplCopyWithImpl<$Res>
       $Res Function(_$ApprovalStatusStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AapprovalOrRejectRadioState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,7 +156,9 @@ class _$ApprovalStatusStateImpl implements ApprovalStatusState {
   @override
   int get hashCode => Object.hash(runtimeType, isApproved);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AapprovalOrRejectRadioState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApprovalStatusStateImplCopyWith<_$ApprovalStatusStateImpl> get copyWith =>
@@ -220,8 +228,11 @@ abstract class ApprovalStatusState implements AapprovalOrRejectRadioState {
 
   @override
   bool get isApproved;
+
+  /// Create a copy of AapprovalOrRejectRadioState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApprovalStatusStateImplCopyWith<_$ApprovalStatusStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

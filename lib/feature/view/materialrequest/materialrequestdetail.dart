@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
@@ -15,6 +17,7 @@ import 'package:customer_connect/feature/state/bloc/materialreqhead/material_req
 import 'package:customer_connect/feature/state/cubit/navigatetoback/navigateto_back_cubit.dart';
 import 'package:customer_connect/feature/view/materialrequest/materialrequestdetailheader.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +26,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../data/models/material_req_detail_model/MaterialReqDetailModel.dart';
 import '../../data/models/material_req_header_model/MaterialReqHeaderModel.dart';
 import '../LoadInDetail/load_detail_completed.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MaterialRequestDetailScreen extends StatefulWidget {
   //final ReturnApprovalHeaderModel returnApprovel;
@@ -53,7 +55,7 @@ int totalcount = 0;
 
 List<MatrialAprReqPrdModel?> _materialreqproducts = [];
 List<MatrialAprReqPrdModel?> materialreqproductsReject = [];
-List<MaterialReqDetailModel?> _procechangematerial = [];
+List<MaterialReqDetailModel?> procechangematerial = [];
 TextEditingController _materialreqdetailSerachController =
     TextEditingController();
 TextEditingController apprvLQtymqController = TextEditingController();

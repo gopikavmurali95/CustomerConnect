@@ -87,6 +87,9 @@ class _$MerchCustomerActivitiesEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCustomerActivitiesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -110,6 +113,8 @@ class __$$GetMerchCustomerActivitiesDataImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchCustomerActivitiesDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCustomerActivitiesEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -180,7 +185,9 @@ class _$GetMerchCustomerActivitiesDataImpl
   int get hashCode =>
       Object.hash(runtimeType, fromDate, toDate, status, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCustomerActivitiesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchCustomerActivitiesDataImplCopyWith<
@@ -279,7 +286,10 @@ abstract class GetMerchCustomerActivitiesData
   String get toDate;
   String get status;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCustomerActivitiesEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchCustomerActivitiesDataImplCopyWith<
           _$GetMerchCustomerActivitiesDataImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -302,6 +312,9 @@ class __$$ClearMerchCustomerActivitiesDataImplCopyWithImpl<$Res>
       _$ClearMerchCustomerActivitiesDataImpl _value,
       $Res Function(_$ClearMerchCustomerActivitiesDataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCustomerActivitiesEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -477,6 +490,9 @@ class _$MerchCustomerActivitiesStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCustomerActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -499,6 +515,8 @@ class __$$GetMerchCustomerActivitiesDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchCustomerActivitiesDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCustomerActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -550,7 +568,9 @@ class _$GetMerchCustomerActivitiesDataStateImpl
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_cusActivitiesData));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCustomerActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchCustomerActivitiesDataStateImplCopyWith<
@@ -638,7 +658,10 @@ abstract class GetMerchCustomerActivitiesDataState
           cusActivitiesData}) = _$GetMerchCustomerActivitiesDataStateImpl;
 
   List<MerchCustomerActivitiesModel>? get cusActivitiesData;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCustomerActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchCustomerActivitiesDataStateImplCopyWith<
           _$GetMerchCustomerActivitiesDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -661,6 +684,9 @@ class __$$GetMerchCustomerActivitiesDataFailedImplCopyWithImpl<$Res>
       _$GetMerchCustomerActivitiesDataFailedImpl _value,
       $Res Function(_$GetMerchCustomerActivitiesDataFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCustomerActivitiesState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -76,6 +76,9 @@ class _$PickingHeaderEventCopyWithImpl<$Res, $Val extends PickingHeaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PickingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -96,6 +99,8 @@ class __$$GetpickingHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetpickingHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PickingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +150,9 @@ class _$GetpickingHeaderEventImpl implements GetpickingHeaderEvent {
   @override
   int get hashCode => Object.hash(runtimeType, pickingHeadIn, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PickingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetpickingHeaderEventImplCopyWith<_$GetpickingHeaderEventImpl>
@@ -226,7 +233,10 @@ abstract class GetpickingHeaderEvent implements PickingHeaderEvent {
 
   PickingInModel get pickingHeadIn;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PickingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetpickingHeaderEventImplCopyWith<_$GetpickingHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -245,6 +255,9 @@ class __$$ClearPickingeventImplCopyWithImpl<$Res>
   __$$ClearPickingeventImplCopyWithImpl(_$ClearPickingeventImpl _value,
       $Res Function(_$ClearPickingeventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PickingHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -398,6 +411,9 @@ class _$PickingHeaderStateCopyWithImpl<$Res, $Val extends PickingHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PickingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -418,6 +434,8 @@ class __$$GetPickingHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPickingHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PickingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -467,7 +485,9 @@ class _$GetPickingHeaderStateImpl implements GetPickingHeaderState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_pickingOut));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PickingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPickingHeaderStateImplCopyWith<_$GetPickingHeaderStateImpl>
@@ -546,7 +566,10 @@ abstract class GetPickingHeaderState implements PickingHeaderState {
       _$GetPickingHeaderStateImpl;
 
   List<PickingOutModel>? get pickingOut;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PickingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPickingHeaderStateImplCopyWith<_$GetPickingHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -568,6 +591,9 @@ class __$$PickingheaderFailedStateImplCopyWithImpl<$Res>
       _$PickingheaderFailedStateImpl _value,
       $Res Function(_$PickingheaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PickingHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

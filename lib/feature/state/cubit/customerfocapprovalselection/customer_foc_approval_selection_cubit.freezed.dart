@@ -57,7 +57,9 @@ mixin _$CustomerFocApprovalSelectionState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerFocApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CustomerFocApprovalSelectionStateCopyWith<CustomerFocApprovalSelectionState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -84,6 +86,8 @@ class _$CustomerFocApprovalSelectionStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CustomerFocApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,6 +124,8 @@ class __$$FocApprovalSelectionStateImplCopyWithImpl<$Res>
       $Res Function(_$FocApprovalSelectionStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerFocApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,7 +173,9 @@ class _$FocApprovalSelectionStateImpl implements FocApprovalSelectionState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_selection));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerFocApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FocApprovalSelectionStateImplCopyWith<_$FocApprovalSelectionStateImpl>
@@ -245,8 +253,11 @@ abstract class FocApprovalSelectionState
 
   @override
   List<CustomerFocApprovalJsonModel> get selection;
+
+  /// Create a copy of CustomerFocApprovalSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FocApprovalSelectionStateImplCopyWith<_$FocApprovalSelectionStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

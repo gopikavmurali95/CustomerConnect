@@ -10,13 +10,14 @@ import 'package:customer_connect/feature/view/arcollection/arcollection.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/insightsarlistwidget.dart';
 import 'package:customer_connect/feature/view/arcollection/widgets/modewidget.dart';
 import 'package:customer_connect/feature/widgets/shimmer.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ssun_chart/pie_chart.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+// import 'package:ssun_chart/pie_chart.dart';
 
 class InsightsArCollection extends StatefulWidget {
   final LoginUserModel user;
@@ -38,6 +39,13 @@ List<int> pievalues = [];
 
 final _cusArSearchCtrl = TextEditingController();
 Timer? debounce;
+
+class _ChartData {
+  _ChartData(this.label, this.value, this.color);
+  final String label;
+  final double value;
+  final Color color;
+}
 
 class _InsightsArCollectionState extends State<InsightsArCollection> {
   final ScrollController _scrollController = ScrollController();
@@ -308,71 +316,100 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                     height: 110.h,
                                                     child: RotatedBox(
                                                       quarterTurns: 0,
-                                                      child: PieChart(
-                                                        bgColor:
-                                                            Colors.transparent,
-                                                        usePercentValues: false,
-                                                        // centerTextSize: 11,
-                                                        // drawCenterText: true,
-                                                        drawHoleEnabled: true,
-                                                        holeRadius: 20,
-                                                        entryLabelTextSize: 10,
-                                                        transparentCircleRadius:
-                                                            27,
-                                                        entryLabelColor:
-                                                            Colors.white,
-                                                        data: PieData(
-                                                          List.of(
-                                                            [
-                                                              PieDataSet(
-                                                                colors:
-                                                                    colorslist,
-                                                                entries:
-                                                                    List.of(
-                                                                  [
-                                                                    PieEntry(
-                                                                      double.parse(artotal.hcCount ?? '0') <=
-                                                                              0
-                                                                          ? ''
-                                                                          : artotal.hcCount ??
-                                                                              '0',
-                                                                      double.parse(
-                                                                          artotal.hcCount ??
-                                                                              '0'),
-                                                                    ),
-                                                                    PieEntry(
-                                                                        double.parse(artotal.opCount ?? '0') <=
-                                                                                0
-                                                                            ? ''
-                                                                            : artotal.opCount ??
-                                                                                '0',
-                                                                        double.parse(artotal.opCount ??
-                                                                            '0')),
-                                                                    PieEntry(
-                                                                        double.parse(artotal.posCount ?? '0') <=
-                                                                                0
-                                                                            ? ''
-                                                                            : artotal.posCount ??
-                                                                                '0',
-                                                                        double.parse(artotal.posCount ??
-                                                                            '0')),
-                                                                    PieEntry(
-                                                                        double.parse(artotal.chequeCount ?? '0') <=
-                                                                                0
-                                                                            ? ''
-                                                                            : artotal.chequeCount ??
-                                                                                '0',
-                                                                        double.parse(artotal.chequeCount ??
-                                                                            '0')),
-                                                                  ],
-                                                                ),
-                                                              )
-                                                            ],
+                                                      child: SfCircularChart(
+                                                        margin: EdgeInsets.zero,
+                                                        series: <DoughnutSeries<
+                                                            _ChartData,
+                                                            String>>[
+                                                          DoughnutSeries<
+                                                              _ChartData,
+                                                              String>(
+                                                            dataSource:
+                                                                <_ChartData>[
+                                                              _ChartData(
+                                                                  artotal.hcCount ??
+                                                                      '',
+                                                                  double.tryParse(
+                                                                          artotal.hcAmount ??
+                                                                              '0') ??
+                                                                      0,
+                                                                  colorslist
+                                                                          .isNotEmpty
+                                                                      ? colorslist[
+                                                                          0]
+                                                                      : Colors
+                                                                          .blue),
+                                                              _ChartData(
+                                                                  artotal.opCount ??
+                                                                      '',
+                                                                  double.tryParse(
+                                                                          artotal.opAmount ??
+                                                                              '0') ??
+                                                                      0,
+                                                                  colorslist.length >
+                                                                          1
+                                                                      ? colorslist[
+                                                                          1]
+                                                                      : Colors
+                                                                          .green),
+                                                              _ChartData(
+                                                                  artotal.posCount ??
+                                                                      '',
+                                                                  double.tryParse(
+                                                                          artotal.posAmount ??
+                                                                              '0') ??
+                                                                      0,
+                                                                  colorslist.length >
+                                                                          2
+                                                                      ? colorslist[
+                                                                          2]
+                                                                      : Colors
+                                                                          .orange),
+                                                              _ChartData(
+                                                                  artotal.chequeCount ??
+                                                                      '',
+                                                                  double.tryParse(
+                                                                          artotal.chequeAmount ??
+                                                                              '0') ??
+                                                                      0,
+                                                                  colorslist.length >
+                                                                          3
+                                                                      ? colorslist[
+                                                                          3]
+                                                                      : Colors
+                                                                          .purple),
+                                                            ]
+                                                                    .where((e) =>
+                                                                        e.value >
+                                                                        0)
+                                                                    .toList(),
+                                                            xValueMapper:
+                                                                (_ChartData d,
+                                                                        _) =>
+                                                                    d.label,
+                                                            yValueMapper:
+                                                                (_ChartData d,
+                                                                        _) =>
+                                                                    d.value,
+                                                            pointColorMapper:
+                                                                (_ChartData d,
+                                                                        _) =>
+                                                                    d.color,
+                                                            dataLabelSettings:
+                                                                DataLabelSettings(
+                                                              isVisible: true,
+                                                              textStyle: kfontstyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 10),
+                                                            ),
+                                                            radius: '100%',
+                                                            innerRadius: '40%',
+                                                            explode: true,
                                                           ),
-                                                        ),
+                                                        ],
                                                       ),
-                                                    ),
-                                                  )
+                                                    ))
                                                 : pievalues.isEmpty
                                                     ? const Center()
                                                     : Stack(
@@ -400,22 +437,16 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                                             3],
                                                             child: Center(
                                                               child:
-                                                                  CircleAvatar(
-                                                                radius: 23.h,
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .white30,
-                                                                child: Center(
-                                                                  child:
-                                                                      CircleAvatar(
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .white,
-                                                                    radius:
-                                                                        16.h,
+                                                                  Center(
+                                                                    child:
+                                                                        CircleAvatar(
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .white,
+                                                                      radius:
+                                                                          23.h,
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ),
                                                             ),
                                                           ),
                                                           Positioned(

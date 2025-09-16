@@ -77,6 +77,9 @@ class _$OutstandingEventCopyWithImpl<$Res, $Val extends OutstandingEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OutstandingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetOutstandingDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetOutstandingDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutstandingEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +151,9 @@ class _$GetOutstandingDataEventImpl implements GetOutstandingDataEvent {
   @override
   int get hashCode => Object.hash(runtimeType, outIn, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutstandingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOutstandingDataEventImplCopyWith<_$GetOutstandingDataEventImpl>
@@ -228,7 +235,10 @@ abstract class GetOutstandingDataEvent implements OutstandingEvent {
 
   OutStandingHeaderModel get outIn;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OutstandingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOutstandingDataEventImplCopyWith<_$GetOutstandingDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -248,6 +258,9 @@ class __$$ClearOutStandingEventImplCopyWithImpl<$Res>
   __$$ClearOutStandingEventImplCopyWithImpl(_$ClearOutStandingEventImpl _value,
       $Res Function(_$ClearOutStandingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OutstandingEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -403,6 +416,9 @@ class _$OutstandingStateCopyWithImpl<$Res, $Val extends OutstandingState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OutstandingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -424,6 +440,8 @@ class __$$GetOutstandingDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetOutstandingDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutstandingState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -462,7 +480,9 @@ class _$GetOutstandingDataStateImpl implements GetOutstandingDataState {
   @override
   int get hashCode => Object.hash(runtimeType, counts);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutstandingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOutstandingDataStateImplCopyWith<_$GetOutstandingDataStateImpl>
@@ -541,7 +561,10 @@ abstract class GetOutstandingDataState implements OutstandingState {
       _$GetOutstandingDataStateImpl;
 
   OutstandingCountModel? get counts;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OutstandingState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOutstandingDataStateImplCopyWith<_$GetOutstandingDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -562,6 +585,9 @@ class __$$OutstandingFailedStateImplCopyWithImpl<$Res>
       _$OutstandingFailedStateImpl _value,
       $Res Function(_$OutstandingFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OutstandingState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

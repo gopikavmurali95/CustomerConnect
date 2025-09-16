@@ -80,6 +80,9 @@ class _$FreeSampleReasonsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetFreeSampleReasonsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetFreeSampleReasonsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +154,9 @@ class _$GetFreeSampleReasonsEventImpl implements GetFreeSampleReasonsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, rsntype, userID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFreeSampleReasonsEventImplCopyWith<_$GetFreeSampleReasonsEventImpl>
@@ -233,7 +240,10 @@ abstract class GetFreeSampleReasonsEvent implements FreeSampleReasonsEvent {
 
   String get rsntype;
   String get userID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFreeSampleReasonsEventImplCopyWith<_$GetFreeSampleReasonsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -255,6 +265,9 @@ class __$$ClearFreeSampleReasonsEventImplCopyWithImpl<$Res>
       _$ClearFreeSampleReasonsEventImpl _value,
       $Res Function(_$ClearFreeSampleReasonsEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -420,6 +433,9 @@ class _$FreeSampleReasonsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -442,6 +458,8 @@ class __$$GetFreesampleReasonsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetFreesampleReasonsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleReasonsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -490,7 +508,9 @@ class _$GetFreesampleReasonsStateImpl implements GetFreesampleReasonsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_reasons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFreesampleReasonsStateImplCopyWith<_$GetFreesampleReasonsStateImpl>
@@ -575,7 +595,10 @@ abstract class GetFreesampleReasonsState implements FreeSampleReasonsState {
       _$GetFreesampleReasonsStateImpl;
 
   List<FreeSampleResonModel>? get reasons;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFreesampleReasonsStateImplCopyWith<_$GetFreesampleReasonsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -597,6 +620,9 @@ class __$$FreeSampleReasonsFailedStateImplCopyWithImpl<$Res>
       _$FreeSampleReasonsFailedStateImpl _value,
       $Res Function(_$FreeSampleReasonsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

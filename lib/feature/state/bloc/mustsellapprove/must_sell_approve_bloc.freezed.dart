@@ -83,6 +83,9 @@ class _$MustSellApproveEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MustSellApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$ApproveMustSellEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveMustSellEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MustSellApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +145,9 @@ class _$ApproveMustSellEventImpl implements ApproveMustSellEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MustSellApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveMustSellEventImplCopyWith<_$ApproveMustSellEventImpl>
@@ -227,7 +234,10 @@ abstract class ApproveMustSellEvent implements MustSellApproveEvent {
       _$ApproveMustSellEventImpl;
 
   MustSellApproveInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MustSellApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveMustSellEventImplCopyWith<_$ApproveMustSellEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -249,6 +259,9 @@ class __$$ClearMustSellApproveEventImplCopyWithImpl<$Res>
       _$ClearMustSellApproveEventImpl _value,
       $Res Function(_$ClearMustSellApproveEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MustSellApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -362,6 +375,9 @@ class __$$MustSellLoadingEventImplCopyWithImpl<$Res>
   __$$MustSellLoadingEventImplCopyWithImpl(_$MustSellLoadingEventImpl _value,
       $Res Function(_$MustSellLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MustSellApproveEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -538,6 +554,9 @@ class _$MustSellApproveStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MustSellApproveState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -560,6 +579,8 @@ class __$$MustSellApproveStatusStateImplCopyWithImpl<$Res>
       $Res Function(_$MustSellApproveStatusStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MustSellApproveState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -598,7 +619,9 @@ class _$MustSellApproveStatusStateImpl implements MustSellApproveStatusState {
   @override
   int get hashCode => Object.hash(runtimeType, resp);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MustSellApproveState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MustSellApproveStatusStateImplCopyWith<_$MustSellApproveStatusStateImpl>
@@ -692,7 +715,10 @@ abstract class MustSellApproveStatusState implements MustSellApproveState {
       _$MustSellApproveStatusStateImpl;
 
   MustSellApproveRespModel? get resp;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MustSellApproveState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MustSellApproveStatusStateImplCopyWith<_$MustSellApproveStatusStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -714,6 +740,9 @@ class __$$MustSellApproveFailedStateImplCopyWithImpl<$Res>
       _$MustSellApproveFailedStateImpl _value,
       $Res Function(_$MustSellApproveFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MustSellApproveState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -838,6 +867,9 @@ class __$$MustSellApproveLoadingEventImplCopyWithImpl<$Res>
       _$MustSellApproveLoadingEventImpl _value,
       $Res Function(_$MustSellApproveLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MustSellApproveState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

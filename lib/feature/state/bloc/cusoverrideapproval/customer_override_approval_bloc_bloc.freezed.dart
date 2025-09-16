@@ -88,6 +88,9 @@ class _$CustomerOverrideApprovalBlocEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerOverrideApprovalBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +112,8 @@ class __$$GetCusOverrideEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusOverrideEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerOverrideApprovalBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,7 +183,9 @@ class _$GetCusOverrideEventImpl implements GetCusOverrideEvent {
   int get hashCode =>
       Object.hash(runtimeType, statusvalue, ooaID, userID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerOverrideApprovalBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusOverrideEventImplCopyWith<_$GetCusOverrideEventImpl> get copyWith =>
@@ -273,7 +280,10 @@ abstract class GetCusOverrideEvent
   String get ooaID;
   String get userID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerOverrideApprovalBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusOverrideEventImplCopyWith<_$GetCusOverrideEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -294,6 +304,9 @@ class __$$ClearCusOverrideEventImplCopyWithImpl<$Res>
   __$$ClearCusOverrideEventImplCopyWithImpl(_$ClearCusOverrideEventImpl _value,
       $Res Function(_$ClearCusOverrideEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerOverrideApprovalBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -411,6 +424,9 @@ class __$$StartedImplCopyWithImpl<$Res>
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerOverrideApprovalBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -582,6 +598,9 @@ class _$CustomerOverrideApprovalBlocStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CustomerOverrideApprovalBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -604,6 +623,8 @@ class __$$GetCusOverrideApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusOverrideApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CustomerOverrideApprovalBlocState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -653,7 +674,9 @@ class _$GetCusOverrideApprovalStateImpl implements GetCusOverrideApprovalState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_cusoverride));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CustomerOverrideApprovalBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusOverrideApprovalStateImplCopyWith<_$GetCusOverrideApprovalStateImpl>
@@ -739,7 +762,10 @@ abstract class GetCusOverrideApprovalState
       _$GetCusOverrideApprovalStateImpl;
 
   List<CusOverrideApprovalModel>? get cusoverride;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CustomerOverrideApprovalBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusOverrideApprovalStateImplCopyWith<_$GetCusOverrideApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -761,6 +787,9 @@ class __$$CusOverrideApprovalFailedStateImplCopyWithImpl<$Res>
       _$CusOverrideApprovalFailedStateImpl _value,
       $Res Function(_$CusOverrideApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CustomerOverrideApprovalBlocState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

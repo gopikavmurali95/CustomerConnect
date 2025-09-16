@@ -89,6 +89,9 @@ class _$TotalOrdersDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TotalOrdersDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -111,6 +114,8 @@ class __$$GetTotalOrdersDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetTotalOrdersDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TotalOrdersDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,7 +164,9 @@ class _$GetTotalOrdersDetailsEventImpl implements GetTotalOrdersDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, userID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TotalOrdersDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTotalOrdersDetailsEventImplCopyWith<_$GetTotalOrdersDetailsEventImpl>
@@ -252,7 +259,10 @@ abstract class GetTotalOrdersDetailsEvent implements TotalOrdersDetailsEvent {
 
   String get userID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TotalOrdersDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTotalOrdersDetailsEventImplCopyWith<_$GetTotalOrdersDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -274,6 +284,9 @@ class __$$TotalOrderDetailsFailedEventImplCopyWithImpl<$Res>
       _$TotalOrderDetailsFailedEventImpl _value,
       $Res Function(_$TotalOrderDetailsFailedEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TotalOrdersDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -398,6 +411,9 @@ class __$$ClearTotalOrdersDetailsImplCopyWithImpl<$Res>
       _$ClearTotalOrdersDetailsImpl _value,
       $Res Function(_$ClearTotalOrdersDetailsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TotalOrdersDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -571,6 +587,9 @@ class _$TotalOrdersDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of TotalOrdersDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -593,6 +612,8 @@ class __$$GetTotalOrdersDetailsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetTotalOrdersDetailsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TotalOrdersDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -642,7 +663,9 @@ class _$GetTotalOrdersDetailsStateImpl implements GetTotalOrdersDetailsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_ordersdet));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TotalOrdersDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetTotalOrdersDetailsStateImplCopyWith<_$GetTotalOrdersDetailsStateImpl>
@@ -727,7 +750,10 @@ abstract class GetTotalOrdersDetailsState implements TotalOrdersDetailsState {
       _$GetTotalOrdersDetailsStateImpl;
 
   List<TotalOrdersDetailsModel>? get ordersdet;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TotalOrdersDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetTotalOrdersDetailsStateImplCopyWith<_$GetTotalOrdersDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -749,6 +775,9 @@ class __$$TotalOrdersDetailsFailedStateImplCopyWithImpl<$Res>
       _$TotalOrdersDetailsFailedStateImpl _value,
       $Res Function(_$TotalOrdersDetailsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of TotalOrdersDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

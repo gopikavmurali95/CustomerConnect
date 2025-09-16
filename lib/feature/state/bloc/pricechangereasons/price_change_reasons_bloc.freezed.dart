@@ -75,6 +75,9 @@ class _$PriceChangeReasonsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PriceChangeReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -97,6 +100,8 @@ class __$$GetPRiceChangeReasonEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPRiceChangeReasonEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PriceChangeReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,7 +140,9 @@ class _$GetPRiceChangeReasonEventImpl implements GetPRiceChangeReasonEvent {
   @override
   int get hashCode => Object.hash(runtimeType, rsnType);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PriceChangeReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPRiceChangeReasonEventImplCopyWith<_$GetPRiceChangeReasonEventImpl>
@@ -212,7 +219,10 @@ abstract class GetPRiceChangeReasonEvent implements PriceChangeReasonsEvent {
       _$GetPRiceChangeReasonEventImpl;
 
   String get rsnType;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PriceChangeReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPRiceChangeReasonEventImplCopyWith<_$GetPRiceChangeReasonEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -234,6 +244,9 @@ class __$$ClearPriceChangeReasonImplCopyWithImpl<$Res>
       _$ClearPriceChangeReasonImpl _value,
       $Res Function(_$ClearPriceChangeReasonImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PriceChangeReasonsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -389,6 +402,9 @@ class _$PriceChangeReasonsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PriceChangeReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -411,6 +427,8 @@ class __$$GetPriceChangeReasonsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPriceChangeReasonsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PriceChangeReasonsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -459,7 +477,9 @@ class _$GetPriceChangeReasonsStateImpl implements GetPriceChangeReasonsState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_reasons));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PriceChangeReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPriceChangeReasonsStateImplCopyWith<_$GetPriceChangeReasonsStateImpl>
@@ -540,7 +560,10 @@ abstract class GetPriceChangeReasonsState implements PriceChangeReasonsState {
       _$GetPriceChangeReasonsStateImpl;
 
   List<PriceChangeReasonModel>? get reasons;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PriceChangeReasonsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPriceChangeReasonsStateImplCopyWith<_$GetPriceChangeReasonsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -562,6 +585,9 @@ class __$$PriceChangeReasonFailedImplCopyWithImpl<$Res>
       _$PriceChangeReasonFailedImpl _value,
       $Res Function(_$PriceChangeReasonFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PriceChangeReasonsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

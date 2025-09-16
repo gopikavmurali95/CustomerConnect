@@ -81,6 +81,9 @@ class _$CusSpPriceEventCopyWithImpl<$Res, $Val extends CusSpPriceEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusSpPriceEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetCusSpPriceHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetCusSpPriceHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusSpPriceEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,7 +155,9 @@ class _$GetCusSpPriceHeadersEventImpl implements GetCusSpPriceHeadersEvent {
   @override
   int get hashCode => Object.hash(runtimeType, cuIN, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusSpPriceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusSpPriceHeadersEventImplCopyWith<_$GetCusSpPriceHeadersEventImpl>
@@ -236,7 +243,10 @@ abstract class GetCusSpPriceHeadersEvent implements CusSpPriceEvent {
 
   CusSpPriceInModel get cuIN;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusSpPriceEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusSpPriceHeadersEventImplCopyWith<_$GetCusSpPriceHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -258,6 +268,9 @@ class __$$ClearCusSpPriceHeaderEventImplCopyWithImpl<$Res>
       _$ClearCusSpPriceHeaderEventImpl _value,
       $Res Function(_$ClearCusSpPriceHeaderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusSpPriceEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -422,6 +435,9 @@ class _$CusSpPriceStateCopyWithImpl<$Res, $Val extends CusSpPriceState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusSpPriceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -443,6 +459,8 @@ class __$$GetCusSpPriceHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetCusSpPriceHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusSpPriceState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -491,7 +509,9 @@ class _$GetCusSpPriceHeadersStateImpl implements GetCusSpPriceHeadersState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusSpPriceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCusSpPriceHeadersStateImplCopyWith<_$GetCusSpPriceHeadersStateImpl>
@@ -575,7 +595,10 @@ abstract class GetCusSpPriceHeadersState implements CusSpPriceState {
       _$GetCusSpPriceHeadersStateImpl;
 
   List<CusSpPriceModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusSpPriceState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCusSpPriceHeadersStateImplCopyWith<_$GetCusSpPriceHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -597,6 +620,9 @@ class __$$CusSpPriceHeaderFailedStateImplCopyWithImpl<$Res>
       _$CusSpPriceHeaderFailedStateImpl _value,
       $Res Function(_$CusSpPriceHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusSpPriceState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

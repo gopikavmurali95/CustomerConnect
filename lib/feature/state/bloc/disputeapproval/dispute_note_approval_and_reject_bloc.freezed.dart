@@ -101,6 +101,9 @@ class _$DisputeNoteApprovalAndRejectEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -123,6 +126,8 @@ class __$$ApproveDisputeNoteEventImplCopyWithImpl<$Res>
       $Res Function(_$ApproveDisputeNoteEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +166,9 @@ class _$ApproveDisputeNoteEventImpl implements ApproveDisputeNoteEvent {
   @override
   int get hashCode => Object.hash(runtimeType, approve);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ApproveDisputeNoteEventImplCopyWith<_$ApproveDisputeNoteEventImpl>
@@ -264,7 +271,10 @@ abstract class ApproveDisputeNoteEvent
       _$ApproveDisputeNoteEventImpl;
 
   DisputeInvoiceApproveInModel get approve;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ApproveDisputeNoteEventImplCopyWith<_$ApproveDisputeNoteEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -289,6 +299,8 @@ class __$$RejectDisputeNoteEventImplCopyWithImpl<$Res>
       $Res Function(_$RejectDisputeNoteEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -327,7 +339,9 @@ class _$RejectDisputeNoteEventImpl implements RejectDisputeNoteEvent {
   @override
   int get hashCode => Object.hash(runtimeType, reject);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RejectDisputeNoteEventImplCopyWith<_$RejectDisputeNoteEventImpl>
@@ -430,7 +444,10 @@ abstract class RejectDisputeNoteEvent
       _$RejectDisputeNoteEventImpl;
 
   DisputeInvoiceApproveInModel get reject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RejectDisputeNoteEventImplCopyWith<_$RejectDisputeNoteEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -452,6 +469,9 @@ class __$$AddDisputeNoteApprovalLoadingEventImplCopyWithImpl<$Res>
       _$AddDisputeNoteApprovalLoadingEventImpl _value,
       $Res Function(_$AddDisputeNoteApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -587,6 +607,9 @@ class __$$ClearDisputeApprovalEventImplCopyWithImpl<$Res>
       _$ClearDisputeApprovalEventImpl _value,
       $Res Function(_$ClearDisputeApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeNoteApprovalAndRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -782,6 +805,9 @@ class _$DisputeNoteApprovalAndRejectStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DisputeNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -804,6 +830,8 @@ class __$$DisputeNoteApprovalOrRejectStateImplCopyWithImpl<$Res>
       $Res Function(_$DisputeNoteApprovalOrRejectStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DisputeNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -853,7 +881,9 @@ class _$DisputeNoteApprovalOrRejectStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, resp, isApprove);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisputeNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DisputeNoteApprovalOrRejectStateImplCopyWith<
@@ -950,7 +980,10 @@ abstract class DisputeNoteApprovalOrRejectState
 
   DisputeApprovalRespModel? get resp;
   bool? get isApprove;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DisputeNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DisputeNoteApprovalOrRejectStateImplCopyWith<
           _$DisputeNoteApprovalOrRejectStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -973,6 +1006,9 @@ class __$$DisputeApprovalFailedStateImplCopyWithImpl<$Res>
       _$DisputeApprovalFailedStateImpl _value,
       $Res Function(_$DisputeApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1098,6 +1134,9 @@ class __$$DisputeApprovalLoadingStateImplCopyWithImpl<$Res>
       _$DisputeApprovalLoadingStateImpl _value,
       $Res Function(_$DisputeApprovalLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DisputeNoteApprovalAndRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

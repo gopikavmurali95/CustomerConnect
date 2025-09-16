@@ -58,6 +58,7 @@ CustomerSettingsModel _$CustomerSettingsModelFromJson(
       cusfoc: json['APPR-CUSFOC'] as String?,
       cusovrride: json['APPR-CUSOVRDE'] as String?,
       freesample: json['APPR-CUSFRSMPLE'] as String?,
+      unschvisit: json['APPR-UNSCHLD'] as String?,
     );
 
 Map<String, dynamic> _$CustomerSettingsModelToJson(
@@ -92,6 +93,7 @@ Map<String, dynamic> _$CustomerSettingsModelToJson(
       'APPR-INVRECON': instance.invReconfAppr,
       'APPR-VOIDTRN': instance.voidTransAppr,
       'APPR-MUSTSEL': instance.mustSellAppr,
+      'APPR-UNSCHLD': instance.unschvisit,
       'APPR-SETLMNT': instance.settleAppr,
       'INTR-LOADIN': instance.loadin,
       'INTR-PICKIN': instance.picking,

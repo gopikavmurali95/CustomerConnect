@@ -82,6 +82,9 @@ class _$LoadTransferHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadTransferHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetAllLoadTransferHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllLoadTransferHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadTransferHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,7 +166,9 @@ class _$GetAllLoadTransferHeadersEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, userID, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadTransferHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllLoadTransferHeadersEventImplCopyWith<
@@ -252,7 +259,10 @@ abstract class GetAllLoadTransferHeadersEvent
   String get userID;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadTransferHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllLoadTransferHeadersEventImplCopyWith<
           _$GetAllLoadTransferHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -275,6 +285,9 @@ class __$$ClearLoadtransferHeaderEventImplCopyWithImpl<$Res>
       _$ClearLoadtransferHeaderEventImpl _value,
       $Res Function(_$ClearLoadtransferHeaderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadTransferHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -443,6 +456,9 @@ class _$LoadTransferHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of LoadTransferHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -465,6 +481,8 @@ class __$$GetAllLoadTransferHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetAllLoadTransferHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoadTransferHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -514,7 +532,9 @@ class _$GetAllLoadTransferHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoadTransferHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllLoadTransferHeadersStateImplCopyWith<
@@ -601,7 +621,10 @@ abstract class GetAllLoadTransferHeadersState
       _$GetAllLoadTransferHeadersStateImpl;
 
   List<LoadTransferApprovalHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoadTransferHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllLoadTransferHeadersStateImplCopyWith<
           _$GetAllLoadTransferHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -624,6 +647,9 @@ class __$$LoadTransferHeaderFailedStateImplCopyWithImpl<$Res>
       _$LoadTransferHeaderFailedStateImpl _value,
       $Res Function(_$LoadTransferHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of LoadTransferHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

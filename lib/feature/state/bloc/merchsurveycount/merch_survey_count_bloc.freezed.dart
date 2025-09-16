@@ -75,6 +75,9 @@ class _$MerchSurveyCountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchSurveyCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,8 @@ class __$$GetSurveyCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetSurveyCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchSurveyCountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +147,9 @@ class _$GetSurveyCountEventImpl implements GetSurveyCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchSurveyCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSurveyCountEventImplCopyWith<_$GetSurveyCountEventImpl> get copyWith =>
@@ -221,7 +228,10 @@ abstract class GetSurveyCountEvent implements MerchSurveyCountEvent {
 
   String get fromDate;
   String get toDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchSurveyCountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSurveyCountEventImplCopyWith<_$GetSurveyCountEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -242,6 +252,9 @@ class __$$SurveyCountClearEventImplCopyWithImpl<$Res>
   __$$SurveyCountClearEventImplCopyWithImpl(_$SurveyCountClearEventImpl _value,
       $Res Function(_$SurveyCountClearEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchSurveyCountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -393,6 +406,9 @@ class _$MerchSurveyCountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchSurveyCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -412,6 +428,8 @@ class __$$GetSurveyCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetSurveyCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchSurveyCountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -450,7 +468,9 @@ class _$GetSurveyCountStateImpl implements GetSurveyCountState {
   @override
   int get hashCode => Object.hash(runtimeType, survey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchSurveyCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetSurveyCountStateImplCopyWith<_$GetSurveyCountStateImpl> get copyWith =>
@@ -526,7 +546,10 @@ abstract class GetSurveyCountState implements MerchSurveyCountState {
       {required final GetSurveyCountModel? survey}) = _$GetSurveyCountStateImpl;
 
   GetSurveyCountModel? get survey;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchSurveyCountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetSurveyCountStateImplCopyWith<_$GetSurveyCountStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -548,6 +571,9 @@ class __$$SurveyCountFailedStateImplCopyWithImpl<$Res>
       _$SurveyCountFailedStateImpl _value,
       $Res Function(_$SurveyCountFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchSurveyCountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

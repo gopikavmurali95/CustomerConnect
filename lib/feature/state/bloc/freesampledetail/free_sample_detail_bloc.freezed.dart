@@ -82,6 +82,9 @@ class _$FreeSampleDetailEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetFreeSampleDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetFreeSampleDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,7 +158,9 @@ class _$GetFreeSampleDetailsEventImpl implements GetFreeSampleDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, headerID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFreeSampleDetailsEventImplCopyWith<_$GetFreeSampleDetailsEventImpl>
@@ -239,7 +246,10 @@ abstract class GetFreeSampleDetailsEvent implements FreeSampleDetailEvent {
 
   String get headerID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFreeSampleDetailsEventImplCopyWith<_$GetFreeSampleDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -261,6 +271,9 @@ class __$$ClearFreeSampleDetailEventImplCopyWithImpl<$Res>
       _$ClearFreeSampleDetailEventImpl _value,
       $Res Function(_$ClearFreeSampleDetailEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -425,6 +438,9 @@ class _$FreeSampleDetailStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -447,6 +463,8 @@ class __$$GetFreeSampleDetailStateImplCopyWithImpl<$Res>
       $Res Function(_$GetFreeSampleDetailStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleDetailState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -495,7 +513,9 @@ class _$GetFreeSampleDetailStateImpl implements GetFreeSampleDetailState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFreeSampleDetailStateImplCopyWith<_$GetFreeSampleDetailStateImpl>
@@ -578,7 +598,10 @@ abstract class GetFreeSampleDetailState implements FreeSampleDetailState {
       _$GetFreeSampleDetailStateImpl;
 
   List<FreeSampleApprovalDetailModel>? get details;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFreeSampleDetailStateImplCopyWith<_$GetFreeSampleDetailStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -600,6 +623,9 @@ class __$$FreesampleDetailFailedStateImplCopyWithImpl<$Res>
       _$FreesampleDetailFailedStateImpl _value,
       $Res Function(_$FreesampleDetailFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleDetailState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

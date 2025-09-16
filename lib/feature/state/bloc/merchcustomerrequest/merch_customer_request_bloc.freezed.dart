@@ -85,6 +85,9 @@ class _$MerchCustomerRequestEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCustomerRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +111,8 @@ class __$$GetMerchCustomerRequestEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchCustomerRequestEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCustomerRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,7 +183,9 @@ class _$GetMerchCustomerRequestEventImpl
   int get hashCode =>
       Object.hash(runtimeType, fromDate, toDate, status, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCustomerRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchCustomerRequestEventImplCopyWith<
@@ -275,7 +282,10 @@ abstract class GetMerchCustomerRequestEvent
   String get toDate;
   String get status;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCustomerRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchCustomerRequestEventImplCopyWith<
           _$GetMerchCustomerRequestEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -298,6 +308,9 @@ class __$$ClearMerchCustomerRequestEventImplCopyWithImpl<$Res>
       _$ClearMerchCustomerRequestEventImpl _value,
       $Res Function(_$ClearMerchCustomerRequestEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCustomerRequestEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -470,6 +483,9 @@ class _$MerchCustomerRequestStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchCustomerRequestState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -492,6 +508,8 @@ class __$$GetMerchCustomerRequestHeadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchCustomerRequestHeadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchCustomerRequestState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -541,7 +559,9 @@ class _$GetMerchCustomerRequestHeadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchCustomerRequestState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchCustomerRequestHeadersStateImplCopyWith<
@@ -628,7 +648,10 @@ abstract class GetMerchCustomerRequestHeadersState
       _$GetMerchCustomerRequestHeadersStateImpl;
 
   List<MerchCustomerRequestHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchCustomerRequestState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchCustomerRequestHeadersStateImplCopyWith<
           _$GetMerchCustomerRequestHeadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -651,6 +674,9 @@ class __$$MerchCustomerRequestsFailedStateImplCopyWithImpl<$Res>
       _$MerchCustomerRequestsFailedStateImpl _value,
       $Res Function(_$MerchCustomerRequestsFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchCustomerRequestState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

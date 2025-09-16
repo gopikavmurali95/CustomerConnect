@@ -57,7 +57,9 @@ mixin _$UnScheduledVisitSelectionState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledVisitSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UnScheduledVisitSelectionStateCopyWith<UnScheduledVisitSelectionState>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -84,6 +86,8 @@ class _$UnScheduledVisitSelectionStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UnScheduledVisitSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,6 +124,8 @@ class __$$UnSchedledSelectedItemsStateImplCopyWithImpl<$Res>
       $Res Function(_$UnSchedledSelectedItemsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnScheduledVisitSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,7 +173,9 @@ class _$UnSchedledSelectedItemsStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_selected));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnScheduledVisitSelectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UnSchedledSelectedItemsStateImplCopyWith<
@@ -246,8 +254,11 @@ abstract class UnSchedledSelectedItemsState
 
   @override
   List<UnScheduledVisitApproveInModel> get selected;
+
+  /// Create a copy of UnScheduledVisitSelectionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnSchedledSelectedItemsStateImplCopyWith<
           _$UnSchedledSelectedItemsStateImpl>
       get copyWith => throw _privateConstructorUsedError;

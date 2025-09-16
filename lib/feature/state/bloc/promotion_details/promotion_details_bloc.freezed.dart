@@ -75,6 +75,9 @@ class _$PromotionDetailsEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PromotionDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -97,6 +100,8 @@ class __$$GetPromotionDetailsEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPromotionDetailsEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PromotionDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,7 +140,9 @@ class _$GetPromotionDetailsEventImpl implements GetPromotionDetailsEvent {
   @override
   int get hashCode => Object.hash(runtimeType, id);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PromotionDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPromotionDetailsEventImplCopyWith<_$GetPromotionDetailsEventImpl>
@@ -212,7 +219,10 @@ abstract class GetPromotionDetailsEvent implements PromotionDetailsEvent {
       _$GetPromotionDetailsEventImpl;
 
   String get id;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PromotionDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPromotionDetailsEventImplCopyWith<_$GetPromotionDetailsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -233,6 +243,9 @@ class __$$ClearPromotionDetailsImplCopyWithImpl<$Res>
   __$$ClearPromotionDetailsImplCopyWithImpl(_$ClearPromotionDetailsImpl _value,
       $Res Function(_$ClearPromotionDetailsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PromotionDetailsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -388,6 +401,9 @@ class _$PromotionDetailsStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PromotionDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -410,6 +426,8 @@ class __$$GetPromotionDetailsStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPromotionDetailsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PromotionDetailsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -459,7 +477,9 @@ class _$GetPromotionDetailsStateImpl implements GetPromotionDetailsState {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_promodetails));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PromotionDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPromotionDetailsStateImplCopyWith<_$GetPromotionDetailsStateImpl>
@@ -540,7 +560,10 @@ abstract class GetPromotionDetailsState implements PromotionDetailsState {
       _$GetPromotionDetailsStateImpl;
 
   List<PromotionDetailsModel>? get promodetails;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PromotionDetailsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPromotionDetailsStateImplCopyWith<_$GetPromotionDetailsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -562,6 +585,9 @@ class __$$PromotionDetailsFailedImplCopyWithImpl<$Res>
       _$PromotionDetailsFailedImpl _value,
       $Res Function(_$PromotionDetailsFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PromotionDetailsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

@@ -80,6 +80,9 @@ class _$MerchDisputeNoteReqEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchDisputeNoteReqEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,8 @@ class __$$GetDisputeNoteDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetDisputeNoteDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchDisputeNoteReqEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,7 +177,9 @@ class _$GetDisputeNoteDataEventImpl implements GetDisputeNoteDataEvent {
   int get hashCode =>
       Object.hash(runtimeType, fromDate, toDate, status, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchDisputeNoteReqEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetDisputeNoteDataEventImplCopyWith<_$GetDisputeNoteDataEventImpl>
@@ -260,7 +267,10 @@ abstract class GetDisputeNoteDataEvent implements MerchDisputeNoteReqEvent {
   String get toDate;
   String get status;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchDisputeNoteReqEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDisputeNoteDataEventImplCopyWith<_$GetDisputeNoteDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -280,6 +290,9 @@ class __$$ClearDisputeNoteDataImplCopyWithImpl<$Res>
   __$$ClearDisputeNoteDataImplCopyWithImpl(_$ClearDisputeNoteDataImpl _value,
       $Res Function(_$ClearDisputeNoteDataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchDisputeNoteReqEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -442,6 +455,9 @@ class _$MerchDisputeNoteReqStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchDisputeNoteReqState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -464,6 +480,8 @@ class __$$GetMerchDisputeDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchDisputeDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchDisputeNoteReqState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -512,7 +530,9 @@ class _$GetMerchDisputeDataStateImpl implements GetMerchDisputeDataState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchDisputeNoteReqState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchDisputeDataStateImplCopyWith<_$GetMerchDisputeDataStateImpl>
@@ -595,7 +615,10 @@ abstract class GetMerchDisputeDataState implements MerchDisputeNoteReqState {
       _$GetMerchDisputeDataStateImpl;
 
   List<MerchDisputeRequestModel>? get data;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchDisputeNoteReqState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchDisputeDataStateImplCopyWith<_$GetMerchDisputeDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -617,6 +640,9 @@ class __$$MerchDisputeNoteDataFailedImplCopyWithImpl<$Res>
       _$MerchDisputeNoteDataFailedImpl _value,
       $Res Function(_$MerchDisputeNoteDataFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchDisputeNoteReqState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

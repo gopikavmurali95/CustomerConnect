@@ -84,6 +84,9 @@ class _$PartialDeliveryApprovalEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PartialDeliveryApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetPartialDeliveryApprovalEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPartialDeliveryApprovalEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PartialDeliveryApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +151,9 @@ class _$GetPartialDeliveryApprovalEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, approvalin);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PartialDeliveryApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPartialDeliveryApprovalEventImplCopyWith<
@@ -233,7 +240,10 @@ abstract class GetPartialDeliveryApprovalEvent
       _$GetPartialDeliveryApprovalEventImpl;
 
   PartialDeliveryApprovalModel get approvalin;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PartialDeliveryApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPartialDeliveryApprovalEventImplCopyWith<
           _$GetPartialDeliveryApprovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -256,6 +266,9 @@ class __$$PartialDeliveryLoadingEventImplCopyWithImpl<$Res>
       _$PartialDeliveryLoadingEventImpl _value,
       $Res Function(_$PartialDeliveryLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PartialDeliveryApprovalEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -435,6 +448,9 @@ class _$PartialDeliveryApprovalStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PartialDeliveryApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -457,6 +473,8 @@ class __$$GetPartialDeliveryApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPartialDeliveryApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PartialDeliveryApprovalState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -497,7 +515,9 @@ class _$GetPartialDeliveryApprovalStateImpl
   @override
   int get hashCode => Object.hash(runtimeType, approvals);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PartialDeliveryApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPartialDeliveryApprovalStateImplCopyWith<
@@ -593,7 +613,10 @@ abstract class GetPartialDeliveryApprovalState
       _$GetPartialDeliveryApprovalStateImpl;
 
   PartialDeliveryApprovalOutparasModel? get approvals;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PartialDeliveryApprovalState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPartialDeliveryApprovalStateImplCopyWith<
           _$GetPartialDeliveryApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -616,6 +639,9 @@ class __$$PartialDeliveryApprovalLoadingImplCopyWithImpl<$Res>
       _$PartialDeliveryApprovalLoadingImpl _value,
       $Res Function(_$PartialDeliveryApprovalLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PartialDeliveryApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -743,6 +769,9 @@ class __$$PartialDeliveryApprovslFailedImplCopyWithImpl<$Res>
       _$PartialDeliveryApprovslFailedImpl _value,
       $Res Function(_$PartialDeliveryApprovslFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PartialDeliveryApprovalState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

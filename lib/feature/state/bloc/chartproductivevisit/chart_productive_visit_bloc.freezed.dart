@@ -57,7 +57,9 @@ mixin _$ChartProductiveVisitEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartProductiveVisitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartProductiveVisitEventCopyWith<ChartProductiveVisitEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +84,8 @@ class _$ChartProductiveVisitEventCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartProductiveVisitEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -123,6 +127,8 @@ class __$$GetChartPRoductiveVisitDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetChartPRoductiveVisitDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartProductiveVisitEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,7 +178,9 @@ class _$GetChartPRoductiveVisitDataEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartProductiveVisitEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetChartPRoductiveVisitDataEventImplCopyWith<
@@ -253,8 +261,11 @@ abstract class GetChartPRoductiveVisitDataEvent
   String get fromDate;
   @override
   String get toDate;
+
+  /// Create a copy of ChartProductiveVisitEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetChartPRoductiveVisitDataEventImplCopyWith<
           _$GetChartPRoductiveVisitDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -303,7 +314,9 @@ mixin _$ChartProductiveVisitState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartProductiveVisitState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChartProductiveVisitStateCopyWith<ChartProductiveVisitState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -328,6 +341,8 @@ class _$ChartProductiveVisitStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChartProductiveVisitState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -364,6 +379,8 @@ class __$$GetChartProductiveVisitDataSateImplCopyWithImpl<$Res>
       $Res Function(_$GetChartProductiveVisitDataSateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChartProductiveVisitState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -405,7 +422,9 @@ class _$GetChartProductiveVisitDataSateImpl
   @override
   int get hashCode => Object.hash(runtimeType, productiveVisitData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChartProductiveVisitState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetChartProductiveVisitDataSateImplCopyWith<
@@ -484,8 +503,11 @@ abstract class GetChartProductiveVisitDataSate
 
   @override
   ChartProductiveVisitModel get productiveVisitData;
+
+  /// Create a copy of ChartProductiveVisitState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetChartProductiveVisitDataSateImplCopyWith<
           _$GetChartProductiveVisitDataSateImpl>
       get copyWith => throw _privateConstructorUsedError;

@@ -78,6 +78,9 @@ class _$OutofstockcountEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OutofstockcountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,8 @@ class __$$GetOutOfStockCountEventImplCopyWithImpl<$Res>
       $Res Function(_$GetOutOfStockCountEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutofstockcountEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,7 +153,9 @@ class _$GetOutOfStockCountEventImpl implements GetOutOfStockCountEvent {
   @override
   int get hashCode => Object.hash(runtimeType, fromDate, toDate);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutofstockcountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOutOfStockCountEventImplCopyWith<_$GetOutOfStockCountEventImpl>
@@ -230,7 +237,10 @@ abstract class GetOutOfStockCountEvent implements OutofstockcountEvent {
 
   String get fromDate;
   String get toDate;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OutofstockcountEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOutOfStockCountEventImplCopyWith<_$GetOutOfStockCountEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -252,6 +262,9 @@ class __$$ClearOutOfStockCountEventImplCopyWithImpl<$Res>
       _$ClearOutOfStockCountEventImpl _value,
       $Res Function(_$ClearOutOfStockCountEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OutofstockcountEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -408,6 +421,9 @@ class _$OutofstockcountStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of OutofstockcountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -430,6 +446,8 @@ class __$$GetOutOfStockCountStateImplCopyWithImpl<$Res>
       $Res Function(_$GetOutOfStockCountStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OutofstockcountState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -468,7 +486,9 @@ class _$GetOutOfStockCountStateImpl implements GetOutOfStockCountState {
   @override
   int get hashCode => Object.hash(runtimeType, count);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OutofstockcountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetOutOfStockCountStateImplCopyWith<_$GetOutOfStockCountStateImpl>
@@ -547,7 +567,10 @@ abstract class GetOutOfStockCountState implements OutofstockcountState {
       _$GetOutOfStockCountStateImpl;
 
   GetOutOfStockCountModel? get count;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OutofstockcountState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetOutOfStockCountStateImplCopyWith<_$GetOutOfStockCountStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -568,6 +591,9 @@ class __$$OutOfStockFailedStateImplCopyWithImpl<$Res>
   __$$OutOfStockFailedStateImplCopyWithImpl(_$OutOfStockFailedStateImpl _value,
       $Res Function(_$OutOfStockFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of OutofstockcountState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

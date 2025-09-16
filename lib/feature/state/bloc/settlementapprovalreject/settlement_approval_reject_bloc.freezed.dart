@@ -86,6 +86,9 @@ class _$SettlementApprovalRejectEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementApprovalRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -108,6 +111,8 @@ class __$$GetRejectApprovalEventImplCopyWithImpl<$Res>
       $Res Function(_$GetRejectApprovalEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementApprovalRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +151,9 @@ class _$GetRejectApprovalEventImpl implements GetRejectApprovalEvent {
   @override
   int get hashCode => Object.hash(runtimeType, udpID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementApprovalRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetRejectApprovalEventImplCopyWith<_$GetRejectApprovalEventImpl>
@@ -232,7 +239,10 @@ abstract class GetRejectApprovalEvent implements SettlementApprovalRejectEvent {
       _$GetRejectApprovalEventImpl;
 
   String get udpID;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementApprovalRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetRejectApprovalEventImplCopyWith<_$GetRejectApprovalEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -254,6 +264,9 @@ class __$$RejectApprovalLoadingEventImplCopyWithImpl<$Res>
       _$RejectApprovalLoadingEventImpl _value,
       $Res Function(_$RejectApprovalLoadingEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementApprovalRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -372,6 +385,9 @@ class __$$ClearRejectApprovalEventImplCopyWithImpl<$Res>
       _$ClearRejectApprovalEventImpl _value,
       $Res Function(_$ClearRejectApprovalEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementApprovalRejectEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -546,6 +562,9 @@ class _$SettlementApprovalRejectStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettlementApprovalRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -568,6 +587,8 @@ class __$$GetRejectApprovalStateImplCopyWithImpl<$Res>
       $Res Function(_$GetRejectApprovalStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettlementApprovalRejectState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -606,7 +627,9 @@ class _$GetRejectApprovalStateImpl implements GetRejectApprovalState {
   @override
   int get hashCode => Object.hash(runtimeType, reject);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettlementApprovalRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetRejectApprovalStateImplCopyWith<_$GetRejectApprovalStateImpl>
@@ -694,7 +717,10 @@ abstract class GetRejectApprovalState implements SettlementApprovalRejectState {
       _$GetRejectApprovalStateImpl;
 
   SettelemetApprovalReject? get reject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SettlementApprovalRejectState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetRejectApprovalStateImplCopyWith<_$GetRejectApprovalStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -716,6 +742,9 @@ class __$$RejectApprovalFailedStateImplCopyWithImpl<$Res>
       _$RejectApprovalFailedStateImpl _value,
       $Res Function(_$RejectApprovalFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementApprovalRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -835,6 +864,9 @@ class __$$PostApprovalLoadingStateImplCopyWithImpl<$Res>
       _$PostApprovalLoadingStateImpl _value,
       $Res Function(_$PostApprovalLoadingStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettlementApprovalRejectState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

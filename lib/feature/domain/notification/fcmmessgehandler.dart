@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';

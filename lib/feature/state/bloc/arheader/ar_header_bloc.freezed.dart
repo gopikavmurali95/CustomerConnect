@@ -73,6 +73,9 @@ class _$ArHeaderEventCopyWithImpl<$Res, $Val extends ArHeaderEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ArHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -92,6 +95,8 @@ class __$$GetArHeaderDataImplCopyWithImpl<$Res>
       _$GetArHeaderDataImpl _value, $Res Function(_$GetArHeaderDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,7 +144,9 @@ class _$GetArHeaderDataImpl implements GetArHeaderData {
   @override
   int get hashCode => Object.hash(runtimeType, arIn, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetArHeaderDataImplCopyWith<_$GetArHeaderDataImpl> get copyWith =>
@@ -217,7 +224,10 @@ abstract class GetArHeaderData implements ArHeaderEvent {
 
   ArTotalInModel get arIn;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetArHeaderDataImplCopyWith<_$GetArHeaderDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -236,6 +246,9 @@ class __$$ClearArHeaderEventImplCopyWithImpl<$Res>
   __$$ClearArHeaderEventImplCopyWithImpl(_$ClearArHeaderEventImpl _value,
       $Res Function(_$ClearArHeaderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -389,6 +402,9 @@ class _$ArHeaderStateCopyWithImpl<$Res, $Val extends ArHeaderState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ArHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -408,6 +424,8 @@ class __$$ArHeaderSuccessStateImplCopyWithImpl<$Res>
       $Res Function(_$ArHeaderSuccessStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ArHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -465,7 +483,9 @@ class _$ArHeaderSuccessStateImpl implements ArHeaderSuccessState {
   int get hashCode => Object.hash(
       runtimeType, artotal, const DeepCollectionEquality().hash(_arHeaders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArHeaderSuccessStateImplCopyWith<_$ArHeaderSuccessStateImpl>
@@ -550,7 +570,10 @@ abstract class ArHeaderSuccessState implements ArHeaderState {
 
   ArTotalCollectionModel? get artotal;
   List<ArHeaderModel>? get arHeaders;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ArHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArHeaderSuccessStateImplCopyWith<_$ArHeaderSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -569,6 +592,9 @@ class __$$ArHeaderFailedStateImplCopyWithImpl<$Res>
   __$$ArHeaderFailedStateImplCopyWithImpl(_$ArHeaderFailedStateImpl _value,
       $Res Function(_$ArHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

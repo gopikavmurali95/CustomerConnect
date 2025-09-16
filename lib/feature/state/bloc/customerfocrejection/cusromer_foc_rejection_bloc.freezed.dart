@@ -75,6 +75,9 @@ class _$CusromerFocRejectionEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusromerFocRejectionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -95,6 +98,8 @@ class __$$FocRejectionEventImplCopyWithImpl<$Res>
       $Res Function(_$FocRejectionEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusromerFocRejectionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,7 +139,9 @@ class _$FocRejectionEventImpl implements FocRejectionEvent {
   @override
   int get hashCode => Object.hash(runtimeType, rejectionIn);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusromerFocRejectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FocRejectionEventImplCopyWith<_$FocRejectionEventImpl> get copyWith =>
@@ -212,7 +219,10 @@ abstract class FocRejectionEvent implements CusromerFocRejectionEvent {
       _$FocRejectionEventImpl;
 
   CustomerFocApprovalInModel get rejectionIn;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusromerFocRejectionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FocRejectionEventImplCopyWith<_$FocRejectionEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -232,6 +242,9 @@ class __$$ClearFocRejectionImplCopyWithImpl<$Res>
   __$$ClearFocRejectionImplCopyWithImpl(_$ClearFocRejectionImpl _value,
       $Res Function(_$ClearFocRejectionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusromerFocRejectionEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -384,6 +397,9 @@ class _$CusromerFocRejectionStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CusromerFocRejectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -404,6 +420,8 @@ class __$$FocRejectionStateImplCopyWithImpl<$Res>
       $Res Function(_$FocRejectionStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CusromerFocRejectionState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -442,7 +460,9 @@ class _$FocRejectionStateImpl implements FocRejectionState {
   @override
   int get hashCode => Object.hash(runtimeType, reject);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CusromerFocRejectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FocRejectionStateImplCopyWith<_$FocRejectionStateImpl> get copyWith =>
@@ -521,7 +541,10 @@ abstract class FocRejectionState implements CusromerFocRejectionState {
       _$FocRejectionStateImpl;
 
   CustomerFocApproveAndRejectModel? get reject;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CusromerFocRejectionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FocRejectionStateImplCopyWith<_$FocRejectionStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -543,6 +566,9 @@ class __$$FocRejectionFailedStateImplCopyWithImpl<$Res>
       _$FocRejectionFailedStateImpl _value,
       $Res Function(_$FocRejectionFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CusromerFocRejectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

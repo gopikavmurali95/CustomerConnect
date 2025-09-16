@@ -86,6 +86,9 @@ class _$MerchDisplayAgreementEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchDisplayAgreementEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -109,6 +112,8 @@ class __$$GetMerchDisplayAgreementEventImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchDisplayAgreementEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchDisplayAgreementEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,7 +184,9 @@ class _$GetMerchDisplayAgreementEventImpl
   int get hashCode =>
       Object.hash(runtimeType, fromDate, toDate, status, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchDisplayAgreementEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchDisplayAgreementEventImplCopyWith<
@@ -276,7 +283,10 @@ abstract class GetMerchDisplayAgreementEvent
   String get toDate;
   String get status;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchDisplayAgreementEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchDisplayAgreementEventImplCopyWith<
           _$GetMerchDisplayAgreementEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -299,6 +309,9 @@ class __$$ClearMerchDisplayAgreementDataImplCopyWithImpl<$Res>
       _$ClearMerchDisplayAgreementDataImpl _value,
       $Res Function(_$ClearMerchDisplayAgreementDataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchDisplayAgreementEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -473,6 +486,9 @@ class _$MerchDisplayAgreementStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MerchDisplayAgreementState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -495,6 +511,8 @@ class __$$GetMerchDisplayAgreementDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetMerchDisplayAgreementDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MerchDisplayAgreementState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -545,7 +563,9 @@ class _$GetMerchDisplayAgreementDataStateImpl
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_agreementData));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MerchDisplayAgreementState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetMerchDisplayAgreementDataStateImplCopyWith<
@@ -633,7 +653,10 @@ abstract class GetMerchDisplayAgreementDataState
           agreementData}) = _$GetMerchDisplayAgreementDataStateImpl;
 
   List<MerchandisingDisplayAgreementMdel>? get agreementData;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MerchDisplayAgreementState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetMerchDisplayAgreementDataStateImplCopyWith<
           _$GetMerchDisplayAgreementDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -656,6 +679,9 @@ class __$$GetMerchDisplayAgreementDataFailedImplCopyWithImpl<$Res>
       _$GetMerchDisplayAgreementDataFailedImpl _value,
       $Res Function(_$GetMerchDisplayAgreementDataFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MerchDisplayAgreementState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

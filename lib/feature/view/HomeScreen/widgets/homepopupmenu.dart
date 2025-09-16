@@ -1,9 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/cubit/selectlanguage/select_language_locale_cubit.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +15,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePopUPMenuButton extends StatelessWidget {
   final LoginUserModel user;
@@ -22,7 +24,7 @@ class HomePopUPMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton(
       padding: const EdgeInsets.all(0),
-      popUpAnimationStyle: AnimationStyle(
+      popUpAnimationStyle: const AnimationStyle(
           curve: Curves.slowMiddle, reverseCurve: Curves.easeOut),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       surfaceTintColor: Colors.white,

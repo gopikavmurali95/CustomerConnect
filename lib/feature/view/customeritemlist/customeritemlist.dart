@@ -7,11 +7,11 @@ import 'package:customer_connect/feature/data/models/login_user_model/login_user
 import 'package:customer_connect/feature/state/bloc/cusitems/cus_items_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/itemlistingcountbloc/item_listing_count_bloc.dart';
 import 'package:customer_connect/feature/view/customeritemlist/widgets/customeritemlistwidget.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomerItemList extends StatefulWidget {
   final CusInsCustomersModel customer;

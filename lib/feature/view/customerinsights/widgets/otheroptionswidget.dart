@@ -10,11 +10,11 @@ import 'package:customer_connect/feature/view/customeritemlist/customeritemlist.
 import 'package:customer_connect/feature/view/documents/customerdocumentscreen.dart';
 import 'package:customer_connect/feature/view/geolocation/geolocationscreen.dart';
 import 'package:customer_connect/feature/view/outstanding/insigtsoutstanding.dart';
+import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../custinsightpromotion/custinsightpromotion.dart';
 
 class OtherOptionsWidget extends StatelessWidget {

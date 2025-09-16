@@ -84,6 +84,9 @@ class _$AssetRemovelRequestHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetRemovelRequestHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,8 @@ class __$$GetAllAssetRemovalHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetAllAssetRemovalHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetRemovelRequestHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,7 +160,9 @@ class _$GetAllAssetRemovalHeadersEventImpl
   @override
   int get hashCode => Object.hash(runtimeType, userID, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetRemovelRequestHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAllAssetRemovalHeadersEventImplCopyWith<
@@ -243,7 +250,10 @@ abstract class GetAllAssetRemovalHeadersEvent
 
   String get userID;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetRemovelRequestHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAllAssetRemovalHeadersEventImplCopyWith<
           _$GetAllAssetRemovalHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -266,6 +276,9 @@ class __$$ClearAssetRemovalHeaderEventImplCopyWithImpl<$Res>
       _$ClearAssetRemovalHeaderEventImpl _value,
       $Res Function(_$ClearAssetRemovalHeaderEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetRemovelRequestHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -437,6 +450,9 @@ class _$AssetRemovelRequestHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AssetRemovelRequestHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -459,6 +475,8 @@ class __$$GetAssetRemovalRequestHEadersStateImplCopyWithImpl<$Res>
       $Res Function(_$GetAssetRemovalRequestHEadersStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AssetRemovelRequestHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -508,7 +526,9 @@ class _$GetAssetRemovalRequestHEadersStateImpl
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AssetRemovelRequestHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAssetRemovalRequestHEadersStateImplCopyWith<
@@ -595,7 +615,10 @@ abstract class GetAssetRemovalRequestHEadersState
       _$GetAssetRemovalRequestHEadersStateImpl;
 
   List<AssetRemovalRequestHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AssetRemovelRequestHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAssetRemovalRequestHEadersStateImplCopyWith<
           _$GetAssetRemovalRequestHEadersStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -618,6 +641,9 @@ class __$$AssetRemovalRequestHeaderFailedStateImplCopyWithImpl<$Res>
       _$AssetRemovalRequestHeaderFailedStateImpl _value,
       $Res Function(_$AssetRemovalRequestHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AssetRemovelRequestHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

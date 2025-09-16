@@ -77,6 +77,9 @@ class _$QualificationGroupEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of QualificationGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -98,6 +101,8 @@ class __$$GetGroupWiseDataEventImplCopyWithImpl<$Res>
       $Res Function(_$GetGroupWiseDataEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QualificationGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,7 +159,9 @@ class _$GetGroupWiseDataEventImpl implements GetGroupWiseDataEvent {
   @override
   int get hashCode => Object.hash(runtimeType, id, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QualificationGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetGroupWiseDataEventImplCopyWith<_$GetGroupWiseDataEventImpl>
@@ -237,7 +244,10 @@ abstract class GetGroupWiseDataEvent implements QualificationGroupEvent {
   String get id;
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QualificationGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetGroupWiseDataEventImplCopyWith<_$GetGroupWiseDataEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -256,6 +266,9 @@ class __$$ClearGroupDataImplCopyWithImpl<$Res>
   __$$ClearGroupDataImplCopyWithImpl(
       _$ClearGroupDataImpl _value, $Res Function(_$ClearGroupDataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of QualificationGroupEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -410,6 +423,9 @@ class _$QualificationGroupStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of QualificationGroupState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -431,6 +447,8 @@ class __$$GetGroupwiseDataStateImplCopyWithImpl<$Res>
       $Res Function(_$GetGroupwiseDataStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QualificationGroupState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -480,7 +498,9 @@ class _$GetGroupwiseDataStateImpl implements GetGroupwiseDataState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_groupdata));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QualificationGroupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetGroupwiseDataStateImplCopyWith<_$GetGroupwiseDataStateImpl>
@@ -559,7 +579,10 @@ abstract class GetGroupwiseDataState implements QualificationGroupState {
       _$GetGroupwiseDataStateImpl;
 
   List<QualificationGroupModel>? get groupdata;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QualificationGroupState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetGroupwiseDataStateImplCopyWith<_$GetGroupwiseDataStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -579,6 +602,9 @@ class __$$GroupWiseDataFailedImplCopyWithImpl<$Res>
   __$$GroupWiseDataFailedImplCopyWithImpl(_$GroupWiseDataFailedImpl _value,
       $Res Function(_$GroupWiseDataFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of QualificationGroupState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

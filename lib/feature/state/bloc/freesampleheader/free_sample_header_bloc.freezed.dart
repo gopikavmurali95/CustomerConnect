@@ -82,6 +82,9 @@ class _$FreeSampleHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -104,6 +107,8 @@ class __$$GetFreeSampleHeadersEventImplCopyWithImpl<$Res>
       $Res Function(_$GetFreeSampleHeadersEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +157,9 @@ class _$GetFreeSampleHeadersEventImpl implements GetFreeSampleHeadersEvent {
   @override
   int get hashCode => Object.hash(runtimeType, mode, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFreeSampleHeadersEventImplCopyWith<_$GetFreeSampleHeadersEventImpl>
@@ -238,7 +245,10 @@ abstract class GetFreeSampleHeadersEvent implements FreeSampleHeaderEvent {
 
   String get mode;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFreeSampleHeadersEventImplCopyWith<_$GetFreeSampleHeadersEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -260,6 +270,9 @@ class __$$ClearFreeSampleheadersEventImplCopyWithImpl<$Res>
       _$ClearFreeSampleheadersEventImpl _value,
       $Res Function(_$ClearFreeSampleheadersEventImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -425,6 +438,9 @@ class _$FreeSampleHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FreeSampleHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -447,6 +463,8 @@ class __$$GetFreeSampleHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetFreeSampleHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FreeSampleHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -495,7 +513,9 @@ class _$GetFreeSampleHeaderStateImpl implements GetFreeSampleHeaderState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_headers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FreeSampleHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetFreeSampleHeaderStateImplCopyWith<_$GetFreeSampleHeaderStateImpl>
@@ -578,7 +598,10 @@ abstract class GetFreeSampleHeaderState implements FreeSampleHeaderState {
       _$GetFreeSampleHeaderStateImpl;
 
   List<FreeSampleHeaderModel>? get headers;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FreeSampleHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetFreeSampleHeaderStateImplCopyWith<_$GetFreeSampleHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -600,6 +623,9 @@ class __$$FreesampleHeaderFailedStateImplCopyWithImpl<$Res>
       _$FreesampleHeaderFailedStateImpl _value,
       $Res Function(_$FreesampleHeaderFailedStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FreeSampleHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

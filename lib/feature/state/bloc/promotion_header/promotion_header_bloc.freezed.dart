@@ -80,6 +80,9 @@ class _$PromotionHeaderEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PromotionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -102,6 +105,8 @@ class __$$GetPromotionHeaderEventImplCopyWithImpl<$Res>
       $Res Function(_$GetPromotionHeaderEventImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PromotionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +156,9 @@ class _$GetPromotionHeaderEventImpl implements GetPromotionHeaderEvent {
   @override
   int get hashCode => Object.hash(runtimeType, promotionInparas, searchQuery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PromotionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPromotionHeaderEventImplCopyWith<_$GetPromotionHeaderEventImpl>
@@ -235,7 +242,10 @@ abstract class GetPromotionHeaderEvent implements PromotionHeaderEvent {
 
   PromotionHeaderInParas get promotionInparas;
   String get searchQuery;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PromotionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPromotionHeaderEventImplCopyWith<_$GetPromotionHeaderEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -254,6 +264,9 @@ class __$$ClearPromotionHeaderImplCopyWithImpl<$Res>
   __$$ClearPromotionHeaderImplCopyWithImpl(_$ClearPromotionHeaderImpl _value,
       $Res Function(_$ClearPromotionHeaderImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PromotionHeaderEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -414,6 +427,9 @@ class _$PromotionHeaderStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PromotionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -436,6 +452,8 @@ class __$$GetPromotionsHeaderStateImplCopyWithImpl<$Res>
       $Res Function(_$GetPromotionsHeaderStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PromotionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -485,7 +503,9 @@ class _$GetPromotionsHeaderStateImpl implements GetPromotionsHeaderState {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_promotion));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PromotionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPromotionsHeaderStateImplCopyWith<_$GetPromotionsHeaderStateImpl>
@@ -566,7 +586,10 @@ abstract class GetPromotionsHeaderState implements PromotionHeaderState {
       _$GetPromotionsHeaderStateImpl;
 
   List<PromotionHeaderModel>? get promotion;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PromotionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPromotionsHeaderStateImplCopyWith<_$GetPromotionsHeaderStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -587,6 +610,9 @@ class __$$PromotionHeaderFailedImplCopyWithImpl<$Res>
   __$$PromotionHeaderFailedImplCopyWithImpl(_$PromotionHeaderFailedImpl _value,
       $Res Function(_$PromotionHeaderFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PromotionHeaderState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
