@@ -1681,17 +1681,4 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
   }
 }
 
-const ddvalues = [
-  DropdownMenuItem(
-    value: '0',
-    child: Text('Select Reason'),
-  ),
-  DropdownMenuItem(
-    value: '1',
-    child: Text('reason1'),
-  ),
-  DropdownMenuItem(
-    value: '2',
-    child: Text('reason2'),
-  )
-];
+

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
@@ -21,7 +22,7 @@ class HomeChartRepo implements IHomeChartsRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartRoutesUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
-      // log(response.body);
+      log('chart count : ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartRoutesModel.fromJson(json["result"][0]);
@@ -86,6 +87,7 @@ class HomeChartRepo implements IHomeChartsRepo {
           Uri.parse(approvalBaseUrl + chartPlannedVisitsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
       if (response.statusCode == 200) {
+        log('planned count : ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartPlannedVisitsModel.fromJson(json["result"][0]);
         return right(data);
@@ -109,6 +111,7 @@ class HomeChartRepo implements IHomeChartsRepo {
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartProductiveVisitModel.fromJson(json["result"][0]);
+        log('Productive: ${response.body}');
         return right(data);
       } else {
         return left(

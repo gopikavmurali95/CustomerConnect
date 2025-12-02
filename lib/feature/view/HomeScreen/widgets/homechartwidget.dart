@@ -150,7 +150,9 @@ class _AnimatedSemiCircleProgressChartState
       vsync: this,
       duration: widget.duration,
     );
-    double progress = widget.completedCount / widget.totalCount;
+    double progress =  widget.totalCount == 0
+      ? 0
+      : widget.completedCount / widget.totalCount;
     _animation = Tween<double>(begin: 0, end: progress).animate(_controller)
       ..addListener(() {
         setState(() {});
@@ -164,7 +166,9 @@ class _AnimatedSemiCircleProgressChartState
     super.didUpdateWidget(oldWidget);
     if (oldWidget.completedCount != widget.completedCount ||
         oldWidget.totalCount != widget.totalCount) {
-      double progress = widget.completedCount / widget.totalCount;
+      double progress = widget.totalCount == 0
+        ? 0
+        : widget.completedCount / widget.totalCount;
       _animation = Tween<double>(begin: _animation.value, end: progress)
           .animate(_controller)
         ..addListener(() {
