@@ -21,8 +21,8 @@ class HomeChartRepo implements IHomeChartsRepo {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartRoutesUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
-      log('chart count : ${response.body}');
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
+      log('chart route count : ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartRoutesModel.fromJson(json["result"][0]);
@@ -43,7 +43,8 @@ class HomeChartRepo implements IHomeChartsRepo {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartActualVisitsUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
+      log('chart actual count : ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartActualVisitModel.fromJson(json["result"][0]);
@@ -64,7 +65,8 @@ class HomeChartRepo implements IHomeChartsRepo {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartNonProductiveVistisUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
+      log('chart non productive count : ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartNonProductiveModel.fromJson(json["result"][0]);
@@ -85,7 +87,7 @@ class HomeChartRepo implements IHomeChartsRepo {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartPlannedVisitsUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
       if (response.statusCode == 200) {
         log('planned count : ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -107,7 +109,7 @@ class HomeChartRepo implements IHomeChartsRepo {
     try {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + chartProductiveVisitsUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate, "UserId":userId});
+          body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartProductiveVisitModel.fromJson(json["result"][0]);

@@ -1,14 +1,17 @@
 //Development
-// const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
-// const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
+const baseUrl = "https://sfa-muom.dev-ts.online/WS/";
+const approvalBaseUrl = 'https://sfa-muom.dev-ts.online/WS/';
 
 //Demo
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://demo-sfa.dev-ts.online/WS/";
 
-const baseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
-const approvalBaseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
+// const baseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
+// const approvalBaseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
 
+//SIT
+// const baseUrl = 'https://sit-sfa.dev-ts.online/WS/';
+// const approvalBaseUrl = 'https://sit-sfa.dev-ts.online/WS/';
 
 // const baseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
