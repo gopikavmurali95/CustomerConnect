@@ -15,33 +15,62 @@ class ArChartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Container(
+        height: 40,
+        color: Color(0xffF9FAFB),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              height: 13.h,
-              width: 30.w,
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                children: [
+                  Container(
+                    height: 15.h,
+                    width: 15.w,
+                    decoration: BoxDecoration(
+                      color: color,
+                      borderRadius: BorderRadius.circular(7.5),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5.h,
+                  ),
+                  Text(
+                    title,
+                    style: ifontstyle(fontSize: 10.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xff364153)
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(
-              width: 5.h,
-            ),
-            Text(
-              title,
-              style: kfontstyle(fontSize: 10.sp),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    amount,
+                    style: ifontstyle(fontSize: 10.sp,
+                    color: Color(0xff101828),
+                    fontWeight: FontWeight.bold),
+                  ),
+                   Text(
+                    amount,
+                    style: ifontstyle(fontSize: 8.sp,
+                    color: Color(0xff6A7282),
+                    fontWeight: FontWeight.normal),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-        Text(
-          amount,
-          style: kfontstyle(fontSize: 10.sp, fontWeight: FontWeight.w500),
-        )
-      ],
+      ),
     );
   }
 }

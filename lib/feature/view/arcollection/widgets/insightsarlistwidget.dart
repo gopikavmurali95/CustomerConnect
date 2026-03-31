@@ -13,7 +13,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InsightArListWidget extends StatelessWidget {
-  const InsightArListWidget({super.key});
+  const InsightArListWidget({
+    super.key,
+    this.shrinkWrap = true,
+    this.physics = const NeverScrollableScrollPhysics(),
+  });
+
+  final bool shrinkWrap;
+  final ScrollPhysics? physics;
+
+  Color _getPayModeStripColor(String? payMode) {
+    switch (payMode) {
+      case 'HC':
+        return const Color.fromARGB(255, 147, 213, 237);
+      case 'OP':
+        return const Color.fromARGB(255, 212, 199, 246);
+      case 'POS':
+        return const Color.fromARGB(255, 200, 244, 218);
+      case 'CH':
+        return const Color.fromARGB(255, 246, 213, 197);
+      default:
+        return const Color(0xffE5E291);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +46,8 @@ class InsightArListWidget extends StatelessWidget {
           return state.when(
             getArHeadersState: (headers, totals) => headers == null
                 ? ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
+                    shrinkWrap: shrinkWrap,
+                    physics: physics,
                     itemBuilder: (context, index) =>
                         ShimmerContainers(height: 60.h, width: double.infinity),
                     separatorBuilder: (context, index) => Divider(
@@ -39,9 +61,9 @@ class InsightArListWidget extends StatelessWidget {
                           style: kfontstyle(),
                         ),
                       )
-                    : ListView.separated(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
+                    : ListView.builder(
+                        shrinkWrap: shrinkWrap,
+                        physics: physics,
                         itemBuilder: (context, index) => InkWell(
                               onTap: () {
                                 Navigator.push(
@@ -141,103 +163,193 @@ class InsightArListWidget extends StatelessWidget {
                                         ),
                                 );
                               },
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: const Color(0xffDB95B5),
-                                    child: Image.asset(
-                                      'assets/images/ar_li.png',
-                                      height: 20.h,
-                                      width: 20.w,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 0.0,vertical: 5),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xffFFFFFF),
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: const Color(0xffE5E7EB),
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0, vertical: 10),
+                                    child: Row(
                                       children: [
-                                        Text(
-                                          headers[index].arhArNumber ?? '',
-                                          style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            color: const Color(0xff2C6B9E),
-                                            fontWeight: FontWeight.w600,
+                                        Container(
+                                          height: 60,
+                                          width: 5,
+                                          decoration: BoxDecoration(
+                                            color: _getPayModeStripColor(
+                                              selectedLocale?.languageCode == 'en'
+                                                  ? headers[index].payMode
+                                                  : headers[index].arPayMode,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(2),
                                           ),
                                         ),
                                         SizedBox(
-                                          height: 5.h,
+                                          width: 10.w,
                                         ),
-                                        Text(
-                                          '${headers[index].date} | ${headers[index].time}',
-                                          style: kfontstyle(
-                                              fontSize: 10.sp,
-                                              color: Colors.grey),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    headers[index].arhArNumber ??
+                                                        '',
+                                                    style: blueTextStyle(),
+                                                  ),
+                                                  SizedBox(width: 10.w),
+                                                  Container(
+                                                    height: 14.h,
+                                                    width: 30.w,
+                                                    decoration: BoxDecoration(
+                                                      color: headers[index].payMode ==
+                                                              'HC'
+                                                          ? const Color
+                                                              .fromARGB(255, 200,
+                                                              239, 249)
+                                                          : headers[index]
+                                                                      .payMode ==
+                                                                  "CH"
+                                                              ? const Color
+                                                                  .fromARGB(255,
+                                                                  246, 213, 197)
+                                                              : headers[index]
+                                                                          .payMode ==
+                                                                      "POS"
+                                                                  ? const Color
+                                                                      .fromARGB(
+                                                                      255,
+                                                                      200,
+                                                                      244,
+                                                                      218)
+                                                                  : const Color(
+                                                                      0xfff7f4e2),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        selectedLocale
+                                                                    ?.languageCode ==
+                                                                'en'
+                                                            ? headers[index]
+                                                                    .payMode ??
+                                                                ''
+                                                            : headers[index]
+                                                                    .arPayMode ??
+                                                                '',
+                                                        style: kfontstyle(
+                                                          fontSize: 10.sp,
+                                                          color: const Color(
+                                                              0xff413434),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '${headers[index].cusCode} - ',
+                                                    style: subTitleTextStyle(),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                      selectedLocale
+                                                                  ?.languageCode ==
+                                                              "en"
+                                                          ? headers[index]
+                                                                  .cusName ??
+                                                              ''
+                                                          : headers[index]
+                                                                  .cusName ??
+                                                              '',
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: subTitleTextStyle(),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              // Row(
+                                              //   children: [
+                                              //     Text(
+                                              //       '${headers[index].cshCode} - ',
+                                              //       style: kfontstyle(
+                                              //         fontSize: 11.sp,
+                                              //         color:
+                                              //             const Color(0xff2C6B9E),
+                                              //       ),
+                                              //     ),
+                                              //     Expanded(
+                                              //       child: Text(
+                                              //         selectedLocale
+                                              //                     ?.languageCode ==
+                                              //                 "en"
+                                              //             ? headers[index]
+                                              //                     .cshName ??
+                                              //                 ""
+                                              //             : headers[index]
+                                              //                     .arCshName ??
+                                              //                 '',
+                                              //         overflow:
+                                              //             TextOverflow.ellipsis,
+                                              //         style: kfontstyle(
+                                              //           fontSize: 12.sp,
+                                              //           color: const Color(
+                                              //               0xff413434),
+                                              //         ),
+                                              //       ),
+                                              //     ),
+                                              //   ],
+                                              // ),
+                                              Text(
+                                                '${AppLocalizations.of(context)!.route} ${headers[index].rotName} | ${headers[index].date} | ${headers[index].time}',
+                                                style: kfontstyle(
+                                                  fontSize: 10.sp,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              headers[index].collectedAmount ??
+                                                  '',
+                                              style: ifontstyle(
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 5.h,
+                                            ),
+                                            const Text(
+                                              "AED",
+                                              style: TextStyle(fontSize: 10),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        headers[index].collectedAmount ?? '',
-                                        style: kfontstyle(
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      SizedBox(
-                                        height: 5.h,
-                                      ),
-                                      Container(
-                                        height: 14.h,
-                                        width: 30.w,
-                                        decoration: BoxDecoration(
-                                            color: headers[index].payMode ==
-                                                    'HC'
-                                                ? const Color.fromARGB(255, 184,
-                                                    241, 255) //colorslist[0]
-                                                : headers[index].payMode == "CH"
-                                                    ? const Color.fromARGB(
-                                                        255,
-                                                        244,
-                                                        209,
-                                                        192) //colorslist[3]
-                                                    : headers[index].payMode ==
-                                                            "POS"
-                                                        ? const Color.fromARGB(
-                                                            255,
-                                                            193,
-                                                            244,
-                                                            213) //colorslist[2]
-                                                        : const Color(
-                                                            0xfff7f4e2),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Center(
-                                          child: Text(
-                                            textAlign: TextAlign.center,
-                                            selectedLocale?.languageCode == 'en'
-                                                ? headers[index].payMode ?? ''
-                                                : headers[index].arPayMode ??
-                                                    '',
-                                            style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                color: const Color(0xff413434)),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
+                                ),
                               ),
                             ),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
+                      
                         itemCount: headers.length),
             getArHeadersFailedState: () => SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,

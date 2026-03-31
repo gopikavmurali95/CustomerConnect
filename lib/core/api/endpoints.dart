@@ -10,8 +10,8 @@ const approvalBaseUrl = /* 'https://sfa-muom.dev-ts.online/WS/' */ "https://dev-
 // const approvalBaseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
 
 //SIT
-// const baseUrl = 'https://sit-sfa.dev-ts.online/WS/';
-// const approvalBaseUrl = 'https://sit-sfa.dev-ts.online/WS/';
+ //const baseUrl = 'https://sit-sfa.dev-ts.online/WS/';
+//const approvalBaseUrl = 'https://sit-sfa.dev-ts.online/WS/';
 
 // const baseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
 // const approvalBaseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
