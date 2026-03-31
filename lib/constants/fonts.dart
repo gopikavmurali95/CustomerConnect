@@ -66,6 +66,8 @@ TextStyle bottomTotalAmountStyle() {
 }
 
 const kfontstyle = GoogleFonts.poppins;
+const pfontstyle = GoogleFonts.plusJakartaSans;
+const ifontstyle = GoogleFonts.inter;
 TextStyle loadTextStyle() {
   return GoogleFonts.poppins(
       fontSize: 12,
