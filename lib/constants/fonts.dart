@@ -18,17 +18,17 @@ TextStyle blueTextStyle() {
 }
 
 TextStyle appHeading() {
-  return GoogleFonts.poppins(
+  return GoogleFonts.inter(
       fontSize: 18,
-      fontWeight: FontWeight.w400,
-      color: const Color(0xff413434));
+      fontWeight: FontWeight.w500,
+      color: const Color(0xff101828));
 }
 
 TextStyle countHeading() {
-  return GoogleFonts.poppins(
-      fontSize: 12.sp,
-      fontWeight: FontWeight.w500,
-      color: const Color(0xff413434));
+  return GoogleFonts.inter(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+      color: const Color(0xff101828));
 }
 
 TextStyle statusTextStyle() {
@@ -66,12 +66,14 @@ TextStyle bottomTotalAmountStyle() {
 }
 
 const kfontstyle = GoogleFonts.poppins;
+const ifontstyle = GoogleFonts.inter;
 TextStyle loadTextStyle() {
   return GoogleFonts.poppins(
       fontSize: 12,
       fontWeight: FontWeight.w500,
       color: const Color(0xff6E62A4));
 }
+
 
 Logger logger = Logger();
 TextStyle approvalcountStyle() {

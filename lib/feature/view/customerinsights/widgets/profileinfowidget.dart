@@ -32,333 +32,369 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
               ? ShimmerContainers(
                   height: MediaQuery.of(context).size.width / 2,
                   width: MediaQuery.of(context).size.width)
-              : Column(
-                  children: [
-                    Row(
+              : Container(
+                  decoration: BoxDecoration(
+           color: const Color(0xffFFFFFF),
+                                        borderRadius: BorderRadius.circular(10),
+                                       border: Border.all( color: const Color(0xffE5E7EB)),
+         // shape: BoxShape.rectangle,
+         // borderRadius: BorderRadius.circular(10),
+       //   color: Colors.white,
+          // boxShadow: [
+          //   BoxShadow(
+          //       color: Colors.grey.shade100,
+          //       offset: const Offset(0, 0),
+          //       blurRadius: 2,
+          //       spreadRadius: 2)
+          // ],
+        ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0,vertical: 10),
+                  child: Column(
                       children: [
-                        SvgPicture.asset(
-                          'assets/svg/profile.svg',
-                          height: 10.h,
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/svg/icon6.svg',
+                              height: 15.h,
+                            ),
+                            SizedBox(
+                              width: 20.w,
+                            ),
+                            Flexible(
+                              child: Text(
+                                selectedLocale?.languageCode == "en"
+                                    ? profile.cusName ?? ''
+                                    : profile.cusNameArabic ?? '',
+                                style: kfontstyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
+                         const Divider(
+                            color:Color(0xffE5E7EB),
+                          ),
                         SizedBox(
-                          width: 20.w,
+                          height: 7.h,
                         ),
-                        Flexible(
-                          child: Text(
-                            selectedLocale?.languageCode == "en"
-                                ? profile.cusName ?? ''
-                                : profile.cusNameArabic ?? '',
-                            style: kfontstyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black,
+                        /*  const ProfileTileRowWidget(
+                  fimg: 'assets/svg/mail.svg',
+                  limg: 'assets/svg/sendmail.svg',
+                  title: 'support@danat.ae',
+                              ), */
+                        Visibility(
+                          visible:
+                              profile.cusEmail == null || profile.cusEmail!.isEmpty
+                                  ? false
+                                  : true,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 7.h),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/svg/mailicon.svg",
+                                        height: 15.h,
+                                      ),
+                                      SizedBox(
+                                        width: 20.w,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          profile.cusEmail ?? '',
+                                          style: kfontstyle(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () async {
+                                    logger.e('mailto:${profile.cusEmail}');
+                                    try {
+                                      if (profile.cusEmail != null &&
+                                          profile.cusEmail != '') {
+                                        if (await canLaunchUrl(
+                                          Uri.parse("mailto:${profile.cusEmail!}"),
+                                        )) {
+                                          bool issuccess = await launchUrl(
+                                            Uri(
+                                              scheme: 'mailto',
+                                              path: profile.cusEmail!,
+                                              /* queryParameters: {
+                                                'subject': 'hi',
+                                                'body': '',
+                                              }, */
+                                            ),
+                                            mode: LaunchMode.platformDefault,
+                                          );
+                                          log('Launch success: $issuccess');
+                                        } else {
+                                          log('Cannot launch email');
+                                          /* ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                                content: Text(
+                                                    'Cannot launch email client')),
+                                          ); */
+                                        }
+                                      }
+                                    } catch (e) {
+                                      log('Error launching mail');
+                                    }
+                                  },
+                                  child: SvgPicture.asset(
+                                    "assets/svg/sendmail.svg",
+                                    height: 15.h,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                         ),
+                          const Divider(
+                              color: Color(0xffE5E7EB),
+                            ),
+                        
+                        InkWell(
+                          onTap: () async {
+                            try {
+                              if (profile.cusPhone != null &&
+                                  profile.cusPhone != '') {
+                                if (await canLaunchUrl(
+                                  Uri(scheme: 'tel', path: profile.cusPhone!),
+                                )) {
+                                  bool issuccess = await launchUrl(
+                                    Uri(scheme: 'tel', path: profile.cusPhone!),
+                                    mode: LaunchMode.platformDefault,
+                                  );
+                  
+                                  logger.e('call status: $issuccess');
+                                } else {
+                                  logger.e('Cannot launch phone');
+                                }
+                              } else {
+                                return showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!.alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .phoneNumberNotAvailable),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .ok))
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!.alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .phoneNumberNotAvailable),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .ok))
+                                          ],
+                                        );
+                                      }
+                                    });
+                              }
+                            } catch (e) {
+                              logger.e('Error opening phone: $e');
+                            }
+                          },
+                          child: ProfileTileRowWidget(
+                            fimg: 'assets/svg/phone.svg',
+                            limg: 'assets/svg/call.svg',
+                            title: profile.cusPhone!,
+                          ),
+                          
+                        ),
+                           const Divider(
+                            color: Color(0xffE5E7EB),
+                          ),
+                        InkWell( 
+                          onTap: () async {
+                            String contact = profile.cusWhatsappNumber!;
+                            Uri androidUrl =
+                                Uri.parse('https://wa.me/$contact?text=Hi');
+                            /*  Uri iosUrl = Uri.parse(
+                                    "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
+                            try {
+                              if (profile.cusWhatsappNumber != null &&
+                                  profile.cusWhatsappNumber != '') {
+                                if (await canLaunchUrl(
+                                  androidUrl,
+                                )) {
+                                  bool issuccess = await launchUrl(
+                                    androidUrl,
+                                    mode: LaunchMode.platformDefault,
+                                  );
+                  
+                                  logger.e('WhatsApp Status: $issuccess');
+                                } else {
+                                  logger.e('Cannot launch Whatsapp');
+                                }
+                              } else {
+                                return showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!.alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .whatsAppNtAvailable),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .ok))
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!.alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .whatsAppNtAvailable),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                    AppLocalizations.of(context)!
+                                                        .ok))
+                                          ],
+                                        );
+                                      }
+                                    });
+                              }
+                            } catch (e) {
+                              logger.e('Error opening whatsapp: $e');
+                            }
+                          },
+                          child: ProfileTileRowWidget(
+                            fimg: 'assets/svg/whatsapp.svg',
+                            limg: 'assets/svg/whatsapp.svg',
+                            title: profile.cusWhatsappNumber ?? '',
+                          ),
+                        ),
+                          const Divider(
+                            color: Color(0xffE5E7EB),
+                          ),
+                        InkWell(
+                          onTap: () async {
+                            log("cus geo code ${profile.cusGeoCode}");
+                            //String map = profile.cusGeoCode!;
+                            Uri androidUrl =
+                                Uri.parse('geo:0,0?q=${profile.cusGeoCode}');
+                            /*  Uri iosUrl = Uri.parse(
+                                    "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
+                            try {
+                              if (profile.cusAddress != null &&
+                                  profile.cusAddress != '') {
+                                if (await canLaunchUrl(
+                                  androidUrl,
+                                )) {
+                                  bool issuccess = await launchUrl(
+                                    androidUrl,
+                                    mode: LaunchMode.platformDefault,
+                                  );
+                  
+                                  logger.e('Map status $issuccess');
+                                } else {
+                                  logger.e('Cannot launch map');
+                                }
+                              } else {
+                                return showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      if (Platform.isIOS) {
+                                        return CupertinoAlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!.alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .locationNotAvailable),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Ok'))
+                                          ],
+                                        );
+                                      } else {
+                                        return AlertDialog(
+                                          title: Text(
+                                              AppLocalizations.of(context)!.alert),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .locationNotAvailable),
+                                          actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Ok'))
+                                          ],
+                                        );
+                                      }
+                                    });
+                              }
+                            } catch (e) {
+                              logger.e('Error launching map: $e');
+                            }
+                          },
+                          child: ProfileTileRowWidget(
+                            fimg: 'assets/svg/icon5.svg',
+                            limg: 'assets/svg/locate.svg',
+                            title: selectedLocale?.languageCode == "en"
+                                ? profile.cusAddress ?? ''
+                                : profile.cusAddressArabic ?? '',
+                          ),
+                        ),
+                          
                       ],
                     ),
-                    SizedBox(
-                      height: 7.h,
-                    ),
-                    /*  const ProfileTileRowWidget(
-              fimg: 'assets/svg/mail.svg',
-              limg: 'assets/svg/sendmail.svg',
-              title: 'support@danat.ae',
-            ), */
-                    Visibility(
-                      visible:
-                          profile.cusEmail == null || profile.cusEmail!.isEmpty
-                              ? false
-                              : true,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 7.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/svg/mail.svg",
-                                    height: 8.h,
-                                  ),
-                                  SizedBox(
-                                    width: 20.w,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      profile.cusEmail ?? '',
-                                      style: kfontstyle(
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () async {
-                                logger.e('mailto:${profile.cusEmail}');
-                                try {
-                                  if (profile.cusEmail != null &&
-                                      profile.cusEmail != '') {
-                                    if (await canLaunchUrl(
-                                      Uri.parse("mailto:${profile.cusEmail!}"),
-                                    )) {
-                                      bool issuccess = await launchUrl(
-                                        Uri(
-                                          scheme: 'mailto',
-                                          path: profile.cusEmail!,
-                                          /* queryParameters: {
-                                            'subject': 'hi',
-                                            'body': '',
-                                          }, */
-                                        ),
-                                        mode: LaunchMode.platformDefault,
-                                      );
-                                      log('Launch success: $issuccess');
-                                    } else {
-                                      log('Cannot launch email');
-                                      /* ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                            content: Text(
-                                                'Cannot launch email client')),
-                                      ); */
-                                    }
-                                  }
-                                } catch (e) {
-                                  log('Error launching mail');
-                                }
-                              },
-                              child: SvgPicture.asset(
-                                "assets/svg/sendmail.svg",
-                                height: 15.h,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        try {
-                          if (profile.cusPhone != null &&
-                              profile.cusPhone != '') {
-                            if (await canLaunchUrl(
-                              Uri(scheme: 'tel', path: profile.cusPhone!),
-                            )) {
-                              bool issuccess = await launchUrl(
-                                Uri(scheme: 'tel', path: profile.cusPhone!),
-                                mode: LaunchMode.platformDefault,
-                              );
-
-                              logger.e('call status: $issuccess');
-                            } else {
-                              logger.e('Cannot launch phone');
-                            }
-                          } else {
-                            return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  if (Platform.isIOS) {
-                                    return CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .phoneNumberNotAvailable),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok))
-                                      ],
-                                    );
-                                  } else {
-                                    return AlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .phoneNumberNotAvailable),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok))
-                                      ],
-                                    );
-                                  }
-                                });
-                          }
-                        } catch (e) {
-                          logger.e('Error opening phone: $e');
-                        }
-                      },
-                      child: ProfileTileRowWidget(
-                        fimg: 'assets/svg/phone.svg',
-                        limg: 'assets/svg/call.svg',
-                        title: profile.cusPhone!,
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        String contact = profile.cusWhatsappNumber!;
-                        Uri androidUrl =
-                            Uri.parse('https://wa.me/$contact?text=Hi');
-                        /*  Uri iosUrl = Uri.parse(
-                                "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
-                        try {
-                          if (profile.cusWhatsappNumber != null &&
-                              profile.cusWhatsappNumber != '') {
-                            if (await canLaunchUrl(
-                              androidUrl,
-                            )) {
-                              bool issuccess = await launchUrl(
-                                androidUrl,
-                                mode: LaunchMode.platformDefault,
-                              );
-
-                              logger.e('WhatsApp Status: $issuccess');
-                            } else {
-                              logger.e('Cannot launch Whatsapp');
-                            }
-                          } else {
-                            return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  if (Platform.isIOS) {
-                                    return CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .whatsAppNtAvailable),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok))
-                                      ],
-                                    );
-                                  } else {
-                                    return AlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .whatsAppNtAvailable),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .ok))
-                                      ],
-                                    );
-                                  }
-                                });
-                          }
-                        } catch (e) {
-                          logger.e('Error opening whatsapp: $e');
-                        }
-                      },
-                      child: ProfileTileRowWidget(
-                        fimg: 'assets/svg/whatsapp_1.svg',
-                        limg: 'assets/svg/whatsapp.svg',
-                        title: profile.cusWhatsappNumber ?? '',
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        log("cus geo code ${profile.cusGeoCode}");
-                        //String map = profile.cusGeoCode!;
-                        Uri androidUrl =
-                            Uri.parse('geo:0,0?q=${profile.cusGeoCode}');
-                        /*  Uri iosUrl = Uri.parse(
-                                "https://wa.me/$contact?text=${Uri.parse('Hi, I need some help')}"); */
-                        try {
-                          if (profile.cusAddress != null &&
-                              profile.cusAddress != '') {
-                            if (await canLaunchUrl(
-                              androidUrl,
-                            )) {
-                              bool issuccess = await launchUrl(
-                                androidUrl,
-                                mode: LaunchMode.platformDefault,
-                              );
-
-                              logger.e('Map status $issuccess');
-                            } else {
-                              logger.e('Cannot launch map');
-                            }
-                          } else {
-                            return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  if (Platform.isIOS) {
-                                    return CupertinoAlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .locationNotAvailable),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text('Ok'))
-                                      ],
-                                    );
-                                  } else {
-                                    return AlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!.alert),
-                                      content: Text(
-                                          AppLocalizations.of(context)!
-                                              .locationNotAvailable),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text('Ok'))
-                                      ],
-                                    );
-                                  }
-                                });
-                          }
-                        } catch (e) {
-                          logger.e('Error launching map: $e');
-                        }
-                      },
-                      child: ProfileTileRowWidget(
-                        fimg: 'assets/svg/address.svg',
-                        limg: 'assets/svg/locate.svg',
-                        title: selectedLocale?.languageCode == "en"
-                            ? profile.cusAddress ?? ''
-                            : profile.cusAddressArabic ?? '',
-                      ),
-                    ),
-                  ],
                 ),
+              ),
           getcusprofileFailedState: () => Center(
             child: Text(
               AppLocalizations.of(context)!.noDataAvailable,
@@ -397,7 +433,7 @@ class ProfileTileRowWidget extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   fimg,
-                  height: 10.h,
+                  height: 15.h,
                 ),
                 SizedBox(
                   width: 20.w,

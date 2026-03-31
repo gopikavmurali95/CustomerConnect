@@ -57,28 +57,34 @@ class _CustomerTraansactionWidgetState
               return Container(
                 // height: MediaQuery.of(context).size.height / 3.8,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color(0xffdeecfb),
-                      Color(0xfff0e0fc),
-                    ],
-                  ),
-                ),
+                 decoration: BoxDecoration(
+                                        color: const Color(0xffFFFFFF),
+                                        borderRadius: BorderRadius.circular(10),
+                                       border: Border.all( color: const Color(0xffE5E7EB))
+                                       ),
+                // decoration: BoxDecoration(
+                //   borderRadius: BorderRadius.circular(20),
+                //   color: Colors.white,
+                //   // gradient: const LinearGradient(
+                //   //   colors: [
+                //   //     Color(0xffdeecfb),
+                //   //     Color(0xfff0e0fc),
+                //   //   ],
+                //   // ),
+                // ),
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                   child: Column(
                     children: [
                       Row(
                         children: [
                           Text(
                             AppLocalizations.of(context)!.customerTransaction,
-                            style: kfontstyle(
+                            style: ifontstyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w500,
-                              color: Colors.black87,
+                              color: const Color(0xff101828),
                             ),
                           )
                         ],
@@ -86,19 +92,21 @@ class _CustomerTraansactionWidgetState
                       SizedBox(
                         height: 10.h,
                       ),
+                     
                       Row(
                         children: [
                           Flexible(
                             flex: 2,
                             fit: FlexFit.tight,
                             child: Container(
-                              height: 25.h,
+                              height: 45.h,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: const Color(0xffF9FAFB),
                                 borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: const Color(0xffE5E7EB))
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 8),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: InkWell(
                                   onTap: () {
                                     showCupertinoModalPopup(
@@ -171,50 +179,64 @@ class _CustomerTraansactionWidgetState
                                       },
                                     );
                                   },
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                  child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                          right: selectedLocale?.languageCode ==
-                                                  "en"
-                                              ? 0
-                                              : 10,
-                                        ),
-                                        child: Text(
-                                          '${AppLocalizations.of(context)!.from} ',
-                                          style: kfontstyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                      ),
+                                      const SizedBox(height: 5,),
                                       Text(
-                                        '| ',
+                                        '${AppLocalizations.of(context)!.from} ',
                                         style: kfontstyle(
-                                          fontSize: 18.sp,
+                                          fontSize: 10.sp,
                                           fontWeight: FontWeight.w400,
-                                          color: Colors.grey[300],
+                                          color: Colors.grey,
                                         ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                      Expanded(
-                                        child: Text(
-                                          widget.fromdatectrl.text,
-                                          style: kfontstyle(
-                                            fontSize: 8.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              widget.fromdatectrl.text,
+                                              style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black,
+                                              ),
+                                              maxLines: 1,
+                                              overflow:
+                                                  TextOverflow.ellipsis,
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: null,
-                                        icon: SvgPicture.asset(
-                                          'assets/svg/calendar.svg',
-                                          height: 15.sp,
-                                        ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 5.0,bottom: 5),
+                                            child: SizedBox(
+                                              width: 20.sp,
+                                              height: 20.sp,
+                                              child: IconButton(
+                                                padding: EdgeInsets.zero,
+                                                constraints:
+                                                    const BoxConstraints
+                                                        .tightFor(
+                                                  width: 24,
+                                                  height: 24,
+                                                ),
+                                                visualDensity:
+                                                    VisualDensity.compact,
+                                                onPressed: null,
+                                                icon: SvgPicture.asset(
+                                                  'assets/svg/calendar.svg',
+                                                  height: 15.sp,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -229,10 +251,11 @@ class _CustomerTraansactionWidgetState
                             flex: 2,
                             fit: FlexFit.tight,
                             child: Container(
-                              height: 25.h,
+                              height: 45.h,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: const Color(0xffF9FAFB),
                                 borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: const Color(0xffE5E7EB))
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 8),
@@ -246,6 +269,7 @@ class _CustomerTraansactionWidgetState
                                           height: 250,
                                           child: Column(
                                             children: [
+                                              SizedBox(height: 5.h,),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.end,
@@ -286,50 +310,66 @@ class _CustomerTraansactionWidgetState
                                       },
                                     );
                                   },
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                  child: Column(
+                                      mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                          right: selectedLocale?.languageCode ==
-                                                  "en"
-                                              ? 0
-                                              : 10,
-                                        ),
-                                        child: Text(
-                                          '${AppLocalizations.of(context)!.to}  ',
-                                          style: kfontstyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.grey,
+                                        const SizedBox(height: 5,),
+                                       Padding(
+                                            padding: EdgeInsets.only(
+                                              right: selectedLocale?.languageCode ==
+                                                      "en"
+                                                  ? 0
+                                                  : 10,
+                                            ),
+                                            child: Text(
+                                              '${AppLocalizations.of(context)!.to}  ',
+                                              style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                      Text(
-                                        '| ',
-                                        style: kfontstyle(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.grey[300],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          widget.todatectrl.text,
-                                          style: kfontstyle(
-                                            fontSize: 8.sp,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                         
+                                       
+                                          Expanded(
+                                            child: Text(
+                                              widget.todatectrl.text,
+                                              style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black,
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: null,
-                                        icon: SvgPicture.asset(
-                                          'assets/svg/calendar.svg',
-                                          height: 15.sp,
-                                        ),
+                                          Padding(
+                                           padding: const EdgeInsets.only(right: 5.0,bottom: 5),
+                                            child: SizedBox(
+                                              height: 20.sp,
+                                              width: 20.sp,
+                                              child: IconButton(
+                                                padding: EdgeInsets.zero,
+                                                constraints: const BoxConstraints(
+                                                  minWidth: 0,
+                                                  minHeight: 0,
+                                                ),
+                                                visualDensity: VisualDensity.compact,
+                                                onPressed: null,
+                                                icon: SvgPicture.asset(
+                                                  'assets/svg/calendar.svg',
+                                                  height: 15.sp,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -486,6 +526,8 @@ class _CustomerTraansactionWidgetState
                                   counts == null ? '0' : counts.invoice ?? "",
                               getcountFailedState: () => '0',
                             ),
+                            color: const Color(0xFFEFF6FF),
+                             borderColor: const Color(0xffDBEAFE), countColor:const Color(0xff1F5DAB),
                           ),
                         ),
                         InkWell(
@@ -519,6 +561,8 @@ class _CustomerTraansactionWidgetState
                                   counts == null ? '0' : counts.ar ?? "",
                               getcountFailedState: () => '0',
                             ),
+                            color: const Color(0xFFFAF5FF),
+                             borderColor: const Color(0xffF3E8FF), countColor: const Color(0xff6117AA),
                           ),
                         ),
                         InkWell(
@@ -552,12 +596,16 @@ class _CustomerTraansactionWidgetState
                                   counts == null ? '0' : counts.saleOrder ?? "",
                               getcountFailedState: () => '0',
                             ),
+                            color: const Color(0xFFF0FDF4),
+                            borderColor: const Color(0xffDCFCE7), countColor: const Color(0xff129D3D),
                           ),
                         ),
                         CusTransNavWIdget(
                           title: AppLocalizations.of(context)!.serviceJobs,
                           imagepath: 'assets/images/sj.png',
                           count: '6',
+                          color: const Color(0xFFF0FDFA),
+                           borderColor: const Color(0xffCBFBF1), countColor: const Color(0xff0B9A79),
                         ),
                       ], visibility: [
                         settings.when(
@@ -605,24 +653,41 @@ class _CustomerTraansactionWidgetState
   }
 }
 
-class CusTransNavWIdget extends StatelessWidget {
+class CusTransNavWIdget extends StatefulWidget {
   final String title;
   final String imagepath;
   final String count;
+  final Color color;
+  final Color borderColor;
+  final Color countColor;
   const CusTransNavWIdget({
     super.key,
     required this.title,
     required this.imagepath,
     required this.count,
+    required this.color,
+    required this.borderColor, required this.countColor,
   });
 
   @override
+  State<CusTransNavWIdget> createState() => _CusTransNavWIdgetState();
+}
+
+class _CusTransNavWIdgetState extends State<CusTransNavWIdget> {
+  //   static const List<Color> containerColors = [
+  //   Color(0xFF93C5FD),
+  //   Color(0xFFA5B4FC),
+  //   Color(0xFFBAE6FD),
+  //   Color(0xFFA5B4FC),
+  // ];
+  @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 50.h,
+       height: 70.h,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: widget.color,
         borderRadius: BorderRadius.circular(10),
+        border:Border.all(color: widget.borderColor)
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
@@ -634,28 +699,28 @@ class CusTransNavWIdget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(
-                  imagepath,
-                  height: 13.h,
+                  widget.imagepath,
+                  height: 22.h,
                 ),
                 Text(
-                  count,
+                  widget.count,
                   style: kfontstyle(
-                    fontSize: 11.sp,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w500,
-                    color: Colors.black87,
+                    color: widget.countColor
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: 2.h,
+              height: 10.h,
             ),
             Text(
-              title,
-              style: kfontstyle(
+              widget.title,
+              style: ifontstyle(
                 fontSize: 11.sp,
-                fontWeight: FontWeight.w400,
-                color: Colors.black,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xff4A5565)
               ),
             )
           ],
@@ -664,3 +729,5 @@ class CusTransNavWIdget extends StatelessWidget {
     );
   }
 }
+
+
