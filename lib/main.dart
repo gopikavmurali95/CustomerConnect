@@ -158,6 +158,7 @@ import 'package:customer_connect/feature/state/cubit/creditnoteapprovallevel/cre
 import 'package:customer_connect/feature/state/cubit/cusinscustomerspagination/cus_insight_customers_pagination_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvdetailstotal/cus_inv_details_total_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/cusinvtotal/cus_inv_total_counter_cubit.dart';
+import 'package:customer_connect/feature/state/cubit/custombottomnavcubit/custom_bottom_nav_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customerfocapprovalselection/customer_foc_approval_selection_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/customersearch/customer_search_loading_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/dailyactivityexpansion/daily_activity_expansion_cubit.dart';
@@ -179,8 +180,8 @@ import 'package:customer_connect/feature/state/cubit/unscheduledvisit/un_schedul
 import 'package:customer_connect/feature/state/cubit/updategeolocation/update_geo_location_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/updatepercentage/update_download_percentage_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/voidtransactionselection/void_transaction_selection_cubit.dart';
-import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
 import 'package:customer_connect/feature/view/LoginScreen/login_screen.dart';
+import 'package:customer_connect/feature/view/homescreenfooter/homescreenfooter.dart';
 import 'package:customer_connect/firebase_options.dart';
 import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -838,6 +839,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => getit<StampedCopyBloc>(),
         ),
+        BlocProvider<CustomBottomNavCubit>(
+          create: (context) => CustomBottomNavCubit(),
+        ),
       ],
       child: ScreenUtilInit(
         child:
@@ -851,8 +855,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: Colors.white,
                 dialogTheme: DialogThemeData(
                   backgroundColor: Colors.white,
-                  surfaceTintColor:
-                      Colors.white, 
+                  surfaceTintColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -898,7 +901,7 @@ class MyApp extends StatelessWidget {
               routes: {
                 "homePage": (context) => user == null
                     ? const MessageHandler(child: LoginScreen())
-                    : MessageHandler(child: HomeScreen(user: user!)),
+                    : MessageHandler(child: HomeScreenFooter(user: user!)),
                 "Login": (context) => const LoginScreen(),
               },
               initialRoute: "homePage",
