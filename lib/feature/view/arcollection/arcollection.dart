@@ -360,48 +360,48 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                               ),
                                                               ArChartItemWidget(
                                                                 amount:
-                                                                    '${artotal.hcCount ?? '0'}/${artotal.hcAmount ?? '0'}',
+                                                                    '${artotal.hcAmount ?? '0'} AED',
                                                                 color: const Color(
                                                                     0xff9ce2f5),
                                                                 title: AppLocalizations
                                                                         .of(context)!
-                                                                    .hard_cash,
+                                                                    .hard_cash, items: '${artotal.hcCount ?? '0'} Items',
                                                               ),
                                                               SizedBox(
                                                                 height: 10.h,
                                                               ),
                                                               ArChartItemWidget(
                                                                 amount:
-                                                                    '${artotal.opCount ?? '0'}/${artotal.opAmount ?? '0'}',
+                                                                    '${artotal.opAmount ?? '0'} AED',
                                                                 color: const Color(
                                                                     0xffe6dd94),
                                                                 title: AppLocalizations
                                                                         .of(context)!
-                                                                    .online_payment,
+                                                                    .online_payment, items: '${artotal.opCount ?? '0'} Items',
                                                               ),
                                                               SizedBox(
                                                                 height: 10.h,
                                                               ),
                                                               ArChartItemWidget(
                                                                 amount:
-                                                                    '${artotal.posCount ?? '0'}/${artotal.posAmount ?? '0'}',
+                                                                    '${artotal.posAmount ?? '0'} AED',
                                                                 color: const Color(
                                                                     0xff93e1b2),
                                                                 title: AppLocalizations
                                                                         .of(context)!
-                                                                    .pos,
+                                                                    .pos, items: '${artotal.posCount ?? '0'} Items',
                                                               ),
                                                               SizedBox(
                                                                 height: 10.h,
                                                               ),
                                                               ArChartItemWidget(
                                                                 amount:
-                                                                    '${artotal.chequeCount ?? '0'}/${artotal.chequeAmount ?? '0'}',
+                                                                    '${artotal.chequeAmount ?? '0'} AED',
                                                                 color: const Color(
                                                                     0xffdf936e),
                                                                 title: AppLocalizations
                                                                         .of(context)!
-                                                                    .cheque,
+                                                                    .cheque, items: '${artotal.chequeCount ?? '0'} Items',
                                                               ),
                                                               const Padding(
                                                                  padding: EdgeInsets.symmetric(

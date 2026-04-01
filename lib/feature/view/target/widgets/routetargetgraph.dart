@@ -364,7 +364,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               color: const Color(0xff3DDB7C),
                                               title:
                                                   AppLocalizations.of(context)!
-                                                      .achieved,
+                                                      .achieved, items: '',
                                             ),
                                             SizedBox(
                                               height: 15.h,
@@ -373,7 +373,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                 amount: amount.mtdGapAmt ?? '',
                                                 color: const Color(0xffE07744),
                                                 title:
-                                                    "MTD${AppLocalizations.of(context)!.gap}"),
+                                                    "MTD${AppLocalizations.of(context)!.gap}", items: '',),
                                             SizedBox(
                                               height: 15.h,
                                             ),
@@ -382,7 +382,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               color: const Color(0xffEAD846),
                                               title:
                                                   AppLocalizations.of(context)!
-                                                      .monthlyGap,
+                                                      .monthlyGap, items: '',
                                             ),
                                           ],
                                         ),
@@ -706,7 +706,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                 color: const Color(0xff3DDB7C),
                                                 title: AppLocalizations.of(
                                                         context)!
-                                                    .achieved,
+                                                    .achieved, items: '',
                                               ),
                                               SizedBox(
                                                 height: 15.h,
@@ -716,7 +716,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                   color:
                                                       const Color(0xffE07744),
                                                   title:
-                                                      "MTD${AppLocalizations.of(context)!.gap}"),
+                                                      "MTD${AppLocalizations.of(context)!.gap}", items: '',),
                                               SizedBox(
                                                 height: 15.h,
                                               ),
@@ -726,7 +726,7 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                       const Color(0xffEAD846),
                                                   title: AppLocalizations.of(
                                                           context)!
-                                                      .monthlyGap),
+                                                      .monthlyGap, items: '',),
                                             ],
                                           ),
                                         )

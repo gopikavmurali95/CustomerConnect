@@ -416,9 +416,9 @@ class OtherOptionsTilesWideget extends StatelessWidget {
       child: Container(
       padding:const EdgeInsets.symmetric(horizontal: 5, vertical: 10) ,
         decoration: BoxDecoration(
-           color: Color(0xffFFFFFF),
+           color: const Color(0xffFFFFFF),
                                         borderRadius: BorderRadius.circular(10),
-                                       border: Border.all( color: Color(0xffE5E7EB)),
+                                       border: Border.all( color: const Color(0xffE5E7EB)),
          // shape: BoxShape.rectangle,
          // borderRadius: BorderRadius.circular(10),
        //   color: Colors.white,

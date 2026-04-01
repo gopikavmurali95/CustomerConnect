@@ -33,91 +33,123 @@ class InsightsOutstandingList extends StatelessWidget {
                           style: kfontstyle(),
                         ),
                       )
-                    : ListView.separated(
+                    : ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 20,
-                                  backgroundColor: const Color(0xffDB95B5),
-                                  child: Image.asset(
-                                    'assets/images/ar_li.png',
-                                    height: 20.h,
-                                    width: 20.w,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                        itemBuilder: (context, index) => Padding(
+                           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 5),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color: const Color(0xffE5E7EB))),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
+                              child: Row(
                                     children: [
-                                      Text(
-                                        headers[index].invoiceId ?? '',
-                                        style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          color: const Color(0xff2C6B9E),
-                                          fontWeight: FontWeight.w600,
+                                      CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor: headers[index].status == "Due"
+                                            ?   const Color(0xffE4F7E2)
+                                            :  const Color(0xffF7E9E2),
+                                        child: Image.asset(
+                                          'assets/images/ar_li.png',
+                                          height: 20.h,
+                                          width: 20.w,
                                         ),
                                       ),
-                                      Text(
-                                        headers[index].invoicedOn ?? '',
-                                        style: kfontstyle(
-                                            fontSize: 10.sp,
-                                            color: Colors.grey),
+                                      SizedBox(
+                                        width: 10.w,
                                       ),
-                                      Text(
-                                        headers[index].invoiceAmount ?? '',
-                                        style: kfontstyle(
-                                            fontSize: 10.sp,
-                                            color: Colors.grey),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  headers[index].invoiceId ?? '',
+                                                  style: kfontstyle(
+                                                    fontSize: 12.sp,
+                                                    color: const Color(0xff101828),
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 5.w,
+                                                ),
+                                                Container(
+                                            height: 16.h,
+                                            width: 55.w,
+                                            decoration: BoxDecoration(
+                                                color: headers[index].status == "Due"
+                                                    ? /*  outstandingcolorslist[
+                                                                  0] */
+                                                    const Color(0xffE4F7E2)
+                                                    : /* outstandingcolorslist[
+                                                                  1] */
+                                                    const Color(0xffF7E9E2),
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                            child: Center(
+                                              child: Text(
+                                                headers[index].status ?? '',
+                                                style: kfontstyle(
+                                                    fontSize: 10.sp,
+                                                    color: headers[index].status == "Due"
+                                                    ? /*  outstandingcolorslist[
+                                                                  0] */
+                                                    const Color(0xff008236)
+                                                    : /* outstandingcolorslist[
+                                                                  1] */
+                                                    const Color(0xffC10007),
+                                                    ),
+                                              ),
+                                            ),
+                                          )
+                                      
+                                              ],
+                                            ),
+                                            Text(
+                                              headers[index].invoicedOn ?? '',
+                                              style: kfontstyle(
+                                                  fontSize: 10.sp,
+                                                  color: Color(0xff6A7282)),
+                                            ),
+                                            Text(
+                                              headers[index].invoiceAmount ?? '',
+                                              style: kfontstyle(
+                                                  fontSize: 10.sp,
+                                                  color: Color(0xff6A7282)),
+                                            ),
+                                          ],
+                                        ),
                                       ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            headers[index].invoiceBalance ?? "",
+                                            style: kfontstyle(
+                                                fontSize: 12.sp,
+                                                color: Color(0xff101828),
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                          SizedBox(
+                                            height: 5.h,
+                                          ),
+                                          Text("AED",style: kfontstyle(
+                                                    fontSize: 10.sp,
+                                                    color: Color(0xff6A7282)),
+                                              ),  ],
+                                      )
                                     ],
                                   ),
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      headers[index].invoiceBalance ?? "",
-                                      style: kfontstyle(
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    SizedBox(
-                                      height: 5.h,
-                                    ),
-                                    Container(
-                                      height: 16.h,
-                                      width: 60.w,
-                                      decoration: BoxDecoration(
-                                          color: headers[index].status == "Due"
-                                              ? /*  outstandingcolorslist[
-                                                            0] */
-                                              const Color(0xffE4F7E2)
-                                              : /* outstandingcolorslist[
-                                                            1] */
-                                              const Color(0xffF7E9E2),
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Center(
-                                        child: Text(
-                                          headers[index].status ?? '',
-                                          style: kfontstyle(
-                                              fontSize: 10.sp,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                )
-                              ],
                             ),
-                        separatorBuilder: (context, index) => Divider(
-                              color: Colors.grey[300],
-                            ),
+                          ),
+                        ),
+                        
                         itemCount: headers.length),
             getOutStandingFailedState: () => SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,
