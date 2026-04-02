@@ -19,7 +19,7 @@ class ArChartItemWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Container(
         height: 40,
-        color: Color(0xffF9FAFB),
+        color: const Color(0xffF9FAFB),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -42,7 +42,7 @@ class ArChartItemWidget extends StatelessWidget {
                     title,
                     style: ifontstyle(fontSize: 10.sp,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xff364153)
+                    color: const Color(0xff364153)
                     ),
                   ),
                 ],
@@ -56,13 +56,13 @@ class ArChartItemWidget extends StatelessWidget {
                   Text(
                     amount,
                     style: ifontstyle(fontSize: 10.sp,
-                    color: Color(0xff101828),
+                    color: const Color(0xff101828),
                     fontWeight: FontWeight.bold),
                   ),
                    Text(
                     amount,
                     style: ifontstyle(fontSize: 8.sp,
-                    color: Color(0xff6A7282),
+                    color: const Color(0xff6A7282),
                     fontWeight: FontWeight.normal),
                   ),
                 ],

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
-import 'package:customer_connect/feature/data/models/cu_s_ins_rot_list/cu_s_ins_rot_list.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
 import 'package:customer_connect/feature/state/bloc/cusinscustomerscount/cus_ins_customers_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customers/customers_list_bloc_bloc.dart';
@@ -11,9 +10,7 @@ import 'package:customer_connect/feature/state/cubit/customersearch/customer_sea
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
 import 'package:customer_connect/feature/view/customerinsights/widgets/customerlistingwidget.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
-import 'package:customer_connect/feature/widgets/shimmer.dart';
 import 'package:customer_connect/l10n/app_localizations.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,7 +44,7 @@ class _CustomersScrenState extends State<CustomersScren> {
 
       context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
       context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
-        userId: "1147",//widget.user.usrId ?? '',
+          userId: "1147", //widget.user.usrId ?? '',
           area: '',
           subarea: '',
           route: _routeIDCtrl.text,
@@ -55,7 +52,7 @@ class _CustomersScrenState extends State<CustomersScren> {
           pagenum: '1'));
 
       context.read<CusInsCustomersCountBloc>().add(GetCustomersCountEvent(
-            userId: "1147",//widget.user.usrId ?? '',
+          userId: "1147", //widget.user.usrId ?? '',
           area: '',
           subarea: '',
           route: _routeIDCtrl.text,
@@ -71,23 +68,20 @@ class _CustomersScrenState extends State<CustomersScren> {
     _customerSearchCtrl.clear();
     _routeIDCtrl.clear();
 
-    context
-        .read<GetAllRouteBloc>()
-        .add(GetAllRouteForCusEvent(
-         // userID: widget.user.usrId ?? ''
-          userID:"1147",// widget.user.usrId ?? ''
-          ));
+    context.read<GetAllRouteBloc>().add(GetAllRouteForCusEvent(
+        // userID: widget.user.usrId ?? ''
+        userID: widget.user.usrId ?? ''));
     context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
 
     context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
-         userId: "1147",//widget.user.usrId ?? '',
+        userId: widget.user.usrId ?? '',
         area: '',
         subarea: '',
         route: '',
         searchQuery: '',
         pagenum: '1'));
     context.read<CusInsCustomersCountBloc>().add(GetCustomersCountEvent(
-       userId: "1147",//widget.user.usrId ?? '',
+        userId: widget.user.usrId ?? '',
         area: '',
         subarea: '',
         route: '',
@@ -95,7 +89,7 @@ class _CustomersScrenState extends State<CustomersScren> {
         pagenum: '1'));
 
     setUpScrollController(
-          userId: "1147",//widget.user.usrId ?? '',
+        userId: widget.user.usrId ?? '',
         area: '',
         subArea: '',
         route: '',
@@ -122,14 +116,14 @@ class _CustomersScrenState extends State<CustomersScren> {
       isfirstfetch = false;
       pagecounter++;
       context.read<CusInsCustomersCountBloc>().add(GetCustomersCountEvent(
-            userId: "1147",//widget.user.usrId ?? '',
+          userId: widget.user.usrId ?? '',
           area: '',
           subarea: '',
           route: '',
           searchString: '',
           pagenum: '1'));
       context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
-           userId: "1147",//widget.user.usrId ?? '',
+          userId: widget.user.usrId ?? '',
           area: '',
           subarea: '',
           route: '',
@@ -140,7 +134,7 @@ class _CustomersScrenState extends State<CustomersScren> {
       if (customersscrollController.position.atEdge) {
         if (customersscrollController.position.pixels != 0) {
           context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
-              userId: "1147",//widget.user.usrId ?? '',
+              userId: widget.user.usrId ?? '',
               area: '',
               subarea: '',
               route: _routeIDCtrl.text,
@@ -158,7 +152,7 @@ class _CustomersScrenState extends State<CustomersScren> {
     context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
 
     context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
-        userId: "1147",//widget.user.usrId ?? '',
+        userId: widget.user.usrId ?? '',
         area: '',
         subarea: '',
         route: '',
@@ -224,13 +218,16 @@ class _CustomersScrenState extends State<CustomersScren> {
                 children: [
                   CustomersHeaderSection(
                     searchController: _customerSearchCtrl,
-                      onChanged: (v) => _onSearch(v),
-                          onClear: () {
-                          _customerSearchCtrl.clear();
-                            _onSearch('');
-                    }, user: widget.user,
-    ),
-    SizedBox(height: 10,),
+                    onChanged: (v) => _onSearch(v),
+                    onClear: () {
+                      _customerSearchCtrl.clear();
+                      _onSearch('');
+                    },
+                    user: widget.user,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   // Row(
                   //   children: [
                   //     Expanded(
@@ -425,7 +422,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                   //     )
                   //   ],
                   // ),
-                 
+
                   // Padding(
                   //   padding: const EdgeInsets.only(left: 10.0, right: 10),
                   //   child: Container(
@@ -555,13 +552,14 @@ class _CustomersScrenState extends State<CustomersScren> {
                   //         // controller: _locationNameTextController,
                   //       )),
                   // ),
-                 
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //SizedBox(width: 05,),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10),
                         child: Text(
                           AppLocalizations.of(context)!.customers,
                           style: countHeading(),
@@ -611,7 +609,7 @@ class _CustomersScrenState extends State<CustomersScren> {
                       ),
                     ],
                   ),
-                             
+
                   BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
                     builder: (context, state) {
                       return SizedBox(
@@ -632,11 +630,8 @@ class _CustomersScrenState extends State<CustomersScren> {
   }
 }
 
-
-
-
 class CustomersHeaderSection extends StatelessWidget {
-   final LoginUserModel user;
+  final LoginUserModel user;
   final TextEditingController searchController;
   final VoidCallback? onClear;
   final ValueChanged<String>? onChanged;
@@ -645,30 +640,30 @@ class CustomersHeaderSection extends StatelessWidget {
     super.key,
     required this.searchController,
     this.onClear,
-    this.onChanged, required this.user,
+    this.onChanged,
+    required this.user,
   });
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Container(
+    return Container(
       //height: 200,
       width: double.infinity,
       padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 20.h),
       decoration: BoxDecoration(
-       // border: Border.all(color: Color(0xffE5E7EB)),
+        // border: Border.all(color: Color(0xffE5E7EB)),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16.r),
           bottomRight: Radius.circular(16.r),
         ),
-         boxShadow: [
-      BoxShadow(
-        color: Color(0x40B8B8B8), // #B8B8B840 (last 2 digits = opacity)
-        offset: Offset(0, 8),     // x = 0, y = 8
-        blurRadius: 15.2,         // blur
-        spreadRadius: 0,          // spread
-      ),
-    ],
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x40B8B8B8), // #B8B8B840 (last 2 digits = opacity)
+            offset: Offset(0, 8), // x = 0, y = 8
+            blurRadius: 15.2, // blur
+            spreadRadius: 0, // spread
+          ),
+        ],
         image: const DecorationImage(
           image: AssetImage('assets/images/home/home_bg2.png'),
           fit: BoxFit.cover,
@@ -685,72 +680,67 @@ class CustomersHeaderSection extends StatelessWidget {
                   width: 22.w,
                   height: 22.w,
                   decoration: BoxDecoration(
-                   
                     borderRadius: BorderRadius.circular(6.r),
                   ),
                   child: HomePopUPMenuButton(
-                          user: user,
-                        ),
+                    user: user,
+                  ),
                 ),
                 SizedBox(width: 10.w),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SvgPicture.asset(
-                          "assets/svg/logo_ccsfa.svg",
-                          height: 22.sp,
-                        ),
+                      "assets/svg/logo_ccsfa.svg",
+                      height: 22.sp,
+                    ),
                   ],
                 ),
                 const Spacer(),
                 IconButton(
-                onPressed: () async {
-                              Navigator.push(
-                                  context,
-                                  Platform.isIOS
-                                      ? CupertinoPageRoute(
-                                          builder: (context) =>
-                                              NotificationScreen(
-                                                  user: user))
-                                      : MaterialPageRoute(
-                                          builder: (context) =>
-                                              NotificationScreen(
-                                                  user: user),
-                                        ));
-                            
-                            },
-                 icon:
-                                SvgPicture.asset("assets/svg/notification.svg"),
+                  onPressed: () async {
+                    Navigator.push(
+                        context,
+                        Platform.isIOS
+                            ? CupertinoPageRoute(
+                                builder: (context) =>
+                                    NotificationScreen(user: user))
+                            : MaterialPageRoute(
+                                builder: (context) =>
+                                    NotificationScreen(user: user),
+                              ));
+                  },
+                  icon: SvgPicture.asset("assets/svg/notification.svg"),
                   splashRadius: 20.r,
                 ),
               ],
             ),
             SizedBox(height: 10.h),
             Padding(
-                    padding: const EdgeInsets.only(left: 10.0, right: 10),
-                    child: Container(
-                        height: 35.h,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                           // border: Border.all(color: Colors.grey.shade200),
-                            borderRadius: BorderRadius.circular(8.0),
-                            boxShadow: const [
-                              BoxShadow(
-                                  // ignore: use_full_hex_values_for_flutter_colors
-                                  color: Color(0xff00000050),
-                                  blurRadius: 0.4,
-                                  spreadRadius: 0.4)
-                            ]),
-                        child: TextFormField(
-                          controller: _customerSearchCtrl,
-                          onChanged: (value) {
-                            if (debounce?.isActive ?? false) debounce!.cancel();
-                            debounce = Timer(
-                              const Duration(
-                                milliseconds: 1500,
-                              ),
-                              () async {
-                                /* if (_routeIDCtrl.text != '-1') {
+              padding: const EdgeInsets.only(left: 10.0, right: 10),
+              child: Container(
+                  height: 35.h,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      // border: Border.all(color: Colors.grey.shade200),
+                      borderRadius: BorderRadius.circular(8.0),
+                      boxShadow: const [
+                        BoxShadow(
+                            // ignore: use_full_hex_values_for_flutter_colors
+                            color: Color(0xff00000050),
+                            blurRadius: 0.4,
+                            spreadRadius: 0.4)
+                      ]),
+                  child: TextFormField(
+                    controller: _customerSearchCtrl,
+                    onChanged: (value) {
+                      if (debounce?.isActive ?? false) debounce!.cancel();
+                      debounce = Timer(
+                        const Duration(
+                          milliseconds: 1500,
+                        ),
+                        () async {
+                          /* if (_routeIDCtrl.text != '-1') {
                                   isSearchLoading = true;
                                   context
                                       .read<CustomerSearchLoadingCubit>()
@@ -763,106 +753,102 @@ class CustomersHeaderSection extends StatelessWidget {
                                           route: _routeIDCtrl.text,
                                           searchQuery: value.trim()));
                                 } */
-                                isSearchLoading = true;
-                                context
-                                    .read<CustomerSearchLoadingCubit>()
-                                    .addSearchLoadingEvent();
+                          isSearchLoading = true;
+                          context
+                              .read<CustomerSearchLoadingCubit>()
+                              .addSearchLoadingEvent();
 
-                                context.read<CustomersListBlocBloc>().add(
-                                    GetCustomersEvent(
-                                        userId: "1174",//user.usrId ?? '',
-                                        area: '',
-                                        subarea: '',
-                                        route: _routeIDCtrl.text,
-                                        searchQuery: value.trim(),
-                                        pagenum: pagecounter.toString()));
-                                context.read<CusInsCustomersCountBloc>().add(
-                                    GetCustomersCountEvent(
-                                         userId: "1174",//user.usrId ?? '',
-                                        area: '',
-                                        subarea: '',
-                                        route: _routeIDCtrl.text,
-                                        searchString: value.trim(),
-                                        pagenum: pagecounter.toString()));
-                              },
-                            );
-                          },
-                          decoration: InputDecoration(
-                              prefixIcon: const Icon(
-                                Icons.search,
-                                size: 20,
-                                color: Color(0xff9CA3AF),
-                              ),
-                              suffix: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(height: 5.h),
-                                  Expanded(
-                                    child: IconButton(
-                                      onPressed: () {
-                                        // if (_routeIDCtrl.text != '-1') {
-                                        _customerSearchCtrl.clear();
-                                        isSearchLoading = true;
-                                        context
-                                            .read<CustomerSearchLoadingCubit>()
-                                            .addSearchLoadingEvent();
+                          context
+                              .read<CustomersListBlocBloc>()
+                              .add(GetCustomersEvent(
+                                  userId: "1174", //user.usrId ?? '',
+                                  area: '',
+                                  subarea: '',
+                                  route: _routeIDCtrl.text,
+                                  searchQuery: value.trim(),
+                                  pagenum: pagecounter.toString()));
+                          context
+                              .read<CusInsCustomersCountBloc>()
+                              .add(GetCustomersCountEvent(
+                                  userId: "1174", //user.usrId ?? '',
+                                  area: '',
+                                  subarea: '',
+                                  route: _routeIDCtrl.text,
+                                  searchString: value.trim(),
+                                  pagenum: pagecounter.toString()));
+                        },
+                      );
+                    },
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          size: 20,
+                          color: Color(0xff9CA3AF),
+                        ),
+                        suffix: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 5.h),
+                            Expanded(
+                              child: IconButton(
+                                onPressed: () {
+                                  // if (_routeIDCtrl.text != '-1') {
+                                  _customerSearchCtrl.clear();
+                                  isSearchLoading = true;
+                                  context
+                                      .read<CustomerSearchLoadingCubit>()
+                                      .addSearchLoadingEvent();
 
-                                        context
-                                            .read<CustomersListBlocBloc>()
-                                            .add(GetCustomersEvent(
-                                                userId: "1174",//user.usrId ?? '',
-                                                area: '',
-                                                subarea: '',
-                                                route: _routeIDCtrl.text,
-                                                searchQuery: '',
-                                                pagenum:
-                                                    pagecounter.toString()));
-                                        context
-                                            .read<CusInsCustomersCountBloc>()
-                                            .add(GetCustomersCountEvent(
-                                                userId: "1174",//user.usrId ?? '',
-                                                area: '',
-                                                subarea: '',
-                                                route: _routeIDCtrl.text,
-                                                searchString: '',
-                                                pagenum:
-                                                    pagecounter.toString()));
-                                      },
-                                      icon: Icon(
-                                        Icons.close,
-                                        size: 14.sp,
-                                        color: Color(0xffF55858),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                                  context
+                                      .read<CustomersListBlocBloc>()
+                                      .add(GetCustomersEvent(
+                                          userId: "1174", //user.usrId ?? '',
+                                          area: '',
+                                          subarea: '',
+                                          route: _routeIDCtrl.text,
+                                          searchQuery: '',
+                                          pagenum: pagecounter.toString()));
+                                  context
+                                      .read<CusInsCustomersCountBloc>()
+                                      .add(GetCustomersCountEvent(
+                                          userId: "1174", //user.usrId ?? '',
+                                          area: '',
+                                          subarea: '',
+                                          route: _routeIDCtrl.text,
+                                          searchString: '',
+                                          pagenum: pagecounter.toString()));
+                                },
+                                icon: Icon(
+                                  Icons.close,
+                                  size: 14.sp,
+                                  color: const Color(0xffF55858),
+                                ),
                               ),
-                              hintText:
-                                  AppLocalizations.of(context)!.searchcustomers,
-                              hintStyle: kfontstyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.normal),
-                              isDense: true,
-                              counterText: "",
-                              contentPadding: const EdgeInsets.all(15.0),
-                              filled: true,
-                              fillColor: Colors.white,
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide.none)),
-                          textAlign: TextAlign.start,
-                          maxLines: 1,
-                          maxLength: 20,
-                          // controller: _locationNameTextController,
-                        )),
-                  ),
-        
-         
+                            ),
+                          ],
+                        ),
+                        hintText: AppLocalizations.of(context)!.searchcustomers,
+                        hintStyle: kfontstyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.normal),
+                        isDense: true,
+                        counterText: "",
+                        contentPadding: const EdgeInsets.all(15.0),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide.none)),
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    maxLength: 20,
+                    // controller: _locationNameTextController,
+                  )),
+            ),
           ],
         ),
       ),
     );
-  
   }
 }
