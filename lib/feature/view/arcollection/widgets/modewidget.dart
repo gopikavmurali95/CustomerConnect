@@ -6,11 +6,12 @@ class ArChartItemWidget extends StatelessWidget {
   final Color color;
   final String title;
   final String amount;
+  final String items;
   const ArChartItemWidget({
     super.key,
     required this.color,
     required this.title,
-    required this.amount,
+    required this.amount, required this.items,
   });
 
   @override
@@ -60,7 +61,7 @@ class ArChartItemWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold),
                   ),
                    Text(
-                    amount,
+                    items,
                     style: ifontstyle(fontSize: 8.sp,
                     color: const Color(0xff6A7282),
                     fontWeight: FontWeight.normal),
