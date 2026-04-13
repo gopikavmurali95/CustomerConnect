@@ -75,6 +75,13 @@ List<GlobalKey> tileKeys = [];
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _isScrolled = false;
+  String _selectedRoute = 'All Routes';
+  final List<String> _routeOptions = [
+    'All Routes',
+    'Active Routes',
+    'Completed Routes',
+    'Pending Routes'
+  ];
 
   @override
   void dispose() {
@@ -530,6 +537,149 @@ class _HomeScreenState extends State<HomeScreen> {
                                               children: [
                                                 SizedBox(
                                                   height: 60.h,
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 20, top: 15),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            () {
+                                                              const weekdays = [
+                                                                'Monday',
+                                                                'Tuesday',
+                                                                'Wednesday',
+                                                                'Thursday',
+                                                                'Friday',
+                                                                'Saturday',
+                                                                'Sunday'
+                                                              ];
+                                                              const months = [
+                                                                'Jan',
+                                                                'Feb',
+                                                                'Mar',
+                                                                'Apr',
+                                                                'May',
+                                                                'Jun',
+                                                                'Jul',
+                                                                'Aug',
+                                                                'Sep',
+                                                                'Oct',
+                                                                'Nov',
+                                                                'Dec'
+                                                              ];
+                                                              final now =
+                                                                  DateTime
+                                                                      .now();
+                                                              return '${weekdays[now.weekday - 1]}, ${months[now.month - 1]} ${now.day}';
+                                                            }(),
+                                                            style: ifontstyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 12.sp,
+                                                                letterSpacing:
+                                                                    0,
+                                                                color: const Color(
+                                                                    0xff000000)),
+                                                          ),
+                                                          Text(
+                                                            "Today's Overview",
+                                                            style: ifontstyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontSize: 16.sp,
+                                                                letterSpacing:
+                                                                    0,
+                                                                color: const Color(
+                                                                    0xff000000)),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                right: 16.w),
+                                                        child: Container(
+                                                          width: 130.15.w,
+                                                          height: 32.h,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: const Color(
+                                                                0x33F6C47D),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        100.r),
+                                                          ),
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  left: 12.w, right: 8),
+                                                          child:
+                                                              DropdownButtonHideUnderline(
+                                                            child:
+                                                                DropdownButton<
+                                                                    String>(
+                                                              value:
+                                                                  _selectedRoute,
+                                                              icon: Icon(
+                                                                  Icons
+                                                                      .keyboard_arrow_down,
+                                                                  size: 18.sp,
+                                                                  color: Colors
+                                                                      .black87),
+                                                              isDense: true,
+                                                              isExpanded: true,
+                                                              style: ifontstyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                              dropdownColor:
+                                                                  Colors.white,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          16.r),
+                                                              items:
+                                                                  _routeOptions
+                                                                      .map((option) =>
+                                                                          DropdownMenuItem<
+                                                                              String>(
+                                                                            value:
+                                                                                option,
+                                                                            child:
+                                                                                Text(option),
+                                                                          ))
+                                                                      .toList(),
+                                                              onChanged:
+                                                                  (value) {
+                                                                if (value !=
+                                                                    null) {
+                                                                  setState(() =>
+                                                                      _selectedRoute =
+                                                                          value);
+                                                                }
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsets
