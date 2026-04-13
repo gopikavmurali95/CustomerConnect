@@ -60,6 +60,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get routes => 'المسارات';
 
   @override
+  String get trackRoutesCardTitle => 'تتبع المسارات';
+
+  @override
+  String get trackRoutesCardSubtitle => 'عرض جميع المسارات على الخريطة';
+
+  @override
   String get aed => 'درهم';
 
   @override
@@ -205,6 +211,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get all => 'اكل شئ';
+
+  @override
+  String get approval_category_operations => 'العمليات';
 
   @override
   String get specialpricingcustomers => 'عملاء بأسعار خاصة';

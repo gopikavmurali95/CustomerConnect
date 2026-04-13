@@ -31,6 +31,7 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/homechartwidget
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/otheroptions.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
+import 'package:customer_connect/feature/view/tracking/webview.dart';
 import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -1069,6 +1070,232 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     },
                                                   ),
                                                 ),
+
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 8.w,
+                                                      vertical: 0),
+                                                  child: Material(
+                                                    color: Colors.transparent,
+                                                    child: InkWell(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              18.r),
+                                                      onTap: () {
+                                                        // Navigator.push(
+                                                        //   context,
+                                                        //   Platform.isIOS
+                                                        //       ? CupertinoPageRoute(
+                                                        //           builder:
+                                                        //               (context) =>
+                                                        //                   const WebViewScreen(
+                                                        //             url:
+                                                        //                 'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
+                                                        //           ))
+                                                        //       : MaterialPageRoute(
+                                                        //           builder:
+                                                        //               (context) =>
+                                                        //                   const WebViewScreen(
+                                                        //             url:
+                                                        //                 'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
+                                                        //           ),
+                                                        //         ),
+                                                        // );
+                                                      },
+                                                      child: Ink(
+                                                        height: 80.h,
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      18.r),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.18),
+                                                              blurRadius: 14,
+                                                              offset:
+                                                                  const Offset(
+                                                                      0, 6),
+                                                            ),
+                                                          ],
+                                                          gradient:
+                                                              const LinearGradient(
+                                                            colors: [
+                                                              Color(0xff233355),
+                                                              Color(0xff3d3f52),
+                                                              Color(0xff6B4E3D),
+                                                            ],
+                                                            begin: Alignment
+                                                                .centerLeft,
+                                                            end: Alignment
+                                                                .centerRight,
+                                                          ),
+                                                        ),
+                                                        child: Stack(
+                                                          clipBehavior:
+                                                              Clip.none,
+                                                          children: [
+                                                            Positioned(
+                                                              left: -28.w,
+                                                              top: -12.h,
+                                                              child:
+                                                                  Opacity(
+                                                                opacity: 0.12,
+                                                                child:
+                                                                    Container(
+                                                                  width: 90.w,
+                                                                  height:
+                                                                      90.w,
+                                                                  decoration:
+                                                                      const BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Positioned(
+                                                              right: -24.w,
+                                                              bottom: -18.h,
+                                                              child:
+                                                                  Opacity(
+                                                                opacity: 0.1,
+                                                                child:
+                                                                    Container(
+                                                                  width: 80.w,
+                                                                  height:
+                                                                      80.w,
+                                                                  decoration:
+                                                                      const BoxDecoration(
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          14.w,
+                                                                      vertical:
+                                                                          12.h),
+                                                              child: Row(
+                                                                children: [
+                                                                  Container(
+                                                                    width:
+                                                                        44.r,
+                                                                    height:
+                                                                        44.r,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .white
+                                                                          .withOpacity(
+                                                                              0.22),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              12.r),
+                                                                    ),
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .map_outlined,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      size: 24
+                                                                          .sp,
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      width: 12
+                                                                          .w),
+                                                                  Expanded(
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .trackRoutesCardTitle,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            fontSize:
+                                                                                16.sp,
+                                                                            fontWeight:
+                                                                                FontWeight.w700,
+                                                                          ),
+                                                                        ),
+                                                                        SizedBox(
+                                                                            height:
+                                                                                4.h),
+                                                                        Text(
+                                                                          AppLocalizations.of(context)!
+                                                                              .trackRoutesCardSubtitle,
+                                                                          maxLines:
+                                                                              2,
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Colors.white.withOpacity(0.92),
+                                                                            fontSize:
+                                                                                13.sp,
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                      width: 6
+                                                                          .w),
+                                                                  Icon(
+                                                                    Icons
+                                                                        .navigation_outlined,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 22.sp,
+                                                                  ),
+                                                                  SizedBox(
+                                                                      width: 2
+                                                                          .w),
+                                                                  Icon(
+                                                                    Icons
+                                                                        .chevron_right,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    size: 26.sp,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                
+               const SizedBox(height: 10,)
+              
                                               ],
                                             ),
                                           );
@@ -1200,6 +1427,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+                  
                 Positioned(
                   top: 0,
                   left: 0,
