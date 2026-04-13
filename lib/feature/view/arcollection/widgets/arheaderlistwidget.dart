@@ -111,7 +111,7 @@ class ARHeaderListWidget extends StatelessWidget {
                                                 children: [
                                                   Text(arHeaders[index].arhArNumber ?? '',
                                                       style: blueTextStyle()),
-                                                      SizedBox(width: 10,),
+                                                      const SizedBox(width: 10,),
                                                         Container(
                                               height: 14.h,
                                               width: 30.w,
@@ -222,7 +222,7 @@ class ARHeaderListWidget extends StatelessWidget {
                                             SizedBox(
                                               height: 5.h,
                                             ),
-                                            Text("AED",style: TextStyle(fontSize: 10),)
+                                            const Text("AED",style: TextStyle(fontSize: 10),)
                                             
                                           ],
                                         )

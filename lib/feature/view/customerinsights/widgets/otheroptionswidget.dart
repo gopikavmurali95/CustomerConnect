@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
@@ -414,14 +404,14 @@ class OtherOptionsTilesWideget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: Container(
-      padding:const EdgeInsets.symmetric(horizontal: 5, vertical: 10) ,
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         decoration: BoxDecoration(
-           color: const Color(0xffFFFFFF),
-                                        borderRadius: BorderRadius.circular(10),
-                                       border: Border.all( color: const Color(0xffE5E7EB)),
-         // shape: BoxShape.rectangle,
-         // borderRadius: BorderRadius.circular(10),
-       //   color: Colors.white,
+          color: const Color(0xffFFFFFF),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: const Color(0xffE5E7EB)),
+          // shape: BoxShape.rectangle,
+          // borderRadius: BorderRadius.circular(10),
+          //   color: Colors.white,
           boxShadow: [
             BoxShadow(
                 color: Colors.grey.shade100,
@@ -457,24 +447,6 @@ class OtherOptionsTilesWideget extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'dart:io';
 
