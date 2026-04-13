@@ -60,6 +60,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get routes => 'Routes';
 
   @override
+  String get trackRoutesCardTitle => 'Track Routes';
+
+  @override
+  String get trackRoutesCardSubtitle => 'View all routes on map';
+
+  @override
   String get aed => 'AED';
 
   @override
@@ -205,6 +211,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get all => 'All';
+
+  @override
+  String get approval_category_operations => 'Operations';
 
   @override
   String get specialpricingcustomers => 'Special Pricing Customers';

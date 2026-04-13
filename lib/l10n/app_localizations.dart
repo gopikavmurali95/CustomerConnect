@@ -197,6 +197,18 @@ abstract class AppLocalizations {
   /// **'Routes'**
   String get routes;
 
+  /// No description provided for @trackRoutesCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Routes'**
+  String get trackRoutesCardTitle;
+
+  /// No description provided for @trackRoutesCardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'View all routes on map'**
+  String get trackRoutesCardSubtitle;
+
   /// No description provided for @aed.
   ///
   /// In en, this message translates to:
@@ -490,6 +502,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All'**
   String get all;
+
+  /// No description provided for @approval_category_operations.
+  ///
+  /// In en, this message translates to:
+  /// **'Operations'**
+  String get approval_category_operations;
 
   /// No description provided for @specialpricingcustomers.
   ///
