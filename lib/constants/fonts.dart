@@ -26,7 +26,7 @@ TextStyle appHeading() {
 
 TextStyle countHeading() {
   return GoogleFonts.inter(
-      fontSize: 14.sp,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w600,
       color: const Color(0xff101828));
 }
