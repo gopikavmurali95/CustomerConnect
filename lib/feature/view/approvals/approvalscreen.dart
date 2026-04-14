@@ -8,6 +8,7 @@ import 'package:customer_connect/feature/state/bloc/field_service_header/field_s
 import 'package:customer_connect/feature/state/bloc/vantovanheader/van_to_van_header_bloc.dart';
 import 'package:customer_connect/feature/view/approvals/widgets/approvaldynamicwidget.dart';
 import 'package:customer_connect/feature/view/approvals/widgets/approvals_header_section.dart';
+import 'package:customer_connect/feature/view/approvals/widgets/pendingapprovals.dart';
 import 'package:customer_connect/feature/view/asset_adding/assetaddingheaderscreen.dart';
 import 'package:customer_connect/feature/view/assetremoval/assetremovalscreen.dart';
 import 'package:customer_connect/feature/view/creditnote/creditnoteheaderscreen.dart';
@@ -98,6 +99,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                     ],
                     tabGradients: ApprovalsHeaderSection.defaultTabGradients,
                   ),
+                  const SizedBox(height: 10),
+                  const PendingApprovalsWidget(),
                   const SizedBox(height: 10),
                   Padding(
                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),

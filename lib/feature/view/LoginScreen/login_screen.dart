@@ -5,8 +5,8 @@ import 'dart:io';
 
 import 'package:customer_connect/feature/domain/notification/firebasenotification.dart';
 import 'package:customer_connect/feature/state/bloc/login/user_login_bloc.dart';
-import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
-// import 'package:customer_connect/feature/view/HomeScreen/homscreen.dart';
+import 'package:customer_connect/feature/view/homescreenfooter/homescreenfooter.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,9 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           context,
                           Platform.isIOS
                               ? CupertinoPageRoute(
-                                  builder: (context) => HomeScreen(user: user))
+                                  builder: (context) => HomeScreenFooter(user: user))
                               : MaterialPageRoute(
-                                  builder: (context) => HomeScreen(
+                                  builder: (context) => HomeScreenFooter(
                                     user: user,
                                   ),
                                 ),
