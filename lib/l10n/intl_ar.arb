@@ -350,6 +350,8 @@
   "updatefailed":"فشل تحديث الإصدار",
   "retry":"إعادة المحاولة",
   "appupdate":"تحديث التطبيق",
-  "version":"يطلق"
+  "version":"يطلق",
+  "do_you_want_to_approve_this_journey_plan":"هل ترغب في الموافقة على خطة الرحلة هذه؟",
+  "do_you_want_to_reject_this_journey_plan":"هل تريد رفض خطة الرحلة هذه؟"
 }
   

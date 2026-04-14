@@ -350,6 +350,8 @@
   "updatefailed":"Version update failed",
   "retry":"Retry",
   "appupdate":"App Update",
-  "version":"Version"
+  "version":"Version",
+  "do_you_want_to_approve_this_journey_plan":"Do you want to approve this journey plan?",
+  "do_you_want_to_reject_this_journey_plan":"Do you want to reject this journey plan?"
 }
   

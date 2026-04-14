@@ -1024,4 +1024,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get version => 'Version';
+
+  @override
+  String get do_you_want_to_approve_this_journey_plan => 'Do you want to approve this journey plan?';
+
+  @override
+  String get do_you_want_to_reject_this_journey_plan => 'Do you want to reject this journey plan?';
 }
