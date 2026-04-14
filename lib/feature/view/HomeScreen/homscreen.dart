@@ -24,6 +24,8 @@ import 'package:customer_connect/feature/state/cubit/selectlanguage/select_langu
 import 'package:customer_connect/feature/view/HomeScreen/apkinstaller.dart';
 import 'package:customer_connect/feature/view/HomeScreen/autoupdatescreen.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homegraphmodel.dart';
+import 'package:customer_connect/feature/view/HomeScreen/inventorytransactioncontainerwidget.dart';
+import 'package:customer_connect/feature/view/HomeScreen/merchandisingtransactioncontainerwidget.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
@@ -31,7 +33,6 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/homechartwidget
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/otheroptions.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
-import 'package:customer_connect/feature/view/tracking/webview.dart';
 import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -782,145 +783,130 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 SizedBox(
                                                   height: 15.h,
                                                 ),
-                                                Visibility(
-                                                  visible: state.when(
-                                                    getCustomerSettingsState:
-                                                        (settings) =>
-                                                            settings?.invTrans ==
-                                                                        null ||
-                                                                    settings?.invTrans !=
-                                                                        'Y'
-                                                                ? false
-                                                                : true,
-                                                    customerSettingsFailedState:
-                                                        () => true,
-                                                  ),
-                                                  child: BlocBuilder<
-                                                      InverntoryTransExPandCubit,
-                                                      InverntoryTransExPandState>(
-                                                    builder: (context, state) {
-                                                      return Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(9.0),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            context
-                                                                .read<
-                                                                    InverntoryTransExPandCubit>()
-                                                                .expandedContainer(
-                                                                    state
-                                                                        .isExpanded);
-                                                          },
-                                                          child: Container(
-                                                            width:
-                                                                double.infinity,
-                                                            decoration:
-                                                                const BoxDecoration(
-                                                              borderRadius: BorderRadius
-                                                                  .all(Radius
-                                                                      .circular(
-                                                                          10)),
-                                                              image:
-                                                                  DecorationImage(
-                                                                image: AssetImage(
-                                                                    'assets/images/home/inv_bg.jpg'),
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                            child: Padding(
-                                                              padding: EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          10,
-                                                                      vertical: state
-                                                                              .isExpanded
-                                                                          ? 10
-                                                                          : 20),
-                                                              child: Column(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsets.only(
-                                                                        top: state.isExpanded
-                                                                            ? 10
-                                                                            : 0,
-                                                                        left: 6,
-                                                                        right:
-                                                                            6),
-                                                                    child: Row(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceBetween,
-                                                                      children: [
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .inventory_transactions,
-                                                                          style:
-                                                                              countHeading(),
-                                                                        ),
-                                                                        Transform
-                                                                            .flip(
-                                                                          flipX:
-                                                                              selectedLocale?.languageCode != 'en',
-                                                                          child: AnimatedRotation(
-                                                                              turns: state.isExpanded ? 0.25 : 0.0,
-                                                                              duration: const Duration(milliseconds: 300),
-                                                                              child: Icon(
-                                                                                CupertinoIcons.chevron_forward,
-                                                                                color: Colors.black54,
-                                                                                size: 18.sp,
-                                                                              )),
-                                                                        ),
-                                                                      ],
+                                               
+                                              //  
+                                                      BlocBuilder<
+                                                          InverntoryTransExPandCubit,
+                                                          InverntoryTransExPandState>(
+                                                        builder:
+                                                            (context, state) {
+                                                          return Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(9.0),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                context
+                                                                    .read<
+                                                                        InverntoryTransExPandCubit>()
+                                                                    .expandedContainer(
+                                                                        state
+                                                                            .isExpanded);
+                                                              },
+                                                              child: Container(
+                                                                width: double
+                                                                    .infinity,
+                                                                decoration:
+                                                                    const BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .all(
+                                                                    Radius
+                                                                        .circular(
+                                                                      10,
                                                                     ),
                                                                   ),
-                                                                  SizedBox(
-                                                                      height: state
-                                                                              .isExpanded
-                                                                          ? 10.h
-                                                                          : 0),
-                                                                  AnimatedSize(
-                                                                    duration: const Duration(
-                                                                        milliseconds:
-                                                                            300),
-                                                                    curve: Curves
-                                                                        .easeInOut,
-                                                                    reverseDuration:
-                                                                        const Duration(
-                                                                            milliseconds:
-                                                                                300),
-                                                                    child:
-                                                                        ClipRect(
-                                                                      child:
-                                                                          Align(
-                                                                        alignment:
-                                                                            Alignment.topCenter,
-                                                                        heightFactor: state.isExpanded
-                                                                            ? 1.0
-                                                                            : 0.0,
+                                                                  image:
+                                                                      DecorationImage(
+                                                                    image: AssetImage(
+                                                                        'assets/images/home/inv_bg.jpg'),
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                                child: Padding(
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                    horizontal:
+                                                                        10,
+                                                                    vertical: state
+                                                                            .isExpanded
+                                                                        ? 10
+                                                                        : 20,
+                                                                  ),
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsets.only(
+                                                                            top: state.isExpanded
+                                                                                ? 10
+                                                                                : 0,
+                                                                            left:
+                                                                                6,
+                                                                            right:
+                                                                                6),
                                                                         child:
-                                                                            Visibility(
-                                                                          visible:
-                                                                              state.isExpanded,
-                                                                          maintainState:
-                                                                              true,
-                                                                          child:
-                                                                              PickingWidget(user: widget.user),
+                                                                            Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.spaceBetween,
+                                                                          children: [
+                                                                            Text(
+                                                                              AppLocalizations.of(context)!.inventory_transactions,
+                                                                              style: countHeading(),
+                                                                            ),
+                                                                            Transform.flip(
+                                                                              flipX: selectedLocale?.languageCode != 'en',
+                                                                              child: AnimatedRotation(
+                                                                                  turns: state.isExpanded ? 0.25 : 0.0,
+                                                                                  duration: const Duration(milliseconds: 300),
+                                                                                  child: Icon(
+                                                                                    CupertinoIcons.chevron_forward,
+                                                                                    color: Colors.black54,
+                                                                                    size: 18.sp,
+                                                                                  )),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
-                                                                    ),
+                                                                      SizedBox(
+                                                                          height: state.isExpanded
+                                                                              ? 10.h
+                                                                              : 0),
+                                                                      AnimatedSize(
+                                                                        duration: const Duration(
+                                                                            milliseconds:
+                                                                                300),
+                                                                        curve: Curves
+                                                                            .easeInOut,
+                                                                        reverseDuration:
+                                                                            const Duration(milliseconds: 300),
+                                                                        child:
+                                                                            ClipRect(
+                                                                          child:
+                                                                              Align(
+                                                                            alignment:
+                                                                                Alignment.topCenter,
+                                                                            heightFactor: state.isExpanded
+                                                                                ? 1.0
+                                                                                : 0.0,
+                                                                            child:
+                                                                                Visibility(
+                                                                              visible: state.isExpanded,
+                                                                              maintainState: true,
+                                                                              child: PickingWidget(user: widget.user),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
-                                                                ],
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-
+                                                          );
+                                                        },
+                                                      ),
                                                 Padding(
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal: 8.w,
@@ -1143,7 +1129,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                   ),
                                                 ),
-                                                
+                                                const Padding(
+                                                  padding: EdgeInsets.symmetric(horizontal: 0.0),
+                                                  child: MerchandisingTransactionContainerWidget(),
+                                                ),
                const SizedBox(height: 10,)
               
                                               ],
@@ -1164,6 +1153,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: CustomerTransaction(
                                           user: widget.user),
                                     ),
+                                     Visibility(
+                                                  visible: state.when(
+                                                    getCustomerSettingsState:
+                                                        (settings) =>
+                                                            settings?.invTrans ==
+                                                                        null ||
+                                                                    settings?.invTrans !=
+                                                                        'Y'
+                                                                ? false
+                                                                : true,
+                                                    customerSettingsFailedState:
+                                                        () => true,
+                                                  ),
+                                                  child: InventoryTransactionContainerWidget(
+                                                      user: widget.user),
+                                                ),
+                                                SizedBox(height: 10.h),
                                     Visibility(
                                         visible: state.when(
                                           getCustomerSettingsState:
@@ -1201,6 +1207,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ],
                                                 )),
                                           ),
+                                           
+                                           
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 7, vertical: 6),
@@ -1231,6 +1239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
                                     ),
+                                    
                                     OtherOptionsHomeWidget(
                                       user: widget.user,
                                     ),
