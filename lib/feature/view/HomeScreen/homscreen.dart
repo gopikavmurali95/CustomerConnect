@@ -33,6 +33,7 @@ import 'package:customer_connect/feature/view/HomeScreen/widgets/homechartwidget
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/otheroptions.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
+import 'package:customer_connect/feature/view/tracking/webview.dart';
 import 'package:customer_connect/l10n/app_localizations.dart';
 import 'package:customer_connect/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -626,7 +627,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           ),
                                                           padding:
                                                               EdgeInsets.only(
-                                                                  left: 12.w, right: 8),
+                                                                  left: 12.w,
+                                                                  right: 8),
                                                           child:
                                                               DropdownButtonHideUnderline(
                                                             child:
@@ -930,12 +932,110 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 15.h,
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    /* SizedBox(height: 10.h),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            height: 2,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                gradient: LinearGradient(
+                                                  colors: [
+                                                    const Color(0xfffcfcfc)
+                                                        .withOpacity(.0),
+                                                    const Color(0xffdedede),
+                                                  ],
+                                                )),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 7, vertical: 6),
+                                            child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .other_options,
+                                              style: countHeading(),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 2,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  const Color(0xffdedede),
+                                                  const Color(0xfffcfcfc)
+                                                      .withOpacity(.0),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ), */
+                                    /* OtherOptionsHomeWidget(
+                                      user: widget.user,
+                                    ), */
+                                    /* SizedBox(
+                                                                                                                                      height: 10.h,
+                                                                                                                                    ), */
+                                    /* Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20),
+                                      child: Opacity(
+                                        opacity: 0.5,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  AppLocalizations.of(context)!
+                                                      .powered_by,
+                                                  style: TextStyle(
+                                                      fontSize: 6.sp,
+                                                      color: Colors.black87),
                                                 ),
-                                               
-                                              //  
-                                                      BlocBuilder<
+                                                SvgPicture.asset(
+                                                  'assets/svg/Path 838.svg',
+                                                  height: 14.h,
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ) */
+
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+
+                                    //
+                                    /* BlocBuilder<
                                                           InverntoryTransExPandCubit,
                                                           InverntoryTransExPandState>(
                                                         builder:
@@ -1056,240 +1156,185 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             ),
                                                           );
                                                         },
+                                                      ), */
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 8.w, vertical: 0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          borderRadius:
+                                              BorderRadius.circular(18.r),
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              Platform.isIOS
+                                                  ? CupertinoPageRoute(
+                                                      builder: (context) =>
+                                                          const WebViewScreen(
+                                                            url:
+                                                                'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
+                                                          ))
+                                                  : MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const WebViewScreen(
+                                                        url:
+                                                            'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
                                                       ),
-                                                Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 8.w,
-                                                      vertical: 0),
-                                                  child: Material(
-                                                    color: Colors.transparent,
-                                                    child: InkWell(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18.r),
-                                                      onTap: () {
-                                                        // Navigator.push(
-                                                        //   context,
-                                                        //   Platform.isIOS
-                                                        //       ? CupertinoPageRoute(
-                                                        //           builder:
-                                                        //               (context) =>
-                                                        //                   const WebViewScreen(
-                                                        //             url:
-                                                        //                 'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
-                                                        //           ))
-                                                        //       : MaterialPageRoute(
-                                                        //           builder:
-                                                        //               (context) =>
-                                                        //                   const WebViewScreen(
-                                                        //             url:
-                                                        //                 'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
-                                                        //           ),
-                                                        //         ),
-                                                        // );
-                                                      },
-                                                      child: Ink(
-                                                        height: 80.h,
-                                                        width: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      18.r),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              color: Colors
-                                                                  .black
-                                                                  .withOpacity(
-                                                                      0.18),
-                                                              blurRadius: 14,
-                                                              offset:
-                                                                  const Offset(
-                                                                      0, 6),
-                                                            ),
-                                                          ],
-                                                          gradient:
-                                                              const LinearGradient(
-                                                            colors: [
-                                                              Color(0xff233355),
-                                                              Color(0xff3d3f52),
-                                                              Color(0xff6B4E3D),
-                                                            ],
-                                                            begin: Alignment
-                                                                .centerLeft,
-                                                            end: Alignment
-                                                                .centerRight,
-                                                          ),
-                                                        ),
-                                                        child: Stack(
-                                                          clipBehavior:
-                                                              Clip.none,
-                                                          children: [
-                                                            Positioned(
-                                                              left: -28.w,
-                                                              top: -12.h,
-                                                              child:
-                                                                  Opacity(
-                                                                opacity: 0.12,
-                                                                child:
-                                                                    Container(
-                                                                  width: 90.w,
-                                                                  height:
-                                                                      90.w,
-                                                                  decoration:
-                                                                      const BoxDecoration(
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Positioned(
-                                                              right: -24.w,
-                                                              bottom: -18.h,
-                                                              child:
-                                                                  Opacity(
-                                                                opacity: 0.1,
-                                                                child:
-                                                                    Container(
-                                                                  width: 80.w,
-                                                                  height:
-                                                                      80.w,
-                                                                  decoration:
-                                                                      const BoxDecoration(
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding: EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          14.w,
-                                                                      vertical:
-                                                                          12.h),
-                                                              child: Row(
-                                                                children: [
-                                                                  Container(
-                                                                    width:
-                                                                        44.r,
-                                                                    height:
-                                                                        44.r,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: Colors
-                                                                          .white
-                                                                          .withOpacity(
-                                                                              0.22),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              12.r),
-                                                                    ),
-                                                                    child: Icon(
-                                                                      Icons
-                                                                          .map_outlined,
-                                                                      color: Colors
-                                                                          .white,
-                                                                      size: 24
-                                                                          .sp,
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(
-                                                                      width: 12
-                                                                          .w),
-                                                                  Expanded(
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .trackRoutesCardTitle,
-                                                                          style:
-                                                                              TextStyle(
-                                                                            color:
-                                                                                Colors.white,
-                                                                            fontSize:
-                                                                                16.sp,
-                                                                            fontWeight:
-                                                                                FontWeight.w700,
-                                                                          ),
-                                                                        ),
-                                                                        SizedBox(
-                                                                            height:
-                                                                                4.h),
-                                                                        Text(
-                                                                          AppLocalizations.of(context)!
-                                                                              .trackRoutesCardSubtitle,
-                                                                          maxLines:
-                                                                              2,
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          style:
-                                                                              TextStyle(
-                                                                            color:
-                                                                                Colors.white.withOpacity(0.92),
-                                                                            fontSize:
-                                                                                13.sp,
-                                                                            fontWeight:
-                                                                                FontWeight.w400,
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(
-                                                                      width: 6
-                                                                          .w),
-                                                                  Icon(
-                                                                    Icons
-                                                                        .navigation_outlined,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    size: 22.sp,
-                                                                  ),
-                                                                  SizedBox(
-                                                                      width: 2
-                                                                          .w),
-                                                                  Icon(
-                                                                    Icons
-                                                                        .chevron_right,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    size: 26.sp,
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                    ),
+                                            );
+                                          },
+                                          child: Ink(
+                                            // height: 80.h,
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(18.r),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withOpacity(0.18),
+                                                  blurRadius: 14,
+                                                  offset: const Offset(0, 6),
+                                                ),
+                                              ],
+                                              gradient: const LinearGradient(
+                                                colors: [
+                                                  Color(0xff233355),
+                                                  Color(0xff3d3f52),
+                                                  Color(0xff6B4E3D),
+                                                ],
+                                                begin: Alignment.centerLeft,
+                                                end: Alignment.centerRight,
+                                              ),
+                                            ),
+                                            child: Stack(
+                                              clipBehavior: Clip.none,
+                                              children: [
+                                                Positioned(
+                                                  left: -28.w,
+                                                  top: -12.h,
+                                                  child: Opacity(
+                                                    opacity: 0.12,
+                                                    child: Container(
+                                                      width: 90.w,
+                                                      height: 90.w,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.white,
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                                const Padding(
-                                                  padding: EdgeInsets.symmetric(horizontal: 0.0),
-                                                  child: MerchandisingTransactionContainerWidget(),
+                                                Positioned(
+                                                  right: -24.w,
+                                                  bottom: -18.h,
+                                                  child: Opacity(
+                                                    opacity: 0.1,
+                                                    child: Container(
+                                                      width: 80.w,
+                                                      height: 80.w,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
-               const SizedBox(height: 10,)
-              
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 14.w,
+                                                      vertical: 12.h),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                          width: 44.r,
+                                                          height: 44.r,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Colors.white
+                                                                .withOpacity(
+                                                                    0.22),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.r),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(12.0),
+                                                            child: SvgPicture
+                                                                .asset(
+                                                              'assets/svg/Map.svg',
+                                                            ),
+                                                          )),
+                                                      SizedBox(width: 12.w),
+                                                      Expanded(
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .trackRoutesCardTitle,
+                                                              style: ifontstyle(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 16.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700,
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                height: 4.h),
+                                                            Text(
+                                                              AppLocalizations.of(
+                                                                      context)!
+                                                                  .trackRoutesCardSubtitle,
+                                                              maxLines: 2,
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: ifontstyle(
+                                                                color: Colors
+                                                                    .white
+                                                                    .withOpacity(
+                                                                        0.92),
+                                                                fontSize: 12.sp,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      SizedBox(width: 6.w),
+                                                      SvgPicture.asset(
+                                                          'assets/svg/Navigation.svg'),
+                                                      SizedBox(width: 16.w),
+                                                      SvgPicture.asset(
+                                                          'assets/svg/Vector.svg')
+                                                    ],
+                                                  ),
+                                                ),
                                               ],
                                             ),
-                                          );
-                                        },
+                                          ),
+                                        ),
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
                                     ),
                                     Visibility(
                                       visible: state.when(
@@ -1303,23 +1348,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: CustomerTransaction(
                                           user: widget.user),
                                     ),
-                                     Visibility(
-                                                  visible: state.when(
-                                                    getCustomerSettingsState:
-                                                        (settings) =>
-                                                            settings?.invTrans ==
-                                                                        null ||
-                                                                    settings?.invTrans !=
-                                                                        'Y'
-                                                                ? false
-                                                                : true,
-                                                    customerSettingsFailedState:
-                                                        () => true,
-                                                  ),
-                                                  child: InventoryTransactionContainerWidget(
-                                                      user: widget.user),
-                                                ),
-                                                SizedBox(height: 10.h),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
                                     Visibility(
                                         visible: state.when(
                                           getCustomerSettingsState:
@@ -1333,98 +1364,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                               true,
                                         ),
                                         child: SalesOrders(user: widget.user)),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            height: 2,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                3,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                gradient: LinearGradient(
-                                                  colors: [
-                                                    const Color(0xfffcfcfc)
-                                                        .withOpacity(.0),
-                                                    const Color(0xffdedede),
-                                                  ],
-                                                )),
-                                          ),
-                                           
-                                           
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 7, vertical: 6),
-                                            child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .other_options,
-                                              style: countHeading(),
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 2,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                3,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  const Color(0xffdedede),
-                                                  const Color(0xfffcfcfc)
-                                                      .withOpacity(.0),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    SizedBox(
+                                      height: 10.h,
                                     ),
-                                    
-                                    OtherOptionsHomeWidget(
-                                      user: widget.user,
-                                    ),
-                                    /* SizedBox(
-                                                                                                                                      height: 10.h,
-                                                                                                                                    ), */
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20),
-                                      child: Opacity(
-                                        opacity: 0.5,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  AppLocalizations.of(context)!
-                                                      .powered_by,
-                                                  style: TextStyle(
-                                                      fontSize: 6.sp,
-                                                      color: Colors.black87),
-                                                ),
-                                                SvgPicture.asset(
-                                                  'assets/svg/Path 838.svg',
-                                                  height: 14.h,
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                    Visibility(
+                                      visible: state.when(
+                                        getCustomerSettingsState: (settings) =>
+                                            settings?.invTrans == null ||
+                                                    settings?.invTrans != 'Y'
+                                                ? false
+                                                : true,
+                                        customerSettingsFailedState: () => true,
                                       ),
+                                      child:
+                                          InventoryTransactionContainerWidget(
+                                              user: widget.user),
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                    const MerchandisingTransactionContainerWidget(),
+                                    const SizedBox(
+                                      height: 10,
                                     )
                                   ],
                                 ),
@@ -1436,7 +1397,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                  
                 Positioned(
                   top: 0,
                   left: 0,

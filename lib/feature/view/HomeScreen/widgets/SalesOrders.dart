@@ -72,7 +72,7 @@ class _SalesOrdersState extends State<SalesOrders> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1.5),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: BlocBuilder<SalesOrderCountBloc, SalesOrderCountState>(
         builder: (context, state) {
           return state.when(
@@ -107,7 +107,8 @@ class _SalesOrdersState extends State<SalesOrders> {
                         child: Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 12, right: 12, top: 12, bottom: 10),
+                              padding: const EdgeInsets.only(
+                                  left: 12, right: 12, top: 12, bottom: 10),
                               child: Row(
                                 spacing: 12,
                                 children: [

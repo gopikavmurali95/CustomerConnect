@@ -44,7 +44,7 @@ class _CustomersScrenState extends State<CustomersScren> {
 
       context.read<CustomersListBlocBloc>().add(const ClearCustomersEvent());
       context.read<CustomersListBlocBloc>().add(GetCustomersEvent(
-          userId: "1147", //widget.user.usrId ?? '',
+          userId: widget.user.usrId ?? '',
           area: '',
           subarea: '',
           route: _routeIDCtrl.text,
@@ -52,7 +52,7 @@ class _CustomersScrenState extends State<CustomersScren> {
           pagenum: '1'));
 
       context.read<CusInsCustomersCountBloc>().add(GetCustomersCountEvent(
-          userId: "1147", //widget.user.usrId ?? '',
+          userId: widget.user.usrId ?? '',
           area: '',
           subarea: '',
           route: _routeIDCtrl.text,

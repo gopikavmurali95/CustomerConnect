@@ -23,18 +23,39 @@ class _MerchandisingTransactionContainerWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final surveyRate = _surveyTotal == 0 ? 0.0 : _surveyCompleted / _surveyTotal;
+    final surveyRate =
+        _surveyTotal == 0 ? 0.0 : _surveyCompleted / _surveyTotal;
     final assetsRate = _assetsTotal == 0 ? 0.0 : _assetsTracked / _assetsTotal;
     final taskTotal = _tasksCompleted + _tasksPending;
     final taskRate = taskTotal == 0 ? 0.0 : _tasksCompleted / taskTotal;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: 8.w,
+      ),
       child: Container(
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: const Color(0xFFF8FAFC),
-          borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: const Color(0xFFE4E7EC)),
+          borderRadius: BorderRadius.circular(14),
+          color: Colors.white,
+          border: Border.all(
+            color: const Color(0xFFE2E8F0),
+            width: 1,
+          ),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x1A000000),
+              offset: Offset(0, 1),
+              blurRadius: 2,
+              spreadRadius: -1,
+            ),
+            BoxShadow(
+              color: Color(0x1A000000),
+              offset: Offset(0, 1),
+              blurRadius: 3,
+              spreadRadius: 0,
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +124,8 @@ class _MerchandisingTransactionContainerWidgetState
               SizedBox(width: 6.w),
               Text(
                 'Assigned Survey',
-                style: countHeading().copyWith(fontWeight: FontWeight.w700,fontSize:12.sp),
+                style: countHeading()
+                    .copyWith(fontWeight: FontWeight.w700, fontSize: 12.sp),
               ),
             ],
           ),
@@ -154,9 +176,11 @@ class _MerchandisingTransactionContainerWidgetState
               Expanded(
                 child: Column(
                   children: [
-                    _legendRow('Completed', _surveyCompleted, const Color(0xFF8B5CF6)),
+                    _legendRow(
+                        'Completed', _surveyCompleted, const Color(0xFF8B5CF6)),
                     SizedBox(height: 8.h),
-                    _legendRow('Pending', _surveyPending, const Color(0xFFCBD5E1)),
+                    _legendRow(
+                        'Pending', _surveyPending, const Color(0xFFCBD5E1)),
                     SizedBox(height: 8.h),
                     const Divider(height: 1, color: Color(0xFFE2E8F0)),
                     SizedBox(height: 8.h),
@@ -207,7 +231,8 @@ class _MerchandisingTransactionContainerWidgetState
                   ),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
-                child: const Icon(Icons.fact_check_outlined, color: Colors.white),
+                child:
+                    const Icon(Icons.fact_check_outlined, color: Colors.white),
               ),
               SizedBox(width: 10.w),
               Expanded(
