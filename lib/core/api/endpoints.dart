@@ -217,3 +217,4 @@ const scheduleReturnApprovalReasonUrl = 'CusOperation/GetReasonForReturnSc';
 const itemListingCountUrl = 'CusInsightCusItems/SelectCustomerICount';
 const stampedCopyUrl = 'Inv/SelInvStampedCopy';
 const customerTransactionTargetHeaderCountUrl = 'CusHome/TargetHeaderCount';
+  
