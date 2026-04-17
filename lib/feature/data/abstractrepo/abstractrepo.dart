@@ -60,7 +60,6 @@ import 'package:customer_connect/feature/data/models/customer_live_location_mode
 
 import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/data/models/customer_transaction_model/customer_transaction_model.dart';
-import 'package:customer_connect/feature/data/models/customer_transaction_target_count/customer_transaction_target_count.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_resp_model/dispute_approval_resp_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_approval_status_model/dispute_approval_status_model.dart';
 import 'package:customer_connect/feature/data/models/dispute_invoice_approve_in_model/dispute_invoice_approve_in_model.dart';
