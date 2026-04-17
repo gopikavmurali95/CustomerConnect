@@ -19,20 +19,16 @@ import 'package:customer_connect/feature/state/bloc/plannedvisits/chart_planned_
 import 'package:customer_connect/feature/state/bloc/sales_order_count/sales_order_count_bloc.dart';
 import 'package:customer_connect/feature/state/cubit/homeappbar/home_app_bar_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/homegraph/home_graph_switch_cubit.dart';
-import 'package:customer_connect/feature/state/cubit/invnttransexpand/inverntory_trans_ex_pand_cubit.dart';
 import 'package:customer_connect/feature/state/cubit/selectlanguage/select_language_locale_cubit.dart';
 import 'package:customer_connect/feature/view/HomeScreen/apkinstaller.dart';
 import 'package:customer_connect/feature/view/HomeScreen/autoupdatescreen.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homegraphmodel.dart';
 import 'package:customer_connect/feature/view/HomeScreen/inventorytransactioncontainerwidget.dart';
 import 'package:customer_connect/feature/view/HomeScreen/merchandisingtransactioncontainerwidget.dart';
-import 'package:customer_connect/feature/view/HomeScreen/temp/customertransactiontemp.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
-import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homechartwidget.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/homepopupmenu.dart';
-import 'package:customer_connect/feature/view/HomeScreen/widgets/otheroptions.dart';
 import 'package:customer_connect/feature/view/notification/notification.dart';
 import 'package:customer_connect/feature/view/tracking/webview.dart';
 import 'package:customer_connect/l10n/app_localizations.dart';
@@ -1173,15 +1169,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ? CupertinoPageRoute(
                                                       builder: (context) =>
                                                           const WebViewScreen(
-                                                            url:
-                                                                'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
-                                                          ))
+                                                              url:
+                                                                  // 'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
+                                                                  'https://sit-sfa.dev-ts.online/MapView/livetracking?date=20260417&UserID=4'))
                                                   : MaterialPageRoute(
                                                       builder: (context) =>
                                                           const WebViewScreen(
-                                                        url:
-                                                            'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
-                                                      ),
+                                                              url:
+                                                                  // 'https://digitssfaprod.benchmarkfoods.ae/Track/Home/ViewAll?mode=DIGITS-SFA&&date=20250916&UserID=4',
+                                                                  'https://sit-sfa.dev-ts.online/MapView/livetracking?date=20260417&UserID=4'),
                                                     ),
                                             );
                                           },

@@ -238,7 +238,6 @@ class _InventoryTransactionContainerWidgetState
     required bool showToggle,
     required int mode,
   }) {
-    final loc = AppLocalizations.of(context)!;
 
     return Container(
       width: MediaQuery.of(context).size.width,
