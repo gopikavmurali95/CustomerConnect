@@ -62,6 +62,14 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
           'Pagenum': message['pagenum'],
         },
       );
+      log({
+        'UserID': message['userId'],
+        'Area': message['area'],
+        'SubArea': message['subarea'],
+        'Route': message['route'],
+        'SearchString': message['searchString'],
+        'Pagenum': message['pagenum'],
+      }.toString());
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         final List<dynamic> cusdetaildata = json['result'];

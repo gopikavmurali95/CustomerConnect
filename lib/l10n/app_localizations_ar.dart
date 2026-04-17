@@ -1024,4 +1024,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get version => 'يطلق';
+
+  @override
+  String get do_you_want_to_approve_this_journey_plan => 'هل ترغب في الموافقة على خطة الرحلة هذه؟';
+
+  @override
+  String get do_you_want_to_reject_this_journey_plan => 'هل تريد رفض خطة الرحلة هذه؟';
 }

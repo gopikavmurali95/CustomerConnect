@@ -2128,6 +2128,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Version'**
   String get version;
+
+  /// No description provided for @do_you_want_to_approve_this_journey_plan.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to approve this journey plan?'**
+  String get do_you_want_to_approve_this_journey_plan;
+
+  /// No description provided for @do_you_want_to_reject_this_journey_plan.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you want to reject this journey plan?'**
+  String get do_you_want_to_reject_this_journey_plan;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

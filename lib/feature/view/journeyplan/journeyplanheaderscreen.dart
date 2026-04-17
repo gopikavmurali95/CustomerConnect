@@ -619,7 +619,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                           if (Platform.isIOS) {
                                                                                             return CupertinoAlertDialog(
                                                                                               title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                              content: Text(AppLocalizations.of(context)!.do_you_want_to_approve_this_journey_plan),
                                                                                               actions: [
                                                                                                 TextButton(
                                                                                                   onPressed: () {
@@ -653,7 +653,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                           } else {
                                                                                             return AlertDialog(
                                                                                               title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                              content: Text(AppLocalizations.of(context)!.do_you_want_to_approve_this_journey_plan),
                                                                                               actions: [
                                                                                                 TextButton(
                                                                                                   onPressed: () {
@@ -709,7 +709,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                                 if (Platform.isIOS) {
                                                                                                   return CupertinoAlertDialog(
                                                                                                     title: Text(AppLocalizations.of(context)!.alert),
-                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                                    content: Text(AppLocalizations.of(context)!.do_you_want_to_approve_this_journey_plan),
                                                                                                     actions: [
                                                                                                       TextButton(
                                                                                                         onPressed: () {
@@ -743,7 +743,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                                 } else {
                                                                                                   return AlertDialog(
                                                                                                     title: Text(AppLocalizations.of(context)!.alert),
-                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToApproveThisProduct),
+                                                                                                    content: Text(AppLocalizations.of(context)!.do_you_want_to_approve_this_journey_plan),
                                                                                                     actions: [
                                                                                                       TextButton(
                                                                                                         onPressed: () {
@@ -796,7 +796,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                           if (Platform.isIOS) {
                                                                                             return CupertinoAlertDialog(
                                                                                               title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: const Text('Do you want to reject this journey plan'),
+                                                                                              content: Text(AppLocalizations.of(context)!.do_you_want_to_reject_this_journey_plan),
                                                                                               actions: [
                                                                                                 TextButton(
                                                                                                   onPressed: () {
@@ -830,7 +830,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                           } else {
                                                                                             return AlertDialog(
                                                                                               title: Text(AppLocalizations.of(context)!.alert),
-                                                                                              content: const Text('Do you want to reject this journey plan'),
+                                                                                              content: Text(AppLocalizations.of(context)!.do_you_want_to_reject_this_journey_plan),
                                                                                               actions: [
                                                                                                 TextButton(
                                                                                                   onPressed: () {
@@ -886,7 +886,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                                 if (Platform.isIOS) {
                                                                                                   return CupertinoAlertDialog(
                                                                                                     title: Text(AppLocalizations.of(context)!.alert),
-                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                                    content: Text(AppLocalizations.of(context)!.do_you_want_to_reject_this_journey_plan),
                                                                                                     actions: [
                                                                                                       TextButton(
                                                                                                         onPressed: () {
@@ -920,7 +920,7 @@ class _JourneyPlanHeaderScreenState extends State<JourneyPlanHeaderScreen> {
                                                                                                 } else {
                                                                                                   return AlertDialog(
                                                                                                     title: Text(AppLocalizations.of(context)!.alert),
-                                                                                                    content: Text(AppLocalizations.of(context)!.doYouWantToRejectThisProduct),
+                                                                                                    content: Text(AppLocalizations.of(context)!.do_you_want_to_reject_this_journey_plan),
                                                                                                     actions: [
                                                                                                       TextButton(
                                                                                                         onPressed: () {

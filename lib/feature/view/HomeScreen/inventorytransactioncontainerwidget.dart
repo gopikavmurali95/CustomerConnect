@@ -76,8 +76,7 @@ class _InventoryTransactionContainerWidgetState
       context,
       Platform.isIOS
           ? CupertinoPageRoute(
-              builder: (context) =>
-                  PickHeaderNotStarted(user: widget.user),
+              builder: (context) => PickHeaderNotStarted(user: widget.user),
             )
           : MaterialPageRoute(
               builder: (context) => PickHeaderNotStarted(user: widget.user),
@@ -194,7 +193,7 @@ class _InventoryTransactionContainerWidgetState
                     : 0);
 
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: BlocBuilder<PickingAndLoadingCountBloc,
               PickingAndLoadingCountState>(
             builder: (context, plState) {
@@ -242,51 +241,76 @@ class _InventoryTransactionContainerWidgetState
     final loc = AppLocalizations.of(context)!;
 
     return Container(
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14),
         color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: const Color(0xFFE4E7EC)),
+        border: Border.all(
+          color: const Color(0xFFE2E8F0),
+          width: 1,
+        ),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x1A000000),
+            offset: Offset(0, 1),
+            blurRadius: 2,
+            spreadRadius: -1,
+          ),
+          BoxShadow(
+            color: Color(0x1A000000),
+            offset: Offset(0, 1),
+            blurRadius: 3,
+            spreadRadius: 0,
+          ),
+        ],
       ),
-      padding: EdgeInsets.all(18.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            "Inventory Transactions",
-            style: GoogleFonts.inter(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w700,
-              color: _titleColor,
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              "Inventory Transactions",
+              style: pfontstyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w600,
+                color: const Color(0xff0F172B),
+              ),
             ),
           ),
           if (showToggle) ...[
-            SizedBox(height: 14.h),
-            _SegmentedToggle(
-              selectedIndex: mode,
-              onChanged: _onSegmentSelected,
-              selectedBlue: _selectedBlue,
-              trackColor: _toggleTrack,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: _SegmentedToggle(
+                selectedIndex: mode,
+                onChanged: _onSegmentSelected,
+                selectedBlue: _selectedBlue,
+                trackColor: _toggleTrack,
+              ),
             ),
           ],
-          SizedBox(height: 18.h),
+          SizedBox(height: 16.h),
           if (showToggle)
-            SizedBox(
-              height: 200.h,  // height of the big container
-              child: PageView(
-                controller: _tabPageController,
-                physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: SizedBox(
+                height: 200.h, // height of the big container
+                child: PageView(
+                  controller: _tabPageController,
+                  physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics(),
+                  ),
+                  onPageChanged: (i) {
+                    if (_segmentIndex != i) {
+                      setState(() => _segmentIndex = i);
+                    }
+                  },
+                  children: [
+                    _buildPickingContent(context, count),
+                    _buildLoadInContent(context, count),
+                  ],
                 ),
-                onPageChanged: (i) {
-                  if (_segmentIndex != i) {
-                    setState(() => _segmentIndex = i);
-                  }
-                },
-                children: [
-                  _buildPickingContent(context, count),
-                  _buildLoadInContent(context, count),
-                ],
               ),
             )
           else ...[

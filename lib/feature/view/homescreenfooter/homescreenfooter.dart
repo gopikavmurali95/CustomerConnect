@@ -26,13 +26,19 @@ class HomeScreenFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return HomeScreenFooterBody(
       widgetOptions: widgetOptions,
+      user: user,
     );
   }
 }
 
 class HomeScreenFooterBody extends StatefulWidget {
   final List<Widget> widgetOptions;
-  const HomeScreenFooterBody({super.key, required this.widgetOptions});
+  final LoginUserModel user;
+  const HomeScreenFooterBody({
+    super.key,
+    required this.widgetOptions,
+    required this.user,
+  });
 
   @override
   State<HomeScreenFooterBody> createState() => _HomeScreenFooterBodyState();
@@ -101,9 +107,8 @@ class _HomeScreenFooterBodyState extends State<HomeScreenFooterBody> {
                   child: Container(
                     decoration: const BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(24),
-                        topRight: Radius.circular(24),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(24),
                       ),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
@@ -114,12 +119,25 @@ class _HomeScreenFooterBodyState extends State<HomeScreenFooterBody> {
                         ),
                       ],
                     ),
-                    child: const ClipRRect(
-                      borderRadius: BorderRadius.only(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(24),
                         topRight: Radius.circular(24),
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
                       ),
-                      child: MoreMenuWidget(isBottomSheet: true),
+                      child: MoreMenuWidget(
+                        isBottomSheet: true,
+                        user: widget.user,
+                        onItemSelected: () {
+                          setState(() {
+                            _isMorePopupVisible = false;
+                          });
+                          context.read<CustomBottomNavCubit>().changeIndex(
+                                _lastPrimaryIndex,
+                              );
+                        },
+                      ),
                     ),
                   ),
                 ),
