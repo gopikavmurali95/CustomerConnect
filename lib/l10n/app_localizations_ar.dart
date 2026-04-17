@@ -135,13 +135,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get proceed => 'يتابع';
 
   @override
-  String get somethingWentWrong => 'هناك خطأ ما، يرجى المحاولة مرة أخرى في وقت لاحق';
+  String get somethingWentWrong =>
+      'هناك خطأ ما، يرجى المحاولة مرة أخرى في وقت لاحق';
 
   @override
   String get ok => 'نعم';
 
   @override
-  String get doYouWantToApproveThisProduct => 'هل تريد الموافقة على هذا المنتج؟';
+  String get doYouWantToApproveThisProduct =>
+      'هل تريد الموافقة على هذا المنتج؟';
 
   @override
   String get cancel => 'يلغي';
@@ -267,7 +269,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get trAgain => 'حاول ثانية';
 
   @override
-  String get pleaseMakeSureToApproveAndReject => 'يرجى التأكد من الموافقة على جميع المنتجات أو رفضها';
+  String get pleaseMakeSureToApproveAndReject =>
+      'يرجى التأكد من الموافقة على جميع المنتجات أو رفضها';
 
   @override
   String get doyouWantToProceed => 'هل تريد المتابعة';
@@ -291,7 +294,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectReason => 'اختر السبب';
 
   @override
-  String get youShouldApproveOrRejectAndSpecifyReason => 'يجب عليك الموافقة أو الرفض لجميع العناصر المذكورة هنا. في حالة الرفض، يرجى تحديد السبب.';
+  String get youShouldApproveOrRejectAndSpecifyReason =>
+      'يجب عليك الموافقة أو الرفض لجميع العناصر المذكورة هنا. في حالة الرفض، يرجى تحديد السبب.';
 
   @override
   String get confirm => 'يتأكد';
@@ -369,7 +373,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get totalCash => 'إجمالي النقد';
 
   @override
-  String get noDataAvailableInCashDetails => 'لا توجد بيانات متاحة في التفاصيل النقدية';
+  String get noDataAvailableInCashDetails =>
+      'لا توجد بيانات متاحة في التفاصيل النقدية';
 
   @override
   String get collected => 'تم جمعها';
@@ -378,7 +383,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get variance => 'التباين';
 
   @override
-  String get noDataAvailableInPaymentMode => 'لا توجد بيانات متاحة في طريقة الدفع';
+  String get noDataAvailableInPaymentMode =>
+      'لا توجد بيانات متاحة في طريقة الدفع';
 
   @override
   String get actionTakenRequests => 'طلبات الإجراءات المتخذة';
@@ -561,7 +567,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get customer => 'عميل';
 
   @override
-  String get kindlySelectRouteToViewTheCustomers => 'يرجى تحديد الطريق لعرض العملاء';
+  String get kindlySelectRouteToViewTheCustomers =>
+      'يرجى تحديد الطريق لعرض العملاء';
 
   @override
   String get searchRoute => 'طريق البحث';
@@ -927,7 +934,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get viewOnMap => 'عرض على الخريطة';
 
   @override
-  String get doYouWantToConfirmThisGeocode => 'سيتم اعتبار هذا الرمز الجغرافي بمثابة الموقع النهائي للعميل، وسيتم تجاهل الرموز الجغرافية الأخرى بعد تأكيد الرمز الجغرافي. هل تريد تأكيد هذا الرمز الجغرافي؟';
+  String get doYouWantToConfirmThisGeocode =>
+      'سيتم اعتبار هذا الرمز الجغرافي بمثابة الموقع النهائي للعميل، وسيتم تجاهل الرموز الجغرافية الأخرى بعد تأكيد الرمز الجغرافي. هل تريد تأكيد هذا الرمز الجغرافي؟';
 
   @override
   String get no => 'لا';
@@ -963,10 +971,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectdate => 'اختر التاريخ';
 
   @override
-  String get pleaseMakeSureYouHaveSelectedaRouteAndDate => 'يرجى التأكد من تحديد المسار والتاريخ';
+  String get pleaseMakeSureYouHaveSelectedaRouteAndDate =>
+      'يرجى التأكد من تحديد المسار والتاريخ';
 
   @override
-  String get pleaseMakeSureYouHaveSelectedaDate => 'الرجاء التأكد من تحديد التاريخ';
+  String get pleaseMakeSureYouHaveSelectedaDate =>
+      'الرجاء التأكد من تحديد التاريخ';
 
   @override
   String get trackCustomers => 'تتبع العملاء';
@@ -1026,8 +1036,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get version => 'يطلق';
 
   @override
-  String get do_you_want_to_approve_this_journey_plan => 'هل ترغب في الموافقة على خطة الرحلة هذه؟';
+  String get do_you_want_to_approve_this_journey_plan =>
+      'هل ترغب في الموافقة على خطة الرحلة هذه؟';
 
   @override
-  String get do_you_want_to_reject_this_journey_plan => 'هل تريد رفض خطة الرحلة هذه؟';
+  String get do_you_want_to_reject_this_journey_plan =>
+      'هل تريد رفض خطة الرحلة هذه؟';
 }

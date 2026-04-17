@@ -483,7 +483,6 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
     });
   }
 
-
   @override
   void dispose() {
     super.dispose();
@@ -616,7 +615,6 @@ class _TrackSalesManScreenState extends State<TrackSalesManScreen> {
                                                                 .circular(10.0),
                                                         boxShadow: const [
                                                           BoxShadow(
-                                                              
                                                               color: Color(
                                                                   // ignore: use_full_hex_values_for_flutter_colors
                                                                   0xff00000050),

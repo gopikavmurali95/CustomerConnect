@@ -1,6 +1,8 @@
 //Development
-const baseUrl = /* "https://sfa-muom.dev-ts.online/WS/" */ "https://dev-sfa.mydigits.solutions/WS/";
-const approvalBaseUrl = /* 'https://sfa-muom.dev-ts.online/WS/' */ "https://dev-sfa.mydigits.solutions/WS/";
+const baseUrl = /* "https://sfa-muom.dev-ts.online/WS/" */
+    "https://dev-sfa.mydigits.solutions/WS/";
+const approvalBaseUrl = /* 'https://sfa-muom.dev-ts.online/WS/' */
+    "https://dev-sfa.mydigits.solutions/WS/";
 
 //Demo
 // const baseUrl = "https://demo-sfa.dev-ts.online/WS/";
@@ -10,7 +12,7 @@ const approvalBaseUrl = /* 'https://sfa-muom.dev-ts.online/WS/' */ "https://dev-
 // const approvalBaseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
 
 //SIT
- //const baseUrl = 'https://sit-sfa.dev-ts.online/WS/';
+//const baseUrl = 'https://sit-sfa.dev-ts.online/WS/';
 //const approvalBaseUrl = 'https://sit-sfa.dev-ts.online/WS/';
 
 // const baseUrl = "https://digits-demo.sfa.dev-ts.online/WS/";
@@ -214,3 +216,4 @@ const cusOverApprovRejectUrl =
 const scheduleReturnApprovalReasonUrl = 'CusOperation/GetReasonForReturnSc';
 const itemListingCountUrl = 'CusInsightCusItems/SelectCustomerICount';
 const stampedCopyUrl = 'Inv/SelInvStampedCopy';
+const customerTransactionTargetHeaderCountUrl = 'CusHome/TargetHeaderCount';

@@ -189,7 +189,7 @@ class _CusInsInvoiceDetailScreenState extends State<CusInsInvoiceDetailScreen> {
                                         'opengdrive', {"pdfUrl": copy.stamped});
                                   } else if (copy.stamped!.endsWith('.png') ||
                                       copy.stamped!.endsWith('.jpg')) {
-                                        Navigator.pop(context);
+                                    Navigator.pop(context);
                                     showDialog(
                                       context: context,
                                       builder: (context) => AlertDialog(

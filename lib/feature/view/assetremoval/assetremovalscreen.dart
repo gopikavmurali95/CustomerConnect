@@ -440,7 +440,7 @@ class _AssetRemovalApprovalScreenState
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                      context.read<AssetRemovelRequestHeaderBloc>().add(const ClearAssetRemovalHeaderEvent());      
+                                                                                      context.read<AssetRemovelRequestHeaderBloc>().add(const ClearAssetRemovalHeaderEvent());
                                                                                       context.read<AssetRemovelRequestHeaderBloc>().add(GetAllAssetRemovalHeadersEvent(
                                                                                             userID: widget.user.usrId ?? '',
                                                                                             searchQuery: '',

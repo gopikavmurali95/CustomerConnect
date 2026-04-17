@@ -57,11 +57,10 @@ class _CustomerTraansactionWidgetState
               return Container(
                 // height: MediaQuery.of(context).size.height / 3.8,
                 width: MediaQuery.of(context).size.width,
-                 decoration: BoxDecoration(
-                                        color: const Color(0xffFFFFFF),
-                                        borderRadius: BorderRadius.circular(10),
-                                       border: Border.all( color: const Color(0xffE5E7EB))
-                                       ),
+                decoration: BoxDecoration(
+                    color: const Color(0xffFFFFFF),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: const Color(0xffE5E7EB))),
                 // decoration: BoxDecoration(
                 //   borderRadius: BorderRadius.circular(20),
                 //   color: Colors.white,
@@ -92,7 +91,7 @@ class _CustomerTraansactionWidgetState
                       SizedBox(
                         height: 10.h,
                       ),
-                     
+
                       Row(
                         children: [
                           Flexible(
@@ -101,10 +100,10 @@ class _CustomerTraansactionWidgetState
                             child: Container(
                               height: 45.h,
                               decoration: BoxDecoration(
-                                color: const Color(0xffF9FAFB),
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: const Color(0xffE5E7EB))
-                              ),
+                                  color: const Color(0xffF9FAFB),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color: const Color(0xffE5E7EB))),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 10),
                                 child: InkWell(
@@ -180,12 +179,13 @@ class _CustomerTraansactionWidgetState
                                     );
                                   },
                                   child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      const SizedBox(height: 5,),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
                                       Text(
                                         '${AppLocalizations.of(context)!.from} ',
                                         style: kfontstyle(
@@ -209,12 +209,12 @@ class _CustomerTraansactionWidgetState
                                                 color: Colors.black,
                                               ),
                                               maxLines: 1,
-                                              overflow:
-                                                  TextOverflow.ellipsis,
+                                              overflow: TextOverflow.ellipsis,
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(right: 5.0,bottom: 5),
+                                            padding: const EdgeInsets.only(
+                                                right: 5.0, bottom: 5),
                                             child: SizedBox(
                                               width: 20.sp,
                                               height: 20.sp,
@@ -253,10 +253,10 @@ class _CustomerTraansactionWidgetState
                             child: Container(
                               height: 45.h,
                               decoration: BoxDecoration(
-                                color: const Color(0xffF9FAFB),
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: const Color(0xffE5E7EB))
-                              ),
+                                  color: const Color(0xffF9FAFB),
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color: const Color(0xffE5E7EB))),
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 8),
                                 child: InkWell(
@@ -269,7 +269,9 @@ class _CustomerTraansactionWidgetState
                                           height: 250,
                                           child: Column(
                                             children: [
-                                              SizedBox(height: 5.h,),
+                                              SizedBox(
+                                                height: 5.h,
+                                              ),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.end,
@@ -311,34 +313,33 @@ class _CustomerTraansactionWidgetState
                                     );
                                   },
                                   child: Column(
-                                      mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                        const SizedBox(height: 5,),
-                                       Padding(
-                                            padding: EdgeInsets.only(
-                                              right: selectedLocale?.languageCode ==
-                                                      "en"
-                                                  ? 0
-                                                  : 10,
-                                            ),
-                                            child: Text(
-                                              '${AppLocalizations.of(context)!.to}  ',
-                                              style: kfontstyle(
-                                                fontSize: 10.sp,
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          right: selectedLocale?.languageCode ==
+                                                  "en"
+                                              ? 0
+                                              : 10,
+                                        ),
+                                        child: Text(
+                                          '${AppLocalizations.of(context)!.to}  ',
+                                          style: kfontstyle(
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.grey,
                                           ),
+                                        ),
+                                      ),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                         
-                                       
                                           Expanded(
                                             child: Text(
                                               widget.todatectrl.text,
@@ -350,17 +351,20 @@ class _CustomerTraansactionWidgetState
                                             ),
                                           ),
                                           Padding(
-                                           padding: const EdgeInsets.only(right: 5.0,bottom: 5),
+                                            padding: const EdgeInsets.only(
+                                                right: 5.0, bottom: 5),
                                             child: SizedBox(
                                               height: 20.sp,
                                               width: 20.sp,
                                               child: IconButton(
                                                 padding: EdgeInsets.zero,
-                                                constraints: const BoxConstraints(
+                                                constraints:
+                                                    const BoxConstraints(
                                                   minWidth: 0,
                                                   minHeight: 0,
                                                 ),
-                                                visualDensity: VisualDensity.compact,
+                                                visualDensity:
+                                                    VisualDensity.compact,
                                                 onPressed: null,
                                                 icon: SvgPicture.asset(
                                                   'assets/svg/calendar.svg',
@@ -527,7 +531,8 @@ class _CustomerTraansactionWidgetState
                               getcountFailedState: () => '0',
                             ),
                             color: const Color(0xFFEFF6FF),
-                             borderColor: const Color(0xffDBEAFE), countColor:const Color(0xff1F5DAB),
+                            borderColor: const Color(0xffDBEAFE),
+                            countColor: const Color(0xff1F5DAB),
                           ),
                         ),
                         InkWell(
@@ -562,7 +567,8 @@ class _CustomerTraansactionWidgetState
                               getcountFailedState: () => '0',
                             ),
                             color: const Color(0xFFFAF5FF),
-                             borderColor: const Color(0xffF3E8FF), countColor: const Color(0xff6117AA),
+                            borderColor: const Color(0xffF3E8FF),
+                            countColor: const Color(0xff6117AA),
                           ),
                         ),
                         InkWell(
@@ -597,7 +603,8 @@ class _CustomerTraansactionWidgetState
                               getcountFailedState: () => '0',
                             ),
                             color: const Color(0xFFF0FDF4),
-                            borderColor: const Color(0xffDCFCE7), countColor: const Color(0xff129D3D),
+                            borderColor: const Color(0xffDCFCE7),
+                            countColor: const Color(0xff129D3D),
                           ),
                         ),
                         CusTransNavWIdget(
@@ -605,7 +612,8 @@ class _CustomerTraansactionWidgetState
                           imagepath: 'assets/images/sj.png',
                           count: '6',
                           color: const Color(0xFFF0FDFA),
-                           borderColor: const Color(0xffCBFBF1), countColor: const Color(0xff0B9A79),
+                          borderColor: const Color(0xffCBFBF1),
+                          countColor: const Color(0xff0B9A79),
                         ),
                       ], visibility: [
                         settings.when(
@@ -666,7 +674,8 @@ class CusTransNavWIdget extends StatefulWidget {
     required this.imagepath,
     required this.count,
     required this.color,
-    required this.borderColor, required this.countColor,
+    required this.borderColor,
+    required this.countColor,
   });
 
   @override
@@ -683,12 +692,11 @@ class _CusTransNavWIdgetState extends State<CusTransNavWIdget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-       height: 70.h,
+      height: 70.h,
       decoration: BoxDecoration(
-        color: widget.color,
-        borderRadius: BorderRadius.circular(10),
-        border:Border.all(color: widget.borderColor)
-      ),
+          color: widget.color,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: widget.borderColor)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: Column(
@@ -705,10 +713,9 @@ class _CusTransNavWIdgetState extends State<CusTransNavWIdget> {
                 Text(
                   widget.count,
                   style: kfontstyle(
-                    fontSize: 22.sp,
-                    fontWeight: FontWeight.w500,
-                    color: widget.countColor
-                  ),
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.w500,
+                      color: widget.countColor),
                 ),
               ],
             ),
@@ -718,10 +725,9 @@ class _CusTransNavWIdgetState extends State<CusTransNavWIdget> {
             Text(
               widget.title,
               style: ifontstyle(
-                fontSize: 11.sp,
-                fontWeight: FontWeight.w500,
-                color: const Color(0xff4A5565)
-              ),
+                  fontSize: 11.sp,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xff4A5565)),
             )
           ],
         ),
@@ -729,5 +735,3 @@ class _CusTransNavWIdgetState extends State<CusTransNavWIdget> {
     );
   }
 }
-
-

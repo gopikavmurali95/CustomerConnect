@@ -42,7 +42,8 @@ class PendingApprovalsWidget extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 6.h),
+          padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding, vertical: 6.h),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             physics: const ClampingScrollPhysics(),
@@ -56,8 +57,8 @@ class PendingApprovalsWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: const Color(0xFFFFFFFF),
                         borderRadius: BorderRadius.circular(10.r),
-                        border:
-                            Border.all(color: const Color(0xFFE2E8F0), width: 1.w),
+                        border: Border.all(
+                            color: const Color(0xFFE2E8F0), width: 1.w),
                         boxShadow: const [
                           BoxShadow(
                             color: Color(0x08000000),
@@ -68,8 +69,8 @@ class PendingApprovalsWidget extends StatelessWidget {
                         ],
                       ),
                       child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w, vertical: 10.h),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,

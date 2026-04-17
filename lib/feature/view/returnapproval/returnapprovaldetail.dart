@@ -804,11 +804,7 @@ class _ReturnApprovalDetailScreenState
                                                                               border: Border.all(color: Colors.grey.shade200),
                                                                               borderRadius: BorderRadius.circular(10.0),
                                                                               boxShadow: const [
-                                                                                BoxShadow(
-                                                                                    
-                                                                                    color: Color(0xff00000050),
-                                                                                    blurRadius: 0.4,
-                                                                                    spreadRadius: 0.4)
+                                                                                BoxShadow(color: Color(0xff00000050), blurRadius: 0.4, spreadRadius: 0.4)
                                                                               ]),
                                                                           child:
                                                                               DropdownButtonFormField(
@@ -1049,16 +1045,10 @@ class _ReturnApprovalDetailScreenState
                                                                   decoration: BoxDecoration(
                                                                       color: Colors
                                                                           .white,
-                                                                      border: Border.all(
-                                                                          color: Colors
-                                                                              .grey
-                                                                              .shade200),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              10.0),
+                                                                      border: Border.all(color: Colors.grey.shade200),
+                                                                      borderRadius: BorderRadius.circular(10.0),
                                                                       boxShadow: const [
                                                                         BoxShadow(
-                                                                            
                                                                             color: Color(
                                                                                 0xff00000050),
                                                                             blurRadius:

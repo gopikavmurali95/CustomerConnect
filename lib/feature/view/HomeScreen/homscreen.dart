@@ -26,6 +26,7 @@ import 'package:customer_connect/feature/view/HomeScreen/autoupdatescreen.dart';
 import 'package:customer_connect/feature/view/HomeScreen/homegraphmodel.dart';
 import 'package:customer_connect/feature/view/HomeScreen/inventorytransactioncontainerwidget.dart';
 import 'package:customer_connect/feature/view/HomeScreen/merchandisingtransactioncontainerwidget.dart';
+import 'package:customer_connect/feature/view/HomeScreen/temp/customertransactiontemp.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/CustomerTransaction.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/Picking.dart';
 import 'package:customer_connect/feature/view/HomeScreen/widgets/SalesOrders.dart';

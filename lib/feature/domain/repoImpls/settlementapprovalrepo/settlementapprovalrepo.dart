@@ -23,7 +23,7 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + settlementApprovalHeaderUrl),
           body: {"Status_Value": statusvalue});
-
+      log("statusvalue: $statusvalue");
       if (response.statusCode == 200) {
         // logger.w(' Settlement Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -130,7 +130,7 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
           Uri.parse(approvalBaseUrl + settlementApprovalPostUrl),
           body: {"udpID": udpID});
 
-          log("udpid: $udpID");
+      log("udpid: $udpID");
 
       if (response.statusCode == 200) {
         log('Settlemt PostResponse: ${response.body}');
@@ -155,8 +155,8 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
           Uri.parse(approvalBaseUrl + settlementApprovalRejectUrl),
           body: {"udpID": udpID});
 
- log("udpid: $udpID");
- 
+      log("udpid: $udpID");
+
       if (response.statusCode == 200) {
         log('Settlemt Reject Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

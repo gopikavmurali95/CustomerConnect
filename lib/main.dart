@@ -46,6 +46,7 @@ import 'package:customer_connect/feature/state/bloc/customerfocrejection/cusrome
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customeroverrideapprovreject/override_approve_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customertransactiontargetcount/customer_transaction_target_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
@@ -841,6 +842,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<CustomBottomNavCubit>(
           create: (context) => CustomBottomNavCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CustomerTransactionTargetCountBloc>(),
         ),
       ],
       child: ScreenUtilInit(

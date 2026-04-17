@@ -44,7 +44,6 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
   Future<Either<MainFailures, JoutneyPlanApprovalOutModel>> journeyPlanApproval(
       JourneyPlanApprovalInModel approve) async {
     try {
-      
       final response = await http.post(
           Uri.parse(approvalBaseUrl + journeyPlanApprovalApproval),
           body: {
@@ -56,7 +55,7 @@ class JourneyPlanApprovalRepo implements IJourneyPlanApprovalRepo {
             "UserId": approve.userId,
           });
 
-          log({
+      log({
         "JSONString": jsonEncode([
           {
             "jps_ID": approve.jpsId,

@@ -11,7 +11,8 @@ class ArChartItemWidget extends StatelessWidget {
     super.key,
     required this.color,
     required this.title,
-    required this.amount, required this.items,
+    required this.amount,
+    required this.items,
   });
 
   @override
@@ -41,10 +42,10 @@ class ArChartItemWidget extends StatelessWidget {
                   ),
                   Text(
                     title,
-                    style: ifontstyle(fontSize: 10.sp,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xff364153)
-                    ),
+                    style: ifontstyle(
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xff364153)),
                   ),
                 ],
               ),
@@ -56,15 +57,17 @@ class ArChartItemWidget extends StatelessWidget {
                 children: [
                   Text(
                     amount,
-                    style: ifontstyle(fontSize: 10.sp,
-                    color: const Color(0xff101828),
-                    fontWeight: FontWeight.bold),
+                    style: ifontstyle(
+                        fontSize: 10.sp,
+                        color: const Color(0xff101828),
+                        fontWeight: FontWeight.bold),
                   ),
-                   Text(
+                  Text(
                     items,
-                    style: ifontstyle(fontSize: 8.sp,
-                    color: const Color(0xff6A7282),
-                    fontWeight: FontWeight.normal),
+                    style: ifontstyle(
+                        fontSize: 8.sp,
+                        color: const Color(0xff6A7282),
+                        fontWeight: FontWeight.normal),
                   ),
                 ],
               ),

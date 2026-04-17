@@ -23,9 +23,8 @@ class DisputeNoteApprovalRepo implements IDisputeNoteApprovalRepo {
           Uri.parse(approvalBaseUrl + disputeNoteApprovalHeaderUrl),
           body: {"UserID": userID, "Status_Value": mode});
 
-          log("userid: $userID, Status_Value: $mode ");
+      log("userid: $userID, Status_Value: $mode ");
 
-          
       if (response.statusCode == 200) {
         log("disputenote req header:${response.body}");
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -83,7 +82,7 @@ class DisputeNoteApprovalRepo implements IDisputeNoteApprovalRepo {
           Uri.parse(approvalBaseUrl + disputeApprovalUrl),
           body: approve.toJson());
 
-          log(jsonEncode(approve));
+      log(jsonEncode(approve));
 
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);

@@ -392,10 +392,10 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                         .w500,
                                                               ),
                                                             ),
-                                                             Row(
+                                                            Row(
                                                               children: [
                                                                 Text(
-                                                                 "Type: ",
+                                                                  "Type: ",
                                                                   style: kfontstyle(
                                                                       fontSize: 12.sp,
                                                                       color: const Color(
@@ -408,7 +408,7 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                     overflow:
                                                                         TextOverflow
                                                                             .ellipsis,
-                                                                   "${cusoverride[index].ooaType}",
+                                                                    "${cusoverride[index].ooaType}",
                                                                     style: kfontstyle(
                                                                         fontSize: 12
                                                                             .sp,
@@ -417,7 +417,7 @@ class _CustomerOverrideApprovalHeaderScreenState
                                                                   ),
                                                                 ),
                                                               ],
-                                                            ), 
+                                                            ),
                                                             RichText(
                                                               text: TextSpan(
                                                                 style: DefaultTextStyle.of(

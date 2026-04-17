@@ -330,7 +330,11 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                 .start,
                                                         children: [
                                                           Padding(
-                                                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        10.0),
                                                             child: Text(
                                                               AppLocalizations.of(
                                                                       context)!
@@ -470,7 +474,9 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                     0xff9ce895),
                                                                 title: AppLocalizations.of(
                                                                         context)!
-                                                                    .due, items: '${counts.dueCount}Items',
+                                                                    .due,
+                                                                items:
+                                                                    '${counts.dueCount}Items',
                                                               ),
                                                               SizedBox(
                                                                 height: 10.h,
@@ -482,7 +488,9 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                                                                     0xffe18484),
                                                                 title: AppLocalizations.of(
                                                                         context)!
-                                                                    .overdue, items: '${counts.overDueCount} Items',
+                                                                    .overdue,
+                                                                items:
+                                                                    '${counts.overDueCount} Items',
                                                               ),
                                                               const Padding(
                                                                 padding: EdgeInsets
@@ -685,7 +693,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                         //SizedBox(width: 05,),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 10.0, right: 10, top: 0,bottom: 10),
+                              left: 10.0, right: 10, top: 0, bottom: 10),
                           child: Text(
                             AppLocalizations.of(context)!.outStandingInvoices,
                             // "Outstanding invoices",
@@ -694,7 +702,7 @@ class _InsghtsOutStandingScreenState extends State<InsghtsOutStandingScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: 10.0, right: 10, top: 0,bottom: 10),
+                              left: 10.0, right: 10, top: 0, bottom: 10),
                           child: BlocBuilder<CusOutStandingBloc,
                               CusOutStandingState>(
                             builder: (context, state) {

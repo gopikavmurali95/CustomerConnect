@@ -127,8 +127,7 @@ class ApprovalsHeaderSection extends StatelessWidget {
                               tabLabels[index],
                               style: TextStyle(
                                 fontSize: 10.sp,
-                                color:
-                                    selected ? Colors.white : Colors.black,
+                                color: selected ? Colors.white : Colors.black,
                               ),
                             ),
                           ),

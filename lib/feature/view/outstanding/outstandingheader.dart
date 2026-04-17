@@ -629,7 +629,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                               color: const Color(0xff9ce895),
                                               title:
                                                   AppLocalizations.of(context)!
-                                                      .due, items: '',
+                                                      .due,
+                                              items: '',
                                             ),
                                             SizedBox(
                                               height: 10.h,
@@ -640,7 +641,8 @@ class _OutstandingHeaderScreenState extends State<OutstandingHeaderScreen> {
                                               color: const Color(0xffe18484),
                                               title:
                                                   AppLocalizations.of(context)!
-                                                      .overdue, items: '',
+                                                      .overdue,
+                                              items: '',
                                             ),
                                           ],
                                         ),

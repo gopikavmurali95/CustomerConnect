@@ -13,6 +13,8 @@ import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart'
     as _i932;
 import 'package:customer_connect/feature/domain/repoImpls/activityreview/activityreviewrepo.dart'
     as _i387;
+import 'package:customer_connect/feature/domain/repoImpls/apirequestrepo/apirequestrepo.dart'
+    as _i69;
 import 'package:customer_connect/feature/domain/repoImpls/approvalscountrepo/approvalscountrepo.dart'
     as _i691;
 import 'package:customer_connect/feature/domain/repoImpls/arcollection/arcollectionrepo.dart'
@@ -249,6 +251,8 @@ import 'package:customer_connect/feature/state/bloc/customers/customers_list_blo
     as _i835;
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart'
     as _i592;
+import 'package:customer_connect/feature/state/bloc/customertransactiontargetcount/customer_transaction_target_count_bloc.dart'
+    as _i907;
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart'
     as _i619;
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart'
@@ -600,6 +604,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i932.ICreditNoteApprovalRepo>(
         () => _i637.CreditNoteApprovalRepo());
     gh.lazySingleton<_i932.ILoginRepo>(() => _i739.UserLoginRepo());
+    gh.lazySingleton<_i932.IApiRequestRepo>(() => _i69.ApiRequestRepo());
     gh.lazySingleton<_i932.ICusInsArRepo>(() => _i859.CusInsArRepo());
     gh.factory<_i298.AssetAddingApprovalAndRjectBlocBloc>(() =>
         _i298.AssetAddingApprovalAndRjectBlocBloc(
@@ -718,6 +723,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i836.OutOfStockItemCustomersBloc(gh<_i932.IOutOfStockProductsRepo>()));
     gh.factory<_i46.OutOfStockItemsBloc>(
         () => _i46.OutOfStockItemsBloc(gh<_i932.IOutOfStockProductsRepo>()));
+    gh.factory<_i907.CustomerTransactionTargetCountBloc>(() =>
+        _i907.CustomerTransactionTargetCountBloc(gh<_i932.IApiRequestRepo>()));
     gh.factory<_i168.PickingAndLoadingCountBloc>(() =>
         _i168.PickingAndLoadingCountBloc(
             gh<_i932.IPickingAndLoadinCountRepo>()));

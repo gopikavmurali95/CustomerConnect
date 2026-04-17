@@ -1680,5 +1680,3 @@ class _PriceChangeDetailState extends State<PriceChangeDetail> {
     }
   }
 }
-
-

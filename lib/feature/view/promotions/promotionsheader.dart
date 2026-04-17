@@ -432,5 +432,4 @@ class _PromotionHeaderState extends State<PromotionHeader> {
       ),
     );
   }
-
 }

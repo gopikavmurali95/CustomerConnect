@@ -164,7 +164,8 @@ class InsightArListWidget extends StatelessWidget {
                                 );
                               },
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 0.0,vertical: 5),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 0.0, vertical: 5),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: const Color(0xffFFFFFF),
@@ -183,7 +184,8 @@ class InsightArListWidget extends StatelessWidget {
                                           width: 5,
                                           decoration: BoxDecoration(
                                             color: _getPayModeStripColor(
-                                              selectedLocale?.languageCode == 'en'
+                                              selectedLocale?.languageCode ==
+                                                      'en'
                                                   ? headers[index].payMode
                                                   : headers[index].arPayMode,
                                             ),
@@ -202,7 +204,8 @@ class InsightArListWidget extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    headers[index].arhArNumber ??
+                                                    headers[index]
+                                                            .arhArNumber ??
                                                         '',
                                                     style: blueTextStyle(),
                                                   ),
@@ -211,12 +214,17 @@ class InsightArListWidget extends StatelessWidget {
                                                     height: 14.h,
                                                     width: 30.w,
                                                     decoration: BoxDecoration(
-                                                      color: headers[index].payMode ==
+                                                      color: headers[
+                                                                      index]
+                                                                  .payMode ==
                                                               'HC'
-                                                          ? const Color
-                                                              .fromARGB(255, 200,
-                                                              239, 249)
-                                                          : headers[index]
+                                                          ? const Color.fromARGB(
+                                                              255,
+                                                              200,
+                                                              239,
+                                                              249)
+                                                          : headers[
+                                                                          index]
                                                                       .payMode ==
                                                                   "CH"
                                                               ? const Color
@@ -277,7 +285,8 @@ class InsightArListWidget extends StatelessWidget {
                                                               '',
                                                       overflow:
                                                           TextOverflow.ellipsis,
-                                                      style: subTitleTextStyle(),
+                                                      style:
+                                                          subTitleTextStyle(),
                                                     ),
                                                   ),
                                                 ],
@@ -349,7 +358,6 @@ class InsightArListWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                      
                         itemCount: headers.length),
             getArHeadersFailedState: () => SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,

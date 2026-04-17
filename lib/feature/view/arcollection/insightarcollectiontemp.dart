@@ -118,7 +118,7 @@
 //         ],
 //         /*  bottom: PreferredSize(
 //           preferredSize: Size(100, 180.h),
-//           child: 
+//           child:
 //         ), */
 //       ),
 //       body: BlocBuilder<ArScrollCtrlCubit, ArScrollCtrlState>(
@@ -171,12 +171,11 @@
 //                                                           style:  kfontstyle(
 //                                       fontSize: 12.sp,
 //                                       color: const Color(0xff413434)),),
-                                                
+
 //                                               ],
 //                                             ),
 //                                           ),
-                            
-                           
+
 //                             Row(
 //                               children: [
 //                                 Text(
@@ -804,4 +803,4 @@
 //     await Future.delayed(const Duration(seconds: 2));
 //   }
 // }
-// // 
+// //

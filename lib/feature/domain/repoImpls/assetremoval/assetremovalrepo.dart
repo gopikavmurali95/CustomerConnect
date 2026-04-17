@@ -15,12 +15,13 @@ import 'package:injectable/injectable.dart';
 class AssetRemovalRequestRepo implements IAssetRemovalRequestRepo {
   @override
   Future<Either<MainFailures, List<AssetRemovalRequestHeaderModel>>>
-      getAssetRemovalApprovalHeaders(String userID, ) async {
+      getAssetRemovalApprovalHeaders(
+    String userID,
+  ) async {
     try {
       final response = await http
           .post(Uri.parse(approvalBaseUrl + assetRemovalHeaderUrl), body: {
         "UserID": userID,
-        
       });
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -29,7 +30,7 @@ class AssetRemovalRequestRepo implements IAssetRemovalRequestRepo {
             .map<AssetRemovalRequestHeaderModel>(
                 (json) => AssetRemovalRequestHeaderModel.fromJson(json))
             .toList();
-            log(jsonEncode(headers));
+        log(jsonEncode(headers));
         return right(headers);
       } else {
         return left(

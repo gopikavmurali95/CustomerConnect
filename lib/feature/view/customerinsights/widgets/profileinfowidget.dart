@@ -34,24 +34,24 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                   width: MediaQuery.of(context).size.width)
               : Container(
                   decoration: BoxDecoration(
-           color: const Color(0xffFFFFFF),
-                                        borderRadius: BorderRadius.circular(10),
-                                       border: Border.all( color: const Color(0xffE5E7EB)),
-         // shape: BoxShape.rectangle,
-         // borderRadius: BorderRadius.circular(10),
-       //   color: Colors.white,
-          // boxShadow: [
-          //   BoxShadow(
-          //       color: Colors.grey.shade100,
-          //       offset: const Offset(0, 0),
-          //       blurRadius: 2,
-          //       spreadRadius: 2)
-          // ],
-        ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0,vertical: 10),
-                  child: Column(
+                    color: const Color(0xffFFFFFF),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: const Color(0xffE5E7EB)),
+                    // shape: BoxShape.rectangle,
+                    // borderRadius: BorderRadius.circular(10),
+                    //   color: Colors.white,
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //       color: Colors.grey.shade100,
+                    //       offset: const Offset(0, 0),
+                    //       blurRadius: 2,
+                    //       spreadRadius: 2)
+                    // ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 10),
+                    child: Column(
                       children: [
                         Row(
                           children: [
@@ -76,9 +76,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             ),
                           ],
                         ),
-                         const Divider(
-                            color:Color(0xffE5E7EB),
-                          ),
+                        const Divider(
+                          color: Color(0xffE5E7EB),
+                        ),
                         SizedBox(
                           height: 7.h,
                         ),
@@ -88,10 +88,10 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                   title: 'support@danat.ae',
                               ), */
                         Visibility(
-                          visible:
-                              profile.cusEmail == null || profile.cusEmail!.isEmpty
-                                  ? false
-                                  : true,
+                          visible: profile.cusEmail == null ||
+                                  profile.cusEmail!.isEmpty
+                              ? false
+                              : true,
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 7.h),
                             child: Row(
@@ -100,7 +100,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                               children: [
                                 Expanded(
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       SvgPicture.asset(
                                         "assets/svg/mailicon.svg",
@@ -129,7 +130,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                       if (profile.cusEmail != null &&
                                           profile.cusEmail != '') {
                                         if (await canLaunchUrl(
-                                          Uri.parse("mailto:${profile.cusEmail!}"),
+                                          Uri.parse(
+                                              "mailto:${profile.cusEmail!}"),
                                         )) {
                                           bool issuccess = await launchUrl(
                                             Uri(
@@ -166,10 +168,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             ),
                           ),
                         ),
-                          const Divider(
-                              color: Color(0xffE5E7EB),
-                            ),
-                        
+                        const Divider(
+                          color: Color(0xffE5E7EB),
+                        ),
                         InkWell(
                           onTap: () async {
                             try {
@@ -182,7 +183,7 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                     Uri(scheme: 'tel', path: profile.cusPhone!),
                                     mode: LaunchMode.platformDefault,
                                   );
-                  
+
                                   logger.e('call status: $issuccess');
                                 } else {
                                   logger.e('Cannot launch phone');
@@ -194,7 +195,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                       if (Platform.isIOS) {
                                         return CupertinoAlertDialog(
                                           title: Text(
-                                              AppLocalizations.of(context)!.alert),
+                                              AppLocalizations.of(context)!
+                                                  .alert),
                                           content: Text(
                                               AppLocalizations.of(context)!
                                                   .phoneNumberNotAvailable),
@@ -203,15 +205,16 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .ok))
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok))
                                           ],
                                         );
                                       } else {
                                         return AlertDialog(
                                           title: Text(
-                                              AppLocalizations.of(context)!.alert),
+                                              AppLocalizations.of(context)!
+                                                  .alert),
                                           content: Text(
                                               AppLocalizations.of(context)!
                                                   .phoneNumberNotAvailable),
@@ -220,9 +223,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .ok))
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok))
                                           ],
                                         );
                                       }
@@ -237,12 +240,11 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             limg: 'assets/svg/call.svg',
                             title: profile.cusPhone!,
                           ),
-                          
                         ),
-                           const Divider(
-                            color: Color(0xffE5E7EB),
-                          ),
-                        InkWell( 
+                        const Divider(
+                          color: Color(0xffE5E7EB),
+                        ),
+                        InkWell(
                           onTap: () async {
                             String contact = profile.cusWhatsappNumber!;
                             Uri androidUrl =
@@ -259,7 +261,7 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                     androidUrl,
                                     mode: LaunchMode.platformDefault,
                                   );
-                  
+
                                   logger.e('WhatsApp Status: $issuccess');
                                 } else {
                                   logger.e('Cannot launch Whatsapp');
@@ -271,7 +273,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                       if (Platform.isIOS) {
                                         return CupertinoAlertDialog(
                                           title: Text(
-                                              AppLocalizations.of(context)!.alert),
+                                              AppLocalizations.of(context)!
+                                                  .alert),
                                           content: Text(
                                               AppLocalizations.of(context)!
                                                   .whatsAppNtAvailable),
@@ -280,15 +283,16 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .ok))
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok))
                                           ],
                                         );
                                       } else {
                                         return AlertDialog(
                                           title: Text(
-                                              AppLocalizations.of(context)!.alert),
+                                              AppLocalizations.of(context)!
+                                                  .alert),
                                           content: Text(
                                               AppLocalizations.of(context)!
                                                   .whatsAppNtAvailable),
@@ -297,9 +301,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: Text(
-                                                    AppLocalizations.of(context)!
-                                                        .ok))
+                                                child: Text(AppLocalizations.of(
+                                                        context)!
+                                                    .ok))
                                           ],
                                         );
                                       }
@@ -315,9 +319,9 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                             title: profile.cusWhatsappNumber ?? '',
                           ),
                         ),
-                          const Divider(
-                            color: Color(0xffE5E7EB),
-                          ),
+                        const Divider(
+                          color: Color(0xffE5E7EB),
+                        ),
                         InkWell(
                           onTap: () async {
                             log("cus geo code ${profile.cusGeoCode}");
@@ -336,7 +340,7 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                     androidUrl,
                                     mode: LaunchMode.platformDefault,
                                   );
-                  
+
                                   logger.e('Map status $issuccess');
                                 } else {
                                   logger.e('Cannot launch map');
@@ -348,7 +352,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                       if (Platform.isIOS) {
                                         return CupertinoAlertDialog(
                                           title: Text(
-                                              AppLocalizations.of(context)!.alert),
+                                              AppLocalizations.of(context)!
+                                                  .alert),
                                           content: Text(
                                               AppLocalizations.of(context)!
                                                   .locationNotAvailable),
@@ -363,7 +368,8 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                       } else {
                                         return AlertDialog(
                                           title: Text(
-                                              AppLocalizations.of(context)!.alert),
+                                              AppLocalizations.of(context)!
+                                                  .alert),
                                           content: Text(
                                               AppLocalizations.of(context)!
                                                   .locationNotAvailable),
@@ -390,11 +396,10 @@ class _ProfileInfoWidgetState extends State<ProfileInfoWidget> {
                                 : profile.cusAddressArabic ?? '',
                           ),
                         ),
-                          
                       ],
                     ),
+                  ),
                 ),
-              ),
           getcusprofileFailedState: () => Center(
             child: Text(
               AppLocalizations.of(context)!.noDataAvailable,

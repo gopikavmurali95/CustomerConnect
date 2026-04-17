@@ -20,11 +20,12 @@ class AssetAddInApprovalHeaderBloc
       List<AssetAddRequestHeaderModel> searcheditems = [];
       Either<MainFailures, List<AssetAddRequestHeaderModel>> headers =
           await assetAddApprovalRepo.getAssetAddApprovalHeaders(
-              event.userId,
-              /* event.companyCode,
+        event.userId,
+        /* event.companyCode,
               event.expStartDate,
               event.expEndDate,
-              event.currentlevel */);
+              event.currentlevel */
+      );
 
       emit(headers.fold((l) => const AssetAddingHeaderFailedState(), (r) {
         searcheditems = r

@@ -37,22 +37,25 @@ class InsightsOutstandingList extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) => Padding(
-                           padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 5),
-                          child: Container(
-                              decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                          color: const Color(0xffE5E7EB))),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
-                              child: Row(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 0, vertical: 5),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: const Color(0xffE5E7EB))),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0, vertical: 10),
+                                  child: Row(
                                     children: [
                                       CircleAvatar(
                                         radius: 20,
-                                        backgroundColor: headers[index].status == "Due"
-                                            ?   const Color(0xffE4F7E2)
-                                            :  const Color(0xffF7E9E2),
+                                        backgroundColor:
+                                            headers[index].status == "Due"
+                                                ? const Color(0xffE4F7E2)
+                                                : const Color(0xffF7E9E2),
                                         child: Image.asset(
                                           'assets/images/ar_li.png',
                                           height: 20.h,
@@ -70,10 +73,12 @@ class InsightsOutstandingList extends StatelessWidget {
                                             Row(
                                               children: [
                                                 Text(
-                                                  headers[index].invoiceId ?? '',
+                                                  headers[index].invoiceId ??
+                                                      '',
                                                   style: kfontstyle(
                                                     fontSize: 12.sp,
-                                                    color: const Color(0xff101828),
+                                                    color:
+                                                        const Color(0xff101828),
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                 ),
@@ -81,35 +86,44 @@ class InsightsOutstandingList extends StatelessWidget {
                                                   width: 5.w,
                                                 ),
                                                 Container(
-                                            height: 16.h,
-                                            width: 55.w,
-                                            decoration: BoxDecoration(
-                                                color: headers[index].status == "Due"
-                                                    ? /*  outstandingcolorslist[
+                                                  height: 16.h,
+                                                  width: 55.w,
+                                                  decoration: BoxDecoration(
+                                                      color: headers[index]
+                                                                  .status ==
+                                                              "Due"
+                                                          ? /*  outstandingcolorslist[
                                                                   0] */
-                                                    const Color(0xffE4F7E2)
-                                                    : /* outstandingcolorslist[
+                                                          const Color(
+                                                              0xffE4F7E2)
+                                                          : /* outstandingcolorslist[
                                                                   1] */
-                                                    const Color(0xffF7E9E2),
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
-                                            child: Center(
-                                              child: Text(
-                                                headers[index].status ?? '',
-                                                style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: headers[index].status == "Due"
-                                                    ? /*  outstandingcolorslist[
+                                                          const Color(
+                                                              0xffF7E9E2),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  child: Center(
+                                                    child: Text(
+                                                      headers[index].status ??
+                                                          '',
+                                                      style: kfontstyle(
+                                                        fontSize: 10.sp,
+                                                        color: headers[index]
+                                                                    .status ==
+                                                                "Due"
+                                                            ? /*  outstandingcolorslist[
                                                                   0] */
-                                                    const Color(0xff008236)
-                                                    : /* outstandingcolorslist[
+                                                            const Color(
+                                                                0xff008236)
+                                                            : /* outstandingcolorslist[
                                                                   1] */
-                                                    const Color(0xffC10007),
+                                                            const Color(
+                                                                0xffC10007),
+                                                      ),
                                                     ),
-                                              ),
-                                            ),
-                                          )
-                                      
+                                                  ),
+                                                )
                                               ],
                                             ),
                                             Text(
@@ -119,7 +133,8 @@ class InsightsOutstandingList extends StatelessWidget {
                                                   color: Color(0xff6A7282)),
                                             ),
                                             Text(
-                                              headers[index].invoiceAmount ?? '',
+                                              headers[index].invoiceAmount ??
+                                                  '',
                                               style: kfontstyle(
                                                   fontSize: 10.sp,
                                                   color: Color(0xff6A7282)),
@@ -139,17 +154,19 @@ class InsightsOutstandingList extends StatelessWidget {
                                           SizedBox(
                                             height: 5.h,
                                           ),
-                                          Text("AED",style: kfontstyle(
-                                                    fontSize: 10.sp,
-                                                    color: Color(0xff6A7282)),
-                                              ),  ],
+                                          Text(
+                                            "AED",
+                                            style: kfontstyle(
+                                                fontSize: 10.sp,
+                                                color: Color(0xff6A7282)),
+                                          ),
+                                        ],
                                       )
                                     ],
                                   ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        
                         itemCount: headers.length),
             getOutStandingFailedState: () => SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,
