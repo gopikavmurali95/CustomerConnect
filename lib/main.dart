@@ -20,6 +20,7 @@ import 'package:customer_connect/feature/state/bloc/asset_adding_approval_header
 import 'package:customer_connect/feature/state/bloc/assetaddapproval/asset_adding_approval_and_rject_bloc_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_removal_apprval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/assetstrackedcount/assets_tracked_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartactualvisits/chart_actual_visits_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartroutes/chart_routs_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/chartnonproductive/chart_non_productive_bloc.dart';
@@ -841,6 +842,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<CustomBottomNavCubit>(
           create: (context) => CustomBottomNavCubit(),
+        ),
+         BlocProvider(
+          create: (context) => getit<AssetsTrackedCountBloc>(),
         ),
       ],
       child: ScreenUtilInit(

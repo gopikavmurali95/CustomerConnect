@@ -1383,7 +1383,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(
                                       height: 10.h,
                                     ),
-                                    const MerchandisingTransactionContainerWidget(),
+                                    MerchandisingTransactionContainerWidget(
+                                      userId: widget.user.usrId ?? '',
+                                    ),
                                     const SizedBox(
                                       height: 10,
                                     )

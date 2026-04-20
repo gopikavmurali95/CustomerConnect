@@ -52,12 +52,32 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
 
   /// Sales-related approval tiles (by index in [approvalItems]).
   static const Set<int> _salesIndices = {
-    0, 1, 2, 3, 4, 5, 16, 17, 19, 20, 21,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    16,
+    17,
+    19,
+    20,
+    21,
   };
 
   /// Logistics, assets, field, and inventory-related tiles.
   static const Set<int> _operationsIndices = {
-    6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    18,
   };
 
   bool _matchesTab(int itemIndex) {
@@ -77,40 +97,41 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
     return Scaffold(
       backgroundColor: const Color(0xffF9FAFB),
       body: RefreshIndicator(
-          triggerMode: RefreshIndicatorTriggerMode.anywhere,
-          color: const Color.fromARGB(255, 181, 218, 245),
-          displacement: BorderSide.strokeAlignCenter,
-          onRefresh: () => _onRefreshApprovals(context, user),
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ApprovalsHeaderSection(
-                    user: user,
-                    selectedTabIndex: _tabIndex,
-                    onTabSelected: (i) => setState(() => _tabIndex = i),
-                    tabLabels: [
-                      AppLocalizations.of(context)!.all,
-                      AppLocalizations.of(context)!.sales,
-                      AppLocalizations.of(context)!.approval_category_operations,
-                    ],
-                    tabGradients: ApprovalsHeaderSection.defaultTabGradients,
-                  ),
-                  const SizedBox(height: 10),
-                  const PendingApprovalsWidget(),
-                  const SizedBox(height: 10),
-                  Padding(
-                     padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                    child: Text("All Approvals",style:approvalcountStyle()),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
-                    child:
-                        BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
-                      builder: (context, state) {
+        triggerMode: RefreshIndicatorTriggerMode.anywhere,
+        color: const Color.fromARGB(255, 181, 218, 245),
+        displacement: BorderSide.strokeAlignCenter,
+        onRefresh: () => _onRefreshApprovals(context, user),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ApprovalsHeaderSection(
+                  user: user,
+                  selectedTabIndex: _tabIndex,
+                  onTabSelected: (i) => setState(() => _tabIndex = i),
+                  tabLabels: [
+                    AppLocalizations.of(context)!.all,
+                    AppLocalizations.of(context)!.sales,
+                    AppLocalizations.of(context)!.approval_category_operations,
+                  ],
+                  tabGradients: ApprovalsHeaderSection.defaultTabGradients,
+                ),
+                const SizedBox(height: 10),
+                const PendingApprovalsWidget(),
+                const SizedBox(height: 10),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: Text("All Approvals", style: approvalcountStyle()),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child:
+                      BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
+                    builder: (context, state) {
                       final approvalItems = <Widget>[
                         ApprovalGridTile(
                           imageAsset: "assets/images/pc.png",
@@ -128,8 +149,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                           count.pendingPriceChangeApproval ??
                                               '',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -243,8 +264,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       : Text(
                                           count.pendingPartialDeliveryHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -279,8 +300,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       ? Text('0', style: approvalcountStyle())
                                       : Text(count.pendingReturnRequestSc!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -300,13 +321,13 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                             );
                           },
                         ),
-                       
-                      //  ApprovalGridTile(
-                      //   imageAsset: '',
-                      //   title: Text(''),
-                      //   count: Text('0'),
-                      //   onTap: () {},
-                      // ),
+
+                        //  ApprovalGridTile(
+                        //   imageAsset: '',
+                        //   title: Text(''),
+                        //   count: Text('0'),
+                        //   onTap: () {},
+                        // ),
                         ApprovalGridTile(
                           imageAsset: "assets/images/rtn.png",
                           title: Text(
@@ -322,8 +343,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       ? Text('0', style: approvalcountStyle())
                                       : Text(count.pendingReturnHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -356,11 +377,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.pendingDisputeNoteReqHeader!,
+                                      : Text(count.pendingDisputeNoteReqHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -390,11 +410,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.pendingCreditNoteReqHeader!,
+                                      : Text(count.pendingCreditNoteReqHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -426,11 +445,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.pendingAssetAddReqHeader!,
+                                      : Text(count.pendingAssetAddReqHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -466,8 +484,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       : Text(
                                           count.pendingAssetRemovalReqHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -501,8 +519,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       ? Text('0', style: approvalcountStyle())
                                       : Text(count.pendingVanToVanHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -543,8 +561,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       ? Text('0', style: approvalcountStyle())
                                       : Text(count.pendingLodTransRequest!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -576,11 +594,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.pendingJurneyPlanSeqApprvl!,
+                                      : Text(count.pendingJurneyPlanSeqApprvl!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -616,8 +633,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       : Text(
                                           count.pendingInvoiceApprovalHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -654,11 +671,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.pendingMaterialReqApproval!,
+                                      : Text(count.pendingMaterialReqApproval!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -691,11 +707,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.pendingLoadRequestHeader!,
+                                      : Text(count.pendingLoadRequestHeader!,
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -732,11 +747,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.inventoryReconfirm ?? '0',
+                                      : Text(count.inventoryReconfirm ?? '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -770,11 +784,10 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                               return state.when(
                                   getApprovalsCount: (count) => count == null
                                       ? Text('0', style: approvalcountStyle())
-                                      : Text(
-                                          count.voidTransactionHead ?? '0',
+                                      : Text(count.voidTransactionHead ?? '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -810,8 +823,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       ? Text('0', style: approvalcountStyle())
                                       : Text(count.mustSellHead ?? '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -847,8 +860,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       : Text(
                                           count.settlementApprovalHead ?? '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -884,8 +897,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                       ? Text('0', style: approvalcountStyle())
                                       : Text(count.unschVisit ?? '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -919,8 +932,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                           count.pendingCustomerFOCApprovalHeader ??
                                               '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -956,8 +969,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                           count.pendingOverRideApprovalHeader ??
                                               '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -994,8 +1007,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                                           count.pendingSampleApprovalHeader ??
                                               '0',
                                           style: approvalcountStyle()),
-                                  getApprovalCountsFailed: () => Text('0',
-                                      style: approvalcountStyle()));
+                                  getApprovalCountsFailed: () =>
+                                      Text('0', style: approvalcountStyle()));
                             },
                           ),
                           onTap: () {
@@ -1220,8 +1233,6 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
     await Future.delayed(const Duration(seconds: 2));
   }
 }
-
-
 
 /// Approval grid cell: bordered card, icon in tinted box, title under icon, count right.
 class ApprovalGridTile extends StatelessWidget {

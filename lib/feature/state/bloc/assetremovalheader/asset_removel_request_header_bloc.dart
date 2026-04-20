@@ -20,7 +20,8 @@ class AssetRemovelRequestHeaderBloc extends Bloc<AssetRemovelRequestHeaderEvent,
       List<AssetRemovalRequestHeaderModel> searcheditems = [];
       Either<MainFailures, List<AssetRemovalRequestHeaderModel>> headers =
           await assetRemovalRequestRepo.getAssetRemovalApprovalHeaders(
-              event.userID,);
+        event.userID,
+      );
 
       emit(
         headers.fold(

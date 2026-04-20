@@ -75,7 +75,6 @@ TextStyle loadTextStyle() {
       color: const Color(0xff6E62A4));
 }
 
-
 Logger logger = Logger();
 TextStyle approvalcountStyle() {
   return GoogleFonts.poppins(

@@ -183,6 +183,8 @@ import 'package:customer_connect/feature/state/bloc/assetremovalapproval/asset_r
     as _i46;
 import 'package:customer_connect/feature/state/bloc/assetremovalheader/asset_removel_request_header_bloc.dart'
     as _i525;
+import 'package:customer_connect/feature/state/bloc/assetstrackedcount/assets_tracked_count_bloc.dart'
+    as _i56;
 import 'package:customer_connect/feature/state/bloc/autoupdate/auto_update_bloc.dart'
     as _i307;
 import 'package:customer_connect/feature/state/bloc/chartactualvisits/chart_actual_visits_bloc.dart'
@@ -899,6 +901,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1012.CreditNoteApprovalLevelStatusCubit>(() =>
         _i1012.CreditNoteApprovalLevelStatusCubit(
             gh<_i932.ICreditNoteApprovalRepo>()));
+    gh.factory<_i56.AssetsTrackedCountBloc>(() =>
+        _i56.AssetsTrackedCountBloc(gh<_i932.IMerchandisingDashBoardRepo>()));
     gh.factory<_i820.VanToVanHeaderBloc>(
         () => _i820.VanToVanHeaderBloc(gh<_i932.IVanToVanApprovalRepo>()));
     gh.factory<_i489.PromotionDetailsBloc>(

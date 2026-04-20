@@ -43,7 +43,6 @@ class ARHeaderListWidget extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) =>
                         ShimmerContainers(height: 60.h, width: double.infinity),
-                    
                     itemCount: 10)
                 : arHeaders.isEmpty
                     ? Center(
@@ -69,26 +68,28 @@ class ARHeaderListWidget extends StatelessWidget {
                                 );
                               },
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5.0),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5.0),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                          color: const Color(0xffFFFFFF),
-                                          borderRadius: BorderRadius.circular(10),
-                                         border: Border.all( color: const Color(0xffE5E7EB))
-                                         ),
+                                      color: const Color(0xffFFFFFF),
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color: const Color(0xffE5E7EB))),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0, vertical: 10),
                                     child: Row(
                                       children: [
                                         Container(
                                           height: 60,
                                           width: 5,
                                           decoration: BoxDecoration(
-                                            color: _getPayModeStripColor(
-                                              arHeaders[index].arhPayMode,
-                                            ),
-                                            borderRadius: BorderRadius.circular(2)
-                                          ),
+                                              color: _getPayModeStripColor(
+                                                arHeaders[index].arhPayMode,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(2)),
                                         ),
                                         // CircleAvatar(
                                         //   radius: 20,
@@ -109,56 +110,71 @@ class ARHeaderListWidget extends StatelessWidget {
                                             children: [
                                               Row(
                                                 children: [
-                                                  Text(arHeaders[index].arhArNumber ?? '',
+                                                  Text(
+                                                      arHeaders[index]
+                                                              .arhArNumber ??
+                                                          '',
                                                       style: blueTextStyle()),
-                                                      const SizedBox(width: 10,),
-                                                        Container(
-                                              height: 14.h,
-                                              width: 30.w,
-                                              decoration: BoxDecoration(
-                                                  color: arHeaders[index].arhPayMode ==
-                                                          'HC'
-                                                      ? const Color.fromARGB(255, 200,
-                                                          239, 249) //colorslist[0]
-                                                      : arHeaders[index].arhPayMode ==
-                                                              "CH"
-                                                          ? const Color.fromARGB(
-                                                              255,
-                                                              246,
-                                                              213,
-                                                              197) //colorslist[3]
-                                                          : arHeaders[index]
-                                                                      .arhPayMode ==
-                                                                  "POS"
-                                                              ? const Color.fromARGB(
-                                                                  255,
-                                                                  200,
-                                                                  244,
-                                                                  218) //colorslist[2]
-                                                              : const Color(
-                                                                  0xfff7f4e2),
-                                                  borderRadius:
-                                                      BorderRadius.circular(10)),
-                                              child: Center(
-                                                child: Text(
-                                                  arHeaders[index].arhPayMode ?? '',
-                                                  style: kfontstyle(
-                                                      fontSize: 10.sp,
-                                                      color: const Color(0xff413434)),
-                                                ),
-                                              ),
-                                            ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Container(
+                                                    height: 14.h,
+                                                    width: 30.w,
+                                                    decoration: BoxDecoration(
+                                                        color: arHeaders[index]
+                                                                    .arhPayMode ==
+                                                                'HC'
+                                                            ? const Color.fromARGB(
+                                                                255,
+                                                                200,
+                                                                239,
+                                                                249) //colorslist[0]
+                                                            : arHeaders[index]
+                                                                        .arhPayMode ==
+                                                                    "CH"
+                                                                ? const Color.fromARGB(
+                                                                    255,
+                                                                    246,
+                                                                    213,
+                                                                    197) //colorslist[3]
+                                                                : arHeaders[index].arhPayMode ==
+                                                                        "POS"
+                                                                    ? const Color
+                                                                        .fromARGB(
+                                                                        255,
+                                                                        200,
+                                                                        244,
+                                                                        218) //colorslist[2]
+                                                                    : const Color(
+                                                                        0xfff7f4e2),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                10)),
+                                                    child: Center(
+                                                      child: Text(
+                                                        arHeaders[index]
+                                                                .arhPayMode ??
+                                                            '',
+                                                        style: kfontstyle(
+                                                            fontSize: 10.sp,
+                                                            color: const Color(
+                                                                0xff413434)),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
-                                             
                                               Row(
                                                 children: [
                                                   Text(
                                                       '${arHeaders[index].cusCode} - ',
-                                                      style: subTitleTextStyle()),
+                                                      style:
+                                                          subTitleTextStyle()),
                                                   Expanded(
                                                     child: Text(
-                                                        selectedLocale?.languageCode ==
+                                                        selectedLocale
+                                                                    ?.languageCode ==
                                                                 "en"
                                                             ? arHeaders[index]
                                                                     .cusName ??
@@ -166,26 +182,29 @@ class ARHeaderListWidget extends StatelessWidget {
                                                             : arHeaders[index]
                                                                     .arcusName ??
                                                                 '',
-                                                        overflow:
-                                                            TextOverflow.ellipsis,
-                                                        style: subTitleTextStyle()),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style:
+                                                            subTitleTextStyle()),
                                                   ),
                                                 ],
                                               ),
-                                               Row(
+                                              Row(
                                                 children: [
-                                                
                                                   Text(
                                                     '${arHeaders[index].cshCode} - ',
                                                     style: kfontstyle(
                                                       fontSize: 11.sp,
-                                                      color: const Color(0xff2C6B9E),
+                                                      color: const Color(
+                                                          0xff2C6B9E),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     child: Text(
-                                                      overflow: TextOverflow.ellipsis,
-                                                      selectedLocale?.languageCode ==
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      selectedLocale
+                                                                  ?.languageCode ==
                                                               "en"
                                                           ? arHeaders[index]
                                                                   .cshName ??
@@ -213,7 +232,8 @@ class ARHeaderListWidget extends StatelessWidget {
                                         Column(
                                           children: [
                                             Text(
-                                              arHeaders[index].arhCollectedAmount ??
+                                              arHeaders[index]
+                                                      .arhCollectedAmount ??
                                                   "",
                                               style: ifontstyle(
                                                   fontSize: 12.sp,
@@ -222,8 +242,10 @@ class ARHeaderListWidget extends StatelessWidget {
                                             SizedBox(
                                               height: 5.h,
                                             ),
-                                            const Text("AED",style: TextStyle(fontSize: 10),)
-                                            
+                                            const Text(
+                                              "AED",
+                                              style: TextStyle(fontSize: 10),
+                                            )
                                           ],
                                         )
                                       ],
@@ -232,7 +254,6 @@ class ARHeaderListWidget extends StatelessWidget {
                                 ),
                               ),
                             ),
-                      
                         itemCount: arHeaders.length),
             arHeaderFailedState: () => SizedBox(
               height: MediaQuery.of(context).size.height / 1.4,

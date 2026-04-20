@@ -43,14 +43,16 @@ class _AssetAddingApprovalHeaderScreenState
         .read<AssetAddInApprovalHeaderBloc>()
         .add(const ClearAllRequestHeadersState());
 
-    context.read<AssetAddInApprovalHeaderBloc>().add(
-        GetallAssetAddingRequestHeadersEvent(
-            userId: widget.user.usrId ?? '',
-            searchQuery: '',
-            /* companyCode: '001',
+    context
+        .read<AssetAddInApprovalHeaderBloc>()
+        .add(GetallAssetAddingRequestHeadersEvent(
+          userId: widget.user.usrId ?? '',
+          searchQuery: '',
+          /* companyCode: '001',
             expStartDate: '28-08-2025',
             expEndDate: '28-09-2025',
-            currentlevel: '2' */));
+            currentlevel: '2' */
+        ));
 
     super.initState();
   }
@@ -114,12 +116,13 @@ class _AssetAddingApprovalHeaderScreenState
                                   context
                                       .read<AssetAddInApprovalHeaderBloc>()
                                       .add(GetallAssetAddingRequestHeadersEvent(
-                                          searchQuery: '',
-                                          userId: widget.user.usrId ?? '',
-                                          /* companyCode: '001',
+                                        searchQuery: '',
+                                        userId: widget.user.usrId ?? '',
+                                        /* companyCode: '001',
                                           expStartDate: '28-08-2025',
                                           expEndDate: '28-08-2025',
-                                          currentlevel: '2' */));
+                                          currentlevel: '2' */
+                                      ));
                                 }
                               },
                               icon: Icon(
@@ -159,14 +162,16 @@ class _AssetAddingApprovalHeaderScreenState
                         const Duration(
                           milliseconds: 500,
                         ), () async {
-                      context.read<AssetAddInApprovalHeaderBloc>().add(
-                          GetallAssetAddingRequestHeadersEvent(
-                              searchQuery: value.trim(),
-                              userId: widget.user.usrId ?? '',
-                              /* companyCode: '001',
+                      context
+                          .read<AssetAddInApprovalHeaderBloc>()
+                          .add(GetallAssetAddingRequestHeadersEvent(
+                            searchQuery: value.trim(),
+                            userId: widget.user.usrId ?? '',
+                            /* companyCode: '001',
                               expStartDate: '28-08-2025',
                               expEndDate: '28-08-2025',
-                              currentlevel: '2' */));
+                              currentlevel: '2' */
+                          ));
                     });
                   },
                 ),
@@ -440,7 +445,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '64', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */));
+                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(
+                                                                                            userId: widget.user.usrId ?? '64',
+                                                                                            searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */
+                                                                                          ));
                                                                                       Navigator.pop(context);
                                                                                     },
                                                                                     child: Text(AppLocalizations.of(context)!.ok),
@@ -455,7 +463,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () {
-                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? '', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */));
+                                                                                      context.read<AssetAddInApprovalHeaderBloc>().add(GetallAssetAddingRequestHeadersEvent(
+                                                                                            userId: widget.user.usrId ?? '',
+                                                                                            searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */
+                                                                                          ));
                                                                                       Navigator.pop(context);
                                                                                     },
                                                                                     child: Text(AppLocalizations.of(context)!.ok),
@@ -486,7 +497,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               TextButton(
                                                                                 onPressed: () {
                                                                                   context.read<AssetAddInApprovalHeaderBloc>().add(
-                                                                                        GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */),
+                                                                                        GetallAssetAddingRequestHeadersEvent(
+                                                                                          userId: widget.user.usrId ?? ' ',
+                                                                                          searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */
+                                                                                        ),
                                                                                       );
                                                                                   Navigator.pop(context);
                                                                                 },
@@ -504,7 +518,10 @@ class _AssetAddingApprovalHeaderScreenState
                                                                               TextButton(
                                                                                 onPressed: () {
                                                                                   context.read<AssetAddInApprovalHeaderBloc>().add(
-                                                                                        GetallAssetAddingRequestHeadersEvent(userId: widget.user.usrId ?? ' ', searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */),
+                                                                                        GetallAssetAddingRequestHeadersEvent(
+                                                                                          userId: widget.user.usrId ?? ' ',
+                                                                                          searchQuery: '', /* companyCode: '001', expStartDate: '28-08-2025', expEndDate: '28-08-2025', currentlevel: '2' */
+                                                                                        ),
                                                                                       );
                                                                                   Navigator.pop(context);
                                                                                 },

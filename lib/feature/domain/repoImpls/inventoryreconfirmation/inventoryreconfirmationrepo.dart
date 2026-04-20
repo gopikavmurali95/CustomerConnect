@@ -111,7 +111,7 @@ class InventoryReconfirmationRepo
             "JSONString": jsonEncode(approve.products)
           });
 
-          log(jsonEncode(approve));
+      log(jsonEncode(approve));
       // log("UserId: ${approve.userId}, ReqID: ${approve.reqId}, JSONString: ${jsonEncode(approve.products)}");
       log('Approve Response: ${response.body}');
       if (response.statusCode == 200) {

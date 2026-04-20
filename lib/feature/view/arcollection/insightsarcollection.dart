@@ -151,10 +151,10 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                 radius: 25,
                                 backgroundColor: const Color(0xffDBEAFE),
                                 child: Center(
-                                  child:   SvgPicture.asset(
-                                        "assets/svg/aricon.svg",
-                                        height: 15.h,
-                                      ),
+                                  child: SvgPicture.asset(
+                                    "assets/svg/aricon.svg",
+                                    height: 15.h,
+                                  ),
                                 ),
                               ),
                             ),
@@ -446,7 +446,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                                     0xff9ce2f5),
                                                                 title: AppLocalizations.of(
                                                                         context)!
-                                                                    .hard_cash, items: '${artotal.hcCount ?? '0'} Items',
+                                                                    .hard_cash,
+                                                                items:
+                                                                    '${artotal.hcCount ?? '0'} Items',
                                                               ),
                                                               SizedBox(
                                                                 height: 10.h,
@@ -458,7 +460,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                                     0xffe6dd94),
                                                                 title: AppLocalizations.of(
                                                                         context)!
-                                                                    .online_payment, items: '${artotal.opCount ?? '0'} Items',
+                                                                    .online_payment,
+                                                                items:
+                                                                    '${artotal.opCount ?? '0'} Items',
                                                               ),
                                                               SizedBox(
                                                                 height: 10.h,
@@ -470,7 +474,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                                     0xff93e1b2),
                                                                 title: AppLocalizations.of(
                                                                         context)!
-                                                                    .pos, items: '${artotal.posCount ?? '0'} Items',
+                                                                    .pos,
+                                                                items:
+                                                                    '${artotal.posCount ?? '0'} Items',
                                                               ),
                                                               SizedBox(
                                                                 height: 10.h,
@@ -482,7 +488,9 @@ class _InsightsArCollectionState extends State<InsightsArCollection> {
                                                                     0xffdf936e),
                                                                 title: AppLocalizations.of(
                                                                         context)!
-                                                                    .cheque, items: '${artotal.chequeCount ?? '0'} Items',
+                                                                    .cheque,
+                                                                items:
+                                                                    '${artotal.chequeCount ?? '0'} Items',
                                                               ),
                                                               const Padding(
                                                                 padding: EdgeInsets

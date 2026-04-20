@@ -84,37 +84,33 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               children: [
-              
                 Container(
-                    constraints: const BoxConstraints(minHeight: 60),
-                                       decoration: BoxDecoration(
-                                        color: const Color(0xffFFFFFF),
-                                        borderRadius: BorderRadius.circular(10),
-                                       border: Border.all( color: const Color(0xffE5E7EB))
-                                       ),
+                  constraints: const BoxConstraints(minHeight: 60),
+                  decoration: BoxDecoration(
+                      color: const Color(0xffFFFFFF),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: const Color(0xffE5E7EB))),
                   child: Row(
                     children: [
-                      
-                        Padding(
-                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: CircleAvatar(
-                                                    radius: 25,
-                                                    backgroundColor: const Color(0xffDBEAFE),
-                                                    child: Center(
-                                                      child: Text(
-                                                      "f",
-                                                        style: kfontstyle(
-                                                          fontSize: 18.sp,
-                                                          color: Colors.white,
-                                                          fontWeight: FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                    )),
-                        ),
-                    
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: CircleAvatar(
+                            radius: 25,
+                            backgroundColor: const Color(0xffDBEAFE),
+                            child: Center(
+                              child: Text(
+                                "f",
+                                style: kfontstyle(
+                                  fontSize: 18.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            )),
+                      ),
                       Expanded(
                         child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -128,7 +124,8 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                                     fontWeight: FontWeight.w600,
                                   ),
                                   children: <TextSpan>[
-                                    TextSpan(text: '-', style: subTitleTextStyle()),
+                                    TextSpan(
+                                        text: '-', style: subTitleTextStyle()),
                                     TextSpan(
                                       text: selectedLocale?.languageCode == "en"
                                           ? widget.customer.cusName ?? ''
@@ -154,15 +151,18 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                                           ? widget.customer.headerName ?? ""
                                           : widget.customer.arheaderName ?? '',
                                       overflow: TextOverflow.ellipsis,
-                                      style: kfontstyle(fontSize: 11.sp,color: const Color(0xff6A7282)),
+                                      style: kfontstyle(
+                                          fontSize: 11.sp,
+                                          color: const Color(0xff6A7282)),
                                     ),
                                   ),
                                 ],
                               ),
                               Text(
                                 '${widget.customer.cusType} | ${widget.customer.className} | ${selectedLocale?.languageCode == 'en' ? widget.customer.areaName : widget.customer.arAreaName} ',
-                                style:
-                                    kfontstyle(fontSize: 10.sp, color: const Color(0xff6A7282)),
+                                style: kfontstyle(
+                                    fontSize: 10.sp,
+                                    color: const Color(0xff6A7282)),
                               ),
                             ],
                           ),
@@ -225,9 +225,8 @@ class _CustomerInsightsScreenState extends State<CustomerInsightsScreen> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        color:  const Color(0xff155DFC)
-                        ),
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xff155DFC)),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 8),

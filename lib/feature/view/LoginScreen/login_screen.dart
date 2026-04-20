@@ -73,7 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           context,
                           Platform.isIOS
                               ? CupertinoPageRoute(
-                                  builder: (context) => HomeScreenFooter(user: user))
+                                  builder: (context) =>
+                                      HomeScreenFooter(user: user))
                               : MaterialPageRoute(
                                   builder: (context) => HomeScreenFooter(
                                     user: user,

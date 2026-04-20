@@ -50,10 +50,10 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
           GetArHeaderData(
             arIn: ArTotalInModel(
                 userId: widget.user.usrId,
-                fromDate:"2026-03-22",
-                    //'${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
-                toDate:"2026-03-26",
-                   // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                fromDate: "2026-03-22",
+                //'${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
+                toDate: "2026-03-26",
+                // '${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}',
                 area: '',
                 customer: '',
                 outlet: '',
@@ -129,7 +129,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                   builder: (context, state) {
                     return Column(
                       children: [
-                //         
+                        //
                         Visibility(
                           // visible: state.isOnTop,
                           maintainAnimation: true,
@@ -187,122 +187,104 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                             )
                                           : Container(
                                               decoration: BoxDecoration(
-                                        color: const Color(0xffFFFFFF),
-                                        borderRadius: BorderRadius.circular(10),
-                                       border: Border.all( color: const Color(0xffE5E7EB))
-                                       ),
-                                            child: Column(
+                                                  color:
+                                                      const Color(0xffFFFFFF),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  border: Border.all(
+                                                      color: const Color(
+                                                          0xffE5E7EB))),
+                                              child: Column(
                                                 children: [
                                                   AnimatedOpacity(
-                                                    opacity:
-                                                        state.isOnTop ? 1.0 : 0.0,
+                                                    opacity: state.isOnTop
+                                                        ? 1.0
+                                                        : 0.0,
                                                     curve: Curves.slowMiddle,
                                                     duration: const Duration(
                                                         milliseconds: 500),
                                                     child: Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Padding(
-                                                     padding: const EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                10.0,
-                                                                            vertical:
-                                                                                10),
-                                                          child: Text("Collection Summary",style: ifontstyle(
-                                                            fontWeight: FontWeight.bold,
-                                                            fontSize: 15
-                                                          ),),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .symmetric(
+                                                                  horizontal:
+                                                                      10.0,
+                                                                  vertical: 10),
+                                                          child: Text(
+                                                            "Collection Summary",
+                                                            style: ifontstyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 15),
+                                                          ),
                                                         ),
                                                         pievalues.length > 1
                                                             ? Padding(
-                                                              padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                                                              child: SizedBox(
-                                                                  width: 110.w,
-                                                                  height: 110.h,
-                                                                  child: RotatedBox(
-                                                                    quarterTurns: 0,
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        100.0),
+                                                                child: SizedBox(
+                                                                    width:
+                                                                        110.w,
+                                                                    height:
+                                                                        110.h,
                                                                     child:
-                                                                        SfCircularChart(
-                                                                      margin:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      series: <DoughnutSeries<
-                                                                          _ChartData,
-                                                                          String>>[
-                                                                        DoughnutSeries<
+                                                                        RotatedBox(
+                                                                      quarterTurns:
+                                                                          0,
+                                                                      child:
+                                                                          SfCircularChart(
+                                                                        margin:
+                                                                            EdgeInsets.zero,
+                                                                        series: <DoughnutSeries<
                                                                             _ChartData,
-                                                                            String>(
-                                                                          dataSource:
-                                                                              <_ChartData>[
-                                                                            _ChartData(
-                                                                                artotal.hcCount ??
-                                                                                    '',
-                                                                                double.tryParse(artotal.hcAmount ?? '0') ??
-                                                                                    0,
-                                                                                colorslist.isNotEmpty
-                                                                                    ? colorslist[0]
-                                                                                    : Colors.blue),
-                                                                            _ChartData(
-                                                                                artotal.opCount ??
-                                                                                    '',
-                                                                                double.tryParse(artotal.opAmount ?? '0') ??
-                                                                                    0,
-                                                                                colorslist.length > 1
-                                                                                    ? colorslist[1]
-                                                                                    : Colors.green),
-                                                                            _ChartData(
-                                                                                artotal.posCount ??
-                                                                                    '',
-                                                                                double.tryParse(artotal.posAmount ?? '0') ??
-                                                                                    0,
-                                                                                colorslist.length > 2
-                                                                                    ? colorslist[2]
-                                                                                    : Colors.orange),
-                                                                            _ChartData(
-                                                                                artotal.chequeCount ??
-                                                                                    '',
-                                                                                double.tryParse(artotal.chequeAmount ?? '0') ??
-                                                                                    0,
-                                                                                colorslist.length > 3
-                                                                                    ? colorslist[3]
-                                                                                    : Colors.purple),
-                                                                          ].where((e) => e.value > 0).toList(),
-                                                                          xValueMapper:
-                                                                              (_ChartData d, _) =>
-                                                                                  d.label,
-                                                                          yValueMapper:
-                                                                              (_ChartData d, _) =>
-                                                                                  d.value,
-                                                                          pointColorMapper:
-                                                                              (_ChartData d, _) =>
-                                                                                  d.color,
-                                                                          dataLabelSettings:
-                                                                              DataLabelSettings(
-                                                                            isVisible:
+                                                                            String>>[
+                                                                          DoughnutSeries<
+                                                                              _ChartData,
+                                                                              String>(
+                                                                            dataSource:
+                                                                                <_ChartData>[
+                                                                              _ChartData(artotal.hcCount ?? '', double.tryParse(artotal.hcAmount ?? '0') ?? 0, colorslist.isNotEmpty ? colorslist[0] : Colors.blue),
+                                                                              _ChartData(artotal.opCount ?? '', double.tryParse(artotal.opAmount ?? '0') ?? 0, colorslist.length > 1 ? colorslist[1] : Colors.green),
+                                                                              _ChartData(artotal.posCount ?? '', double.tryParse(artotal.posAmount ?? '0') ?? 0, colorslist.length > 2 ? colorslist[2] : Colors.orange),
+                                                                              _ChartData(artotal.chequeCount ?? '', double.tryParse(artotal.chequeAmount ?? '0') ?? 0, colorslist.length > 3 ? colorslist[3] : Colors.purple),
+                                                                            ].where((e) => e.value > 0).toList(),
+                                                                            xValueMapper: (_ChartData d, _) =>
+                                                                                d.label,
+                                                                            yValueMapper: (_ChartData d, _) =>
+                                                                                d.value,
+                                                                            pointColorMapper: (_ChartData d, _) =>
+                                                                                d.color,
+                                                                            dataLabelSettings:
+                                                                                DataLabelSettings(
+                                                                              isVisible: true,
+                                                                              textStyle: kfontstyle(color: Colors.white, fontSize: 10),
+                                                                            ),
+                                                                            radius:
+                                                                                '100%',
+                                                                            innerRadius:
+                                                                                '40%',
+                                                                            explode:
                                                                                 true,
-                                                                            textStyle: kfontstyle(
-                                                                                color:
-                                                                                    Colors.white,
-                                                                                fontSize: 10),
                                                                           ),
-                                                                          radius:
-                                                                              '100%',
-                                                                          innerRadius:
-                                                                              '40%',
-                                                                          explode:
-                                                                              true,
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  )),
-                                                            )
+                                                                        ],
+                                                                      ),
+                                                                    )),
+                                                              )
                                                             : pievalues.isEmpty
                                                                 ? const Center()
                                                                 : Stack(
                                                                     children: [
                                                                       Padding(
-                                                                        padding: const EdgeInsets.symmetric(
+                                                                        padding: const EdgeInsets
+                                                                            .symmetric(
                                                                             horizontal:
                                                                                 100.0,
                                                                             vertical:
@@ -311,8 +293,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                                             Stack(
                                                                           children: [
                                                                             CircleAvatar(
-                                                                              radius:
-                                                                                  60.h,
+                                                                              radius: 60.h,
                                                                               backgroundColor: pievalues[0] == int.parse(artotal.hcCount ?? '')
                                                                                   ? colorslist[0]
                                                                                   : pievalues[0] == int.parse(artotal.opCount ?? '')
@@ -320,25 +301,19 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                                                       : pievalues[0] == int.parse(artotal.posCount ?? '')
                                                                                           ? colorslist[2]
                                                                                           : colorslist[3],
-                                                                              child:
-                                                                                  Center(
-                                                                                child:
-                                                                                    CircleAvatar(
-                                                                                  backgroundColor:
-                                                                                      Colors.white,
-                                                                                  radius:
-                                                                                      23.h,
+                                                                              child: Center(
+                                                                                child: CircleAvatar(
+                                                                                  backgroundColor: Colors.white,
+                                                                                  radius: 23.h,
                                                                                 ),
                                                                               ),
                                                                             ),
                                                                             Positioned(
                                                                               top: 48.h,
                                                                               right: 18.w,
-                                                                              child:
-                                                                                  Text(
+                                                                              child: Text(
                                                                                 '${pievalues[0]}',
-                                                                                style: kfontstyle(
-                                                                                    color: Colors.white),
+                                                                                style: kfontstyle(color: Colors.white),
                                                                               ),
                                                                             ),
                                                                           ],
@@ -354,100 +329,113 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                               MainAxisAlignment
                                                                   .start,
                                                           children: [
-                                                             
-                                                              SizedBox(
-                                                                height: 15.h,
+                                                            SizedBox(
+                                                              height: 15.h,
+                                                            ),
+                                                            ArChartItemWidget(
+                                                              amount:
+                                                                  '${artotal.hcAmount ?? '0'} AED',
+                                                              color: const Color(
+                                                                  0xff9ce2f5),
+                                                              title: AppLocalizations
+                                                                      .of(context)!
+                                                                  .hard_cash,
+                                                              items:
+                                                                  '${artotal.hcCount ?? '0'} Items',
+                                                            ),
+                                                            SizedBox(
+                                                              height: 10.h,
+                                                            ),
+                                                            ArChartItemWidget(
+                                                              amount:
+                                                                  '${artotal.opAmount ?? '0'} AED',
+                                                              color: const Color(
+                                                                  0xffe6dd94),
+                                                              title: AppLocalizations
+                                                                      .of(context)!
+                                                                  .online_payment,
+                                                              items:
+                                                                  '${artotal.opCount ?? '0'} Items',
+                                                            ),
+                                                            SizedBox(
+                                                              height: 10.h,
+                                                            ),
+                                                            ArChartItemWidget(
+                                                              amount:
+                                                                  '${artotal.posAmount ?? '0'} AED',
+                                                              color: const Color(
+                                                                  0xff93e1b2),
+                                                              title: AppLocalizations
+                                                                      .of(context)!
+                                                                  .pos,
+                                                              items:
+                                                                  '${artotal.posCount ?? '0'} Items',
+                                                            ),
+                                                            SizedBox(
+                                                              height: 10.h,
+                                                            ),
+                                                            ArChartItemWidget(
+                                                              amount:
+                                                                  '${artotal.chequeAmount ?? '0'} AED',
+                                                              color: const Color(
+                                                                  0xffdf936e),
+                                                              title: AppLocalizations
+                                                                      .of(context)!
+                                                                  .cheque,
+                                                              items:
+                                                                  '${artotal.chequeCount ?? '0'} Items',
+                                                            ),
+                                                            const Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          20.0,
+                                                                      vertical:
+                                                                          10),
+                                                              child: Divider(
+                                                                color: Color(
+                                                                    0xffF9FAFB),
                                                               ),
-                                                              ArChartItemWidget(
-                                                                amount:
-                                                                    '${artotal.hcAmount ?? '0'} AED',
-                                                                color: const Color(
-                                                                    0xff9ce2f5),
-                                                                title: AppLocalizations
-                                                                        .of(context)!
-                                                                    .hard_cash, items: '${artotal.hcCount ?? '0'} Items',
-                                                              ),
-                                                              SizedBox(
-                                                                height: 10.h,
-                                                              ),
-                                                              ArChartItemWidget(
-                                                                amount:
-                                                                    '${artotal.opAmount ?? '0'} AED',
-                                                                color: const Color(
-                                                                    0xffe6dd94),
-                                                                title: AppLocalizations
-                                                                        .of(context)!
-                                                                    .online_payment, items: '${artotal.opCount ?? '0'} Items',
-                                                              ),
-                                                              SizedBox(
-                                                                height: 10.h,
-                                                              ),
-                                                              ArChartItemWidget(
-                                                                amount:
-                                                                    '${artotal.posAmount ?? '0'} AED',
-                                                                color: const Color(
-                                                                    0xff93e1b2),
-                                                                title: AppLocalizations
-                                                                        .of(context)!
-                                                                    .pos, items: '${artotal.posCount ?? '0'} Items',
-                                                              ),
-                                                              SizedBox(
-                                                                height: 10.h,
-                                                              ),
-                                                              ArChartItemWidget(
-                                                                amount:
-                                                                    '${artotal.chequeAmount ?? '0'} AED',
-                                                                color: const Color(
-                                                                    0xffdf936e),
-                                                                title: AppLocalizations
-                                                                        .of(context)!
-                                                                    .cheque, items: '${artotal.chequeCount ?? '0'} Items',
-                                                              ),
-                                                              const Padding(
-                                                                 padding: EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                20.0,
-                                                                            vertical:
-                                                                                10),
-                                                                child: Divider(
-                                                                   color: Color(0xffF9FAFB),
-                                                                ),
-                                                              ),
-                                                               Padding(
-                                                                padding: const EdgeInsets.symmetric(
-                                                                            horizontal:
-                                                                                20.0,
-                                                                            vertical:
-                                                                                0),
-                                                                 child: Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .spaceBetween,
-                                                                  children: [
-                                                                    Text(
-                                                                      AppLocalizations.of(
-                                                                              context)!
-                                                                          .total_collection,
-                                                                      style: ifontstyle(
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          20.0,
+                                                                      vertical:
+                                                                          0),
+                                                              child: Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  Text(
+                                                                    AppLocalizations.of(
+                                                                            context)!
+                                                                        .total_collection,
+                                                                    style: ifontstyle(
                                                                         fontWeight:
-                                                                              FontWeight.w500,
-                                                                        color: const Color(0xff364153),
-                                                                          fontSize:
-                                                                              14.sp),
-                                                                    ),
-                                                                   
-                                                                    Text(
-                                                                      '${artotal.totalCount ?? '0'}/${artotal.totalAmount ?? '0.00'}',
-                                                                      style: ifontstyle(
-                                                                          fontSize: 14
-                                                                              .sp,
-                                                                              color: const Color(0xff101828),
-                                                                          fontWeight:
-                                                                              FontWeight.w700),
-                                                                    )
-                                                                  ],
-                                                                                                                               ),
-                                                               ),
+                                                                            FontWeight
+                                                                                .w500,
+                                                                        color: const Color(
+                                                                            0xff364153),
+                                                                        fontSize:
+                                                                            14.sp),
+                                                                  ),
+                                                                  Text(
+                                                                    '${artotal.totalCount ?? '0'}/${artotal.totalAmount ?? '0.00'}',
+                                                                    style: ifontstyle(
+                                                                        fontSize: 14
+                                                                            .sp,
+                                                                        color: const Color(
+                                                                            0xff101828),
+                                                                        fontWeight:
+                                                                            FontWeight.w700),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ),
                                                           ],
                                                         )
                                                       ],
@@ -458,7 +446,7 @@ class _ArCollectionScreenState extends State<ArCollectionScreen> {
                                                   ),
                                                 ],
                                               ),
-                                          ),
+                                            ),
                                   arHeaderFailedState: () =>
                                       const SizedBox.shrink(),
                                 );

@@ -80,8 +80,7 @@ class UnScheduledVisitApprovalRepo implements IUnScheduledVisitApprovalRepo {
         "JSONString": jsonEncode(reject),
       });
 
-
- log({
+      log({
         "JSONString": jsonEncode(reject),
       }.toString());
 

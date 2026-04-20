@@ -135,13 +135,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proceed => 'Proceed';
 
   @override
-  String get somethingWentWrong => 'Something went wrong, please try again later';
+  String get somethingWentWrong =>
+      'Something went wrong, please try again later';
 
   @override
   String get ok => 'Ok';
 
   @override
-  String get doYouWantToApproveThisProduct => 'Do you Want to Approve this product?';
+  String get doYouWantToApproveThisProduct =>
+      'Do you Want to Approve this product?';
 
   @override
   String get cancel => 'Cancel';
@@ -150,7 +152,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get approve => 'Approve';
 
   @override
-  String get doYouWantToRejectThisProduct => 'Do you Want to Reject this product?';
+  String get doYouWantToRejectThisProduct =>
+      'Do you Want to Reject this product?';
 
   @override
   String get reject => 'Reject';
@@ -267,7 +270,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get trAgain => 'Try Again';
 
   @override
-  String get pleaseMakeSureToApproveAndReject => 'Please make sure you have approved or rejected all the products';
+  String get pleaseMakeSureToApproveAndReject =>
+      'Please make sure you have approved or rejected all the products';
 
   @override
   String get doyouWantToProceed => 'Do you Want to Proceed';
@@ -279,7 +283,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchHere => 'Search Here';
 
   @override
-  String get inventoryReconfirmationDetails => 'Inventory Reconfirmation Detail';
+  String get inventoryReconfirmationDetails =>
+      'Inventory Reconfirmation Detail';
 
   @override
   String get short => 'Short';
@@ -291,7 +296,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectReason => 'Select Reason';
 
   @override
-  String get youShouldApproveOrRejectAndSpecifyReason => 'You should approve or reject all the items listed here. In case of rejection, please specify the reason.';
+  String get youShouldApproveOrRejectAndSpecifyReason =>
+      'You should approve or reject all the items listed here. In case of rejection, please specify the reason.';
 
   @override
   String get confirm => 'Confirm';
@@ -369,7 +375,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get totalCash => 'Total Cash';
 
   @override
-  String get noDataAvailableInCashDetails => 'No Data Available in Cash Details';
+  String get noDataAvailableInCashDetails =>
+      'No Data Available in Cash Details';
 
   @override
   String get collected => 'Collected';
@@ -378,7 +385,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get variance => 'Variance';
 
   @override
-  String get noDataAvailableInPaymentMode => 'No Data Available in Payment Mode';
+  String get noDataAvailableInPaymentMode =>
+      'No Data Available in Payment Mode';
 
   @override
   String get actionTakenRequests => 'Action Taken Requests';
@@ -561,7 +569,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customer => 'Customer';
 
   @override
-  String get kindlySelectRouteToViewTheCustomers => 'Kindly select a route to view the customers';
+  String get kindlySelectRouteToViewTheCustomers =>
+      'Kindly select a route to view the customers';
 
   @override
   String get searchRoute => 'Search route';
@@ -927,7 +936,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get viewOnMap => 'View On Map';
 
   @override
-  String get doYouWantToConfirmThisGeocode => 'This geocode will be considered as the customer\'s final location, and other geocodes will be ignored after confirming the geocode. Do you want to confirm this geocode?';
+  String get doYouWantToConfirmThisGeocode =>
+      'This geocode will be considered as the customer\'s final location, and other geocodes will be ignored after confirming the geocode. Do you want to confirm this geocode?';
 
   @override
   String get no => 'No';
@@ -939,7 +949,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yourProfileHasbeenUpdated => 'Your profile has been updated';
 
   @override
-  String get yourProfileUpdationFailed => 'Your profile updation has been Failed';
+  String get yourProfileUpdationFailed =>
+      'Your profile updation has been Failed';
 
   @override
   String get mailId => 'Mail ID';
@@ -963,10 +974,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectdate => 'Select date';
 
   @override
-  String get pleaseMakeSureYouHaveSelectedaRouteAndDate => 'Please make sure you have selected a route and date';
+  String get pleaseMakeSureYouHaveSelectedaRouteAndDate =>
+      'Please make sure you have selected a route and date';
 
   @override
-  String get pleaseMakeSureYouHaveSelectedaDate => 'Please make sure you have selected a date';
+  String get pleaseMakeSureYouHaveSelectedaDate =>
+      'Please make sure you have selected a date';
 
   @override
   String get trackCustomers => 'Track Customers';
@@ -1008,7 +1021,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logout => 'Logout';
 
   @override
-  String get actionedSuccessfully => 'Your request has been successfully actioned';
+  String get actionedSuccessfully =>
+      'Your request has been successfully actioned';
 
   @override
   String get dontgoback => 'Please do not attempt to go back from this screen';
@@ -1026,8 +1040,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get version => 'Version';
 
   @override
-  String get do_you_want_to_approve_this_journey_plan => 'Do you want to approve this journey plan?';
+  String get do_you_want_to_approve_this_journey_plan =>
+      'Do you want to approve this journey plan?';
 
   @override
-  String get do_you_want_to_reject_this_journey_plan => 'Do you want to reject this journey plan?';
+  String get do_you_want_to_reject_this_journey_plan =>
+      'Do you want to reject this journey plan?';
 }

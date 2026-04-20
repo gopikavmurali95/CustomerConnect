@@ -12,9 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
-
 class CustomersListingWidget extends StatelessWidget {
   static const List<Color> _avatarColors = [
     Color(0xFF93C5FD),
@@ -31,7 +28,7 @@ class CustomersListingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
       child: BlocBuilder<CustomersListBlocBloc, CustomersListBlocState>(
         builder: (context, state) {
           return state.when(
@@ -82,26 +79,32 @@ class CustomersListingWidget extends StatelessWidget {
                                       );
                                     },
                                     child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 5.0,vertical: 5),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5.0, vertical: 5),
                                       child: Container(
-                                        constraints: const BoxConstraints(minHeight: 70),
-                                       decoration: BoxDecoration(
-                                        color: const Color(0xffFFFFFF),
-                                        borderRadius: BorderRadius.circular(10),
-                                       border: Border.all( color: const Color(0xffE5E7EB))
-                                       ),
+                                        constraints:
+                                            const BoxConstraints(minHeight: 70),
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xffFFFFFF),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                                color:
+                                                    const Color(0xffE5E7EB))),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Row(
                                             children: [
                                               CircleAvatar(
                                                   radius: 25,
-                                                  backgroundColor: _avatarColors[
-                                                      index %
+                                                  backgroundColor:
+                                                      _avatarColors[index %
                                                           _avatarColors.length],
                                                   child: Center(
                                                     child: Text(
-                                                      customers[index].cusName == null
+                                                      customers[index]
+                                                                  .cusName ==
+                                                              null
                                                           ? 'D'
                                                           : customers[index]
                                                               .cusName!
@@ -110,7 +113,8 @@ class CustomersListingWidget extends StatelessWidget {
                                                       style: kfontstyle(
                                                         fontSize: 18.sp,
                                                         color: Colors.white,
-                                                        fontWeight: FontWeight.w600,
+                                                        fontWeight:
+                                                            FontWeight.w600,
                                                       ),
                                                     ),
                                                   )),
@@ -119,20 +123,23 @@ class CustomersListingWidget extends StatelessWidget {
                                               ),
                                               Expanded(
                                                 child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     RichText(
                                                       maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       text: TextSpan(
-                                                          style: DefaultTextStyle.of(
-                                                                  context)
+                                                          style: DefaultTextStyle
+                                                                  .of(context)
                                                               .style
                                                               .copyWith(
                                                                 fontWeight:
-                                                                    FontWeight.normal,
+                                                                    FontWeight
+                                                                        .normal,
                                                                 decoration:
                                                                     TextDecoration
                                                                         .none,
@@ -146,7 +153,8 @@ class CustomersListingWidget extends StatelessWidget {
                                                                 color: const Color(
                                                                     0xff155DFC),
                                                                 fontWeight:
-                                                                    FontWeight.w500,
+                                                                    FontWeight
+                                                                        .w500,
                                                               ),
                                                             ),
                                                             TextSpan(
@@ -160,9 +168,11 @@ class CustomersListingWidget extends StatelessWidget {
                                                                           .arcusName ??
                                                                       '',
                                                               style: ifontstyle(
-                                                                  fontSize: 12.sp,
-                                                                    fontWeight:
-                                                                    FontWeight.w500,
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
                                                                   color: const Color(
                                                                       0xff101828)),
                                                             )
@@ -170,14 +180,16 @@ class CustomersListingWidget extends StatelessWidget {
                                                     ),
                                                     RichText(
                                                       maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       text: TextSpan(
-                                                          style: DefaultTextStyle.of(
-                                                                  context)
+                                                          style: DefaultTextStyle
+                                                                  .of(context)
                                                               .style
                                                               .copyWith(
                                                                 fontWeight:
-                                                                    FontWeight.normal,
+                                                                    FontWeight
+                                                                        .normal,
                                                                 decoration:
                                                                     TextDecoration
                                                                         .none,
@@ -187,12 +199,14 @@ class CustomersListingWidget extends StatelessWidget {
                                                               text:
                                                                   '${customers[index].headerCode} - ',
                                                               style: ifontstyle(
-                                                                  fontSize: 11.sp,
+                                                                  fontSize:
+                                                                      11.sp,
                                                                   color: const Color(
                                                                       0xff4A5565)),
                                                             ),
                                                             TextSpan(
-                                                              text: selectedLocale?.languageCode ==
+                                                              text: selectedLocale
+                                                                          ?.languageCode ==
                                                                       'en'
                                                                   ? customers[index]
                                                                           .headerName ??
@@ -201,19 +215,22 @@ class CustomersListingWidget extends StatelessWidget {
                                                                           .arheaderName ??
                                                                       '',
                                                               style: ifontstyle(
-                                                                color: const Color(
+                                                                  color: const Color(
                                                                       0xff4A5565),
-                                                                  fontSize: 11.sp),
+                                                                  fontSize:
+                                                                      11.sp),
                                                             )
                                                           ]),
                                                     ),
                                                     Text(
                                                       '${customers[index].cusType} | ${selectedLocale?.languageCode == 'en' ? customers[index].rotName : customers[index].arrotName} ',
                                                       maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       style: ifontstyle(
                                                           fontSize: 10.sp,
-                                                          color: const Color(0xff6A7282)),
+                                                          color: const Color(
+                                                              0xff6A7282)),
                                                     ),
                                                   ],
                                                 ),
@@ -224,7 +241,6 @@ class CustomersListingWidget extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                             
                               itemCount: customers.length),
                           isloading == true
                               ? const Row(

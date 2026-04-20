@@ -24,7 +24,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(surfaceTintColor: Colors.white,
+      appBar: AppBar(
+        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         titleSpacing: 0.5,
         leading: IconButton(
@@ -39,7 +40,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
         title: Text(
           'Tracking',
           style: appHeading(),
-        ),),
+        ),
+      ),
       body: WebViewWidget(controller: _controller),
     );
   }

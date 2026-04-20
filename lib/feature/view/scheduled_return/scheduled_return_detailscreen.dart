@@ -751,11 +751,7 @@ class _ScheduledReturnDetailScreenState
                                                                               //     3,
 
                                                                               decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
-                                                                                BoxShadow(
-                                                                                    
-                                                                                    color: Color(0xff00000050),
-                                                                                    blurRadius: 0.4,
-                                                                                    spreadRadius: 0.4)
+                                                                                BoxShadow(color: Color(0xff00000050), blurRadius: 0.4, spreadRadius: 0.4)
                                                                               ]),
                                                                               child: DropdownButtonFormField(
                                                                                 elevation: 0,
@@ -976,11 +972,7 @@ class _ScheduledReturnDetailScreenState
                                                                               border: Border.all(color: Colors.grey.shade200),
                                                                               borderRadius: BorderRadius.circular(10.0),
                                                                               boxShadow: const [
-                                                                                BoxShadow(
-                                                                                    
-                                                                                    color: Color(0xff00000050),
-                                                                                    blurRadius: 0.4,
-                                                                                    spreadRadius: 0.4)
+                                                                                BoxShadow(color: Color(0xff00000050), blurRadius: 0.4, spreadRadius: 0.4)
                                                                               ]),
                                                                           child:
                                                                               // Padding(
@@ -1023,11 +1015,7 @@ class _ScheduledReturnDetailScreenState
                                                                                   height: 32.h,
                                                                                   width: 120.w,
                                                                                   decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.grey.shade200), borderRadius: BorderRadius.circular(10.0), boxShadow: const [
-                                                                                    BoxShadow(
-                                                                                        
-                                                                                        color: Color(0xff00000050),
-                                                                                        blurRadius: 0.4,
-                                                                                        spreadRadius: 0.4)
+                                                                                    BoxShadow(color: Color(0xff00000050), blurRadius: 0.4, spreadRadius: 0.4)
                                                                                   ]),
                                                                                   child: Padding(
                                                                                     padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 1),
@@ -1236,17 +1224,14 @@ class _ScheduledReturnDetailScreenState
                                                           decoration: BoxDecoration(
                                                               color:
                                                                   Colors.white,
-                                                              border: Border.all(
-                                                                  color: Colors
-                                                                      .grey
-                                                                      .shade200),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10.0),
+                                                              border:
+                                                                  Border.all(
+                                                                      color: Colors
+                                                                          .grey
+                                                                          .shade200),
+                                                              borderRadius: BorderRadius.circular(10.0),
                                                               boxShadow: const [
                                                                 BoxShadow(
-                                                                    
                                                                     color: Color(
                                                                         0xff00000050),
                                                                     blurRadius:

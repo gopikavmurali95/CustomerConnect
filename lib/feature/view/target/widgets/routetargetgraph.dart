@@ -364,16 +364,19 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               color: const Color(0xff3DDB7C),
                                               title:
                                                   AppLocalizations.of(context)!
-                                                      .achieved, items: '',
+                                                      .achieved,
+                                              items: '',
                                             ),
                                             SizedBox(
                                               height: 15.h,
                                             ),
                                             ArChartItemWidget(
-                                                amount: amount.mtdGapAmt ?? '',
-                                                color: const Color(0xffE07744),
-                                                title:
-                                                    "MTD${AppLocalizations.of(context)!.gap}", items: '',),
+                                              amount: amount.mtdGapAmt ?? '',
+                                              color: const Color(0xffE07744),
+                                              title:
+                                                  "MTD${AppLocalizations.of(context)!.gap}",
+                                              items: '',
+                                            ),
                                             SizedBox(
                                               height: 15.h,
                                             ),
@@ -382,7 +385,8 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                               color: const Color(0xffEAD846),
                                               title:
                                                   AppLocalizations.of(context)!
-                                                      .monthlyGap, items: '',
+                                                      .monthlyGap,
+                                              items: '',
                                             ),
                                           ],
                                         ),
@@ -706,27 +710,30 @@ class _RouteTargetGraphWidgetState extends State<RouteTargetGraphWidget> {
                                                 color: const Color(0xff3DDB7C),
                                                 title: AppLocalizations.of(
                                                         context)!
-                                                    .achieved, items: '',
+                                                    .achieved,
+                                                items: '',
                                               ),
                                               SizedBox(
                                                 height: 15.h,
                                               ),
                                               ArChartItemWidget(
-                                                  amount: qty.mtdGapQty ?? '',
-                                                  color:
-                                                      const Color(0xffE07744),
-                                                  title:
-                                                      "MTD${AppLocalizations.of(context)!.gap}", items: '',),
+                                                amount: qty.mtdGapQty ?? '',
+                                                color: const Color(0xffE07744),
+                                                title:
+                                                    "MTD${AppLocalizations.of(context)!.gap}",
+                                                items: '',
+                                              ),
                                               SizedBox(
                                                 height: 15.h,
                                               ),
                                               ArChartItemWidget(
-                                                  amount: qty.monthGapQty ?? '',
-                                                  color:
-                                                      const Color(0xffEAD846),
-                                                  title: AppLocalizations.of(
-                                                          context)!
-                                                      .monthlyGap, items: '',),
+                                                amount: qty.monthGapQty ?? '',
+                                                color: const Color(0xffEAD846),
+                                                title: AppLocalizations.of(
+                                                        context)!
+                                                    .monthlyGap,
+                                                items: '',
+                                              ),
                                             ],
                                           ),
                                         )

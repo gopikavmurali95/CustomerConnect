@@ -925,10 +925,8 @@ class _PArtialDeliveryDetails extends State<PArtialDeliveryDetails> {
                                                                             color: Color(
                                                                                 // ignore: use_full_hex_values_for_flutter_colors
                                                                                 0xff00000050),
-                                                                            blurRadius:
-                                                                                0.4,
-                                                                            spreadRadius:
-                                                                                0.4)
+                                                                            blurRadius: 0.4,
+                                                                            spreadRadius: 0.4)
                                                                       ]),
                                                                   child:
                                                                       Padding(

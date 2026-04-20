@@ -1,10 +1,16 @@
 import 'package:customer_connect/constants/fonts.dart';
+import 'package:customer_connect/feature/state/bloc/assetstrackedcount/assets_tracked_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchsurveycount/merch_survey_count_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/merchtaskcount/merch_task_count_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MerchandisingTransactionContainerWidget extends StatefulWidget {
-  const MerchandisingTransactionContainerWidget({super.key});
+  final String userId;
+
+  const MerchandisingTransactionContainerWidget({super.key, required this.userId});
 
   @override
   State<MerchandisingTransactionContainerWidget> createState() =>
@@ -13,22 +19,29 @@ class MerchandisingTransactionContainerWidget extends StatefulWidget {
 
 class _MerchandisingTransactionContainerWidgetState
     extends State<MerchandisingTransactionContainerWidget> {
-  final int _surveyCompleted = 4;
-  final int _surveyTotal = 12;
-  final int _surveyPending = 8;
-  final int _assetsTracked = 4;
-  final int _assetsTotal = 6;
-  final int _tasksCompleted = 2;
-  final int _tasksPending = 4;
+  @override
+  void initState() {
+    super.initState();
+    final todayDate =
+        '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
+    context.read<MerchSurveyCountBloc>().add(const SurveyCountClearEvent());
+    context.read<MerchSurveyCountBloc>().add(
+          GetSurveyCountEvent(fromDate: todayDate, toDate: todayDate),
+        );
+    context.read<MerchTaskCountBloc>().add(const TaskCountClearEvent());
+    context.read<MerchTaskCountBloc>().add(
+          GetTaskCountEvent(fromDate: todayDate, toDate: todayDate),
+        );
+    context
+        .read<AssetsTrackedCountBloc>()
+        .add(const AssetsTrackedCountClearEvent());
+    context.read<AssetsTrackedCountBloc>().add(
+          AssetsTrackedCountSuccessEvent(userId: widget.userId),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
-    final surveyRate =
-        _surveyTotal == 0 ? 0.0 : _surveyCompleted / _surveyTotal;
-    final assetsRate = _assetsTotal == 0 ? 0.0 : _assetsTracked / _assetsTotal;
-    final taskTotal = _tasksCompleted + _tasksPending;
-    final taskRate = taskTotal == 0 ? 0.0 : _tasksCompleted / taskTotal;
-
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 8.w,
@@ -94,11 +107,82 @@ class _MerchandisingTransactionContainerWidgetState
               padding: EdgeInsets.all(12.r),
               child: Column(
                 children: [
-                  _surveyCard(surveyRate),
+                  BlocBuilder<MerchSurveyCountBloc, MerchSurveyCountState>(
+                    builder: (context, state) {
+                      int surveyCompleted = 0;
+                      int surveyTotal = 0;
+
+                      state.when(
+                        getSurveyCountState: (surveyData) {
+                          surveyCompleted =
+                              int.tryParse(surveyData?.completedSurvey ?? '0') ??
+                                  0;
+                          surveyTotal =
+                              int.tryParse(surveyData?.assignedSurvey ?? '0') ??
+                                  0;
+                        },
+                        surveyCountFailedState: () {},
+                      );
+
+                      final surveyPending = surveyTotal - surveyCompleted < 0
+                          ? 0
+                          : surveyTotal - surveyCompleted;
+                      final surveyRate = surveyTotal == 0
+                          ? 0.0
+                          : surveyCompleted / surveyTotal;
+
+                      return _surveyCard(
+                          surveyRate, surveyCompleted, surveyTotal, surveyPending);
+                    },
+                  ),
                   SizedBox(height: 12.h),
-                  _assetsCard(assetsRate),
+                  BlocBuilder<AssetsTrackedCountBloc, AssetsTrackedCountState>(
+                    builder: (context, state) {
+                      int assetsTracked = 0;
+                      int assetsTotal = 0;
+
+                      state.when(
+                        assetsTrackedCountSuccessState: (assetsTrackedData) {
+                          assetsTracked =
+                              assetsTrackedData?.totalAssetTrackedCount ?? 0;
+                          assetsTotal = assetsTrackedData?.totalAssetCount ?? 0;
+                        },
+                        assetsTrackedCountFailedState: () {},
+                      );
+
+                      final assetsRate = assetsTotal == 0
+                          ? 0.0
+                          : assetsTracked / assetsTotal;
+
+                      return _assetsCard(assetsRate, assetsTracked, assetsTotal);
+                    },
+                  ),
                   SizedBox(height: 12.h),
-                  _taskCard(taskRate),
+                  BlocBuilder<MerchTaskCountBloc, MerchTaskCountState>(
+                    builder: (context, state) {
+                      int tasksCompleted = 0;
+                      int tasksTotal = 0;
+
+                      state.when(
+                        getTaskCountState: (taskData) {
+                          tasksCompleted =
+                              int.tryParse(taskData?.completedTasks ?? '0') ?? 0;
+                          tasksTotal =
+                              int.tryParse(taskData?.assignedTasks ?? '0') ?? 0;
+                        },
+                        taskCountFailedState: () {},
+                      );
+
+                      final tasksPending = tasksTotal - tasksCompleted < 0
+                          ? 0
+                          : tasksTotal - tasksCompleted;
+                      final taskRate =
+                          tasksTotal == 0 ? 0.0 : tasksCompleted / tasksTotal;
+
+                      return _taskCard(
+                          taskRate, tasksCompleted, tasksPending, tasksTotal);
+                    },
+                  ),
                 ],
               ),
             ),
@@ -108,7 +192,8 @@ class _MerchandisingTransactionContainerWidgetState
     );
   }
 
-  Widget _surveyCard(double surveyRate) {
+  Widget _surveyCard(
+      double surveyRate, int surveyCompleted, int surveyTotal, int surveyPending) {
     return Container(
       padding: EdgeInsets.all(12.r),
       decoration: _sectionDecoration(),
@@ -154,7 +239,7 @@ class _MerchandisingTransactionContainerWidgetState
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          '$_surveyCompleted',
+                          '$surveyCompleted',
                           style: GoogleFonts.inter(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.w700,
@@ -162,7 +247,7 @@ class _MerchandisingTransactionContainerWidgetState
                           ),
                         ),
                         Text(
-                          'of $_surveyTotal',
+                          'of $surveyTotal',
                           style: subTextStyle().copyWith(
                             color: const Color(0xFF94A3B8),
                           ),
@@ -177,10 +262,10 @@ class _MerchandisingTransactionContainerWidgetState
                 child: Column(
                   children: [
                     _legendRow(
-                        'Completed', _surveyCompleted, const Color(0xFF8B5CF6)),
+                        'Completed', surveyCompleted, const Color(0xFF8B5CF6)),
                     SizedBox(height: 8.h),
                     _legendRow(
-                        'Pending', _surveyPending, const Color(0xFFCBD5E1)),
+                        'Pending', surveyPending, const Color(0xFFCBD5E1)),
                     SizedBox(height: 8.h),
                     const Divider(height: 1, color: Color(0xFFE2E8F0)),
                     SizedBox(height: 8.h),
@@ -214,7 +299,7 @@ class _MerchandisingTransactionContainerWidgetState
     );
   }
 
-  Widget _assetsCard(double assetsRate) {
+  Widget _assetsCard(double assetsRate, int assetsTracked, int assetsTotal) {
     return Container(
       padding: EdgeInsets.all(12.r),
       decoration: _sectionDecoration(),
@@ -246,7 +331,7 @@ class _MerchandisingTransactionContainerWidgetState
                       ),
                     ),
                     Text(
-                      '$_assetsTracked/$_assetsTotal',
+                      '$assetsTracked/$assetsTotal',
                       style: GoogleFonts.inter(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
@@ -293,7 +378,8 @@ class _MerchandisingTransactionContainerWidgetState
     );
   }
 
-  Widget _taskCard(double taskRate) {
+  Widget _taskCard(
+      double taskRate, int tasksCompleted, int tasksPending, int tasksTotal) {
     return Container(
       padding: EdgeInsets.all(12.r),
       decoration: _sectionDecoration(),
@@ -316,8 +402,8 @@ class _MerchandisingTransactionContainerWidgetState
               Expanded(
                 child: _taskInfoCard(
                   title: 'Completed',
-                  value: _tasksCompleted.toString(),
-                  note: 'of ${_tasksCompleted + _tasksPending} tasks',
+                  value: tasksCompleted.toString(),
+                  note: 'of $tasksTotal tasks',
                   color: const Color(0xFF16A34A),
                   borderColor: const Color(0xFFBBF7D0),
                   icon: Icons.check_circle_outline,
@@ -327,7 +413,7 @@ class _MerchandisingTransactionContainerWidgetState
               Expanded(
                 child: _taskInfoCard(
                   title: 'Pending',
-                  value: _tasksPending.toString(),
+                  value: tasksPending.toString(),
                   note: 'remaining',
                   color: const Color(0xFFF59E0B),
                   borderColor: const Color(0xFFFDE68A),

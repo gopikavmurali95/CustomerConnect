@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:customer_connect/core/api/endpoints.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
+import 'package:customer_connect/feature/data/models/assets_tracked_in_merch_model/assets_tracked_in_merch_model.dart';
 import 'package:customer_connect/feature/data/models/get_cus_actcount_model/get_cus_actcount_model.dart';
 import 'package:customer_connect/feature/data/models/get_display_count_model/get_display_count_model.dart';
 import 'package:customer_connect/feature/data/models/get_out_of_stock_count_model/get_out_of_stock_count_model.dart';
@@ -145,6 +146,30 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
         final cusServicecount =
             MerchCuServiceCountModel.fromJson(json["result"][0]);
         return right(cusServicecount);
+      } else {
+        return left(
+          const MainFailures.networkerror(error: "Something went wrong"),
+        );
+      }
+    } catch (e) {
+      return left(const MainFailures.serverfailure());
+    }
+  }
+  
+  @override
+  Future<Either<MainFailures, AssetsTrackedInMerchModel>> getAssetsTrackedInMerch(
+    String userId) async{
+    try {
+      final response = await http.post(
+          Uri.parse(baseUrl + merchAssetsTrackedCountUrl),
+          body: {"userId": userId,});
+      //log({"FromDate": fromDate, "ToDate": toDate}.toString());
+      if (response.statusCode == 200) {
+        // log('cusServicecount: ${response.body}');
+        Map<String, dynamic> json = jsonDecode(response.body);
+        final assetsTracked =
+            AssetsTrackedInMerchModel.fromJson(json["result"][0]);
+        return right(assetsTracked);
       } else {
         return left(
           const MainFailures.networkerror(error: "Something went wrong"),
