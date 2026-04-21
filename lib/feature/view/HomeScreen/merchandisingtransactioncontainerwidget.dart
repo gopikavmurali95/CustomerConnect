@@ -10,7 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 class MerchandisingTransactionContainerWidget extends StatefulWidget {
   final String userId;
 
-  const MerchandisingTransactionContainerWidget({super.key, required this.userId});
+  const MerchandisingTransactionContainerWidget(
+      {super.key, required this.userId});
 
   @override
   State<MerchandisingTransactionContainerWidget> createState() =>
@@ -114,9 +115,9 @@ class _MerchandisingTransactionContainerWidgetState
 
                       state.when(
                         getSurveyCountState: (surveyData) {
-                          surveyCompleted =
-                              int.tryParse(surveyData?.completedSurvey ?? '0') ??
-                                  0;
+                          surveyCompleted = int.tryParse(
+                                  surveyData?.completedSurvey ?? '0') ??
+                              0;
                           surveyTotal =
                               int.tryParse(surveyData?.assignedSurvey ?? '0') ??
                                   0;
@@ -131,8 +132,8 @@ class _MerchandisingTransactionContainerWidgetState
                           ? 0.0
                           : surveyCompleted / surveyTotal;
 
-                      return _surveyCard(
-                          surveyRate, surveyCompleted, surveyTotal, surveyPending);
+                      return _surveyCard(surveyRate, surveyCompleted,
+                          surveyTotal, surveyPending);
                     },
                   ),
                   SizedBox(height: 12.h),
@@ -150,11 +151,11 @@ class _MerchandisingTransactionContainerWidgetState
                         assetsTrackedCountFailedState: () {},
                       );
 
-                      final assetsRate = assetsTotal == 0
-                          ? 0.0
-                          : assetsTracked / assetsTotal;
+                      final assetsRate =
+                          assetsTotal == 0 ? 0.0 : assetsTracked / assetsTotal;
 
-                      return _assetsCard(assetsRate, assetsTracked, assetsTotal);
+                      return _assetsCard(
+                          assetsRate, assetsTracked, assetsTotal);
                     },
                   ),
                   SizedBox(height: 12.h),
@@ -166,7 +167,8 @@ class _MerchandisingTransactionContainerWidgetState
                       state.when(
                         getTaskCountState: (taskData) {
                           tasksCompleted =
-                              int.tryParse(taskData?.completedTasks ?? '0') ?? 0;
+                              int.tryParse(taskData?.completedTasks ?? '0') ??
+                                  0;
                           tasksTotal =
                               int.tryParse(taskData?.assignedTasks ?? '0') ?? 0;
                         },
@@ -192,8 +194,8 @@ class _MerchandisingTransactionContainerWidgetState
     );
   }
 
-  Widget _surveyCard(
-      double surveyRate, int surveyCompleted, int surveyTotal, int surveyPending) {
+  Widget _surveyCard(double surveyRate, int surveyCompleted, int surveyTotal,
+      int surveyPending) {
     return Container(
       padding: EdgeInsets.all(12.r),
       decoration: _sectionDecoration(),

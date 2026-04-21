@@ -12,6 +12,10 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
+bool _isNoDataResponse(String responseBody) {
+  return responseBody.trim().toLowerCase().startsWith('nodatares');
+}
+
 @LazySingleton(as: ICusInsightsCustomersRepo)
 class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
   @override
@@ -70,12 +74,31 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
         'SearchString': message['searchString'],
         'Pagenum': message['pagenum'],
       }.toString());
+      final rawBody = utf8.decode(response.bodyBytes).trim();
+
       if (response.statusCode == 200) {
-        final json = jsonDecode(response.body);
-        final List<dynamic> cusdetaildata = json['result'];
-        final cuslist = cusdetaildata
-            .map<CusInsCustomersModel>(
-                (json) => CusInsCustomersModel.fromJson(json))
+        log('Cus insights customers raw response: $rawBody');
+
+        if (rawBody.isEmpty || _isNoDataResponse(rawBody)) {
+          message['receivePort'].send(<CusInsCustomersModel>[]);
+          return;
+        }
+
+        final decoded = jsonDecode(rawBody);
+        if (decoded is! Map<String, dynamic>) {
+          message['receivePort'].send(const MainFailures.serverfailure());
+          return;
+        }
+
+        final result = decoded['result'];
+        if (result is! List) {
+          message['receivePort'].send(<CusInsCustomersModel>[]);
+          return;
+        }
+
+        final cuslist = result
+            .map<CusInsCustomersModel>((item) => CusInsCustomersModel.fromJson(
+                Map<String, dynamic>.from(item as Map)))
             .toList();
         message['receivePort'].send(cuslist);
       } else {
@@ -116,10 +139,28 @@ class CusInsCustomersRepo implements ICusInsightsCustomersRepo {
         'Pagenum': pagenum,
       }.toString());
 
+      final rawBody = utf8.decode(response.bodyBytes).trim();
+
       if (response.statusCode == 200) {
-        log(response.body);
-        Map<String, dynamic> json = jsonDecode(response.body);
-        final countModel = CusInsCustomerCountModel.fromJson(json["result"][0]);
+        log(rawBody);
+
+        if (rawBody.isEmpty || _isNoDataResponse(rawBody)) {
+          return right(CusInsCustomerCountModel(totalCount: '0'));
+        }
+
+        final decoded = jsonDecode(rawBody);
+        if (decoded is! Map<String, dynamic>) {
+          return left(const MainFailures.serverfailure());
+        }
+
+        final result = decoded['result'];
+        if (result is! List || result.isEmpty) {
+          return right(CusInsCustomerCountModel(totalCount: '0'));
+        }
+
+        final countModel = CusInsCustomerCountModel.fromJson(
+          Map<String, dynamic>.from(result.first as Map),
+        );
         return right(countModel);
       } else {
         return left(

@@ -155,14 +155,15 @@ class MerchandisingScreenRepo implements IMerchandisingDashBoardRepo {
       return left(const MainFailures.serverfailure());
     }
   }
-  
+
   @override
-  Future<Either<MainFailures, AssetsTrackedInMerchModel>> getAssetsTrackedInMerch(
-    String userId) async{
+  Future<Either<MainFailures, AssetsTrackedInMerchModel>>
+      getAssetsTrackedInMerch(String userId) async {
     try {
-      final response = await http.post(
-          Uri.parse(baseUrl + merchAssetsTrackedCountUrl),
-          body: {"userId": userId,});
+      final response = await http
+          .post(Uri.parse(baseUrl + merchAssetsTrackedCountUrl), body: {
+        "userId": userId,
+      });
       //log({"FromDate": fromDate, "ToDate": toDate}.toString());
       if (response.statusCode == 200) {
         // log('cusServicecount: ${response.body}');

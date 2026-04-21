@@ -92,6 +92,17 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      context
+          .read<ApprovalCountsBloc>()
+          .add(GetApprovalsCountEvent(userID: widget.user.usrId ?? ''));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final user = widget.user;
     return Scaffold(
@@ -120,7 +131,7 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                   tabGradients: ApprovalsHeaderSection.defaultTabGradients,
                 ),
                 const SizedBox(height: 10),
-                const PendingApprovalsWidget(),
+               // PendingApprovalsWidget(user: user),
                 const SizedBox(height: 10),
                 Padding(
                   padding:

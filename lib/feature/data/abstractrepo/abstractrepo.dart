@@ -139,6 +139,7 @@ import 'package:customer_connect/feature/data/models/partial_delivery_approval_o
 import 'package:customer_connect/feature/data/models/partial_delivery_details_model/partial_delivery_details_model.dart';
 import 'package:customer_connect/feature/data/models/partial_delivery_header_model/partial_delivery_header_model.dart';
 import 'package:customer_connect/feature/data/models/partial_delivery_reason_model/partial_delivery_reason_model.dart';
+import 'package:customer_connect/feature/data/models/pending_approvals_model/pending_approvals_model.dart';
 import 'package:customer_connect/feature/data/models/picking_and_loadin_counts_model/picking_and_loadin_counts_model.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingInModel.dart';
 import 'package:customer_connect/feature/data/models/picking_header_model/PickingOutModel.dart';
@@ -693,8 +694,8 @@ abstract class IMerchandisingDashBoardRepo {
       String fromDate, String toDate);
   Future<Either<MainFailures, MerchCuServiceCountModel>> getCusServiceCount(
       String fromDate, String toDate);
-  Future<Either<MainFailures,AssetsTrackedInMerchModel>> getAssetsTrackedInMerch
-      (String userId);    
+  Future<Either<MainFailures, AssetsTrackedInMerchModel>>
+      getAssetsTrackedInMerch(String userId);
 }
 
 abstract class ICustomerSettingsRepo {
@@ -874,5 +875,16 @@ abstract class ICustomerFocRepo {
 abstract class IStampedCopyRepo {
   Future<Either<MainFailures, StampedCopyModel>> getCopy(
     String invID,
+  );
+}
+
+abstract class IApiRequestRepo {
+  Future<Either<MainFailures, String>> getApiRequest(
+      String urlEndPont, Map<String, dynamic> jsonInPara);
+}
+
+abstract class IPendingApprovalRepo {
+  Future<Either<MainFailures, List<PendingApprovalsModel>>> getPendingApprovalList(
+    String userId,
   );
 }

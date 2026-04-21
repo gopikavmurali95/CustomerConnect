@@ -13,6 +13,8 @@ import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart'
     as _i932;
 import 'package:customer_connect/feature/domain/repoImpls/activityreview/activityreviewrepo.dart'
     as _i387;
+import 'package:customer_connect/feature/domain/repoImpls/apirequestrepo/apirequestrepo.dart'
+    as _i69;
 import 'package:customer_connect/feature/domain/repoImpls/approvalscountrepo/approvalscountrepo.dart'
     as _i691;
 import 'package:customer_connect/feature/domain/repoImpls/arcollection/arcollectionrepo.dart'
@@ -115,6 +117,8 @@ import 'package:customer_connect/feature/domain/repoImpls/outstandingheaderrepo/
     as _i337;
 import 'package:customer_connect/feature/domain/repoImpls/partialdeliveryrepo/partialdeliveryrepo.dart'
     as _i883;
+import 'package:customer_connect/feature/domain/repoImpls/pendingapprovalrepo/pendingapprovalsrepo.dart'
+    as _i332;
 import 'package:customer_connect/feature/domain/repoImpls/pickingandloadingrepo/pickingandloadincountrepo.dart'
     as _i188;
 import 'package:customer_connect/feature/domain/repoImpls/pickingheaderrepo/pickingheaderrepo.dart'
@@ -251,6 +255,8 @@ import 'package:customer_connect/feature/state/bloc/customers/customers_list_blo
     as _i835;
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart'
     as _i592;
+import 'package:customer_connect/feature/state/bloc/customertransactiontargetcount/customer_transaction_target_count_bloc.dart'
+    as _i907;
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart'
     as _i619;
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart'
@@ -381,6 +387,8 @@ import 'package:customer_connect/feature/state/bloc/partialdeliveryheader/partia
     as _i25;
 import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/partial_delivery_reason_bloc.dart'
     as _i666;
+import 'package:customer_connect/feature/state/bloc/pendingapprovallist/pending_approvals_list_bloc.dart'
+    as _i1030;
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart'
     as _i168;
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart'
@@ -602,6 +610,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i932.ICreditNoteApprovalRepo>(
         () => _i637.CreditNoteApprovalRepo());
     gh.lazySingleton<_i932.ILoginRepo>(() => _i739.UserLoginRepo());
+    gh.lazySingleton<_i932.IApiRequestRepo>(() => _i69.ApiRequestRepo());
     gh.lazySingleton<_i932.ICusInsArRepo>(() => _i859.CusInsArRepo());
     gh.factory<_i298.AssetAddingApprovalAndRjectBlocBloc>(() =>
         _i298.AssetAddingApprovalAndRjectBlocBloc(
@@ -651,6 +660,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1012.MerchCreditNoteRequestRepo());
     gh.lazySingleton<_i932.IMerchandinsingSurveyRepo>(
         () => _i145.MerchandisingSurveyRepo());
+    gh.lazySingleton<_i932.IPendingApprovalRepo>(
+        () => _i332.PendingApprovalsRepo());
     gh.factory<_i184.NotificationListingBloc>(
         () => _i184.NotificationListingBloc(gh<_i932.INotificationRepo>()));
     gh.factory<_i1068.NotificationReplayBlocBloc>(
@@ -720,6 +731,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i836.OutOfStockItemCustomersBloc(gh<_i932.IOutOfStockProductsRepo>()));
     gh.factory<_i46.OutOfStockItemsBloc>(
         () => _i46.OutOfStockItemsBloc(gh<_i932.IOutOfStockProductsRepo>()));
+    gh.factory<_i907.CustomerTransactionTargetCountBloc>(() =>
+        _i907.CustomerTransactionTargetCountBloc(gh<_i932.IApiRequestRepo>()));
     gh.factory<_i168.PickingAndLoadingCountBloc>(() =>
         _i168.PickingAndLoadingCountBloc(
             gh<_i932.IPickingAndLoadinCountRepo>()));
@@ -959,6 +972,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i410.GetAllRouteBloc(gh<_i932.IGetAllAvailableRoutesRepo>()));
     gh.factory<_i113.TargetDetailsGraphAmtBloc>(
         () => _i113.TargetDetailsGraphAmtBloc(gh<_i932.ITargetRepo>()));
+    gh.factory<_i1030.PendingApprovalsListBloc>(() =>
+        _i1030.PendingApprovalsListBloc(gh<_i932.IPendingApprovalRepo>()));
     gh.factory<_i39.SettlementApprovalHeaderBloc>(() =>
         _i39.SettlementApprovalHeaderBloc(
             gh<_i932.ISettlementApprovalHeaderRepo>()));

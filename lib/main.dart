@@ -47,6 +47,7 @@ import 'package:customer_connect/feature/state/bloc/customerfocrejection/cusrome
 import 'package:customer_connect/feature/state/bloc/customerinsightgroupbloc/customer_insight_group_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customeroverrideapprovreject/override_approve_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/customertransactiontargetcount/customer_transaction_target_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputeapproval/dispute_note_approval_and_reject_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenotedetail/dispute_note_detail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/disputenoteheader/dispute_note_header_bloc.dart';
@@ -107,6 +108,7 @@ import 'package:customer_connect/feature/state/bloc/outstanding/outstanding_bloc
 import 'package:customer_connect/feature/state/bloc/partialdeliveryapproval/partial_delivery_approval_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/partialdeliverydetailsbloc/partial_delivery_details_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/partialdeliveryreasons/partial_delivery_reason_bloc.dart';
+import 'package:customer_connect/feature/state/bloc/pendingapprovallist/pending_approvals_list_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_and_loading_count/picking_and_loading_count_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_detail/pickingdetail_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/picking_header/picking_header_bloc.dart';
@@ -843,8 +845,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<CustomBottomNavCubit>(
           create: (context) => CustomBottomNavCubit(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => getit<AssetsTrackedCountBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getit<CustomerTransactionTargetCountBloc>(),
+        ),
+          BlocProvider(
+          create: (context) => getit<PendingApprovalsListBloc>(),
         ),
       ],
       child: ScreenUtilInit(

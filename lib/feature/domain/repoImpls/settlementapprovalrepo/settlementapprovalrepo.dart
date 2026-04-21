@@ -23,7 +23,7 @@ class SettlementApproval implements ISettlementApprovalHeaderRepo {
       final response = await http.post(
           Uri.parse(approvalBaseUrl + settlementApprovalHeaderUrl),
           body: {"Status_Value": statusvalue});
-
+      log("statusvalue: $statusvalue");
       if (response.statusCode == 200) {
         // logger.w(' Settlement Response: ${response.body}');
         Map<String, dynamic> json = jsonDecode(response.body);

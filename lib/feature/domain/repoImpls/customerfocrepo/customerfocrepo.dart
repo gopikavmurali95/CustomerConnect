@@ -24,7 +24,7 @@ class CustomerFocHeaderRepo implements ICustomerFocRepo {
         baseUrl + customerFocHeaderUrl,
         data: {"Status_Value": mode},
       );
-
+      log('status value: $mode');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.data);
         final List<dynamic> headerdata = json['result'];
