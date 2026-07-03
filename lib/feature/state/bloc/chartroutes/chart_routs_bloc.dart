@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:customer_connect/core/failures/failures.dart';
 import 'package:customer_connect/feature/data/abstractrepo/abstractrepo.dart';
@@ -19,10 +21,16 @@ class ChartRoutsBloc extends Bloc<ChartRoutsEvent, ChartRoutsState> {
           .routesChart(event.date, event.date, event.userId);
 
       emit(routes.fold(
-          (l) => GetChartRoutesDataState(
-              routedata: ChartRoutesModel(
-                  active: '0', daysNotStarted: '0', daysStarted: '0')),
-          (r) => GetChartRoutesDataState(routedata: r)));
+          (l) {
+            log('GetCCRouteCount - Active Routes Count: 0 (API failed)');
+            return GetChartRoutesDataState(
+                routedata: ChartRoutesModel(
+                    active: '0', daysNotStarted: '0', daysStarted: '0'));
+          },
+          (r) {
+            log('GetCCRouteCount - Active Routes Count: ${r.active ?? '0'}');
+            return GetChartRoutesDataState(routedata: r);
+          }));
     });
   }
 }

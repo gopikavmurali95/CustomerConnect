@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:customer_connect/constants/fonts.dart';
 import 'package:customer_connect/feature/data/models/login_user_model/login_user_model.dart';
+import 'package:customer_connect/feature/data/models/approval_count_model/approval_count_model.dart';
+import 'package:customer_connect/feature/data/models/customer_settings_model/customer_settings_model.dart';
 import 'package:customer_connect/feature/state/bloc/approvalscountsbloc/approval_counts_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/customersettings/customer_settings_bloc.dart';
 import 'package:customer_connect/feature/state/bloc/field_service_header/field_service_header_bloc.dart';
@@ -91,11 +93,130 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
     }
   }
 
+  bool _hasPendingCount(String? count) {
+    return count != null && count.isNotEmpty && count != '0';
+  }
+
+  bool _isApprovalTypeVisible(
+    CustomerSettingsModel? settings,
+    String? approvalFlag,
+    String? pendingCount,
+  ) {
+    if (_hasPendingCount(pendingCount)) return true;
+    if (settings == null) return false;
+    if (approvalFlag == 'Y') return true;
+    return settings.approvals == 'Y';
+  }
+
+  String? _approvalSettingFlag(CustomerSettingsModel? settings, int index) {
+    switch (index) {
+      case 0:
+        return settings?.priceChangeAppr;
+      case 1:
+        return settings?.partDelAppr;
+      case 2:
+        return settings?.schReturnAppr;
+      case 3:
+        return settings?.retAppr;
+      case 4:
+        return settings?.dispNoteAppr;
+      case 5:
+        return settings?.credNoteAppr;
+      case 6:
+        return settings?.assAddAppr;
+      case 7:
+        return settings?.assRemAppr;
+      case 8:
+        return settings?.vantoVanAppr;
+      case 9:
+        return settings?.loadTransAppr;
+      case 10:
+        return settings?.jourPlanAppr;
+      case 11:
+        return settings?.fieldServAppr;
+      case 12:
+        return settings?.matReqAppr;
+      case 13:
+        return settings?.loadReqAppr;
+      case 14:
+        return settings?.invReconfAppr;
+      case 15:
+        return settings?.voidTransAppr;
+      case 16:
+        return settings?.mustSellAppr;
+      case 17:
+        return settings?.settleAppr;
+      case 18:
+        return settings?.unschvisit;
+      case 19:
+        return settings?.cusfoc;
+      case 20:
+        return settings?.cusovrride;
+      case 21:
+        return settings?.freesample;
+      default:
+        return null;
+    }
+  }
+
+  String? _approvalPendingCount(ApprovalCountModel? counts, int index) {
+    switch (index) {
+      case 0:
+        return counts?.pendingPriceChangeApproval;
+      case 1:
+        return counts?.pendingPartialDeliveryHeader;
+      case 2:
+        return counts?.pendingReturnRequestSc;
+      case 3:
+        return counts?.pendingReturnHeader;
+      case 4:
+        return counts?.pendingDisputeNoteReqHeader;
+      case 5:
+        return counts?.pendingCreditNoteReqHeader;
+      case 6:
+        return counts?.pendingAssetAddReqHeader;
+      case 7:
+        return counts?.pendingAssetRemovalReqHeader;
+      case 8:
+        return counts?.pendingVanToVanHeader;
+      case 9:
+        return counts?.pendingLodTransRequest;
+      case 10:
+        return counts?.pendingJurneyPlanSeqApprvl;
+      case 11:
+        return counts?.pendingInvoiceApprovalHeader;
+      case 12:
+        return counts?.pendingMaterialReqApproval;
+      case 13:
+        return counts?.pendingLoadRequestHeader;
+      case 14:
+        return counts?.inventoryReconfirm;
+      case 15:
+        return counts?.voidTransactionHead;
+      case 16:
+        return counts?.mustSellHead;
+      case 17:
+        return counts?.settlementApprovalHead;
+      case 18:
+        return counts?.unschVisit;
+      case 19:
+        return counts?.pendingCustomerFOCApprovalHeader;
+      case 20:
+        return counts?.pendingOverRideApprovalHeader;
+      case 21:
+        return counts?.pendingSampleApprovalHeader;
+      default:
+        return null;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
+      context.read<CustomerSettingsBloc>().add(
+          GetCustomerSettingsEvent(usrID: widget.user.usrId ?? '0'));
       context
           .read<ApprovalCountsBloc>()
           .add(GetApprovalsCountEvent(userID: widget.user.usrId ?? ''));
@@ -140,10 +261,24 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5),
-                  child:
-                      BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
-                    builder: (context, state) {
-                      final approvalItems = <Widget>[
+                  child: BlocBuilder<CustomerSettingsBloc, CustomerSettingsState>(
+                    builder: (context, settingsState) {
+                      return BlocBuilder<ApprovalCountsBloc,
+                          ApprovalCountsState>(
+                        builder: (context, countsState) {
+                          final settings = settingsState.maybeWhen(
+                            getCustomerSettingsState: (value) => value,
+                            orElse: () => null,
+                          );
+                          final settingsFailed = settingsState.maybeWhen(
+                            customerSettingsFailedState: () => true,
+                            orElse: () => false,
+                          );
+                          final approvalCounts = countsState.maybeWhen(
+                            getApprovalsCount: (value) => value,
+                            orElse: () => null,
+                          );
+                          final approvalItems = <Widget>[
                         ApprovalGridTile(
                           imageAsset: "assets/images/pc.png",
                           title: Text(
@@ -1038,181 +1173,17 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                           },
                         ),
                       ];
-                      final approvalVisibility = <bool>[
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.priceChangeAppr == null ||
-                                      settings?.priceChangeAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.partDelAppr == null ||
-                                      settings?.partDelAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.schReturnAppr == null ||
-                                      settings?.schReturnAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.retAppr == null ||
-                                      settings?.retAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.dispNoteAppr == null ||
-                                      settings?.dispNoteAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.credNoteAppr == null ||
-                                      settings?.credNoteAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.assAddAppr == null ||
-                                      settings?.assAddAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.assRemAppr == null ||
-                                      settings?.assRemAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.vantoVanAppr == null ||
-                                      settings?.vantoVanAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.loadTransAppr == null ||
-                                      settings?.loadTransAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.jourPlanAppr == null ||
-                                      settings?.jourPlanAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.fieldServAppr == null ||
-                                      settings?.fieldServAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.matReqAppr == null ||
-                                      settings?.matReqAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.loadReqAppr == null ||
-                                      settings?.loadReqAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.invReconfAppr == null ||
-                                      settings?.invReconfAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.voidTransAppr == null ||
-                                      settings?.voidTransAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.mustSellAppr == null ||
-                                      settings?.mustSellAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.settleAppr == null ||
-                                      settings?.settleAppr != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                          getCustomerSettingsState: (settings) =>
-                              settings?.unschvisit == null ||
-                                      settings?.unschvisit != 'Y'
-                                  ? false
-                                  : true,
-                          customerSettingsFailedState: () => true,
-                        ),
-                        state.when(
-                            getCustomerSettingsState: (settings) =>
-                                settings?.cusfoc == null ||
-                                        settings?.cusfoc != 'Y'
-                                    ? false
-                                    : true,
-                            customerSettingsFailedState: () => true),
-                        state.when(
-                            getCustomerSettingsState: (settings) =>
-                                settings?.cusovrride == null ||
-                                        settings?.cusovrride != 'Y'
-                                    ? false
-                                    : true,
-                            customerSettingsFailedState: () => true),
-                        state.when(
-                            getCustomerSettingsState: (settings) =>
-                                settings?.freesample == null ||
-                                        settings?.freesample != 'Y'
-                                    ? false
-                                    : true,
-                            customerSettingsFailedState: () => true),
-                      ];
+                      final approvalVisibility = List.generate(
+                        approvalItems.length,
+                        (index) {
+                          if (settingsFailed) return true;
+                          return _isApprovalTypeVisible(
+                            settings,
+                            _approvalSettingFlag(settings, index),
+                            _approvalPendingCount(approvalCounts, index),
+                          );
+                        },
+                      );
                       final filteredTiles = <Widget>[];
                       for (var i = 0; i < approvalItems.length; i++) {
                         if (approvalVisibility[i] && _matchesTab(i)) {
@@ -1223,6 +1194,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
                         items: filteredTiles,
                         visibility:
                             List<bool>.filled(filteredTiles.length, true),
+                      );
+                        },
                       );
                     },
                   ),
@@ -1237,6 +1210,8 @@ class _ApprovalScreenState extends State<ApprovalScreen> {
 
   Future<void> _onRefreshApprovals(
       BuildContext context, LoginUserModel model) async {
+    context.read<CustomerSettingsBloc>().add(
+        GetCustomerSettingsEvent(usrID: model.usrId ?? '0'));
     context
         .read<ApprovalCountsBloc>()
         .add(GetApprovalsCountEvent(userID: model.usrId ?? ''));

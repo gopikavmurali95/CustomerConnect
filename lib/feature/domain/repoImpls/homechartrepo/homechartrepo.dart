@@ -15,17 +15,35 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IHomeChartsRepo)
 class HomeChartRepo implements IHomeChartsRepo {
+  String _toApiDate(String date) {
+    final parsed = DateTime.tryParse(date);
+    if (parsed != null) {
+      return '${parsed.year}-'
+          '${parsed.month.toString().padLeft(2, '0')}-'
+          '${parsed.day.toString().padLeft(2, '0')}';
+    }
+    return date;
+  }
+
   @override
   Future<Either<MainFailures, ChartRoutesModel>> routesChart(
       String fromDate, String toDate, String userId) async {
+    final inPara = {
+      "FromDate": _toApiDate(fromDate),
+      "ToDate": _toApiDate(toDate),
+      "UserId": userId,
+    };
+    final url = baseUrl + chartRoutesUrl;
     try {
-      final response = await http.post(
-          Uri.parse(approvalBaseUrl + chartRoutesUrl),
-          body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
-      log('chart route count : ${response.body}');
+      log('GetCCRouteCount url :- $url');
+      log('GetCCRouteCount inpara :- $inPara');
+      final response = await http.post(Uri.parse(url), body: inPara);
+      log('GetCCRouteCount outpara :- status: ${response.statusCode}, body: ${response.body}');
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         final data = ChartRoutesModel.fromJson(json["result"][0]);
+        log('GetCCRouteCount - Active Routes Count: ${data.active ?? '0'}');
+        log('GetCCRouteCount - Days Started: ${data.daysStarted ?? '0'}, Days Not Started: ${data.daysNotStarted ?? '0'}');
         return right(data);
       } else {
         return left(
@@ -33,6 +51,7 @@ class HomeChartRepo implements IHomeChartsRepo {
         );
       }
     } catch (e) {
+      log('$url error :- $e');
       return left(const MainFailures.serverfailure());
     }
   }
@@ -42,7 +61,7 @@ class HomeChartRepo implements IHomeChartsRepo {
       String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
-          Uri.parse(approvalBaseUrl + chartActualVisitsUrl),
+          Uri.parse(baseUrl + chartActualVisitsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
       log('chart actual count : ${response.body}');
       if (response.statusCode == 200) {
@@ -64,7 +83,7 @@ class HomeChartRepo implements IHomeChartsRepo {
       String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
-          Uri.parse(approvalBaseUrl + chartNonProductiveVistisUrl),
+          Uri.parse(baseUrl + chartNonProductiveVistisUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
       log('chart non productive count : ${response.body}');
       if (response.statusCode == 200) {
@@ -86,7 +105,7 @@ class HomeChartRepo implements IHomeChartsRepo {
       String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
-          Uri.parse(approvalBaseUrl + chartPlannedVisitsUrl),
+          Uri.parse(baseUrl + chartPlannedVisitsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
       if (response.statusCode == 200) {
         log('planned count : ${response.body}');
@@ -108,7 +127,7 @@ class HomeChartRepo implements IHomeChartsRepo {
       String fromDate, String toDate, String userId) async {
     try {
       final response = await http.post(
-          Uri.parse(approvalBaseUrl + chartProductiveVisitsUrl),
+          Uri.parse(baseUrl + chartProductiveVisitsUrl),
           body: {"FromDate": fromDate, "ToDate": toDate, "UserId": userId});
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
